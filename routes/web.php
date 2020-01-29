@@ -15,18 +15,19 @@ Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('home');
 
+
 Route::group([
 
-    'namespace' => 'Admin'
+    'namespace' => 'Member'
 
 ],function () {
 
-    Route::get('pages/posts', 'PostsController@index')->name('post.page');
-    Route::get('/pages/posts/{id}','PostsController@show')->name('post.show');
-    Route::get('/pages/create','PostsController@create')->name('post.create');
-    Route::post('/pages/posts','PostsController@store')->name('post.store');
-    Route::get('/pages/posts/{id}/edit','PostsController@edit')->name('post.edit');
-    Route::put('pages/posts/{id}','PostsController@update')->name('post.update');
-    Route::delete('/pages/posts/{id}','PostsController@destroy')->name('post.delete');
+    Route::get('/memberlist', 'MemberController@index');
+//    Route::get('/memberlist/{id}','MemberController@show');
+    Route::get('/createmember','MemberController@create');
+//    Route::post('/memberlist','MemberController@store');
+//    Route::get('/memberlist/{id}/edit','MemberController@edit');
+//    Route::put('memberlist/{id}','MemberController@update');
+//    Route::delete('/memberlist/{id}','MemberController@destroy');
 
 });

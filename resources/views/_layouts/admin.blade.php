@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 
 <!--
@@ -18,7 +17,7 @@ License: You must have a valid license purchased only from themeforest(the above
 <!-- begin::Head -->
 <head>
     <base href="">
-    <meta charset="utf-8" />
+    <meta charset="utf-8"/>
     <title>Metronic | @yield('form-title')</title>
     <meta name="description" content="Updates and statistics">
 
@@ -26,26 +25,30 @@ License: You must have a valid license purchased only from themeforest(the above
 
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!--begin::Fonts -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700|Roboto:300,400,500,600,700">
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700|Roboto:300,400,500,600,700">
     <!--end::Fonts -->
 @include('_partials.css-assets')
 <!--end::Layout Skins -->
-    <link rel="shortcut icon" href="{{asset('assets/media/logos/favicon.ico')}}" />
+    <link rel="shortcut icon" href="{{asset('assets/media/logos/favicon.ico')}}"/>
 
 </head>
 
 <!-- end::Head -->
 
 <!-- begin::Body -->
-<body class="kt-quick-panel--right kt-demo-panel--right kt-offcanvas-panel--right kt-header--fixed kt-header-mobile--fixed kt-subheader--enabled kt-subheader--fixed kt-subheader--solid kt-aside--enabled kt-aside--fixed kt-page--loading">
+<body
+    class="kt-quick-panel--right kt-demo-panel--right kt-offcanvas-panel--right kt-header--fixed kt-header-mobile--fixed kt-subheader--enabled kt-subheader--fixed kt-subheader--solid kt-aside--enabled kt-aside--fixed kt-page--loading">
 
 <!-- begin:: Page -->
 <div class="kt-grid kt-grid--ver kt-grid--root">
     <div class="kt-grid kt-grid--hor kt-grid--root  kt-login kt-login--v1" id="kt_login">
-        <div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--desktop kt-grid--ver-desktop kt-grid--hor-tablet-and-mobile">
+        <div
+            class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--desktop kt-grid--ver-desktop kt-grid--hor-tablet-and-mobile">
 
             <!--begin::Aside-->
-            <div class="kt-grid__item kt-grid__item--order-tablet-and-mobile-2 kt-grid kt-grid--hor kt-login__aside" style="background-image: url({{asset('assets/media/bg/bg-4.jpg')}});">
+            <div class="kt-grid__item kt-grid__item--order-tablet-and-mobile-2 kt-grid kt-grid--hor kt-login__aside"
+                 style="background-image: url({{asset('assets/media/bg/bg-4.jpg')}});">
                 <div class="kt-grid__item">
                     <a href="#" class="kt-login__logo">
                         <img src="{{asset('assets/media/logos/logo-4.png')}}">
@@ -54,7 +57,8 @@ License: You must have a valid license purchased only from themeforest(the above
                 <div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--ver">
                     <div class="kt-grid__item kt-grid__item--middle">
                         <h3 class="kt-login__title">Welcome to Metronic!</h3>
-                        <h4 class="kt-login__subtitle">The ultimate Bootstrap & Angular 6 admin theme framework for next generation web apps.</h4>
+                        <h4 class="kt-login__subtitle">The ultimate Bootstrap & Angular 6 admin theme framework for next
+                            generation web apps.</h4>
                     </div>
                 </div>
                 <div class="kt-grid__item">
@@ -74,14 +78,17 @@ License: You must have a valid license purchased only from themeforest(the above
             <!--begin::Aside-->
 
             <!--begin::Content-->
-            <div class="kt-grid__item kt-grid__item--fluid  kt-grid__item--order-tablet-and-mobile-1  kt-login__wrapper">
+            <div
+                class="kt-grid__item kt-grid__item--fluid  kt-grid__item--order-tablet-and-mobile-1  kt-login__wrapper">
 
                 <!--begin::Head-->
                 <div class="kt-login__head">
                     <span class="kt-login__signup-label">Don't have an account yet?</span>&nbsp;&nbsp;
-                    <span class="accountLink"><a class="kt-link kt-login__signup-link" href="{{ route('login') }}">{{ __('Login') }}</a></span>
+                    <span class="accountLink"><a class="kt-link kt-login__signup-link"
+                                                 href="{{ route('login') }}">{{ __('Login') }}</a></span>
                     @if (Route::has('register'))
-                        <span class="accountLink"><a class="kt-link kt-login__signup-link" href="{{ route('register') }}">{{ __('Register') }}</a></span>
+                        <span class="accountLink"><a class="kt-link kt-login__signup-link"
+                                                     href="{{ route('register') }}">{{ __('Register') }}</a></span>
                     @endif
                 </div>
 
@@ -97,8 +104,8 @@ License: You must have a valid license purchased only from themeforest(the above
                         </div>
 
                         <!--begin::Form-->
-                        @yield('content')
-                        <!--end::Form-->
+                    @yield('content')
+                    <!--end::Form-->
                         <!--begin::Divider-->
                         <div class="kt-login__divider">
                             <div class="kt-divider">

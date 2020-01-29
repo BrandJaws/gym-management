@@ -1978,7 +1978,6 @@ pre code {
 
 .table {
   width: 100%;
-  margin-bottom: 1rem;
   color: #212529;
   background-color: transparent;
 }
@@ -13336,7 +13335,6 @@ pre code {
 
 .table {
   width: 100%;
-  margin-bottom: 1rem;
   color: #212529;
   background-color: transparent;
 }
@@ -33687,7 +33685,7 @@ canvas {
 
 /* Customize website's scrollbar like Mac OS */
 
-/* 
+/*
 ::-webkit-scrollbar {
     background-color:#f6f6f6;
     width:14px;
@@ -57436,7 +57434,6 @@ td > .kt-radio.kt-radio--single {
 
 .kt-section {
   padding: 0;
-  margin: 0 0 2rem 0;
 }
 
 .kt-section.kt-section--space-sm {
@@ -61598,7 +61595,7 @@ body {
   }
 
   .kt-header--fixed.kt-subheader--fixed.kt-subheader--enabled .kt-wrapper {
-    padding-top: 119px;
+      padding-top: 70px;
   }
 
   .kt-aside--fixed .kt-wrapper {
@@ -61679,7 +61676,7 @@ body {
   }
 
   .kt-subheader--enabled .kt-content {
-    padding-top: 0;
+      padding-top: 20px;
   }
 
   .kt-subheader--enabled.kt-subheader--solid .kt-subheader {
@@ -61975,8 +61972,8 @@ body {
   .kt-header-menu {
     display: -webkit-box;
     display: flex;
-    -webkit-box-align: stretch;
-            align-items: stretch;
+    -webkit-box-align: center;
+            align-items: center;
     height: 100%;
     margin: 0 0 0 25px;
   }

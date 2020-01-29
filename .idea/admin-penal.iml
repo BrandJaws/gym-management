@@ -95,8 +95,5 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="module" module-name="blog" />
-    <orderEntry type="module" module-name="regna my site" />
-    <orderEntry type="module" module-name="admin" />
   </component>
 </module>
