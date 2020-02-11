@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateMembersTable extends Migration
+class CreateLicensesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,11 @@ class CreateMembersTable extends Migration
      */
     public function up()
     {
-        Schema::create('members', function (Blueprint $table) {
-            $table->bigIncrements('id');
+        Schema::create('licenses', function (Blueprint $table) {
+            $table->increments('id');
+            $table->date('startDate');
+            $table->date('endDate');
+            $table->float('amount');
             $table->timestamps();
         });
     }
@@ -26,6 +29,6 @@ class CreateMembersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('members');
+        Schema::dropIfExists('licenses');
     }
 }

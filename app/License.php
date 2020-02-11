@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Member extends Model
+class License extends Model
 {
-    protected $table = 'members';
+    protected $table = 'licenses';
 }
