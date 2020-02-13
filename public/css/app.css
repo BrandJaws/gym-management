@@ -11617,8 +11617,8 @@ textarea {
 }
 
 button,
-input {
-  overflow: visible;
+input{
+    overflow: visible;
 }
 
 button,
@@ -26981,7 +26981,7 @@ code {
 
 .form-control:focus,
 .form-control:active {
-  box-shadow: none !important;
+    box-shadow: 0px 1px 13px -5px #333;
 }
 
 .form-control[readonly] {

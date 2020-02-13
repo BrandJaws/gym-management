@@ -11,7 +11,7 @@
     <link rel="stylesheet"
           href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700|Roboto:300,400,500,600,700">
     <!--end::Fonts -->
-    @include('_partials.css-assets')
+    @include('employee.__partials.css-assets')
     <!--end::Layout Skins -->
     <link rel="shortcut icon" href="{{asset('assets/media/logos/favicon.ico')}}"/>
 </head>
@@ -40,11 +40,11 @@
         <!-- Uncomment this to display the close button of the panel
 <button class="kt-aside-close " id="kt_aside_close_btn"><i class="la la-close"></i></button>
 -->
-    @include('_partials.sidebar')
+    @include('employee.__partials.sidebar')
     <!-- end:: Aside -->
         <div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor kt-wrapper" id="kt_wrapper">
         <!-- begin:: Header -->
-        @include('_partials.header')
+        @include('employee.__partials.header')
         <!-- end:: Header -->
             <!-- begin:: Content -->
             <div class="kt-content  kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor" id="kt_content">
@@ -54,7 +54,7 @@
             </div>
             <!-- end:: Content -->
         <!-- begin:: Footer -->
-        @include('_partials.footer')
+        @include('employee.__partials.footer')
         <!-- end:: Footer -->
         </div>
     </div>
@@ -99,9 +99,6 @@
 <!-- end::Global Config -->
 <script src="{{ asset('js/app.js') }}"></script>
 <!--end::Page Scripts -->
-
-@yield('custom-script')
-
 </body>
 <!-- end::Body -->
 </html>

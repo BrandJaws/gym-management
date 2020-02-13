@@ -13,23 +13,19 @@ Renew Support: http://themeforest.net/item/metronic-responsive-admin-dashboard-t
 License: You must have a valid license purchased only from themeforest(the above link) in order to legally use the theme for your project.
 -->
 <html lang="en">
-
 <!-- begin::Head -->
 <head>
     <base href="">
     <meta charset="utf-8"/>
     <title>Metronic | @yield('form-title')</title>
     <meta name="description" content="Updates and statistics">
-
     <meta name="csrf-token" content="{{ csrf_token() }}">
-
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!--begin::Fonts -->
-    <link rel="stylesheet"
-          href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700|Roboto:300,400,500,600,700">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700|Roboto:300,400,500,600,700">
     <!--end::Fonts -->
-@include('_partials.css-assets')
-<!--end::Layout Skins -->
+    @include('_partials.css-assets')
+    <!--end::Layout Skins -->
     <link rel="shortcut icon" href="{{asset('assets/media/logos/favicon.ico')}}"/>
 
 </head>
@@ -81,19 +77,6 @@ License: You must have a valid license purchased only from themeforest(the above
             <div
                 class="kt-grid__item kt-grid__item--fluid  kt-grid__item--order-tablet-and-mobile-1  kt-login__wrapper">
 
-                <!--begin::Head-->
-                <div class="kt-login__head">
-                    <span class="kt-login__signup-label">Don't have an account yet?</span>&nbsp;&nbsp;
-                    <span class="accountLink"><a class="kt-link kt-login__signup-link"
-                                                 href="{{ route('login') }}">{{ __('Login') }}</a></span>
-                    @if (Route::has('register'))
-                        <span class="accountLink"><a class="kt-link kt-login__signup-link"
-                                                     href="{{ route('register') }}">{{ __('Register') }}</a></span>
-                    @endif
-                </div>
-
-                <!--end::Head-->
-
                 <!--begin::Body-->
                 <div class="kt-login__body">
 
@@ -106,33 +89,7 @@ License: You must have a valid license purchased only from themeforest(the above
                         <!--begin::Form-->
                     @yield('content')
                     <!--end::Form-->
-                        <!--begin::Divider-->
-                        <div class="kt-login__divider">
-                            <div class="kt-divider">
-                                <span></span>
-                                <span>OR</span>
-                                <span></span>
-                            </div>
-                        </div>
 
-                        <!--end::Divider-->
-                        <!--begin::Options-->
-                        <div class="kt-login__options">
-                            <a href="#" class="btn btn-primary kt-btn">
-                                <i class="fab fa-facebook-f"></i>
-                                Facebook
-                            </a>
-                            <a href="#" class="btn btn-info kt-btn">
-                                <i class="fab fa-twitter"></i>
-                                Twitter
-                            </a>
-                            <a href="#" class="btn btn-danger kt-btn">
-                                <i class="fab fa-google"></i>
-                                Google
-                            </a>
-                        </div>
-
-                        <!--end::Options-->
                     </div>
 
                     <!--end::Signin-->

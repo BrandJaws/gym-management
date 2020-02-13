@@ -10,8 +10,8 @@
             <button class="kt-aside__brand-aside-toggler" id="kt_aside_toggler">
                 <span>
                     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                         width="24px" height="24px" viewBox="0 0 24 24" version="1.1"
-                         class="kt-svg-icon">
+                           width="24px" height="24px" viewBox="0 0 24 24" version="1.1"
+                           class="kt-svg-icon">
                         <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                             <polygon points="0 0 24 0 24 24 0 24"/>
                             <path
@@ -27,7 +27,7 @@
                 </span>
                 <span>
                     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px"
-                         height="24px" viewBox="0 0 24 24" version="1.1" class="kt-svg-icon">
+                           height="24px" viewBox="0 0 24 24" version="1.1" class="kt-svg-icon">
                         <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                             <polygon points="0 0 24 0 24 24 0 24"/>
                             <path
@@ -49,12 +49,12 @@
         <div id="kt_aside_menu" class="kt-aside-menu " data-ktmenu-vertical="1" data-ktmenu-scroll="1"
              data-ktmenu-dropdown-timeout="500">
             <ul class="kt-menu__nav ">
-                <li class="kt-menu__item  kt-menu__item--{{ Request::is('admin') ? 'active' : null }} " aria-haspopup="true">
+                <li class="kt-menu__item  kt-menu__item--active " aria-haspopup="true">
                     <a href="{{url('/')}}" class="kt-menu__link ">
                         <span class="kt-menu__link-icon"><svg xmlns="http://www.w3.org/2000/svg"
-                                                              xmlns:xlink="http://www.w3.org/1999/xlink" width="24px"
-                                                              height="24px" viewBox="0 0 24 24" version="1.1"
-                                                              class="kt-svg-icon">
+                            xmlns:xlink="http://www.w3.org/1999/xlink" width="24px"
+                            height="24px" viewBox="0 0 24 24" version="1.1"
+                            class="kt-svg-icon">
                             <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                                 <polygon points="0 0 24 0 24 24 0 24"/>
                                 <path
@@ -69,18 +69,29 @@
                         <span class="kt-menu__link-text">Dashboard</span>
                     </a>
                 </li>
-                <li class="kt-menu__item  kt-menu__item--{{ Request::is('admin/gym') ? 'active' : null }}" aria-haspopup="true"
+                <li class="kt-menu__section ">
+                    <h4 class="kt-menu__section-text">Custom</h4>
+                    <i class="kt-menu__section-icon flaticon-more-v2"></i>
+                </li>
+                <li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true"
                     data-ktmenu-submenu-toggle="hover">
-                    <a href="{{route('gym.list')}}" class="kt-menu__link kt-menu__toggle">
-                        <span class="kt-menu__link-icon"><i class="flaticon-home-1"></i></span>
-                        <span class="kt-menu__link-text">Gym</span>
+                    <a href="{{url('/memberlist')}}" class="kt-menu__link kt-menu__toggle">
+                        <span class="kt-menu__link-icon"><i class="fa fa-user"></i></span>
+                        <span class="kt-menu__link-text">Members</span>
                     </a>
                 </li>
-                <li class="kt-menu__item  kt-menu__item--{{ Request::is('admin/employee') ? 'active' : null }}" aria-haspopup="true"
+                <li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true"
                     data-ktmenu-submenu-toggle="hover">
-                    <a href="{{url('admin/employeelist')}}" class="kt-menu__link kt-menu__toggle">
-                        <span class="kt-menu__link-icon"><i class="flaticon-avatar"></i></span>
+                    <a href="#" class="kt-menu__link kt-menu__toggle">
+                        <span class="kt-menu__link-icon"><i class="fa fa-user"></i></span>
                         <span class="kt-menu__link-text">Employees</span>
+                    </a>
+                </li>
+                <li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true"
+                    data-ktmenu-submenu-toggle="hover">
+                    <a href="#" class="kt-menu__link kt-menu__toggle">
+                        <span class="kt-menu__link-icon"><i class="fa fa-user"></i></span>
+                        <span class="kt-menu__link-text">Classes Schedule</span>
                     </a>
                 </li>
             </ul>

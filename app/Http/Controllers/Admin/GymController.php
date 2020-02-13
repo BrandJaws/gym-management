@@ -1,10 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\Member;
+namespace App\Http\Controllers\Admin;
+
+use App\Gym;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class MemberController extends Controller
+class GymController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +15,9 @@ class MemberController extends Controller
      */
     public function index()
     {
-        return view('pages.member');
+//        $list = Gym::orderBy('Gym.created_at', 'desc')->get();
+//        return view('');
+        return view('gym.list');
     }
 
     /**
@@ -23,7 +27,7 @@ class MemberController extends Controller
      */
     public function create()
     {
-        return view('pages.membercreate');
+        //
     }
 
     /**
