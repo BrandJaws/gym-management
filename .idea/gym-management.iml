@@ -8,5 +8,14 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module" module-name="pm-admin" />
+    <orderEntry type="module" module-name="laraveldatatables" />
+    <orderEntry type="module" module-name="laraveldatatables" />
+    <orderEntry type="module" module-name="lorel-paris" />
+    <orderEntry type="module" module-name="lorel-paris" />
+    <orderEntry type="module" module-name="lorel-paris" />
+    <orderEntry type="module" module-name="lorel-paris" />
+    <orderEntry type="module" module-name="lorel-paris" />
+    <orderEntry type="module" module-name="lorel-paris" />
+    <orderEntry type="module" module-name="lorel-paris" />
   </component>
 </module>

@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Gym;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class GymController extends Controller
+class MembershipController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,9 +14,9 @@ class GymController extends Controller
      */
     public function index()
     {
-//        $gym = Gym::orderBy('Gym.created_at', 'desc')->get();
-        return view('gym.list');
+        return view('membership.list');
     }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -25,8 +24,9 @@ class GymController extends Controller
      */
     public function create()
     {
-        return view('gym.create');
+        return view('membership.create');
     }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -35,9 +35,9 @@ class GymController extends Controller
      */
     public function store(Request $request)
     {
-//        $gym = new Gym();
-//        redirect()->route('gym.list');
+        //
     }
+
     /**
      * Display the specified resource.
      *
@@ -48,6 +48,7 @@ class GymController extends Controller
     {
         //
     }
+
     /**
      * Show the form for editing the specified resource.
      *
@@ -58,6 +59,7 @@ class GymController extends Controller
     {
         //
     }
+
     /**
      * Update the specified resource in storage.
      *
@@ -69,6 +71,7 @@ class GymController extends Controller
     {
         //
     }
+
     /**
      * Remove the specified resource from storage.
      *

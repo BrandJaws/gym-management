@@ -10,11 +10,11 @@
                         <div class="kt-portlet__head" style="align-items: center">
                             <div class="kt-portlet__head-label">
                                 <h3 class="kt-portlet__head-title">
-                                    List of Gyms
+                                    List of Employees
                                 </h3>
                             </div>
                             <div class="dropdown dropdown-inline">
-                                <a href="{{route('gym.create')}}" type="button" class="btn btn-brand btn-icon-sm">
+                                <a href="{{route('employee.create')}}" type="button" class="btn btn-brand btn-icon-sm">
                                     <i class="flaticon2-plus"></i> Add New
                                 </a>
                             </div>
@@ -30,33 +30,33 @@
                                             <tr>
                                                 <th>#id</th>
                                                 <th>Name</th>
-                                                <th>In Trial</th>
-                                                <th>Trial Ends At</th>
-                                                <th>City</th>
-                                                <th style="width: 200px;">Address</th>
-                                                <th>State</th>
-                                                <th>License</th>
-                                                <th>Status</th>
+                                                <th>Email</th>
+                                                <th>Code</th>
+                                                <th>Password</th>
+                                                <th>Gender</th>
+                                                <th>Cnic</th>
+                                                <th>Phone</th>
+                                                <th>Salary</th>
+                                                <th>Specialization</th>
+                                                <th>Address</th>
+                                                <th>Gym</th>
                                                 <th>Actions</th>
                                             </tr>
                                             </thead>
                                             <tbody>
                                             <tr>
                                                 <th scope="row">1</th>
-                                                <td>Gold Gym's</td>
-                                                <td data-field="Status" class="kt-datatable__cell">
-                                                    <span class="kt-badge  kt-badge--primary kt-badge--inline kt-badge--pill">True</span>
-                                                </td>
-                                                <td>02-06-2018</td>
-                                                <td>Lahore</td>
+                                                <td>Mohsin Ikram</td>
+                                                <td>mohsinikram1999@gmail.com</td>
+                                                <td>1q2w3e</td>
+                                                <td>M!O@H#S$I%N^</td>
+                                                <td>Male</td>
+                                                <td>35000-0023000-2</td>
+                                                <td>+923013403504</td>
+                                                <td>10,000</td>
+                                                <td>Website Designing.</td>
                                                 <td>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</td>
-                                                <td>.......</td>
-                                                <td>
-                                                    <span class="kt-badge  kt-badge--primary kt-badge--inline kt-badge--pill">True</span>
-                                                </td>
-                                                <td>
-                                                    <span class="kt-badge  kt-badge--danger kt-badge--inline kt-badge--pill">Canceled</span>
-                                                </td>
+                                                <td>........</td>
                                                 <td>
                                                     <a title="Edit details" class="btn btn-sm btn-clean btn-icon btn-icon-md">
                                                         <i class="la la-edit"></i>
@@ -67,21 +67,18 @@
                                                 </td>
                                             </tr>
                                             <tr>
-                                                <th scope="row">2</th>
-                                                <td>Planet Fitness</td>
-                                                <td data-field="Status" class="kt-datatable__cell">
-                                                    <span class="kt-badge  kt-badge--danger kt-badge--inline kt-badge--pill">False</span>
-                                                </td>
-                                                <td>26-11-2014</td>
-                                                <td>Peshawer</td>
+                                                <th scope="row">1</th>
+                                                <td>Muhammad Bilal</td>
+                                                <td>muhammadbilal083@gmail.com</td>
+                                                <td>2f3gqhe6</td>
+                                                <td>bilal!@#$&%</td>
+                                                <td>Male</td>
+                                                <td>35000-0023000-2</td>
+                                                <td>+923013403504</td>
+                                                <td>10,000</td>
+                                                <td>Website Designing.</td>
                                                 <td>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</td>
-                                                <td>.......</td>
-                                                <td>
-                                                    <span class="kt-badge  kt-badge--danger kt-badge--inline kt-badge--pill">False</span>
-                                                </td>
-                                                <td>
-                                                    <span class="kt-badge  kt-badge--primary kt-badge--inline kt-badge--pill">Active</span>
-                                                </td>
+                                                <td>........</td>
                                                 <td>
                                                     <a title="Edit details" class="btn btn-sm btn-clean btn-icon btn-icon-md">
                                                         <i class="la la-edit"></i>
@@ -92,21 +89,18 @@
                                                 </td>
                                             </tr>
                                             <tr>
-                                                <th scope="row">3</th>
-                                                <td>Yoga Works</td>
-                                                <td data-field="Status" class="kt-datatable__cell">
-                                                    <span class="kt-badge  kt-badge--primary kt-badge--inline kt-badge--pill">True</span>
-                                                </td>
-                                                <td>09-10-2005</td>
-                                                <td>Rawalpindi</td>
+                                                <th scope="row">1</th>
+                                                <td>Arslan Aslam</td>
+                                                <td>arslanaslam124@gmail.com</td>
+                                                <td>8%&h*dsj8</td>
+                                                <td>arslan!@*&^aslam%$^</td>
+                                                <td>Male</td>
+                                                <td>35000-0023000-2</td>
+                                                <td>+923013403504</td>
+                                                <td>10,000</td>
+                                                <td>Website Designing.</td>
                                                 <td>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</td>
-                                                <td>.......</td>
-                                                <td>
-                                                    <span class="kt-badge  kt-badge--danger kt-badge--inline kt-badge--pill">False</span>
-                                                </td>
-                                                <td>
-                                                    <span class="kt-badge  kt-badge--danger kt-badge--inline kt-badge--pill">Canceled</span>
-                                                </td>
+                                                <td>........</td>
                                                 <td>
                                                     <a title="Edit details" class="btn btn-sm btn-clean btn-icon btn-icon-md">
                                                         <i class="la la-edit"></i>
@@ -133,4 +127,3 @@
         <!-- end:: Content -->
     </div>
 @endsection
-
