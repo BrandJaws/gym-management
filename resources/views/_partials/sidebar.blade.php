@@ -93,6 +93,34 @@
                         <span class="kt-menu__link-text">Members</span>
                     </a>
                 </li>
+                <li class="kt-menu__item  kt-menu__item--{{ Request::is('admin/trainer') ? 'active' : null }}" aria-haspopup="true"
+                    data-ktmenu-submenu-toggle="hover">
+                    <a href="{{route('trainer.list')}}" class="kt-menu__link kt-menu__toggle">
+                        <span class="kt-menu__link-icon"><i class="flaticon-user"></i></span>
+                        <span class="kt-menu__link-text">Trainers</span>
+                    </a>
+                </li>
+                <li class="kt-menu__item  kt-menu__item--{{ Request::is('admin/supplier') ? 'active' : null }}" aria-haspopup="true"
+                    data-ktmenu-submenu-toggle="hover">
+                    <a href="{{route('supplier.list')}}" class="kt-menu__link kt-menu__toggle">
+                        <span class="kt-menu__link-icon"><i class="flaticon-avatar"></i></span>
+                        <span class="kt-menu__link-text">Supplier</span>
+                    </a>
+                </li>
+                <li class="kt-menu__item  kt-menu__item--{{ Request::is('admin/treasury') ? 'active' : null }}" aria-haspopup="true"
+                    data-ktmenu-submenu-toggle="hover">
+                    <a href="{{route('treasury.list')}}" class="kt-menu__link kt-menu__toggle">
+                        <span class="kt-menu__link-icon"><i class="flaticon2-avatar"></i></span>
+                        <span class="kt-menu__link-text">Treasury</span>
+                    </a>
+                </li>
+                <li class="kt-menu__item  kt-menu__item--{{ Request::is('admin/service') ? 'active' : null }}" aria-haspopup="true"
+                    data-ktmenu-submenu-toggle="hover">
+                    <a href="{{route('service.list')}}" class="kt-menu__link kt-menu__toggle">
+                        <span class="kt-menu__link-icon"><i class="flaticon2-avatar"></i></span>
+                        <span class="kt-menu__link-text">Service</span>
+                    </a>
+                </li>
             </ul>
         </div>
     </div>

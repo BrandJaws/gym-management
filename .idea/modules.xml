@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/../attendanceform/.idea/attendanceform.iml" filepath="$PROJECT_DIR$/../attendanceform/.idea/attendanceform.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/gym-management.iml" filepath="$PROJECT_DIR$/.idea/gym-management.iml" />
       <module fileurl="file://$PROJECT_DIR$/../laraveldatatables/.idea/laraveldatatables.iml" filepath="$PROJECT_DIR$/../laraveldatatables/.idea/laraveldatatables.iml" />
       <module fileurl="file://$PROJECT_DIR$/../lorel-paris/.idea/lorel-paris.iml" filepath="$PROJECT_DIR$/../lorel-paris/.idea/lorel-paris.iml" />

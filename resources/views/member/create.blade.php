@@ -91,6 +91,12 @@
                                         <input type="text" name="address" class="form-control" placeholder="Enter Your Address" />
                                     </div>
                                 </div>
+                                <div class="form-group row">
+                                    <div class="col-lg-6">
+                                        <label>Gym:</label>
+                                        <input type="text" name="gym" class="form-control" placeholder="Enter Your Gym">
+                                    </div>
+                                </div>
                             </div>
                             <div class="kt-portlet__foot">
                                 <div class="kt-form__actions">

@@ -5,12 +5,15 @@
       <change beforePath="$PROJECT_DIR$/.idea/gym-management.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gym-management.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Gym.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Gym.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/GymController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/GymController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/app.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/_layouts/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/_layouts/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_02_11_165010_create_treasuries_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_02_11_165010_create_treasuries_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_02_11_165247_create_member_memberships_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_02_11_165247_create_member_memberships_table.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/_partials/sidebar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/_partials/sidebar.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/gym/list.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/gym/list.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/employee/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/employee/create.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/gym/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/gym/create.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/member/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/member/create.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/membership/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/membership/create.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/pages/member.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/pages/membercreate.blade.php" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -230,6 +233,7 @@
       <workItem from="1581776200692" duration="4326000" />
       <workItem from="1581877843569" duration="1260000" />
       <workItem from="1581934387368" duration="23856000" />
+      <workItem from="1582020227799" duration="27128000" />
     </task>
     <servers />
   </component>

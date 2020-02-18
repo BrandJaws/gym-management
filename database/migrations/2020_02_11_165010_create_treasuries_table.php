@@ -20,9 +20,9 @@ class CreateTreasuriesTable extends Migration
             $table->string('type'); // From Other
             $table->integer('value'); // 9,000
             $table->dateTime('date'); // 03-03-2020
-            $table->nullableMorphs('treasureable'); // nullable
             $table->string('purpose')->nullable(true); // salary
             $table->string('note')->nullable(true); // null
+            $table->nullableMorphs('treasureable'); // nullable
             $table->integer('gym_id', false, true); // 03
             $table->timestamps();
         });

@@ -11,7 +11,7 @@
                         <div class="kt-portlet__head">
                             <div class="kt-portlet__head-label">
                                 <h3 class="kt-portlet__head-title">
-                                    Create A Gym
+                                    Create A Trainer
                                 </h3>
                             </div>
                         </div>
@@ -25,14 +25,24 @@
                                         <input type="text" name="name" class="form-control" placeholder="Enter full name" />
                                     </div>
                                     <div class="col-lg-6">
-                                        <label>Trial In:</label>
+                                        <label>Email:</label>
+                                        <input type="email" name="email" class="form-control" placeholder="Enter full email" />
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-lg-6">
+                                        <label>Password:</label>
+                                        <input type="text" name="password" class="form-control" placeholder="Enter Your Password"/>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <label>Gender:</label>
                                         <div class="kt-radio-inline">
                                             <label class="kt-radio kt-radio--solid">
-                                                <input type="radio" name="inTrial" value="2"> True
+                                                <input type="radio" name="gender" value="2"> Male
                                                 <span></span>
                                             </label>
                                             <label class="kt-radio kt-radio--solid">
-                                                <input type="radio" name="inTrial" value="2"> False
+                                                <input type="radio" name="gender" value="2"> Female
                                                 <span></span>
                                             </label>
                                         </div>
@@ -40,33 +50,25 @@
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-lg-6">
-                                        <label>Trial Ends At:</label>
-                                        <div class="kt-input-icon input-group">
-                                            <input type="date" name="trialEndsAt" class="form-control" placeholder="Enter your Date">
-                                            <div class="input-group-append">
-                                                <span class="input-group-text">
-                                                    <i class="la la-calendar-check-o"></i>
-                                                </span>
-                                            </div>
-                                        </div>
+                                        <label>Phone:</label>
+                                        <input type="text" name="phone" class="form-control" placeholder="Enter Your Phone"/>
                                     </div>
                                     <div class="col-lg-6">
-                                        <label class="">City:</label>
-                                        <select class="form-control kt-selectpicker" name="city" tabindex="-98">
-                                            <option value="mustard">Lahore</option>
-                                            <option value="ketchup">Islamabad</option>
-                                            <option value="relish">Karachi</option>
-                                            <option value="relish">Peshawer</option>
-                                            <option value="relish">Multan</option>
-                                            <option value="relish">Quetta</option>
-                                        </select>
+                                        <label>Qualification:</label>
+                                        <input type="text" name="qualification" class="form-control" placeholder="Enter Your Qualification" />
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-lg-6">
-                                        <label>Address:</label>
-                                        <input type="text" name="address" id="address" class="form-control" placeholder="Enter your address" />
+                                        <label>Speciality:</label>
+                                        <input type="text" name="speciality" class="form-control" placeholder="Enter Your Speciality"/>
                                     </div>
+                                    <div class="col-lg-6">
+                                        <label>Note:</label>
+                                        <input type="text" name="note" class="form-control" placeholder="Enter Your Note" />
+                                    </div>
+                                </div>
+                                <div class="form-group row">
                                     <div class="col-lg-6">
                                         <label>Status:</label>
                                         <div class="kt-radio-inline">
@@ -80,15 +82,9 @@
                                             </label>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="form-group row">
                                     <div class="col-lg-6">
-                                        <label>State:</label>
-                                        <input type="text" name="state" id="state" class="form-control" placeholder="Enter your state" />
-                                    </div>
-                                    <div class="col-lg-6">
-                                        <label>License:</label>
-                                        <input type="text" name="license" id="license" class="form-control" placeholder="Enter your License" />
+                                        <label>Gym:</label>
+                                        <input type="text" name="gym" id="gym" class="form-control" placeholder="Enter your Gym" />
                                     </div>
                                 </div>
                             </div>
@@ -97,7 +93,7 @@
                                     <div class="row">
                                         <div class="col-12">
                                             <input type="submit" value="Save" class="btn btn-primary">
-                                            <a href="{{route('gym.list')}}" class="btn btn-secondary">Cancel</a>
+                                            <a href="{{route('trainer.list')}}" class="btn btn-secondary">Cancel</a>
                                         </div>
                                     </div>
                                 </div>
