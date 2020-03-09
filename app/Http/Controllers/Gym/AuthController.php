@@ -1,18 +1,18 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
-use App\Http\Controllers\Controller;
+namespace App\Http\Controllers\Gym;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 class AuthController extends Controller
 {
     public function login()
     {
-        return view('admin.auth.login');
+        return view('gym.auth.login');
     }
     public function reset()
     {
-        return view('admin.auth.reset');
+        return view('gym.auth.reset');
     }
 }

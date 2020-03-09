@@ -2,11 +2,14 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$USER_HOME$/Desktop/AttendanceSheetThroughAJAX/.idea/AttendanceSheet.iml" filepath="$USER_HOME$/Desktop/AttendanceSheetThroughAJAX/.idea/AttendanceSheet.iml" />
       <module fileurl="file://$PROJECT_DIR$/../attendanceform/.idea/attendanceform.iml" filepath="$PROJECT_DIR$/../attendanceform/.idea/attendanceform.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../auth/.idea/auth.iml" filepath="$PROJECT_DIR$/../auth/.idea/auth.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/gym-management.iml" filepath="$PROJECT_DIR$/.idea/gym-management.iml" />
       <module fileurl="file://$PROJECT_DIR$/../laraveldatatables/.idea/laraveldatatables.iml" filepath="$PROJECT_DIR$/../laraveldatatables/.idea/laraveldatatables.iml" />
       <module fileurl="file://$PROJECT_DIR$/../lorel-paris/.idea/lorel-paris.iml" filepath="$PROJECT_DIR$/../lorel-paris/.idea/lorel-paris.iml" />
       <module fileurl="file://$PROJECT_DIR$/../philmor/.idea/pm-admin.iml" filepath="$PROJECT_DIR$/../philmor/.idea/pm-admin.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../public_html/.idea/public_html.iml" filepath="$PROJECT_DIR$/../public_html/.idea/public_html.iml" />
     </modules>
   </component>
 </project>

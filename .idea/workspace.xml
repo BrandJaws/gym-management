@@ -5,15 +5,70 @@
       <change beforePath="$PROJECT_DIR$/.idea/gym-management.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gym-management.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_02_11_165010_create_treasuries_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_02_11_165010_create_treasuries_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_02_11_165247_create_member_memberships_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_02_11_165247_create_member_memberships_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Gym.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Gym.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/AuthController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/AuthController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/EmployeeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/EmployeeController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/GymController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/GymController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/MemberController.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/MembershipController.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/ServiceController.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/SupplierController.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/TrainerController.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/TreasuryController.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Controller.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Controller.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Employee/AuthController.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Employee/DashboardController.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Member/AuthController.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Member/DashboardController.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Trainer/AuthController.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Trainer/DashboardController.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Providers/RouteServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/RouteServiceProvider.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/auth.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/auth.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_02_11_153358_create_licenses_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_02_11_153358_create_licenses_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/app.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/_layouts/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/_layouts/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/_partials/header.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/_partials/header.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/_partials/sidebar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/_partials/sidebar.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/employee/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/employee/create.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/gym/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/gym/create.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/member/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/member/create.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/membership/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/membership/create.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/pages/member.blade.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/pages/membercreate.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/dashboard.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/dashboard.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/login.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/reset.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/auth/login.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/auth/passwords/confirm.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/auth/passwords/email.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/auth/passwords/reset.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/auth/register.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/auth/verify.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/employee/__layouts/index.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/employee/__partials/css-assets.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/employee/__partials/footer.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/employee/__partials/header.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/employee/__partials/sidebar.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/employee/create.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/employee/dashboard.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/employee/list.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/employee/login.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/employee/reset.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/gym/create.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/gym/list.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/member/create.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/member/list.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/member/login.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/member/reset.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/membership/create.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/membership/list.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/service/create.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/service/list.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/supplier/create.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/supplier/list.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/trainer/create.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/trainer/list.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/trainer/login.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/trainer/reset.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/treasury/create.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/treasury/list.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/welcome.blade.php" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -32,6 +87,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="CSS File" />
+        <option value="JavaScript File" />
         <option value="HTML File" />
       </list>
     </option>
@@ -142,7 +198,7 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/employee" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors" />
+    <property name="settings.editor.selected.configurable" value="preferences.sourceCode.HTML" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -234,6 +290,25 @@
       <workItem from="1581877843569" duration="1260000" />
       <workItem from="1581934387368" duration="23856000" />
       <workItem from="1582020227799" duration="27128000" />
+      <workItem from="1582054763428" duration="792000" />
+      <workItem from="1582109271780" duration="17966000" />
+      <workItem from="1582130524238" duration="4342000" />
+      <workItem from="1582195073512" duration="8051000" />
+      <workItem from="1582205119316" duration="14228000" />
+      <workItem from="1582227484060" duration="13328000" />
+      <workItem from="1582363383309" duration="10400000" />
+      <workItem from="1582539257197" duration="19800000" />
+      <workItem from="1582622923723" duration="16910000" />
+      <workItem from="1582730664070" duration="111000" />
+      <workItem from="1582787842621" duration="43000" />
+      <workItem from="1582788412183" duration="4619000" />
+      <workItem from="1582893584568" duration="1239000" />
+      <workItem from="1582993941003" duration="6400000" />
+      <workItem from="1583056767718" duration="11408000" />
+      <workItem from="1583143118097" duration="6467000" />
+      <workItem from="1583303709646" duration="3348000" />
+      <workItem from="1583399687489" duration="1356000" />
+      <workItem from="1583751314164" duration="366000" />
     </task>
     <servers />
   </component>

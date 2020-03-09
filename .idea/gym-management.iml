@@ -18,5 +18,8 @@
     <orderEntry type="module" module-name="lorel-paris" />
     <orderEntry type="module" module-name="lorel-paris" />
     <orderEntry type="module" module-name="attendanceform" />
+    <orderEntry type="module" module-name="auth" />
+    <orderEntry type="module" module-name="public_html" />
+    <orderEntry type="module" module-name="AttendanceSheet" />
   </component>
 </module>

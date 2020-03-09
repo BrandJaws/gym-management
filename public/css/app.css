@@ -11595,6 +11595,14 @@ label {
   display: inline-block;
   margin-bottom: 0.5rem;
 }
+label.entitiesShow {
+    display:block;
+    float:left;
+}
+label.searchLabel {
+    display:block;
+    float:right;
+}
 
 button {
   border-radius: 0;
@@ -26940,9 +26948,9 @@ code {
   }
 }
 
-.form-group {
-  margin-bottom: 2rem;
-}
+/*.form-group {*/
+/*  margin-bottom: 2rem;*/
+/*}*/
 
 .form-group.form-group-marginless,
 .form-group.form-group-last {
@@ -26991,7 +26999,16 @@ code {
 .form-control.form-control-pill {
   border-radius: 50px;
 }
-
+.entitiesDropdown {
+    display: inline-flex;
+    margin: 0px 6px;
+    width: 70px;
+}
+.searchField {
+    display:inline-flex;
+    margin: 0px 6px;
+    width:200px;
+}
 .custom-select {
   -webkit-appearance: none;
   -moz-appearance: none;

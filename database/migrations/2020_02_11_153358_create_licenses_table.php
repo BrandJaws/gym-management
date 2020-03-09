@@ -15,9 +15,11 @@ class CreateLicensesTable extends Migration
     {
         Schema::create('licenses', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('name');
             $table->date('startDate');
             $table->date('endDate');
             $table->float('amount');
+            $table->integer('gym_id',false,true); // 03
             $table->timestamps();
         });
     }

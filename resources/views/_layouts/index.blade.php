@@ -41,11 +41,21 @@
         <!-- Uncomment this to display the close button of the panel
 <button class="kt-aside-close " id="kt_aside_close_btn"><i class="la la-close"></i></button>
 -->
-    @include('_partials.sidebar')
+
+    @if(Request::is('gym/*') || Request::is('gym'))
+        @include('gym.__partials.sidebar')
+    @else
+        @include('_partials.sidebar')
+    @endif
+
     <!-- end:: Aside -->
         <div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor kt-wrapper" id="kt_wrapper">
         <!-- begin:: Header -->
-        @include('_partials.header')
+        @if(Request::is('gym') || Request::is('gym/*'))
+            @include('gym.__partials.header')
+        @else
+            @include('_partials.header')
+        @endif
         <!-- end:: Header -->
             <!-- begin:: Content -->
             <div class="kt-content  kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor" id="kt_content">
@@ -55,7 +65,11 @@
             </div>
             <!-- end:: Content -->
         <!-- begin:: Footer -->
-        @include('_partials.footer')
+        @if(Request::is('gym') || Request::is('gym/*'))
+            @include('gym.__partials.footer')
+        @else
+            @include('_partials.footer')
+        @endif
         <!-- end:: Footer -->
         </div>
     </div>
