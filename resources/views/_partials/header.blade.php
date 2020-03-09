@@ -1,18 +1,10 @@
 <div id="kt_header" class="kt-header kt-grid__item  kt-header--fixed ">
-    <!-- begin:: Header Menu -->
-    <!-- Uncomment this to display the close button of the panel
-<button class="kt-header-menu-wrapper-close" id="kt_header_menu_mobile_close_btn"><i class="la la-close"></i></button>
--->
     <div class="kt-header-menu-wrapper" id="kt_header_menu_wrapper">
         <div id="kt_header_menu" class="kt-header-menu kt-header-menu-mobile  kt-header-menu--layout-default ">
             <h3 class="mb-0">Admin Dashboard</h3>
         </div>
     </div>
-    <!-- end:: Header Menu -->
-    <!-- begin:: Header Topbar -->
     <div class="kt-header__topbar">
-        <!--begin: Search -->
-        <!--begin: Search -->
         <div class="kt-header__topbar-item kt-header__topbar-item--search dropdown" id="kt_quick_search_toggle">
             <div class="kt-header__topbar-wrapper" data-toggle="dropdown" data-offset="10px,0px">
                 <span class="kt-header__topbar-icon">
@@ -59,8 +51,8 @@
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-{{--                                {{ Auth::user()->name }} --}}
-                                Mohsin
+                                {{--                                {{ Auth::user()->name }} --}}
+                                Zumba Fitness
                                 <span class="caret"></span>
                             </a>
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
@@ -79,7 +71,5 @@
                 </div>
             </div>
         </div>
-        <!--end: User Bar -->
     </div>
-    <!-- end:: Header Topbar -->
 </div>

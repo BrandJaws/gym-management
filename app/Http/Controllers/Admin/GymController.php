@@ -13,10 +13,18 @@ class GymController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-//        $gym = Gym::orderBy('Gym.created_at', 'desc')->get();
-        return view('admin.gym.list');
+        $gym = Gym::orderBy('id', 'asc')->paginate(5);
+        if ($request->ajax()) {
+            $sort_by = $request->get('sortby');
+            $sort_type = $request->get('sorttype');
+            $query = $request->get('query');
+            $query = str_replace(" ", "%", $query);
+            $gym = Gym::getGymList($query, $sort_by, $sort_type);
+            return view('admin.gym.pagination_data', compact('gym'))->render();
+        }
+        return view('admin.gym.list', compact('gym'));
     }
     public function license()
     {

@@ -4,21 +4,27 @@
 <head>
     <base href="">
     <meta charset="utf-8"/>
-    <title>Metronic | Dashboard</title>
+    <title>Gym | Dashboard</title>
     <meta name="description" content="Updates and statistics">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!--begin::Fonts -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700|Roboto:300,400,500,600,700">
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700|Roboto:300,400,500,600,700">
     <!--end::Fonts -->
     @yield('custom-css')
-
     @include('_partials.css-assets')
-    <!--end::Layout Skins -->
+<!--end::Layout Skins -->
     <link rel="shortcut icon" href="{{asset('assets/media/logos/favicon.ico')}}"/>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
 </head>
 <!-- end::Head -->
 <!-- begin::Body -->
-<body class="kt-quick-panel--right kt-demo-panel--right kt-offcanvas-panel--right kt-header--fixed kt-header-mobile--fixed kt-subheader--enabled kt-subheader--fixed kt-subheader--solid kt-aside--enabled kt-aside--fixed kt-page--loading">
+<body
+    class="kt-quick-panel--right kt-demo-panel--right kt-offcanvas-panel--right kt-header--fixed kt-header-mobile--fixed kt-subheader--enabled kt-subheader--fixed kt-subheader--solid kt-aside--enabled kt-aside--fixed kt-page--loading">
 <!-- begin:: Page -->
 <!-- begin:: Header Mobile -->
 <div id="kt_header_mobile" class="kt-header-mobile  kt-header-mobile--fixed ">
@@ -31,7 +37,8 @@
         <button class="kt-header-mobile__toggler kt-header-mobile__toggler--left" id="kt_aside_mobile_toggler">
             <span></span>
         </button>
-        <button class="kt-header-mobile__topbar-toggler" id="kt_header_mobile_topbar_toggler"><i class="flaticon-more"></i></button>
+        <button class="kt-header-mobile__topbar-toggler" id="kt_header_mobile_topbar_toggler"><i
+                class="flaticon-more"></i></button>
     </div>
 </div>
 <!-- end:: Header Mobile -->
@@ -41,16 +48,14 @@
         <!-- Uncomment this to display the close button of the panel
 <button class="kt-aside-close " id="kt_aside_close_btn"><i class="la la-close"></i></button>
 -->
-
     @if(Request::is('gym/*') || Request::is('gym'))
         @include('gym.__partials.sidebar')
     @else
         @include('_partials.sidebar')
     @endif
-
     <!-- end:: Aside -->
         <div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor kt-wrapper" id="kt_wrapper">
-        <!-- begin:: Header -->
+            <!-- begin:: Header -->
         @if(Request::is('gym') || Request::is('gym/*'))
             @include('gym.__partials.header')
         @else
@@ -59,12 +64,12 @@
         <!-- end:: Header -->
             <!-- begin:: Content -->
             <div class="kt-content  kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor" id="kt_content">
-            <!-- begin:: Content Head -->
+                <!-- begin:: Content Head -->
             @yield('content')
             <!-- end:: Content Head -->
             </div>
             <!-- end:: Content -->
-        <!-- begin:: Footer -->
+            <!-- begin:: Footer -->
         @if(Request::is('gym') || Request::is('gym/*'))
             @include('gym.__partials.footer')
         @else

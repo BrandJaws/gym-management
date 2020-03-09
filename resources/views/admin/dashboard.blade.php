@@ -1,349 +1,214 @@
 @extends('_layouts.index')
-
 @section('content')
     <!-- begin:: Content -->
     <div class="kt-container  kt-container--fluid  kt-grid__item kt-grid__item--fluid">
         <!--Begin::Dashboard 1-->
         <!--Begin::Row-->
         <div class="row">
-            <div class="col-xl-8 col-lg-12 order-lg-3 order-xl-1">
-                <!--begin:: Widgets/Best Sellers-->
+            <div class="col-xl-3">
                 <div class="kt-portlet kt-portlet--height-fluid">
-                    <div class="kt-portlet__head">
+                    <div class="kt-portlet__head kt-portlet__head--noborder">
                         <div class="kt-portlet__head-label">
                             <h3 class="kt-portlet__head-title">
-                                Best Sellers
                             </h3>
                         </div>
                         <div class="kt-portlet__head-toolbar">
-                            <ul class="nav nav-pills nav-pills-sm nav-pills-label nav-pills-bold" role="tablist">
-                                <li class="nav-item">
-                                    <a class="nav-link active" data-toggle="tab" href="#kt_widget5_tab1_content"
-                                       role="tab">
-                                        Latest
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" data-toggle="tab" href="#kt_widget5_tab2_content" role="tab">
-                                        Month
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" data-toggle="tab" href="#kt_widget5_tab3_content" role="tab">
-                                        All time
-                                    </a>
-                                </li>
-                            </ul>
+                            <a href="#" class="btn btn-clean btn-icon" data-toggle="dropdown">
+                                <i class="flaticon-more-1"></i>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right">
+                                <ul class="kt-nav">
+                                    <li class="kt-nav__item">
+                                        <a href="#" class="kt-nav__link">
+                                            <i class="kt-nav__link-icon flaticon2-line-chart"></i>
+                                            <span class="kt-nav__link-text">Reports</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
-                    <div class="kt-portlet__body">
-                        <div class="tab-content">
-                            <div class="tab-pane active" id="kt_widget5_tab1_content" aria-expanded="true">
-                                <div class="kt-widget5">
-                                    <div class="kt-widget5__item">
-                                        <div class="kt-widget5__content">
-                                            <div class="kt-widget5__pic">
-                                                <img class="kt-widget7__img" src="assets/media/products/product27.jpg"
-                                                     alt="">
-                                            </div>
-                                            <div class="kt-widget5__section">
-                                                <a href="#" class="kt-widget5__title">
-                                                    Great Logo Designn
-                                                </a>
-                                                <p class="kt-widget5__desc">
-                                                    Metronic admin themes.
-                                                </p>
-                                                <div class="kt-widget5__info">
-                                                    <span>Author:</span>
-                                                    <span class="kt-font-info">Keenthemes</span>
-                                                    <span>Released:</span>
-                                                    <span class="kt-font-info">23.08.17</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="kt-widget5__content">
-                                            <div class="kt-widget5__stats">
-                                                <span class="kt-widget5__number">19,200</span>
-                                                <span class="kt-widget5__sales">sales</span>
-                                            </div>
-                                            <div class="kt-widget5__stats">
-                                                <span class="kt-widget5__number">1046</span>
-                                                <span class="kt-widget5__votes">votes</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="kt-widget5__item">
-                                        <div class="kt-widget5__content">
-                                            <div class="kt-widget5__pic">
-                                                <img class="kt-widget7__img" src="assets/media/products/product22.jpg"
-                                                     alt="">
-                                            </div>
-                                            <div class="kt-widget5__section">
-                                                <a href="#" class="kt-widget5__title">
-                                                    Branding Mockup
-                                                </a>
-                                                <p class="kt-widget5__desc">
-                                                    Metronic bootstrap themes.
-                                                </p>
-                                                <div class="kt-widget5__info">
-                                                    <span>Author:</span>
-                                                    <span class="kt-font-info">Fly themes</span>
-                                                    <span>Released:</span>
-                                                    <span class="kt-font-info">23.08.17</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="kt-widget5__content">
-                                            <div class="kt-widget5__stats">
-                                                <span class="kt-widget5__number">24,583</span>
-                                                <span class="kt-widget5__sales">sales</span>
-                                            </div>
-                                            <div class="kt-widget5__stats">
-                                                <span class="kt-widget5__number">3809</span>
-                                                <span class="kt-widget5__votes">votes</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="kt-widget5__item">
-                                        <div class="kt-widget5__content">
-                                            <div class="kt-widget5__pic">
-                                                <img class="kt-widget7__img" src="assets/media/products/product15.jpg"
-                                                     alt="">
-                                            </div>
-                                            <div class="kt-widget5__section">
-                                                <a href="#" class="kt-widget5__title">
-                                                    Awesome Mobile App
-                                                </a>
-                                                <p class="kt-widget5__desc">
-                                                    Metronic admin themes.Lorem Ipsum Amet
-                                                </p>
-                                                <div class="kt-widget5__info">
-                                                    <span>Author:</span>
-                                                    <span class="kt-font-info">Fly themes</span>
-                                                    <span>Released:</span>
-                                                    <span class="kt-font-info">23.08.17</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="kt-widget5__content">
-                                            <div class="kt-widget5__stats">
-                                                <span class="kt-widget5__number">210,054</span>
-                                                <span class="kt-widget5__sales">sales</span>
-                                            </div>
-                                            <div class="kt-widget5__stats">
-                                                <span class="kt-widget5__number">1103</span>
-                                                <span class="kt-widget5__votes">votes</span>
-                                            </div>
-                                        </div>
-                                    </div>
+                    <div class="kt-portlet__body kt-portlet__body--fit-y">
+                        <!--begin::Widget -->
+                        <div class="kt-widget kt-widget--user-profile-4">
+                            <div class="kt-widget__head">
+                                <div class="kt-widget__media">
+                                    <img class="kt-widget__img kt-hidden-" src="assets/media/gym/gym1.jpg" alt="image" height="100px">
                                 </div>
-                            </div>
-                            <div class="tab-pane" id="kt_widget5_tab2_content">
-                                <div class="kt-widget5">
-                                    <div class="kt-widget5__item">
-                                        <div class="kt-widget5__content">
-                                            <div class="kt-widget5__pic">
-                                                <img class="kt-widget7__img" src="assets/media/products/product10.jpg"
-                                                     alt="">
-                                            </div>
-                                            <div class="kt-widget5__section">
-                                                <a href="#" class="kt-widget5__title">
-                                                    Branding Mockup
-                                                </a>
-                                                <p class="kt-widget5__desc">
-                                                    Metronic bootstrap themes.
-                                                </p>
-                                                <div class="kt-widget5__info">
-                                                    <span>Author:</span>
-                                                    <span class="kt-font-info">Fly themes</span>
-                                                    <span>Released:</span>
-                                                    <span class="kt-font-info">23.08.17</span>
-                                                </div>
-                                            </div>
+                                <div class="kt-widget__content">
+                                    <div class="kt-widget__section">
+                                        <a href="#" class="kt-widget__username">
+                                            Total Branches
+                                        </a>
+                                        <div class="kt-widget__button">
+                                            <h2>5</h2>
                                         </div>
-                                        <div class="kt-widget5__content">
-                                            <div class="kt-widget5__stats">
-                                                <span class="kt-widget5__number">24,583</span>
-                                                <span class="kt-widget5__sales">sales</span>
-                                            </div>
-                                            <div class="kt-widget5__stats">
-                                                <span class="kt-widget5__number">3809</span>
-                                                <span class="kt-widget5__votes">votes</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="kt-widget5__item">
-                                        <div class="kt-widget5__content">
-                                            <div class="kt-widget5__pic">
-                                                <img class="kt-widget7__img" src="assets/media/products/product11.jpg"
-                                                     alt="">
-                                            </div>
-                                            <div class="kt-widget5__section">
-                                                <a href="#" class="kt-widget5__title">
-                                                    Awesome Mobile App
-                                                </a>
-                                                <p class="kt-widget5__desc">
-                                                    Metronic admin themes.Lorem Ipsum Amet
-                                                </p>
-                                                <div class="kt-widget5__info">
-                                                    <span>Author:</span>
-                                                    <span class="kt-font-info">Fly themes</span>
-                                                    <span>Released:</span>
-                                                    <span class="kt-font-info">23.08.17</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="kt-widget5__content">
-                                            <div class="kt-widget5__stats">
-                                                <span class="kt-widget5__number">210,054</span>
-                                                <span class="kt-widget5__sales">sales</span>
-                                            </div>
-                                            <div class="kt-widget5__stats">
-                                                <span class="kt-widget5__number">1103</span>
-                                                <span class="kt-widget5__votes">votes</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="kt-widget5__item">
-                                        <div class="kt-widget5__content">
-                                            <div class="kt-widget5__pic">
-                                                <img class="kt-widget7__img" src="assets/media/products/product6.jpg"
-                                                     alt="">
-                                            </div>
-                                            <div class="kt-widget5__section">
-                                                <a href="#" class="kt-widget5__title">
-                                                    Great Logo Designn
-                                                </a>
-                                                <p class="kt-widget5__desc">
-                                                    Metronic admin themes.
-                                                </p>
-                                                <div class="kt-widget5__info">
-                                                    <span>Author:</span>
-                                                    <span class="kt-font-info">Keenthemes</span>
-                                                    <span>Released:</span>
-                                                    <span class="kt-font-info">23.08.17</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="kt-widget5__content">
-                                            <div class="kt-widget5__stats">
-                                                <span class="kt-widget5__number">19,200</span>
-                                                <span class="kt-widget5__sales">sales</span>
-                                            </div>
-                                            <div class="kt-widget5__stats">
-                                                <span class="kt-widget5__number">1046</span>
-                                                <span class="kt-widget5__votes">votes</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="tab-pane" id="kt_widget5_tab3_content">
-                                <div class="kt-widget5">
-                                    <div class="kt-widget5__item">
-                                        <div class="kt-widget5__content">
-                                            <div class="kt-widget5__pic">
-                                                <img class="kt-widget7__img" src="assets/media/products/product11.jpg"
-                                                     alt="">
-                                            </div>
-                                            <div class="kt-widget5__section">
-                                                <a href="#" class="kt-widget5__title">
-                                                    Awesome Mobile App
-                                                </a>
-                                                <p class="kt-widget5__desc">
-                                                    Metronic admin themes.Lorem Ipsum Amet
-                                                </p>
-                                                <div class="kt-widget5__info">
-                                                    <span>Author:</span>
-                                                    <span class="kt-font-info">Fly themes</span>
-                                                    <span>Released:</span>
-                                                    <span class="kt-font-info">23.08.17</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="kt-widget5__content">
-                                            <div class="kt-widget5__stats">
-                                                <span class="kt-widget5__number">210,054</span>
-                                                <span class="kt-widget5__sales">sales</span>
-                                            </div>
-                                            <div class="kt-widget5__stats">
-                                                <span class="kt-widget5__number">1103</span>
-                                                <span class="kt-widget5__votes">votes</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="kt-widget5__item">
-                                        <div class="kt-widget5__content">
-                                            <div class="kt-widget5__pic">
-                                                <img class="kt-widget7__img" src="assets/media/products/product6.jpg"
-                                                     alt="">
-                                            </div>
-                                            <div class="kt-widget5__section">
-                                                <a href="#" class="kt-widget5__title">
-                                                    Great Logo Designn
-                                                </a>
-                                                <p class="kt-widget5__desc">
-                                                    Metronic admin themes.
-                                                </p>
-                                                <div class="kt-widget5__info">
-                                                    <span>Author:</span>
-                                                    <span class="kt-font-info">Keenthemes</span>
-                                                    <span>Released:</span>
-                                                    <span class="kt-font-info">23.08.17</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="kt-widget5__content">
-                                            <div class="kt-widget5__stats">
-                                                <span class="kt-widget5__number">19,200</span>
-                                                <span class="kt-widget5__sales">sales</span>
-                                            </div>
-                                            <div class="kt-widget5__stats">
-                                                <span class="kt-widget5__number">1046</span>
-                                                <span class="kt-widget5__votes">votes</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="kt-widget5__item">
-                                        <div class="kt-widget5__content">
-                                            <div class="kt-widget5__pic">
-                                                <img class="kt-widget7__img" src="assets/media/products/product10.jpg"
-                                                     alt="">
-                                            </div>
-                                            <div class="kt-widget5__section">
-                                                <a href="#" class="kt-widget5__title">
-                                                    Branding Mockup
-                                                </a>
-                                                <p class="kt-widget5__desc">
-                                                    Metronic bootstrap themes.
-                                                </p>
-                                                <div class="kt-widget5__info">
-                                                    <span>Author:</span>
-                                                    <span class="kt-font-info">Fly themes</span>
-                                                    <span>Released:</span>
-                                                    <span class="kt-font-info">23.08.17</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="kt-widget5__content">
-                                            <div class="kt-widget5__stats">
-                                                <span class="kt-widget5__number">24,583</span>
-                                                <span class="kt-widget5__sales">sales</span>
-                                            </div>
-                                            <div class="kt-widget5__stats">
-                                                <span class="kt-widget5__number">3809</span>
-                                                <span class="kt-widget5__votes">votes</span>
-                                            </div>
+                                        <div class="kt-widget__button">
+                                            <span class="btn btn-label-warning btn-sm">Active</span>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
+
+                        <!--end::Widget -->
                     </div>
                 </div>
-
-                <!--end:: Widgets/Best Sellers-->
             </div>
+            <div class="col-xl-3">
+                <div class="kt-portlet kt-portlet--height-fluid">
+                    <div class="kt-portlet__head kt-portlet__head--noborder">
+                        <div class="kt-portlet__head-label">
+                            <h3 class="kt-portlet__head-title">
+                            </h3>
+                        </div>
+                        <div class="kt-portlet__head-toolbar">
+                            <a href="#" class="btn btn-clean btn-icon" data-toggle="dropdown">
+                                <i class="flaticon-more-1"></i>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right">
+                                <ul class="kt-nav">
+                                    <li class="kt-nav__item">
+                                        <a href="#" class="kt-nav__link">
+                                            <i class="kt-nav__link-icon flaticon2-line-chart"></i>
+                                            <span class="kt-nav__link-text">Reports</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="kt-portlet__body kt-portlet__body--fit-y">
+                        <!--begin::Widget -->
+                        <div class="kt-widget kt-widget--user-profile-4">
+                            <div class="kt-widget__head">
+                                <div class="kt-widget__media">
+                                    <img class="kt-widget__img kt-hidden-" src="assets/media/gym/employe1.jpg" alt="image" height="100px">
+                                </div>
+                                <div class="kt-widget__content">
+                                    <div class="kt-widget__section">
+                                        <a href="#" class="kt-widget__username">
+                                            Total Employees
+                                        </a>
+                                        <div class="kt-widget__button">
+                                            <h2>5</h2>
+                                        </div>
+                                        <div class="kt-widget__button">
+                                            <span class="btn btn-label-warning btn-sm">Active</span>
+                                        </div>
+                                        <br>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!--end::Widget -->
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3">
+                <div class="kt-portlet kt-portlet--height-fluid">
+                    <div class="kt-portlet__head kt-portlet__head--noborder">
+                        <div class="kt-portlet__head-label">
+                            <h3 class="kt-portlet__head-title">
+                            </h3>
+                        </div>
+                        <div class="kt-portlet__head-toolbar">
+                            <a href="#" class="btn btn-clean btn-icon" data-toggle="dropdown">
+                                <i class="flaticon-more-1"></i>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right">
+                                <ul class="kt-nav">
+                                    <li class="kt-nav__item">
+                                        <a href="#" class="kt-nav__link">
+                                            <i class="kt-nav__link-icon flaticon2-line-chart"></i>
+                                            <span class="kt-nav__link-text">Reports</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="kt-portlet__body kt-portlet__body--fit-y">
+                        <!--begin::Widget -->
+                        <div class="kt-widget kt-widget--user-profile-4">
+                            <div class="kt-widget__head">
+                                <div class="kt-widget__media">
+                                    <img class="kt-widget__img kt-hidden-" src="assets/media/gym/machine1.jpg" alt="image" height="100px">
+                                </div>
+                                <div class="kt-widget__content">
+                                    <div class="kt-widget__section">
+                                        <a href="#" class="kt-widget__username">
+                                            Total Electric Machines
+                                        </a>
+                                        <div class="kt-widget__button">
+                                            <h2>25</h2>
+                                        </div>
+                                        <div class="kt-widget__button">
+                                            <span class="btn btn-label-warning btn-sm">Active</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!--end::Widget -->
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3">
+                <div class="kt-portlet kt-portlet--height-fluid">
+                    <div class="kt-portlet__head kt-portlet__head--noborder">
+                        <div class="kt-portlet__head-label">
+                            <h3 class="kt-portlet__head-title">
+                            </h3>
+                        </div>
+                        <div class="kt-portlet__head-toolbar">
+                            <a href="#" class="btn btn-clean btn-icon" data-toggle="dropdown">
+                                <i class="flaticon-more-1"></i>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right">
+                                <ul class="kt-nav">
+                                    <li class="kt-nav__item">
+                                        <a href="#" class="kt-nav__link">
+                                            <i class="kt-nav__link-icon flaticon2-line-chart"></i>
+                                            <span class="kt-nav__link-text">Reports</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="kt-portlet__body kt-portlet__body--fit-y">
+                        <!--begin::Widget -->
+                        <div class="kt-widget kt-widget--user-profile-4">
+                            <div class="kt-widget__head">
+                                <div class="kt-widget__media">
+                                    <img class="kt-widget__img kt-hidden-" src="assets/media/gym/customer1.jpg" alt="image" height="100px">
+                                </div>
+                                <div class="kt-widget__content">
+                                    <div class="kt-widget__section">
+                                        <a href="#" class="kt-widget__username">
+                                            Total Customers
+                                        </a>
+                                        <div class="kt-widget__button">
+                                            <h2>5</h2>
+                                        </div>
+                                        <div class="kt-widget__button">
+                                            <span class="btn btn-label-warning btn-sm">Active</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!--end::Widget -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+
             <div class="col-xl-4 col-lg-6 order-lg-3 order-xl-1">
 
                 <!--begin:: Widgets/New Users-->
@@ -526,99 +391,7 @@
 
                 <!--end:: Widgets/New Users-->
             </div>
-            <div class="col-xl-4 col-lg-4 order-lg-2 order-xl-1">
 
-                <!--begin:: Widgets/Daily Sales-->
-                <div class="kt-portlet kt-portlet--height-fluid">
-                    <div class="kt-widget14">
-                        <div class="kt-widget14__header kt-margin-b-30">
-                            <h3 class="kt-widget14__title">
-                                Daily Sales
-                            </h3>
-                            <span class="kt-widget14__desc">
-													Check out each collumn for more details
-												</span>
-                        </div>
-                        <div class="kt-widget14__chart" style="height:120px;">
-                            <canvas id="kt_chart_daily_sales"></canvas>
-                        </div>
-                    </div>
-                </div>
-
-                <!--end:: Widgets/Daily Sales-->
-            </div>
-            <div class="col-xl-4 col-lg-4 order-lg-2 order-xl-1">
-
-                <!--begin:: Widgets/Profit Share-->
-                <div class="kt-portlet kt-portlet--height-fluid">
-                    <div class="kt-widget14">
-                        <div class="kt-widget14__header">
-                            <h3 class="kt-widget14__title">
-                                Profit Share
-                            </h3>
-                            <span class="kt-widget14__desc">
-													Profit Share between customers
-												</span>
-                        </div>
-                        <div class="kt-widget14__content">
-                            <div class="kt-widget14__chart">
-                                <div class="kt-widget14__stat">45</div>
-                                <canvas id="kt_chart_profit_share" style="height: 140px; width: 140px;"></canvas>
-                            </div>
-                            <div class="kt-widget14__legends">
-                                <div class="kt-widget14__legend">
-                                    <span class="kt-widget14__bullet kt-bg-success"></span>
-                                    <span class="kt-widget14__stats">37% Sport Tickets</span>
-                                </div>
-                                <div class="kt-widget14__legend">
-                                    <span class="kt-widget14__bullet kt-bg-warning"></span>
-                                    <span class="kt-widget14__stats">47% Business Events</span>
-                                </div>
-                                <div class="kt-widget14__legend">
-                                    <span class="kt-widget14__bullet kt-bg-brand"></span>
-                                    <span class="kt-widget14__stats">19% Others</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!--end:: Widgets/Profit Share-->
-            </div>
-            <div class="col-xl-4 col-lg-4 order-lg-2 order-xl-1">
-                <!--begin:: Widgets/Revenue Change-->
-                <div class="kt-portlet kt-portlet--height-fluid">
-                    <div class="kt-widget14">
-                        <div class="kt-widget14__header">
-                            <h3 class="kt-widget14__title">
-                                Revenue Change
-                            </h3>
-                            <span class="kt-widget14__desc">
-                                Revenue change breakdown by cities
-                            </span>
-                        </div>
-                        <div class="kt-widget14__content">
-                            <div class="kt-widget14__chart">
-                                <div id="kt_chart_revenue_change" style="height: 150px; width: 150px;"></div>
-                            </div>
-                            <div class="kt-widget14__legends">
-                                <div class="kt-widget14__legend">
-                                    <span class="kt-widget14__bullet kt-bg-success"></span>
-                                    <span class="kt-widget14__stats">+10% New York</span>
-                                </div>
-                                <div class="kt-widget14__legend">
-                                    <span class="kt-widget14__bullet kt-bg-warning"></span>
-                                    <span class="kt-widget14__stats">-7% London</span>
-                                </div>
-                                <div class="kt-widget14__legend">
-                                    <span class="kt-widget14__bullet kt-bg-brand"></span>
-                                    <span class="kt-widget14__stats">+20% California</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!--end:: Widgets/Revenue Change-->
-            </div>
             <div class="col-xl-4 col-lg-6 order-lg-3 order-xl-1">
                 <!--begin:: Widgets/Tasks -->
                 <div class="kt-portlet kt-portlet--tabs kt-portlet--height-fluid">
@@ -2147,168 +1920,6 @@
                     </div>
                 </div>
                 <!--end:: Widgets/Notifications-->
-            </div>
-            <div class="col-xl-4 col-lg-6 order-lg-3 order-xl-1">
-                <!--begin:: Widgets/Support Tickets -->
-                <div class="kt-portlet kt-portlet--height-fluid">
-                    <div class="kt-portlet__head">
-                        <div class="kt-portlet__head-label">
-                            <h3 class="kt-portlet__head-title">
-                                Support Tickets
-                            </h3>
-                        </div>
-                        <div class="kt-portlet__head-toolbar">
-                            <div class="dropdown dropdown-inline">
-                                <button type="button" class="btn btn-clean btn-sm btn-icon-md btn-icon"
-                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <i class="flaticon-more-1"></i>
-                                </button>
-                                <div class="dropdown-menu dropdown-menu-right dropdown-menu-fit dropdown-menu-md">
-
-                                    <!--begin::Nav-->
-                                    <ul class="kt-nav">
-                                        <li class="kt-nav__head">
-                                            Export Options
-                                            <span data-toggle="kt-tooltip" data-placement="right"
-                                                  title="Click to learn more...">
-                                                <svg xmlns="http://www.w3.org/2000/svg"
-                                                     xmlns:xlink="http://www.w3.org/1999/xlink"
-                                                     width="24px" height="24px" viewBox="0 0 24 24"
-                                                     version="1.1"
-                                                     class="kt-svg-icon kt-svg-icon--brand kt-svg-icon--md1">
-                                                    <g stroke="none" stroke-width="1" fill="none"
-                                                       fill-rule="evenodd">
-                                                        <rect x="0" y="0" width="24" height="24"/>
-                                                        <circle fill="#000000" opacity="0.3" cx="12"
-                                                                cy="12" r="10"/>
-                                                        <rect fill="#000000" x="11" y="10" width="2"
-                                                              height="7" rx="1"/>
-                                                        <rect fill="#000000" x="11" y="7" width="2"
-                                                              height="2" rx="1"/>
-                                                    </g>
-                                                </svg>
-                                            </span>
-                                        </li>
-                                        <li class="kt-nav__separator"></li>
-                                        <li class="kt-nav__item">
-                                            <a href="#" class="kt-nav__link">
-                                                <i class="kt-nav__link-icon flaticon2-drop"></i>
-                                                <span class="kt-nav__link-text">Activity</span>
-                                            </a>
-                                        </li>
-                                        <li class="kt-nav__item">
-                                            <a href="#" class="kt-nav__link">
-                                                <i class="kt-nav__link-icon flaticon2-calendar-8"></i>
-                                                <span class="kt-nav__link-text">FAQ</span>
-                                            </a>
-                                        </li>
-                                        <li class="kt-nav__item">
-                                            <a href="#" class="kt-nav__link">
-                                                <i class="kt-nav__link-icon flaticon2-telegram-logo"></i>
-                                                <span class="kt-nav__link-text">Settings</span>
-                                            </a>
-                                        </li>
-                                        <li class="kt-nav__item">
-                                            <a href="#" class="kt-nav__link">
-                                                <i class="kt-nav__link-icon flaticon2-new-email"></i>
-                                                <span class="kt-nav__link-text">Support</span>
-                                                <span class="kt-nav__link-badge">
-                                                    <span class="kt-badge kt-badge--success kt-badge--rounded">5</span>
-                                                </span>
-                                            </a>
-                                        </li>
-                                        <li class="kt-nav__separator"></li>
-                                        <li class="kt-nav__foot">
-                                            <a class="btn btn-label-danger btn-bold btn-sm" href="#">Upgrade plan</a>
-                                            <a class="btn btn-clean btn-bold btn-sm" href="#" data-toggle="kt-tooltip"
-                                               data-placement="right" title="Click to learn more...">Learn more</a>
-                                        </li>
-                                    </ul>
-
-                                    <!--end::Nav-->
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="kt-portlet__body">
-                        <div class="kt-widget3">
-                            <div class="kt-widget3__item">
-                                <div class="kt-widget3__header">
-                                    <div class="kt-widget3__user-img">
-                                        <img class="kt-widget3__img" src="assets/media/users/user1.jpg" alt="">
-                                    </div>
-                                    <div class="kt-widget3__info">
-                                        <a href="#" class="kt-widget3__username">
-                                            Melania Trump
-                                        </a><br>
-                                        <span class="kt-widget3__time">
-                                            2 day ago
-                                        </span>
-                                    </div>
-                                    <span class="kt-widget3__status kt-font-info">
-                                        Pending
-                                    </span>
-                                </div>
-                                <div class="kt-widget3__body">
-                                    <p class="kt-widget3__text">
-                                        Lorem ipsum dolor sit amet,consectetuer edipiscing elit,sed diam nonummy nibh
-                                        euismod tinciduntut laoreet doloremagna aliquam erat volutpat.
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="kt-widget3__item">
-                                <div class="kt-widget3__header">
-                                    <div class="kt-widget3__user-img">
-                                        <img class="kt-widget3__img" src="assets/media/users/user4.jpg" alt="">
-                                    </div>
-                                    <div class="kt-widget3__info">
-                                        <a href="#" class="kt-widget3__username">
-                                            Lebron King James
-                                        </a><br>
-                                        <span class="kt-widget3__time">
-                                            1 day ago
-                                        </span>
-                                    </div>
-                                    <span class="kt-widget3__status kt-font-brand">
-                                        Open
-                                    </span>
-                                </div>
-                                <div class="kt-widget3__body">
-                                    <p class="kt-widget3__text">
-                                        Lorem ipsum dolor sit amet,consectetuer edipiscing elit,sed diam nonummy nibh
-                                        euismod tinciduntut laoreet doloremagna aliquam erat volutpat.Ut wisi enim ad
-                                        minim veniam,quis nostrud exerci tation ullamcorper.
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="kt-widget3__item">
-                                <div class="kt-widget3__header">
-                                    <div class="kt-widget3__user-img">
-                                        <img class="kt-widget3__img" src="assets/media/users/user5.jpg" alt="">
-                                    </div>
-                                    <div class="kt-widget3__info">
-                                        <a href="#" class="kt-widget3__username">
-                                            Deb Gibson
-                                        </a><br>
-                                        <span class="kt-widget3__time">
-                                            3 weeks ago
-                                        </span>
-                                    </div>
-                                    <span class="kt-widget3__status kt-font-success">
-                                        Closed
-                                    </span>
-                                </div>
-                                <div class="kt-widget3__body">
-                                    <p class="kt-widget3__text">
-                                        Lorem ipsum dolor sit amet,consectetuer edipiscing elit,sed diam nonummy nibh
-                                        euismod tinciduntut laoreet doloremagna aliquam erat volutpat.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!--end:: Widgets/Support Tickets -->
             </div>
         </div>
         <!--End::Row-->
