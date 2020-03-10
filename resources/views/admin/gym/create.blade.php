@@ -3,36 +3,37 @@
 @section('content')
     <div class="kt-content  kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor" id="kt_content">
         <!-- begin:: Content -->
-        <div class="kt-container  kt-container--fluid  kt-grid__item kt-grid__item--fluid">
-            <div class="row">
-                <div class="col-lg-12">
-                    <!--begin::Portlet-->
-                    <div class="kt-portlet">
-                        <div class="kt-portlet__head">
-                            <div class="kt-portlet__head-label">
-                                <h3 class="kt-portlet__head-title">
-                                    Create A Gym
-                                </h3>
+        <form action=" " method="POST" enctype="multipart/form-data" class="kt-form kt-form--label-right">
+            @csrf
+            <div class="kt-container  kt-container--fluid  kt-grid__item kt-grid__item--fluid">
+                <div class="row">
+                    <div class="col-lg-8">
+                        <!--begin::Portlet-->
+                        <div class="kt-portlet">
+                            <div class="kt-portlet__head">
+                                <div class="kt-portlet__head-label">
+                                    <h3 class="kt-portlet__head-title">
+                                        Create A Gym
+                                    </h3>
+                                </div>
                             </div>
-                        </div>
-                        <!--begin::Form-->
-                        <form action="#" method="POST" enctype="multipart/form-data" class="kt-form kt-form--label-right">
-                            @csrf
+                            <!--begin::Form-->
                             <div class="kt-portlet__body">
                                 <div class="form-group row">
                                     <div class="col-md-6">
                                         <label>Name:</label>
-                                        <input type="text" name="name" class="form-control" placeholder="Enter full name" />
+                                        <input type="text" name="name" class="form-control"
+                                               placeholder="Enter full name" required/>
                                     </div>
                                     <div class="col-md-2">
                                         <label>Trial In:</label>
                                         <div class="kt-radio-inline">
                                             <label class="kt-radio kt-radio--solid">
-                                                <input type="radio" name="inTrial" value="yes"> Yes
+                                                <input type="radio" name="inTrial" value="yes" required> Yes
                                                 <span></span>
                                             </label>
                                             <label class="kt-radio kt-radio--solid">
-                                                <input type="radio" name="inTrial" value="no"> No
+                                                <input type="radio" name="inTrial" value="no" required> No
                                                 <span></span>
                                             </label>
                                         </div>
@@ -40,7 +41,8 @@
                                     <div class="col-md-4 trialEndsAt" style="display: none;">
                                         <label>Trial Ends At:</label>
                                         <div class="kt-input-icon input-group">
-                                            <input type="date" name="trialEndsAt" class="form-control" placeholder="Enter your Date">
+                                            <input type="date" name="trialEndsAt" class="form-control"
+                                                   placeholder="Enter your Date" required>
                                             <div class="input-group-append">
                                                 <span class="input-group-text">
                                                     <i class="la la-calendar-check-o"></i>
@@ -52,7 +54,8 @@
                                 <div class="form-group row">
                                     <div class="col-md-4">
                                         <label class="">Country:</label>
-                                        <select class="form-control kt-selectpicker" name="country" tabindex="-98">
+                                        <select class="form-control kt-selectpicker" name="country" tabindex="-98"
+                                                required>
                                             <option value="mustard">Pakistan</option>
                                             <option value="ketchup">Malaysia</option>
                                             <option value="relish">England</option>
@@ -63,17 +66,141 @@
                                     </div>
                                     <div class="col-md-4">
                                         <label>State:</label>
-                                        <input type="text" name="state" id="state" class="form-control" placeholder="Enter your state" />
+                                        <input type="text" name="state" id="state" class="form-control"
+                                               placeholder="Enter your state" required/>
                                     </div>
                                     <div class="col-md-4">
                                         <label>City:</label>
-                                        <input type="text" name="city" id="city" class="form-control" placeholder="Enter your city" />
+                                        <input type="text" name="city" id="city" class="form-control"
+                                               placeholder="Enter your city" required/>
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-lg-6">
                                         <label>Address:</label>
-                                        <input type="text" name="address" id="address" class="form-control" placeholder="Enter your address" />
+                                        <input type="text" name="address" id="address" class="form-control"
+                                               placeholder="Enter your address" required/>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--end::Form-->
+                        </div>
+                        <!--end::Portlet-->
+                    </div>
+                    <div class="col-lg-4">
+                        <!--begin::Portlet-->
+                        <div class="kt-portlet">
+                            <div class="kt-portlet__head">
+                                <div class="kt-portlet__head-label">
+                                    <h3 class="kt-portlet__head-title">
+                                        Create A License
+                                    </h3>
+                                </div>
+                            </div>
+                            <!--begin::Form-->
+                                <div class="kt-portlet__body">
+                                    <div class="form-group row">
+                                        <div class="col-md-12">
+                                            <label>Cost:</label>
+                                            <input type="number" name="amount" class="form-control"
+                                                   placeholder="Enter Cost"/>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <div class="col-md-12">
+                                            <label>Starting Date:</label>
+                                            <input type="date" name="endDate" class="form-control"/>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <div class="col-md-12">
+                                            <label>Closing Date:</label>
+                                            <input type="date" name="city" id="city" class="form-control"
+                                                   placeholder="Enter your city"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            <!--end::Form-->
+                        </div>
+                        <!--end::Portlet-->
+                    </div>
+                </div>
+            </div>
+            <!-- end:: Content -->
+            <div class="kt-container  kt-container--fluid  kt-grid__item kt-grid__item--fluid">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <!--begin::Portlet-->
+                        <div class="kt-portlet">
+                            <div class="kt-portlet__head">
+                                <div class="kt-portlet__head-label">
+                                    <h3 class="kt-portlet__head-title">
+                                        Create A Super Admin
+                                    </h3>
+                                </div>
+                            </div>
+                            <div class="kt-portlet__body">
+                                <div class="form-group row">
+                                    <div class="col-lg-6">
+                                        <label>Name:</label>
+                                        <input type="text" name="name" class="form-control"
+                                               placeholder="Enter your name"/>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <label>Email:</label>
+                                        <input type="email" name="email" class="form-control"
+                                               placeholder="Enter your email" required/>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-lg-6">
+                                        <label>Password:</label>
+                                        <input type="password" name="password" class="form-control"
+                                               placeholder="Enter your password required ">
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <label>Gender:</label>
+                                        <div class="kt-radio-inline">
+                                            <label class="kt-radio kt-radio--solid">
+                                                <input type="radio" name="gender" value="Male" required> Male
+                                                <span></span>
+                                            </label>
+                                            <label class="kt-radio kt-radio--solid">
+                                                <input type="radio" name="gender" value="Female" required> Female
+                                                <span></span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-lg-6">
+                                        <label>Cnic:</label>
+                                        <input type="text" name="cnic" class="form-control"
+                                               placeholder="Enter Your Cnic" required/>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <label>Phone:</label>
+                                        <input type="number" name="phone" class="form-control"
+                                               placeholder="Enter Your Contact" required>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-lg-6">
+                                        <label>Salary:</label>
+                                        <input type="number" name="salary" class="form-control"
+                                               placeholder="Enter Your Salary" required/>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <label>Specialization:</label>
+                                        <input type="text" name="specialization" class="form-control"
+                                               placeholder="Enter Your Specialization" required>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-lg-6">
+                                        <label>Address:</label>
+                                        <input type="text" name="address" class="form-control"
+                                               placeholder="Enter Your Address" required/>
                                     </div>
                                 </div>
                             </div>
@@ -82,29 +209,28 @@
                                     <div class="row">
                                         <div class="col-12">
                                             <input type="submit" value="Save" class="btn btn-primary">
-                                            <a href="{{route('gym.list')}}" class="btn btn-secondary">Cancel</a>
+                                            <a href="{{route('adminEmployee.list')}}"
+                                               class="btn btn-secondary">Cancel</a>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </form>
-                        <!--end::Form-->
+                        </div>
+                        <!--end::Portlet-->
                     </div>
-                    <!--end::Portlet-->
                 </div>
             </div>
-        </div>
-        <!-- end:: Content -->
+        </form>
     </div>
 @endsection
 @section('custom-script')
     <script>
-        $(document).ready(function(){
-            $('input[type="radio"]').click(function() {
-                if($(this).attr("value")=="no") {
-                    $(".trialEndsAt").css('display','none');
+        $(document).ready(function () {
+            $('input[type="radio"]').click(function () {
+                if ($(this).attr("value") == "no") {
+                    $(".trialEndsAt").css('display', 'none');
                 }
-                if($(this).attr("value")=="yes") {
+                if ($(this).attr("value") == "yes") {
                     $(".trialEndsAt").css('display', 'block');
                 }
             });

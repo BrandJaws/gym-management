@@ -4,7 +4,7 @@
     <list default="true" id="cd9a3e93-352f-47b5-8f97-1b4c0e3bc2f2" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/migrations/2020_02_11_153358_create_licenses_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_02_11_153358_create_licenses_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_02_11_160633_create_gyms_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_02_11_160633_create_gyms_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/gym/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/gym/create.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
