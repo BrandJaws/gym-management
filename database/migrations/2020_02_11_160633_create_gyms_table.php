@@ -17,7 +17,7 @@ class CreateGymsTable extends Migration
             $table->increments('id'); // 03
             $table->string('name'); // Gold's Gym
             $table->boolean('inTrial'); // true
-            $table->date('trialEndsAt'); // 02-jun-2020
+            $table->date('trialEndsAt')->nullable(true);  // 02-jun-2020
             $table->string('city'); // Lahore
             $table->string('address')->nullable(true); // Main Boulevered, Gulberg III, Lahore.
             $table->string('status'); // On

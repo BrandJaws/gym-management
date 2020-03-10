@@ -20,6 +20,7 @@ class CreateLicensesTable extends Migration
             $table->date('endDate');
             $table->float('amount');
             $table->integer('gym_id',false,true); // 03
+            $table->string('status');
             $table->timestamps();
         });
     }
