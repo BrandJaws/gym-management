@@ -4,8 +4,8 @@
     <list default="true" id="cd9a3e93-352f-47b5-8f97-1b4c0e3bc2f2" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_02_11_153358_create_licenses_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_02_11_153358_create_licenses_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/gym/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/gym/create.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -142,19 +142,19 @@
     <property name="settings.editor.selected.configurable" value="preferences.sourceCode.HTML" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\wamp64\www\gym-management\app\Http\Controllers\Admin" />
-      <recent name="C:\wamp64\www\gym-management\app\Http\Controllers\Member" />
-      <recent name="C:\wamp64\www\blog\app\Http\Controllers\Post" />
-      <recent name="C:\wamp64\www\blog\resources\views\layouts" />
-      <recent name="C:\wamp64\www\admin-penal\app\Http\Controllers\Admin" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\wamp64\www\web-portal" />
       <recent name="C:\wamp64\www\gym\resources\views\admin\gym" />
       <recent name="C:\wamp64\www\gym\resources\views\admin\employee" />
       <recent name="C:\wamp64\www\gym\public\assets\media\gym" />
       <recent name="C:\wamp64\www\gym\public\assets\media\logos" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\wamp64\www\gym-management\app\Http\Controllers\Admin" />
+      <recent name="C:\wamp64\www\gym-management\app\Http\Controllers\Member" />
+      <recent name="C:\wamp64\www\blog\app\Http\Controllers\Post" />
+      <recent name="C:\wamp64\www\blog\resources\views\layouts" />
+      <recent name="C:\wamp64\www\admin-penal\app\Http\Controllers\Admin" />
     </key>
   </component>
   <component name="RunDashboard">
