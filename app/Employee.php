@@ -40,4 +40,14 @@ class Employee extends Model
             ->orderBy($sort_by, $sort_type)
             ->paginate(5);
     }
+
+    public static function getRentalNumber()
+    {
+        $latest = Employee::orderBy('id', 'desc')->first();
+        if (!$latest) {
+            return 'Emp-0001';
+        }
+        $string = preg_replace("/[^0-9\.]/", '', $latest->code);
+        return 'Emp-' . sprintf('%04d', $string + 1);
+    }
 }

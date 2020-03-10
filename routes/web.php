@@ -1,5 +1,9 @@
 <?php
 
+/*-----------------------------------------------------------------------------------*/
+/*------------------------------------Admin Routes------------------------------------*/
+/*-----------------------------------------------------------------------------------*/
+
 Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
 
     Route::get('/', ['as' => 'admin.home', 'uses' => 'DashboardController@dashboard']);
@@ -15,9 +19,10 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
     });
 
     Route::group(['as' => 'adminEmployee.', 'prefix' => 'employee'], function () {
-        Route::get('/', ['as' => 'list', 'uses' => 'EmployeeController@index']);
 
+        Route::get('/', ['as' => 'list', 'uses' => 'EmployeeController@index']);
         Route::get('/create', ['as' => 'create', 'uses' => 'EmployeeController@create']);
+        Route::post('/create', ['as' => 'create', 'uses' => 'EmployeeController@store']);
     });
 
 });

@@ -5,7 +5,12 @@ namespace App\Http\Controllers\Admin;
 use App\Employee;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Validator;
+use Symfony\Component\Console\Input\Input;
 
 class EmployeeController extends Controller
 {
@@ -47,7 +52,44 @@ class EmployeeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        try {
+            $validator = Validator::make($request->all(), [
+                'name' => 'required',
+                'email' => 'required|email|unique:employees',
+                'password' => 'required|between:6,12',
+                'gender' => 'required',
+                'cnic' => 'required',
+                'phone' => 'required',
+                'salary' => 'required',
+                'specialization' => 'required',
+                'address' => 'required',
+                'gym_id' => 'required'
+            ]);
+            if ($validator->fails()) {
+                return $validator->errors();
+            }
+            $employee = new Employee();
+            $employee->fill($request->only([
+                'name',
+                'email',
+                'password',
+                'gender',
+                'cnic',
+                'phone',
+                'salary',
+                'specialization',
+                'address',
+                'gym_id'
+            ]));
+            $code = Employee::getRentalNumber();
+            $employee->code = $code;
+            $employee->save();
+            return back()->with('success', 'Employee created successfully!');
+        } catch (\Exception $e) {
+            return response()->json([
+                'response' => $e
+            ], 400);
+        }
     }
 
     /**
