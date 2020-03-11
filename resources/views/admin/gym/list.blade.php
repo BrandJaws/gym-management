@@ -19,6 +19,7 @@
                                 </a>
                             </div>
                         </div>
+                        @include('_layouts.flash-message')
                         <div class="kt-portlet__body">
                             <!--begin::Section-->
                             <div class="kt-section">
@@ -45,7 +46,7 @@
                                                         data-column_name="city" style="cursor: pointer">City <span
                                                             id="post_title_icon"></span></th>
                                                     <th width="10%" class="sorting" data-sorting_type="asc"
-                                                        data-column_name="state_id" style="cursor: pointer">Country <span
+                                                        data-column_name="country" style="cursor: pointer">Country <span
                                                             id="post_title_icon"></span></th>
                                                     <th width="10%" class="sorting" data-sorting_type="asc"
                                                         data-column_name="address" style="cursor: pointer">Address <span
@@ -54,7 +55,7 @@
                                                         data-column_name="status" style="cursor: pointer">Status <span
                                                             id="post_title_icon"></span></th>
                                                     <th width="10%" class="sorting" data-sorting_type="asc"
-                                                        data-column_name="phone" style="cursor: pointer">Actions <span
+                                                        data-column_name=" " style="cursor: pointer">Actions <span
                                                             id="post_title_icon"></span></th>
                                                 </tr>
                                                 </thead>
@@ -75,39 +76,6 @@
                         </div>
                         <!--end::Form-->
                         <div class="kt-portlet__foot" style="padding: 10px 25px;">
-{{--                            <div class="row">--}}
-{{--                                <div class="col-sm-12 col-md-6">--}}
-{{--                                    <div class="dataTables_info" id="kt_table_1_info" role="status" aria-live="polite">Showing 1 to 10 of 40 entries</div>--}}
-{{--                                </div>--}}
-{{--                                <div class="col-sm-12 col-md-6">--}}
-{{--                                    <div class="dataTables_paginate paging_simple_numbers" id="kt_table_1_paginate">--}}
-{{--                                        <ul class="pagination">--}}
-{{--                                            <li class="paginate_button page-item previous disabled" id="kt_table_1_previous">--}}
-{{--                                                <a href="#" aria-controls="kt_table_1" data-dt-idx="0" tabindex="0" class="page-link">--}}
-{{--                                                    <i class="la la-angle-left"></i>--}}
-{{--                                                </a>--}}
-{{--                                            </li>--}}
-{{--                                            <li class="paginate_button page-item active">--}}
-{{--                                                <a href="#" aria-controls="kt_table_1" data-dt-idx="1" tabindex="0" class="page-link">1</a>--}}
-{{--                                            </li>--}}
-{{--                                            <li class="paginate_button page-item ">--}}
-{{--                                                <a href="#" aria-controls="kt_table_1" data-dt-idx="2" tabindex="0" class="page-link">2</a>--}}
-{{--                                            </li>--}}
-{{--                                            <li class="paginate_button page-item ">--}}
-{{--                                                <a href="#" aria-controls="kt_table_1" data-dt-idx="3" tabindex="0" class="page-link">3</a>--}}
-{{--                                            </li>--}}
-{{--                                            <li class="paginate_button page-item ">--}}
-{{--                                                <a href="#" aria-controls="kt_table_1" data-dt-idx="4" tabindex="0" class="page-link">4</a>--}}
-{{--                                            </li>--}}
-{{--                                            <li class="paginate_button page-item next" id="kt_table_1_next">--}}
-{{--                                                <a href="#" aria-controls="kt_table_1" data-dt-idx="5" tabindex="0" class="page-link">--}}
-{{--                                                    <i class="la la-angle-right"></i>--}}
-{{--                                                </a>--}}
-{{--                                            </li>--}}
-{{--                                        </ul>--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
                             <div class="dropdown float-right">
                                 <a href="{{route('gym.licenseList')}}" type="button" class="btn btn-brand btn-icon-sm">
                                     <i class="flaticon2-right-arrow"></i> License
@@ -121,6 +89,7 @@
         </div>
         <!-- end:: Content -->
     </div>
+<<<<<<< HEAD
 {{--    modal Content--}}
 {{--    <div class="modal fade" id="kt_modal_6" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">--}}
 {{--        <div class="modal-dialog modal-dialog-centered" role="document">--}}
@@ -140,6 +109,8 @@
 {{--            </div>--}}
 {{--        </div>--}}
 {{--    </div>--}}
+=======
+>>>>>>> d270c8d7bb3e218b85ae0f6d2336ccd456d49e34
 
     <script>
 

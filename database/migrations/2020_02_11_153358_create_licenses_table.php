@@ -19,8 +19,8 @@ class CreateLicensesTable extends Migration
             $table->date('startDate')->nullable(true);
             $table->date('endDate')->nullable(true);
             $table->float('amount')->nullable(true);
-            $table->integer('gym_id',false,true); // 03
-            $table->string('status')->nullable(true);
+            $table->integer('gym_id');
+            $table->string('status')->default('Active');
             $table->timestamps();
         });
     }

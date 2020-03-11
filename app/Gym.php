@@ -16,20 +16,37 @@ class Gym extends Model
         'trialEndsAt',
         'city',
         'address',
+        'country',
         'status',
-        'state_id',
+        'state',
         'license_id',
         'parent_id',
     ];
 
     public static function getGymList($query, $sort_by, $sort_type)
     {
-        return DB::table('employees')
+        return DB::table('gyms')
             ->where('name', 'like', '%' . $query . '%')
             ->orWhere('city', 'like', '%' . $query . '%')
             ->orWhere('address', 'like', '%' . $query . '%')
+            ->orWhere('country', 'like', '%' . $query . '%')
             ->orWhere('status', 'like', '%' . $query . '%')
             ->orderBy($sort_by, $sort_type)
-            ->paginate(5);
+            ->paginate(10);
+    }
+
+    public function employee()
+    {
+        return $this->hasOne(Employee::class, 'id');
+    }
+
+    public function gymLicense()
+    {
+        return $this->hasOne(License::class);
+    }
+
+    public function services()
+    {
+        return $this->hasMany('App\Service','gym_id','id');
     }
 }

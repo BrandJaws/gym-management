@@ -2,9 +2,15 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Employee;
 use App\Gym;
 use App\Http\Controllers\Controller;
+use App\License;
+use App\Service;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Validator;
+use Symfony\Component\Console\Input\Input;
 
 class GymController extends Controller
 {
@@ -15,20 +21,29 @@ class GymController extends Controller
      */
     public function index(Request $request)
     {
-        $gym = Gym::orderBy('id', 'asc')->paginate(5);
-        if ($request->ajax()) {
-            $sort_by = $request->get('sortby');
-            $sort_type = $request->get('sorttype');
-            $query = $request->get('query');
-            $query = str_replace(" ", "%", $query);
-            $gym = Gym::getGymList($query, $sort_by, $sort_type);
-            return view('admin.gym.pagination_data', compact('gym'))->render();
+        try {
+            $gym = Gym::orderBy('id', 'asc')->paginate(10);
+            if ($request->ajax()) {
+                $sort_by = $request->get('sortby');
+                $sort_type = $request->get('sorttype');
+                $query = $request->get('query');
+                $query = str_replace(" ", "%", $query);
+                $gym = Gym::getGymList($query, $sort_by, $sort_type);
+                return view('admin.gym.pagination_data', compact('gym'))->render();
+            }
+            return view('admin.gym.list', compact('gym'));
+        } catch (\Exception $e) {
+            return back()->with('error', 'Oops, something was not right');
         }
-        return view('admin.gym.list', compact('gym'));
     }
+
     public function license()
     {
-        return view('admin.gym.license.list');
+        try {
+            return view('admin.gym.license.list');
+        } catch (\Exception $e) {
+            return back()->with('error', 'Oops, something was not right');
+        }
     }
 
     /**
@@ -38,62 +53,155 @@ class GymController extends Controller
      */
     public function create()
     {
-        return view('admin.gym.create');
+        try {
+            return view('admin.gym.create');
+        } catch (\Exception $e) {
+            return back()->with('error', 'Oops, something was not right');
+        }
+
     }
+
     public function licenseCreate()
     {
-        return view('admin.gym.license.create');
+        try {
+            return view('admin.gym.license.create');
+        } catch (\Exception $e) {
+            return back()->with('error', 'Oops, something was not right');
+        }
     }
+
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-//        $gym = new Gym();
-//        redirect()->route('gym.list');
+        try {
+            $validator = Validator::make($request->all(), [
+                'name' => 'required',
+                'country' => 'required',
+                'state' => 'required',
+                'city' => 'required',
+                'address' => 'required',
+                'employeeName' => 'required',
+                'email' => 'required|email|unique:employees',
+                'password' => 'required|between:6,12',
+                'cnic' => 'required',
+                'gender' => 'required',
+                'phone' => 'required',
+                'salary' => 'required',
+                'specialization' => 'required',
+                'empAddress' => 'required',
+            ]);
+            if ($validator->fails()) {
+                return $validator->errors();
+            }
+            $gym = new Gym();
+            $gym->fill($request->only([
+                'name',
+                'inTrial',
+                'trialEndsAt',
+                'country',
+                'state',
+                'city',
+                'address',
+            ]));
+            $gym->save();
+            $gymId = $gym->id;
+            $employee = new Employee();
+            $employee->fill($request->only([
+                'email',
+                'gender',
+                'cnic',
+                'phone',
+                'salary',
+                'specialization',
+            ]));
+            $employee->name = $request->get('employeeName');
+            $employee->password = bcrypt($request['password']);
+            $employee->address = $request->get('empAddress');
+            $employee->gym_id = $gymId;
+            $code = Employee::getRentalNumber();
+            $employee->code = $code;
+            $employee->save();
+            $license = new License();
+            $license->fill($request->only([
+                'amount',
+                'startDate',
+                'endDate',
+            ]));
+            $license->gym_id = $gymId;
+            $license->save();
+            $services = $request->get('facilities');
+            foreach (array_keys($services) as $value) {
+                Service::insert(
+                    [
+                        'name' => $value,
+                        'gym_id' => $gymId
+                    ]
+                );
+            }
+            return back()->with('success', 'Gym Created Successfully!');
+        } catch (\Exception $e) {
+            return response()->json([
+                'response' => $e
+            ], 400);
+        }
     }
+
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
         //
     }
+
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
-        //
+        $gym = Gym::find($id);
+        return view('admin.gym.edit', compact('gym'))->render();
     }
+
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
         //
     }
+
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        //
+        try {
+            Gym::destroy($id);
+            Employee::where('gym_id', $id)->delete();
+            License::where('gym_id', $id)->delete();
+            Service::where('gym_id', $id)->delete();
+            return back()->with('success', 'Gym Deleted Successfully!');
+        } catch (\Exception $e) {
+            return back()->with('error', 'Oops, something was not right');
+        }
     }
 }

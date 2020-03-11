@@ -13,8 +13,13 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
 
     Route::group(['as' => 'gym.', 'prefix' => 'gym'], function () {
         Route::get('/', ['as' => 'list', 'uses' => 'GymController@index']);
-        Route::get('/license', ['as' => 'licenseList', 'uses' => 'GymController@license']);
         Route::get('/create', ['as' => 'create', 'uses' => 'GymController@create']);
+        Route::post('/create', ['as' => 'create', 'uses' => 'GymController@store']);
+        Route::get('/destroy/{id}', ['as' => 'destroy', 'uses' => 'GymController@destroy']);
+        Route::get('/edit/{id}', ['as' => 'edit', 'uses' => 'GymController@edit']);
+
+
+        Route::get('/license', ['as' => 'licenseList', 'uses' => 'GymController@license']);
         Route::get('license/create', ['as' => 'licenseCreate', 'uses' => 'GymController@licenseCreate']);
     });
 
