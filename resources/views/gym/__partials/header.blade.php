@@ -5,7 +5,7 @@
 -->
     <div class="kt-header-menu-wrapper" id="kt_header_menu_wrapper">
         <div id="kt_header_menu" class="kt-header-menu kt-header-menu-mobile  kt-header-menu--layout-default ">
-            <h3 class="mb-0">Gym Management System</h3>
+            <h3 class="mb-0">Gym Dashboard</h3>
         </div>
     </div>
     <!-- end:: Header Menu -->
@@ -60,7 +60,7 @@
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
 {{--                                {{ Auth::user()->name }} --}}
-                                Mohsin
+                                Zumba Fitness
                                 <span class="caret"></span>
                             </a>
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">

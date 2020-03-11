@@ -2,10 +2,33 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cd9a3e93-352f-47b5-8f97-1b4c0e3bc2f2" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/gym-management.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gym-management.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/dashboard.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/dashboard.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/gym/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/gym/create.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/EmployeeController.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Gym/EmployeeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Gym/EmployeeController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_02_11_153358_create_licenses_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_02_11_153358_create_licenses_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/app.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/sweetalert2.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/sweetalert2.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/_layouts/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/_layouts/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/_partials/sidebar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/_partials/sidebar.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/employee/create.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/employee/list.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/employee/pagination_data.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/gym/list.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/gym/list.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/gym/__partials/header.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/gym/__partials/header.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/gym/__partials/sidebar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/gym/__partials/sidebar.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/gym/dashboard.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/gym/dashboard.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/gym/employee/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/gym/employee/create.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/gym/employee/list.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/gym/employee/list.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/gym/member/list.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/gym/member/list.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/gym/membership/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/gym/membership/create.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/gym/membership/list.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/gym/membership/list.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/gym/service/list.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/gym/service/list.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/gym/supplier/list.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/gym/supplier/list.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/gym/trainer/list.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/gym/trainer/list.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/gym/treasury/list.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/gym/treasury/list.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

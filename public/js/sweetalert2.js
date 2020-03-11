@@ -87,7 +87,7 @@ var KTSweetAlert2Demo = function() {
             })
         });
 
-        $('#kt_sweetalert_demo_8').click(function(e) {
+        $('.kt_sweetalert_demo_8').click(function(e) {
             swal.fire({
                 title: 'Are you sure?',
                 text: "You won't be able to revert this!",

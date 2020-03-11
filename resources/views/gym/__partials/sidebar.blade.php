@@ -3,8 +3,8 @@
         <!-- begin:: Aside -->
         <div class="kt-aside__brand kt-grid__item " id="kt_aside_brand">
             <div class="kt-aside__brand-logo">
-                <a href="{{url('/')}}">
-                    <img alt="Logo" src="{{asset('assets/media/logos/logo-light.png')}}"/>
+                <a href="{{url('/gym')}}">
+                    <img alt="Logo" src="{{asset('assets/media/logos/logo1.png')}}" width="170px" height="50px" />
                 </a>
             </div>
             <div class="kt-aside__brand-tools">
@@ -87,7 +87,7 @@
                     <li class="kt-menu__item  kt-menu__item--{{ Request::is('gym/member') ? 'active' : Request::is('gym/member/*') ? 'active' : null }}" aria-haspopup="true"
                         data-ktmenu-submenu-toggle="hover">
                         <a href="{{route('member.list')}}" class="kt-menu__link kt-menu__toggle">
-                            <span class="kt-menu__link-icon"><i class="flaticon2-user"></i></span>
+                            <span class="kt-menu__link-icon"><i class="flaticon-users"></i></span>
                             <span class="kt-menu__link-text">Members</span>
                         </a>
                     </li>

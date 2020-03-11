@@ -80,11 +80,12 @@
     </div>
 </div>
 <!-- end:: Page -->
+
 <!-- begin::Scrolltop -->
 <div id="kt_scrolltop" class="kt-scrolltop">
     <i class="fa fa-arrow-up"></i>
 </div>
-<!-- end::Scrolltop -->
+
 <!-- begin::Global Config(global config for global JS sciprts) -->
 <script>
     var KTAppOptions = {
@@ -118,10 +119,9 @@
 </script>
 <!-- end::Global Config -->
 <script src="{{ asset('js/app.js') }}"></script>
-<!--end::Page Scripts -->
-
 @yield('custom-script')
 
+<!--end::Page Scripts -->
 </body>
 <!-- end::Body -->
 </html>

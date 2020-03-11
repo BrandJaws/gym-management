@@ -20,11 +20,15 @@
                             @csrf
                             <div class="kt-portlet__body">
                                 <div class="form-group row">
-                                    <div class="col-lg-6">
+                                    <div class="col-lg-4">
+                                        <label>Gym:</label>
+                                        <input type="text" name="gym" class="form-control" placeholder="Enter Your Gym">
+                                    </div>
+                                    <div class="col-lg-4">
                                         <label>Name:</label>
                                         <input type="text" name="name" class="form-control" placeholder="Enter your name" />
                                     </div>
-                                    <div class="col-lg-6">
+                                    <div class="col-lg-4">
                                         <label>Email:</label>
                                         <input type="email" name="email" class="form-control" placeholder="Enter your email" />
                                     </div>
@@ -49,33 +53,24 @@
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <div class="col-lg-6">
-                                        <label>Cnic:</label>
-                                        <input type="text" name="cnic" class="form-control" placeholder="Enter Your Cnic" />
-                                    </div>
-                                    <div class="col-lg-6">
+                                    <div class="col-lg-4">
                                         <label>Phone:</label>
                                         <input type="text" name="phone" class="form-control" placeholder="Enter Your Contact">
                                     </div>
-                                </div>
-                                <div class="form-group row">
-                                    <div class="col-lg-6">
-                                        <label>Salary:</label>
-                                        <input type="text" name="salary" class="form-control" placeholder="Enter Your Salary" />
+                                    <div class="col-lg-4 countryDropdown">
+                                        <label class="">Country:</label>
+                                        <select class="form-control kt-select2" id="kt_select2_1" name="param">
+                                            @if(count($countries) >= 0)
+                                                @foreach ($countries as $country)
+                                                    <option value="{{$country->code}}">{{$country->name}}</option>
+                                                @endforeach
+                                            @else
+                                            @endif
+                                        </select>
                                     </div>
-                                    <div class="col-lg-6">
-                                        <label>Specialization:</label>
-                                        <input type="text" name="specialization" class="form-control" placeholder="Enter Your Specialization">
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <div class="col-lg-6">
+                                    <div class="col-lg-4">
                                         <label>Address:</label>
                                         <input type="text" name="address" class="form-control" placeholder="Enter Your Address" />
-                                    </div>
-                                    <div class="col-lg-6">
-                                        <label>Gym:</label>
-                                        <input type="text" name="gym" class="form-control" placeholder="Enter Your Gym">
                                     </div>
                                 </div>
                             </div>
@@ -98,4 +93,7 @@
         </div>
         <!-- end:: Content -->
     </div>
+@endsection
+@section('custom-script')
+    <script src="{{asset('js/select2.js')}}"></script>
 @endsection

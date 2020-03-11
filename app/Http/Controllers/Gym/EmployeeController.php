@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Gym;
-
+use App\Country;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -24,7 +24,8 @@ class EmployeeController extends Controller
      */
     public function create()
     {
-        return view('gym.employee.create');
+        $countries = Country::all();
+        return view('gym.employee.create')->with('countries',$countries);
     }
 
     /**

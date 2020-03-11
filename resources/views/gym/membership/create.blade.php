@@ -19,11 +19,15 @@
                             @csrf
                             <div class="kt-portlet__body">
                                 <div class="form-group row">
-                                    <div class="col-lg-6">
+                                    <div class="col-lg-4">
+                                        <label>Gym:</label>
+                                        <input type="text" name="gym" class="form-control" placeholder="Enter Your Gym">
+                                    </div>
+                                    <div class="col-lg-4">
                                         <label>Name:</label>
                                         <input type="text" name="name" class="form-control" placeholder="Enter your name" />
                                     </div>
-                                    <div class="col-lg-6">
+                                    <div class="col-lg-4">
                                         <label>Duration:</label>
                                         <input type="text" name="duration" class="form-control" placeholder="Enter your duration" />
                                     </div>
@@ -46,12 +50,6 @@
                                     <div class="col-lg-6">
                                         <label>Detail:</label>
                                         <input type="text" name="detail" class="form-control" placeholder="Enter Your Detail" />
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <div class="col-lg-6">
-                                        <label>Gym:</label>
-                                        <input type="text" name="gym" class="form-control" placeholder="Enter Your Gym">
                                     </div>
                                 </div>
                             </div>

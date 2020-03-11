@@ -20,7 +20,6 @@
                         </div>
                     </div>
                     <div class="kt-portlet__body">
-
                         <!--begin::Section-->
                         <div class="kt-section">
                             <div class="kt-section__content">
@@ -55,7 +54,7 @@
                                                 <a title="Edit details" class="btn btn-sm btn-clean btn-icon btn-icon-md">
                                                     <i class="la la-edit"></i>
                                                 </a>
-                                                <a title="Delete" class="btn btn-sm btn-clean btn-icon btn-icon-md">
+                                                <a title="Delete" class="btn btn-sm btn-clean btn-icon btn-icon-md kt_sweetalert_demo_8">
                                                     <i class="la la-trash"></i>
                                                 </a>
                                             </td>
@@ -75,7 +74,7 @@
                                                 <a title="Edit details" class="btn btn-sm btn-clean btn-icon btn-icon-md">
                                                     <i class="la la-edit"></i>
                                                 </a>
-                                                <a title="Delete" class="btn btn-sm btn-clean btn-icon btn-icon-md">
+                                                <a title="Delete" class="btn btn-sm btn-clean btn-icon btn-icon-md kt_sweetalert_demo_8">
                                                     <i class="la la-trash"></i>
                                                 </a>
                                             </td>
@@ -95,7 +94,7 @@
                                                 <a title="Edit details" class="btn btn-sm btn-clean btn-icon btn-icon-md">
                                                     <i class="la la-edit"></i>
                                                 </a>
-                                                <a title="Delete" class="btn btn-sm btn-clean btn-icon btn-icon-md">
+                                                <a title="Delete" class="btn btn-sm btn-clean btn-icon btn-icon-md kt_sweetalert_demo_8">
                                                     <i class="la la-trash"></i>
                                                 </a>
                                             </td>
@@ -105,7 +104,6 @@
                                 </div>
                             </div>
                         </div>
-
                         <!--end::Section-->
                     </div>
                     <!--end::Form-->
@@ -116,4 +114,7 @@
     </div>
     <!-- end:: Content -->
 </div>
+@endsection
+@section('custom-script')
+    <script src="{{ asset('js/sweetalert2.js') }}"></script>
 @endsection

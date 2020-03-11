@@ -77,14 +77,6 @@
                         <span class="kt-menu__link-text">Gym</span>
                     </a>
                 </li>
-                <li class="kt-menu__item  kt-menu__item--{{ Request::is('admin/employee') ? 'active' : Request::is('admin/employee/*') ? 'active' : null }}"
-                    aria-haspopup="true"
-                    data-ktmenu-submenu-toggle="hover">
-                    <a href="{{route('adminEmployee.list')}}" class="kt-menu__link kt-menu__toggle">
-                        <span class="kt-menu__link-icon"><i class="flaticon-avatar"></i></span>
-                        <span class="kt-menu__link-text">Employees</span>
-                    </a>
-                </li>
             </ul>
         </div>
     </div>

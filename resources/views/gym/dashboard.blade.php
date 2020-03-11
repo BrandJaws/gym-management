@@ -5,6 +5,209 @@
         <!--Begin::Dashboard 1-->
         <!--Begin::Row-->
         <div class="row">
+            <div class="col-xl-3 col-lg-3">
+                <div class="kt-portlet kt-portlet--height-fluid">
+                    <div class="kt-portlet__head kt-portlet__head--noborder">
+                        <div class="kt-portlet__head-label">
+                            <h3 class="kt-portlet__head-title">
+                            </h3>
+                        </div>
+                        <div class="kt-portlet__head-toolbar">
+                            <a href="#" class="btn btn-clean btn-icon" data-toggle="dropdown">
+                                <i class="flaticon-more-1"></i>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right">
+                                <ul class="kt-nav">
+                                    <li class="kt-nav__item">
+                                        <a href="#" class="kt-nav__link">
+                                            <i class="kt-nav__link-icon flaticon2-line-chart"></i>
+                                            <span class="kt-nav__link-text">Reports</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="kt-portlet__body kt-portlet__body--fit-y">
+                        <!--begin::Widget -->
+                        <div class="kt-widget kt-widget--user-profile-4">
+                            <div class="kt-widget__head">
+                                <div class="kt-widget__media">
+                                    <img class="kt-widget__img kt-hidden-" src="assets/media/gym/gym-marketing.jpeg" alt="image" style="height: 100%;">
+                                </div>
+                                <div class="kt-widget__content">
+                                    <div class="kt-widget__section">
+                                        <a href="#" class="kt-widget__username">
+                                            Total Memberships
+                                        </a>
+                                        <div class="kt-widget__button">
+                                            <h2>4</h2>
+                                        </div>
+                                        <div class="kt-widget__button">
+                                            <span class="btn btn-label-warning btn-sm">Active</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!--end::Widget -->
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-lg-3">
+                <div class="kt-portlet kt-portlet--height-fluid">
+                    <div class="kt-portlet__head kt-portlet__head--noborder">
+                        <div class="kt-portlet__head-label">
+                            <h3 class="kt-portlet__head-title">
+                            </h3>
+                        </div>
+                        <div class="kt-portlet__head-toolbar">
+                            <a href="#" class="btn btn-clean btn-icon" data-toggle="dropdown">
+                                <i class="flaticon-more-1"></i>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right">
+                                <ul class="kt-nav">
+                                    <li class="kt-nav__item">
+                                        <a href="#" class="kt-nav__link">
+                                            <i class="kt-nav__link-icon flaticon2-line-chart"></i>
+                                            <span class="kt-nav__link-text">Reports</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="kt-portlet__body kt-portlet__body--fit-y">
+                        <!--begin::Widget -->
+                        <div class="kt-widget kt-widget--user-profile-4">
+                            <div class="kt-widget__head">
+                                <div class="kt-widget__media">
+                                    <img class="kt-widget__img kt-hidden-" src="assets/media/gym/Gym-employees.jpg" alt="image" style="height: 100%;">
+                                </div>
+                                <div class="kt-widget__content">
+                                    <div class="kt-widget__section">
+                                        <a href="#" class="kt-widget__username">
+                                            Total Employees
+                                        </a>
+                                        <div class="kt-widget__button">
+                                            <h2>8</h2>
+                                        </div>
+                                        <div class="kt-widget__button">
+                                            <span class="btn btn-label-warning btn-sm">Active</span>
+                                        </div>
+                                        <br>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!--end::Widget -->
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-lg-3">
+                <div class="kt-portlet kt-portlet--height-fluid">
+                    <div class="kt-portlet__head kt-portlet__head--noborder">
+                        <div class="kt-portlet__head-label">
+                            <h3 class="kt-portlet__head-title">
+                            </h3>
+                        </div>
+                        <div class="kt-portlet__head-toolbar">
+                            <a href="#" class="btn btn-clean btn-icon" data-toggle="dropdown">
+                                <i class="flaticon-more-1"></i>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right">
+                                <ul class="kt-nav">
+                                    <li class="kt-nav__item">
+                                        <a href="#" class="kt-nav__link">
+                                            <i class="kt-nav__link-icon flaticon2-line-chart"></i>
+                                            <span class="kt-nav__link-text">Reports</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="kt-portlet__body kt-portlet__body--fit-y">
+                        <!--begin::Widget -->
+                        <div class="kt-widget kt-widget--user-profile-4">
+                            <div class="kt-widget__head">
+                                <div class="kt-widget__media">
+                                    <img class="kt-widget__img kt-hidden-" src="assets/media/gym/gym-members.jpg" alt="image" style="height: 100%;">
+                                </div>
+                                <div class="kt-widget__content">
+                                    <div class="kt-widget__section">
+                                        <a href="#" class="kt-widget__username">
+                                            Total Members
+                                        </a>
+                                        <div class="kt-widget__button">
+                                            <h2>20</h2>
+                                        </div>
+                                        <div class="kt-widget__button">
+                                            <span class="btn btn-label-warning btn-sm">Active</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!--end::Widget -->
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-lg-3">
+                <div class="kt-portlet kt-portlet--height-fluid">
+                    <div class="kt-portlet__head kt-portlet__head--noborder">
+                        <div class="kt-portlet__head-label">
+                            <h3 class="kt-portlet__head-title">
+                            </h3>
+                        </div>
+                        <div class="kt-portlet__head-toolbar">
+                            <a href="#" class="btn btn-clean btn-icon" data-toggle="dropdown">
+                                <i class="flaticon-more-1"></i>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right">
+                                <ul class="kt-nav">
+                                    <li class="kt-nav__item">
+                                        <a href="#" class="kt-nav__link">
+                                            <i class="kt-nav__link-icon flaticon2-line-chart"></i>
+                                            <span class="kt-nav__link-text">Reports</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="kt-portlet__body kt-portlet__body--fit-y">
+                        <!--begin::Widget -->
+                        <div class="kt-widget kt-widget--user-profile-4">
+                            <div class="kt-widget__head">
+                                <div class="kt-widget__media">
+                                    <img class="kt-widget__img kt-hidden-" src="assets/media/gym/gym-trainers.jpg" alt="image" style="height: 100%;">
+                                </div>
+                                <div class="kt-widget__content">
+                                    <div class="kt-widget__section">
+                                        <a href="#" class="kt-widget__username">
+                                            Total Trainers
+                                        </a>
+                                        <div class="kt-widget__button">
+                                            <h2>6</h2>
+                                        </div>
+                                        <div class="kt-widget__button">
+                                            <span class="btn btn-label-warning btn-sm">Active</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!--end::Widget -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
             <div class="col-xl-4 col-lg-6 order-lg-3 order-xl-1">
                 <!--begin:: Widgets/New Users-->
                 <div class="kt-portlet kt-portlet--tabs kt-portlet--height-fluid">
