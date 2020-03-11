@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cd9a3e93-352f-47b5-8f97-1b4c0e3bc2f2" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_02_11_153358_create_licenses_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_02_11_153358_create_licenses_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/gym/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/gym/create.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -250,6 +249,7 @@
       <workItem from="1583399687489" duration="1356000" />
       <workItem from="1583751314164" duration="366000" />
       <workItem from="1583760169951" duration="12431000" />
+      <workItem from="1583918181510" duration="256000" />
     </task>
     <servers />
   </component>
@@ -278,9 +278,9 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="740" y="279" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1583852084756" />
-    <state x="667" y="349" key="com.intellij.ide.util.TipDialog" timestamp="1583760196973">
+    <state x="667" y="349" key="com.intellij.ide.util.TipDialog" timestamp="1583918228269">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="667" y="349" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1583760196973" />
+    <state x="667" y="349" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1583918228269" />
   </component>
 </project>
