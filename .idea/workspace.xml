@@ -2,10 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cd9a3e93-352f-47b5-8f97-1b4c0e3bc2f2" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/dashboard.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/dashboard.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Gym.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Gym.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/GymController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/GymController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/License.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/License.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Service.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Service.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_02_11_153358_create_licenses_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_02_11_153358_create_licenses_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_02_11_160633_create_gyms_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_02_11_160633_create_gyms_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_02_11_164640_create_services_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_02_11_164640_create_services_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/_layouts/flash-message.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/_layouts/flash-message.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/employee/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/employee/create.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/admin/gym/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/gym/create.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/gym/list.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/gym/list.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/gym/pagination_data.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/gym/pagination_data.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -136,19 +146,12 @@
   <component name="PropertiesComponent">
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/admin/gym" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="preferences.sourceCode.HTML" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\wamp64\www\web-portal" />
-      <recent name="C:\wamp64\www\gym\resources\views\admin\gym" />
-      <recent name="C:\wamp64\www\gym\resources\views\admin\employee" />
-      <recent name="C:\wamp64\www\gym\public\assets\media\gym" />
-      <recent name="C:\wamp64\www\gym\public\assets\media\logos" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\wamp64\www\gym-management\app\Http\Controllers\Admin" />
       <recent name="C:\wamp64\www\gym-management\app\Http\Controllers\Member" />
@@ -156,24 +159,31 @@
       <recent name="C:\wamp64\www\blog\resources\views\layouts" />
       <recent name="C:\wamp64\www\admin-penal\app\Http\Controllers\Admin" />
     </key>
-  </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\wamp64\www\gym\resources\views\admin\gym" />
+      <recent name="C:\wamp64\www\web-portal" />
+      <recent name="C:\wamp64\www\gym\resources\views\admin\employee" />
+      <recent name="C:\wamp64\www\gym\public\assets\media\gym" />
+      <recent name="C:\wamp64\www\gym\public\assets\media\logos" />
+    </key>
   </component>
   <component name="RunManager">
     <configuration name="phpunit.xml" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
       <TestRunner scope="XML" />
       <method v="2" />
     </configuration>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -272,14 +282,14 @@
     </option>
   </component>
   <component name="WindowStateProjectService">
-    <state x="690" y="279" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1583852138228">
+    <state x="690" y="279" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1583938405290">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="690" y="279" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1583852138228" />
-    <state x="740" y="279" key="FileChooserDialogImpl" timestamp="1583852084756">
+    <state x="690" y="279" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1583938405290" />
+    <state x="740" y="279" key="FileChooserDialogImpl" timestamp="1583933162031">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="740" y="279" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1583852084756" />
+    <state x="740" y="279" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1583933162031" />
     <state x="667" y="349" key="com.intellij.ide.util.TipDialog" timestamp="1583918228269">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
