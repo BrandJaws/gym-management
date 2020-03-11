@@ -5,7 +5,7 @@
         <!--Begin::Dashboard 1-->
         <!--Begin::Row-->
         <div class="row">
-            <div class="col-xl-3">
+            <div class="col-xl-3 col-lg-3">
                 <div class="kt-portlet kt-portlet--height-fluid">
                     <div class="kt-portlet__head kt-portlet__head--noborder">
                         <div class="kt-portlet__head-label">
@@ -38,7 +38,7 @@
                                 <div class="kt-widget__content">
                                     <div class="kt-widget__section">
                                         <a href="#" class="kt-widget__username">
-                                            Total Branches
+                                            Total Gyms
                                         </a>
                                         <div class="kt-widget__button">
                                             <h2>5</h2>
@@ -55,7 +55,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-xl-3">
+            <div class="col-xl-3 col-lg-3">
                 <div class="kt-portlet kt-portlet--height-fluid">
                     <div class="kt-portlet__head kt-portlet__head--noborder">
                         <div class="kt-portlet__head-label">
@@ -91,7 +91,7 @@
                                             Total Employees
                                         </a>
                                         <div class="kt-widget__button">
-                                            <h2>5</h2>
+                                            <h2>10</h2>
                                         </div>
                                         <div class="kt-widget__button">
                                             <span class="btn btn-label-warning btn-sm">Active</span>
@@ -106,7 +106,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-xl-3">
+            <div class="col-xl-3 col-lg-3">
                 <div class="kt-portlet kt-portlet--height-fluid">
                     <div class="kt-portlet__head kt-portlet__head--noborder">
                         <div class="kt-portlet__head-label">
@@ -139,10 +139,10 @@
                                 <div class="kt-widget__content">
                                     <div class="kt-widget__section">
                                         <a href="#" class="kt-widget__username">
-                                            Total Electric Machines
+                                            Total Gym In Trials
                                         </a>
                                         <div class="kt-widget__button">
-                                            <h2>25</h2>
+                                            <h2>2</h2>
                                         </div>
                                         <div class="kt-widget__button">
                                             <span class="btn btn-label-warning btn-sm">Active</span>
@@ -156,7 +156,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-xl-3">
+            <div class="col-xl-3 col-lg-3">
                 <div class="kt-portlet kt-portlet--height-fluid">
                     <div class="kt-portlet__head kt-portlet__head--noborder">
                         <div class="kt-portlet__head-label">
@@ -189,10 +189,10 @@
                                 <div class="kt-widget__content">
                                     <div class="kt-widget__section">
                                         <a href="#" class="kt-widget__username">
-                                            Total Customers
+                                            Total Super Admins
                                         </a>
                                         <div class="kt-widget__button">
-                                            <h2>5</h2>
+                                            <h2>2</h2>
                                         </div>
                                         <div class="kt-widget__button">
                                             <span class="btn btn-label-warning btn-sm">Active</span>

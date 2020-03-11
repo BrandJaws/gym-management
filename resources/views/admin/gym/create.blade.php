@@ -129,7 +129,7 @@
             <!-- end:: Content -->
             <div class="kt-container  kt-container--fluid  kt-grid__item kt-grid__item--fluid">
                 <div class="row">
-                    <div class="col-lg-12">
+                    <div class="col-lg-8">
                         <!--begin::Portlet-->
                         <div class="kt-portlet">
                             <div class="kt-portlet__head">
@@ -215,6 +215,171 @@
                                     </div>
                                 </div>
                             </div>
+                        </div>
+                        <!--end::Portlet-->
+                    </div>
+                    <div class="col-lg-4">
+                        <!--begin::Portlet-->
+                        <div class="kt-portlet">
+                            <div class="kt-portlet__head">
+                                <div class="kt-portlet__head-label">
+                                    <h3 class="kt-portlet__head-title">
+                                        Create Facilities
+                                    </h3>
+                                </div>
+                            </div>
+                            <!--begin::Form-->
+                            <div class="kt-portlet__body">
+                                <div class="form-group row">
+                                    <div class="kt-checkbox-list">
+                                        <label class="kt-checkbox">
+                                            <input type="checkbox"> AROMATHERAPY
+                                            <span></span>
+                                        </label>
+                                        <label class="kt-checkbox">
+                                            <input type="checkbox"> ATHLETICS
+                                            <span></span>
+                                        </label>
+                                        <label class="kt-checkbox">
+                                            <input type="checkbox"> BEAT
+                                            <span></span>
+                                        </label>
+                                        <label class="kt-checkbox">
+                                            <input type="checkbox"> BEAUTY ROOM
+                                            <span></span>
+                                        </label>
+                                        <label class="kt-checkbox">
+                                            <input type="checkbox"> CARDIO EQUIPMENT
+                                            <span></span>
+                                        </label>
+                                        <label class="kt-checkbox">
+                                            <input type="checkbox"> COOL DOWN AIR SHOWERS
+                                            <span></span>
+                                        </label>
+                                        <label class="kt-checkbox">
+                                            <input type="checkbox"> GYM WITH CRECHE
+                                            <span></span>
+                                        </label>
+                                        <label class="kt-checkbox">
+                                            <input type="checkbox"> DM SPORTS STORE ON-SITE
+                                            <span></span>
+                                        </label>
+                                        <label class="kt-checkbox">
+                                            <input type="checkbox"> FITNESS FRIDAYS
+                                            <span></span>
+                                        </label>
+                                        <label class="kt-checkbox">
+                                            <input type="checkbox"> FREE PARKING
+                                            <span></span>
+                                        </label>
+                                        <label class="kt-checkbox">
+                                            <input type="checkbox"> FREE WEIGHTS
+                                            <span></span>
+                                        </label>
+                                        <label class="kt-checkbox">
+                                            <input type="checkbox"> FUNCTIONAL AREA
+                                            <span></span>
+                                        </label>
+                                        <label class="kt-checkbox">
+                                            <input type="checkbox"> GROUP EXERCISE
+                                            <span></span>
+                                        </label>
+                                        <label class="kt-checkbox">
+                                            <input type="checkbox"> HAIRDRESSING
+                                            <span></span>
+                                        </label>
+                                        <label class="kt-checkbox">
+                                            <input type="checkbox"> IPAD BAR
+                                            <span></span>
+                                        </label>
+                                        <label class="kt-checkbox">
+                                            <input type="checkbox"> IPOINT
+                                            <span></span>
+                                        </label>
+                                        <label class="kt-checkbox">
+                                            <input type="checkbox"> LOUNGE AREA
+                                            <span></span>
+                                        </label>
+                                        <label class="kt-checkbox">
+                                            <input type="checkbox"> MIND AND BODY STUDIO
+                                            <span></span>
+                                        </label>
+                                        <label class="kt-checkbox">
+                                            <input type="checkbox"> MOVE STUDIO
+                                            <span></span>
+                                        </label>
+                                        <label class="kt-checkbox">
+                                            <input type="checkbox"> OLYMPIC RINGS / PULL UP BAR
+                                            <span></span>
+                                        </label>
+                                        <label class="kt-checkbox">
+                                            <input type="checkbox"> OUTDOOR GROUP EXERCISE
+                                            <span></span>
+                                        </label>
+                                        <label class="kt-checkbox">
+                                            <input type="checkbox"> PHYSIOTHERAPY
+                                            <span></span>
+                                        </label>
+                                        <label class="kt-checkbox">
+                                            <input type="checkbox"> PERSONAL TRAINING
+                                            <span></span>
+                                        </label>
+                                        <label class="kt-checkbox">
+                                            <input type="checkbox"> RELAXATION AREA
+                                            <span></span>
+                                        </label>
+                                        <label class="kt-checkbox">
+                                            <input type="checkbox"> RESISTANCE EQUIPMENT
+                                            <span></span>
+                                        </label>
+                                        <label class="kt-checkbox">
+                                            <input type="checkbox"> SAUNA
+                                            <span></span>
+                                        </label>
+                                        <label class="kt-checkbox">
+                                            <input type="checkbox"> SPA POOL
+                                            <span></span>
+                                        </label>
+                                        <label class="kt-checkbox">
+                                            <input type="checkbox"> SPIN STUDIO
+                                            <span></span>
+                                        </label>
+                                        <label class="kt-checkbox">
+                                            <input type="checkbox"> SQUASH COURTS
+                                            <span></span>
+                                        </label>
+                                        <label class="kt-checkbox">
+                                            <input type="checkbox"> STEAM ROOM
+                                            <span></span>
+                                        </label>
+                                        <label class="kt-checkbox">
+                                            <input type="checkbox"> SUNBED
+                                            <span></span>
+                                        </label>
+                                        <label class="kt-checkbox">
+                                            <input type="checkbox"> SWIMMING LESSONS
+                                            <span></span>
+                                        </label>
+                                        <label class="kt-checkbox">
+                                            <input type="checkbox"> SWIMMING POOL
+                                            <span></span>
+                                        </label>
+                                        <label class="kt-checkbox">
+                                            <input type="checkbox"> TOWELS
+                                            <span></span>
+                                        </label>
+                                        <label class="kt-checkbox">
+                                            <input type="checkbox"> WIFI
+                                            <span></span>
+                                        </label>
+                                        <label class="kt-checkbox">
+                                            <input type="checkbox"> X-LIFT AREA
+                                            <span></span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--end::Form-->
                         </div>
                         <!--end::Portlet-->
                     </div>
