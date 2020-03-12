@@ -373,6 +373,56 @@ class GymController extends Controller
         return view('admin.gym.branch.edit', compact('gym', 'facilities', 'countries', 'facilityList'))->render();
     }
 
+    public function branchUpdate(Request $request)
+    {
+        try {
+            $validator = Validator::make($request->all(), [
+                'name' => 'required',
+                'country' => 'required',
+                'state' => 'required',
+                'city' => 'required',
+                'address' => 'required',
+            ]);
+            if ($validator->fails()) {
+                return $validator->errors();
+            }
+            $gym_Id = $request->gym_id;
+            $gym = Gym::where('id', $gym_Id)->first();
+            $gym->fill($request->only([
+                'name',
+                'inTrial',
+                'trialEndsAt',
+                'country',
+                'state',
+                'city',
+                'address',
+            ]));
+            $gym->save();
+            $license = License::where('gym_id', $gym_Id)->first();
+            $license->fill($request->only([
+                'amount',
+                'startDate',
+                'endDate',
+            ]));
+            $license->save();
+            GymServices::where('gym_id', $gym_Id)->delete();
+            $services = $request->get('facilities');
+            foreach ($services as $value) {
+                GymServices::insert(
+                    [
+                        'name' => $value,
+                        'gym_id' => $gym_Id
+                    ]
+                );
+            }
+            return back()->with('success', 'Gym Updated Successfully!');
+        } catch (\Exception $e) {
+            return response()->json([
+                'response' => $e
+            ], 400);
+        }
+    }
+
     public function license()
     {
         try {

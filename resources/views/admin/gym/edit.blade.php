@@ -286,7 +286,7 @@
                     <div class="kt-portlet__head" style="align-items: center">
                         <div class="kt-portlet__head-label">
                             <h3 class="kt-portlet__head-title">
-                                List of Gyms Branches
+                                Gym Branches
                             </h3>
                         </div>
                         <div class="dropdown">

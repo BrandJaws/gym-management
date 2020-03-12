@@ -3,7 +3,7 @@
     <div class="kt-content  kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor" id="kt_content">
         <!-- begin:: Content -->
         @include('_layouts.flash-message')
-        <form action="{{ url('admin/gym/edit') }}" method="POST" enctype="multipart/form-data"
+        <form action="{{route('gym.branchUpdate')}}" method="POST" enctype="multipart/form-data"
               class="kt-form kt-form--label-right">
             {{csrf_field()}}
             <input type="hidden" value="{{$gym->id }}" name="gym_id">
