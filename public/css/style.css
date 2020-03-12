@@ -35,3 +35,9 @@
     outline: none!important;
 
 }
+.kt-nav {
+    padding:0!important;
+}
+.dropdown-menu.dropdown-menu-fit {
+    padding:1rem 0!important;
+}
