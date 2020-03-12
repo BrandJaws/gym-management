@@ -21,9 +21,7 @@ class FacilitiesSeeder extends Seeder
             array('name' => 'FREE WEIGHTS'),
             array('name' => 'GROUP EXERCISE'),
             array('name' => 'IPAD BAR'),
-            array('name' => 'DM SPORTS STORE ON-SITE'),
             array('name' => 'MOVE STUDIO'),
-            array('name' => 'OUTDOOR GROUP EXERCISE'),
             array('name' => 'PERSONAL TRAINING'),
             array('name' => 'RESISTANCE EQUIPMENT'),
             array('name' => 'SPA POOL'),
@@ -41,7 +39,6 @@ class FacilitiesSeeder extends Seeder
             array('name' => 'IPOINT'),
             array('name' => 'MIND AND BODY STUDIO'),
             array('name' => 'PHYSIOTHERAPY'),
-            array('name' => 'OLYMPIC RINGS / PULL UP BAR'),
             array('name' => 'RELAXATION AREA'),
             array('name' => 'SAUNA'),
             array('name' => 'SPIN STUDIO'),
@@ -50,6 +47,10 @@ class FacilitiesSeeder extends Seeder
             array( 'name' => 'TOWELS'),
             array( 'name' => 'X-LIFT AREA'),
             array('name' => 'COOL DOWN AIR SHOWERS'),
+            array('name' => 'DM SPORTS STORE ON-SITE'),
+            array('name' => 'OUTDOOR GROUP EXERCISE'),
+            array('name' => 'OLYMPIC RINGS / PULL UP BAR'),
+
         );
         Facilities::insert($services);
     }

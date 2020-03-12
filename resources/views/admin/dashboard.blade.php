@@ -140,7 +140,7 @@
                                             Total Super Admins
                                         </a>
                                         <div class="kt-widget__button">
-                                            <h2>{{$superAdmins}}</h2>
+                                            <h2>{{$superAdmin}}</h2>
                                         </div>
                                         <div class="kt-widget__button">
                                             <span class="btn btn-label-warning btn-sm">Active</span>
@@ -190,7 +190,7 @@
                                             Total Licenses
                                         </a>
                                         <div class="kt-widget__button">
-                                            <h2>{{$licenses}}</h2>
+                                            <h2>{{$license}}</h2>
                                         </div>
                                         <div class="kt-widget__button">
                                             <span class="btn btn-label-warning btn-sm">Active</span>

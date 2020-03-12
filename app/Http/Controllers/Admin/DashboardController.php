@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
+
 use App\Admin;
 use App\Gym;
 use App\Http\Controllers\Controller;
@@ -15,10 +16,6 @@ class DashboardController extends Controller
         $gymInTrial = Gym::where('inTrial', 1)->count();
         $superAdmin = Admin::count();
         $license = License::count();
-        return view('admin.dashboard')
-            ->with('gym', $gym)
-            ->with('gymInTrial', $gymInTrial)
-            ->with('superAdmins', $superAdmin)
-            ->with('licenses', $license);
+        return view('admin.dashboard', compact('superAdmin','gym', 'gymInTrial',  'license'))->render();
     }
 }
