@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Country;
 use App\Employee;
+use App\Facilities;
 use App\Gym;
+use App\GymServices;
 use App\Http\Controllers\Controller;
 use App\License;
 use App\Service;
@@ -22,7 +25,7 @@ class GymController extends Controller
     public function index(Request $request)
     {
         try {
-            $gym = Gym::orderBy('id', 'asc')->paginate(10);
+            $gym = Gym::WhereNull('parent_id')->orderBy('id', 'asc')->paginate(10);
             if ($request->ajax()) {
                 $sort_by = $request->get('sortby');
                 $sort_type = $request->get('sorttype');
@@ -37,15 +40,6 @@ class GymController extends Controller
         }
     }
 
-    public function license()
-    {
-        try {
-            return view('admin.gym.license.list');
-        } catch (\Exception $e) {
-            return back()->with('error', 'Oops, something was not right');
-        }
-    }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -54,20 +48,13 @@ class GymController extends Controller
     public function create()
     {
         try {
-            return view('admin.gym.create');
+            $countries = Country::all();
+            $facilities = Facilities::all();
+            return view('admin.gym.create', compact('countries', 'facilities'));
         } catch (\Exception $e) {
             return back()->with('error', 'Oops, something was not right');
         }
 
-    }
-
-    public function licenseCreate()
-    {
-        try {
-            return view('admin.gym.license.create');
-        } catch (\Exception $e) {
-            return back()->with('error', 'Oops, something was not right');
-        }
     }
 
     /**
@@ -135,8 +122,8 @@ class GymController extends Controller
             $license->gym_id = $gymId;
             $license->save();
             $services = $request->get('facilities');
-            foreach (array_keys($services) as $value) {
-                Service::insert(
+            foreach ($services as $value) {
+                GymServices::insert(
                     [
                         'name' => $value,
                         'gym_id' => $gymId
@@ -168,10 +155,26 @@ class GymController extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Request $request, $id)
     {
+        $facilityList = [];
         $gym = Gym::find($id);
-        return view('admin.gym.edit', compact('gym'))->render();
+        $facilities = Facilities::all();
+        $countries = Country::all();
+        $gymServices = GymServices::where('gym_id', $id)->get();
+        foreach ($gymServices as $service) {
+            array_push($facilityList, $service->name);
+        }
+        $gymBranch = Gym::where('parent_id', $id)->orderBy('id', 'asc')->paginate(10);
+        if ($request->ajax()) {
+            $sort_by = $request->get('sortby');
+            $sort_type = $request->get('sorttype');
+            $query = $request->get('query');
+            $query = str_replace(" ", "%", $query);
+            $gymBranch = Gym::getGymBranchList($query, $sort_by, $sort_type, $id);
+            return view('admin.gym.branch.pagination_data', compact('gymBranch'))->render();
+        }
+        return view('admin.gym.edit', compact('gym', 'facilities', 'countries', 'facilityList', 'gymBranch'))->render();
     }
 
     /**
@@ -181,9 +184,80 @@ class GymController extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        try {
+            $validator = Validator::make($request->all(), [
+                'name' => 'required',
+                'country' => 'required',
+                'state' => 'required',
+                'city' => 'required',
+                'address' => 'required',
+                'employeeName' => 'required',
+                'email' => 'required',
+                'cnic' => 'required',
+                'gender' => 'required',
+                'phone' => 'required',
+                'salary' => 'required',
+                'specialization' => 'required',
+                'empAddress' => 'required',
+            ]);
+            if ($validator->fails()) {
+                return $validator->errors();
+            }
+            $gym_Id = $request->gym_id;
+            $gym = Gym::where('id', $gym_Id)->first();
+            $gym->fill($request->only([
+                'name',
+                'inTrial',
+                'trialEndsAt',
+                'country',
+                'state',
+                'city',
+                'address',
+            ]));
+            $gym->save();
+            $employee = Employee::where('gym_id', $gym_Id)->first();
+            $password = $employee->password;
+            $employee->fill($request->only([
+                'email',
+                'gender',
+                'cnic',
+                'phone',
+                'salary',
+                'specialization',
+            ]));
+            $employee->name = $request->get('employeeName');
+            $employee->address = $request->get('empAddress');
+            if (!empty($data['password'])) {
+                $employee->password = bcrypt($request['password']);;
+            } else {
+                $employee->password = $password;
+            }
+            $employee->save();
+            $license = License::where('gym_id', $gym_Id)->first();
+            $license->fill($request->only([
+                'amount',
+                'startDate',
+                'endDate',
+            ]));
+            $license->save();
+            GymServices::where('gym_id', $gym_Id)->delete();
+            $services = $request->get('facilities');
+            foreach ($services as $value) {
+                GymServices::insert(
+                    [
+                        'name' => $value,
+                        'gym_id' => $gym_Id
+                    ]
+                );
+            }
+            return back()->with('success', 'Gym Updated Successfully!');
+        } catch (\Exception $e) {
+            return response()->json([
+                'response' => $e
+            ], 400);
+        }
     }
 
     /**
@@ -198,8 +272,120 @@ class GymController extends Controller
             Gym::destroy($id);
             Employee::where('gym_id', $id)->delete();
             License::where('gym_id', $id)->delete();
-            Service::where('gym_id', $id)->delete();
+            GymServices::where('gym_id', $id)->delete();
             return back()->with('success', 'Gym Deleted Successfully!');
+        } catch (\Exception $e) {
+            return back()->with('error', 'Oops, something was not right');
+        }
+    }
+
+    public function branchCreate($id)
+    {
+        try {
+            $facilityList = [];
+            $gym = Gym::where('id', $id)->first();
+            $countries = Country::all();
+            $facilities = Facilities::all();
+            $gymServices = GymServices::where('gym_id', $id)->get();
+            foreach ($gymServices as $service) {
+                array_push($facilityList, $service->name);
+            }
+            return view('admin.gym.branch.create', compact('countries', 'facilities', 'gym', 'facilityList'));
+        } catch (\Exception $e) {
+            return back()->with('error', 'Oops, something was not right');
+        }
+    }
+
+    public function branchAdd(Request $request)
+    {
+        try {
+            $validator = Validator::make($request->all(), [
+                'name' => 'required',
+                'gym_id' => 'required',
+                'country' => 'required',
+                'state' => 'required',
+                'city' => 'required',
+                'address' => 'required',
+            ]);
+            if ($validator->fails()) {
+                return $validator->errors();
+            }
+            $gym = new Gym();
+            $gym->fill($request->only([
+                'name',
+                'inTrial',
+                'trialEndsAt',
+                'country',
+                'state',
+                'city',
+                'address',
+            ]));
+            $gym->parent_id = $request->get('gym_id');
+            $gym->save();
+            $gymId = $gym->id;
+            $license = new License();
+            $license->fill($request->only([
+                'amount',
+                'startDate',
+                'endDate',
+            ]));
+            $license->gym_id = $gymId;
+            $license->save();
+            $services = $request->get('facilities');
+            foreach ($services as $value) {
+                GymServices::insert(
+                    [
+                        'name' => $value,
+                        'gym_id' => $gymId
+                    ]
+                );
+            }
+            return back()->with('success', 'Gym Branch Created Successfully!');
+        } catch (\Exception $e) {
+            return response()->json([
+                'response' => $e
+            ], 400);
+        }
+    }
+
+    public function destroyBranch($id)
+    {
+        try {
+            Gym::destroy($id);
+            License::where('gym_id', $id)->delete();
+            GymServices::where('gym_id', $id)->delete();
+            return back()->with('success', 'Gym Branch Deleted Successfully!');
+        } catch (\Exception $e) {
+            return back()->with('error', 'Oops, something was not right');
+        }
+    }
+
+    public function editBranch(Request $request, $id)
+    {
+        $facilityList = [];
+        $gym = Gym::find($id);
+        $facilities = Facilities::all();
+        $countries = Country::all();
+        $gymServices = GymServices::where('gym_id', $id)->get();
+        foreach ($gymServices as $service) {
+            array_push($facilityList, $service->name);
+        }
+        return view('admin.gym.branch.edit', compact('gym', 'facilities', 'countries', 'facilityList'))->render();
+    }
+
+    public function license()
+    {
+        try {
+            return view('admin.gym.license.list');
+        } catch (\Exception $e) {
+            return back()->with('error', 'Oops, something was not right');
+        }
+    }
+
+    public function licenseCreate()
+    {
+        try {
+            return view('admin.gym.license.create');
         } catch (\Exception $e) {
             return back()->with('error', 'Oops, something was not right');
         }

@@ -17,18 +17,23 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
         Route::post('/create', ['as' => 'create', 'uses' => 'GymController@store']);
         Route::get('/destroy/{id}', ['as' => 'destroy', 'uses' => 'GymController@destroy']);
         Route::get('/edit/{id}', ['as' => 'edit', 'uses' => 'GymController@edit']);
+        Route::post('/edit', ['as' => 'edit', 'uses' => 'GymController@update']);
+        Route::get('branch/add/{id}', ['as' => 'branchCreate', 'uses' => 'GymController@branchCreate']);
+        Route::post('branch/add', ['as' => 'branchAdd', 'uses' => 'GymController@branchAdd']);
+        Route::get('/destroyBranch/{id}', ['as' => 'destroyBranch', 'uses' => 'GymController@destroyBranch']);
 
+        Route::get('branch/edit/{id}', ['as' => 'editBranch', 'uses' => 'GymController@editBranch']);
 
         Route::get('/license', ['as' => 'licenseList', 'uses' => 'GymController@license']);
         Route::get('license/create', ['as' => 'licenseCreate', 'uses' => 'GymController@licenseCreate']);
     });
 
-    Route::group(['as' => 'adminEmployee.', 'prefix' => 'employee'], function () {
-
-        Route::get('/', ['as' => 'list', 'uses' => 'EmployeeController@index']);
-        Route::get('/create', ['as' => 'create', 'uses' => 'EmployeeController@create']);
-        Route::post('/create', ['as' => 'create', 'uses' => 'EmployeeController@store']);
-    });
+//    Route::group(['as' => 'adminEmployee.', 'prefix' => 'employee'], function () {
+//
+//        Route::get('/', ['as' => 'list', 'uses' => 'EmployeeController@index']);
+//        Route::get('/create', ['as' => 'create', 'uses' => 'EmployeeController@create']);
+//        Route::post('/create', ['as' => 'create', 'uses' => 'EmployeeController@store']);
+//    });
 
 });
 

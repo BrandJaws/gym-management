@@ -4,9 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Service extends Model
+class GymServices extends Model
 {
-    protected $table = 'services';
+    protected $table = 'gym_services';
     protected $fillable = [
         'name',
         'code',
@@ -14,5 +14,4 @@ class Service extends Model
         'status',
         'gym_id',
     ];
-
 }

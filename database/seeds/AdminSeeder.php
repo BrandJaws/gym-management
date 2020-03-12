@@ -13,6 +13,7 @@ class AdminSeeder extends Seeder
      */
     public function run()
     {
+        Admin::truncate();
         Admin::create([
             'name' => 'admin',
             'email' => 'default@portal.com',

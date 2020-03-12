@@ -3,7 +3,7 @@
     <div class="kt-content  kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor" id="kt_content">
         <!-- begin:: Content -->
         @include('_layouts.flash-message')
-        <form action="{{ url('admin/gym/create') }}" method="POST" enctype="multipart/form-data"
+        <form action="{{ url('admin/gym/branch/add') }}" method="POST" enctype="multipart/form-data"
               class="kt-form kt-form--label-right">
             {{csrf_field()}}
             <div class="kt-container  kt-container--fluid  kt-grid__item kt-grid__item--fluid">
@@ -14,7 +14,8 @@
                             <div class="kt-portlet__head">
                                 <div class="kt-portlet__head-label">
                                     <h3 class="kt-portlet__head-title">
-                                        Create A Gym
+                                        <small> Create </small> &nbsp;  {{ $gym->name }} <small> Branch </small>
+                                        <input type="hidden" value="{{$gym->id }}" name="gym_id">
                                     </h3>
                                 </div>
                             </div>
@@ -129,96 +130,7 @@
             <!-- end:: Content -->
             <div class="kt-container  kt-container--fluid  kt-grid__item kt-grid__item--fluid">
                 <div class="row">
-                    <div class="col-lg-8">
-                        <!--begin::Portlet-->
-                        <div class="kt-portlet">
-                            <div class="kt-portlet__head">
-                                <div class="kt-portlet__head-label">
-                                    <h3 class="kt-portlet__head-title">
-                                        Create A Super Admin
-                                    </h3>
-                                </div>
-                            </div>
-                            <div class="kt-portlet__body">
-                                <div class="form-group row">
-                                    <div class="col-lg-6">
-                                        <label>Name:</label>
-                                        <input type="text" name="employeeName" class="form-control" required
-                                               placeholder="Enter your name"/>
-                                    </div>
-                                    <div class="col-lg-6">
-                                        <label>Email:</label>
-                                        <input type="email" name="email" class="form-control"
-                                               placeholder="Enter your email" required/>
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <div class="col-lg-6">
-                                        <label>Password:</label>
-                                        <input type="password" name="password" class="form-control" required
-                                               placeholder="Enter your password  ">
-                                    </div>
-                                    <div class="col-lg-6">
-                                        <label>Gender:</label>
-                                        <div class="kt-radio-inline">
-                                            <label class="kt-radio kt-radio--solid">
-                                                <input type="radio" name="gender" value="Male" required> Male
-                                                <span></span>
-                                            </label>
-                                            <label class="kt-radio kt-radio--solid">
-                                                <input type="radio" name="gender" value="Female" required> Female
-                                                <span></span>
-                                            </label>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <div class="col-lg-6">
-                                        <label>Cnic:</label>
-                                        <input type="text" name="cnic" class="form-control"
-                                               placeholder="Enter Your Cnic" required/>
-                                    </div>
-                                    <div class="col-lg-6">
-                                        <label>Phone:</label>
-                                        <input type="number" name="phone" class="form-control"
-                                               placeholder="Enter Your Contact" required>
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <div class="col-lg-6">
-                                        <label>Salary:</label>
-                                        <input type="number" name="salary" class="form-control"
-                                               placeholder="Enter Your Salary" required/>
-                                    </div>
-                                    <div class="col-lg-6">
-                                        <label>Specialization:</label>
-                                        <input type="text" name="specialization" class="form-control"
-                                               placeholder="Enter Your Specialization" required>
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <div class="col-lg-6">
-                                        <label>Address:</label>
-                                        <input type="text" name="empAddress" class="form-control"
-                                               placeholder="Enter Your Address" required/>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="kt-portlet__foot">
-                                <div class="kt-form__actions">
-                                    <div class="row">
-                                        <div class="col-12">
-                                            <input type="submit" value="Save" class="btn btn-primary">
-                                            <a href="{{route('gym.list')}}"
-                                               class="btn btn-secondary">Cancel</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!--end::Portlet-->
-                    </div>
-                    <div class="col-lg-4">
+                    <div class="col-lg-12">
                         <!--begin::Portlet-->
                         <div class="kt-portlet">
                             <div class="kt-portlet__head">
@@ -235,10 +147,11 @@
                                         <div class="row">
                                             @if(count($facilities) >= 0)
                                                 @foreach ($facilities as $facility)
-                                                    <div class="col-md-5">
+                                                    <div class="col-md-4">
                                                         <label class="kt-checkbox">
                                                             <input type="checkbox" name="facilities[]"
-                                                                   value="{{$facility->name}}">
+                                                                   value="{{$facility->name}}"
+                                                                {{in_array("$facility->name",$facilityList)?"checked":""}}>
                                                             {{$facility->name}}
                                                             <span></span>
                                                         </label>
@@ -247,6 +160,17 @@
                                             @else
                                                 <p>None</p>
                                             @endif
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="kt-portlet__foot">
+                                    <div class="kt-form__actions">
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <input type="submit" value="Save" class="btn btn-primary">
+                                                <a href="{{route('adminEmployee.list')}}"
+                                                   class="btn btn-secondary">Cancel</a>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>

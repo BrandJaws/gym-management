@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use App\Country;
 
 class CountrySeeder extends Seeder
 {
@@ -11,7 +12,7 @@ class CountrySeeder extends Seeder
      */
     public function run()
     {
-        DB::table('countries')->delete();
+        Country::truncate();
         $countries = array(
             array('code' => 'US', 'name' => 'United States'),
             array('code' => 'CA', 'name' => 'Canada'),
@@ -256,6 +257,6 @@ class CountrySeeder extends Seeder
             array('code' => 'ZM', 'name' => 'Zambia'),
             array('code' => 'ZW', 'name' => 'Zimbabwe'),
         );
-        DB::table('countries')->insert($countries);
+        Country::insert($countries);
     }
 }

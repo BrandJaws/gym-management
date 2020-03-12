@@ -35,6 +35,18 @@ class Gym extends Model
             ->paginate(10);
     }
 
+    public static function getGymBranchList($query, $sort_by, $sort_type, $id)
+    {
+        return Gym::where('parent_id', $id)
+            ->where('name', 'like', '%' . $query . '%')
+            ->orWhere('city', 'like', '%' . $query . '%')
+            ->orWhere('address', 'like', '%' . $query . '%')
+            ->orWhere('country', 'like', '%' . $query . '%')
+            ->orWhere('status', 'like', '%' . $query . '%')
+            ->orderBy($sort_by, $sort_type)
+            ->paginate(10);
+    }
+
     public function employee()
     {
         return $this->hasOne(Employee::class, 'id');
@@ -47,6 +59,11 @@ class Gym extends Model
 
     public function services()
     {
-        return $this->hasMany('App\Service','gym_id','id');
+        return $this->hasMany('App\GymServices', 'gym_id');
+    }
+
+    public function country()
+    {
+        return $this->hasMany('App\Country', 'gym_id', 'id');
     }
 }
