@@ -19,9 +19,17 @@
                             @csrf
                             <div class="kt-portlet__body">
                                 <div class="form-group row">
-                                    <div class="col-lg-4">
-                                        <label>Gym:</label>
-                                        <input type="text" name="gym" class="form-control" placeholder="Enter Your Gym">
+                                    <div class="col-lg-4 countryDropdown">
+                                        <label class="">Gym:</label>
+                                        <select class="form-control kt-select2" id="kt_select2_1" name="gym">
+                                            @if(count($gyms) >= 0)
+                                                @foreach ($gyms as $gym)
+                                                    <option value="{{$gym->id}}">{{$gym->name}}</option>
+                                                @endforeach
+                                            @else
+                                                <p>None</p>
+                                            @endif
+                                        </select>
                                     </div>
                                     <div class="col-lg-4">
                                         <label>Name:</label>
@@ -72,4 +80,8 @@
         </div>
         <!-- end:: Content -->
     </div>
+@endsection
+
+@section('custom-script')
+    <script src="{{ asset('js/select2.js') }}"></script>
 @endsection

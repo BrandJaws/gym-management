@@ -20,11 +20,23 @@
                             @csrf
                             <div class="kt-portlet__body">
                                 <div class="form-group row">
-                                    <div class="col-lg-6">
+                                    <div class="col-lg-4 countryDropdown">
+                                        <label class="">Gym:</label>
+                                        <select class="form-control kt-select2" id="kt_select2_1" name="gym">
+                                            @if(count($gyms) >= 0)
+                                                @foreach ($gyms as $gym)
+                                                    <option value="{{$gym->id}}">{{$gym->name}}</option>
+                                                @endforeach
+                                            @else
+                                                <p>None</p>
+                                            @endif
+                                        </select>
+                                    </div>
+                                    <div class="col-lg-4">
                                         <label>Name:</label>
                                         <input type="text" name="name" class="form-control" placeholder="Enter full name" />
                                     </div>
-                                    <div class="col-lg-6">
+                                    <div class="col-lg-4">
                                         <label>Email:</label>
                                         <input type="email" name="email" class="form-control" placeholder="Enter full email" />
                                     </div>
@@ -59,17 +71,15 @@
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <div class="col-lg-6">
+                                    <div class="col-lg-4">
                                         <label>Speciality:</label>
                                         <input type="text" name="speciality" class="form-control" placeholder="Enter Your Speciality"/>
                                     </div>
-                                    <div class="col-lg-6">
+                                    <div class="col-lg-4">
                                         <label>Note:</label>
                                         <input type="text" name="note" class="form-control" placeholder="Enter Your Note" />
                                     </div>
-                                </div>
-                                <div class="form-group row">
-                                    <div class="col-lg-6">
+                                    <div class="col-lg-4">
                                         <label>Status:</label>
                                         <div class="kt-radio-inline">
                                             <label class="kt-radio kt-radio--solid">
@@ -81,10 +91,6 @@
                                                 <span></span>
                                             </label>
                                         </div>
-                                    </div>
-                                    <div class="col-lg-6">
-                                        <label>Gym:</label>
-                                        <input type="text" name="gym" id="gym" class="form-control" placeholder="Enter your Gym" />
                                     </div>
                                 </div>
                             </div>
@@ -107,4 +113,8 @@
         </div>
         <!-- end:: Content -->
     </div>
+@endsection
+
+@section('custom-script')
+    <script src="{{ asset('js/select2.js') }}"></script>
 @endsection

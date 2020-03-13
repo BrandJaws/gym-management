@@ -1,7 +1,8 @@
 <?php
 
 namespace App\Http\Controllers\Gym;
-
+use App\Supplier;
+use App\Gym;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -12,9 +13,22 @@ class SupplierController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view('gym.supplier.list');
+        try {
+            $supplier = Supplier::orderBy('id', 'asc')->paginate(4);
+            if ($request->ajax()) {
+                $sort_by = $request->get('sortby');
+                $sort_type = $request->get('sorttype');
+                $query = $request->get('query');
+                $query = str_replace(" ", "%", $query);
+                $supplier = Supplier::getSupplierList($query, $sort_by, $sort_type);
+                return view('gym.membership.pagination_data', compact('supplier'))->render();
+            }
+            return view('gym.supplier.list', compact('supplier'));
+        } catch (\Exception $e) {
+            return back()->with('error', 'Oops, something was not right');
+        }
     }
 
     /**
@@ -24,7 +38,8 @@ class SupplierController extends Controller
      */
     public function create()
     {
-        return view('gym.supplier.create');
+        $gym = Gym::all();
+        return view('gym.supplier.create')->with('gyms', $gym);
     }
 
     /**

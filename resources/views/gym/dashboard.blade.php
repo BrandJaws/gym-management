@@ -41,7 +41,7 @@
                                             Total Memberships
                                         </a>
                                         <div class="kt-widget__button">
-                                            <h2>4</h2>
+                                            <h2>{{$memberships}}</h2>
                                         </div>
                                         <div class="kt-widget__button">
                                             <span class="btn btn-label-warning btn-sm">Active</span>
@@ -91,7 +91,7 @@
                                             Total Employees
                                         </a>
                                         <div class="kt-widget__button">
-                                            <h2>8</h2>
+                                            <h2>{{$employees}}</h2>
                                         </div>
                                         <div class="kt-widget__button">
                                             <span class="btn btn-label-warning btn-sm">Active</span>
@@ -142,7 +142,7 @@
                                             Total Members
                                         </a>
                                         <div class="kt-widget__button">
-                                            <h2>20</h2>
+                                            <h2>{{$members}}</h2>
                                         </div>
                                         <div class="kt-widget__button">
                                             <span class="btn btn-label-warning btn-sm">Active</span>
@@ -192,7 +192,7 @@
                                             Total Trainers
                                         </a>
                                         <div class="kt-widget__button">
-                                            <h2>6</h2>
+                                            <h2>{{$trainers}}</h2>
                                         </div>
                                         <div class="kt-widget__button">
                                             <span class="btn btn-label-warning btn-sm">Active</span>
@@ -201,7 +201,6 @@
                                 </div>
                             </div>
                         </div>
-
                         <!--end::Widget -->
                     </div>
                 </div>

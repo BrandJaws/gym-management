@@ -66,4 +66,9 @@ class Gym extends Model
     {
         return $this->hasMany('App\Country', 'gym_id', 'id');
     }
+
+    public function membership()
+    {
+        return $this->hasMany('App\Membership', 'gym_id');
+    }
 }

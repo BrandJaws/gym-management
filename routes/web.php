@@ -10,7 +10,6 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
     Route::get('/login', ['as' => 'admin.login', 'uses' => 'AuthController@login']);
     Route::get('password/reset', ['as' => 'admin.reset', 'uses' => 'AuthController@reset']);
 
-
     /*-----------------------------------------------------------------------------------*/
     /*------------------------------------GYM Routes-------------------------------------*/
     /*-----------------------------------------------------------------------------------*/
@@ -57,31 +56,49 @@ Route::group(['prefix' => 'gym', 'namespace' => 'Gym'], function () {
     Route::group(['as' => 'membership.', 'prefix' => 'membership'], function () {
         Route::get('/', ['as' => 'list', 'uses' => 'MembershipController@index']);
         Route::get('/create', ['as' => 'create', 'uses' => 'MembershipController@create']);
+        Route::post('/create', ['as' => 'create', 'uses' => 'MembershipController@store']);
+        Route::get('/edit/{id}', ['as' => 'edit', 'uses' => 'MembershipController@edit']);
+        Route::get('/destroy/{id}', ['as' => 'destroy', 'uses' => 'MembershipController@destroy']);
     });
 
     Route::group(['as' => 'member.', 'prefix' => 'member'], function () {
         Route::get('/', ['as' => 'list', 'uses' => 'MemberController@index']);
         Route::get('/create', ['as' => 'create', 'uses' => 'MemberController@create']);
+        Route::post('/create', ['as' => 'create', 'uses' => 'MemberController@store']);
+        Route::get('/edit/{id}', ['as' => 'edit', 'uses' => 'MemberController@edit']);
+        Route::get('/destroy/{id}', ['as' => 'destroy', 'uses' => 'MemberController@destroy']);
     });
 
     Route::group(['as' => 'trainer.', 'prefix' => 'trainer'], function () {
         Route::get('/', ['as' => 'list', 'uses' => 'TrainerController@index']);
         Route::get('/create', ['as' => 'create', 'uses' => 'TrainerController@create']);
+        Route::post('/create', ['as' => 'create', 'uses' => 'TrainerController@store']);
+        Route::get('/edit/{id}', ['as' => 'edit', 'uses' => 'TrainerController@edit']);
+        Route::get('/destroy/{id}', ['as' => 'destroy', 'uses' => 'TrainerController@destroy']);
     });
 
     Route::group(['as' => 'supplier.', 'prefix' => 'supplier'], function () {
         Route::get('/', ['as' => 'list', 'uses' => 'SupplierController@index']);
         Route::get('/create', ['as' => 'create', 'uses' => 'SupplierController@create']);
+        Route::post('/create', ['as' => 'create', 'uses' => 'SupplierController@store']);
+        Route::get('/edit/{id}', ['as' => 'edit', 'uses' => 'SupplierController@edit']);
+        Route::get('/destroy/{id}', ['as' => 'destroy', 'uses' => 'SupplierController@destroy']);
     });
 
     Route::group(['as' => 'treasury.', 'prefix' => 'treasury'], function () {
         Route::get('/', ['as' => 'list', 'uses' => 'TreasuryController@index']);
         Route::get('/create', ['as' => 'create', 'uses' => 'TreasuryController@create']);
+        Route::post('/create', ['as' => 'create', 'uses' => 'TreasuryController@store']);
+        Route::get('/edit/{id}', ['as' => 'edit', 'uses' => 'TreasuryController@edit']);
+        Route::get('/destroy/{id}', ['as' => 'destroy', 'uses' => 'TreasuryController@destroy']);
     });
 
     Route::group(['as' => 'service.', 'prefix' => 'service'], function () {
         Route::get('/', ['as' => 'list', 'uses' => 'ServiceController@index']);
         Route::get('/create', ['as' => 'create', 'uses' => 'ServiceController@create']);
+        Route::post('/create', ['as' => 'create', 'uses' => 'ServiceController@store']);
+        Route::get('/edit/{id}', ['as' => 'edit', 'uses' => 'ServiceController@edit']);
+        Route::get('/destroy/{id}', ['as' => 'destroy', 'uses' => 'ServiceController@destroy']);
     });
 
 });

@@ -20,7 +20,6 @@
                             </div>
                         </div>
                         <div class="kt-portlet__body">
-
                             <!--begin::Section-->
                             <div class="kt-section">
                                 <div class="kt-section__content">
