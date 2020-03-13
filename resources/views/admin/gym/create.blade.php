@@ -7,6 +7,11 @@
             {{csrf_field()}}
             <div class="kt-container  kt-container--fluid  kt-grid__item kt-grid__item--fluid">
                 <div class="row">
+                    <div class="col-md-12 mt-2">
+                        @include('_layouts.flash-message')
+                    </div>
+                </div>
+                <div class="row">
                     <div class="col-lg-8">
                         <!--begin::Portlet-->
                         <div class="kt-portlet">
@@ -15,11 +20,6 @@
                                     <h3 class="kt-portlet__head-title">
                                         Create A Gym
                                     </h3>
-                                </div>
-                                <div class="row" style="float: right">
-                                    <div class="col-md-12 mt-2">
-                                        @include('_layouts.flash-message')
-                                    </div>
                                 </div>
                             </div>
                             <!--begin::Form-->
