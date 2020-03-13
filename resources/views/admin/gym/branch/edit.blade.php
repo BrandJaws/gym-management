@@ -26,6 +26,9 @@
                                         <label>Name:</label>
                                         <input type="text" name="name" class="form-control" value="{{ $gym->name }}"
                                                placeholder="Enter full name" required/>
+                                        @if($errors->has('name'))
+                                            <div class="error">{{ $errors->first('name') }}</div>
+                                        @endif
                                     </div>
                                     <div class="col-md-2">
                                         <label>Trial In:</label>
@@ -40,6 +43,9 @@
                                                        {{ ($gym->inTrial=="0")? "checked" : "" }} required> No
                                                 <span></span>
                                             </label>
+                                            @if($errors->has('inTrial'))
+                                                <div class="error">{{ $errors->first('inTrial') }}</div>
+                                            @endif
                                         </div>
                                     </div>
                                     <div class="col-md-4 trialEndsAt" style="display: none;">
@@ -52,6 +58,9 @@
                                                     <i class="la la-calendar-check-o"></i>
                                                 </span>
                                             </div>
+                                            @if($errors->has('trialEndsAt'))
+                                                <div class="error">{{ $errors->first('trialEndsAt') }}</div>
+                                            @endif
                                         </div>
                                     </div>
                                 </div>
@@ -68,16 +77,25 @@
                                                 <p>None</p>
                                             @endif
                                         </select>
+                                        @if($errors->has('country'))
+                                            <div class="error">{{ $errors->first('country') }}</div>
+                                        @endif
                                     </div>
                                     <div class="col-md-4">
                                         <label>State:</label>
                                         <input type="text" name="state" class="form-control" value="{{ $gym->state }}"
                                                placeholder="Enter your state" required/>
+                                        @if($errors->has('state'))
+                                            <div class="error">{{ $errors->first('state') }}</div>
+                                        @endif
                                     </div>
                                     <div class="col-md-4">
                                         <label>City:</label>
                                         <input type="text" name="city" class="form-control" value="{{ $gym->city }}"
                                                placeholder="Enter your city" required/>
+                                        @if($errors->has('city'))
+                                            <div class="error">{{ $errors->first('city') }}</div>
+                                        @endif
                                     </div>
                                 </div>
                                 <div class="form-group row">
@@ -86,6 +104,9 @@
                                         <input type="text" name="address" class="form-control"
                                                value="{{ $gym->address }}"
                                                placeholder="Enter your address" required/>
+                                        @if($errors->has('address'))
+                                            <div class="error">{{ $errors->first('address') }}</div>
+                                        @endif
                                     </div>
                                 </div>
                             </div>
@@ -111,6 +132,9 @@
                                         <input type="number" name="amount" class="form-control"
                                                value="{{ $gym->gymLicense->amount }}"
                                                placeholder="Enter Cost"/>
+                                        @if($errors->has('amount'))
+                                            <div class="error">{{ $errors->first('amount') }}</div>
+                                        @endif
                                     </div>
                                 </div>
                                 <div class="form-group row">
@@ -118,6 +142,9 @@
                                         <label>Starting Date:</label>
                                         <input type="date" name="startDate" class="form-control"
                                                value="{{ \Carbon\Carbon::parse($gym->gymLicense->startDate)->format('yy-m-d')}}"/>
+                                        @if($errors->has('startDate'))
+                                            <div class="error">{{ $errors->first('startDate') }}</div>
+                                        @endif
                                     </div>
                                 </div>
                                 <div class="form-group row">
@@ -125,6 +152,9 @@
                                         <label>Closing Date:</label>
                                         <input type="date" name="endDate" class="form-control"
                                                value="{{ \Carbon\Carbon::parse($gym->gymLicense->endDate)->format('yy-m-d')}}"/>
+                                        @if($errors->has('endDate'))
+                                            <div class="error">{{ $errors->first('endDate') }}</div>
+                                        @endif
                                     </div>
                                 </div>
                             </div>

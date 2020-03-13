@@ -16,6 +16,6 @@ class DashboardController extends Controller
         $gymInTrial = Gym::where('inTrial', 1)->count();
         $superAdmin = Admin::count();
         $license = License::count();
-        return view('admin.dashboard', compact('superAdmin','gym', 'gymInTrial',  'license'))->render();
+        return view('admin.dashboard', compact('superAdmin', 'gym', 'gymInTrial', 'license'))->render();
     }
 }

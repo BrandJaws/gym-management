@@ -2,7 +2,6 @@
 @section('content')
     <div class="kt-content  kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor" id="kt_content">
         <!-- begin:: Content -->
-        @include('_layouts.flash-message')
         <form action="{{ url('admin/gym/edit') }}" method="POST" enctype="multipart/form-data"
               class="kt-form kt-form--label-right">
             {{csrf_field()}}
@@ -18,6 +17,11 @@
                                         Update Gym
                                     </h3>
                                 </div>
+                                <div class="row" style="float: right">
+                                    <div class="col-md-12 mt-2">
+                                        @include('_layouts.flash-message')
+                                    </div>
+                                </div>
                             </div>
                             <!--begin::Form-->
                             <div class="kt-portlet__body">
@@ -26,6 +30,9 @@
                                         <label>Name:</label>
                                         <input type="text" name="name" class="form-control" value="{{ $gym->name }}"
                                                placeholder="Enter full name" required/>
+                                        @if($errors->has('name'))
+                                            <div class="error">{{ $errors->first('name') }}</div>
+                                        @endif
                                     </div>
                                     <div class="col-md-2">
                                         <label>Trial In:</label>
@@ -40,6 +47,9 @@
                                                        {{ ($gym->inTrial=="0")? "checked" : "" }} required> No
                                                 <span></span>
                                             </label>
+                                            @if($errors->has('inTrial'))
+                                                <div class="error">{{ $errors->first('inTrial') }}</div>
+                                            @endif
                                         </div>
                                     </div>
                                     <div class="col-md-4 trialEndsAt" style="display: none;">
@@ -52,6 +62,9 @@
                                                     <i class="la la-calendar-check-o"></i>
                                                 </span>
                                             </div>
+                                            @if($errors->has('trialEndsAt'))
+                                                <div class="error">{{ $errors->first('trialEndsAt') }}</div>
+                                            @endif
                                         </div>
                                     </div>
                                 </div>
@@ -68,16 +81,25 @@
                                                 <p>None</p>
                                             @endif
                                         </select>
+                                        @if($errors->has('country'))
+                                            <div class="error">{{ $errors->first('country') }}</div>
+                                        @endif
                                     </div>
                                     <div class="col-md-4">
                                         <label>State:</label>
                                         <input type="text" name="state" class="form-control" value="{{ $gym->state }}"
                                                placeholder="Enter your state" required/>
+                                        @if($errors->has('state'))
+                                            <div class="error">{{ $errors->first('state') }}</div>
+                                        @endif
                                     </div>
                                     <div class="col-md-4">
                                         <label>City:</label>
                                         <input type="text" name="city" class="form-control" value="{{ $gym->city }}"
                                                placeholder="Enter your city" required/>
+                                        @if($errors->has('city'))
+                                            <div class="error">{{ $errors->first('city') }}</div>
+                                        @endif
                                     </div>
                                 </div>
                                 <div class="form-group row">
@@ -86,6 +108,9 @@
                                         <input type="text" name="address" class="form-control"
                                                value="{{ $gym->address }}"
                                                placeholder="Enter your address" required/>
+                                        @if($errors->has('address'))
+                                            <div class="error">{{ $errors->first('address') }}</div>
+                                        @endif
                                     </div>
                                 </div>
                             </div>
@@ -111,6 +136,9 @@
                                         <input type="number" name="amount" class="form-control"
                                                value="{{ $gym->gymLicense->amount }}"
                                                placeholder="Enter Cost"/>
+                                        @if($errors->has('amount'))
+                                            <div class="error">{{ $errors->first('amount') }}</div>
+                                        @endif
                                     </div>
                                 </div>
                                 <div class="form-group row">
@@ -118,6 +146,9 @@
                                         <label>Starting Date:</label>
                                         <input type="date" name="startDate" class="form-control"
                                                value="{{ \Carbon\Carbon::parse($gym->gymLicense->startDate)->format('yy-m-d')}}"/>
+                                        @if($errors->has('startDate'))
+                                            <div class="error">{{ $errors->first('startDate') }}</div>
+                                        @endif
                                     </div>
                                 </div>
                                 <div class="form-group row">
@@ -125,6 +156,9 @@
                                         <label>Closing Date:</label>
                                         <input type="date" name="endDate" class="form-control"
                                                value="{{ \Carbon\Carbon::parse($gym->gymLicense->endDate)->format('yy-m-d')}}"/>
+                                        @if($errors->has('endDate'))
+                                            <div class="error">{{ $errors->first('endDate') }}</div>
+                                        @endif
                                     </div>
                                 </div>
                             </div>
@@ -154,12 +188,18 @@
                                         <input type="text" name="employeeName" class="form-control" required
                                                value="{{ $gym->employee->name}}"
                                                placeholder="Enter your name"/>
+                                        @if($errors->has('employeeName'))
+                                            <div class="error">{{ $errors->first('employeeName') }}</div>
+                                        @endif
                                     </div>
                                     <div class="col-lg-6">
                                         <label>Email:</label>
                                         <input type="email" name="email" class="form-control"
                                                value="{{ $gym->employee->email}}"
                                                placeholder="Enter your email" required/>
+                                        @if($errors->has('email'))
+                                            <div class="error">{{ $errors->first('email') }}</div>
+                                        @endif
                                     </div>
                                 </div>
                                 <div class="form-group row">
@@ -167,6 +207,9 @@
                                         <label>Password:</label>
                                         <input type="password" name="password" class="form-control"
                                                placeholder="Enter your password  ">
+                                        @if($errors->has('password'))
+                                            <div class="error">{{ $errors->first('password') }}</div>
+                                        @endif
                                     </div>
                                     <div class="col-lg-6">
                                         <label>Gender:</label>
@@ -183,6 +226,9 @@
                                                 Female
                                                 <span></span>
                                             </label>
+                                            @if($errors->has('gender'))
+                                                <div class="error">{{ $errors->first('gender') }}</div>
+                                            @endif
                                         </div>
                                     </div>
                                 </div>
@@ -192,12 +238,18 @@
                                         <input type="text" name="cnic" class="form-control"
                                                value="{{ $gym->employee->cnic }}"
                                                placeholder="Enter Your Cnic" required/>
+                                        @if($errors->has('cnic'))
+                                            <div class="error">{{ $errors->first('cnic') }}</div>
+                                        @endif
                                     </div>
                                     <div class="col-lg-6">
                                         <label>Phone:</label>
                                         <input type="number" name="phone" class="form-control"
                                                value="{{ $gym->employee->phone }}"
                                                placeholder="Enter Your Contact" required>
+                                        @if($errors->has('phone'))
+                                            <div class="error">{{ $errors->first('phone') }}</div>
+                                        @endif
                                     </div>
                                 </div>
                                 <div class="form-group row">
@@ -206,12 +258,18 @@
                                         <input type="number" name="salary" class="form-control"
                                                value="{{ $gym->employee->salary }}"
                                                placeholder="Enter Your Salary" required/>
+                                        @if($errors->has('salary'))
+                                            <div class="error">{{ $errors->first('salary') }}</div>
+                                        @endif
                                     </div>
                                     <div class="col-lg-6">
                                         <label>Specialization:</label>
                                         <input type="text" name="specialization" class="form-control"
                                                value="{{ $gym->employee->specialization }}"
                                                placeholder="Enter Your Specialization" required>
+                                        @if($errors->has('specialization'))
+                                            <div class="error">{{ $errors->first('specialization') }}</div>
+                                        @endif
                                     </div>
                                 </div>
                                 <div class="form-group row">
@@ -220,6 +278,9 @@
                                         <input type="text" name="empAddress" class="form-control"
                                                value="{{ $gym->employee->address }}"
                                                placeholder="Enter Your Address" required/>
+                                        @if($errors->has('empAddress'))
+                                            <div class="error">{{ $errors->first('empAddress') }}</div>
+                                        @endif
                                     </div>
                                 </div>
                             </div>
@@ -296,7 +357,6 @@
                             </a>
                         </div>
                     </div>
-                    @include('_layouts.flash-message')
                     <div class="kt-portlet__body">
                         <!--begin::Section-->
                         <div class="kt-section">

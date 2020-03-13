@@ -21,6 +21,7 @@
 <body
     class="kt-quick-panel--right kt-demo-panel--right kt-offcanvas-panel--right kt-header--fixed kt-header-mobile--fixed kt-subheader--enabled kt-subheader--fixed kt-subheader--solid kt-aside--enabled kt-aside--fixed kt-page--loading">
 <!-- begin:: Page -->
+
 <div class="kt-grid kt-grid--ver kt-grid--root">
     <div class="kt-grid kt-grid--hor kt-grid--root  kt-login kt-login--v1" id="kt_login">
         <div
@@ -78,6 +79,12 @@
 <!-- end:: Page -->
 <!-- begin::Global Config(global config for global JS sciprts) -->
 <script>
+    //close the alert after 3 seconds.
+    $(document).ready(function(){
+        setTimeout(function() {
+            $(".alert").alert('close');
+        }, 3000);
+    });
     var KTAppOptions = {
         "colors": {
             "state": {

@@ -33,7 +33,7 @@
                         <div class="kt-widget kt-widget--user-profile-4">
                             <div class="kt-widget__head">
                                 <div class="kt-widget__media">
-                                    <img class="kt-widget__img kt-hidden-" src="assets/media/gym/gym1.jpg" alt="image" height="100px">
+                                    <img class="kt-widget__img kt-hidden-" src="{{asset('assets/media/gym/gym1.jpg')}}" alt="image" height="100px">
                                 </div>
                                 <div class="kt-widget__content">
                                     <div class="kt-widget__section">
@@ -82,7 +82,7 @@
                         <div class="kt-widget kt-widget--user-profile-4">
                             <div class="kt-widget__head">
                                 <div class="kt-widget__media">
-                                    <img class="kt-widget__img kt-hidden-" src="assets/media/gym/machine1.jpg" alt="image" height="100px">
+                                    <img class="kt-widget__img kt-hidden-" src="{{asset('assets/media/gym/machine1.jpg')}}" alt="image" height="100px">
                                 </div>
                                 <div class="kt-widget__content">
                                     <div class="kt-widget__section">
@@ -132,7 +132,7 @@
                         <div class="kt-widget kt-widget--user-profile-4">
                             <div class="kt-widget__head">
                                 <div class="kt-widget__media">
-                                    <img class="kt-widget__img kt-hidden-" src="assets/media/gym/customer1.jpg" alt="image" height="100px">
+                                    <img class="kt-widget__img kt-hidden-" src="{{asset('assets/media/gym/customer1.jpg')}}" alt="image" height="100px">
                                 </div>
                                 <div class="kt-widget__content">
                                     <div class="kt-widget__section">
@@ -182,7 +182,7 @@
                         <div class="kt-widget kt-widget--user-profile-4">
                             <div class="kt-widget__head">
                                 <div class="kt-widget__media">
-                                    <img class="kt-widget__img kt-hidden-" src="assets/media/gym/employe1.jpg" alt="image" height="100px">
+                                    <img class="kt-widget__img kt-hidden-" src="{{asset('assets/media/gym/employe1.jpg')}}" alt="image" height="100px">
                                 </div>
                                 <div class="kt-widget__content">
                                     <div class="kt-widget__section">

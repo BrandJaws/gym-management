@@ -1,13 +1,15 @@
-<div class="kt-aside  kt-aside--fixed  kt-grid__item kt-grid kt-grid--desktop kt-grid--hor-desktop" id="kt_aside">
-    <!-- begin:: Aside -->
-    <div class="kt-aside__brand kt-grid__item " id="kt_aside_brand">
-        <div class="kt-aside__brand-logo">
-            <a href="{{url('/admin')}}">
-                <img alt="Logo" src="{{asset('assets/media/logos/logo1.png')}}" width="170px" height="50px" />
-            </a>
-        </div>
-        <div class="kt-aside__brand-tools">
-            <button class="kt-aside__brand-aside-toggler" id="kt_aside_toggler">
+@if(Auth::guard('admin')->check())
+    <div class="kt-aside  kt-aside--fixed  kt-grid__item kt-grid kt-grid--desktop kt-grid--hor-desktop" id="kt_aside">
+        <!-- begin:: Aside -->
+
+        <div class="kt-aside__brand kt-grid__item " id="kt_aside_brand">
+            <div class="kt-aside__brand-logo">
+                <a href="{{url('/admin')}}">
+                    <img alt="Logo" src="{{asset('assets/media/logos/logo1.png')}}" width="170px" height="50px"/>
+                </a>
+            </div>
+            <div class="kt-aside__brand-tools">
+                <button class="kt-aside__brand-aside-toggler" id="kt_aside_toggler">
                 <span>
                     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
                          width="24px" height="24px" viewBox="0 0 24 24" version="1.1"
@@ -25,7 +27,7 @@
                         </g>
                     </svg>
                 </span>
-                <span>
+                    <span>
                     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px"
                          height="24px" viewBox="0 0 24 24" version="1.1" class="kt-svg-icon">
                         <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
@@ -40,18 +42,19 @@
                         </g>
                     </svg>
                 </span>
-            </button>
+                </button>
+            </div>
         </div>
-    </div>
-    <!-- end:: Aside -->
-    <!-- begin:: Aside Menu -->
-    <div class="kt-aside-menu-wrapper kt-grid__item kt-grid__item--fluid" id="kt_aside_menu_wrapper">
-        <div id="kt_aside_menu" class="kt-aside-menu " data-ktmenu-vertical="1" data-ktmenu-scroll="1"
-             data-ktmenu-dropdown-timeout="500">
-            <ul class="kt-menu__nav ">
-                <li class="kt-menu__item  kt-menu__item--{{ Request::is('admin') ? 'active' : null }} "
-                    aria-haspopup="true">
-                    <a href="{{url('/admin')}}" class="kt-menu__link ">
+        <!-- end:: Aside -->
+        <!-- begin:: Aside Menu -->
+
+        <div class="kt-aside-menu-wrapper kt-grid__item kt-grid__item--fluid" id="kt_aside_menu_wrapper">
+            <div id="kt_aside_menu" class="kt-aside-menu " data-ktmenu-vertical="1" data-ktmenu-scroll="1"
+                 data-ktmenu-dropdown-timeout="500">
+                <ul class="kt-menu__nav ">
+                    <li class="kt-menu__item  kt-menu__item--{{ Request::is('admin/dashboard') ? 'active' : Request::is('admin/dashboard/*') ? 'active' : null }} "
+                        aria-haspopup="true">
+                        <a href="{{url('/admin/dashboard')}}" class="kt-menu__link ">
                         <span class="kt-menu__link-icon">
                             <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
                                  width="24px" height="24px" viewBox="0 0 24 24" version="1.1" class="kt-svg-icon">
@@ -66,19 +69,41 @@
                             </g>
                             </svg>
                         </span>
-                        <span class="kt-menu__link-text">Dashboard</span>
-                    </a>
-                </li>
-                <li class="kt-menu__item  kt-menu__item--{{ Request::is('admin/gym') ? 'active' : Request::is('admin/gym/*') ? 'active' : null }}"
-                    aria-haspopup="true"
-                    data-ktmenu-submenu-toggle="hover">
-                    <a href="{{route('gym.list')}}" class="kt-menu__link kt-menu__toggle">
-                        <span class="kt-menu__link-icon"><i class="flaticon-home-1"></i></span>
-                        <span class="kt-menu__link-text">Gym</span>
-                    </a>
-                </li>
-            </ul>
+                            <span class="kt-menu__link-text">Dashboard</span>
+                        </a>
+                    </li>
+                    <li class="kt-menu__item  kt-menu__item--{{ Request::is('admin/gym') ? 'active' : Request::is('admin/gym/*') ? 'active' : null }}"
+                        aria-haspopup="true"
+                        data-ktmenu-submenu-toggle="hover">
+                        <a href="{{route('gym.list')}}" class="kt-menu__link kt-menu__toggle">
+                            <span class="kt-menu__link-icon"><i class="flaticon-home-1"></i></span>
+                            <span class="kt-menu__link-text">Gym</span>
+                        </a>
+                    </li>
+                    <li class="kt-menu__item  kt-menu__item--{{ Request::is('admin/auth') ? 'active' : Request::is('admin/auth/*') ? 'active' : null }}"
+                        aria-haspopup="true"
+                        data-ktmenu-submenu-toggle="hover">
+                        <a href="{{route('admin.profile')}}" class="kt-menu__link kt-menu__toggle">
+                            <span class="kt-menu__link-icon"><i class="flaticon-user"></i></span>
+                            <span class="kt-menu__link-text">Profile</span>
+                        </a>
+                    </li>
+                    <li class="kt-menu__item  kt-menu__item--"
+                        aria-haspopup="true"
+                        data-ktmenu-submenu-toggle="hover">
+                        <a href="#" class="kt-menu__link kt-menu__toggle"
+                           onclick="event.preventDefault();document.querySelector('#admin-logout-form').submit();">
+                            <span class="kt-menu__link-icon"><i class="flaticon-logout"></i></span>
+                            <span class="kt-menu__link-text">Logout</span>
+                        </a>
+                        <form id="admin-logout-form" action="{{ route('admin.logout') }}" method="POST"
+                              style="display: none;">
+                            @csrf
+                        </form>
+                    </li>
+                </ul>
+            </div>
         </div>
+        <!-- end:: Aside Menu -->
     </div>
-    <!-- end:: Aside Menu -->
-</div>
+@endif
