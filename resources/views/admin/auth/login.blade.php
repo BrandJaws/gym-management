@@ -1,7 +1,26 @@
 @extends('_layouts.admin')
 @section('form-title', 'Log In')
 @section('content')
-    <form method="POST" action="">
+    {{-- Success Alert --}}
+    @if(session('status'))
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            {{session('status')}}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    @endif
+
+    {{-- Error Alert --}}
+    @if(session('error'))
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            {{session('error')}}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    @endif
+    <form method="POST" action="{{ route('admin.login') }}">
         @csrf
         <div class="form-group row">
             <label for="email" class="col-md-12 col-form-label text-md-left">{{ __('E-Mail Address') }}</label>
