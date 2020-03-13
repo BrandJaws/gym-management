@@ -12,6 +12,7 @@ use App\License;
 use App\Service;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Validator;
 use Symfony\Component\Console\Input\Input;
 
@@ -83,7 +84,7 @@ class GymController extends Controller
                 'empAddress' => 'required',
             ]);
             if ($validator->fails()) {
-                return $validator->errors();
+                return Redirect::back()->withErrors($validator);
             }
             $gym = new Gym();
             $gym->fill($request->only([
@@ -122,13 +123,15 @@ class GymController extends Controller
             $license->gym_id = $gymId;
             $license->save();
             $services = $request->get('facilities');
-            foreach ($services as $value) {
-                GymServices::insert(
-                    [
-                        'name' => $value,
-                        'gym_id' => $gymId
-                    ]
-                );
+            if ($services != "") {
+                foreach ($services as $value) {
+                    GymServices::insert(
+                        [
+                            'name' => $value,
+                            'gym_id' => $gymId
+                        ]
+                    );
+                }
             }
             return back()->with('success', 'Gym Created Successfully!');
         } catch (\Exception $e) {
@@ -203,7 +206,7 @@ class GymController extends Controller
                 'empAddress' => 'required',
             ]);
             if ($validator->fails()) {
-                return $validator->errors();
+                return Redirect::back()->withErrors($validator);
             }
             $gym_Id = $request->gym_id;
             $gym = Gym::where('id', $gym_Id)->first();
@@ -244,13 +247,15 @@ class GymController extends Controller
             $license->save();
             GymServices::where('gym_id', $gym_Id)->delete();
             $services = $request->get('facilities');
-            foreach ($services as $value) {
-                GymServices::insert(
-                    [
-                        'name' => $value,
-                        'gym_id' => $gym_Id
-                    ]
-                );
+            if ($services != "") {
+                foreach ($services as $value) {
+                    GymServices::insert(
+                        [
+                            'name' => $value,
+                            'gym_id' => $gym_Id
+                        ]
+                    );
+                }
             }
             return back()->with('success', 'Gym Updated Successfully!');
         } catch (\Exception $e) {
@@ -308,7 +313,7 @@ class GymController extends Controller
                 'address' => 'required',
             ]);
             if ($validator->fails()) {
-                return $validator->errors();
+                return Redirect::back()->withErrors($validator);
             }
             $gym = new Gym();
             $gym->fill($request->only([
@@ -332,13 +337,15 @@ class GymController extends Controller
             $license->gym_id = $gymId;
             $license->save();
             $services = $request->get('facilities');
-            foreach ($services as $value) {
-                GymServices::insert(
-                    [
-                        'name' => $value,
-                        'gym_id' => $gymId
-                    ]
-                );
+            if ($services != "") {
+                foreach ($services as $value) {
+                    GymServices::insert(
+                        [
+                            'name' => $value,
+                            'gym_id' => $gymId
+                        ]
+                    );
+                }
             }
             return back()->with('success', 'Gym Branch Created Successfully!');
         } catch (\Exception $e) {
@@ -384,7 +391,7 @@ class GymController extends Controller
                 'address' => 'required',
             ]);
             if ($validator->fails()) {
-                return $validator->errors();
+                return Redirect::back()->withErrors($validator);
             }
             $gym_Id = $request->gym_id;
             $gym = Gym::where('id', $gym_Id)->first();
@@ -407,13 +414,15 @@ class GymController extends Controller
             $license->save();
             GymServices::where('gym_id', $gym_Id)->delete();
             $services = $request->get('facilities');
-            foreach ($services as $value) {
-                GymServices::insert(
-                    [
-                        'name' => $value,
-                        'gym_id' => $gym_Id
-                    ]
-                );
+            if ($services != "") {
+                foreach ($services as $value) {
+                    GymServices::insert(
+                        [
+                            'name' => $value,
+                            'gym_id' => $gym_Id
+                        ]
+                    );
+                }
             }
             return back()->with('success', 'Gym Updated Successfully!');
         } catch (\Exception $e) {

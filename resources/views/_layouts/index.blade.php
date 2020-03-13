@@ -33,6 +33,7 @@
             <img alt="Logo" src="{{asset('assets/media/logos/logo-light.png')}}"/>
         </a>
     </div>
+
     <div class="kt-header-mobile__toolbar">
         <button class="kt-header-mobile__toggler kt-header-mobile__toggler--left" id="kt_aside_mobile_toggler">
             <span></span>
@@ -48,6 +49,7 @@
         <!-- Uncomment this to display the close button of the panel
 <button class="kt-aside-close " id="kt_aside_close_btn"><i class="la la-close"></i></button>
 -->
+
     @if(Request::is('gym/*') || Request::is('gym'))
         @include('gym.__partials.sidebar')
     @else

@@ -49,12 +49,12 @@ class Gym extends Model
 
     public function employee()
     {
-        return $this->hasOne(Employee::class, 'id');
+        return $this->hasOne(Employee::class, 'gym_id');
     }
 
     public function gymLicense()
     {
-        return $this->hasOne(License::class);
+        return $this->hasOne(License::class, 'gym_id');
     }
 
     public function services()

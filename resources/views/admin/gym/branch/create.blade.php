@@ -14,7 +14,7 @@
                             <div class="kt-portlet__head">
                                 <div class="kt-portlet__head-label">
                                     <h3 class="kt-portlet__head-title">
-                                        <small> Create </small> &nbsp;  {{ $gym->name }} <small> Branch </small>
+                                        <small> Create </small> &nbsp; {{ $gym->name }} <small> Branch </small>
                                         <input type="hidden" value="{{$gym->id }}" name="gym_id">
                                     </h3>
                                 </div>
@@ -26,6 +26,9 @@
                                         <label>Name:</label>
                                         <input type="text" name="name" class="form-control"
                                                placeholder="Enter full name" required/>
+                                        @if($errors->has('name'))
+                                            <div class="error">{{ $errors->first('name') }}</div>
+                                        @endif
                                     </div>
                                     <div class="col-md-2">
                                         <label>Trial In:</label>
@@ -38,6 +41,9 @@
                                                 <input type="radio" name="inTrial" value="0" required> No
                                                 <span></span>
                                             </label>
+                                            @if($errors->has('inTrial'))
+                                                <div class="error">{{ $errors->first('inTrial') }}</div>
+                                            @endif
                                         </div>
                                     </div>
                                     <div class="col-md-4 trialEndsAt" style="display: none;">
@@ -50,6 +56,9 @@
                                                     <i class="la la-calendar-check-o"></i>
                                                 </span>
                                             </div>
+                                            @if($errors->has('trialEndsAt'))
+                                                <div class="error">{{ $errors->first('trialEndsAt') }}</div>
+                                            @endif
                                         </div>
                                     </div>
                                 </div>
@@ -65,16 +74,25 @@
                                                 <p>None</p>
                                             @endif
                                         </select>
+                                        @if($errors->has('country'))
+                                            <div class="error">{{ $errors->first('country') }}</div>
+                                        @endif
                                     </div>
                                     <div class="col-md-4">
                                         <label>State:</label>
                                         <input type="text" name="state" id="state" class="form-control"
                                                placeholder="Enter your state" required/>
+                                        @if($errors->has('state'))
+                                            <div class="error">{{ $errors->first('state') }}</div>
+                                        @endif
                                     </div>
                                     <div class="col-md-4">
                                         <label>City:</label>
                                         <input type="text" name="city" id="city" class="form-control"
                                                placeholder="Enter your city" required/>
+                                        @if($errors->has('city'))
+                                            <div class="error">{{ $errors->first('city') }}</div>
+                                        @endif
                                     </div>
                                 </div>
                                 <div class="form-group row">
@@ -82,6 +100,9 @@
                                         <label>Address:</label>
                                         <input type="text" name="address" id="address" class="form-control"
                                                placeholder="Enter your address" required/>
+                                        @if($errors->has('address'))
+                                            <div class="error">{{ $errors->first('address') }}</div>
+                                        @endif
                                     </div>
                                 </div>
                             </div>
@@ -106,18 +127,27 @@
                                         <label>Cost:</label>
                                         <input type="number" name="amount" class="form-control"
                                                placeholder="Enter Cost"/>
+                                        @if($errors->has('amount'))
+                                            <div class="error">{{ $errors->first('amount') }}</div>
+                                        @endif
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-md-12">
                                         <label>Starting Date:</label>
                                         <input type="date" name="startDate" class="form-control"/>
+                                        @if($errors->has('startDate'))
+                                            <div class="error">{{ $errors->first('startDate') }}</div>
+                                        @endif
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-md-12">
                                         <label>Closing Date:</label>
                                         <input type="date" name="endDate" class="form-control"/>
+                                        @if($errors->has('endDate'))
+                                            <div class="error">{{ $errors->first('endDate') }}</div>
+                                        @endif
                                     </div>
                                 </div>
                             </div>

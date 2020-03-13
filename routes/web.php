@@ -11,11 +11,13 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
     Route::get('/login', ['as' => 'admin.login', 'uses' => 'AuthController@index']);
     Route::post('/login', ['as' => 'admin.login', 'uses' => 'AuthController@login']);
     Route::post('/logout', ['as' => 'admin.logout', 'uses' => 'AuthController@logout']);
-
     Route::get('password/reset', ['as' => 'admin.reset', 'uses' => 'AuthController@reset']);
 
     Route::group(['middleware' => ['auth.admin']], function () {
+
         Route::get('/dashboard', ['as' => 'admin.home', 'uses' => 'DashboardController@dashboard']);
+        Route::get('/profile', ['as' => 'admin.profile', 'uses' => 'AuthController@profile']);
+        Route::post('/profile', ['as' => 'admin.profile', 'uses' => 'AuthController@updateProfile']);
 
         /*-----------------------------------------------------------------------------------*/
         /*------------------------------------GYM Routes-------------------------------------*/

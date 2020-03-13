@@ -80,8 +80,8 @@
 <!-- begin::Global Config(global config for global JS sciprts) -->
 <script>
     //close the alert after 3 seconds.
-    $(document).ready(function () {
-        setTimeout(function () {
+    $(document).ready(function(){
+        setTimeout(function() {
             $(".alert").alert('close');
         }, 3000);
     });

@@ -80,6 +80,14 @@
                             <span class="kt-menu__link-text">Gym</span>
                         </a>
                     </li>
+                    <li class="kt-menu__item  kt-menu__item--{{ Request::is('admin/auth') ? 'active' : Request::is('admin/auth/*') ? 'active' : null }}"
+                        aria-haspopup="true"
+                        data-ktmenu-submenu-toggle="hover">
+                        <a href="{{route('admin.profile')}}" class="kt-menu__link kt-menu__toggle">
+                            <span class="kt-menu__link-icon"><i class="flaticon-user"></i></span>
+                            <span class="kt-menu__link-text">Profile</span>
+                        </a>
+                    </li>
                     <li class="kt-menu__item  kt-menu__item--"
                         aria-haspopup="true"
                         data-ktmenu-submenu-toggle="hover">

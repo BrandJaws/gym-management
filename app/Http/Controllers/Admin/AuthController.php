@@ -2,10 +2,17 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Admin;
+use App\Employee;
+use App\Gym;
+use App\GymServices;
 use App\Http\Controllers\Controller;
 
+use App\License;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Validator;
 
 class AuthController extends Controller
 {
@@ -89,5 +96,44 @@ class AuthController extends Controller
     public function reset()
     {
         return view('admin.auth.reset');
+    }
+
+    public function profile()
+    {
+        return view('admin.auth.profile');
+    }
+
+    public function updateProfile(Request $request)
+    {
+        $id = $request->get('user_id');
+        try {
+            $validator = Validator::make($request->all(), [
+                'name' => 'required',
+                'phone' => 'required',
+                'email' => 'unique:admins,email,' . $id,
+                'password' => 'nullable|between:6,12,password' . $id,
+                'confirm_password' => 'same:password',
+            ]);
+            if ($validator->fails()) {
+                return Redirect::back()->withErrors($validator);
+            }
+            $gym = Admin::find($id);
+            $gym->fill($request->only([
+                'name',
+                'email',
+            ]));
+            $gym->phone = $request['phone'];
+            if (!empty($request['password'])) {
+                $gym->password = bcrypt($request['password']);
+            } else {
+                $gym->password = $gym->password;
+            }
+            $gym->save();
+            return back()->with('success', 'Profile Updated Successfully!');
+        } catch (\Exception $e) {
+            return response()->json([
+                'response' => $e
+            ], 400);
+        }
     }
 }
