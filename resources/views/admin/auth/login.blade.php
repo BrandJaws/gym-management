@@ -1,7 +1,7 @@
 @extends('_layouts.admin')
 @section('form-title', 'Log In')
 @section('content')
-    <form method="POST" action="{{ route('') }}">
+    <form method="POST" action="">
         @csrf
         <div class="form-group row">
             <label for="email" class="col-md-12 col-form-label text-md-left">{{ __('E-Mail Address') }}</label>

@@ -51,7 +51,7 @@
             <ul class="kt-menu__nav ">
                 <li class="kt-menu__item  kt-menu__item--{{ Request::is('admin') ? 'active' : null }} "
                     aria-haspopup="true">
-                    <a href="{{url('/admin')}}" class="kt-menu__link ">
+                    <a href="{{url('/admin/dashboard')}}" class="kt-menu__link ">
                         <span class="kt-menu__link-icon">
                             <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
                                  width="24px" height="24px" viewBox="0 0 24 24" version="1.1" class="kt-svg-icon">

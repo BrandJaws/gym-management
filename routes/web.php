@@ -6,10 +6,10 @@
 
 Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
 
-    Route::get('/', ['as' => 'admin.home', 'uses' => 'DashboardController@dashboard']);
-    Route::get('/login', ['as' => 'admin.login', 'uses' => 'AuthController@login']);
+    Route::get('/', ['as' => 'admin.login', 'uses' => 'AuthController@login']);
     Route::get('password/reset', ['as' => 'admin.reset', 'uses' => 'AuthController@reset']);
 
+    Route::get('/dashboard', ['as' => 'admin.home', 'uses' => 'DashboardController@dashboard']);
 
     /*-----------------------------------------------------------------------------------*/
     /*------------------------------------GYM Routes-------------------------------------*/
