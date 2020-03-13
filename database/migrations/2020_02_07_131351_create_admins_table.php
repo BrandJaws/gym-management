@@ -19,6 +19,7 @@ class CreateAdminsTable extends Migration
             $table->string('phone')->nullable(true); // +92000-0000000
             $table->string('email'); // claudio@gmail.com
             $table->string('password'); // 1q2w3e4r5t
+            $table->rememberToken();
             $table->timestamps();
         });
     }

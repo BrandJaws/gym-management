@@ -40,28 +40,33 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
-        'admin' => [
-            'driver' => 'session',
-            'provider' => 'admins',
-        ],
-
-        'employee' => [
-            'driver' => 'session',
-            'provider' => 'employees',
-        ],
-        'trainer' => [
-            'driver' => 'session',
-            'provider' => 'trainers',
-        ],
-        'member' => [
-            'driver' => 'session',
-            'provider' => 'members',
-        ],
         'api' => [
             'driver' => 'token',
             'provider' => 'users',
             'hash' => false,
         ],
+        'admin' => [
+            'driver' => 'session',
+            'provider' => 'admins',
+        ],
+        'api-admin' => [
+            'driver' => 'token',
+            'provider' => 'admins',
+        ],
+
+//        'employee' => [
+//            'driver' => 'session',
+//            'provider' => 'employees',
+//        ],
+//        'trainer' => [
+//            'driver' => 'session',
+//            'provider' => 'trainers',
+//        ],
+//        'member' => [
+//            'driver' => 'session',
+//            'provider' => 'members',
+//        ],
+
     ],
 
     /*
@@ -91,18 +96,18 @@ return [
             'model' => App\Admin::class,
         ],
 
-        'employees' => [
-            'driver' => 'eloquent',
-            'model' => App\Employee::class,
-        ],
-        'trainers' => [
-            'driver' => 'eloquent',
-            'model' => App\Trainer::class,
-        ],
-        'members' => [
-            'driver' => 'eloquent',
-            'model' => App\Member::class,
-        ],
+//        'employees' => [
+//            'driver' => 'eloquent',
+//            'model' => App\Employee::class,
+//        ],
+//        'trainers' => [
+//            'driver' => 'eloquent',
+//            'model' => App\Trainer::class,
+//        ],
+//        'members' => [
+//            'driver' => 'eloquent',
+//            'model' => App\Member::class,
+//        ],
 
         // 'users' => [
         //     'driver' => 'database',
@@ -131,6 +136,11 @@ return [
             'table' => 'password_resets',
             'expire' => 60,
             'throttle' => 60,
+        ],
+        'admins' => [
+            'provider' => 'admins',
+            'table' => 'password_resets',
+            'expire' => 15,
         ],
     ],
 
