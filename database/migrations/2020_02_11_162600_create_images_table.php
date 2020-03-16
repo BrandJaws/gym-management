@@ -15,9 +15,9 @@ class CreateImagesTable extends Migration
     {
         Schema::create('images', function (Blueprint $table) {
             $table->increments('id'); // 0932
-            $table->morphs('imageable'); // imageable_id = #dffre$53gre23f2c // imageable_type = employee or member.
+            $table->integer('gym_id')->nullable(true); // null
+            $table->morphs('image'); // image_id = #dffre$53gre23f2c // image_type = employee or member.
             $table->string('path'); // public/uploads/00000000.jpg
-            $table->integer('gym_id',false,true); // 03
             $table->timestamps();
         });
     }

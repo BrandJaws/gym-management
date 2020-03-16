@@ -7,6 +7,8 @@ use App\Employee;
 use App\Gym;
 use App\GymServices;
 use App\Http\Controllers\Controller;
+use App\Http\Traits\FileUpload;
+use App\Image;
 use App\License;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -15,6 +17,8 @@ use Illuminate\Support\Facades\Validator;
 
 class AuthController extends Controller
 {
+    use FileUpload;
+
     public function index()
     {
         return view('admin.auth.login');
@@ -126,6 +130,14 @@ class AuthController extends Controller
                 $gym->password = bcrypt($request['password']);
             } else {
                 $gym->password = $gym->password;
+            }
+            if ($request->hasFile('image')) {
+                $images = [];
+                $image = $request->file('image');
+                $userImage = new Image();
+                $this->uploadOne($image, $userImage, 'path', null, $gym->id);
+                $images[] = $userImage;
+                $gym->userImage()->saveMany($images, $gym);
             }
             $gym->save();
             return back()->with('success', 'Profile Updated Successfully!');

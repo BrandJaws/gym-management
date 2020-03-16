@@ -2,8 +2,10 @@
 
 namespace App;
 
+use App\Http\Traits\FileUpload;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Http\UploadedFile;
 use Illuminate\Notifications\Notifiable;
 
 class Admin extends Authenticatable
@@ -11,7 +13,7 @@ class Admin extends Authenticatable
     protected $table = 'admins';
 //    protected $guard = 'admin';
     use Notifiable;
-
+    use FileUpload;
     /**
      * The attributes that are mass assignable.
      *
@@ -29,4 +31,10 @@ class Admin extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function userImage()
+    {
+        return $this->morphOne(Image::class, 'image');
+    }
+
 }

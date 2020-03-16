@@ -53,7 +53,7 @@
                                         <div class="form-group">
                                             <label>Password :</label>
                                             <input type="password" name="password" class="form-control"
-                                                   placeholder="Enter New Password" />
+                                                   placeholder="Enter New Password"/>
                                             @if($errors->has('password'))
                                                 <div class="error">{{ $errors->first('password') }}</div>
                                             @endif
@@ -61,7 +61,7 @@
                                         <div class="form-group">
                                             <label>Re-Password :</label>
                                             <input type="password" name="re-password" class="form-control"
-                                                   placeholder="Enter New Re-Password" />
+                                                   placeholder="Enter New Re-Password"/>
                                             @if($errors->has('re-password'))
                                                 <div class="error">{{ $errors->first('re-password') }}</div>
                                             @endif
@@ -74,19 +74,34 @@
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="profileImageSide">
-                                            <label class="col-form-label">Circle Style</label>
+                                            <label class="col-form-label">Profile Image</label>
                                             <div class="profileImage">
-                                                <div class="kt-avatar kt-avatar--outline kt-avatar--circle" id="kt_user_avatar_3">
-                                                    <div class="kt-avatar__holder" style="background-image: url(assets/media/users/100_3.jpg)"></div>
-                                                    <label class="kt-avatar__upload" data-toggle="kt-tooltip" title="" data-original-title="Change avatar">
+                                                <div class="kt-avatar kt-avatar--outline kt-avatar--circle"
+                                                     id="kt_user_avatar_3">
+                                                    @if(Auth::guard('admin')->user()->userImage != "")
+                                                        <div class="kt-avatar__holder"
+                                                             style="background-image: url('{{ URL::to('/') }}/{{ Auth::guard('admin')->user()->userImage->path }}')">
+
+                                                        </div>
+                                                    @endif
+                                                    @if(Auth::guard('admin')->user()->userImage == "")
+                                                        <div class="kt-avatar__holder"
+                                                             style="background-image: url({{asset('assets/media/users/avatar.png')}})">
+
+                                                        </div>
+                                                    @endif
+                                                    <label class="kt-avatar__upload" data-toggle="kt-tooltip" title=""
+                                                           data-original-title="Change avatar">
                                                         <i class="fa fa-pen"></i>
-                                                        <input type="file" name="profile_avatar" accept=".png, .jpg, .jpeg">
+                                                        <input type="file" name="image" accept=".png, .jpg, .jpeg">
                                                     </label>
-                                                    <span class="kt-avatar__cancel" data-toggle="kt-tooltip" title="" data-original-title="Cancel avatar">
+                                                    <span class="kt-avatar__cancel" data-toggle="kt-tooltip" title=""
+                                                          data-original-title="Cancel avatar">
                                                 <i class="fa fa-times"></i>
                                             </span>
                                                 </div>
-                                                <span class="form-text text-muted">Allowed file types: png, jpg, jpeg.</span>
+                                                <span
+                                                    class="form-text text-muted">Allowed file types: png, jpg, jpeg.</span>
                                             </div>
                                         </div>
                                     </div>
