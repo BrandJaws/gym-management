@@ -41,7 +41,7 @@
                                                 <span></span>
                                             </label>
                                             <label class="kt-radio kt-radio--solid">
-                                                <input type="radio" name="inTrial" value="0"  autofocus required> No
+                                                <input type="radio" name="inTrial" value="0" autofocus required> No
                                                 <span></span>
                                             </label>
                                             @if($errors->has('inTrial'))
@@ -68,7 +68,8 @@
                                 <div class="form-group row">
                                     <div class="col-md-4 countryDropdown">
                                         <label class="">Country:</label>
-                                        <select class="form-control kt-select2" id="kt_select2_1" name="country" autofocus required>
+                                        <select class="form-control kt-select2" id="kt_select2_1" name="country"
+                                                autofocus required>
                                             @if(count($countries) >= 0)
                                                 @foreach ($countries as $country)
                                                     <option value="{{$country->name}}">{{$country->name}}</option>
@@ -119,42 +120,32 @@
                             <div class="kt-portlet__head">
                                 <div class="kt-portlet__head-label">
                                     <h3 class="kt-portlet__head-title">
-                                        Create A License
+                                        Create Permissions
                                     </h3>
                                 </div>
                             </div>
-                            <!--begin::Form-->
                             <div class="kt-portlet__body">
                                 <div class="form-group row">
-                                    <div class="col-md-12">
-                                        <label>Cost:</label>
-                                        <input type="number" name="amount" class="form-control" autofocus
-                                               placeholder="Enter Cost"/>
-                                        @if($errors->has('amount'))
-                                            <div class="error">{{ $errors->first('amount') }}</div>
-                                        @endif
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <div class="col-md-12">
-                                        <label>Starting Date:</label>
-                                        <input type="date" name="startDate" class="form-control" autofocus />
-                                        @if($errors->has('startDate'))
-                                            <div class="error">{{ $errors->first('startDate') }}</div>
-                                        @endif
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <div class="col-md-12">
-                                        <label>Closing Date:</label>
-                                        <input type="date" name="endDate" class="form-control" autofocus />
-                                        @if($errors->has('endDate'))
-                                            <div class="error">{{ $errors->first('endDate') }}</div>
-                                        @endif
+                                    <div class="kt-checkbox-list">
+                                        <div class="row">
+                                            @if(count($gymModule) >= 0)
+                                                @foreach ($gymModule as $module)
+                                                    <div class="col-md-6">
+                                                        <label class="kt-checkbox">
+                                                            <input type="checkbox" name="modules[]" autofocus
+                                                                   value="{{$module->id}}">
+                                                            {{$module->name}}
+                                                            <span></span>
+                                                        </label>
+                                                    </div>
+                                                @endforeach
+                                            @else
+                                                <p>None</p>
+                                            @endif
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                            <!--end::Form-->
                         </div>
                         <!--end::Portlet-->
                     </div>
@@ -209,7 +200,8 @@
                                                 <span></span>
                                             </label>
                                             <label class="kt-radio kt-radio--solid">
-                                                <input type="radio" name="gender" autofocus value="Female" required> Female
+                                                <input type="radio" name="gender" autofocus value="Female" required>
+                                                Female
                                                 <span></span>
                                             </label>
                                             @if($errors->has('gender'))
@@ -277,6 +269,7 @@
                                 </div>
                             </div>
                         </div>
+
                         <!--end::Portlet-->
                     </div>
                     <div class="col-lg-4">
@@ -299,7 +292,7 @@
                                                     <div class="col-md-5">
                                                         <label class="kt-checkbox">
                                                             <input type="checkbox" name="facilities[]" autofocus
-                                                                   value="{{$facility->name}}">
+                                                                   value="{{$facility->id}}">
                                                             {{$facility->name}}
                                                             <span></span>
                                                         </label>
@@ -318,6 +311,61 @@
                     </div>
                 </div>
             </div>
+            {{--            <div class="kt-container  kt-container--fluid  kt-grid__item kt-grid__item--fluid">--}}
+            {{--                <div class="row">--}}
+            {{--                    <div class="col-lg-12">--}}
+            {{--                        <!--begin::Portlet-->--}}
+            {{--                        <div class="kt-portlet">--}}
+            {{--                            <div class="kt-portlet__head">--}}
+            {{--                                <div class="kt-portlet__head-label">--}}
+            {{--                                    <h3 class="kt-portlet__head-title">--}}
+            {{--                                        Create A License--}}
+            {{--                                    </h3>--}}
+            {{--                                </div>--}}
+            {{--                            </div>--}}
+            {{--                            <!--begin::Form-->--}}
+            {{--                            <div class="kt-portlet__body">--}}
+            {{--                                <div class="form-group row">--}}
+            {{--                                    <div class="col-md-6">--}}
+            {{--                                        <label>Name:</label>--}}
+            {{--                                        <input type="number" name="name" class="form-control" autofocus--}}
+            {{--                                               placeholder="Enter Name"/>--}}
+            {{--                                        @if($errors->has('name'))--}}
+            {{--                                            <div class="error">{{ $errors->first('name') }}</div>--}}
+            {{--                                        @endif--}}
+            {{--                                    </div>--}}
+            {{--                                    <div class="col-md-6">--}}
+            {{--                                        <label>Cost:</label>--}}
+            {{--                                        <input type="number" name="amount" class="form-control" autofocus--}}
+            {{--                                               placeholder="Enter Cost"/>--}}
+            {{--                                        @if($errors->has('amount'))--}}
+            {{--                                            <div class="error">{{ $errors->first('amount') }}</div>--}}
+            {{--                                        @endif--}}
+            {{--                                    </div>--}}
+            {{--                                </div>--}}
+            {{--                                <div class="form-group row">--}}
+            {{--                                    <div class="col-md-6">--}}
+            {{--                                        <label>Starting Date:</label>--}}
+            {{--                                        <input type="date" name="startDate" class="form-control" autofocus />--}}
+            {{--                                        @if($errors->has('startDate'))--}}
+            {{--                                            <div class="error">{{ $errors->first('startDate') }}</div>--}}
+            {{--                                        @endif--}}
+            {{--                                    </div>--}}
+            {{--                                    <div class="col-md-6">--}}
+            {{--                                        <label>Closing Date:</label>--}}
+            {{--                                        <input type="date" name="endDate" class="form-control" autofocus />--}}
+            {{--                                        @if($errors->has('endDate'))--}}
+            {{--                                            <div class="error">{{ $errors->first('endDate') }}</div>--}}
+            {{--                                        @endif--}}
+            {{--                                    </div>--}}
+            {{--                                </div>--}}
+            {{--                            </div>--}}
+            {{--                            <!--end::Form-->--}}
+            {{--                        </div>--}}
+            {{--                        <!--end::Portlet-->--}}
+            {{--                    </div>--}}
+            {{--                </div>--}}
+            {{--            </div>--}}
         </form>
     </div>
 @endsection

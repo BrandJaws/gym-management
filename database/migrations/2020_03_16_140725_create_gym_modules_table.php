@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateGymServicesTable extends Migration
+class CreateGymModulesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,10 @@ class CreateGymServicesTable extends Migration
      */
     public function up()
     {
-        Schema::create('gym_services', function (Blueprint $table) {
-            $table->increments('id'); // 012
-            $table->integer('facility_id'); // 01
-            $table->string('code')->nullable(true);; // 0GHY%&GJHG
-            $table->float('fee')->nullable(true); // null
+        Schema::create('gym_modules', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->string('name');
             $table->string('status')->default('Active');
-            $table->integer('gym_id', false, true)->nullable(true); // 03
             $table->timestamps();
         });
     }
@@ -31,6 +28,6 @@ class CreateGymServicesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('gym_services');
+        Schema::dropIfExists('gym_modules');
     }
 }

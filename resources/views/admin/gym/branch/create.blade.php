@@ -180,8 +180,8 @@
                                                     <div class="col-md-4">
                                                         <label class="kt-checkbox">
                                                             <input type="checkbox" name="facilities[]"
-                                                                   value="{{$facility->name}}"
-                                                                {{in_array("$facility->name",$facilityList)?"checked":""}}>
+                                                                   value="{{$facility->id}}"
+                                                                {{in_array("$facility->id",$facilityList)?"checked":""}}>
                                                             {{$facility->name}}
                                                             <span></span>
                                                         </label>

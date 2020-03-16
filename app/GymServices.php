@@ -8,7 +8,7 @@ class GymServices extends Model
 {
     protected $table = 'gym_services';
     protected $fillable = [
-        'name',
+        'facility_id',
         'code',
         'fee',
         'status',

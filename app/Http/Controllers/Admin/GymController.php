@@ -6,6 +6,8 @@ use App\Country;
 use App\Employee;
 use App\Facilities;
 use App\Gym;
+use App\GymModule;
+use App\GymPermission;
 use App\GymServices;
 use App\Http\Controllers\Controller;
 use App\License;
@@ -51,7 +53,8 @@ class GymController extends Controller
         try {
             $countries = Country::all();
             $facilities = Facilities::all();
-            return view('admin.gym.create', compact('countries', 'facilities'));
+            $gymModule = GymModule::all();
+            return view('admin.gym.create', compact('countries', 'facilities', 'gymModule'));
         } catch (\Exception $e) {
             return back()->with('error', 'Oops, something was not right');
         }
@@ -127,7 +130,18 @@ class GymController extends Controller
                 foreach ($services as $value) {
                     GymServices::insert(
                         [
-                            'name' => $value,
+                            'facility_id' => $value,
+                            'gym_id' => $gymId
+                        ]
+                    );
+                }
+            }
+            $modules = $request->get('modules');
+            if ($modules != "") {
+                foreach ($modules as $value) {
+                    GymPermission::insert(
+                        [
+                            'gym_module_id' => $value,
                             'gym_id' => $gymId
                         ]
                     );
@@ -161,12 +175,18 @@ class GymController extends Controller
     public function edit(Request $request, $id)
     {
         $facilityList = [];
+        $moduleList = [];
         $gym = Gym::find($id);
         $facilities = Facilities::all();
         $countries = Country::all();
+        $gymModule = GymModule::all();
         $gymServices = GymServices::where('gym_id', $id)->get();
         foreach ($gymServices as $service) {
-            array_push($facilityList, $service->name);
+            array_push($facilityList, $service->facility_id);
+        }
+        $gymPermission = GymPermission::where('gym_id', $id)->get();
+        foreach ($gymPermission as $permissions) {
+            array_push($moduleList, $permissions->gym_module_id);
         }
         $gymBranch = Gym::where('parent_id', $id)->orderBy('id', 'asc')->paginate(10);
         if ($request->ajax()) {
@@ -177,7 +197,7 @@ class GymController extends Controller
             $gymBranch = Gym::getGymBranchList($query, $sort_by, $sort_type, $id);
             return view('admin.gym.branch.pagination_data', compact('gymBranch'))->render();
         }
-        return view('admin.gym.edit', compact('gym', 'facilities', 'countries', 'facilityList', 'gymBranch'))->render();
+        return view('admin.gym.edit', compact('gym', 'facilities', 'countries', 'facilityList', 'gymBranch', 'gymModule', 'moduleList'))->render();
     }
 
     /**
@@ -251,7 +271,19 @@ class GymController extends Controller
                 foreach ($services as $value) {
                     GymServices::insert(
                         [
-                            'name' => $value,
+                            'facility_id' => $value,
+                            'gym_id' => $gym_Id
+                        ]
+                    );
+                }
+            }
+            GymPermission::where('gym_id', $gym_Id)->delete();
+            $modules = $request->get('modules');
+            if ($modules != "") {
+                foreach ($modules as $value) {
+                    GymPermission::insert(
+                        [
+                            'gym_module_id' => $value,
                             'gym_id' => $gym_Id
                         ]
                     );
@@ -293,7 +325,7 @@ class GymController extends Controller
             $facilities = Facilities::all();
             $gymServices = GymServices::where('gym_id', $id)->get();
             foreach ($gymServices as $service) {
-                array_push($facilityList, $service->name);
+                array_push($facilityList, $service->facility_id);
             }
             return view('admin.gym.branch.create', compact('countries', 'facilities', 'gym', 'facilityList'));
         } catch (\Exception $e) {
@@ -341,7 +373,7 @@ class GymController extends Controller
                 foreach ($services as $value) {
                     GymServices::insert(
                         [
-                            'name' => $value,
+                            'facility_id' => $value,
                             'gym_id' => $gymId
                         ]
                     );
@@ -375,7 +407,7 @@ class GymController extends Controller
         $countries = Country::all();
         $gymServices = GymServices::where('gym_id', $id)->get();
         foreach ($gymServices as $service) {
-            array_push($facilityList, $service->name);
+            array_push($facilityList, $service->facility_id);
         }
         return view('admin.gym.branch.edit', compact('gym', 'facilities', 'countries', 'facilityList'))->render();
     }
@@ -418,7 +450,7 @@ class GymController extends Controller
                 foreach ($services as $value) {
                     GymServices::insert(
                         [
-                            'name' => $value,
+                            'facility_id' => $value,
                             'gym_id' => $gym_Id
                         ]
                     );

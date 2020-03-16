@@ -124,43 +124,34 @@
                             <div class="kt-portlet__head">
                                 <div class="kt-portlet__head-label">
                                     <h3 class="kt-portlet__head-title">
-                                        Update License
+                                        Update Permissions
                                     </h3>
                                 </div>
                             </div>
                             <!--begin::Form-->
                             <div class="kt-portlet__body">
                                 <div class="form-group row">
-                                    <div class="col-md-12">
-                                        <label>Cost:</label>
-                                        <input type="number" name="amount" class="form-control"
-                                               value="{{ $gym->gymLicense->amount }}"
-                                               placeholder="Enter Cost"/>
-                                        @if($errors->has('amount'))
-                                            <div class="error">{{ $errors->first('amount') }}</div>
-                                        @endif
+                                    <div class="kt-checkbox-list">
+                                        <div class="row">
+                                            @if(count($gymModule) >= 0)
+                                                @foreach ($gymModule as $module)
+                                                    <div class="col-md-5">
+                                                        <label class="kt-checkbox">
+                                                            <input type="checkbox" name="modules[]"
+                                                                   value="{{$module->id}}"
+                                                                {{in_array("$module->id",$moduleList)?"checked":""}}>
+                                                            {{$module->name}}
+                                                            <span></span>
+                                                        </label>
+                                                    </div>
+                                                @endforeach
+                                            @else
+                                                <p>None</p>
+                                            @endif
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="form-group row">
-                                    <div class="col-md-12">
-                                        <label>Starting Date:</label>
-                                        <input type="date" name="startDate" class="form-control"
-                                               value="{{ \Carbon\Carbon::parse($gym->gymLicense->startDate)->format('yy-m-d')}}"/>
-                                        @if($errors->has('startDate'))
-                                            <div class="error">{{ $errors->first('startDate') }}</div>
-                                        @endif
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <div class="col-md-12">
-                                        <label>Closing Date:</label>
-                                        <input type="date" name="endDate" class="form-control"
-                                               value="{{ \Carbon\Carbon::parse($gym->gymLicense->endDate)->format('yy-m-d')}}"/>
-                                        @if($errors->has('endDate'))
-                                            <div class="error">{{ $errors->first('endDate') }}</div>
-                                        @endif
-                                    </div>
-                                </div>
+                                <!--end::Form-->
                             </div>
                             <!--end::Form-->
                         </div>
@@ -318,8 +309,8 @@
                                                     <div class="col-md-5">
                                                         <label class="kt-checkbox">
                                                             <input type="checkbox" name="facilities[]"
-                                                                   value="{{$facility->name}}"
-                                                                {{in_array("$facility->name",$facilityList)?"checked":""}}>
+                                                                   value="{{$facility->id}}"
+                                                                {{in_array("$facility->id",$facilityList)?"checked":""}}>
                                                             {{$facility->name}}
                                                             <span></span>
                                                         </label>
@@ -337,82 +328,135 @@
                         </div>
                     </div>
                 </div>
+            </div>
+            <div class="kt-container  kt-container--fluid  kt-grid__item kt-grid__item--fluid">
+                <div class="row">
+                    {{--                    <div class="col-lg-4">--}}
+                    {{--                        <!--begin::Portlet-->--}}
+                    {{--                        <div class="kt-portlet">--}}
+                    {{--                            <div class="kt-portlet__head">--}}
+                    {{--                                <div class="kt-portlet__head-label">--}}
+                    {{--                                    <h3 class="kt-portlet__head-title">--}}
+                    {{--                                        Update License--}}
+                    {{--                                    </h3>--}}
+                    {{--                                </div>--}}
+                    {{--                            </div>--}}
+                    {{--                            <!--begin::Form-->--}}
+                    {{--                            <div class="kt-portlet__body">--}}
+                    {{--                                <div class="form-group row">--}}
+                    {{--                                    <div class="col-md-12">--}}
+                    {{--                                        <label>Cost:</label>--}}
+                    {{--                                        <input type="number" name="amount" class="form-control"--}}
+                    {{--                                               value="{{ $gym->gymLicense->amount }}"--}}
+                    {{--                                               placeholder="Enter Cost"/>--}}
+                    {{--                                        @if($errors->has('amount'))--}}
+                    {{--                                            <div class="error">{{ $errors->first('amount') }}</div>--}}
+                    {{--                                        @endif--}}
+                    {{--                                    </div>--}}
+                    {{--                                </div>--}}
+                    {{--                                <div class="form-group row">--}}
+                    {{--                                    <div class="col-md-12">--}}
+                    {{--                                        <label>Starting Date:</label>--}}
+                    {{--                                        <input type="date" name="startDate" class="form-control"--}}
+                    {{--                                               value="{{ \Carbon\Carbon::parse($gym->gymLicense->startDate)->format('yy-m-d')}}"/>--}}
+                    {{--                                        @if($errors->has('startDate'))--}}
+                    {{--                                            <div class="error">{{ $errors->first('startDate') }}</div>--}}
+                    {{--                                        @endif--}}
+                    {{--                                    </div>--}}
+                    {{--                                </div>--}}
+                    {{--                                <div class="form-group row">--}}
+                    {{--                                    <div class="col-md-12">--}}
+                    {{--                                        <label>Closing Date:</label>--}}
+                    {{--                                        <input type="date" name="endDate" class="form-control"--}}
+                    {{--                                               value="{{ \Carbon\Carbon::parse($gym->gymLicense->endDate)->format('yy-m-d')}}"/>--}}
+                    {{--                                        @if($errors->has('endDate'))--}}
+                    {{--                                            <div class="error">{{ $errors->first('endDate') }}</div>--}}
+                    {{--                                        @endif--}}
+                    {{--                                    </div>--}}
+                    {{--                                </div>--}}
+                    {{--                            </div>--}}
+                    {{--                            <!--end::Form-->--}}
+                    {{--                        </div>--}}
+                    {{--                        <!--end::Portlet-->--}}
+                    {{--                    </div>--}}
+                </div>
+            </div>
         </form>
-    </div>
-    <div class="kt-container  kt-container--fluid  kt-grid__item kt-grid__item--fluid">
-        <div class="row">
-            <div class="col-sm-12">
-                <!--begin::Portlet-->
-                <div class="kt-portlet">
-                    <div class="kt-portlet__head" style="align-items: center">
-                        <div class="kt-portlet__head-label">
-                            <h3 class="kt-portlet__head-title">
-                                Gym Branches
-                            </h3>
+        <div class="kt-container  kt-container--fluid  kt-grid__item kt-grid__item--fluid">
+            <div class="row">
+                <div class="col-sm-12">
+                    <!--begin::Portlet-->
+                    <div class="kt-portlet">
+                        <div class="kt-portlet__head" style="align-items: center">
+                            <div class="kt-portlet__head-label">
+                                <h3 class="kt-portlet__head-title">
+                                    Gym Branches
+                                </h3>
+                            </div>
+                            <div class="dropdown">
+                                <a href="{{url('/admin/gym/branch/add', $gym->id)}}" type="button"
+                                   class="btn btn-brand btn-icon-sm">
+                                    <i class="flaticon2-plus"></i> Add New Branch
+                                </a>
+                            </div>
                         </div>
-                        <div class="dropdown">
-                            <a href="{{url('/admin/gym/branch/add', $gym->id)}}" type="button"
-                               class="btn btn-brand btn-icon-sm">
-                                <i class="flaticon2-plus"></i> Add New Branch
-                            </a>
-                        </div>
-                    </div>
-                    <div class="kt-portlet__body">
-                        <!--begin::Section-->
-                        <div class="kt-section">
-                            <div class="kt-section__content">
-                                <div class="table-responsive">
-                                    <div class="row">
-                                        <div class="col-md-9">
-                                        </div>
-                                        <div class="col-md-3">
-                                            <div class="form-group">
-                                                <input type="text" name="serach" id="serach" class="form-control"/>
+                        <div class="kt-portlet__body">
+                            <!--begin::Section-->
+                            <div class="kt-section">
+                                <div class="kt-section__content">
+                                    <div class="table-responsive">
+                                        <div class="row">
+                                            <div class="col-md-9">
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <input type="text" name="serach" id="serach" class="form-control"/>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="table-responsive">
-                                        <table class="table table-striped table-bordered">
-                                            <thead>
-                                            <tr>
-                                                <th class="sorting" data-sorting_type="asc"
-                                                    data-column_name="name" style="cursor: pointer">Name <span
-                                                        id="id_icon"></span></th>
-                                                <th class="sorting" data-sorting_type="asc"
-                                                    data-column_name="city" style="cursor: pointer">City <span
-                                                        id="post_title_icon"></span></th>
-                                                <th class="sorting" data-sorting_type="asc"
-                                                    data-column_name="country" style="cursor: pointer">Country <span
-                                                        id="post_title_icon"></span></th>
-                                                <th class="sorting" data-sorting_type="asc"
-                                                    data-column_name="address" style="cursor: pointer">Address <span
-                                                        id="post_title_icon"></span></th>
-                                                <th class="sorting" data-sorting_type="asc"
-                                                    data-column_name="status" style="cursor: pointer">Status <span
-                                                        id="post_title_icon"></span></th>
-                                                <th class="sorting" data-sorting_type="asc"
-                                                    data-column_name=" " style="cursor: pointer">Actions <span
-                                                        id="post_title_icon"></span></th>
-                                            </tr>
-                                            </thead>
-                                            <tbody>
-                                            @include('admin.gym.branch.pagination_data')
-                                            </tbody>
-                                        </table>
-                                        <input type="hidden" name="hidden_page" id="hidden_page" value="1"/>
-                                        <input type="hidden" name="hidden_column_name" id="hidden_column_name"
-                                               value="id"/>
-                                        <input type="hidden" name="hidden_sort_type" id="hidden_sort_type"
-                                               value="asc"/>
+                                        <div class="table-responsive">
+                                            <table class="table table-striped table-bordered">
+                                                <thead>
+                                                <tr>
+                                                    <th class="sorting" data-sorting_type="asc"
+                                                        data-column_name="name" style="cursor: pointer">Name <span
+                                                            id="id_icon"></span></th>
+                                                    <th class="sorting" data-sorting_type="asc"
+                                                        data-column_name="city" style="cursor: pointer">City <span
+                                                            id="post_title_icon"></span></th>
+                                                    <th class="sorting" data-sorting_type="asc"
+                                                        data-column_name="country" style="cursor: pointer">Country <span
+                                                            id="post_title_icon"></span></th>
+                                                    <th class="sorting" data-sorting_type="asc"
+                                                        data-column_name="address" style="cursor: pointer">Address <span
+                                                            id="post_title_icon"></span></th>
+                                                    <th class="sorting" data-sorting_type="asc"
+                                                        data-column_name="status" style="cursor: pointer">Status <span
+                                                            id="post_title_icon"></span></th>
+                                                    <th class="sorting" data-sorting_type="asc"
+                                                        data-column_name=" " style="cursor: pointer">Actions <span
+                                                            id="post_title_icon"></span></th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                @include('admin.gym.branch.pagination_data')
+                                                </tbody>
+                                            </table>
+                                            <input type="hidden" name="hidden_page" id="hidden_page" value="1"/>
+                                            <input type="hidden" name="hidden_column_name" id="hidden_column_name"
+                                                   value="id"/>
+                                            <input type="hidden" name="hidden_sort_type" id="hidden_sort_type"
+                                                   value="asc"/>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
+                            <!--end::Section-->
                         </div>
-                        <!--end::Section-->
+                        <!--end::Form-->
                     </div>
-                    <!--end::Form-->
+                    <!--end::Portlet-->
                 </div>
-                <!--end::Portlet-->
             </div>
         </div>
     </div>

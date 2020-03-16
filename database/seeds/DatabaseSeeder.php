@@ -14,8 +14,8 @@ class DatabaseSeeder extends Seeder
         $this->call([
             AdminSeeder::class,
             CountrySeeder::class,
-            FacilitiesSeeder::class
+            FacilitiesSeeder::class,
+            GymModulesSeeder::class,
         ]);
-        // $this->call(UsersTableSeeder::class);
     }
 }
