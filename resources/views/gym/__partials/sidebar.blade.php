@@ -4,7 +4,7 @@
         <div class="kt-aside__brand kt-grid__item " id="kt_aside_brand">
             <div class="kt-aside__brand-logo">
                 <a href="{{url('/gym')}}">
-                    <img alt="Logo" src="{{asset('assets/media/logos/logo1.png')}}" width="170px" height="50px" />
+                    <img alt="Logo" src="{{asset('assets/media/logos/logo1.png')}}" width="170px" height="50px"/>
                 </a>
             </div>
             <div class="kt-aside__brand-tools">
@@ -50,8 +50,9 @@
             <div id="kt_aside_menu" class="kt-aside-menu " data-ktmenu-vertical="1" data-ktmenu-scroll="1"
                  data-ktmenu-dropdown-timeout="500">
                 <ul class="kt-menu__nav ">
-                    <li class="kt-menu__item  kt-menu__item--{{ Request::is('gym') ? 'active' : null }} " aria-haspopup="true">
-                        <a href="{{url('/gym')}}" class="kt-menu__link ">
+                    <li class="kt-menu__item  kt-menu__item--{{ Request::is('gym') ? 'active' : null }} "
+                        aria-haspopup="true">
+                        <a href="{{route('gym.home')}}" class="kt-menu__link ">
                         <span class="kt-menu__link-icon"><svg xmlns="http://www.w3.org/2000/svg"
                                                               xmlns:xlink="http://www.w3.org/1999/xlink" width="24px"
                                                               height="24px" viewBox="0 0 24 24" version="1.1"
@@ -70,63 +71,16 @@
                             <span class="kt-menu__link-text">Dashboard</span>
                         </a>
                     </li>
-                    <li class="kt-menu__item  kt-menu__item--{{ Request::is('gym/membership') ? 'active' : Request::is('gym/membership/*') ? 'active' : null }}" aria-haspopup="true"
-                        data-ktmenu-submenu-toggle="hover">
-                        <a href="{{route('membership.list')}}" class="kt-menu__link kt-menu__toggle">
-                            <span class="kt-menu__link-icon"><i class="flaticon-users-1"></i></span>
-                            <span class="kt-menu__link-text">Membership</span>
-                        </a>
-                    </li>
-                    <li class="kt-menu__item  kt-menu__item--{{ Request::is('gym/employee') ? 'active' : Request::is('gym/employee/*') ? 'active' : null }}" aria-haspopup="true"
-                        data-ktmenu-submenu-toggle="hover">
-                        <a href="{{route('employee.list')}}" class="kt-menu__link kt-menu__toggle">
-                            <span class="kt-menu__link-icon"><i class="flaticon-users-1"></i></span>
-                            <span class="kt-menu__link-text">Employees</span>
-                        </a>
-                    </li>
-                    <li class="kt-menu__item  kt-menu__item--{{ Request::is('gym/member') ? 'active' : Request::is('gym/member/*') ? 'active' : null }}" aria-haspopup="true"
-                        data-ktmenu-submenu-toggle="hover">
-                        <a href="{{route('member.list')}}" class="kt-menu__link kt-menu__toggle">
-                            <span class="kt-menu__link-icon"><i class="flaticon-users"></i></span>
-                            <span class="kt-menu__link-text">Members</span>
-                        </a>
-                    </li>
-                    <li class="kt-menu__item  kt-menu__item--{{ Request::is('gym/trainer') ? 'active' : Request::is('gym/trainer/*') ? 'active' : null }}" aria-haspopup="true"
-                        data-ktmenu-submenu-toggle="hover">
-                        <a href="{{route('trainer.list')}}" class="kt-menu__link kt-menu__toggle">
-                            <span class="kt-menu__link-icon"><i class="flaticon-user"></i></span>
-                            <span class="kt-menu__link-text">Trainers</span>
-                        </a>
-                    </li>
-                    <li class="kt-menu__item  kt-menu__item--{{ Request::is('gym/supplier') ? 'active' : Request::is('gym/supplier/*') ? 'active' : null }}" aria-haspopup="true"
-                        data-ktmenu-submenu-toggle="hover">
-                        <a href="{{route('supplier.list')}}" class="kt-menu__link kt-menu__toggle">
-                            <span class="kt-menu__link-icon"><i class="flaticon-avatar"></i></span>
-                            <span class="kt-menu__link-text">Supplier</span>
-                        </a>
-                    </li>
-                    <li class="kt-menu__item  kt-menu__item--{{ Request::is('gym/treasury') ? 'active' : Request::is('gym/treasury/*') ? 'active' : null }}" aria-haspopup="true"
-                        data-ktmenu-submenu-toggle="hover">
-                        <a href="{{route('treasury.list')}}" class="kt-menu__link kt-menu__toggle">
-                            <span class="kt-menu__link-icon"><i class="flaticon2-avatar"></i></span>
-                            <span class="kt-menu__link-text">Treasury</span>
-                        </a>
-                    </li>
-                    <li class="kt-menu__item  kt-menu__item--{{ Request::is('gym/service') ? 'active' : Request::is('gym/service/*') ? 'active' : null }}" aria-haspopup="true"
-                        data-ktmenu-submenu-toggle="hover">
-                        <a href="{{route('service.list')}}" class="kt-menu__link kt-menu__toggle">
-                            <span class="kt-menu__link-icon"><i class="flaticon2-avatar"></i></span>
-                            <span class="kt-menu__link-text">Service</span>
-                        </a>
-                    </li>
-                    <li class="kt-menu__item  kt-menu__item--{{ Request::is('admin/auth') ? 'active' : Request::is('admin/auth/*') ? 'active' : null }}"
-                        aria-haspopup="true"
-                        data-ktmenu-submenu-toggle="hover">
-                        <a href="{{route('gym.profile')}}" class="kt-menu__link kt-menu__toggle">
-                            <span class="kt-menu__link-icon"><i class="flaticon-user"></i></span>
-                            <span class="kt-menu__link-text">Profile</span>
-                        </a>
-                    </li>
+                    @foreach(Auth::guard('employee')->user()->gym->gymPermissions as $permissions)
+                        <li class="kt-menu__item  kt-menu__item--{{ Request::is($permissions->gymModules->activeRoute) ? 'active' : Request::is($permissions->gymModules->activeRoute,'/*') ? 'active' : null }}"
+                            aria-haspopup="true"
+                            data-ktmenu-submenu-toggle="hover">
+                            <a href="{{route($permissions->gymModules->route)}}" class="kt-menu__link kt-menu__toggle">
+                                <span class="kt-menu__link-icon"><i class="{{ $permissions->gymModules->icon }}"></i></span>
+                                <span class="kt-menu__link-text">{{ $permissions->gymModules->name }}</span>
+                            </a>
+                        </li>
+                    @endforeach
                     <li class="kt-menu__item  kt-menu__item--"
                         aria-haspopup="true"
                         data-ktmenu-submenu-toggle="hover">

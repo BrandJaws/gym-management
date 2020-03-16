@@ -35,6 +35,11 @@ class Employee extends Authenticatable
         return $this->morphOne(Image::class, 'image');
     }
 
+    public function gym()
+    {
+        return $this->belongsTo(Gym::class, 'gym_id');
+    }
+
     public static function getEmployeeList($query, $sort_by, $sort_type)
     {
         return DB::table('employees')

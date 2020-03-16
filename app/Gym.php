@@ -71,4 +71,9 @@ class Gym extends Model
     {
         return $this->hasMany('App\Membership', 'gym_id');
     }
+
+    public function gymPermissions()
+    {
+        return $this->hasMany(GymPermission::class, 'gym_id', 'id');
+    }
 }

@@ -16,6 +16,9 @@ class CreateGymModulesTable extends Migration
         Schema::create('gym_modules', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
+            $table->string('route');
+            $table->string('activeRoute');
+            $table->string('icon');
             $table->string('status')->default('Active');
             $table->timestamps();
         });

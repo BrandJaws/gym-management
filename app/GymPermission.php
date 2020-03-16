@@ -12,4 +12,9 @@ class GymPermission extends Model
         'gym_module_id',
         'status'
     ];
+
+    public function gymModules()
+    {
+        return $this->belongsTo(GymModule::class, 'gym_module_id', 'id');
+    }
 }
