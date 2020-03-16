@@ -6,6 +6,11 @@ use App\Membership;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Validator;
+use Symfony\Component\Console\Input\Input;
+
 class MembershipController extends Controller
 {
     /**
@@ -50,7 +55,35 @@ class MembershipController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        try {
+            $validator = Validator::make($request->all(), [
+                'name' => 'required',
+                'duration' => 'required',
+                'amount' => 'required',
+                'includedMember' => 'required',
+                'monthlyFee' => 'required',
+                'detail' => 'required',
+            ]);
+            if ($validator->fails()) {
+                return Redirect::back()->withErrors($validator);
+            }
+            $membership = new Membership();
+            $membership->fill($request->only([
+                'name',
+                'duration',
+                'amount',
+                'includedMember',
+                'monthlyFee',
+                'detail',
+            ]));
+            $membership->gym_id = $request->gym_id;
+            $membership->save();
+            return back()->with('success', 'Gym Created Successfully!');
+        } catch (\Exception $e) {
+            return response()->json([
+                'response' => $e
+            ], 400);
+        }
     }
 
     /**
@@ -95,6 +128,11 @@ class MembershipController extends Controller
      */
     public function destroy($id)
     {
-        //
+        try {
+            Membership::destroy($id);
+            return back()->with('success', 'Membership Deleted Successfully!');
+        } catch (\Exception $e) {
+            return back()->with('error', 'Oops, something was not right');
+        }
     }
 }

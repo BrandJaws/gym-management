@@ -53,20 +53,6 @@ return [
             'driver' => 'token',
             'provider' => 'admins',
         ],
-
-//        'employee' => [
-//            'driver' => 'session',
-//            'provider' => 'employees',
-//        ],
-//        'trainer' => [
-//            'driver' => 'session',
-//            'provider' => 'trainers',
-//        ],
-//        'member' => [
-//            'driver' => 'session',
-//            'provider' => 'members',
-//        ],
-
     ],
 
     /*

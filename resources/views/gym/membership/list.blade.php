@@ -2,7 +2,8 @@
 @section('content')
     <div class="kt-content  kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor" id="kt_content">
     <!-- begin:: Content -->
-    <div class="kt-container  kt-container--fluid  kt-grid__item kt-grid__item--fluid">
+        @include('_layouts.flash-message')
+        <div class="kt-container  kt-container--fluid  kt-grid__item kt-grid__item--fluid">
         <div class="row">
             <div class="col-sm-12">
                 <!--begin::Portlet-->
@@ -19,7 +20,6 @@
                             </a>
                         </div>
                     </div>
-                    @include('_layouts.flash-message')
                     <div class="kt-portlet__body">
                         <!--begin::Section-->
                         <div class="kt-section">
@@ -99,7 +99,7 @@
 
             function fetch_data(page, sort_type, sort_by, query) {
                 $.ajax({
-                    url: "/gym/membership?page=" + page + "&sortby=" + sort_by + "&sorttype=" + sort_type + "&query=" + query,
+                    url: "gym/membership?page=" + page + "&sortby=" + sort_by + "&sorttype=" + sort_type + "&query=" + query,
                     success: function (data) {
                         $('tbody').html('');
                         $('tbody').html(data);
