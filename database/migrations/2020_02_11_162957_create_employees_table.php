@@ -26,6 +26,7 @@ class CreateEmployeesTable extends Migration
             $table->string('specialization')->nullable(true); // null
             $table->string('address'); // Kamahan Road, Lahore.
             $table->integer('gym_id',false,true); // 03
+            $table->rememberToken();
             $table->timestamps();
         });
     }

@@ -1,4 +1,4 @@
-
+@if(Auth::guard('employee')->check())
     <div class="kt-aside  kt-aside--fixed  kt-grid__item kt-grid kt-grid--desktop kt-grid--hor-desktop" id="kt_aside">
         <!-- begin:: Aside -->
         <div class="kt-aside__brand kt-grid__item " id="kt_aside_brand">
@@ -119,8 +119,30 @@
                             <span class="kt-menu__link-text">Service</span>
                         </a>
                     </li>
+                    <li class="kt-menu__item  kt-menu__item--{{ Request::is('admin/auth') ? 'active' : Request::is('admin/auth/*') ? 'active' : null }}"
+                        aria-haspopup="true"
+                        data-ktmenu-submenu-toggle="hover">
+                        <a href="{{route('gym.profile')}}" class="kt-menu__link kt-menu__toggle">
+                            <span class="kt-menu__link-icon"><i class="flaticon-user"></i></span>
+                            <span class="kt-menu__link-text">Profile</span>
+                        </a>
+                    </li>
+                    <li class="kt-menu__item  kt-menu__item--"
+                        aria-haspopup="true"
+                        data-ktmenu-submenu-toggle="hover">
+                        <a href="#" class="kt-menu__link kt-menu__toggle"
+                           onclick="event.preventDefault();document.querySelector('#admin-logout-form').submit();">
+                            <span class="kt-menu__link-icon"><i class="flaticon-logout"></i></span>
+                            <span class="kt-menu__link-text">Logout</span>
+                        </a>
+                        <form id="admin-logout-form" action="{{ route('gym.logout') }}" method="POST"
+                              style="display: none;">
+                            @csrf
+                        </form>
+                    </li>
                 </ul>
             </div>
         </div>
         <!-- end:: Aside Menu -->
     </div>
+@endif
