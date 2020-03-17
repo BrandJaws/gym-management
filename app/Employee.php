@@ -39,6 +39,10 @@ class Employee extends Authenticatable
     {
         return $this->belongsTo(Gym::class, 'gym_id');
     }
+    public function parentGym()
+    {
+        return $this->belongsTo(Gym::class, 'gym_id','parent_id');
+    }
 
     public static function getEmployeeList($query, $sort_by, $sort_type)
     {

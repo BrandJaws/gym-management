@@ -28,13 +28,13 @@ class GymController extends Controller
     public function index(Request $request)
     {
         try {
-            $gym = Gym::WhereNull('parent_id')->orderBy('id', 'asc')->paginate(10);
+            $gym = Gym::where('gymType', '=', 'parent')->orderBy('id', 'asc')->paginate(100);
             if ($request->ajax()) {
                 $sort_by = $request->get('sortby');
                 $sort_type = $request->get('sorttype');
-                $query = $request->get('query');
-                $query = str_replace(" ", "%", $query);
-                $gym = Gym::getGymList($query, $sort_by, $sort_type);
+                $searchTerm = $request->get('query');
+                $searchTerm = str_replace(" ", "%", $searchTerm);
+                $gym = Gym::getGymList($searchTerm, $sort_by, $sort_type);
                 return view('admin.gym.pagination_data', compact('gym'))->render();
             }
             return view('admin.gym.list', compact('gym'));
@@ -99,8 +99,12 @@ class GymController extends Controller
                 'city',
                 'address',
             ]));
+            $gym->gymType = 'Parent';
             $gym->save();
             $gymId = $gym->id;
+            $gymParentId = Gym::where('id', $gymId)->first();
+            $gymParentId->parent_id = $gymId;
+            $gymParentId->save();
             $employee = new Employee();
             $employee->fill($request->only([
                 'email',
@@ -188,7 +192,7 @@ class GymController extends Controller
         foreach ($gymPermission as $permissions) {
             array_push($moduleList, $permissions->gym_module_id);
         }
-        $gymBranch = Gym::where('parent_id', $id)->orderBy('id', 'asc')->paginate(10);
+        $gymBranch = Gym::where('parent_id', $id)->where('gymType', 'child')->orderBy('id', 'asc')->paginate(10);
         if ($request->ajax()) {
             $sort_by = $request->get('sortby');
             $sort_type = $request->get('sorttype');
@@ -357,6 +361,7 @@ class GymController extends Controller
                 'city',
                 'address',
             ]));
+            $gym->gymType = 'Child';
             $gym->parent_id = $request->get('gym_id');
             $gym->save();
             $gymId = $gym->id;

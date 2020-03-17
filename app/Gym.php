@@ -23,21 +23,26 @@ class Gym extends Model
         'parent_id',
     ];
 
-    public static function getGymList($query, $sort_by, $sort_type)
+    public static function getGymList($searchTerm, $sort_by, $sort_type)
     {
-        return DB::table('gyms')
-            ->where('name', 'like', '%' . $query . '%')
-            ->orWhere('city', 'like', '%' . $query . '%')
-            ->orWhere('address', 'like', '%' . $query . '%')
-            ->orWhere('country', 'like', '%' . $query . '%')
-            ->orWhere('status', 'like', '%' . $query . '%')
-            ->orderBy($sort_by, $sort_type)
-            ->paginate(10);
+        return self::select([
+                'gyms.*',
+            ]
+        )->where(function ($query) use ($searchTerm,$sort_by,$sort_type) {
+            $query->where('gymType','=','parent');
+            if ($searchTerm) {
+                $query->where('gyms.name', 'like', '%' . $searchTerm . '%')
+                    ->orWhere('gyms.city', 'like', '%' . $searchTerm . '%')
+                    ->orWhere('gyms.address', 'like', '%' . $searchTerm . '%')
+                    ->orWhere('gyms.status', 'like', '%' . $searchTerm . '%')
+                    ->orWhere('gyms.country', 'like', '%' . $searchTerm . '%');
+            }
+        })->orderBy($sort_by, $sort_type)->paginate(10);
     }
 
     public static function getGymBranchList($query, $sort_by, $sort_type, $id)
     {
-        return Gym::where('parent_id', $id)
+        return Gym::where('parent_id', $id)->where('gymType', 'child')
             ->where('name', 'like', '%' . $query . '%')
             ->orWhere('city', 'like', '%' . $query . '%')
             ->orWhere('address', 'like', '%' . $query . '%')
@@ -75,5 +80,9 @@ class Gym extends Model
     public function gymPermissions()
     {
         return $this->hasMany(GymPermission::class, 'gym_id', 'id');
+    }
+    public function parentGymPermissions()
+    {
+        return $this->hasMany(GymPermission::class, 'gym_id', 'parent_id');
     }
 }

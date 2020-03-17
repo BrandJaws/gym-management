@@ -22,6 +22,7 @@ class CreateGymsTable extends Migration
             $table->string('city'); // Lahore
             $table->string('state');
             $table->string('address')->nullable(true); // Main Boulevered, Gulberg III, Lahore.
+            $table->string('gymType');
             $table->string('status')->default('Active');
             $table->integer('license_id',false,true)->nullable(true);
             $table->integer('parent_id', false, true)->nullable(true);
