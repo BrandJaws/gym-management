@@ -20,8 +20,7 @@ class CreateMembershipsTable extends Migration
             $table->string('amount'); // 15,000
             $table->integer('monthlyFee'); // 5,000
             $table->text('detail')->nullable(true); // This Membership provide you a lot facilities.
-            // It make you a part of our gym.
-            $table->integer('gym_id',false,true); // 03
+            $table->text('gym_id');
             $table->timestamps();
         });
     }

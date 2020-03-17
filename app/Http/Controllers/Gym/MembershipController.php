@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Gym;
+
 use App\Gym;
 use App\Membership;
 use App\Http\Controllers\Controller;
@@ -21,13 +22,13 @@ class MembershipController extends Controller
     public function index(Request $request)
     {
         try {
-            $membership = Membership::orderBy('id', 'asc')->paginate(4);
+            $membership = Membership::orderBy('id', 'asc')->paginate(10);
             if ($request->ajax()) {
                 $sort_by = $request->get('sortby');
                 $sort_type = $request->get('sorttype');
-                $query = $request->get('query');
-                $query = str_replace(" ", "%", $query);
-                $membership = Membership::getMembershipList($query, $sort_by, $sort_type);
+                $searchTerm = $request->get('query');
+                $searchTerm = str_replace(" ", "%", $searchTerm);
+                $membership = Membership::getMembershipList($searchTerm, $sort_by, $sort_type);
                 return view('gym.membership.pagination_data', compact('membership'))->render();
             }
             return view('gym.membership.list', compact('membership'));
@@ -43,14 +44,14 @@ class MembershipController extends Controller
      */
     public function create()
     {
-        $gym = Gym::all();
-        return view('gym.membership.create')->with('gyms', $gym);
+        $gym = Gym::where('parent_id', '=', Auth::guard('employee')->user()->parentGym->id)->get();
+        return view('gym.membership.create', compact('gym'));
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -62,6 +63,7 @@ class MembershipController extends Controller
                 'amount' => 'required',
                 'monthlyFee' => 'required',
                 'detail' => 'required',
+                'gym_id' => 'required'
             ]);
             if ($validator->fails()) {
                 return Redirect::back()->withErrors($validator);
@@ -72,14 +74,10 @@ class MembershipController extends Controller
                 'duration',
                 'amount',
                 'monthlyFee',
-                'detail',
+                'detail'
             ]));
-            if ($request->gym_id == null)
-            {
-                $membership->gym_id = Auth::guard('employee')->user()->gym_id;
-            } else {
-                $membership->gym_id = $request->gym_id;
-            }
+            $membership->gym_id = implode(',', $request->gym_id);
+//            $membership->gym_id = json_encode($request->gym_id);
             $membership->save();
             return back()->with('success', 'Membership Created Successfully!');
         } catch (\Exception $e) {
@@ -92,7 +90,7 @@ class MembershipController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -103,19 +101,30 @@ class MembershipController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
-        //
+        try {
+            $gymSelectedList = [];
+            $membership = Membership::find($id);
+            $gym = Gym::where('parent_id', '=', Auth::guard('employee')->user()->parentGym->id)->get();
+            $gymId = explode(',',$membership->gym_id);
+            foreach ($gymId as $fields) {
+                array_push($gymSelectedList, $fields);
+            }
+            return view('gym.membership.edit', compact('membership','gym','gymSelectedList'));
+        } catch (\Exception $e) {
+            return back()->with('error', 'Oops, something was not right');
+        }
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -126,7 +135,7 @@ class MembershipController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)

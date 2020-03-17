@@ -16,35 +16,38 @@
                             </div>
                         </div>
                         <!--begin::Form-->
-                        <form action="{{url('gym/membership/create')}}" method="POST" enctype="multipart/form-data" class="kt-form kt-form--label-right">
+                        <form action="{{route('membership.create')}}" method="POST" enctype="multipart/form-data" class="kt-form kt-form--label-right">
                             @csrf
                             <div class="kt-portlet__body">
                                 <div class="form-group row">
-                                    @foreach ($gyms as $gym)
-                                        @if($gym->parent_id == Auth::guard('employee')->user()->gym_id)
-                                            @if($gym->id !== $gym->parent_id)
-                                            <div class="col-lg-4 gymDropdown">
-                                                <label class="">Gym:</label>
-                                                <select class="form-control kt-select2" id="kt_select2_3" name="gym_id" multiple="multiple">
-                                                    <option value="{{$gym->id}}">{{$gym->name}}</option>
-                                                </select>
-                                            </div>
-                                                @if($errors->has('gym_id'))
-                                                    <div class="error">{{ $errors->first('gym_id') }}</div>
-                                                @endif
-                                            @endif
+                                    <div class="col-lg-4 gymDropdown ">
+                                        <label>Gym:</label>
+                                        @if(count($gym) > 1)
+                                            <select class="form-control kt-select2" id="kt_select2_3" name="gym_id[]" required
+                                                    multiple="multiple">
+                                                @foreach ($gym as $gymList)
+                                                    <option value="{{$gymList->id}}">{{$gymList->name}}</option>
+                                                @endforeach
+                                            </select>
+                                        @else
+                                            <input type="hidden" name="gym_id" class="form-control" required
+                                                   value="{{ $gym[0]->id }}"/>
+                                            <input type="text" class="form-control" value="{{ $gym[0]->name }}"
+                                                   disabled/>
                                         @endif
-                                    @endforeach
+                                    </div>
                                     <div class="col-lg-4">
                                         <label>Name:</label>
-                                        <input type="text" name="name" class="form-control" placeholder="Enter your name" />
+                                        <input type="text" name="name" class="form-control" required
+                                               placeholder="Enter your name"/>
                                         @if($errors->has('name'))
                                             <div class="error">{{ $errors->first('name') }}</div>
                                         @endif
                                     </div>
                                     <div class="col-lg-4">
                                         <label>Duration:</label>
-                                        <input type="text" name="duration" class="form-control" placeholder="Enter your duration" />
+                                        <input type="text" name="duration" class="form-control" required
+                                               placeholder="Enter your duration"/>
                                         @if($errors->has('duration'))
                                             <div class="error">{{ $errors->first('duration') }}</div>
                                         @endif
@@ -53,14 +56,16 @@
                                 <div class="form-group row">
                                     <div class="col-lg-6">
                                         <label>Amount:</label>
-                                        <input type="text" name="amount" class="form-control" placeholder="Enter your Amount">
+                                        <input type="text" name="amount" class="form-control" required
+                                               placeholder="Enter your Amount">
                                         @if($errors->has('amount'))
                                             <div class="error">{{ $errors->first('amount') }}</div>
                                         @endif
                                     </div>
                                     <div class="col-lg-6">
                                         <label>Monthly Fee:</label>
-                                        <input type="text" name="monthlyFee" class="form-control" placeholder="Enter your monthly fee" />
+                                        <input type="text" name="monthlyFee" class="form-control" required
+                                               placeholder="Enter your monthly fee"/>
                                         @if($errors->has('monthlyFee'))
                                             <div class="error">{{ $errors->first('monthlyFee') }}</div>
                                         @endif
@@ -69,7 +74,8 @@
                                 <div class="form-group row">
                                     <div class="col-lg-6">
                                         <label>Detail:</label>
-                                        <input type="text" name="detail" class="form-control" placeholder="Enter Your Detail" />
+                                        <input type="text" name="detail" class="form-control" required
+                                               placeholder="Enter Your Detail"/>
                                         @if($errors->has('detail'))
                                             <div class="error">{{ $errors->first('detail') }}</div>
                                         @endif

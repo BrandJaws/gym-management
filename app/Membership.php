@@ -16,16 +16,26 @@ class Membership extends Model
         'detail',
         'gym_id',
     ];
-    public static function getMembershipList($query, $sort_by, $sort_type)
+
+    public static function getMembershipList($searchTerm, $sort_by, $sort_type)
     {
-        return DB::table('memberships')
-            ->where('name', 'like', '%' . $query . '%')
-            ->orWhere('duration', 'like', '%' . $query . '%')
-            ->orWhere('amount', 'like', '%' . $query . '%')
-            ->orWhere('monthlyFee', 'like', '%' . $query . '%')
-            ->orWhere('detail', 'like', '%' . $query . '%')
-            ->orWhere('gym_id', 'like', '%' . $query . '%')
-            ->orderBy($sort_by, $sort_type)
-            ->paginate(10);
+        return self::select([
+                'memberships.*',
+            ]
+        )->where(function ($query) use ($searchTerm, $sort_by, $sort_type) {
+            if ($searchTerm) {
+                $query->where('memberships.name', 'like', '%' . $searchTerm . '%')
+                    ->orWhere('memberships.duration', 'like', '%' . $searchTerm . '%')
+                    ->orWhere('memberships.amount', 'like', '%' . $searchTerm . '%')
+                    ->orWhere('memberships.monthlyFee', 'like', '%' . $searchTerm . '%')
+                    ->orWhere('memberships.detail', 'like', '%' . $searchTerm . '%')
+                    ->orWhere('memberships.gym_id', 'like', '%' . $searchTerm . '%');
+            }
+        })->orderBy($sort_by, $sort_type)->paginate(10);
+    }
+
+    public function gym()
+    {
+        return $this->belongsTo(Gym::class, 'gym_id');
     }
 }

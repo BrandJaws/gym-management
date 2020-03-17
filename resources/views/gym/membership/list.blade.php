@@ -27,7 +27,6 @@
                                 <div class="table-responsive">
                                     <div class="row">
                                         <div class="col-md-9">
-
                                         </div>
                                         <div class="col-md-3">
                                             <div class="form-group">
@@ -53,9 +52,6 @@
                                                         id="post_title_icon"></span></th>
                                                 <th class="sorting" data-sorting_type="asc"
                                                     data-column_name="detail" style="cursor: pointer">Detail <span
-                                                        id="post_title_icon"></span></th>
-                                                <th class="sorting" data-sorting_type="asc"
-                                                    data-column_name="gym_id" style="cursor: pointer">Gym <span
                                                         id="post_title_icon"></span></th>
                                                 <th class="sorting" data-sorting_type="asc"
                                                     data-column_name=" " style="cursor: pointer">Actions <span

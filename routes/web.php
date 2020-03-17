@@ -71,22 +71,21 @@ Route::group(['prefix' => 'gym', 'namespace' => 'Gym'], function () {
         Route::post('/profile', ['as' => 'gym.profile', 'uses' => 'AuthController@updateProfile']);
 
         Route::group(['as' => 'employee.', 'prefix' => 'employee'], function () {
-
             Route::get('/', ['as' => 'list', 'uses' => 'EmployeeController@index']);
             Route::get('/create', ['as' => 'create', 'uses' => 'EmployeeController@create']);
             Route::post('/create', ['as' => 'create', 'uses' => 'EmployeeController@store']);
             Route::get('/destroy/{id}', ['as' => 'destroy', 'uses' => 'EmployeeController@destroy']);
             Route::get('/edit/{id}', ['as' => 'edit', 'uses' => 'EmployeeController@edit']);
             Route::post('/edit', ['as' => 'edit', 'uses' => 'EmployeeController@update']);
-
         });
 
         Route::group(['as' => 'membership.', 'prefix' => 'membership'], function () {
             Route::get('/', ['as' => 'list', 'uses' => 'MembershipController@index']);
             Route::get('/create', ['as' => 'create', 'uses' => 'MembershipController@create']);
             Route::post('/create', ['as' => 'create', 'uses' => 'MembershipController@store']);
-            Route::get('/edit/{id}', ['as' => 'edit', 'uses' => 'MembershipController@edit']);
             Route::get('/destroy/{id}', ['as' => 'destroy', 'uses' => 'MembershipController@destroy']);
+            Route::get('/edit/{id}', ['as' => 'edit', 'uses' => 'MembershipController@edit']);
+            Route::post('/edit', ['as' => 'edit', 'uses' => 'MembershipController@update']);
         });
 
         Route::group(['as' => 'member.', 'prefix' => 'member'], function () {
