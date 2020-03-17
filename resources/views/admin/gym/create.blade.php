@@ -2,7 +2,7 @@
 @section('content')
     <div class="kt-content  kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor" id="kt_content">
         <!-- begin:: Content -->
-        <form action="{{ url('admin/gym/create') }}" method="POST" enctype="multipart/form-data"
+        <form action="{{ route('gym.create') }}" method="POST" enctype="multipart/form-data"
               class="kt-form kt-form--label-right">
             {{csrf_field()}}
             <div class="kt-container  kt-container--fluid  kt-grid__item kt-grid__item--fluid">

@@ -40,16 +40,21 @@ class Gym extends Model
         })->orderBy($sort_by, $sort_type)->paginate(10);
     }
 
-    public static function getGymBranchList($query, $sort_by, $sort_type, $id)
+    public static function getGymBranchList($searchTerm, $sort_by, $sort_type,$id)
     {
-        return Gym::where('parent_id', $id)->where('gymType', 'child')
-            ->where('name', 'like', '%' . $query . '%')
-            ->orWhere('city', 'like', '%' . $query . '%')
-            ->orWhere('address', 'like', '%' . $query . '%')
-            ->orWhere('country', 'like', '%' . $query . '%')
-            ->orWhere('status', 'like', '%' . $query . '%')
-            ->orderBy($sort_by, $sort_type)
-            ->paginate(10);
+        return self::select([
+                'gyms.*',
+            ]
+        )->where(function ($query) use ($searchTerm,$sort_by,$sort_type,$id) {
+            $query->where('parent_id', $id)->where('gymType','=','child');
+            if ($searchTerm) {
+                $query->where('gyms.name', 'like', '%' . $searchTerm . '%')
+                    ->orWhere('gyms.city', 'like', '%' . $searchTerm . '%')
+                    ->orWhere('gyms.address', 'like', '%' . $searchTerm . '%')
+                    ->orWhere('gyms.status', 'like', '%' . $searchTerm . '%')
+                    ->orWhere('gyms.country', 'like', '%' . $searchTerm . '%');
+            }
+        })->orderBy($sort_by, $sort_type)->paginate(10);
     }
 
     public function employee()
