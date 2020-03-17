@@ -28,7 +28,7 @@ class GymController extends Controller
     public function index(Request $request)
     {
         try {
-            $gym = Gym::where('gymType', '=', 'parent')->orderBy('id', 'asc')->paginate(100);
+            $gym = Gym::where('gymType', '=', 'parent')->orderBy('id', 'asc')->paginate(10);
             if ($request->ajax()) {
                 $sort_by = $request->get('sortby');
                 $sort_type = $request->get('sorttype');
@@ -196,9 +196,9 @@ class GymController extends Controller
         if ($request->ajax()) {
             $sort_by = $request->get('sortby');
             $sort_type = $request->get('sorttype');
-            $query = $request->get('query');
-            $query = str_replace(" ", "%", $query);
-            $gymBranch = Gym::getGymBranchList($query, $sort_by, $sort_type, $id);
+            $searchTerm = $request->get('query');
+            $searchTerm = str_replace(" ", "%", $searchTerm);
+            $gymBranch = Gym::getGymBranchList($searchTerm, $sort_by, $sort_type, $id);
             return view('admin.gym.branch.pagination_data', compact('gymBranch'))->render();
         }
         return view('admin.gym.edit', compact('gym', 'facilities', 'countries', 'facilityList', 'gymBranch', 'gymModule', 'moduleList'))->render();

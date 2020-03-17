@@ -1,5 +1,7 @@
 <?php
 
+
+
 /*-----------------------------------------------------------------------------------*/
 /*------------------------------------Admin Routes------------------------------------*/
 /*-----------------------------------------------------------------------------------*/
@@ -19,7 +21,6 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
         Route::get('/dashboard', ['as' => 'admin.home', 'uses' => 'DashboardController@dashboard']);
         Route::get('/profile', ['as' => 'admin.profile', 'uses' => 'AuthController@profile']);
         Route::post('/profile', ['as' => 'admin.profile', 'uses' => 'AuthController@updateProfile']);
-
 
         /*-----------------------------------------------------------------------------------*/
         /*------------------------------------GYM Routes-------------------------------------*/
@@ -49,6 +50,8 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
     });
 });
 
+
+
 /*-----------------------------------------------------------------------------------*/
 /*------------------------------------Gym System Routes-------------------------------*/
 /*-----------------------------------------------------------------------------------*/
@@ -68,8 +71,14 @@ Route::group(['prefix' => 'gym', 'namespace' => 'Gym'], function () {
         Route::post('/profile', ['as' => 'gym.profile', 'uses' => 'AuthController@updateProfile']);
 
         Route::group(['as' => 'employee.', 'prefix' => 'employee'], function () {
+
             Route::get('/', ['as' => 'list', 'uses' => 'EmployeeController@index']);
             Route::get('/create', ['as' => 'create', 'uses' => 'EmployeeController@create']);
+            Route::post('/create', ['as' => 'create', 'uses' => 'EmployeeController@store']);
+            Route::get('/destroy/{id}', ['as' => 'destroy', 'uses' => 'EmployeeController@destroy']);
+            Route::get('/edit/{id}', ['as' => 'edit', 'uses' => 'EmployeeController@edit']);
+            Route::post('/edit', ['as' => 'edit', 'uses' => 'EmployeeController@update']);
+
         });
 
         Route::group(['as' => 'membership.', 'prefix' => 'membership'], function () {

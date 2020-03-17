@@ -71,16 +71,20 @@
                             <span class="kt-menu__link-text">Dashboard</span>
                         </a>
                     </li>
-                    @foreach(Auth::guard('employee')->user()->parentGym->parentGymPermissions as $permissions)
-                        <li class="kt-menu__item  kt-menu__item--{{ Request::is($permissions->gymModules->activeRoute) ? 'active' : Request::is($permissions->gymModules->activeRoute,'/*') ? 'active' : null }}"
-                            aria-haspopup="true"
-                            data-ktmenu-submenu-toggle="hover">
-                            <a href="{{route($permissions->gymModules->route)}}" class="kt-menu__link kt-menu__toggle">
-                                <span class="kt-menu__link-icon"><i class="{{ $permissions->gymModules->icon }}"></i></span>
-                                <span class="kt-menu__link-text">{{ $permissions->gymModules->name }}</span>
-                            </a>
-                        </li>
-                    @endforeach
+                    @if(Auth::guard('employee')->user()->parentGym != "")
+                        @foreach(Auth::guard('employee')->user()->parentGym->parentGymPermissions as $permissions)
+                            <li class="kt-menu__item  kt-menu__item--{{ Request::is($permissions->gymModules->activeRoute) ? 'active' : Request::is($permissions->gymModules->activeRoute,'/*') ? 'active' : null }}"
+                                aria-haspopup="true"
+                                data-ktmenu-submenu-toggle="hover">
+                                <a href="{{route($permissions->gymModules->route)}}"
+                                   class="kt-menu__link kt-menu__toggle">
+                                    <span class="kt-menu__link-icon"><i
+                                            class="{{ $permissions->gymModules->icon }}"></i></span>
+                                    <span class="kt-menu__link-text">{{ $permissions->gymModules->name }}</span>
+                                </a>
+                            </li>
+                        @endforeach
+                    @endif
                     <li class="kt-menu__item  kt-menu__item--"
                         aria-haspopup="true"
                         data-ktmenu-submenu-toggle="hover">

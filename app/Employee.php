@@ -24,6 +24,8 @@ class Employee extends Authenticatable
         'salary',
         'specialization',
         'address',
+        'timeIn',
+        'timeOut',
         'gym_id'
     ];
     protected $hidden = [
@@ -39,26 +41,30 @@ class Employee extends Authenticatable
     {
         return $this->belongsTo(Gym::class, 'gym_id');
     }
+
     public function parentGym()
     {
-        return $this->belongsTo(Gym::class, 'gym_id','parent_id');
+        return $this->belongsTo(Gym::class, 'gym_id', 'parent_id');
     }
 
-    public static function getEmployeeList($query, $sort_by, $sort_type)
+    public static function getEmployeeList($searchTerm, $sort_by, $sort_type)
     {
-        return DB::table('employees')
-            ->where('id', 'like', '%' . $query . '%')
-            ->orWhere('name', 'like', '%' . $query . '%')
-            ->orWhere('email', 'like', '%' . $query . '%')
-            ->orWhere('code', 'like', '%' . $query . '%')
-            ->orWhere('gender', 'like', '%' . $query . '%')
-            ->orWhere('cnic', 'like', '%' . $query . '%')
-            ->orWhere('phone', 'like', '%' . $query . '%')
-            ->orWhere('salary', 'like', '%' . $query . '%')
-            ->orWhere('specialization', 'like', '%' . $query . '%')
-            ->orWhere('address', 'like', '%' . $query . '%')
-            ->orderBy($sort_by, $sort_type)
-            ->paginate(5);
+        return self::select([
+                'employees.*',
+            ]
+        )->where(function ($query) use ($searchTerm, $sort_by, $sort_type) {
+            if ($searchTerm) {
+                $query->where('employees.name', 'like', '%' . $searchTerm . '%')
+                    ->orWhere('employees.email', 'like', '%' . $searchTerm . '%')
+                    ->orWhere('employees.gender', 'like', '%' . $searchTerm . '%')
+                    ->orWhere('employees.code', 'like', '%' . $searchTerm . '%')
+                    ->orWhere('employees.cnic', 'like', '%' . $searchTerm . '%')
+                    ->orWhere('employees.salary', 'like', '%' . $searchTerm . '%')
+                    ->orWhere('employees.phone', 'like', '%' . $searchTerm . '%')
+                    ->orWhere('employees.specialization', 'like', '%' . $searchTerm . '%')
+                    ->orWhere('employees.address', 'like', '%' . $searchTerm . '%');
+            }
+        })->orderBy($sort_by, $sort_type)->paginate(10);
     }
 
     public static function getRentalNumber()
