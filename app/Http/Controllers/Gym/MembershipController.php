@@ -5,7 +5,7 @@ use App\Gym;
 use App\Membership;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Validator;
@@ -43,8 +43,8 @@ class MembershipController extends Controller
      */
     public function create()
     {
-        $gyms = Gym::all();
-        return view('gym.membership.create')->with('gyms', $gyms);
+        $gym = Gym::all();
+        return view('gym.membership.create')->with('gyms', $gym);
     }
 
     /**
@@ -60,7 +60,6 @@ class MembershipController extends Controller
                 'name' => 'required',
                 'duration' => 'required',
                 'amount' => 'required',
-                'includedMember' => 'required',
                 'monthlyFee' => 'required',
                 'detail' => 'required',
             ]);
@@ -72,13 +71,17 @@ class MembershipController extends Controller
                 'name',
                 'duration',
                 'amount',
-                'includedMember',
                 'monthlyFee',
                 'detail',
             ]));
-            $membership->gym_id = $request->gym_id;
+            if ($request->gym_id == null)
+            {
+                $membership->gym_id = Auth::guard('employee')->user()->gym_id;
+            } else {
+                $membership->gym_id = $request->gym_id;
+            }
             $membership->save();
-            return back()->with('success', 'Gym Created Successfully!');
+            return back()->with('success', 'Membership Created Successfully!');
         } catch (\Exception $e) {
             return response()->json([
                 'response' => $e

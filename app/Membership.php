@@ -22,7 +22,6 @@ class Membership extends Model
             ->where('name', 'like', '%' . $query . '%')
             ->orWhere('duration', 'like', '%' . $query . '%')
             ->orWhere('amount', 'like', '%' . $query . '%')
-            ->orWhere('includedMember', 'like', '%' . $query . '%')
             ->orWhere('monthlyFee', 'like', '%' . $query . '%')
             ->orWhere('detail', 'like', '%' . $query . '%')
             ->orWhere('gym_id', 'like', '%' . $query . '%')

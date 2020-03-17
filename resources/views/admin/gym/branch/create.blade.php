@@ -2,10 +2,10 @@
 @section('content')
     <div class="kt-content  kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor" id="kt_content">
         <!-- begin:: Content -->
-        @include('_layouts.flash-message')
         <form action="{{ url('admin/gym/branch/add') }}" method="POST" enctype="multipart/form-data"
               class="kt-form kt-form--label-right">
             {{csrf_field()}}
+            @include('_layouts.flash-message')
             <div class="kt-container  kt-container--fluid  kt-grid__item kt-grid__item--fluid">
                 <div class="row">
                     <div class="col-lg-8">

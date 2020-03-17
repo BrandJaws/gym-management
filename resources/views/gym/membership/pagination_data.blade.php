@@ -3,7 +3,6 @@
         <td>{{ $row->name}}</td>
         <td>{{ $row->duration }}</td>
         <td>{{ $row->amount }}</td>
-        <td>{{ $row->includedMember }}</td>
         <td>{{ $row->monthlyFee }}</td>
         <td>{{ $row->detail }}</td>
         <td>{{ $row->gym_id }}</td>

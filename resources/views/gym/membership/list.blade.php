@@ -2,9 +2,9 @@
 @section('content')
     <div class="kt-content  kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor" id="kt_content">
     <!-- begin:: Content -->
-        @include('_layouts.flash-message')
         <div class="kt-container  kt-container--fluid  kt-grid__item kt-grid__item--fluid">
-        <div class="row">
+            @include('_layouts.flash-message')
+            <div class="row">
             <div class="col-sm-12">
                 <!--begin::Portlet-->
                 <div class="kt-portlet">
@@ -47,9 +47,6 @@
                                                         id="post_title_icon"></span></th>
                                                 <th class="sorting" data-sorting_type="asc"
                                                     data-column_name="amount" style="cursor: pointer">Amount <span
-                                                        id="post_title_icon"></span></th>
-                                                <th class="sorting" data-sorting_type="asc"
-                                                    data-column_name="includedMember" style="cursor: pointer">Included Member <span
                                                         id="post_title_icon"></span></th>
                                                 <th class="sorting" data-sorting_type="asc"
                                                     data-column_name="monthlyFee" style="cursor: pointer">Monthly Fee <span
@@ -99,7 +96,7 @@
 
             function fetch_data(page, sort_type, sort_by, query) {
                 $.ajax({
-                    url: "gym/membership?page=" + page + "&sortby=" + sort_by + "&sorttype=" + sort_type + "&query=" + query,
+                    url: "/gym/membership?page=" + page + "&sortby=" + sort_by + "&sorttype=" + sort_type + "&query=" + query,
                     success: function (data) {
                         $('tbody').html('');
                         $('tbody').html(data);
@@ -152,6 +149,5 @@
         });
 
     </script>
-
 
 @endsection

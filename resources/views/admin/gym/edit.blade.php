@@ -6,6 +6,7 @@
               class="kt-form kt-form--label-right">
             {{csrf_field()}}
             <input type="hidden" value="{{$gym->id }}" name="gym_id">
+            @include('_layouts.flash-message')
             <div class="kt-container  kt-container--fluid  kt-grid__item kt-grid__item--fluid">
                 <div class="row">
                     <div class="col-lg-8">
@@ -16,11 +17,6 @@
                                     <h3 class="kt-portlet__head-title">
                                         Update Gym
                                     </h3>
-                                </div>
-                                <div class="row" style="float: right">
-                                    <div class="col-md-12 mt-2">
-                                        @include('_layouts.flash-message')
-                                    </div>
                                 </div>
                             </div>
                             <!--begin::Form-->

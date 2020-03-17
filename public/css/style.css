@@ -62,7 +62,7 @@
 .profileImageSide .profileImage {
     text-align: center;
 }
-.alert.alert-danger button.close {
+.alert button.close {
     position: absolute;
     right: 0;
     margin-right: 10px;
@@ -70,9 +70,28 @@
     opacity: 1;
     font-size: 26px;
 }
-.alert.alert-danger {
+.alert {
     position: relative;
     padding: 16px 0px;
     font-size: 17px;
 }
 
+.gymDropdown span.select2 {
+    width:100%!important;
+}
+.gymDropdown span.select2 .select2-selection--multiple .select2-selection__arrow {
+    height: auto;
+    top: 50%!important;
+}
+.gymDropdown span.select2 .select2-selection--multiple .select2-selection__rendered {
+    padding: 4px 14px;
+}
+.select2-container--default .select2-selection--multiple .select2-selection__rendered .select2-selection__choice {
+    padding: 2px;
+}
+.gymDropdown span.select2 .select2-selection--multiple {
+    height: 38px!important;
+    border: 1px solid #e2e5ec!important;
+    outline: none!important;
+
+}

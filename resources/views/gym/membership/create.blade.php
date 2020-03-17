@@ -2,8 +2,8 @@
 @section('content')
     <div class="kt-content  kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor" id="kt_content">
         <!-- begin:: Content -->
-        @include('_layouts.flash-message')
         <div class="kt-container  kt-container--fluid  kt-grid__item kt-grid__item--fluid">
+            @include('_layouts.flash-message')
             <div class="row">
                 <div class="col-lg-12">
                     <!--begin::Portlet-->
@@ -20,45 +20,59 @@
                             @csrf
                             <div class="kt-portlet__body">
                                 <div class="form-group row">
-                                    <div class="col-lg-4 countryDropdown">
-                                        <label class="">Gym:</label>
-                                        <select class="form-control kt-select2" id="kt_select2_1" name="gym_id">
-                                            @if(count($gyms) >= 0)
-                                                @foreach ($gyms as $gym)
+                                    @foreach ($gyms as $gym)
+                                        @if($gym->parent_id == Auth::guard('employee')->user()->gym_id)
+                                            @if($gym->id !== $gym->parent_id)
+                                            <div class="col-lg-4 gymDropdown">
+                                                <label class="">Gym:</label>
+                                                <select class="form-control kt-select2" id="kt_select2_3" name="gym_id" multiple="multiple">
                                                     <option value="{{$gym->id}}">{{$gym->name}}</option>
-                                                @endforeach
-                                            @else
-                                                <p>None</p>
+                                                </select>
+                                            </div>
+                                                @if($errors->has('gym_id'))
+                                                    <div class="error">{{ $errors->first('gym_id') }}</div>
+                                                @endif
                                             @endif
-                                        </select>
-                                    </div>
+                                        @endif
+                                    @endforeach
                                     <div class="col-lg-4">
                                         <label>Name:</label>
                                         <input type="text" name="name" class="form-control" placeholder="Enter your name" />
+                                        @if($errors->has('name'))
+                                            <div class="error">{{ $errors->first('name') }}</div>
+                                        @endif
                                     </div>
                                     <div class="col-lg-4">
                                         <label>Duration:</label>
                                         <input type="text" name="duration" class="form-control" placeholder="Enter your duration" />
+                                        @if($errors->has('duration'))
+                                            <div class="error">{{ $errors->first('duration') }}</div>
+                                        @endif
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-lg-6">
                                         <label>Amount:</label>
                                         <input type="text" name="amount" class="form-control" placeholder="Enter your Amount">
+                                        @if($errors->has('amount'))
+                                            <div class="error">{{ $errors->first('amount') }}</div>
+                                        @endif
                                     </div>
                                     <div class="col-lg-6">
-                                        <label>Included Member:</label>
-                                        <input type="number" name="includedMember" class="form-control" placeholder="Enter your member">
+                                        <label>Monthly Fee:</label>
+                                        <input type="text" name="monthlyFee" class="form-control" placeholder="Enter your monthly fee" />
+                                        @if($errors->has('monthlyFee'))
+                                            <div class="error">{{ $errors->first('monthlyFee') }}</div>
+                                        @endif
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-lg-6">
-                                        <label>Monthly Fee:</label>
-                                        <input type="text" name="monthlyFee" class="form-control" placeholder="Enter your monthly fee" />
-                                    </div>
-                                    <div class="col-lg-6">
                                         <label>Detail:</label>
                                         <input type="text" name="detail" class="form-control" placeholder="Enter Your Detail" />
+                                        @if($errors->has('detail'))
+                                            <div class="error">{{ $errors->first('detail') }}</div>
+                                        @endif
                                     </div>
                                 </div>
                             </div>
