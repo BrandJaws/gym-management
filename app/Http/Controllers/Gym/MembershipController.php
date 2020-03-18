@@ -77,7 +77,6 @@ class MembershipController extends Controller
                 'detail'
             ]));
             $membership->gym_id = implode(',', $request->gym_id);
-//            $membership->gym_id = json_encode($request->gym_id);
             $membership->save();
             return back()->with('success', 'Membership Created Successfully!');
         } catch (\Exception $e) {
@@ -127,9 +126,37 @@ class MembershipController extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        try {
+            $validator = Validator::make($request->all(), [
+                'id' => 'required',
+                'name' => 'required',
+                'duration' => 'required',
+                'amount' => 'required',
+                'monthlyFee' => 'required',
+                'detail' => 'required',
+            ]);
+            if ($validator->fails()) {
+                return Redirect::back()->withErrors($validator);
+            }
+            $membership_id = $request->id;
+            $membership = Membership::where('id', $membership_id)->first();
+            $membership->fill($request->only([
+                'name',
+                'duration',
+                'amount',
+                'monthlyFee',
+                'detail',
+            ]));
+            $membership->gym_id = implode(',', $request->gym_id);
+            $membership->save();
+            return back()->with('success', 'Member Ship Updated Successfully!');
+        } catch (\Exception $e) {
+            return response()->json([
+                'response' => $e
+            ], 400);
+        }
     }
 
     /**
