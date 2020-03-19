@@ -109,11 +109,11 @@ class MembershipController extends Controller
             $gymSelectedList = [];
             $membership = Membership::find($id);
             $gym = Gym::where('parent_id', '=', Auth::guard('employee')->user()->parentGym->id)->get();
-            $gymId = explode(',',$membership->gym_id);
+            $gymId = explode(',', $membership->gym_id);
             foreach ($gymId as $fields) {
                 array_push($gymSelectedList, $fields);
             }
-            return view('gym.membership.edit', compact('membership','gym','gymSelectedList'));
+            return view('gym.membership.edit', compact('membership', 'gym', 'gymSelectedList'));
         } catch (\Exception $e) {
             return back()->with('error', 'Oops, something was not right');
         }
