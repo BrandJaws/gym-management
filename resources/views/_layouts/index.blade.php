@@ -59,7 +59,7 @@
         <div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor kt-wrapper" id="kt_wrapper">
             <!-- begin:: Header -->
         @if(Request::is('gym/member') || Request::is('gym/member/*'))
-            @include('gym.__partials.employee-header')
+            @include('gym.__partials.member-header')
         @elseif(Request::is('gym') || Request::is('gym/*'))
             @include('gym.__partials.header')
         @else
