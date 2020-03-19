@@ -25,6 +25,7 @@ class CreateMembersTable extends Migration
             $table->date('joiningDate')->nullable(true); // null
             $table->string('address')->nullable(true); // null
             $table->string('source');
+            $table->string('remarks')->nullable(true); // null
             $table->string('status')->nullable(true); // null
             $table->timestamps();
         });

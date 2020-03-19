@@ -11,15 +11,17 @@
                         <div class="kt-portlet__head" style="align-items: center">
                             <div class="kt-portlet__head-label">
                                 <h3 class="kt-portlet__head-title">
-                                    List of Members
+                                    List of {{ $breadcrumbs }}
                                 </h3>
                             </div>
-                            <div class="dropdown dropdown-inline">
-                                <a href="{{route('membership.create')}}" type="button"
-                                   class="btn btn-brand btn-icon-sm">
-                                    <i class="flaticon2-plus"></i> Add New
-                                </a>
-                            </div>
+                            @if($breadcrumbs == "Leads")
+                                <div class="dropdown dropdown-inline">
+                                    <a href="{{route('member.create')}}" type="button"
+                                       class="btn btn-brand btn-icon-sm">
+                                        <i class="flaticon2-plus"></i> Add New
+                                    </a>
+                                </div>
+                            @endif
                         </div>
                         <div class="kt-portlet__body">
                             <!--begin::Section-->
