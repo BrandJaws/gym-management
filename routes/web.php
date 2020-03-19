@@ -1,7 +1,6 @@
 <?php
 
 
-
 /*-----------------------------------------------------------------------------------*/
 /*------------------------------------Admin Routes------------------------------------*/
 /*-----------------------------------------------------------------------------------*/
@@ -51,7 +50,6 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
 });
 
 
-
 /*-----------------------------------------------------------------------------------*/
 /*------------------------------------Gym System Routes-------------------------------*/
 /*-----------------------------------------------------------------------------------*/
@@ -89,11 +87,15 @@ Route::group(['prefix' => 'gym', 'namespace' => 'Gym'], function () {
         });
 
         Route::group(['as' => 'member.', 'prefix' => 'member'], function () {
-            Route::get('/', ['as' => 'list', 'uses' => 'MemberController@index']);
+            Route::get('/', ['as' => 'dashboard', 'uses' => 'MemberController@dashobard']);
+            Route::get('/list', ['as' => 'list', 'uses' => 'MemberController@index']);
             Route::get('/create', ['as' => 'create', 'uses' => 'MemberController@create']);
             Route::post('/create', ['as' => 'create', 'uses' => 'MemberController@store']);
             Route::get('/edit/{id}', ['as' => 'edit', 'uses' => 'MemberController@edit']);
             Route::get('/destroy/{id}', ['as' => 'destroy', 'uses' => 'MemberController@destroy']);
+
+            Route::get('/archive/{status}', ['as' => 'archive', 'uses' => 'MemberController@archive']);
+            Route::get('/guest/{status}', ['as' => 'guest', 'uses' => 'MemberController@guest']);
         });
 
         Route::group(['as' => 'trainer.', 'prefix' => 'trainer'], function () {

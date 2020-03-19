@@ -10,7 +10,7 @@
         <div id="kt_header_menu" class="kt-header-menu kt-header-menu-mobile  kt-header-menu--layout-default ">
             <ul class="kt-menu__nav ">
                 <li class="kt-menu__item  kt-menu__item--submenu kt-menu__item--rel" data-ktmenu-submenu-toggle="click" aria-haspopup="true">
-                    <a href="javascript:;" class="kt-menu__link kt-menu__toggle">
+                    <a href="{{url('gym/member')}}" class="kt-menu__link ">
                         <span class="kt-menu__link-text">Home</span>
                     </a>
                 </li>
@@ -21,32 +21,37 @@
                     <div class="kt-menu__submenu kt-menu__submenu--classic kt-menu__submenu--left">
                         <ul class="kt-menu__subnav">
                             <li class="kt-menu__item " aria-haspopup="true">
-                                <a href="#" class="kt-menu__link ">
+                                <a href="{{url('/gym/member/archive', "Leads")}}" class="kt-menu__link ">
+                                    <span class="kt-menu__link-text">Leads</span>
+                                </a>
+                            </li>
+                            <li class="kt-menu__item " aria-haspopup="true">
+                                <a href="{{url('/gym/member/archive', "FailedCalls")}}" class="kt-menu__link ">
                                     <span class="kt-menu__link-text">Failed Calls</span>
                                 </a>
                             </li>
                             <li class="kt-menu__item " aria-haspopup="true">
-                                <a href="javascript:;" class="kt-menu__link ">
+                                <a href="{{url('/gym/member/archive', "NotJoinedMembers")}}" class="kt-menu__link ">
                                     <span class="kt-menu__link-text">Not Joined Members</span>
                                 </a>
                             </li>
                             <li class="kt-menu__item" aria-haspopup="true">
-                                <a href="javascript:;" class="kt-menu__link ">
+                                <a href="{{url('/gym/member/archive', "ExpiredMembers")}}" class="kt-menu__link ">
                                     <span class="kt-menu__link-text">Expired Members</span>
                                 </a>
                             </li>
                             <li class="kt-menu__item" aria-haspopup="true">
-                                <a href="javascript:;" class="kt-menu__link ">
+                                <a href="{{url('/gym/member/archive', "InActiveMembers")}}" class="kt-menu__link ">
                                     <span class="kt-menu__link-text">List of Inactive Members</span>
                                 </a>
                             </li>
                             <li class="kt-menu__item" aria-haspopup="true">
-                                <a href="javascript:;" class="kt-menu__link ">
+                                <a href="{{url('/gym/member/archive', "MembershipTransfer")}}" class="kt-menu__link ">
                                     <span class="kt-menu__link-text">Membership Transfer</span>
                                 </a>
                             </li>
                             <li class="kt-menu__item" aria-haspopup="true">
-                                <a href="javascript:;" class="kt-menu__link ">
+                                <a href="{{url('/gym/member/archive', "OldMembers")}}" class="kt-menu__link ">
                                     <span class="kt-menu__link-text">Old Members</span>
                                 </a>
                             </li>
@@ -60,22 +65,22 @@
                     <div class="kt-menu__submenu kt-menu__submenu--classic kt-menu__submenu--left">
                         <ul class="kt-menu__subnav">
                             <li class="kt-menu__item " aria-haspopup="true">
-                                <a href="#" class="kt-menu__link ">
+                                <a href="{{url('/gym/member/guest', "PreviewCalls")}}" class="kt-menu__link ">
                                     <span class="kt-menu__link-text">Preview Calls</span>
                                 </a>
                             </li>
                             <li class="kt-menu__item " aria-haspopup="true">
-                                <a href="javascript:;" class="kt-menu__link ">
+                                <a href="{{url('/gym/member/guest', "TransferCalls")}}" class="kt-menu__link ">
                                     <span class="kt-menu__link-text">My Transfer calls</span>
                                 </a>
                             </li>
                             <li class="kt-menu__item" aria-haspopup="true">
-                                <a href="javascript:;" class="kt-menu__link ">
+                                <a href="{{url('/gym/member/guest', "PreivewAppointments")}}" class="kt-menu__link ">
                                     <span class="kt-menu__link-text">Preivew Appointments</span>
                                 </a>
                             </li>
                             <li class="kt-menu__item" aria-haspopup="true">
-                                <a href="javascript:;" class="kt-menu__link ">
+                                <a href="{{url('/gym/member/guest', "PreviewGuestCards")}}" class="kt-menu__link ">
                                     <span class="kt-menu__link-text">Preview Guest Cards</span>
                                 </a>
                             </li>
@@ -89,12 +94,12 @@
                     <div class="kt-menu__submenu kt-menu__submenu--classic kt-menu__submenu--left">
                         <ul class="kt-menu__subnav">
                             <li class="kt-menu__item " aria-haspopup="true">
-                                <a href="#" class="kt-menu__link ">
+                                <a href="{{url('/gym/member/list')}}" class="kt-menu__link ">
                                     <span class="kt-menu__link-text">List Members</span>
                                 </a>
                             </li>
                             <li class="kt-menu__item " aria-haspopup="true">
-                                <a href="javascript:;" class="kt-menu__link ">
+                                <a href="{{url('/gym/member/create')}}" class="kt-menu__link ">
                                     <span class="kt-menu__link-text">Create Member</span>
                                 </a>
                             </li>
