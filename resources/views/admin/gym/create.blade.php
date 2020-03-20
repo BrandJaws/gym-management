@@ -176,8 +176,13 @@
                                     </div>
                                     <div class="col-lg-6">
                                         <label>Email:</label>
-                                        <input type="email" name="email" class="form-control" autofocus
-                                               placeholder="Enter your email" required/>
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text">@</span>
+                                            </div>
+                                            <input type="email" name="email" class="form-control" autofocus
+                                                   placeholder="Email your email" required/>
+                                        </div>
                                         @if($errors->has('email'))
                                             <div class="error">{{ $errors->first('email') }}</div>
                                         @endif

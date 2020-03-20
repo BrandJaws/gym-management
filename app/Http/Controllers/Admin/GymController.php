@@ -27,7 +27,7 @@ class GymController extends Controller
      */
     public function index(Request $request)
     {
-        try {
+
             $gym = Gym::where('gymType', '=', 'parent')->orderBy('id', 'asc')->paginate(10);
             if ($request->ajax()) {
                 $sort_by = $request->get('sortby');
@@ -37,10 +37,8 @@ class GymController extends Controller
                 $gym = Gym::getGymList($searchTerm, $sort_by, $sort_type);
                 return view('admin.gym.pagination_data', compact('gym'))->render();
             }
-            return view('admin.gym.member', compact('gym'));
-        } catch (\Exception $e) {
-            return back()->with('error', 'Oops, something was not right');
-        }
+            return view('admin.gym.list', compact('gym'));
+
     }
 
     /**
