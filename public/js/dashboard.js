@@ -166,7 +166,7 @@ var KTDashboard = function() {
 
     // Profit Share Chart.
     // Based on Chartjs plugin - http://www.chartjs.org/
-    var profitShare = function() {        
+    var profitShare = function() {
         if (!KTUtil.getByID('kt_chart_profit_share')) {
             return;
         }
@@ -216,11 +216,11 @@ var KTDashboard = function() {
                     mode: 'nearest',
                     bodySpacing: 5,
                     yPadding: 10,
-                    xPadding: 10, 
+                    xPadding: 10,
                     caretPadding: 0,
                     displayColors: false,
                     backgroundColor: KTApp.getStateColor('brand'),
-                    titleFontColor: '#ffffff', 
+                    titleFontColor: '#ffffff',
                     cornerRadius: 4,
                     footerSpacing: 0,
                     titleSpacing: 0
@@ -250,7 +250,7 @@ var KTDashboard = function() {
                     borderColor: KTApp.getStateColor('brand'),
                     borderWidth: 2,
                     //pointBackgroundColor: KTApp.getStateColor('brand'),
-                    backgroundColor: KTApp.getStateColor('brand'),                    
+                    backgroundColor: KTApp.getStateColor('brand'),
                     pointBackgroundColor: Chart.helpers.color('#ffffff').alpha(0).rgbString(),
                     pointBorderColor: Chart.helpers.color('#ffffff').alpha(0).rgbString(),
                     pointHoverBackgroundColor: KTApp.getStateColor('danger'),
@@ -757,11 +757,11 @@ var KTDashboard = function() {
                     mode: 'nearest',
                     bodySpacing: 5,
                     yPadding: 10,
-                    xPadding: 10, 
+                    xPadding: 10,
                     caretPadding: 0,
                     displayColors: false,
                     backgroundColor: KTApp.getStateColor('brand'),
-                    titleFontColor: '#ffffff', 
+                    titleFontColor: '#ffffff',
                     cornerRadius: 4,
                     footerSpacing: 0,
                     titleSpacing: 0
@@ -1269,7 +1269,7 @@ var KTDashboard = function() {
                     //borderWidth: 0,
                     backgroundColor: color(KTApp.getStateColor('brand')).alpha(0.6).rgbString(),
                     borderColor : color(KTApp.getStateColor('brand')).alpha(0).rgbString(),
-                    
+
                     pointHoverRadius: 4,
                     pointHoverBorderWidth: 12,
                     pointBackgroundColor: Chart.helpers.color('#000000').alpha(0).rgbString(),
@@ -1284,7 +1284,7 @@ var KTDashboard = function() {
                     //borderWidth: 0,
 					backgroundColor : color(KTApp.getStateColor('brand')).alpha(0.2).rgbString(),
                     borderColor : color(KTApp.getStateColor('brand')).alpha(0).rgbString(),
-                    
+
                     pointHoverRadius: 4,
                     pointHoverBorderWidth: 12,
                     pointBackgroundColor: Chart.helpers.color('#000000').alpha(0).rgbString(),
@@ -1342,7 +1342,7 @@ var KTDashboard = function() {
                             zeroLineBorderDash: [3, 4]
                         },
                         ticks: {
-                            max: 70,                            
+                            max: 70,
                             stepSize: 10,
                             display: true,
                             beginAtZero: true,
@@ -1364,11 +1364,11 @@ var KTDashboard = function() {
                     mode: 'nearest',
                     bodySpacing: 5,
                     yPadding: 10,
-                    xPadding: 10, 
+                    xPadding: 10,
                     caretPadding: 0,
                     displayColors: false,
                     backgroundColor: KTApp.getStateColor('brand'),
-                    titleFontColor: '#ffffff', 
+                    titleFontColor: '#ffffff',
                     cornerRadius: 4,
                     footerSpacing: 0,
                     titleSpacing: 0
@@ -1696,7 +1696,7 @@ var KTDashboard = function() {
 
                     var skills = [
                         'Angular, React',
-                        'Vue, Kendo', 
+                        'Vue, Kendo',
                         '.NET, Oracle, MySQL',
                         'Node, SASS, Webpack',
                         'MangoDB, Java',
@@ -1744,7 +1744,7 @@ var KTDashboard = function() {
                         3: {
                             'title': 'Success',
                             'class': ' btn-label-success'
-                        },                                                
+                        },
                         4: {
                             'title': 'Delivered',
                             'class': ' btn-label-success'
@@ -1775,11 +1775,11 @@ var KTDashboard = function() {
                         number = number - 3;
                     }
                     var user_img = '100_' + number + '.jpg';
-                    
+
                     var pos = KTUtil.getRandomInt(0, 5);
                     var position = [
                         'Developer',
-                        'Designer', 
+                        'Designer',
                         'CEO',
                         'Manager',
                         'Architect',
@@ -1876,7 +1876,7 @@ var KTDashboard = function() {
         if ($('#kt_calendar').length === 0) {
             return;
         }
-        
+
         var todayDate = moment().startOf('day');
         var YM = todayDate.format('YYYY-MM');
         var YESTERDAY = todayDate.clone().subtract(1, 'day').format('YYYY-MM-DD');
@@ -1902,7 +1902,7 @@ var KTDashboard = function() {
                     className: "fc-event-light fc-event-solid-warning"
                 },
                 {
-                    title: 'Conference',                    
+                    title: 'Conference',
                     description: 'Lorem ipsum dolor incid idunt ut labore',
                     start: moment('2017-08-29T13:30:00'),
                     end: moment('2017-08-29T17:30:00'),
@@ -1921,7 +1921,7 @@ var KTDashboard = function() {
                     className: "fc-event-danger fc-event-solid-focus"
                 },
                 {
-                    title: 'Reporting',                    
+                    title: 'Reporting',
                     description: 'Lorem ipsum dolor incid idunt ut labore',
                     start: moment('2017-09-03T13:30:00'),
                     end: moment('2017-09-04T17:30:00'),
@@ -2022,8 +2022,8 @@ var KTDashboard = function() {
                     KTApp.initPopover(element);
                 } else if (element.hasClass('fc-time-grid-event')) {
                     element.find('.fc-title').append('<div class="fc-description">' + event.description + '</div>');
-                } else if (element.find('.fc-list-item-title').lenght !== 0) {
-                    element.find('.fc-list-item-title').append('<div class="fc-description">' + event.description + '</div>');
+                } else if (element.find('.fc-member-item-title').lenght !== 0) {
+                    element.find('.fc-member-item-title').append('<div class="fc-description">' + event.description + '</div>');
                 }
             }
         });
@@ -2110,7 +2110,7 @@ var KTDashboard = function() {
             // earnings slide
             earningsSlide();
 
-            
+
             // demo loading
             var loading = new KTDialog({'type': 'loader', 'placement': 'top center', 'message': 'Loading ...'});
             loading.show();

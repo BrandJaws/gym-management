@@ -379,8 +379,8 @@ var KTAppInbox = function() {
                 toggleBy: 'kt_subheader_mobile_toggle'
             });
 
-            // View list
-            KTUtil.on(asideEl, '.kt-nav__item .kt-nav__link[data-action="list"]', 'click', function(e) {
+            // View member
+            KTUtil.on(asideEl, '.kt-nav__item .kt-nav__link[data-action="member"]', 'click', function(e) {
                 var type = KTUtil.attr(this, 'data-type');
                 var listItemsEl = KTUtil.find(listEl, '.kt-inbox__items');
                 var navItemEl = this.closest('.kt-nav__item');
@@ -397,7 +397,7 @@ var KTAppInbox = function() {
                 setTimeout(function() {
                     loading.hide();
 
-                    KTUtil.css(listEl, 'display', 'flex'); // show list
+                    KTUtil.css(listEl, 'display', 'flex'); // show member
                     KTUtil.css(viewEl, 'display', 'none'); // hide view
 
                     KTUtil.addClass(navItemEl, 'kt-nav__item--active');

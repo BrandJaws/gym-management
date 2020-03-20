@@ -49,8 +49,8 @@
                                 <div class="form-group row">
                                     <div class="col-lg-6">
                                         <label>Password:</label>
-                                        <input type="password" name="password" class="form-control"
-                                               placeholder="Enter your password required ">
+                                        <input type="password" name="password" class="form-control" required
+                                               placeholder="Enter your password  ">
                                     </div>
                                     <div class="col-lg-6">
                                         <label>Gender:</label>
@@ -108,7 +108,7 @@
                                     <div class="row">
                                         <div class="col-12">
                                             <input type="submit" value="Save" class="btn btn-primary">
-                                            <a href="{{route('adminEmployee.list')}}"
+                                            <a href="{{route('adminEmployee.member')}}"
                                                class="btn btn-secondary">Cancel</a>
                                         </div>
                                     </div>

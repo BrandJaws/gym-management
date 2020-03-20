@@ -24,6 +24,7 @@ class CreatePipelineTable extends Migration
             $table->string('transfer_id')->nullable(true); // null
             $table->string('intersetedPackages')->nullable(true); // null
             $table->string('remarks')->nullable(true); // null
+            $table->string('type')->nullable(true); // null
             $table->timestamps();
         });
     }

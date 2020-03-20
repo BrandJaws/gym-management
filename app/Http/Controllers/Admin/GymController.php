@@ -37,7 +37,7 @@ class GymController extends Controller
                 $gym = Gym::getGymList($searchTerm, $sort_by, $sort_type);
                 return view('admin.gym.pagination_data', compact('gym'))->render();
             }
-            return view('admin.gym.list', compact('gym'));
+            return view('admin.gym.member', compact('gym'));
         } catch (\Exception $e) {
             return back()->with('error', 'Oops, something was not right');
         }
@@ -472,7 +472,7 @@ class GymController extends Controller
     public function license()
     {
         try {
-            return view('admin.gym.license.list');
+            return view('admin.gym.license.member');
         } catch (\Exception $e) {
             return back()->with('error', 'Oops, something was not right');
         }

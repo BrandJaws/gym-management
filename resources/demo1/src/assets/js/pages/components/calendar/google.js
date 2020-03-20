@@ -16,7 +16,7 @@ var KTCalendarGoogle = function() {
                     right: 'dayGridMonth,timeGridWeek,timeGridDay'
                 },
 
-                displayEventTime: false, // don't show the time column in list view
+                displayEventTime: false, // don't show the time column in member view
 
                 height: 800,
                 contentHeight: 780,
@@ -41,7 +41,7 @@ var KTCalendarGoogle = function() {
 
                 // US Holidays
                 events: 'en.usa#holiday@group.v.calendar.google.com',
-                
+
                 eventClick: function(event) {
                     // opens events in a popup window
                     window.open(event.url, 'gcalevent', 'width=700,height=600');
@@ -55,10 +55,10 @@ var KTCalendarGoogle = function() {
                     KTApp.block(portlet.getSelf(), {
                         type: 'loader',
                         state: 'success',
-                        message: 'Please wait...'  
+                        message: 'Please wait...'
                     });
                     */
-                }, 
+                },
 
                 eventRender: function(info) {
                     var element = $(info.el);
@@ -69,11 +69,11 @@ var KTCalendarGoogle = function() {
                             element.data('placement', 'top');
                             KTApp.initPopover(element);
                         } else if (element.hasClass('fc-time-grid-event')) {
-                            element.find('.fc-title').append('<div class="fc-description">' + info.event.extendedProps.description + '</div>'); 
-                        } else if (element.find('.fc-list-item-title').lenght !== 0) {
-                            element.find('.fc-list-item-title').append('<div class="fc-description">' + info.event.extendedProps.description + '</div>'); 
+                            element.find('.fc-title').append('<div class="fc-description">' + info.event.extendedProps.description + '</div>');
+                        } else if (element.find('.fc-member-item-title').lenght !== 0) {
+                            element.find('.fc-member-item-title').append('<div class="fc-description">' + info.event.extendedProps.description + '</div>');
                         }
-                    } 
+                    }
                 }
             });
 

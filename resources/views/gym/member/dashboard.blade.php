@@ -7,9 +7,7 @@
     <div class="kt-content  kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor" id="kt_content">
         <!-- begin:: Content -->
         <div class="kt-container  kt-container--fluid  kt-grid__item kt-grid__item--fluid">
-
             <!--Begin::Dashboard 2-->
-
             <!--Begin::Row-->
             <div class="row">
                 <div class="col-xl-4 col-lg-4">
@@ -32,7 +30,6 @@
                     <!--end:: Widgets/Daily Sales-->
                 </div>
                 <div class="col-xl-4 col-lg-4">
-
                     <!--begin:: Widgets/Profit Share-->
                     <div class="kt-portlet kt-portlet--height-fluid">
                         <div class="kt-widget14">

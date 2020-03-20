@@ -30,7 +30,7 @@ var KTCalendarExternalEvents = function() {
             itemSelector: '.fc-draggable-handle',
             eventData: function(eventEl) {
                 return $(eventEl).data('event');
-            }   
+            }
         });
 
         var calendar = new FullCalendar.Calendar(calendarEl, {
@@ -68,7 +68,7 @@ var KTCalendarExternalEvents = function() {
                     title: 'All Day Event',
                     start: YM + '-01',
                     description: 'Toto lorem ipsum dolor sit incid idunt ut',
-                    className: "fc-event-danger fc-event-solid-warning"  
+                    className: "fc-event-danger fc-event-solid-warning"
                 },
                 {
                     title: 'Reporting',
@@ -165,7 +165,7 @@ var KTCalendarExternalEvents = function() {
             drop: function(arg) {
                 // is the "remove after drop" checkbox checked?
                 if ($('#kt_calendar_external_events_remove').is(':checked')) {
-                    // if so, remove the element from the "Draggable Events" list
+                    // if so, remove the element from the "Draggable Events" member
                     $(arg.draggedEl).remove();
                 }
             },
@@ -179,22 +179,22 @@ var KTCalendarExternalEvents = function() {
                         element.data('placement', 'top');
                         KTApp.initPopover(element);
                     } else if (element.hasClass('fc-time-grid-event')) {
-                        element.find('.fc-title').append('<div class="fc-description">' + info.event.extendedProps.description + '</div>'); 
-                    } else if (element.find('.fc-list-item-title').lenght !== 0) {
-                        element.find('.fc-list-item-title').append('<div class="fc-description">' + info.event.extendedProps.description + '</div>'); 
+                        element.find('.fc-title').append('<div class="fc-description">' + info.event.extendedProps.description + '</div>');
+                    } else if (element.find('.fc-member-item-title').lenght !== 0) {
+                        element.find('.fc-member-item-title').append('<div class="fc-description">' + info.event.extendedProps.description + '</div>');
                     }
-                } 
+                }
             }
         });
 
-        calendar.render();        
+        calendar.render();
     }
 
     return {
         //main function to initiate the module
         init: function() {
             initExternalEvents();
-            initCalendar(); 
+            initCalendar();
         }
     };
 }();

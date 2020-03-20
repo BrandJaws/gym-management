@@ -128,7 +128,7 @@ class EmployeeController extends Controller
         try {
             $employee = Employee::find($id);
             $gym = Gym::where('parent_id', '=', Auth::guard('employee')->user()->parentGym->id)->get();
-            return view('gym.employee.edit', compact('employee','gym'));
+            return view('gym.employee.edit', compact('employee', 'gym'));
         } catch (\Exception $e) {
             return back()->with('error', 'Oops, something was not right');
         }
@@ -152,7 +152,7 @@ class EmployeeController extends Controller
                 'gender' => 'required',
                 'timeIn' => 'required',
                 'timeOut' => 'required',
-                'email' => 'unique:employees,email,'.$id,
+                'email' => 'unique:employees,email,' . $id,
                 'password' => 'nullable|between:6,12,password' . $id,
                 'password_confirmation' => 'same:password',
                 'cnic' => 'required',

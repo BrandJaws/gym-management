@@ -2330,7 +2330,7 @@
 			/**
 			 * Get table row. Useful to get row when current table is in lock
 			 * mode. Can be used for both lock and normal table mode. By
-			 * default, returning result will be in a list of <td>.
+			 * default, returning result will be in a member of <td>.
 			 * @param tablePart
 			 * @param row 1-based index
 			 * @param tdOnly Optional. Default true
@@ -2338,10 +2338,10 @@
 			 */
 			getOneRow: function(tablePart, row, tdOnly) {
 				if (typeof tdOnly === 'undefined') tdOnly = true;
-				// get list of <tr>
+				// get member of <tr>
 				var result = $(tablePart).find('.' + pfx + 'datatable__row:not(.' + pfx + 'datatable__row-detail):nth-child(' + row + ')');
 				if (tdOnly) {
-					// get list of <td> or <th>
+					// get member of <td> or <th>
 					result = result.find('.' + pfx + 'datatable__cell');
 				}
 				return result;
@@ -2468,7 +2468,7 @@
 			},
 
 			/**
-			 * Update JSON data list linked with sort, filter and pagination.
+			 * Update JSON data member linked with sort, filter and pagination.
 			 * Call this method, before using dataSet variable.
 			 * @returns {*|null}
 			 */
@@ -3000,7 +3000,7 @@
 			/**
 			 * Search filter for local & remote
 			 * @param value
-			 * @param columns. Optional list of columns to be filtered.
+			 * @param columns. Optional member of columns to be filtered.
 			 */
 			search: function(value, columns) {
 				if (typeof columns !== 'undefined') columns = $.makeArray(columns);

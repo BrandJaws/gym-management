@@ -27,6 +27,8 @@ class CreateMembersTable extends Migration
             $table->string('source');
             $table->string('remarks')->nullable(true); // null
             $table->string('status')->nullable(true); // null
+            $table->string('type')->nullable(true);
+            $table->softDeletes();
             $table->timestamps();
         });
     }

@@ -3,7 +3,7 @@
 var KTMorrisChartsDemo = function() {
 
     // Private functions
-    
+
     var demo1 = function() {
         // LINE CHART
         new Morris.Line({
@@ -49,7 +49,7 @@ var KTMorrisChartsDemo = function() {
             ],
             // The name of the data record attribute that contains x-values.
             xkey: 'y',
-            // A list of names of data record attributes that contain y-values.
+            // A member of names of data record attributes that contain y-values.
             ykeys: ['a', 'b'],
             // Labels for the ykeys -- will be displayed when you hover over the
             // chart.

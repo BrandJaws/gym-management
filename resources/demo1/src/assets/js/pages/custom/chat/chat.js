@@ -9,22 +9,22 @@ var KTAppChat = function () {
 	var initAside = function () {
 		// Mobile offcanvas for mobile mode
 		var offcanvas = new KTOffcanvas(chatAsideEl, {
-            overlay: true,  
+            overlay: true,
             baseClass: 'kt-app__aside',
             closeBy: 'kt_chat_aside_close',
             toggleBy: 'kt_chat_aside_mobile_toggle'
-        }); 
+        });
 
-		// User listing 
+		// User listing
 		var userListEl = KTUtil.find(chatAsideEl, '.kt-scroll');
 		if (!userListEl) {
 			return;
 		}
 
-		// Initialize perfect scrollbar(see:  https://github.com/utatti/perfect-scrollbar) 
+		// Initialize perfect scrollbar(see:  https://github.com/utatti/perfect-scrollbar)
 		KTUtil.scrollInit(userListEl, {
 			mobileNativeScroll: true,  // enable native scroll for mobile
-			desktopNativeScroll: false, // disable native scroll and use custom scroll for desktop 
+			desktopNativeScroll: false, // disable native scroll and use custom scroll for desktop
 			resetHeightOnDestroy: true,  // reset css height on scroll feature destroyed
 			handleWindowResize: true, // recalculate hight on window resize
 			rememberPosition: true, // remember scroll position in cookie
@@ -62,9 +62,9 @@ var KTAppChat = function () {
 
 				// remove additional space
 				height = height - 5;
-				
+
 				return height;
-			} 
+			}
 		});
 	}
 
@@ -74,7 +74,7 @@ var KTAppChat = function () {
 			// elements
 			chatAsideEl = KTUtil.getByID('kt_chat_aside');
 
-			// init aside and user list
+			// init aside and user member
 			initAside();
 
 			// init inline chat example
@@ -90,6 +90,6 @@ var KTAppChat = function () {
 	};
 }();
 
-KTUtil.ready(function() {	
+KTUtil.ready(function() {
 	KTAppChat.init();
 });

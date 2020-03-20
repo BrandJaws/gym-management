@@ -3946,11 +3946,11 @@ Docs & License: https://fullcalendar.io/
         renderEventDragSegs(state: EventSegUiInteractionState) {
           if (state) {
             let { isEvent, segs, sourceSeg } = state
-      
+
             if (this.eventRenderer) {
               this.eventRenderer.hideByHash(state.affectedInstances)
             }
-      
+
             // if the user is dragging something that is considered an event with real event data,
             // and this component likes to do drag mirrors OR the component where the seg came from
             // likes to do drag mirrors, then render a drag mirror.
@@ -3959,7 +3959,7 @@ Docs & License: https://fullcalendar.io/
                 this.mirrorRenderer.renderSegs(segs, { isDragging: true, sourceSeg })
               }
             }
-      
+
             // if it would be impossible to render a drag mirror OR this component likes to render
             // highlights, then render a highlight.
             if (!isEvent || this.doesDragHighlight) {
@@ -4406,7 +4406,7 @@ Docs & License: https://fullcalendar.io/
         var endMarker = framingRange.end;
         var instanceStarts = [];
         while (dayMarker < endMarker) {
-            var instanceStart 
+            var instanceStart
             // if everyday, or this particular day-of-week
             = void 0;
             // if everyday, or this particular day-of-week
@@ -6520,7 +6520,7 @@ Docs & License: https://fullcalendar.io/
         // day grid
         headerRow: 'fc-widget-header',
         dayRow: 'fc-widget-content',
-        // list view
+        // member view
         listView: 'fc-widget-content'
     };
     StandardTheme.prototype.baseIconClass = 'fc-icon';
@@ -9280,14 +9280,14 @@ Docs & License: https://fullcalendar.io/
                 '</div>');
             trEl = skeletonEl.getElementsByTagName('tr')[0];
             if (startCol > 0) {
-                core.appendToElement(trEl, 
+                core.appendToElement(trEl,
                 // will create (startCol + 1) td's
                 new Array(startCol + 1).join(EMPTY_CELL_HTML));
             }
             seg.el.colSpan = endCol - startCol;
             trEl.appendChild(seg.el);
             if (endCol < colCnt) {
-                core.appendToElement(trEl, 
+                core.appendToElement(trEl,
                 // will create (colCnt - endCol) td's
                 new Array(colCnt - endCol + 1).join(EMPTY_CELL_HTML));
             }
@@ -12739,7 +12739,7 @@ Docs & License: https://fullcalendar.io/
             var eventInstance = eventRange.instance;
             var eventUi = eventRange.ui;
             var url = eventDef.url;
-            var classes = ['fc-list-item'].concat(eventUi.classNames);
+            var classes = ['fc-member-item'].concat(eventUi.classNames);
             var bgColor = eventUi.backgroundColor;
             var timeHtml;
             if (eventDef.allDay) {
@@ -12767,18 +12767,18 @@ Docs & License: https://fullcalendar.io/
             }
             return '<tr class="' + classes.join(' ') + '">' +
                 (this.displayEventTime ?
-                    '<td class="fc-list-item-time ' + theme.getClass('widgetContent') + '">' +
+                    '<td class="fc-member-item-time ' + theme.getClass('widgetContent') + '">' +
                         (timeHtml || '') +
                         '</td>' :
                     '') +
-                '<td class="fc-list-item-marker ' + theme.getClass('widgetContent') + '">' +
+                '<td class="fc-member-item-marker ' + theme.getClass('widgetContent') + '">' +
                 '<span class="fc-event-dot"' +
                 (bgColor ?
                     ' style="background-color:' + bgColor + '"' :
                     '') +
                 '></span>' +
                 '</td>' +
-                '<td class="fc-list-item-title ' + theme.getClass('widgetContent') + '">' +
+                '<td class="fc-member-item-title ' + theme.getClass('widgetContent') + '">' +
                 '<a' + (url ? ' href="' + core.htmlEscape(url) + '"' : '') + '>' +
                 core.htmlEscape(eventDef.title || '') +
                 '</a>' +
@@ -12807,7 +12807,7 @@ Docs & License: https://fullcalendar.io/
             _this.eventStoreToSegs = core.memoize(_this._eventStoreToSegs);
             var eventRenderer = _this.eventRenderer = new ListEventRenderer(_this);
             _this.renderContent = core.memoizeRendering(eventRenderer.renderSegs.bind(eventRenderer), eventRenderer.unrender.bind(eventRenderer));
-            _this.el.classList.add('fc-list-view');
+            _this.el.classList.add('fc-member-view');
             var listViewClassNames = (_this.theme.getClass('listView') || '').split(' '); // wish we didn't have to do this
             for (var _i = 0, listViewClassNames_1 = listViewClassNames; _i < listViewClassNames_1.length; _i++) {
                 var listViewClassName = listViewClassNames_1[_i];
@@ -12898,9 +12898,9 @@ Docs & License: https://fullcalendar.io/
         };
         ListView.prototype.renderEmptyMessage = function () {
             this.contentEl.innerHTML =
-                '<div class="fc-list-empty-wrap2">' + // TODO: try less wraps
-                    '<div class="fc-list-empty-wrap1">' +
-                    '<div class="fc-list-empty">' +
+                '<div class="fc-member-empty-wrap2">' + // TODO: try less wraps
+                    '<div class="fc-member-empty-wrap1">' +
+                    '<div class="fc-member-empty">' +
                     core.htmlEscape(this.opt('noEventsMessage')) +
                     '</div>' +
                     '</div>' +
@@ -12912,7 +12912,7 @@ Docs & License: https://fullcalendar.io/
             var dayIndex;
             var daySegs;
             var i;
-            var tableEl = core.htmlToElement('<table class="fc-list-table ' + this.calendar.theme.getClass('tableList') + '"><tbody></tbody></table>');
+            var tableEl = core.htmlToElement('<table class="fc-member-table ' + this.calendar.theme.getClass('tableList') + '"><tbody></tbody></table>');
             var tbodyEl = tableEl.querySelector('tbody');
             for (dayIndex = 0; dayIndex < segsByDay.length; dayIndex++) {
                 daySegs = segsByDay[dayIndex];
@@ -12946,23 +12946,23 @@ Docs & License: https://fullcalendar.io/
             var mainFormat = core.createFormatter(this.opt('listDayFormat')); // TODO: cache
             var altFormat = core.createFormatter(this.opt('listDayAltFormat')); // TODO: cache
             return core.createElement('tr', {
-                className: 'fc-list-heading',
+                className: 'fc-member-heading',
                 'data-date': dateEnv.formatIso(dayDate, { omitTime: true })
             }, '<td class="' + (this.calendar.theme.getClass('tableListHeading') ||
                 this.calendar.theme.getClass('widgetHeader')) + '" colspan="3">' +
                 (mainFormat ?
-                    core.buildGotoAnchorHtml(this, dayDate, { 'class': 'fc-list-heading-main' }, core.htmlEscape(dateEnv.format(dayDate, mainFormat)) // inner HTML
+                    core.buildGotoAnchorHtml(this, dayDate, { 'class': 'fc-member-heading-main' }, core.htmlEscape(dateEnv.format(dayDate, mainFormat)) // inner HTML
                     ) :
                     '') +
                 (altFormat ?
-                    core.buildGotoAnchorHtml(this, dayDate, { 'class': 'fc-list-heading-alt' }, core.htmlEscape(dateEnv.format(dayDate, altFormat)) // inner HTML
+                    core.buildGotoAnchorHtml(this, dayDate, { 'class': 'fc-member-heading-alt' }, core.htmlEscape(dateEnv.format(dayDate, altFormat)) // inner HTML
                     ) :
                     '') +
                 '</td>');
         };
         return ListView;
     }(core.View));
-    ListView.prototype.fgSegSelector = '.fc-list-item'; // which elements accept event actions
+    ListView.prototype.fgSegSelector = '.fc-member-item'; // which elements accept event actions
     function computeDateVars(dateProfile) {
         var dayStart = core.startOfDay(dateProfile.renderRange.start);
         var viewEnd = dateProfile.renderRange.end;

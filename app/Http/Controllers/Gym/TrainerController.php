@@ -25,7 +25,7 @@ class TrainerController extends Controller
                 $trainer = Trainer::getTrainerList($query, $sort_by, $sort_type);
                 return view('gym.membership.pagination_data', compact('trainer'))->render();
             }
-            return view('gym.trainer.list', compact('trainer'));
+            return view('gym.trainer.member', compact('trainer'));
         } catch (\Exception $e) {
             return back()->with('error', 'Oops, something was not right');
         }
