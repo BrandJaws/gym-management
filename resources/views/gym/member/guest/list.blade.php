@@ -42,21 +42,26 @@
                                                 <thead>
                                                 <tr>
                                                     <th class="sorting" data-sorting_type="asc"
-                                                        data-column_name="name" style="cursor: pointer">Name <span
+                                                        data-column_name="name" style="cursor: pointer">Employee <span
                                                             id="id_icon"></span></th>
                                                     <th class="sorting" data-sorting_type="asc"
-                                                        data-column_name="duration" style="cursor: pointer">Duration
+                                                        data-column_name="duration" style="cursor: pointer">Member
                                                         <span
                                                             id="post_title_icon"></span></th>
                                                     <th class="sorting" data-sorting_type="asc"
-                                                        data-column_name="amount" style="cursor: pointer">Amount <span
+                                                        data-column_name="amount" style="cursor: pointer">Date <span
                                                             id="post_title_icon"></span></th>
                                                     <th class="sorting" data-sorting_type="asc"
-                                                        data-column_name="monthlyFee" style="cursor: pointer">Monthly
-                                                        Fee <span
+                                                        data-column_name="monthlyFee" style="cursor: pointer">Transfer
+                                                        Status<span
                                                             id="post_title_icon"></span></th>
                                                     <th class="sorting" data-sorting_type="asc"
-                                                        data-column_name="detail" style="cursor: pointer">Detail <span
+                                                        data-column_name="detail" style="cursor: pointer">Transfer
+                                                        Employee <span
+                                                            id="post_title_icon"></span></th>
+                                                    <th class="sorting" data-sorting_type="asc"
+                                                        data-column_name="detail" style="cursor: pointer">Re-Schedule
+                                                        Date <span
                                                             id="post_title_icon"></span></th>
                                                     <th class="sorting" data-sorting_type="asc"
                                                         data-column_name=" " style="cursor: pointer">Actions <span
@@ -64,7 +69,7 @@
                                                 </tr>
                                                 </thead>
                                                 <tbody>
-                                                @include('gym.member.archive.pagination_data')
+                                                @include('gym.member.guest.pagination_data')
                                                 </tbody>
                                             </table>
                                             <input type="hidden" name="hidden_page" id="hidden_page" value="1"/>
@@ -97,7 +102,7 @@
 
             function fetch_data(page, sort_type, sort_by, query) {
                 $.ajax({
-                    url: "/gym/membership?page=" + page + "&sortby=" + sort_by + "&sorttype=" + sort_type + "&query=" + query,
+                    url: "/gym/member/guest?page=" + page + "&sortby=" + sort_by + "&sorttype=" + sort_type + "&query=" + query,
                     success: function (data) {
                         $('tbody').html('');
                         $('tbody').html(data);

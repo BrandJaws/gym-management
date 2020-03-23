@@ -12,7 +12,7 @@
     $head-space-x: 0.5rem;
     $head-space-y: 0.75rem;
     $head-list-space-x: 1.25rem;
-    
+
     .fc-unthemed {
         // day
         .fc-day-grid td:not(.fc-axis) {
@@ -36,17 +36,17 @@
 
         // header
         th.fc-day-header {
-            padding: $head-space-y $head-space-x;  
+            padding: $head-space-y $head-space-x;
             font-size: 1rem;
             font-weight: 500;
         }
 
         .fc-list-heading {
             .fc-widget-header {
-                padding: $head-space-y $head-list-space-x;  
+                padding: $head-space-y $head-list-space-x;
             }
 
-            .fc-list-heading-main, 
+            .fc-list-heading-main,
             .fc-list-heading-alt {
                 font-size: 1rem;
                 font-weight: 400;
@@ -71,7 +71,7 @@
         // past
         td.fc-past {
 
-        } 
+        }
 
         // today
         td.fc-today {
@@ -84,7 +84,7 @@
         }
 
         // event
-        .fc-event, 
+        .fc-event,
         .fc-event-dot {
             padding: 0;
 
@@ -125,7 +125,7 @@
             }
         }
 
-        // 
+        //
         .fc-description {
             font-size: 0.9rem;
             margin-top: 0.25rem;
@@ -136,10 +136,10 @@
             font-size: 1rem;
             font-weight: 500;
         }
-        
+
         a.fc-more {
-            font-size: 0.9rem;  
-            font-weight: 500; 
+            font-size: 0.9rem;
+            font-weight: 500;
         }
 
         // popover
@@ -149,7 +149,7 @@
                 border-radius: $kt-border-radius;
             }
 
-            .fc-header {    
+            .fc-header {
                 padding: 0.75rem 1.25rem;
 
                 @include kt-rounded {
@@ -185,7 +185,7 @@
                         border-bottom-left-radius: 0;
                     }
                 }
-            }            
+            }
         }
 
         // toolbar
@@ -248,7 +248,7 @@
     .ui-draggable-handle {
         cursor: move; /* fallback if grab cursor is unsupported */
         cursor: grab;
-        cursor: -moz-grab; 
+        cursor: -moz-grab;
         cursor: -webkit-grab;
     }
 
@@ -303,7 +303,7 @@
         // past
         td.fc-past {
 
-        } 
+        }
 
         // today
         td.fc-today {
@@ -320,9 +320,9 @@
             margin: 0;
         }
 
-        .fc-event, 
+        .fc-event,
         .fc-event-dot {
-            background: #fff;  
+            background: #fff;
             border: 1px solid kt-base-color(grey, 2);
 
             &.fc-not-start.fc-not-end {
@@ -370,7 +370,7 @@
                         &:before {
                             background: kt-get($color, base);
                         }
-                    }                    
+                    }
                 }
 
                 &.fc-not-start.fc-end.fc-event-solid-#{$name},
@@ -388,13 +388,13 @@
 
                     .fc-time {
                         color: kt-get($color, inverse);
-                    }                     
+                    }
                 }
             }
         }
 
-        .fc-divider, 
-        .fc-popover .fc-header, 
+        .fc-divider,
+        .fc-popover .fc-header,
         .fc-list-heading td {
             background: kt-base-color(grey, 1);
         }
@@ -408,7 +408,7 @@
             box-shadow: 0px 0px 9px 0px rgba(0,0,0,0.075);
             background: #fff;
 
-            .fc-header {            
+            .fc-header {
                 background: #fff;
                 border-bottom: 1px solid kt-base-color(grey, 2);
 
@@ -432,13 +432,13 @@
                         .fc-content:before {
                             background: kt-base-color(grey, 2);
                         }
-                    }              
+                    }
 
                     @each $name, $color in $kt-state-colors {
                         &.fc-not-start.fc-not-end.fc-event-#{$name} {
                             .fc-content:before {
                                 background: kt-get($color, base);
-                            }    
+                            }
                         }
 
                         &.fc-not-start.fc-not-end.fc-event-solid-#{$name} {
@@ -454,11 +454,11 @@
 
                             .fc-time {
                                 color: kt-get($color, inverse);
-                            }      
+                            }
                         }
                     }
                 }
-            }   
+            }
         }
 
         // header
@@ -466,10 +466,10 @@
             > a,
             > span {
                 color: kt-base-color(label, 2);
-            } 
+            }
         }
 
-        // list heading
+        // member heading
         .fc-list-heading {
             td {
                 background: kt-base-color(grey, 2);
@@ -489,11 +489,11 @@
             background: kt-base-color(grey, 1);
         }
 
-        // list item
+        // member item
         .fc-list-item {
             &:hover {
                 td {
-                    background: transparent !important;    
+                    background: transparent !important;
                 }
             }
 
@@ -516,7 +516,7 @@
         // toolbar
         .fc-toolbar {
             h2 {
-                
+
             }
 
             .fc-button {
@@ -548,7 +548,7 @@
 
                     .fc-icon {
                         color: kt-state-color(brand, inverse);
-                    }    
+                    }
                 }
 
                 &.fc-button-disabled {

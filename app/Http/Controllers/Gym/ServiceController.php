@@ -14,7 +14,7 @@ class ServiceController extends Controller
      */
     public function index()
     {
-        return view('gym.service.list');
+        return view('gym.service.member');
     }
 
     /**

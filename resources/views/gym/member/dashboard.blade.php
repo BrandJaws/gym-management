@@ -7,9 +7,7 @@
     <div class="kt-content  kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor" id="kt_content">
         <!-- begin:: Content -->
         <div class="kt-container  kt-container--fluid  kt-grid__item kt-grid__item--fluid">
-
             <!--Begin::Dashboard 2-->
-
             <!--Begin::Row-->
             <div class="row">
                 <div class="col-xl-4 col-lg-4">
@@ -18,7 +16,7 @@
                         <div class="kt-widget14">
                             <div class="kt-widget14__header kt-margin-b-30">
                                 <h3 class="kt-widget14__title">
-                                    Total Members
+                                    Memberships
                                 </h3>
                                 <span class="kt-widget14__desc">
                                     Check out each collumn for more details
@@ -32,13 +30,12 @@
                     <!--end:: Widgets/Daily Sales-->
                 </div>
                 <div class="col-xl-4 col-lg-4">
-
                     <!--begin:: Widgets/Profit Share-->
                     <div class="kt-portlet kt-portlet--height-fluid">
                         <div class="kt-widget14">
                             <div class="kt-widget14__header">
                                 <h3 class="kt-widget14__title">
-                                    Total Calls
+                                     Calls
                                 </h3>
                                 <span class="kt-widget14__desc">
                                     Profit Share between customers
@@ -76,7 +73,7 @@
                         <div class="kt-widget14">
                             <div class="kt-widget14__header">
                                 <h3 class="kt-widget14__title">
-                                    Total Memberships
+                                    Members
                                 </h3>
                                 <span class="kt-widget14__desc">
 													Revenue change breakdown by cities

@@ -25,7 +25,7 @@ class TreasuryController extends Controller
                 $treasury = Treasury::getTreasuryList($query, $sort_by, $sort_type);
                 return view('gym.treasury.pagination_data', compact('treasury'))->render();
             }
-            return view('gym.treasury.list', compact('treasury'));
+            return view('gym.treasury.member', compact('treasury'));
         } catch (\Exception $e) {
             return back()->with('error', 'Oops, something was not right');
         }

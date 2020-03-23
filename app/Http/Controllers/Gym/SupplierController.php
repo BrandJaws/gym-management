@@ -25,7 +25,7 @@ class SupplierController extends Controller
                 $supplier = Supplier::getSupplierList($query, $sort_by, $sort_type);
                 return view('gym.membership.pagination_data', compact('supplier'))->render();
             }
-            return view('gym.supplier.list', compact('supplier'));
+            return view('gym.supplier.member', compact('supplier'));
         } catch (\Exception $e) {
             return back()->with('error', 'Oops, something was not right');
         }

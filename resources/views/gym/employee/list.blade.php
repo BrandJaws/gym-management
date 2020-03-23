@@ -32,8 +32,11 @@
                                                 <div class="col-md-3">
                                                     <div class="form-group">
                                                         <div class="kt-input-icon kt-input-icon--right">
-                                                            <input type="text" name="search" id="search" class="form-control" placeholder="Search..." id="generalSearch">
-                                                            <span class="kt-input-icon__icon kt-input-icon__icon--right">
+                                                            <input type="text" name="search" id="search"
+                                                                   class="form-control" placeholder="Search..."
+                                                                   id="generalSearch">
+                                                            <span
+                                                                class="kt-input-icon__icon kt-input-icon__icon--right">
                                                                 <span><i class="la la-search"></i></span>
                                                             </span>
                                                         </div>
@@ -51,13 +54,16 @@
                                                             data-column_name="city" style="cursor: pointer">Email <span
                                                                 id="post_title_icon"></span></th>
                                                         <th class="sorting" data-sorting_type="asc"
-                                                            data-column_name="country" style="cursor: pointer">Gender <span
+                                                            data-column_name="country" style="cursor: pointer">Gender
+                                                            <span
                                                                 id="post_title_icon"></span></th>
                                                         <th class="sorting" data-sorting_type="asc"
-                                                            data-column_name="address" style="cursor: pointer">Phone <span
+                                                            data-column_name="address" style="cursor: pointer">Phone
+                                                            <span
                                                                 id="post_title_icon"></span></th>
                                                         <th class="sorting" data-sorting_type="asc"
-                                                            data-column_name="status" style="cursor: pointer">Timing <span
+                                                            data-column_name="status" style="cursor: pointer">Timing
+                                                            <span
                                                                 id="post_title_icon"></span></th>
                                                         <th class="sorting" data-sorting_type="asc"
                                                             data-column_name=" " style="cursor: pointer">Actions <span

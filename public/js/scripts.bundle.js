@@ -164,7 +164,7 @@ var KTApp = function() {
             $detachedDropdownMenu.hide();
         });
     };
-    
+
     return {
         init: function(options) {
             if (options && options.colors) {
@@ -513,7 +513,7 @@ var KTDialog = function(options) {
 
     // Get element object
     var element;
-    var body = KTUtil.get('body');  
+    var body = KTUtil.get('body');
 
     // Default options
     var defaultOptions = {
@@ -521,8 +521,8 @@ var KTDialog = function(options) {
         'type'  : 'loader',
         'width' : 100,
         'state' : 'default',
-        'message' : 'Loading...' 
-    };    
+        'message' : 'Loading...'
+    };
 
     ////////////////////////////
     // ** Private Methods  ** //
@@ -559,10 +559,10 @@ var KTDialog = function(options) {
 
             element = document.createElement("DIV");
             KTUtil.setHTML(element, the.options.message);
-            
+
             KTUtil.addClass(element, 'kt-dialog kt-dialog--shown');
             KTUtil.addClass(element, 'kt-dialog--' + the.options.state);
-            KTUtil.addClass(element, 'kt-dialog--' + the.options.type); 
+            KTUtil.addClass(element, 'kt-dialog--' + the.options.type);
 
             if (the.options.placement == 'top center') {
                 KTUtil.addClass(element, 'kt-dialog--top-center');
@@ -603,7 +603,7 @@ var KTDialog = function(options) {
                 if (event.name == name) {
                     if (event.one == true) {
                         if (event.fired == false) {
-                            the.events[i].fired = true;                            
+                            the.events[i].fired = true;
                             return event.handler.call(this, the);
                         }
                     } else {
@@ -630,7 +630,7 @@ var KTDialog = function(options) {
     //////////////////////////
 
     /**
-     * Set default options 
+     * Set default options
      */
 
     the.setDefaults = function(options) {
@@ -638,21 +638,21 @@ var KTDialog = function(options) {
     };
 
     /**
-     * Check shown state 
+     * Check shown state
      */
     the.shown = function() {
         return the.state == 'shown';
     };
 
     /**
-     * Check hidden state 
+     * Check hidden state
      */
     the.hidden = function() {
         return the.state == 'hidden';
     };
 
     /**
-     * Show dialog 
+     * Show dialog
      */
     the.show = function() {
         return Plugin.show();
@@ -2745,12 +2745,12 @@ var KTScrolltop = function(elementId, options) {
                     Plugin.handle();
                 });
             } else {
-                window.addEventListener('scroll', function() { 
+                window.addEventListener('scroll', function() {
                     Plugin.handle();
                 });
             }
 
-            // handle button click 
+            // handle button click
             KTUtil.addEvent(element, 'click', Plugin.scroll);
         },
 
@@ -2810,7 +2810,7 @@ var KTScrolltop = function(elementId, options) {
     //////////////////////////
 
     /**
-     * Set default options 
+     * Set default options
      */
 
     the.setDefaults = function(options) {
@@ -2860,7 +2860,7 @@ var KTToggle = function(elementId, options) {
 
     // Get element object
     var element = KTUtil.get(elementId);
-    var body = KTUtil.get('body');  
+    var body = KTUtil.get('body');
 
     if (!element) {
         return;
@@ -2870,7 +2870,7 @@ var KTToggle = function(elementId, options) {
     var defaultOptions = {
         togglerState: '',
         targetState: ''
-    };    
+    };
 
     ////////////////////////////
     // ** Private Methods  ** //
@@ -2920,7 +2920,7 @@ var KTToggle = function(elementId, options) {
         build: function() {
             KTUtil.addEvent(element, 'mouseup', Plugin.toggle);
         },
-        
+
         /**
          * Handles offcanvas click toggle
          */
@@ -2992,7 +2992,7 @@ var KTToggle = function(elementId, options) {
                 if (event.name == name) {
                     if (event.one == true) {
                         if (event.fired == false) {
-                            the.events[i].fired = true;                            
+                            the.events[i].fired = true;
                             return event.handler.call(this, the);
                         }
                     } else {
@@ -3019,7 +3019,7 @@ var KTToggle = function(elementId, options) {
     //////////////////////////
 
     /**
-     * Set default options 
+     * Set default options
      */
 
     the.setDefaults = function(options) {
@@ -3027,28 +3027,28 @@ var KTToggle = function(elementId, options) {
     };
 
     /**
-     * Get toggle state 
+     * Get toggle state
      */
     the.getState = function() {
         return the.state;
     };
 
     /**
-     * Toggle 
+     * Toggle
      */
     the.toggle = function() {
         return Plugin.toggle();
     };
 
     /**
-     * Toggle on 
+     * Toggle on
      */
     the.toggleOn = function() {
         return Plugin.toggleOn();
     };
 
     /**
-     * Toggle off 
+     * Toggle off
      */
     the.toggleOff = function() {
         return Plugin.toggleOff();
@@ -7429,7 +7429,7 @@ if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
 			/**
 			 * Get table row. Useful to get row when current table is in lock
 			 * mode. Can be used for both lock and normal table mode. By
-			 * default, returning result will be in a list of <td>.
+			 * default, returning result will be in a member of <td>.
 			 * @param tablePart
 			 * @param row 1-based index
 			 * @param tdOnly Optional. Default true
@@ -7437,10 +7437,10 @@ if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
 			 */
 			getOneRow: function(tablePart, row, tdOnly) {
 				if (typeof tdOnly === 'undefined') tdOnly = true;
-				// get list of <tr>
+				// get member of <tr>
 				var result = $(tablePart).find('.' + pfx + 'datatable__row:not(.' + pfx + 'datatable__row-detail):nth-child(' + row + ')');
 				if (tdOnly) {
-					// get list of <td> or <th>
+					// get member of <td> or <th>
 					result = result.find('.' + pfx + 'datatable__cell');
 				}
 				return result;
@@ -7567,7 +7567,7 @@ if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
 			},
 
 			/**
-			 * Update JSON data list linked with sort, filter and pagination.
+			 * Update JSON data member linked with sort, filter and pagination.
 			 * Call this method, before using dataSet variable.
 			 * @returns {*|null}
 			 */
@@ -8099,7 +8099,7 @@ if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
 			/**
 			 * Search filter for local & remote
 			 * @param value
-			 * @param columns. Optional list of columns to be filtered.
+			 * @param columns. Optional member of columns to be filtered.
 			 */
 			search: function(value, columns) {
 				if (typeof columns !== 'undefined') columns = $.makeArray(columns);

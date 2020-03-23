@@ -27,7 +27,7 @@ class GymController extends Controller
      */
     public function index(Request $request)
     {
-        try {
+
             $gym = Gym::where('gymType', '=', 'parent')->orderBy('id', 'asc')->paginate(10);
             if ($request->ajax()) {
                 $sort_by = $request->get('sortby');
@@ -38,9 +38,7 @@ class GymController extends Controller
                 return view('admin.gym.pagination_data', compact('gym'))->render();
             }
             return view('admin.gym.list', compact('gym'));
-        } catch (\Exception $e) {
-            return back()->with('error', 'Oops, something was not right');
-        }
+
     }
 
     /**
@@ -472,7 +470,7 @@ class GymController extends Controller
     public function license()
     {
         try {
-            return view('admin.gym.license.list');
+            return view('admin.gym.license.member');
         } catch (\Exception $e) {
             return back()->with('error', 'Oops, something was not right');
         }

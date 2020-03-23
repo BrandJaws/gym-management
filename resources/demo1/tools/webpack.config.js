@@ -83,7 +83,7 @@ files.forEach((filename) => {
     // use parser plugin to parse the comment.
     const parsed = parser(text);
     if (parsed.length > 0 && parsed[0].tags.length > 0) {
-        // push to list
+        // push to member
         filesConfig.push({
             filename: filename,
             params: parsed[0].tags,

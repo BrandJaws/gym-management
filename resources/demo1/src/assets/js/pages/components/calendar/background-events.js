@@ -49,7 +49,7 @@ var KTCalendarBackgroundEvents = function() {
                         description: 'Toto lorem ipsum dolor sit incid idunt ut',
                         className: "fc-event-danger fc-event-solid-warning",
                         color: KTApp.getStateColor('info'),
-                        rendering: 'background' 
+                        rendering: 'background'
                     },
                     {
                         title: 'Reporting',
@@ -78,7 +78,7 @@ var KTCalendarBackgroundEvents = function() {
                         description: 'Lorem ipsum dolor sit amet, conse ctetur',
                         end: YM + '-10',
                         color: KTApp.getStateColor('info'),
-                        rendering: 'background' 
+                        rendering: 'background'
                     },
                     {
                         id: 999,
@@ -93,7 +93,7 @@ var KTCalendarBackgroundEvents = function() {
                         description: 'Lorem ipsum dolor sit amet, labore',
                         start: YM + '-16T16:00:00',
                         color: KTApp.getStateColor('warning'),
-                        rendering: 'background' 
+                        rendering: 'background'
                     },
                     {
                         title: 'Conference',
@@ -108,7 +108,7 @@ var KTCalendarBackgroundEvents = function() {
                         end: TODAY + 'T12:30:00',
                         description: 'Lorem ipsum dolor eiu idunt ut labore',
                         color: KTApp.getStateColor('danger'),
-                        rendering: 'background' 
+                        rendering: 'background'
                     },
                     {
                         title: 'Lunch',
@@ -128,7 +128,7 @@ var KTCalendarBackgroundEvents = function() {
                         className: "fc-event-info",
                         description: 'Lorem ipsum dolor sit amet, conse ctetur',
                         color: KTApp.getStateColor('danger'),
-                        rendering: 'background' 
+                        rendering: 'background'
                     },
                     {
                         title: 'Dinner',
@@ -142,7 +142,7 @@ var KTCalendarBackgroundEvents = function() {
                         className: "fc-event-primary",
                         description: 'Lorem ipsum dolor sit amet, scing',
                         color: KTApp.getStateColor('danger'),
-                        rendering: 'background' 
+                        rendering: 'background'
                     },
                     {
                         title: 'Click for Google',
@@ -151,7 +151,7 @@ var KTCalendarBackgroundEvents = function() {
                         className: "fc-event-solid-info fc-event-light",
                         description: 'Lorem ipsum dolor sit amet, labore',
                         color: KTApp.getStateColor('success'),
-                        rendering: 'background' 
+                        rendering: 'background'
                     }
                 ],
 
@@ -164,11 +164,11 @@ var KTCalendarBackgroundEvents = function() {
                             element.data('placement', 'top');
                             KTApp.initPopover(element);
                         } else if (element.hasClass('fc-time-grid-event')) {
-                            element.find('.fc-title').append('<div class="fc-description">' + info.event.extendedProps.description + '</div>'); 
-                        } else if (element.find('.fc-list-item-title').lenght !== 0) {
-                            element.find('.fc-list-item-title').append('<div class="fc-description">' + info.event.extendedProps.description + '</div>'); 
+                            element.find('.fc-title').append('<div class="fc-description">' + info.event.extendedProps.description + '</div>');
+                        } else if (element.find('.fc-member-item-title').lenght !== 0) {
+                            element.find('.fc-member-item-title').append('<div class="fc-description">' + info.event.extendedProps.description + '</div>');
                         }
-                    } 
+                    }
                 }
             });
 

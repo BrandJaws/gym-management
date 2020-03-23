@@ -39,30 +39,70 @@
                                         </div>
                                         <div class="table-responsive">
                                             <table class="table table-striped table-bordered">
-                                                <thead>
-                                                <tr>
-                                                    <th class="sorting" data-sorting_type="asc"
-                                                        data-column_name="name" style="cursor: pointer">Name <span
-                                                            id="id_icon"></span></th>
-                                                    <th class="sorting" data-sorting_type="asc"
-                                                        data-column_name="duration" style="cursor: pointer">Duration
-                                                        <span
-                                                            id="post_title_icon"></span></th>
-                                                    <th class="sorting" data-sorting_type="asc"
-                                                        data-column_name="amount" style="cursor: pointer">Amount <span
-                                                            id="post_title_icon"></span></th>
-                                                    <th class="sorting" data-sorting_type="asc"
-                                                        data-column_name="monthlyFee" style="cursor: pointer">Monthly
-                                                        Fee <span
-                                                            id="post_title_icon"></span></th>
-                                                    <th class="sorting" data-sorting_type="asc"
-                                                        data-column_name="detail" style="cursor: pointer">Detail <span
-                                                            id="post_title_icon"></span></th>
-                                                    <th class="sorting" data-sorting_type="asc"
-                                                        data-column_name=" " style="cursor: pointer">Actions <span
-                                                            id="post_title_icon"></span></th>
-                                                </tr>
-                                                </thead>
+                                                @if($breadcrumbs == "Failed Calls")
+                                                    <thead>
+                                                    <tr>
+                                                        <th class="sorting" data-sorting_type="asc"
+                                                            data-column_name="name" style="cursor: pointer">Employee <span
+                                                                id="id_icon"></span></th>
+                                                        <th class="sorting" data-sorting_type="asc"
+                                                            data-column_name="duration" style="cursor: pointer">Customer
+                                                            <span
+                                                                id="post_title_icon"></span></th>
+                                                        <th class="sorting" data-sorting_type="asc"
+                                                            data-column_name="duration" style="cursor: pointer">Schedule Date
+                                                            <span
+                                                                id="post_title_icon"></span></th>
+                                                        <th class="sorting" data-sorting_type="asc"
+                                                            data-column_name="amount" style="cursor: pointer">Transfer Status
+                                                            <span
+                                                                id="post_title_icon"></span></th>
+                                                        <th class="sorting" data-sorting_type="asc"
+                                                            data-column_name="monthlyFee" style="cursor: pointer">
+                                                            Transfer Employee<span
+                                                                id="post_title_icon"></span></th>
+                                                        <th class="sorting" data-sorting_type="asc"
+                                                            data-column_name="duration" style="cursor: pointer">Re Schedule Date
+                                                            <span
+                                                                id="post_title_icon"></span></th>
+                                                        <th class="sorting" data-sorting_type="asc"
+                                                            data-column_name="detail" style="cursor: pointer">Remarks
+                                                            <span
+                                                                id="post_title_icon"></span></th>
+                                                        <th class="sorting" data-sorting_type="asc"
+                                                            data-column_name=" " style="cursor: pointer">Actions <span
+                                                                id="post_title_icon"></span></th>
+                                                    </tr>
+                                                    </thead>
+                                                @else
+                                                    <thead>
+                                                    <tr>
+                                                        <th class="sorting" data-sorting_type="asc"
+                                                            data-column_name="name" style="cursor: pointer">Name <span
+                                                                id="id_icon"></span></th>
+                                                        <th class="sorting" data-sorting_type="asc"
+                                                            data-column_name="duration" style="cursor: pointer">Phone
+                                                            <span
+                                                                id="post_title_icon"></span></th>
+                                                        <th class="sorting" data-sorting_type="asc"
+                                                            data-column_name="amount" style="cursor: pointer">Source
+                                                            <span
+                                                                id="post_title_icon"></span></th>
+                                                        <th class="sorting" data-sorting_type="asc"
+                                                            data-column_name="monthlyFee" style="cursor: pointer">
+                                                            Address
+                                                            Fee <span
+                                                                id="post_title_icon"></span></th>
+                                                        <th class="sorting" data-sorting_type="asc"
+                                                            data-column_name="detail" style="cursor: pointer">Remarks
+                                                            <span
+                                                                id="post_title_icon"></span></th>
+                                                        <th class="sorting" data-sorting_type="asc"
+                                                            data-column_name=" " style="cursor: pointer">Actions <span
+                                                                id="post_title_icon"></span></th>
+                                                    </tr>
+                                                    </thead>
+                                                @endif
                                                 <tbody>
                                                 @include('gym.member.archive.pagination_data')
                                                 </tbody>
@@ -97,7 +137,7 @@
 
             function fetch_data(page, sort_type, sort_by, query) {
                 $.ajax({
-                    url: "/gym/membership?page=" + page + "&sortby=" + sort_by + "&sorttype=" + sort_type + "&query=" + query,
+                    url: "/gym/member/archive/{{ $breadcrumbs }}?page=" + page + "&sortby=" + sort_by + "&sorttype=" + sort_type + "&query=" + query,
                     success: function (data) {
                         $('tbody').html('');
                         $('tbody').html(data);
@@ -150,5 +190,4 @@
         });
 
     </script>
-
 @endsection
