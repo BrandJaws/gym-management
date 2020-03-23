@@ -88,7 +88,7 @@
                     <li class="kt-menu__item  kt-menu__item--"
                         aria-haspopup="true"
                         data-ktmenu-submenu-toggle="hover">
-                        <a href="#" class="kt-menu__link kt-menu__toggle"
+                        <a href="#." class="kt-menu__link kt-menu__toggle"
                            onclick="event.preventDefault();document.querySelector('#admin-logout-form').submit();">
                             <span class="kt-menu__link-icon"><i class="flaticon-logout"></i></span>
                             <span class="kt-menu__link-text">Logout</span>

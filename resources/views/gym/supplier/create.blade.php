@@ -38,13 +38,13 @@
                                     </div>
                                     <div class="col-lg-4">
                                         <label>Email:</label>
-                                        <input type="email" name="email" class="form-control" placeholder="Enter your Email" />
+                                        <input type="text" id="kt_inputmask_9" name="email" class="form-control" placeholder="Enter your Email" />
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-lg-6">
                                         <label>Phone:</label>
-                                        <input type="text" name="phone" class="form-control" placeholder="Enter your Phone"/>
+                                        <input type="text" name="phone" id="kt_inputmask_3" class="form-control" placeholder="Enter your Phone"/>
                                     </div>
                                     <div class="col-lg-6">
                                         <label>Status:</label>
@@ -84,4 +84,5 @@
 
 @section('custom-script')
     <script src="{{ asset('js/select2.js') }}"></script>
+    <script src="{{asset('js/input-mask.js')}}"></script>
 @endsection

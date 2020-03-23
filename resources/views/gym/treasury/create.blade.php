@@ -34,7 +34,7 @@
                                     </div>
                                     <div class="col-lg-4">
                                         <label>Name:</label>
-                                        <input type="text" name="name" class="form-control" placeholder="Enter your Name" />
+                                        <input type="text" name="name" maxlength="15" class="form-control" placeholder="Enter your Name" />
                                     </div>
                                     <div class="col-lg-4">
                                         <label>Cash:</label>
@@ -72,7 +72,7 @@
                                     <div class="col-lg-6">
                                         <label>Date:</label>
                                         <div class="kt-input-icon input-group">
-                                            <input type="date" name="date" class="form-control" placeholder="Enter your Date">
+                                            <input type="text" name="date" id="kt_inputmask_1" class="form-control" placeholder="Enter your Date">
                                             <div class="input-group-append">
                                                 <span class="input-group-text">
                                                     <i class="la la-calendar-check-o"></i>
@@ -115,4 +115,5 @@
 
 @section('custom-script')
     <script src="{{ asset('js/select2.js') }}"></script>
+    <script src="{{asset('js/input-mask.js')}}"></script>
 @endsection

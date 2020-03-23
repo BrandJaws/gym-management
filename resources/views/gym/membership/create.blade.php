@@ -38,7 +38,7 @@
                                     </div>
                                     <div class="col-lg-4">
                                         <label>Name:</label>
-                                        <input type="text" name="name" class="form-control" required
+                                        <input type="text" name="name" maxlength="15" class="form-control" required
                                                placeholder="Enter your name"/>
                                         @if($errors->has('name'))
                                             <div class="error">{{ $errors->first('name') }}</div>

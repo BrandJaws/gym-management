@@ -31,7 +31,12 @@
                                             </div>
                                             <div class="col-md-3">
                                                 <div class="form-group">
-                                                    <input type="text" name="serach" id="serach" class="form-control"/>
+                                                    <div class="kt-input-icon kt-input-icon--right">
+                                                        <input type="text" name="search" id="search" class="form-control" placeholder="Search..." id="generalSearch">
+                                                        <span class="kt-input-icon__icon kt-input-icon__icon--right">
+                                                            <span><i class="la la-search"></i></span>
+                                                        </span>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -114,8 +119,8 @@
                 })
             }
 
-            $(document).on('keyup', '#serach', function () {
-                var query = $('#serach').val();
+            $(document).on('keyup', '#search', function () {
+                var query = $('#search').val();
                 var column_name = $('#hidden_column_name').val();
                 var sort_type = $('#hidden_sort_type').val();
                 var page = $('#hidden_page').val();
@@ -140,7 +145,7 @@
                 $('#hidden_column_name').val(column_name);
                 $('#hidden_sort_type').val(reverse_order);
                 var page = $('#hidden_page').val();
-                var query = $('#serach').val();
+                var query = $('#search').val();
                 fetch_data(page, reverse_order, column_name, query);
             });
             $(document).on('click', '.pagination a', function (event) {
@@ -150,7 +155,7 @@
                 var column_name = $('#hidden_column_name').val();
                 var sort_type = $('#hidden_sort_type').val();
 
-                var query = $('#serach').val();
+                var query = $('#search').val();
 
                 $('li').removeClass('active');
                 $(this).parent().addClass('active');

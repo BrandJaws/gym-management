@@ -47,7 +47,7 @@
                                     </div>
                                     <div class="col-lg-4">
                                         <label>Name:</label>
-                                        <input type="text" name="name" class="form-control" required
+                                        <input type="text" name="name" maxlength="15" class="form-control" required
                                                placeholder="Enter name"/>
                                         @if($errors->has('name'))
                                             <div class="error">{{ $errors->first('name') }}</div>
@@ -74,7 +74,7 @@
                                 <div class="form-group row">
                                     <div class="col-lg-4">
                                         <label>Email:</label>
-                                        <input type="email" name="email" class="form-control" required
+                                        <input type="text" name="email" id="kt_inputmask_9" class="form-control" required
                                                placeholder="Enter email"/>
                                         @if($errors->has('email'))
                                             <div class="error">{{ $errors->first('email') }}</div>
@@ -115,7 +115,7 @@
                                     </div>
                                     <div class="col-lg-4">
                                         <label>Phone:</label>
-                                        <input type="text" name="phone" class="form-control" required
+                                        <input type="text" name="phone" id="kt_inputmask_3" class="form-control" required
                                                placeholder="Enter Phone No.">
                                         @if($errors->has('phone'))
                                             <div class="error">{{ $errors->first('phone') }}</div>
@@ -181,4 +181,5 @@
 @endsection
 @section('custom-script')
     <script src="{{asset('js/select2.js')}}"></script>
+    <script src="{{asset('js/input-mask.js')}}"></script>
 @endsection
