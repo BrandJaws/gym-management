@@ -96,6 +96,9 @@ Route::group(['prefix' => 'gym', 'namespace' => 'Gym'], function () {
             Route::get('/disabled/{id}', ['as' => 'disabled', 'uses' => 'MemberController@disabled']);
 
 //            Archive Routes
+            Route::get('/archive/{action}/{id}', ['as' => 'pipelineCreate', 'uses' => 'MemberController@pipelineCreate']);
+            Route::post('/archive', ['as' => 'pipelineStore', 'uses' => 'MemberController@pipelineStore']);
+
 
             Route::get('/archive/{status}', ['as' => 'archive', 'uses' => 'MemberController@archive']);
             Route::get('/guest/{status}', ['as' => 'guest', 'uses' => 'MemberController@guest']);

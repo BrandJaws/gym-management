@@ -116,6 +116,7 @@
                                             <div class="col-lg-6 textField" style="display: none">
                                                 <label>Status :</label>
                                                 <select class="form-control" name="status">
+                                                    <option value="Not Joined">Not Joined</option>
                                                     <option value="Active">Active</option>
                                                     <option value="In-Active">In-Active</option>
                                                     <option value="Expired">Expired</option>

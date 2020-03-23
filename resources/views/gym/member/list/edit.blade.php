@@ -80,10 +80,12 @@
                                                 <label>Type :</label>
                                                 <select class="form-control" id="sel1" name="type"
                                                         onchange="changeDiv(this.value)">
-                                                    <option value="{{$lead->type}}"
-                                                            disabled>{{$lead->type}}</option>
-                                                    <option value="lead">lead</option>
-                                                    <option value="Member">Member</option>
+                                                    <option value="Lead" @if($lead->type == "Lead" ) selected @endif>
+                                                        Lead
+                                                    </option>
+                                                    <option value="Member"
+                                                            @if($lead->type == "Member" ) selected @endif>Member
+                                                    </option>
                                                 </select>
                                                 @if($errors->has('source'))
                                                     <div class="error">{{ $errors->first('source') }}</div>
@@ -126,9 +128,18 @@
                                             <div class="col-lg-6 textField" style="display: none">
                                                 <label>Status :</label>
                                                 <select class="form-control" name="status">
-                                                    <option value="Active">Active</option>
-                                                    <option value="In-Active">In-Active</option>
-                                                    <option value="Expired">Expired</option>
+                                                    <option value="Not Joined"
+                                                            @if($lead->status == "Not Joined" ) selected @endif>Not Joined
+                                                    </option>
+                                                    <option value="Active"
+                                                            @if($lead->status == "Active" ) selected @endif>Active
+                                                    </option>
+                                                    <option value="In-Active"
+                                                            @if($lead->status == "In-Active" ) selected @endif>In-Active
+                                                    </option>
+                                                    <option value="Expired"
+                                                            @if($lead->status == "Expired" ) selected @endif>Expired
+                                                    </option>
                                                 </select>
                                             </div>
                                             <div class="col-lg-6">
@@ -213,7 +224,7 @@
     <script src="{{asset('js/ktavatar.js')}}"></script>
     <script type="text/javascript">
         function changeDiv(value) {
-            if (value === "Member") {
+            if (value == "Member") {
                 var div = document.getElementsByClassName('textField');
                 for (var i = 0; i < div.length; i++) {
                     div[i].style.display = "block";

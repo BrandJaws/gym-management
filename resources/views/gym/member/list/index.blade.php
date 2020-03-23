@@ -43,18 +43,18 @@
                                                         data-column_name="name" style="cursor: pointer">Name <span
                                                             id="id_icon"></span></th>
                                                     <th class="sorting" data-sorting_type="asc"
-                                                        data-column_name="duration" style="cursor: pointer">Duration
+                                                        data-column_name="duration" style="cursor: pointer">phone
                                                         <span
                                                             id="post_title_icon"></span></th>
                                                     <th class="sorting" data-sorting_type="asc"
-                                                        data-column_name="amount" style="cursor: pointer">Amount <span
+                                                        data-column_name="amount" style="cursor: pointer">Source <span
                                                             id="post_title_icon"></span></th>
                                                     <th class="sorting" data-sorting_type="asc"
-                                                        data-column_name="monthlyFee" style="cursor: pointer">Monthly
+                                                        data-column_name="monthlyFee" style="cursor: pointer">Address
                                                         Fee <span
                                                             id="post_title_icon"></span></th>
                                                     <th class="sorting" data-sorting_type="asc"
-                                                        data-column_name="detail" style="cursor: pointer">Detail <span
+                                                        data-column_name="detail" style="cursor: pointer">Remarks <span
                                                             id="post_title_icon"></span></th>
                                                     <th class="sorting" data-sorting_type="asc"
                                                         data-column_name=" " style="cursor: pointer">Actions <span
@@ -95,7 +95,7 @@
 
             function fetch_data(page, sort_type, sort_by, query) {
                 $.ajax({
-                    url: "/gym/membership?page=" + page + "&sortby=" + sort_by + "&sorttype=" + sort_type + "&query=" + query,
+                    url: "/gym/member/list?page=" + page + "&sortby=" + sort_by + "&sorttype=" + sort_type + "&query=" + query,
                     success: function (data) {
                         $('tbody').html('');
                         $('tbody').html(data);

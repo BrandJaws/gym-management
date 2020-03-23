@@ -16,7 +16,7 @@
                         <div class="kt-widget14">
                             <div class="kt-widget14__header kt-margin-b-30">
                                 <h3 class="kt-widget14__title">
-                                    Total Members
+                                    Memberships
                                 </h3>
                                 <span class="kt-widget14__desc">
                                     Check out each collumn for more details
@@ -35,7 +35,7 @@
                         <div class="kt-widget14">
                             <div class="kt-widget14__header">
                                 <h3 class="kt-widget14__title">
-                                    Total Calls
+                                     Calls
                                 </h3>
                                 <span class="kt-widget14__desc">
                                     Profit Share between customers
@@ -73,7 +73,7 @@
                         <div class="kt-widget14">
                             <div class="kt-widget14__header">
                                 <h3 class="kt-widget14__title">
-                                    Total Memberships
+                                    Members
                                 </h3>
                                 <span class="kt-widget14__desc">
 													Revenue change breakdown by cities

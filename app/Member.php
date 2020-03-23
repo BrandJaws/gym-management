@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Facades\Auth;
 
 class Member extends Model
 {
@@ -36,6 +37,94 @@ class Member extends Model
                 'members.*',
             ]
         )->where(function ($query) use ($searchTerm, $sort_by, $sort_type) {
+            $query->where('type', 'Member')->where('gym_id', Auth::guard('employee')->user()->gym_id);
+            if ($searchTerm) {
+                $query->where('members.name', 'like', '%' . $searchTerm . '%')
+                    ->orWhere('members.email', 'like', '%' . $searchTerm . '%')
+                    ->orWhere('members.code', 'like', '%' . $searchTerm . '%')
+                    ->orWhere('members.email', 'like', '%' . $searchTerm . '%')
+                    ->orWhere('members.phone', 'like', '%' . $searchTerm . '%')
+                    ->orWhere('members.joiningDate', 'like', '%' . $searchTerm . '%')
+                    ->orWhere('members.address', 'like', '%' . $searchTerm . '%')
+                    ->orWhere('members.remarks', 'like', '%' . $searchTerm . '%')
+                    ->orWhere('members.status', 'like', '%' . $searchTerm . '%')
+                    ->orWhere('members.type', 'like', '%' . $searchTerm . '%');
+            }
+        })->orderBy($sort_by, $sort_type)->paginate(10);
+    }
+    public static function getLeadList($searchTerm, $sort_by, $sort_type)
+    {
+        return self::select([
+                'members.*',
+            ]
+        )->where(function ($query) use ($searchTerm, $sort_by, $sort_type) {
+            $query->where('type', 'Lead')->where('gym_id', Auth::guard('employee')->user()->gym_id);
+            if ($searchTerm) {
+                $query->where('members.name', 'like', '%' . $searchTerm . '%')
+                    ->orWhere('members.email', 'like', '%' . $searchTerm . '%')
+                    ->orWhere('members.code', 'like', '%' . $searchTerm . '%')
+                    ->orWhere('members.email', 'like', '%' . $searchTerm . '%')
+                    ->orWhere('members.phone', 'like', '%' . $searchTerm . '%')
+                    ->orWhere('members.joiningDate', 'like', '%' . $searchTerm . '%')
+                    ->orWhere('members.address', 'like', '%' . $searchTerm . '%')
+                    ->orWhere('members.remarks', 'like', '%' . $searchTerm . '%')
+                    ->orWhere('members.status', 'like', '%' . $searchTerm . '%')
+                    ->orWhere('members.type', 'like', '%' . $searchTerm . '%');
+            }
+        })->orderBy($sort_by, $sort_type)->paginate(10);
+    }
+
+    public static function getNotJoinedMemberList($searchTerm, $sort_by, $sort_type)
+    {
+        return self::select([
+                'members.*',
+            ]
+        )->where(function ($query) use ($searchTerm, $sort_by, $sort_type) {
+            $query->where('status', 'Not Joined')->where('gym_id', Auth::guard('employee')->user()->gym_id);
+            if ($searchTerm) {
+                $query->where('members.name', 'like', '%' . $searchTerm . '%')
+                    ->orWhere('members.email', 'like', '%' . $searchTerm . '%')
+                    ->orWhere('members.code', 'like', '%' . $searchTerm . '%')
+                    ->orWhere('members.email', 'like', '%' . $searchTerm . '%')
+                    ->orWhere('members.phone', 'like', '%' . $searchTerm . '%')
+                    ->orWhere('members.joiningDate', 'like', '%' . $searchTerm . '%')
+                    ->orWhere('members.address', 'like', '%' . $searchTerm . '%')
+                    ->orWhere('members.remarks', 'like', '%' . $searchTerm . '%')
+                    ->orWhere('members.status', 'like', '%' . $searchTerm . '%')
+                    ->orWhere('members.type', 'like', '%' . $searchTerm . '%');
+            }
+        })->orderBy($sort_by, $sort_type)->paginate(10);
+    }
+
+    public static function getExpiredMemberList($searchTerm, $sort_by, $sort_type)
+    {
+        return self::select([
+                'members.*',
+            ]
+        )->where(function ($query) use ($searchTerm, $sort_by, $sort_type) {
+            $query->where('status', 'Expired')->where('gym_id', Auth::guard('employee')->user()->gym_id);
+            if ($searchTerm) {
+                $query->where('members.name', 'like', '%' . $searchTerm . '%')
+                    ->orWhere('members.email', 'like', '%' . $searchTerm . '%')
+                    ->orWhere('members.code', 'like', '%' . $searchTerm . '%')
+                    ->orWhere('members.email', 'like', '%' . $searchTerm . '%')
+                    ->orWhere('members.phone', 'like', '%' . $searchTerm . '%')
+                    ->orWhere('members.joiningDate', 'like', '%' . $searchTerm . '%')
+                    ->orWhere('members.address', 'like', '%' . $searchTerm . '%')
+                    ->orWhere('members.remarks', 'like', '%' . $searchTerm . '%')
+                    ->orWhere('members.status', 'like', '%' . $searchTerm . '%')
+                    ->orWhere('members.type', 'like', '%' . $searchTerm . '%');
+            }
+        })->orderBy($sort_by, $sort_type)->paginate(10);
+    }
+
+    public static function getInActiveMemberList($searchTerm, $sort_by, $sort_type)
+    {
+        return self::select([
+                'members.*',
+            ]
+        )->where(function ($query) use ($searchTerm, $sort_by, $sort_type) {
+            $query->where('status', 'In-Active')->where('gym_id', Auth::guard('employee')->user()->gym_id);
             if ($searchTerm) {
                 $query->where('members.name', 'like', '%' . $searchTerm . '%')
                     ->orWhere('members.email', 'like', '%' . $searchTerm . '%')

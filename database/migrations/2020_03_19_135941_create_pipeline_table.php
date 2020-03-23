@@ -18,13 +18,14 @@ class CreatePipelineTable extends Migration
             $table->integer('gym_id');
             $table->string('employee_id');
             $table->string('customer_id');
-            $table->string('schedule_date');
-            $table->string('status');
-            $table->string('transfer_status')->nullable(true); // null
             $table->string('transfer_id')->nullable(true); // null
+            $table->string('scheduleDate');
+            $table->string('status');
+            $table->string('transferStatus')->nullable(true); // null
             $table->string('intersetedPackages')->nullable(true); // null
             $table->string('remarks')->nullable(true); // null
             $table->string('type')->nullable(true); // null
+            $table->date('reScheduleDate')->nullable(true); // null
             $table->timestamps();
         });
     }
