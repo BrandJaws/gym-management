@@ -15,11 +15,11 @@
                 </a>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton"
                      style="transform: translate3d(912px, 221px, 0px)!important;">
-                    <a class="dropdown-item" href="{{url('/gym/member/archive/ForCall', $row->id)}}"> <i
+                    <a class="dropdown-item" href="{{url('/gym/member/archive/forCall', $row->id)}}"> <i
                             class="fa flaticon2-phone"></i> For Call</a>
-                    <a class="dropdown-item" href="{{url('/gym/member/archive/ForDemo', $row->id)}}"><i
+                    <a class="dropdown-item" href="{{url('/gym/member/archive/forDemo', $row->id)}}"><i
                             class="fa flaticon2-graphic-design"></i> For Demo</a>
-                    <a class="dropdown-item" href="{{url('/gym/member/archive/TransferLead', $row->id)}}"><i
+                    <a class="dropdown-item" href="{{url('/gym/member/archive/transferLead', $row->id)}}"><i
                             class="fa flaticon2-delivery-truck"></i>Transfer Lead</a>
                     <a class="dropdown-item" href="#"><i
                             class="fa flaticon2-protection"></i>Purchase Product</a>
@@ -52,11 +52,11 @@
                 </a>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton"
                      style="transform: translate3d(912px, 221px, 0px)!important;">
-                    <a class="dropdown-item" href="{{url('/gym/member/archive/ForCall', $row->id)}}"> <i
+                    <a class="dropdown-item" href="{{url('/gym/member/archive/forCall', $row->id)}}"> <i
                             class="fa flaticon2-phone"></i> For Call</a>
-                    <a class="dropdown-item" href="{{url('/gym/member/archive/ForDemo', $row->id)}}"><i
+                    <a class="dropdown-item" href="{{url('/gym/member/archive/forDemo', $row->id)}}"><i
                             class="fa flaticon2-graphic-design"></i> For Demo</a>
-                    <a class="dropdown-item" href="{{url('/gym/member/archive/TransferLead', $row->id)}}"><i
+                    <a class="dropdown-item" href="{{url('/gym/member/archive/transferLead', $row->id)}}"><i
                             class="fa flaticon2-delivery-truck"></i>Transfer Lead</a>
                     <a class="dropdown-item" href="#"><i
                             class="fa flaticon2-protection"></i>Purchase Product</a>

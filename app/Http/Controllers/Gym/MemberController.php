@@ -229,7 +229,7 @@ class MemberController extends Controller
     public function archive(Request $request, $value)
     {
         switch ($value) {
-            case 'Leads':
+            case 'leads':
                 $breadcrumbs = "Leads";
                 $member = Member::where('type', 'Lead')->where('gym_id', Auth::guard('employee')->user()->gym_id)->orderBy('id', 'asc')->paginate(10);
                 if ($request->ajax()) {
@@ -241,7 +241,7 @@ class MemberController extends Controller
                     return view('gym.member.archive.pagination_data', compact('breadcrumbs', 'member'))->render();
                 }
                 break;
-            case 'FailedCalls':
+            case 'failedCalls':
                 $breadcrumbs = "Failed Calls";
                 $member = Pipeline::where('status', 'Failed Calls')->where('gym_id', Auth::guard('employee')->user()->gym_id)->orderBy('id', 'asc')->paginate(10);
                 if ($request->ajax()) {
@@ -253,7 +253,7 @@ class MemberController extends Controller
                     return view('gym.member.archive.pagination_data', compact('breadcrumbs', 'member'))->render();
                 }
                 break;
-            case 'NotJoinedMembers':
+            case 'notJoinedMembers':
                 $breadcrumbs = "Not Joined Members";
                 $member = Member::where('status', 'Not Joined')->where('gym_id', Auth::guard('employee')->user()->gym_id)->orderBy('id', 'asc')->paginate(10);
                 if ($request->ajax()) {
@@ -265,7 +265,7 @@ class MemberController extends Controller
                     return view('gym.member.archive.pagination_data', compact('breadcrumbs', 'member'))->render();
                 }
                 break;
-            case 'ExpiredMembers':
+            case 'expiredMembers':
                 $breadcrumbs = "Expired Members";
                 $member = Member::where('status', 'Expired')->where('gym_id', Auth::guard('employee')->user()->gym_id)->orderBy('id', 'asc')->paginate(10);
                 if ($request->ajax()) {
@@ -277,7 +277,7 @@ class MemberController extends Controller
                     return view('gym.member.archive.pagination_data', compact('breadcrumbs', 'member'))->render();
                 }
                 break;
-            case 'InActiveMembers':
+            case 'inActiveMembers':
                 $breadcrumbs = "In Active Members";
                 $member = Member::where('status', 'In-Active')->where('gym_id', Auth::guard('employee')->user()->gym_id)->orderBy('id', 'asc')->paginate(10);
                 if ($request->ajax()) {
@@ -289,11 +289,11 @@ class MemberController extends Controller
                     return view('gym.member.archive.pagination_data', compact('breadcrumbs', 'member'))->render();
                 }
                 break;
-            case 'MembershipTransfer':
+            case 'membershipTransfer':
                 $breadcrumbs = "Membership Transfer";
                 $member = Member::orderBy('id', 'asc')->where('gym_id', Auth::guard('employee')->user()->gym_id)->paginate(10);
                 break;
-            case 'OldMembers':
+            case 'oldMembers':
                 $breadcrumbs = "Old Members";
                 $member = Member::where('status', 'Active')->where('gym_id', Auth::guard('employee')->user()->gym_id)->orderBy('id', 'asc')->paginate(10);
                 if ($request->ajax()) {
@@ -315,16 +315,16 @@ class MemberController extends Controller
     {
         try {
             switch ($value) {
-                case 'ForCall':
+                case 'forCall':
                     $breadcrumbs = "For Call";
                     break;
-                case 'ForDemo':
+                case 'forDemo':
                     $breadcrumbs = "For Demo";
                     break;
-                case 'TransferLead':
+                case 'transferLead':
                     $breadcrumbs = "Transfer Lead";
                     break;
-                case 'PreviewGuestCards':
+                case 'previewGuestCards':
                     $breadcrumbs = "Preview Guest Cards";
                     break;
             }
@@ -373,7 +373,7 @@ class MemberController extends Controller
     public function guest(Request $request, $value)
     {
         switch ($value) {
-            case 'PreviewCalls':
+            case 'previewCalls':
                 $breadcrumbs = "Preview Calls";
                 $data = Pipeline::where('type', 'For Call')->where('gym_id', Auth::guard('employee')->user()->gym_id)->paginate(10);
                 if ($request->ajax()) {
@@ -385,7 +385,7 @@ class MemberController extends Controller
                     return view('gym.member.pagination_data', compact('member'))->render();
                 }
                 break;
-            case 'TransferCalls':
+            case 'transferCalls':
                 $breadcrumbs = "Transfer Calls";
                 $data = Pipeline::where('transferStatus', 'For Call')->where('gym_id', Auth::guard('employee')->user()->gym_id)->paginate(10);
                 if ($request->ajax()) {
@@ -397,7 +397,7 @@ class MemberController extends Controller
                     return view('gym.member.pagination_data', compact('member'))->render();
                 }
                 break;
-            case 'PreivewAppointments':
+            case 'preivewAppointments':
                 $breadcrumbs = "Preivew Appointments";
                 $data = Pipeline::where('type', 'For Demo')->where('gym_id', Auth::guard('employee')->user()->gym_id)->paginate(10);
                 if ($request->ajax()) {
@@ -409,7 +409,7 @@ class MemberController extends Controller
                     return view('gym.member.pagination_data', compact('member'))->render();
                 }
                 break;
-            case 'PreviewGuestCards':
+            case 'previewGuestCards':
                 $breadcrumbs = "Preview Guest Cards";
                 break;
         }

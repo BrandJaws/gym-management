@@ -21,37 +21,37 @@
                     <div class="kt-menu__submenu kt-menu__submenu--classic kt-menu__submenu--left">
                         <ul class="kt-menu__subnav">
                             <li class="kt-menu__item " aria-haspopup="true">
-                                <a href="{{url('/gym/member/archive', "Leads")}}" class="kt-menu__link ">
+                                <a href="{{url('/gym/member/archive', "leads")}}" class="kt-menu__link ">
                                     <span class="kt-menu__link-text">Leads</span>
                                 </a>
                             </li>
                             <li class="kt-menu__item " aria-haspopup="true">
-                                <a href="{{url('/gym/member/archive', "FailedCalls")}}" class="kt-menu__link ">
+                                <a href="{{url('/gym/member/archive', "failedCalls")}}" class="kt-menu__link ">
                                     <span class="kt-menu__link-text">Failed Calls</span>
                                 </a>
                             </li>
                             <li class="kt-menu__item " aria-haspopup="true">
-                                <a href="{{url('/gym/member/archive', "NotJoinedMembers")}}" class="kt-menu__link ">
+                                <a href="{{url('/gym/member/archive', "notJoinedMembers")}}" class="kt-menu__link ">
                                     <span class="kt-menu__link-text">Not Joined Members</span>
                                 </a>
                             </li>
                             <li class="kt-menu__item" aria-haspopup="true">
-                                <a href="{{url('/gym/member/archive', "ExpiredMembers")}}" class="kt-menu__link ">
+                                <a href="{{url('/gym/member/archive', "expiredMembers")}}" class="kt-menu__link ">
                                     <span class="kt-menu__link-text">Expired Members</span>
                                 </a>
                             </li>
                             <li class="kt-menu__item" aria-haspopup="true">
-                                <a href="{{url('/gym/member/archive', "InActiveMembers")}}" class="kt-menu__link ">
+                                <a href="{{url('/gym/member/archive', "inActiveMembers")}}" class="kt-menu__link ">
                                     <span class="kt-menu__link-text">List of Inactive Members</span>
                                 </a>
                             </li>
-{{--                            <li class="kt-menu__item" aria-haspopup="false">--}}
-{{--                                <a href="#" class="kt-menu__link ">--}}
-{{--                                    <span class="kt-menu__link-text">Membership Transfer</span>--}}
-{{--                                </a>--}}
-{{--                            </li>--}}
+                            {{--                            <li class="kt-menu__item" aria-haspopup="false">--}}
+                            {{--                                <a href="#" class="kt-menu__link ">--}}
+                            {{--                                    <span class="kt-menu__link-text">Membership Transfer</span>--}}
+                            {{--                                </a>--}}
+                            {{--                            </li>--}}
                             <li class="kt-menu__item" aria-haspopup="true">
-                                <a href="{{url('/gym/member/archive', "OldMembers")}}" class="kt-menu__link ">
+                                <a href="{{url('/gym/member/archive', "oldMembers")}}" class="kt-menu__link ">
                                     <span class="kt-menu__link-text">Old Members</span>
                                 </a>
                             </li>
@@ -66,25 +66,25 @@
                     <div class="kt-menu__submenu kt-menu__submenu--classic kt-menu__submenu--left">
                         <ul class="kt-menu__subnav">
                             <li class="kt-menu__item " aria-haspopup="true">
-                                <a href="{{url('/gym/member/guest', "PreviewCalls")}}" class="kt-menu__link ">
+                                <a href="{{url('/gym/member/guest', "previewCalls")}}" class="kt-menu__link ">
                                     <span class="kt-menu__link-text">Preview Calls</span>
                                 </a>
                             </li>
                             <li class="kt-menu__item " aria-haspopup="true">
-                                <a href="{{url('/gym/member/guest', "TransferCalls")}}" class="kt-menu__link ">
+                                <a href="{{url('/gym/member/guest', "transferCalls")}}" class="kt-menu__link ">
                                     <span class="kt-menu__link-text">My Transfer calls</span>
                                 </a>
                             </li>
                             <li class="kt-menu__item" aria-haspopup="true">
-                                <a href="{{url('/gym/member/guest', "PreivewAppointments")}}" class="kt-menu__link ">
+                                <a href="{{url('/gym/member/guest', "preivewAppointments")}}" class="kt-menu__link ">
                                     <span class="kt-menu__link-text">Preivew Appointments</span>
                                 </a>
                             </li>
-{{--                            <li class="kt-menu__item" aria-haspopup="false">--}}
-{{--                                <a href="#" class="kt-menu__link ">--}}
-{{--                                    <span class="kt-menu__link-text">Preview Guest Cards</span>--}}
-{{--                                </a>--}}
-{{--                            </li>--}}
+                            {{--                            <li class="kt-menu__item" aria-haspopup="false">--}}
+                            {{--                                <a href="#" class="kt-menu__link ">--}}
+                            {{--                                    <span class="kt-menu__link-text">Preview Guest Cards</span>--}}
+                            {{--                                </a>--}}
+                            {{--                            </li>--}}
                         </ul>
                     </div>
                 </li>
