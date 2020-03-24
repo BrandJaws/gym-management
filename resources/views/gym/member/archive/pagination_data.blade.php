@@ -1,6 +1,8 @@
 @if($breadcrumbs == "Failed Calls")
+    <?php $i = 1; ?>
     @foreach($member as $row)
         <tr>
+            <th>{{$i}}</th>
             <td>{{ $row->employee->name}}</td>
             <td>{{ $row->member->name }}</td>
             <td>{{ $row->scheduleDate }}</td>
@@ -23,23 +25,26 @@
                             class="fa flaticon2-delivery-truck"></i>Transfer Lead</a>
                     <a class="dropdown-item" href="#"><i
                             class="fa flaticon2-protection"></i>Purchase Product</a>
-                    <a class="dropdown-item" href="{{url('/gym/member/edit', $row->id)}}"><i
+                    <a class="dropdown-item" href="{{url('/gym/member/guest/failedCalls', $row->id)}}"><i
                             class="fa flaticon2-edit"></i>
                         Edit</a>
-                    <a class="dropdown-item" href="{{url('/gym/member/disabled', $row->id)}}"><i
+                    <a class="dropdown-item" href="{{url('/gym/member/pipelineDisable', $row->id)}}"><i
                             class="fa flaticon2-delete"></i> Disabled</a>
                 </div>
             </td>
         </tr>
+        <?php  $i++; ?>
     @endforeach
     <tr>
-        <td colspan="8" align="center">
+        <td colspan="9" align="center">
             {{ $member->links() }}
         </td>
     </tr>
 @else
+    <?php $i = 1; ?>
     @foreach($member as $row)
         <tr>
+            <th>{{$i}}</th>
             <td>{{ $row->name}}</td>
             <td>{{ $row->phone }}</td>
             <td>{{ $row->source }}</td>
@@ -68,9 +73,10 @@
                 </div>
             </td>
         </tr>
+        <?php  $i++; ?>
     @endforeach
     <tr>
-        <td colspan="6" align="center">
+        <td colspan="7" align="center">
             {{ $member->links() }}
         </td>
     </tr>

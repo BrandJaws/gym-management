@@ -143,7 +143,8 @@ class MemberController extends Controller
         try {
             $lead = Member::find($id);
             $membership = Membership::all();
-            return view('gym.member.list.edit', compact('lead', 'membership'));
+            $callHistory = Pipeline::where('customer_id', $id)->where('gym_id', Auth::guard('employee')->user()->gym_id)->paginate(10);
+            return view('gym.member.list.edit', compact('lead', 'membership', 'callHistory'));
         } catch (\Exception $e) {
             return back()->with('error', 'Oops, something was not right');
         }
@@ -220,7 +221,40 @@ class MemberController extends Controller
     {
         try {
             Member::destroy($id);
-            return back()->with('success', 'Member Deleted Successfully!');
+            Pipeline::where('customer_id', $id)->delete();
+            return back()->with('success', 'Member Disabled Successfully!');
+        } catch (\Exception $e) {
+            return back()->with('error', 'Oops, something was not right');
+        }
+    }
+
+    public function disabledList()
+    {
+        try {
+            $member = Member::onlyTrashed()->paginate(10);
+            return view('gym.member.list.disabledList', compact('member'))->render();
+        } catch (\Exception $e) {
+            return back()->with('error', 'Oops, something was not right');
+        }
+    }
+
+    public function distroy($id)
+    {
+        try {
+            Member::where('id', $id)->forcedelete();
+            Pipeline::where('customer_id', $id)->forcedelete();
+            return back()->with('success', 'Permanently Deleted Successfully!');
+        } catch (\Exception $e) {
+            return back()->with('error', 'Oops, something was not right');
+        }
+    }
+
+    public function restore($id)
+    {
+        try {
+            Member::where('id', $id)->restore();
+            Pipeline::where('customer_id', $id)->restore();
+            return back()->with('success', 'Data Restore Successfully!');
         } catch (\Exception $e) {
             return back()->with('error', 'Oops, something was not right');
         }
@@ -370,6 +404,110 @@ class MemberController extends Controller
         }
     }
 
+    public function pipelineEdit($value, $id)
+    {
+        switch ($value) {
+            case 'previewCalls':
+                $breadcrumbs = "Edit Call";
+                break;
+            case 'transferCalls':
+                $breadcrumbs = "Edit Transfer Call";
+                break;
+            case 'preivewAppointments':
+                $breadcrumbs = "Edit Appointment";
+                break;
+            case 'failedCalls':
+                $breadcrumbs = "Edit Failed Call";
+                break;
+        }
+        $packageList = [];
+        $pipeline = Pipeline::find($id);
+        $packageId = explode(',', $pipeline->intersetedPackages);
+        foreach ($packageId as $fields) {
+            array_push($packageList, $fields);
+        }
+        $membership = Membership::all();
+        $employee = Employee::all();
+        return view('gym.member.guest.edit', compact('breadcrumbs', 'membership', 'pipeline', 'employee', 'packageList'))->render();
+
+    }
+
+    public function pipelineUpdate(Request $request)
+    {
+        $id = $request->pipeline_id;
+        try {
+            $validator = Validator::make($request->all(), [
+                'employee_id' => 'required',
+                'pipeline_id' => 'required',
+                'type' => 'required',
+                'scheduleDate' => 'required',
+                'status' => 'required',
+                'remarks' => 'required'
+            ]);
+            if ($validator->fails()) {
+                return Redirect::back()->withErrors($validator);
+            }
+            $pipeline = Pipeline::where('id', $id)->first();
+            $pipeline->fill($request->only([
+                'employee_id',
+                'type',
+                'scheduleDate',
+                'status',
+                'transferStatus',
+                'transfer_id',
+                'reScheduleDate',
+                'remarks'
+            ]));
+            $pipeline->intersetedPackages = implode(',', $request->intersetedPackages);
+            $pipeline->save();
+            return back()->with('success', 'Employee Updated Successfully!');
+        } catch (\Exception $e) {
+            return response()->json([
+                'response' => $e
+            ], 400);
+        }
+    }
+
+    public function pipelineDisable($id)
+    {
+        try {
+            Pipeline::destroy($id);
+            return back()->with('success', 'Pipeline Disabled Successfully!');
+        } catch (\Exception $e) {
+            return back()->with('error', 'Oops, something was not right');
+        }
+    }
+
+    public function pipelineDisabled()
+    {
+        try {
+            $pipeline = Pipeline::onlyTrashed()->paginate(10);
+            return view('gym.member.guest.disabledPipeline', compact('pipeline'))->render();
+        } catch (\Exception $e) {
+            return back()->with('error', 'Oops, something was not right');
+        }
+    }
+
+    public function distroyPipeline($id)
+    {
+        try {
+            Pipeline::where('id', $id)->forcedelete();
+            return back()->with('success', 'Permanently Deleted Successfully!');
+        } catch (\Exception $e) {
+            return back()->with('error', 'Oops, something was not right');
+        }
+    }
+
+    public function restorePipeline($id)
+    {
+        try {
+            Pipeline::where('id', $id)->restore();
+            return back()->with('success', 'Data Restore Successfully!');
+        } catch (\Exception $e) {
+            return back()->with('error', 'Oops, something was not right');
+        }
+    }
+
     public function guest(Request $request, $value)
     {
         switch ($value) {
@@ -414,7 +552,7 @@ class MemberController extends Controller
                 break;
         }
         return view('gym.member.guest.list', compact('breadcrumbs', 'data'))->render();
-
     }
+
 
 }
