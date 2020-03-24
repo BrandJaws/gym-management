@@ -26,6 +26,7 @@ class CreatePipelineTable extends Migration
             $table->string('remarks')->nullable(true); // null
             $table->string('type')->nullable(true); // null
             $table->date('reScheduleDate')->nullable(true); // null
+            $table->softDeletes();
             $table->timestamps();
         });
     }

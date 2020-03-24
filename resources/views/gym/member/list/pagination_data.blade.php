@@ -1,5 +1,7 @@
+<?php $i = 1; ?>
 @foreach($member as $row)
     <tr>
+        <th>{{$i}}</th>
         <td>{{ $row->name}}</td>
         <td>{{ $row->phone }}</td>
         <td>{{ $row->source }}</td>
@@ -26,6 +28,7 @@
                         class="fa flaticon2-delete"></i> Disabled</a>
             </div>
         </td>
+        <?php  $i++; ?>
     </tr>
 @endforeach
 <tr>

@@ -45,7 +45,7 @@
                                     <span class="kt-menu__link-text">List of Inactive Members</span>
                                 </a>
                             </li>
-                            {{--                            <li class="kt-menu__item" aria-haspopup="false">--}}
+                            {{--                        <li class="kt-menu__item" aria-haspopup="false">--}}
                             {{--                                <a href="#" class="kt-menu__link ">--}}
                             {{--                                    <span class="kt-menu__link-text">Membership Transfer</span>--}}
                             {{--                                </a>--}}
@@ -53,6 +53,11 @@
                             <li class="kt-menu__item" aria-haspopup="true">
                                 <a href="{{url('/gym/member/archive', "oldMembers")}}" class="kt-menu__link ">
                                     <span class="kt-menu__link-text">Old Members</span>
+                                </a>
+                            </li>
+                            <li class="kt-menu__item" aria-haspopup="true">
+                                <a href="{{url('/gym/member/disabledList')}}" class="kt-menu__link ">
+                                    <span class="kt-menu__link-text">Disabled Members</span>
                                 </a>
                             </li>
                         </ul>
@@ -85,6 +90,11 @@
                             {{--                                    <span class="kt-menu__link-text">Preview Guest Cards</span>--}}
                             {{--                                </a>--}}
                             {{--                            </li>--}}
+                            <li class="kt-menu__item" aria-haspopup="true">
+                                <a href="{{url('/gym/member/calls/disabled')}}" class="kt-menu__link ">
+                                    <span class="kt-menu__link-text">Disabled Calls</span>
+                                </a>
+                            </li>
                         </ul>
                     </div>
                 </li>

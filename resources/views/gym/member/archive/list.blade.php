@@ -42,6 +42,7 @@
                                                 @if($breadcrumbs == "Failed Calls")
                                                     <thead>
                                                     <tr>
+                                                        <th>No.</th>
                                                         <th class="sorting" data-sorting_type="asc"
                                                             data-column_name="name" style="cursor: pointer">Employee <span
                                                                 id="id_icon"></span></th>
@@ -77,6 +78,7 @@
                                                 @else
                                                     <thead>
                                                     <tr>
+                                                        <th>No.</th>
                                                         <th class="sorting" data-sorting_type="asc"
                                                             data-column_name="name" style="cursor: pointer">Name <span
                                                                 id="id_icon"></span></th>

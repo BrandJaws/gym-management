@@ -49,7 +49,7 @@
                     <span class="kt-header__topbar-username kt-hidden-mobile">{{ Auth::guard('admin')->user()->name }}</span>
                     <!--use below badge element instead the user avatar to display username's first letter(remove kt-hidden class to display it) -->
                     <span class="kt-badge kt-badge--username kt-badge--unified-success kt-badge--lg kt-badge--rounded kt-badge--bold">
-                        <img src="{{asset('assets/media/users/2.png')}}" alt="image">
+                        <img src="{{asset('assets/media/users/avatar.png')}}" alt="image">
                     </span>
                 </div>
             </div>
@@ -57,10 +57,10 @@
                 <!--begin: Head -->
                 <div class="kt-user-card kt-user-card--skin-dark kt-notification-item-padding-x" style="background-image: url({{asset('assets/media/users/300_25.jpg')}})}})">
                     <div class="kt-user-card__avatar">
-                        <img class="kt-hidden" alt="Pic" src="assets/media/users/300_25.jpg" />
+                        <img class="kt-hidden" alt="Pic" src="{{asset('assets/media/users/300_25.jpg')}}" />
                         <!--use below badge element instead the user avatar to display username's first letter(remove kt-hidden class to display it) -->
                         <span class="kt-badge kt-badge--lg kt-badge--rounded kt-badge--bold kt-font-success">
-                            <img src="{{asset('assets/media/users/2.png')}}" alt="image">
+                            <img src="{{asset('assets/media/users/avatar.png')}}" alt="image">
                         </span>
                     </div>
                     <div class="kt-user-card__name">
@@ -73,7 +73,7 @@
                 <!--end: Head -->
                 <!--begin: Navigation -->
                 <div class="kt-notification">
-                    <a href="custom/apps/user/profile-1/personal-information.html" class="kt-notification__item">
+                    <a href="{{route('admin.profile')}}" class="kt-notification__item">
                         <div class="kt-notification__item-icon">
                             <i class="flaticon2-calendar-3 kt-font-success"></i>
                         </div>
@@ -95,7 +95,6 @@
                         </form>
                     </div>
                 </div>
-
                 <!--end: Navigation -->
             </div>
         </div>
