@@ -29,7 +29,29 @@ class MemberController extends Controller
     public function dashobard(Request $request)
     {
         try {
-            return view('gym.member.dashboard');
+            $memberships = Membership::where('gym_id',Auth::guard('employee')->user()->gym_id)->count();
+            $totalCalls = Pipeline::where('gym_id',Auth::guard('employee')->user()->gym_id)
+                ->where('type', '=' ,'For Call')->count();
+            $callsForAppointments = Pipeline::where('gym_id',Auth::guard('employee')->user()->gym_id)
+                ->where('type', '=' ,'For Demo')->count();
+            $callsTransfered = Pipeline::where('gym_id',Auth::guard('employee')->user()->gym_id)
+                ->where('transferStatus', '!=' ,'None')->count();
+            $failedCalls = Pipeline::where('gym_id', Auth::guard('employee')->user()->gym_id)
+                ->where('status', '=' ,'Failed Calls')->count();
+            $leadMembers = Pipeline::where('gym_id', Auth::guard('employee')->user()->gym_id)
+                ->where('status', '=' ,'Not Joined')->count();
+            $notLivedMembers = Pipeline::where('gym_id', Auth::guard('employee')->user()->gym_id)
+                ->where('status', '=' ,'Expired')->count();
+            $notComingMembers = Pipeline::where('gym_id', Auth::guard('employee')->user()->gym_id)
+                ->where('status', '=' ,'In-Active')->count();
+            $joinedMembers = Pipeline::where('gym_id',Auth::guard('employee')->user()->gym_id)
+                ->where('status', '=' ,'Active')->count();
+            $assignTasksEmployee = Pipeline::where('gym_id', Auth::guard('employee')->user()->gym_id)
+                ->where('employee_id', '=' , Auth::guard('employee')->user()->id)
+                ->where('transfer_id', '=' , Auth::guard('employee')->user()->id)->get();
+            return view('gym.member.dashboard', compact('memberships','totalCalls','callsForAppointments',
+            'callsTransfered','failedCalls','leadMembers','notLivedMembers','notComingMembers','joinedMembers',
+            'assignTasksEmployee'));
         } catch (\Exception $e) {
             return back()->with('error', 'Oops, something was not right');
         }
