@@ -589,9 +589,20 @@ class MemberController extends Controller
     {
         dd($request);
         if ($request->ajax()) {
-            if ($request->from_date != '' && $request->to_date != '') {
-                $data = Pipeline::whereBetween('scheduleDate', array($request->from_date, $request->to_date))
-                    ->get();
+            $fromDate = $request->from_date;
+            $toDate = $request->to_date;
+            $type = $request->type;
+            $memberStatus = $request->memberStatus;
+            $leadStatuse = $request->leadStatus;
+            dd($leadStatuse);
+            if ($fromDate != '' && $toDate != '') {
+                if ($request->customerType == 'Member') {
+                    $data = Member::where('status',$memberStatus)->whereBetween('created_at', array($fromDate,$toDate))->get();
+                }
+                elseif ($request->customerType == 'Lead') {
+                    $data = Member::getLeadData($fromDate,$toDate,$type,$leadStatuse);
+                }
+
             } else {
                 $data = Pipeline::orderBy('scheduleDate', 'desc')->get();
             }

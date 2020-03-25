@@ -140,7 +140,6 @@ class Member extends Model
         })->orderBy($sort_by, $sort_type)->paginate(10);
     }
 
-
     public static function getMemeberCode($name)
     {
         $latest = Member::orderBy('id', 'desc')->first();
@@ -150,4 +149,16 @@ class Member extends Model
         $string = preg_replace("/[^0-9\.]/", '', $latest->code);
         return $name . '_' . sprintf('%04d', $string + 1);
     }
+
+    public static function getMemberData($fromDate, $toDate, $memberStatus)
+    {
+        return self::select([
+                'members.*',
+            ]
+        )->where(function ($query) use ($fromDate, $toDate,$memberStatus) {
+            $query->whereBetween('created_at', array($fromDate,$toDate));
+
+        })->paginate(10);
+    }
+
 }
