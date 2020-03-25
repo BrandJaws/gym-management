@@ -189,9 +189,9 @@ var KTDashboard = function() {
                     ]
                 }],
                 labels: [
-                    'Angular',
-                    'CSS',
-                    'HTML'
+                    'Appointment Calls',
+                    'Transfered Calls',
+                    'Failed Calls'
                 ]
             },
             options: {
@@ -651,16 +651,16 @@ var KTDashboard = function() {
         Morris.Donut({
             element: 'kt_chart_revenue_change',
             data: [{
-                    label: "New York",
-                    value: 10
+                    label: "Leads",
+                    value: 1
                 },
                 {
-                    label: "London",
-                    value: 7
+                    label: "Active Members",
+                    value: 1
                 },
                 {
-                    label: "Paris",
-                    value: 20
+                    label: "In-Active Members",
+                    value:  1
                 }
             ],
             colors: [
@@ -730,9 +730,9 @@ var KTDashboard = function() {
                     ]
                 }],
                 labels: [
-                    'Angular',
-                    'CSS',
-                    'HTML'
+                    'Appointment Calls',
+                    'Transfered Calls',
+                    'Failed Calls'
                 ]
             },
             options: {

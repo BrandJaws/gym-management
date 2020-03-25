@@ -576,5 +576,26 @@ class MemberController extends Controller
         return view('gym.member.guest.list', compact('breadcrumbs', 'data'))->render();
     }
 
+    public function reports(Request $request)
+    {
+        try {
+            return view('gym.member.report.list');
+        } catch (\Exception $e) {
+            return back()->with('error', 'Oops, something was not right');
+        }
+    }
 
+    function fetch_data(Request $request)
+    {
+        dd($request);
+        if ($request->ajax()) {
+            if ($request->from_date != '' && $request->to_date != '') {
+                $data = Pipeline::whereBetween('scheduleDate', array($request->from_date, $request->to_date))
+                    ->get();
+            } else {
+                $data = Pipeline::orderBy('scheduleDate', 'desc')->get();
+            }
+            echo json_encode($data);
+        }
+    }
 }

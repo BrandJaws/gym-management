@@ -86,6 +86,10 @@ Route::group(['prefix' => 'gym', 'namespace' => 'Gym'], function () {
             Route::post('/edit', ['as' => 'edit', 'uses' => 'MembershipController@update']);
         });
 
+        /*-----------------------------------------------------------------------------------*/
+        /*------------------------------------GYM Members Routes--------------------------------*/
+        /*-----------------------------------------------------------------------------------*/
+
         Route::group(['as' => 'member.', 'prefix' => 'member'], function () {
             Route::get('/', ['as' => 'dashboard', 'uses' => 'MemberController@dashobard']);
             Route::get('/list', ['as' => 'member', 'uses' => 'MemberController@index']);
@@ -97,23 +101,27 @@ Route::group(['prefix' => 'gym', 'namespace' => 'Gym'], function () {
             Route::get('/disabledList', ['as' => 'disabledList', 'uses' => 'MemberController@disabledList']);
             Route::get('/distroy/{id}', ['as' => 'distroy', 'uses' => 'MemberController@distroy']);
             Route::get('/restore/{id}', ['as' => 'restore', 'uses' => 'MemberController@restore']);
-//            Archive And Guest Routes
 
-
+            /*-----------------------------------------------------------------------------------*/
+            /*------------------------------------ Archive And Guest Routes------------------------*/
+            /*-----------------------------------------------------------------------------------*/
+            Route::get('/archive/{action}/{id}', ['as' => 'pipelineCreate', 'uses' => 'MemberController@pipelineCreate']);
+            Route::post('/archive', ['as' => 'pipelineStore', 'uses' => 'MemberController@pipelineStore']);
+            Route::get('/guest/{status}/{id}', ['as' => 'pipelineEdit', 'uses' => 'MemberController@pipelineEdit']);
+            Route::get('/archive/{status}', ['as' => 'archive', 'uses' => 'MemberController@archive']);
+            Route::get('/guest/{status}', ['as' => 'guest', 'uses' => 'MemberController@guest']);
+            Route::post('/pipelineUpdate', ['as' => 'pipelineUpdate', 'uses' => 'MemberController@pipelineUpdate']);
+            Route::get('/pipelineDisable/{id}', ['as' => 'pipelineDisable', 'uses' => 'MemberController@pipelineDisable']);
             Route::get('/calls/disabled', ['as' => 'pipelineDisabled', 'uses' => 'MemberController@pipelineDisabled']);
             Route::get('/distroyPipeline/{id}', ['as' => 'distroyPipeline', 'uses' => 'MemberController@distroyPipeline']);
             Route::get('/restorePipeline/{id}', ['as' => 'restorePipeline', 'uses' => 'MemberController@restorePipeline']);
 
-            Route::get('/archive/{action}/{id}', ['as' => 'pipelineCreate', 'uses' => 'MemberController@pipelineCreate']);
-            Route::post('/archive', ['as' => 'pipelineStore', 'uses' => 'MemberController@pipelineStore']);
+            /*-----------------------------------------------------------------------------------*/
+            /*------------------------------------ Report Routes --------------------------------*/
+            /*-----------------------------------------------------------------------------------*/
 
-            Route::get('/guest/{status}/{id}', ['as' => 'pipelineEdit', 'uses' => 'MemberController@pipelineEdit']);
-            Route::get('/archive/{status}', ['as' => 'archive', 'uses' => 'MemberController@archive']);
-
-            Route::get('/pipelineDisable/{id}', ['as' => 'pipelineDisable', 'uses' => 'MemberController@pipelineDisable']);
-
-            Route::get('/guest/{status}', ['as' => 'guest', 'uses' => 'MemberController@guest']);
-            Route::post('/pipelineUpdate', ['as' => 'pipelineUpdate', 'uses' => 'MemberController@pipelineUpdate']);
+            Route::get('/reports', ['as' => 'reports', 'uses' => 'MemberController@reports']);
+            Route::post('/daterange/fetch_data', ['as' => 'fetch_data', 'uses' => 'MemberController@fetch_data']);
         });
 
         Route::group(['as' => 'trainer.', 'prefix' => 'trainer'], function () {

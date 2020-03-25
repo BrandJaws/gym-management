@@ -118,6 +118,12 @@
                         </ul>
                     </div>
                 </li>
+                <li class="kt-menu__item  kt-menu__item--submenu kt-menu__item--rel" data-ktmenu-submenu-toggle="click"
+                    aria-haspopup="true">
+                    <a href="{{url('gym/member/reports')}}" class="kt-menu__link ">
+                        <span class="kt-menu__link-text">Reports</span>
+                    </a>
+                </li>
             </ul>
         </div>
     </div>

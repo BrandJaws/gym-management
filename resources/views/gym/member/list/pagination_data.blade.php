@@ -20,8 +20,6 @@
                         class="fa flaticon2-graphic-design"></i> For Demo</a>
                 <a class="dropdown-item" href="{{url('/gym/member/archive/transferLead', $row->id)}}"><i
                         class="fa flaticon2-delivery-truck"></i>Transfer Lead</a>
-                <a class="dropdown-item" href="#"><i
-                        class="fa flaticon2-protection"></i>Purchase Product</a>
                 <a class="dropdown-item" href="{{url('/gym/member/edit', $row->id)}}"><i class="fa flaticon2-edit"></i>
                     Edit</a>
                 <a class="dropdown-item" href="{{url('/gym/member/disabled', $row->id)}}"><i
