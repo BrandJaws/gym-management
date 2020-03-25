@@ -204,7 +204,7 @@
                 var memberStatus = $('#memberStatus').val();
                 var leadStatus = $('#leadStatus').val();
                 if (from_date != '' && to_date != '') {
-                    fetch_data(from_date, to_date, type, customerType, leadStatus);
+                    fetch_data(from_date, to_date, type, customerType,memberStatus, leadStatus);
                 } else {
                     alert('Both Date is required');
                 }

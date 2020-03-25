@@ -587,22 +587,20 @@ class MemberController extends Controller
 
     function fetch_data(Request $request)
     {
-        dd($request);
         if ($request->ajax()) {
             $fromDate = $request->from_date;
             $toDate = $request->to_date;
             $type = $request->type;
             $memberStatus = $request->memberStatus;
-            $leadStatuse = $request->leadStatus;
-            dd($leadStatuse);
+            $leadStatus = $request->leadStatus;
+           dd($fromDate,$toDate,$type,$memberStatus,$leadStatus);
             if ($fromDate != '' && $toDate != '') {
                 if ($request->customerType == 'Member') {
                     $data = Member::where('status',$memberStatus)->whereBetween('created_at', array($fromDate,$toDate))->get();
                 }
                 elseif ($request->customerType == 'Lead') {
-                    $data = Member::getLeadData($fromDate,$toDate,$type,$leadStatuse);
+                    $data = Pipeline::where('type',$type)->where('status',$leadStatus)->whereBetween('created_at', array($fromDate,$toDate))->get();
                 }
-
             } else {
                 $data = Pipeline::orderBy('scheduleDate', 'desc')->get();
             }
