@@ -78,6 +78,9 @@
                                 <div class="kt-widget14__chart">
                                     <div class="kt-widget14__stat"> {{ $totalCalls }}</div>
                                     <canvas id="kt_chart_profit_share" style="height: 140px; width: 140px;"></canvas>
+                                    <input type="hidden" id="appointmentCalls" value="{{ $callsForAppointments }}">
+                                    <input type="hidden" id="transferCalls" value="{{ $transferCalls }}">
+                                    <input type="hidden" id="failedCalls" value="{{ $failedCalls }}">
                                 </div>
                                 <div class="kt-widget14__legends">
                                     <div class="kt-widget14__legend">
@@ -112,26 +115,31 @@
                             <div class="kt-widget14__content">
                                 <div class="kt-widget14__chart">
                                     <div id="kt_chart_revenue_change" style="height: 150px; width: 150px;"></div>
+                                    <input type="hidden" id="leadValue" value="{{$leads}}">
+                                    <input type="hidden" id="activeMembers" value="{{$activeMembers}}">
+                                    <input type="hidden" id="inActiveMembers" value="{{$inActiveMembers}}">
+                                    <input type="hidden" id="expiredMembers" value="{{$expiredMembers}}">
+                                    <input type="hidden" id="notJoinedMembers" value="{{$notJoinedMembers}}">
                                 </div>
                                 <div class="kt-widget14__legends">
                                     <div class="kt-widget14__legend">
-                                        <span class="kt-widget14__bullet kt-bg-brand"></span>
+                                        <span class="kt-widget14__bullet kt-bg-success"></span>
                                         <span class="kt-widget14__stats">{{ $leads }} Total Leads</span>
                                     </div>
                                     <div class="kt-widget14__legend">
-                                        <span class="kt-widget14__bullet kt-bg-success"></span>
+                                        <span class="kt-widget14__bullet kt-bg-danger"></span>
                                         <span class="kt-widget14__stats">{{$activeMembers}}  Active Members</span>
                                     </div>
                                     <div class="kt-widget14__legend">
-                                        <span class="kt-widget14__bullet kt-bg-warning"></span>
+                                        <span class="kt-widget14__bullet kt-bg-brand"></span>
                                         <span class="kt-widget14__stats">{{$inActiveMembers}}  In-Active Members</span>
                                     </div>
                                     <div class="kt-widget14__legend">
-                                        <span class="kt-widget14__bullet kt-bg-brand"></span>
+                                        <span class="kt-widget14__bullet kt-bg-success"></span>
                                         <span class="kt-widget14__stats">{{ $expiredMembers }} Expired Members</span>
                                     </div>
                                     <div class="kt-widget14__legend">
-                                        <span class="kt-widget14__bullet kt-bg-brand"></span>
+                                        <span class="kt-widget14__bullet kt-bg-danger"></span>
                                         <span
                                             class="kt-widget14__stats">{{ $notJoinedMembers }} Not Joined Members</span>
                                     </div>

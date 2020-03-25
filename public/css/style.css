@@ -58,6 +58,7 @@
 .profileImageSide .profileImage .kt-avatar .kt-avatar__holder {
     width: 220px;
     height: 220px;
+    background-position: center center;
 }
 .profileImageSide .profileImage {
     text-align: center;
