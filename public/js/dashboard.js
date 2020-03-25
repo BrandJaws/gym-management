@@ -3,6 +3,7 @@
 // Class definition
 var KTDashboard = function() {
 
+
     // Sparkline Chart helper function
     var _initSparklineChart = function(src, data, color, border) {
         if (src.length == 0) {
@@ -174,13 +175,15 @@ var KTDashboard = function() {
         var randomScalingFactor = function() {
             return Math.round(Math.random() * 100);
         };
-
+        var appointmentCalls = $('#appointmentCalls').val();
+        var transferCalls = $('#transferCalls').val();
+        var failedCalls = $('#failedCalls').val();
         var config = {
             type: 'doughnut',
             data: {
                 datasets: [{
                     data: [
-                        35, 30, 35
+                        appointmentCalls, failedCalls, transferCalls
                     ],
                     backgroundColor: [
                         KTApp.getStateColor('success'),
@@ -189,9 +192,9 @@ var KTDashboard = function() {
                     ]
                 }],
                 labels: [
-                    'Angular',
-                    'CSS',
-                    'HTML'
+                    'Appointments',
+                    'Failed',
+                    'Transfered'
                 ]
             },
             options: {
@@ -647,20 +650,32 @@ var KTDashboard = function() {
         if ($('#kt_chart_revenue_change').length == 0) {
             return;
         }
-
+        var leadValue = $('#leadValue').val();
+        var activeMember = $('#activeMembers').val();
+        var inActiveMembers = $('#inActiveMembers').val();
+        var expiredMembers = $('#expiredMembers').val();
+        var notJoinedMembers = $('#notJoinedMembers').val();
         Morris.Donut({
             element: 'kt_chart_revenue_change',
             data: [{
-                    label: "New York",
-                    value: 10
+                    label: "Lead",
+                    value: leadValue
                 },
                 {
-                    label: "London",
-                    value: 7
+                    label: "Active",
+                    value: activeMember
                 },
                 {
-                    label: "Paris",
-                    value: 20
+                    label: "In Active",
+                    value: inActiveMembers
+                },
+                {
+                    label: "Expired",
+                    value: expiredMembers
+                },
+                {
+                    label: "Not joined",
+                    value: notJoinedMembers
                 }
             ],
             colors: [
