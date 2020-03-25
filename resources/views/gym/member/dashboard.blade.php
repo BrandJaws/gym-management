@@ -39,7 +39,9 @@
                             <div class="kt-widget kt-widget--user-profile-4">
                                 <div class="kt-widget__head">
                                     <div class="kt-widget__media">
-                                        <img class="kt-widget__img kt-hidden-" src="{{asset('assets/media/gym/gym-marketing.jpeg')}}" alt="image" style="height: 100%;">
+                                        <img class="kt-widget__img kt-hidden-"
+                                             src="{{asset('assets/media/gym/gym-marketing.jpeg')}}" alt="image"
+                                             style="height: 100%;">
                                     </div>
                                     <div class="kt-widget__content">
                                         <div class="kt-widget__section">
@@ -60,22 +62,22 @@
                             <!--end::Widget -->
                         </div>
                     </div>
-{{--                    <div class="kt-portlet kt-portlet--height-fluid">--}}
-{{--                        <div class="kt-widget14">--}}
-{{--                            <div class="kt-widget14__header kt-margin-b-30">--}}
-{{--                                <h3 class="kt-widget14__title">--}}
-{{--                                    Memberships--}}
-{{--                                </h3>--}}
-{{--                                <span class="kt-widget14__desc">--}}
-{{--                                    Check out each collumn for more details--}}
-{{--                                </span>--}}
-{{--                            </div>--}}
-{{--                            <div class="kt-widget14__chart" style="height:120px;">--}}
-{{--                                <canvas id="kt_chart_daily_sales"></canvas>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-                    <!--end:: Widgets/Daily Sales-->
+                {{--                    <div class="kt-portlet kt-portlet--height-fluid">--}}
+                {{--                        <div class="kt-widget14">--}}
+                {{--                            <div class="kt-widget14__header kt-margin-b-30">--}}
+                {{--                                <h3 class="kt-widget14__title">--}}
+                {{--                                    Memberships--}}
+                {{--                                </h3>--}}
+                {{--                                <span class="kt-widget14__desc">--}}
+                {{--                                    Check out each collumn for more details--}}
+                {{--                                </span>--}}
+                {{--                            </div>--}}
+                {{--                            <div class="kt-widget14__chart" style="height:120px;">--}}
+                {{--                                <canvas id="kt_chart_daily_sales"></canvas>--}}
+                {{--                            </div>--}}
+                {{--                        </div>--}}
+                {{--                    </div>--}}
+                <!--end:: Widgets/Daily Sales-->
                 </div>
                 <div class="col-xl-4 col-lg-4">
                     <!--begin:: Widgets/Profit Share-->
@@ -83,35 +85,34 @@
                         <div class="kt-widget14">
                             <div class="kt-widget14__header">
                                 <h3 class="kt-widget14__title">
-                                     Calls
+                                    Calls
                                 </h3>
                                 <span class="kt-widget14__desc">
-                                    Profit Share between customers
                                 </span>
                             </div>
                             <div class="kt-widget14__content">
                                 <div class="kt-widget14__chart">
-                                    <div class="kt-widget14__stat">{{$totalCalls}}</div>
+                                    <div class="kt-widget14__stat"> {{ $totalCalls }}</div>
                                     <canvas id="kt_chart_profit_share" style="height: 140px; width: 140px;"></canvas>
                                 </div>
                                 <div class="kt-widget14__legends">
                                     <div class="kt-widget14__legend">
                                         <span class="kt-widget14__bullet kt-bg-success"></span>
-                                        <span class="kt-widget14__stats">{{$callsForAppointments}} Total Calls</span>
-                                    </div>
-                                    <div class="kt-widget14__legend">
-                                        <span class="kt-widget14__bullet kt-bg-warning"></span>
-                                        <span class="kt-widget14__stats">{{$callsTransfered}} Appointment Calls</span>
+                                        <span
+                                            class="kt-widget14__stats">{{ $callsForAppointments }} Appointment Calls</span>
                                     </div>
                                     <div class="kt-widget14__legend">
                                         <span class="kt-widget14__bullet kt-bg-brand"></span>
-                                        <span class="kt-widget14__stats">{{$failedCalls}} Transfered Calls</span>
+                                        <span class="kt-widget14__stats">{{ $transferCalls }} Transfered Calls</span>
+                                    </div>
+                                    <div class="kt-widget14__legend">
+                                        <span class="kt-widget14__bullet kt-bg-danger"></span>
+                                        <span class="kt-widget14__stats">{{ $failedCalls }} Failed Calls</span>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-
                     <!--end:: Widgets/Profit Share-->
                 </div>
                 <div class="col-xl-4 col-lg-4">
@@ -123,9 +124,6 @@
                                 <h3 class="kt-widget14__title">
                                     Members
                                 </h3>
-                                <span class="kt-widget14__desc">
-                                    Revenue change breakdown by cities
-                                </span>
                             </div>
                             <div class="kt-widget14__content">
                                 <div class="kt-widget14__chart">
@@ -134,19 +132,24 @@
                                 <div class="kt-widget14__legends">
                                     <div class="kt-widget14__legend">
                                         <span class="kt-widget14__bullet kt-bg-brand"></span>
-                                        <span class="kt-widget14__stats">{{$joinedMembers}} Expired Members</span>
+                                        <span class="kt-widget14__stats">{{ $leads }} Total Leads</span>
                                     </div>
                                     <div class="kt-widget14__legend">
                                         <span class="kt-widget14__bullet kt-bg-success"></span>
-                                        <span class="kt-widget14__stats">{{$notComingMembers}} In Active Members</span>
+                                        <span class="kt-widget14__stats">{{$activeMembers}}  Active Members</span>
                                     </div>
                                     <div class="kt-widget14__legend">
                                         <span class="kt-widget14__bullet kt-bg-warning"></span>
-                                        <span class="kt-widget14__stats">{{$leadMembers}} Not Joined Members</span>
+                                        <span class="kt-widget14__stats">{{$inActiveMembers}}  In-Active Members</span>
                                     </div>
                                     <div class="kt-widget14__legend">
                                         <span class="kt-widget14__bullet kt-bg-brand"></span>
-                                        <span class="kt-widget14__stats">{{$notLivedMembers}} Expired Members</span>
+                                        <span class="kt-widget14__stats">{{ $expiredMembers }} Expired Members</span>
+                                    </div>
+                                    <div class="kt-widget14__legend">
+                                        <span class="kt-widget14__bullet kt-bg-brand"></span>
+                                        <span
+                                            class="kt-widget14__stats">{{ $notJoinedMembers }} Not Joined Members</span>
                                     </div>
                                 </div>
                             </div>
@@ -155,9 +158,7 @@
                     <!--end:: Widgets/Revenue Change-->
                 </div>
             </div>
-
             <!--End::Row-->
-
             <!--Begin::Row-->
             <div class="row">
                 <div class="col-xl-12 col-lg-12">
@@ -166,117 +167,48 @@
                             class="kt-portlet__head kt-portlet__head--lg kt-portlet__head--noborder kt-portlet__head--break-sm">
                             <div class="kt-portlet__head-label">
                                 <h3 class="kt-portlet__head-title">
-                                    Exclusive Datatable Plugin
+                                    Calls & Demo
                                 </h3>
                             </div>
-                            <div class="kt-portlet__head-toolbar">
-                                <div class="dropdown dropdown-inline">
-                                    <button type="button" class="btn btn-clean btn-sm btn-icon btn-icon-md"
-                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        <i class="flaticon-more-1"></i>
-                                    </button>
-                                    <div class="dropdown-menu dropdown-menu-right dropdown-menu-md dropdown-menu-fit">
-
-                                        <!--begin::Nav-->
-                                        <ul class="kt-nav">
-                                            <li class="kt-nav__head">
-                                                Export Options
-                                                <span data-toggle="kt-tooltip" data-placement="right"
-                                                      title="Click to learn more...">
-																	<svg xmlns="http://www.w3.org/2000/svg"
-                                                                         xmlns:xlink="http://www.w3.org/1999/xlink"
-                                                                         width="24px" height="24px" viewBox="0 0 24 24"
-                                                                         version="1.1"
-                                                                         class="kt-svg-icon kt-svg-icon--brand kt-svg-icon--md1">
-																		<g stroke="none" stroke-width="1" fill="none"
-                                                                           fill-rule="evenodd">
-																			<rect x="0" y="0" width="24" height="24"/>
-																			<circle fill="#000000" opacity="0.3" cx="12"
-                                                                                    cy="12" r="10"/>
-																			<rect fill="#000000" x="11" y="10" width="2"
-                                                                                  height="7" rx="1"/>
-																			<rect fill="#000000" x="11" y="7" width="2"
-                                                                                  height="2" rx="1"/>
-																		</g>
-																	</svg> </span>
-                                            </li>
-                                            <li class="kt-nav__separator"></li>
-                                            <li class="kt-nav__item">
-                                                <a href="#" class="kt-nav__link">
-                                                    <i class="kt-nav__link-icon flaticon2-drop"></i>
-                                                    <span class="kt-nav__link-text">Activity</span>
-                                                </a>
-                                            </li>
-                                            <li class="kt-nav__item">
-                                                <a href="#" class="kt-nav__link">
-                                                    <i class="kt-nav__link-icon flaticon2-calendar-8"></i>
-                                                    <span class="kt-nav__link-text">FAQ</span>
-                                                </a>
-                                            </li>
-                                            <li class="kt-nav__item">
-                                                <a href="#" class="kt-nav__link">
-                                                    <i class="kt-nav__link-icon flaticon2-telegram-logo"></i>
-                                                    <span class="kt-nav__link-text">Settings</span>
-                                                </a>
-                                            </li>
-                                            <li class="kt-nav__item">
-                                                <a href="#" class="kt-nav__link">
-                                                    <i class="kt-nav__link-icon flaticon2-new-email"></i>
-                                                    <span class="kt-nav__link-text">Support</span>
-                                                    <span class="kt-nav__link-badge">
-																		<span
-                                                                            class="kt-badge kt-badge--success kt-badge--rounded">5</span>
-																	</span>
-                                                </a>
-                                            </li>
-                                            <li class="kt-nav__separator"></li>
-                                            <li class="kt-nav__foot">
-                                                <a class="btn btn-label-danger btn-bold btn-sm" href="#">Upgrade
-                                                    plan</a>
-                                                <a class="btn btn-clean btn-bold btn-sm" href="#"
-                                                   data-toggle="kt-tooltip" data-placement="right"
-                                                   title="Click to learn more...">Learn more</a>
-                                            </li>
-                                        </ul>
-
-                                        <!--end::Nav-->
-                                    </div>
-                                </div>
-                            </div>
                         </div>
-                        <div class="kt-portlet__body">
-
-                            <!--begin: Datatable -->
-                            <table class="table">
-                                <thead class="thead-dark">
+                        <div class="table-responsive">
+                            <table class="table table-striped table-bordered">
+                                <thead>
                                 <tr>
-                                    <th>#id</th>
-                                    <th>Gym</th>
+                                    <th>No.</th>
                                     <th>Employee</th>
                                     <th>Customer</th>
-                                    <th>Transfered</th>
-                                    <th>Status</th>
+                                    <th>Date</th>
                                     <th>Transfer Status</th>
-                                    <th>Interseted Packages</th>
-                                    <th>Remarks</th>
+                                    <th>Transfered</th>
+                                    <th>Re-Schedule Date</th>
+                                    <th>Status</th>
                                     <th>Type</th>
                                 </tr>
                                 </thead>
                                 <tbody>
+                                <?php $i = 1; ?>
                                 @foreach($assignTasksEmployee as $row)
                                     <tr>
-                                        <th scope="row">{{$row->id}}</th>
-                                        <td>{{$row->gym_id}}</td>
-                                        <td>{{$row->employee_id}}</td>
-                                        <td>{{ $row->customer_id }}</td>
-                                        <td>{{ $row->transfer_id }}</td>
-                                        <td>{{ $row->status }}</td>
+                                        <th>{{$i}}</th>
+                                        <td>@if($row->employee != NULL) {{ $row->employee->name }} @else --- @endif</td>
+                                        <td>@if($row->member != NULL) {{ $row->member->name }} @else --- @endif</td>
+                                        <td>{{ $row->scheduleDate }}</td>
                                         <td>{{ $row->transferStatus }}</td>
-                                        <td>{{ $row->intersetedPackages }}</td>
-                                        <td>{{ $row->remarks }}</td>
+                                        <td>@if($row->transferEmployee != NULL) {{ $row->transferEmployee->name }} @else
+                                                --- @endif</td>
+                                        <td>@if($row->reScheduleDate != NULL) {{ $row->reScheduleDate }} @else
+                                                --- @endif</td>
+                                        <td>{{ $row->status }}</td>
                                         <td>{{ $row->type }}</td>
+                                        <?php  $i++; ?>
                                     </tr>
                                 @endforeach
+                                <tr>
+                                    <td colspan="9" align="center">
+                                        {{ $assignTasksEmployee->links() }}
+                                    </td>
+                                </tr>
                                 </tbody>
                             </table>
                             <!--end: Datatable -->

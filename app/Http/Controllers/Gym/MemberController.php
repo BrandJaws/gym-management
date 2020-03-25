@@ -29,29 +29,29 @@ class MemberController extends Controller
     public function dashobard(Request $request)
     {
         try {
-            $memberships = Membership::where('gym_id',Auth::guard('employee')->user()->gym_id)->count();
-            $totalCalls = Pipeline::where('gym_id',Auth::guard('employee')->user()->gym_id)
-                ->where('type', '=' ,'For Call')->count();
-            $callsForAppointments = Pipeline::where('gym_id',Auth::guard('employee')->user()->gym_id)
-                ->where('type', '=' ,'For Demo')->count();
-            $callsTransfered = Pipeline::where('gym_id',Auth::guard('employee')->user()->gym_id)
-                ->where('transferStatus', '!=' ,'None')->count();
-            $failedCalls = Pipeline::where('gym_id', Auth::guard('employee')->user()->gym_id)
-                ->where('status', '=' ,'Failed Calls')->count();
-            $leadMembers = Pipeline::where('gym_id', Auth::guard('employee')->user()->gym_id)
-                ->where('status', '=' ,'Not Joined')->count();
-            $notLivedMembers = Pipeline::where('gym_id', Auth::guard('employee')->user()->gym_id)
-                ->where('status', '=' ,'Expired')->count();
-            $notComingMembers = Pipeline::where('gym_id', Auth::guard('employee')->user()->gym_id)
-                ->where('status', '=' ,'In-Active')->count();
-            $joinedMembers = Pipeline::where('gym_id',Auth::guard('employee')->user()->gym_id)
-                ->where('status', '=' ,'Active')->count();
-            $assignTasksEmployee = Pipeline::where('gym_id', Auth::guard('employee')->user()->gym_id)
-                ->where('employee_id', '=' , Auth::guard('employee')->user()->id)
-                ->where('transfer_id', '=' , Auth::guard('employee')->user()->id)->get();
-            return view('gym.member.dashboard', compact('memberships','totalCalls','callsForAppointments',
-            'callsTransfered','failedCalls','leadMembers','notLivedMembers','notComingMembers','joinedMembers',
-            'assignTasksEmployee'));
+            $gym_id = Auth::guard('employee')->user()->gym_id;
+            $employee_id = Auth::guard('employee')->user()->id;
+            $memberships = Membership::where('gym_id', $gym_id)->count();
+            /*Count total Calls*/
+            $calls = Pipeline::where('gym_id', $gym_id)->where('employee_id', '=', $employee_id)->where('type', 'For Call')->count();
+            $transferCalls = Pipeline::where('gym_id', $gym_id)->where('transfer_id', '=', $employee_id)->where('transferStatus', 'For Call')->count();
+            $totalCalls = $calls + $transferCalls;
+            /*Count total Demo*/
+            $demo = Pipeline::where('gym_id', $gym_id)->where('employee_id', '=', $employee_id)->where('type', 'For Demo')->count();
+            $transferDemo = Pipeline::where('gym_id', $gym_id)->where('transfer_id', '=', $employee_id)->where('transferStatus', 'For Demo')->count();
+            $callsForAppointments = $demo + $transferDemo;
+            /*Count total failed Calls*/
+            $failedCalls = Pipeline::where('gym_id', $gym_id)->where('employee_id', '=', $employee_id)->where('status', '=', 'Failed Calls')->count();
+            /*count lead, members*/
+            $leads = Member::where('gym_id', $gym_id)->where('type', '=', 'Lead')->count();
+            $activeMembers = Member::where('gym_id', $gym_id)->where('status', '=', 'Active')->count();
+            $inActiveMembers = Member::where('gym_id', $gym_id)->where('status', '=', 'In-Active')->count();
+            $expiredMembers = Member::where('gym_id', $gym_id)->where('status', '=', 'Expired')->count();
+            $notJoinedMembers = Member::where('gym_id', $gym_id)->where('status', '=', 'Not Joined')->count();
+            $assignTasksEmployee = Pipeline::where('gym_id', $gym_id)->where('employee_id', '=', $employee_id)->orWhere('transfer_id', '=', $employee_id)->orderBy('id', 'asc')->paginate(10);
+            return view('gym.member.dashboard', compact('memberships', 'totalCalls', 'callsForAppointments', 'activeMembers',
+                'transferCalls', 'failedCalls', 'leads', 'inActiveMembers', 'expiredMembers', 'notJoinedMembers',
+                'assignTasksEmployee'));
         } catch (\Exception $e) {
             return back()->with('error', 'Oops, something was not right');
         }
