@@ -513,7 +513,7 @@ class MemberController extends Controller
         switch ($value) {
             case 'previewCalls':
                 $breadcrumbs = "Preview Calls";
-                $data = Pipeline::where('type', 'For Call')->where('gym_id', Auth::guard('employee')->user()->gym_id)->paginate(10);
+                $data = Pipeline::where('type', 'For Call')->where('gym_id', Auth::guard('employee')->user()->gym_id)->where('employee_id', Auth::guard('employee')->user()->id)->paginate(10);
                 if ($request->ajax()) {
                     $sort_by = $request->get('sortby');
                     $sort_type = $request->get('sorttype');
@@ -525,7 +525,7 @@ class MemberController extends Controller
                 break;
             case 'transferCalls':
                 $breadcrumbs = "Transfer Calls";
-                $data = Pipeline::where('transferStatus', 'For Call')->where('gym_id', Auth::guard('employee')->user()->gym_id)->paginate(10);
+                $data = Pipeline::where('transferStatus', 'For Call')->where('gym_id', Auth::guard('employee')->user()->gym_id)->orWhere('employee_id', Auth::guard('employee')->user()->id)->orWhere('transfer_id', Auth::guard('employee')->user()->id)->paginate(10);
                 if ($request->ajax()) {
                     $sort_by = $request->get('sortby');
                     $sort_type = $request->get('sorttype');
@@ -537,7 +537,7 @@ class MemberController extends Controller
                 break;
             case 'preivewAppointments':
                 $breadcrumbs = "Preivew Appointments";
-                $data = Pipeline::where('type', 'For Demo')->where('gym_id', Auth::guard('employee')->user()->gym_id)->paginate(10);
+                $data = Pipeline::where('type', 'For Demo')->where('gym_id', Auth::guard('employee')->user()->gym_id)->orWhere('employee_id', Auth::guard('employee')->user()->id)->orWhere('transfer_id', Auth::guard('employee')->user()->id)->paginate(10);
                 if ($request->ajax()) {
                     $sort_by = $request->get('sortby');
                     $sort_type = $request->get('sorttype');

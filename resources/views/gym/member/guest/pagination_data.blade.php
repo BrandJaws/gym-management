@@ -2,8 +2,8 @@
 @foreach($data as $row)
     <tr>
         <th>{{$i}}</th>
-        <td>{{ $row->employee->name }}</td>
-        <td>{{ $row->member->name }}</td>
+        <td>@if($row->employee != NULL) {{ $row->employee->name }} @else --- @endif</td>
+        <td>@if($row->member != NULL) {{ $row->member->name }} @else --- @endif</td>
         <td>{{ $row->scheduleDate }}</td>
         <td>{{ $row->transferStatus }}</td>
         <td>@if($row->transferEmployee != NULL) {{ $row->transferEmployee->name }} @else --- @endif</td>
