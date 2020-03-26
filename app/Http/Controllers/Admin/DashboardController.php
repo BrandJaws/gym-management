@@ -6,6 +6,7 @@ use App\Admin;
 use App\Gym;
 use App\Http\Controllers\Controller;
 use App\License;
+use App\Permission;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
@@ -17,7 +18,9 @@ class DashboardController extends Controller
             $gymInTrial = Gym::where('inTrial', 1)->count();
             $superAdmin = Admin::count();
             $license = License::count();
-            return view('admin.dashboard', compact('superAdmin', 'gym', 'gymInTrial', 'license'))->render();
+            $latestGyms = Gym::orderBy('gyms.created_at','desc')->get();
+            return view('admin.dashboard', compact('superAdmin', 'gym',
+                'gymInTrial', 'license','latestGyms'))->render();
         } catch (\Exception $e) {
             return back()->with('error', 'Oops, something was not right');
         }

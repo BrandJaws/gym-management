@@ -98,6 +98,20 @@
 }
 
 
+.dropdown-menu.dropdown-menu-fit.adminLoginDropdown {
+    padding: 0px!important;
+}
+.dashboardTopBox {
+    display:flex!important;
+    justify-content: center;
+    align-items: center;
+    padding-top: 25px!important;
+    padding-bottom: 25px!important;
+}
+
+
+
+
 /*Member Style*/
 
 

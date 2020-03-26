@@ -180,7 +180,7 @@
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text">@</span>
                                             </div>
-                                            <input type="text" name="email" id="kt_inputmask_9" class="form-control" autofocus placeholder="Email your email" required/>
+                                            <input type="email" name="email" class="form-control" autofocus placeholder="Email your email" required/>
                                         </div>
                                         @if($errors->has('email'))
                                             <div class="error">{{ $errors->first('email') }}</div>
@@ -225,7 +225,7 @@
                                     </div>
                                     <div class="col-lg-6">
                                         <label>Phone:</label>
-                                        <input type="text" im-insert="true" name="phone" id="kt_inputmask_3" class="form-control" autofocus
+                                        <input type="text" name="phone" class="form-control" autofocus
                                                placeholder="Enter Your Contact" required>
                                         @if($errors->has('phone'))
                                             <div class="error">{{ $errors->first('phone') }}</div>
@@ -388,6 +388,5 @@
         });
     </script>
     <script src="{{asset('js/select2.js')}}"></script>
-    <script src="{{asset('js/input-mask.js')}}"></script>
 @endsection
 

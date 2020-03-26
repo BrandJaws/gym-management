@@ -90,46 +90,44 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="table-responsive">
-                                            <table class="table table-striped table-bordered LeadFields"
-                                                   style="display: none">
-                                                <thead>
-                                                <tr>
-                                                    <th>Member</th>
-                                                    <th>Schedule Date</th>
-                                                    <th>Transfer Status</th>
-                                                    <th>Transfer</th>
-                                                    <th>Re-Schedule Date</th>
-                                                    <th>Remarks</th>
-                                                    <th>Status</th>
-                                                    <th>Type</th>
-                                                </tr>
-                                                </thead>
-                                                <tbody>
+                                        <table class="table table-striped table-bordered LeadFields"
+                                               style="display: none">
+                                            <thead>
+                                            <tr>
+                                                <th>Member</th>
+                                                <th>Schedule Date</th>
+                                                <th>Transfer Status</th>
+                                                <th>Transfer</th>
+                                                <th>Re-Schedule Date</th>
+                                                <th>Remarks</th>
+                                                <th>Status</th>
+                                                <th>Type</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
 
-                                                </tbody>
-                                            </table>
-                                            <table class="table table-striped table-bordered MemberFields"
-                                                   style="display: none">
-                                                <thead>
-                                                <tr>
-                                                    <th>Member</th>
-                                                    <th>Email</th>
-                                                    <th>Phone</th>
-                                                    <th>Joining Date</th>
-                                                    <th>Address</th>
-                                                    <th>Source</th>
-                                                    <th>Remarks</th>
-                                                    <th>Status</th>
-                                                    <th>Type</th>
-                                                </tr>
-                                                </thead>
-                                                <tbody>
+                                            </tbody>
+                                        </table>
+                                        <table class="table table-striped table-bordered MemberFields"
+                                               style="display: none">
+                                            <thead>
+                                            <tr>
+                                                <th>Member</th>
+                                                <th>Email</th>
+                                                <th>Phone</th>
+                                                <th>Joining Date</th>
+                                                <th>Address</th>
+                                                <th>Source</th>
+                                                <th>Remarks</th>
+                                                <th>Status</th>
+                                                <th>Type</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
 
-                                                </tbody>
-                                            </table>
-                                            {{ csrf_field() }}
-                                        </div>
+                                            </tbody>
+                                        </table>
+                                        {{ csrf_field() }}
                                     </div>
                                 </div>
                             </div>
@@ -230,24 +228,24 @@
             if (value === "Lead") {
                 var div = document.getElementsByClassName('LeadFields');
                 for (var i = 0; i < div.length; i++) {
-                    div[i].style.display = "block";
+                    $(div[i]).show();
                 }
             } else {
                 var div = document.getElementsByClassName('LeadFields');
                 for (var i = 0; i < div.length; i++) {
-                    div[i].style.display = "none";
+                    $(div[i]).hide();
                 }
             }
 
             if (value === "Member") {
                 var div = document.getElementsByClassName('MemberFields');
                 for (var i = 0; i < div.length; i++) {
-                    div[i].style.display = "block";
+                    $(div[i]).show();
                 }
             } else {
                 var div = document.getElementsByClassName('MemberFields');
                 for (var i = 0; i < div.length; i++) {
-                    div[i].style.display = "none";
+                    $(div[i]).hide();
                 }
             }
         }

@@ -64,10 +64,12 @@
                 </div>
             </div>
             <div
-                class="dropdown-menu dropdown-menu-fit dropdown-menu-right dropdown-menu-anim dropdown-menu-top-unround dropdown-menu-xl">
+                class="dropdown-menu dropdown-menu-fit
+                 dropdown-menu-right dropdown-menu-anim
+                 dropdown-menu-top-unround dropdown-menu-xl adminLoginDropdown">
                 <!--begin: Head -->
                 <div class="kt-user-card kt-user-card--skin-dark kt-notification-item-padding-x"
-                     style="background-image: url({{asset('assets/media/users/300_25.jpg')}})}})">
+                     style="background-image: url({{asset('assets/media/misc/bg-1.jpg')}})">
                     <div class="kt-user-card__avatar">
                         <img class="kt-hidden" alt="Pic" src="{{asset('assets/media/users/300_25.jpg')}}"/>
                         <!--use below badge element instead the user avatar to display username's first letter(remove kt-hidden class to display it) -->
@@ -82,9 +84,6 @@
                     </div>
                     <div class="kt-user-card__name">
                         {{ Auth::guard('admin')->user()->name }}
-                    </div>
-                    <div class="kt-user-card__badge">
-                        <span class="btn btn-success btn-sm btn-bold btn-font-md">23 messages</span>
                     </div>
                 </div>
                 <!--end: Head -->
