@@ -74,7 +74,7 @@
                         <img class="kt-hidden" alt="Pic" src="{{asset('assets/media/users/300_25.jpg')}}"/>
                         <!--use below badge element instead the user avatar to display username's first letter(remove kt-hidden class to display it) -->
                         <span class="kt-badge kt-badge--lg kt-badge--rounded kt-badge--bold kt-font-success">
-                              @if(Auth::guard('admin')->user()->userImage != "")
+                            @if(Auth::guard('admin')->user()->userImage != "")
                                 <img src="{{asset(Auth::guard('admin')->user()->userImage->path)}}" alt="image">
                             @endif
                             @if(Auth::guard('admin')->user()->userImage == "")

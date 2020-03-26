@@ -42,7 +42,7 @@
                                     </div>
                                     <div class="col-lg-4">
                                         <label>Name:</label>
-                                        <input type="text" name="name" class="form-control" required
+                                        <input type="text" name="name" class="form-control" required maxlength="55"
                                                value="{{$membership->name}}"/>
                                         @if($errors->has('name'))
                                             <div class="error">{{ $errors->first('name') }}</div>
@@ -50,7 +50,8 @@
                                     </div>
                                     <div class="col-lg-4">
                                         <label>Duration:</label>
-                                        <input type="text" name="duration" class="form-control" required
+                                        <input type="number" name="duration" class="form-control" required
+                                               maxlength="55" placeholder="Enter Total Days"
                                                value="{{$membership->duration}}"/>
                                         @if($errors->has('duration'))
                                             <div class="error">{{ $errors->first('duration') }}</div>
@@ -60,7 +61,7 @@
                                 <div class="form-group row">
                                     <div class="col-lg-6">
                                         <label>Amount:</label>
-                                        <input type="text" name="amount" class="form-control" required
+                                        <input type="number" name="amount" class="form-control" required maxlength="55"
                                                value="{{$membership->amount}}">
                                         @if($errors->has('amount'))
                                             <div class="error">{{ $errors->first('amount') }}</div>
@@ -68,7 +69,8 @@
                                     </div>
                                     <div class="col-lg-6">
                                         <label>Monthly Fee:</label>
-                                        <input type="text" name="monthlyFee" class="form-control" required
+                                        <input type="number" name="monthlyFee" class="form-control" required
+                                               maxlength="55"
                                                value="{{$membership->monthlyFee}}"/>
                                         @if($errors->has('monthlyFee'))
                                             <div class="error">{{ $errors->first('monthlyFee') }}</div>
@@ -78,8 +80,8 @@
                                 <div class="form-group row">
                                     <div class="col-lg-6">
                                         <label>Detail:</label>
-                                        <input type="text" name="detail" class="form-control" required
-                                               value="{{$membership->detail}}"/>
+                                        <textarea name="detail" class="form-control" required maxlength="155"
+                                                  placeholder="Enter Detail">{{$membership->detail}}</textarea>
                                         @if($errors->has('detail'))
                                             <div class="error">{{ $errors->first('detail') }}</div>
                                         @endif
@@ -91,7 +93,8 @@
                                     <div class="row">
                                         <div class="col-12">
                                             <input type="submit" value="Save" class="btn btn-primary">
-                                            <a href="{{route('membership.member')}}" class="btn btn-secondary">Cancel</a>
+                                            <a href="{{route('membership.member')}}"
+                                               class="btn btn-secondary">Cancel</a>
                                         </div>
                                     </div>
                                 </div>

@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 
 class Membership extends Model
 {
@@ -23,6 +24,7 @@ class Membership extends Model
                 'memberships.*',
             ]
         )->where(function ($query) use ($searchTerm, $sort_by, $sort_type) {
+            $query->where('gym_id', Auth::guard('employee')->user()->gym_id);
             if ($searchTerm) {
                 $query->where('memberships.name', 'like', '%' . $searchTerm . '%')
                     ->orWhere('memberships.duration', 'like', '%' . $searchTerm . '%')

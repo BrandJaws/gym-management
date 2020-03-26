@@ -110,7 +110,8 @@
                                             <div class="col-lg-6 form-group">
                                                 <label>Interested Packages :</label>
                                                 @if(count($membership) > 0)
-                                                    <select class="form-control kt-select2" id="kt_select2_3" name="intersetedPackages[]"
+                                                    <select class="form-control kt-select2" id="kt_select2_3"
+                                                            name="intersetedPackages[]"
                                                             multiple="multiple">
                                                         @foreach ($membership as $list)
                                                             <option value="{{$list->id}}">{{$list->name}}</option>
@@ -122,6 +123,9 @@
                                                 <label>Remarks :</label>
                                                 <textarea name="remarks" class="form-control"
                                                           placeholder="Enter Remarks"></textarea>
+                                                @if($errors->has('remarks'))
+                                                    <div class="error">{{ $errors->first('remarks') }}</div>
+                                                @endif
                                             </div>
                                         </div>
                                     </div>

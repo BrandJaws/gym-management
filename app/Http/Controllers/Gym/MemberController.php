@@ -102,7 +102,7 @@ class MemberController extends Controller
                 'address' => 'required',
                 'source' => 'required',
                 'type' => 'required',
-                'email' => 'email|unique:members',
+                'email' => 'nullable|email|unique:members',
                 'password' => 'nullable|between:6,12,password',
                 'password_confirmation' => 'nullable|same:password',
             ]);
@@ -190,9 +190,9 @@ class MemberController extends Controller
                 'address' => 'required',
                 'source' => 'required',
                 'type' => 'required',
-                'email' => 'unique:members,email,' . $id,
+                'email' => 'nullable|unique:members,email,' . $id,
                 'password' => 'nullable|between:6,12,password' . $id,
-                'password_confirmation' => 'same:password',
+                'password_confirmation' => 'nullable|same:password',
             ]);
             if ($validator->fails()) {
                 return Redirect::back()->withErrors($validator);
@@ -385,8 +385,8 @@ class MemberController extends Controller
                     break;
             }
             $member = Member::find($id);
-            $membership = Membership::all();
-            $employee = Employee::all();
+            $membership = Membership::where('gym_id', Auth::guard('employee')->user()->gym_id)->get();
+            $employee = Employee::where('gym_id', Auth::guard('employee')->user()->gym_id)->get();
             return view('gym.member.archive.pipeline', compact('breadcrumbs', 'membership', 'member', 'employee'))->render();
         } catch (\Exception $e) {
             return back()->with('error', 'Oops, something was not right');
@@ -398,7 +398,6 @@ class MemberController extends Controller
         try {
             $validator = Validator::make($request->all(), [
                 'scheduleDate' => 'required',
-                'remarks' => 'required',
             ]);
             if ($validator->fails()) {
                 return Redirect::back()->withErrors($validator);
@@ -416,9 +415,11 @@ class MemberController extends Controller
                 'type',
                 'reScheduleDate'
             ]));
-            $member->intersetedPackages = implode(',', $request->intersetedPackages);
+            if ($member->intersetedPackages != "") {
+                $member->intersetedPackages = implode(',', $request->intersetedPackages);
+            }
             $member->save();
-            return back()->with('success', 'schedule Date Created Successfully!');
+            return back()->with('success', 'Schedule Date Created Successfully!');
         } catch (\Exception $e) {
             return response()->json([
                 'response' => $e
@@ -464,7 +465,6 @@ class MemberController extends Controller
                 'type' => 'required',
                 'scheduleDate' => 'required',
                 'status' => 'required',
-                'remarks' => 'required'
             ]);
             if ($validator->fails()) {
                 return Redirect::back()->withErrors($validator);
@@ -480,9 +480,12 @@ class MemberController extends Controller
                 'reScheduleDate',
                 'remarks'
             ]));
-            $pipeline->intersetedPackages = implode(',', $request->intersetedPackages);
+
+            if ($pipeline->intersetedPackages != "") {
+                $pipeline->intersetedPackages = implode(',', $request->intersetedPackages);
+            }
             $pipeline->save();
-            return back()->with('success', 'Employee Updated Successfully!');
+            return back()->with('success', 'Pipeline Updated Successfully!');
         } catch (\Exception $e) {
             return response()->json([
                 'response' => $e
@@ -535,7 +538,7 @@ class MemberController extends Controller
         switch ($value) {
             case 'previewCalls':
                 $breadcrumbs = "Preview Calls";
-                $data = Pipeline::where('type', 'For Call')->where('gym_id', Auth::guard('employee')->user()->gym_id)->where('employee_id', Auth::guard('employee')->user()->id)->paginate(10);
+                $data = Pipeline::where('type', 'For Call')->where('gym_id', Auth::guard('employee')->user()->gym_id)->orWhere('employee_id', Auth::guard('employee')->user()->id)->orWhere('transfer_id', Auth::guard('employee')->user()->id)->paginate(10);
                 if ($request->ajax()) {
                     $sort_by = $request->get('sortby');
                     $sort_type = $request->get('sorttype');
@@ -547,13 +550,13 @@ class MemberController extends Controller
                 break;
             case 'transferCalls':
                 $breadcrumbs = "Transfer Calls";
-                $data = Pipeline::where('transferStatus', 'For Call')->where('gym_id', Auth::guard('employee')->user()->gym_id)->orWhere('employee_id', Auth::guard('employee')->user()->id)->orWhere('transfer_id', Auth::guard('employee')->user()->id)->paginate(10);
+                $data = Pipeline::where('transferStatus', 'For Call')->where('gym_id', Auth::guard('employee')->user()->gym_id)->Where('transfer_id', Auth::guard('employee')->user()->id)->paginate(10);
                 if ($request->ajax()) {
                     $sort_by = $request->get('sortby');
                     $sort_type = $request->get('sorttype');
                     $query = $request->get('query');
                     $query = str_replace(" ", "%", $query);
-                    $member = Pipeline::getMemberList($query, $sort_by, $sort_type);
+                    $member = Pipeline::getTransferList($query, $sort_by, $sort_type);
                     return view('gym.member.pagination_data', compact('member'))->render();
                 }
                 break;

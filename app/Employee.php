@@ -6,6 +6,7 @@ use App\Http\Traits\FileUpload;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class Employee extends Authenticatable
@@ -53,6 +54,7 @@ class Employee extends Authenticatable
                 'employees.*',
             ]
         )->where(function ($query) use ($searchTerm, $sort_by, $sort_type) {
+            $query->where('gym_id', Auth::guard('employee')->user()->gym_id);
             if ($searchTerm) {
                 $query->where('employees.name', 'like', '%' . $searchTerm . '%')
                     ->orWhere('employees.email', 'like', '%' . $searchTerm . '%')
