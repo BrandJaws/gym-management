@@ -146,7 +146,7 @@
                                                 <label>Interested Packages : </label>
                                                 @if(count($membership) > 0)
                                                     <select class="form-control kt-select2" id="kt_select2_3"
-                                                            name="intersetedPackages[]" required
+                                                            name="intersetedPackages[]"
                                                             multiple="multiple">
                                                         @foreach ($membership as $list)
                                                             <option
@@ -157,7 +157,7 @@
                                             </div>
                                             <div class="col-lg-6 form-group">
                                                 <label>Remarks :</label>
-                                                <textarea name="remarks" class="form-control" required
+                                                <textarea name="remarks" class="form-control"
                                                           placeholder="Enter Remarks">{{ $pipeline->remarks }}</textarea>
                                                 @if($errors->has('remarks'))
                                                     <div class="error">{{ $errors->first('remarks') }}</div>

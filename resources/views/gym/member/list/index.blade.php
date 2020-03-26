@@ -52,7 +52,7 @@
                                                             id="post_title_icon"></span></th>
                                                     <th class="sorting" data-sorting_type="asc"
                                                         data-column_name="monthlyFee" style="cursor: pointer">Address
-                                                        Fee <span
+                                                         <span
                                                             id="post_title_icon"></span></th>
                                                     <th class="sorting" data-sorting_type="asc"
                                                         data-column_name="detail" style="cursor: pointer">Remarks <span
