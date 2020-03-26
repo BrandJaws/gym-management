@@ -236,7 +236,6 @@
                     $(div[i]).hide();
                 }
             }
-
             if (value === "Member") {
                 var div = document.getElementsByClassName('MemberFields');
                 for (var i = 0; i < div.length; i++) {
