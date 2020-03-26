@@ -12,10 +12,14 @@ class DashboardController extends Controller
 {
     public function dashboard()
     {
-        $gym = Gym::count();
-        $gymInTrial = Gym::where('inTrial', 1)->count();
-        $superAdmin = Admin::count();
-        $license = License::count();
-        return view('admin.dashboard', compact('superAdmin', 'gym', 'gymInTrial', 'license'))->render();
+        try {
+            $gym = Gym::count();
+            $gymInTrial = Gym::where('inTrial', 1)->count();
+            $superAdmin = Admin::count();
+            $license = License::count();
+            return view('admin.dashboard', compact('superAdmin', 'gym', 'gymInTrial', 'license'))->render();
+        } catch (\Exception $e) {
+            return back()->with('error', 'Oops, something was not right');
+        }
     }
 }
