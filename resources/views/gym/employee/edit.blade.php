@@ -51,7 +51,7 @@
                                     </div>
                                     <div class="col-lg-4">
                                         <label>Name:</label>
-                                        <input type="text" name="name" class="form-control" required
+                                        <input type="text" name="name" class="form-control" required maxlength="20"
                                                value="{{$employee->name}}"/>
                                         @if($errors->has('name'))
                                             <div class="error">{{ $errors->first('name') }}</div>
@@ -81,7 +81,7 @@
                                 <div class="form-group row">
                                     <div class="col-lg-4">
                                         <label>Email:</label>
-                                        <input type="email" name="email" class="form-control" required
+                                        <input type="email" name="email" class="form-control" required maxlength="20"
                                                value="{{$employee->email}}"/>
                                         @if($errors->has('email'))
                                             <div class="error">{{ $errors->first('email') }}</div>
@@ -89,7 +89,7 @@
                                     </div>
                                     <div class="col-lg-4">
                                         <label>Password:</label>
-                                        <input type="password" name="password" class="form-control"
+                                        <input type="password" name="password" class="form-control" maxlength="14"
                                                placeholder="Enter password">
                                         @if($errors->has('password'))
                                             <div class="error">{{ $errors->first('password') }}</div>
@@ -98,6 +98,7 @@
                                     <div class="col-lg-4">
                                         <label>Re-Password:</label>
                                         <input type="password" name="password_confirmation" class="form-control"
+                                               maxlength="14"
                                                placeholder="Enter re-password">
                                         @if($errors->has('password_confirmation'))
                                             <div class="error">{{ $errors->first('password_confirmation') }}</div>
@@ -123,7 +124,7 @@
                                     </div>
                                     <div class="col-lg-4">
                                         <label>Phone:</label>
-                                        <input type="text" name="phone" class="form-control" required
+                                        <input type="text" name="phone" class="form-control" required maxlength="50"
                                                value="{{$employee->phone}}" placeholder="Enter Phone No.">
                                         @if($errors->has('phone'))
                                             <div class="error">{{ $errors->first('phone') }}</div>
@@ -133,7 +134,7 @@
                                 <div class="form-group row">
                                     <div class="col-lg-4">
                                         <label>CNIC:</label>
-                                        <input type="text" name="cnic" class="form-control" required
+                                        <input type="text" name="cnic" class="form-control" required maxlength="50"
                                                value="{{$employee->cnic}}" placeholder="Enter CNIC">
                                         @if($errors->has('cnic'))
                                             <div class="error">{{ $errors->first('cnic') }}</div>
@@ -141,7 +142,7 @@
                                     </div>
                                     <div class="col-lg-4">
                                         <label>Salary:</label>
-                                        <input type="number" name="salary" class="form-control" required
+                                        <input type="number" name="salary" class="form-control" required maxlength="50"
                                                value="{{$employee->salary}}" placeholder="Enter Salary">
                                         @if($errors->has('salary'))
                                             <div class="error">{{ $errors->first('salary') }}</div>
@@ -150,6 +151,7 @@
                                     <div class="col-lg-4">
                                         <label>Specialization:</label>
                                         <input type="text" name="specialization" class="form-control" required
+                                               maxlength="50"
                                                value="{{$employee->specialization}}" placeholder="Enter Specialization">
                                         @if($errors->has('specialization'))
                                             <div class="error">{{ $errors->first('specialization') }}</div>
@@ -159,8 +161,8 @@
                                 <div class="form-group row">
                                     <div class="col-lg-4">
                                         <label>Address:</label>
-                                        <input type="text" name="address" class="form-control" required
-                                               value="{{$employee->address}}" placeholder="Enter Address"/>
+                                        <textarea name="address" class="form-control" required maxlength="155"
+                                                  placeholder="Enter Address">{{$employee->address}}</textarea>
                                         @if($errors->has('address'))
                                             <div class="error">{{ $errors->first('address') }}</div>
                                         @endif

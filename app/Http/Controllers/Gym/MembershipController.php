@@ -22,7 +22,7 @@ class MembershipController extends Controller
     public function index(Request $request)
     {
         try {
-            $membership = Membership::orderBy('id', 'asc')->paginate(10);
+            $membership = Membership::where('gym_id', Auth::guard('employee')->user()->gym_id)->orderBy('id', 'asc')->paginate(10);
             if ($request->ajax()) {
                 $sort_by = $request->get('sortby');
                 $sort_type = $request->get('sorttype');
@@ -44,8 +44,12 @@ class MembershipController extends Controller
      */
     public function create()
     {
-        $gym = Gym::where('parent_id', '=', Auth::guard('employee')->user()->parentGym->id)->get();
-        return view('gym.membership.create', compact('gym'));
+        try {
+            $gym = Gym::where('parent_id', '=', Auth::guard('employee')->user()->parentGym->id)->get();
+            return view('gym.membership.create', compact('gym'));
+        } catch (\Exception $e) {
+            return back()->with('error', 'Oops, something was not right');
+        }
     }
 
     /**
