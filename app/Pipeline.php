@@ -28,14 +28,17 @@ class Pipeline extends Model
     {
         return $this->belongsTo(Gym::class, 'gym_id');
     }
+
     public function employee()
     {
         return $this->belongsTo(Employee::class, 'employee_id');
     }
+
     public function transferEmployee()
     {
         return $this->belongsTo(Employee::class, 'transfer_id');
     }
+
     public function member()
     {
         return $this->belongsTo(Member::class, 'customer_id');
@@ -105,6 +108,25 @@ class Pipeline extends Model
                     ->orWhere('pipeline.reScheduleDate', 'like', '%' . $searchTerm . '%');
             }
         })->orderBy($sort_by, $sort_type)->paginate(10);
+    }
+
+
+    public static function getLeadList($customerType, $type, $leadStatus, $fromDate, $toDate)
+    {
+        return self::select([
+                'pipeline.*',
+                'members.id',
+                'members.name as Member',
+                'employees.name as Employee',
+                'employees.id',
+            ]
+        )->where(function ($query) use ($customerType, $type, $leadStatus, $fromDate, $toDate) {
+            $query->where('pipeline.gym_id', Auth::guard('employee')->user()->gym_id)->where('pipeline.type', '=', $type)->where('pipeline.status', '=', $leadStatus)->orWhereBetween('scheduleDate', array($fromDate, $toDate))->orWhereBetween('reScheduleDate', array($fromDate, $toDate));
+        })->leftJoin('employees', function ($join) {
+            $join->on('employees.id', 'pipeline.transfer_id');
+        })->leftJoin('members', function ($join) {
+            $join->on('members.id', 'pipeline.customer_id');
+        })->get();
     }
 
 }

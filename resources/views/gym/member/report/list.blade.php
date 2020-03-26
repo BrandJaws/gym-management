@@ -15,8 +15,6 @@
                                 </h3>
                             </div>
                         </div>
-                        {{--                        <form action="{{ route('member.reports') }}" method="get" enctype="multipart/form-data"--}}
-                        {{--                              class="kt-form kt-form--label-right">--}}
                         <div class="kt-portlet__body">
                             <!--begin::Section-->
                             <div class="kt-section">
@@ -93,38 +91,37 @@
                                             </div>
                                         </div>
                                         <div class="table-responsive">
-                                            <table class="table table-striped table-bordered">
+                                            <table class="table table-striped table-bordered LeadFields"
+                                                   style="display: none">
                                                 <thead>
                                                 <tr>
-                                                    <th>No.</th>
-                                                    <th class="sorting" data-sorting_type="asc"
-                                                        data-column_name="name" style="cursor: pointer">Employee
-                                                        <span
-                                                            id="id_icon"></span></th>
-                                                    <th class="sorting" data-sorting_type="asc"
-                                                        data-column_name="duration" style="cursor: pointer">Member
-                                                        <span
-                                                            id="post_title_icon"></span></th>
-                                                    <th class="sorting" data-sorting_type="asc"
-                                                        data-column_name="amount" style="cursor: pointer">Date <span
-                                                            id="post_title_icon"></span></th>
-                                                    <th class="sorting" data-sorting_type="asc"
-                                                        data-column_name="monthlyFee" style="cursor: pointer">
-                                                        Transfer
-                                                        Status<span
-                                                            id="post_title_icon"></span></th>
-                                                    <th class="sorting" data-sorting_type="asc"
-                                                        data-column_name="detail" style="cursor: pointer">Transfer
-                                                        Employee <span
-                                                            id="post_title_icon"></span></th>
-                                                    <th class="sorting" data-sorting_type="asc"
-                                                        data-column_name="detail" style="cursor: pointer">
-                                                        Re-Schedule
-                                                        Date <span
-                                                            id="post_title_icon"></span></th>
-                                                    <th class="sorting" data-sorting_type="asc"
-                                                        data-column_name=" " style="cursor: pointer">Actions <span
-                                                            id="post_title_icon"></span></th>
+                                                    <th>Member</th>
+                                                    <th>Schedule Date</th>
+                                                    <th>Transfer Status</th>
+                                                    <th>Transfer</th>
+                                                    <th>Re-Schedule Date</th>
+                                                    <th>Remarks</th>
+                                                    <th>Status</th>
+                                                    <th>Type</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+
+                                                </tbody>
+                                            </table>
+                                            <table class="table table-striped table-bordered MemberFields"
+                                                   style="display: none">
+                                                <thead>
+                                                <tr>
+                                                    <th>Member</th>
+                                                    <th>Email</th>
+                                                    <th>Phone</th>
+                                                    <th>Joining Date</th>
+                                                    <th>Address</th>
+                                                    <th>Source</th>
+                                                    <th>Remarks</th>
+                                                    <th>Status</th>
+                                                    <th>Type</th>
                                                 </tr>
                                                 </thead>
                                                 <tbody>
@@ -138,8 +135,6 @@
                             </div>
                             <!--end::Section-->
                         </div>
-                    {{--                        </form>--}}
-                    <!--end::Form-->
                     </div>
                     <!--end::Portlet-->
                 </div>
@@ -150,22 +145,15 @@
 
 @endsection
 @section('custom-script')
-
     <script type="text/javascript">
-
-
         $(document).ready(function () {
-
             var date = new Date();
-
             $('.input-daterange').datepicker({
                 todayBtn: 'linked',
                 format: 'yyyy-mm-dd',
                 autoclose: true
             });
-
             var _token = $('input[name="_token"]').val();
-
             fetch_data();
 
             function fetch_data(from_date = '', to_date = '', type = '', customerType = '', memberStatus = '', leadStatus = '') {
@@ -186,10 +174,28 @@
                         var output = '';
                         $('#total_records').text(data.length);
                         for (var count = 0; count < data.length; count++) {
-                            output += '<tr>';
-                            output += '<td>' + data[count].id + '</td>';
-                            output += '<td>' + data[count].id + '</td>';
-                            output += '<td>' + data[count].id + '</td></tr>';
+                            if (data[count].name != undefined) {
+                                output += '<tr>';
+                                output += '<td>' + data[count].name + '</td>';
+                                output += '<td>' + data[count].email + '</td>';
+                                output += '<td>' + data[count].phone + '</td>';
+                                output += '<td>' + data[count].joiningDate + '</td>';
+                                output += '<td>' + data[count].address + '</td>';
+                                output += '<td>' + data[count].source + '</td>';
+                                output += '<td>' + data[count].remarks + '</td>';
+                                output += '<td>' + data[count].status + '</td>';
+                                output += '<td>' + data[count].type + '</td></tr>';
+                            } else {
+                                output += '<tr>';
+                                output += '<td>' + data[count].Member + '</td>';
+                                output += '<td>' + data[count].scheduleDate + '</td>';
+                                output += '<td>' + data[count].transferStatus + '</td>';
+                                output += '<td>' + data[count].Employee + '</td>';
+                                output += '<td>' + data[count].reScheduleDate + '</td>';
+                                output += '<td>' + data[count].remarks + '</td>';
+                                output += '<td>' + data[count].status + '</td>';
+                                output += '<td>' + data[count].type + '</td></tr>';
+                            }
                         }
                         $('tbody').html(output);
                     }
@@ -204,12 +210,11 @@
                 var memberStatus = $('#memberStatus').val();
                 var leadStatus = $('#leadStatus').val();
                 if (from_date != '' && to_date != '') {
-                    fetch_data(from_date, to_date, type, customerType,memberStatus, leadStatus);
+                    fetch_data(from_date, to_date, type, customerType, memberStatus, leadStatus);
                 } else {
                     alert('Both Date is required');
                 }
             });
-
             $('#refresh').click(function () {
                 $('#from_date').val('');
                 $('#to_date').val('');

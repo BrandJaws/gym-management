@@ -593,16 +593,15 @@ class MemberController extends Controller
             $type = $request->type;
             $memberStatus = $request->memberStatus;
             $leadStatus = $request->leadStatus;
-           dd($fromDate,$toDate,$type,$memberStatus,$leadStatus);
+            $customerType = $request->customerType;
             if ($fromDate != '' && $toDate != '') {
-                if ($request->customerType == 'Member') {
-                    $data = Member::where('status',$memberStatus)->whereBetween('created_at', array($fromDate,$toDate))->get();
-                }
-                elseif ($request->customerType == 'Lead') {
-                    $data = Pipeline::where('type',$type)->where('status',$leadStatus)->whereBetween('created_at', array($fromDate,$toDate))->get();
+                if ($customerType == 'Member') {
+                    $data = Member::where('gym_id', Auth::guard('employee')->user()->gym_id)->where('type', $customerType)->where('status', $memberStatus)->whereBetween('created_at', array($fromDate, $toDate))->get();
+                } elseif ($customerType == 'Lead') {
+                    $data = Pipeline::getLeadList($customerType, $type, $leadStatus, $fromDate, $toDate);
                 }
             } else {
-                $data = Pipeline::orderBy('scheduleDate', 'desc')->get();
+                $data = Member::orderBy('joiningDate', 'desc')->get();
             }
             echo json_encode($data);
         }
