@@ -36,10 +36,12 @@
                                                 @endforeach
                                             </select>
                                         @else
-                                            <input type="hidden" name="gym_id" class="form-control"
-                                                   value="{{ $gym[0]->id }}"/>
-                                            <input type="text" class="form-control" value="{{ $gym[0]->name }}"
-                                                   disabled/>
+                                            <select class="form-control kt-select2" id="kt_select2_1" name="gym_id"
+                                                    autofocus required>
+                                                @foreach ($gym as $gymList)
+                                                    <option value="{{$gymList->id}}" selected>{{$gymList->name}}</option>
+                                                @endforeach
+                                            </select>
                                         @endif
                                         @if($errors->has('gym_id'))
                                             <div class="error">{{ $errors->first('gym_id') }}</div>

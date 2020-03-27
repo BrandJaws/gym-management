@@ -32,18 +32,17 @@
                                         @if(count($gym) > 1)
                                             <select class="form-control kt-select2" id="kt_select2_1" name="gym_id"
                                                     autofocus required>
-                                                <option
-                                                    value="{{$employee->gym_id}}">{{$employee->gym->name}}</option>
                                                 @foreach ($gym as $gymList)
                                                     <option value="{{$gymList->id}}">{{$gymList->name}}</option>
                                                 @endforeach
                                             </select>
                                         @else
-                                            <input type="hidden" name="gym_id" class="form-control"
-                                                   value="{{$employee->gym_id}}"/>
-                                            <input type="text" class="form-control"
-                                                   value="{{ $employee->gym->name }}"
-                                                   disabled/>
+                                            <select class="form-control kt-select2" id="kt_select2_1" name="gym_id"
+                                                    autofocus required>
+                                                @foreach ($gym as $gymList)
+                                                    <option value="{{$gymList->id}}"  @if($employee->gym_id == $gymList->id ) selected @endif>{{$gymList->name}}</option>
+                                                @endforeach
+                                            </select>
                                         @endif
                                         @if($errors->has('gym_id'))
                                             <div class="error">{{ $errors->first('gym_id') }}</div>
