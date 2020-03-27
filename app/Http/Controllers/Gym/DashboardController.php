@@ -21,7 +21,7 @@ class DashboardController extends Controller
             $trainers = Trainer::where('gym_id', Auth::guard('employee')->user()->gym_id)->count();
             return view('gym.dashboard', compact('memberships', 'employees', 'members', 'trainers'));
         } catch (\Exception $e) {
-            return back()->with('error', 'Oops, something was not right');
+            return back()->with('error', 'Oops, something was not right in gym dashboard');
         }
     }
 }

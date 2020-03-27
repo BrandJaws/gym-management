@@ -140,6 +140,11 @@ Route::group(['prefix' => 'gym', 'namespace' => 'Gym'], function () {
             Route::get('/destroy/{id}', ['as' => 'destroy', 'uses' => 'SupplierController@destroy']);
         });
 
+
+        /*-----------------------------------------------------------------------------------*/
+        /*------------------------------------ Treasury Routes --------------------------------*/
+        /*-----------------------------------------------------------------------------------*/
+
         Route::group(['as' => 'treasury.', 'prefix' => 'treasury'], function () {
             Route::get('/', ['as' => 'member', 'uses' => 'TreasuryController@index']);
             Route::get('/create', ['as' => 'create', 'uses' => 'TreasuryController@create']);

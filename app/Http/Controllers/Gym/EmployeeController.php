@@ -35,7 +35,7 @@ class EmployeeController extends Controller
             }
             return view('gym.employee.list', compact('employee'));
         } catch (\Exception $e) {
-            return back()->with('error', 'Oops, something was not right');
+            return back()->with('error', 'Oops, something was not right in employee page');
         }
     }
 
@@ -50,7 +50,7 @@ class EmployeeController extends Controller
             $gym = Gym::where('parent_id', '=', Auth::guard('employee')->user()->parentGym->id)->get();
             return view('gym.employee.create', compact('gym'));
         } catch (\Exception $e) {
-            return back()->with('error', 'Oops, something was not right');
+            return back()->with('error', 'Oops, something was not right in employee add page');
         }
     }
 
@@ -130,7 +130,7 @@ class EmployeeController extends Controller
             $gym = Gym::where('parent_id', '=', Auth::guard('employee')->user()->parentGym->id)->get();
             return view('gym.employee.edit', compact('employee', 'gym'));
         } catch (\Exception $e) {
-            return back()->with('error', 'Oops, something was not right');
+            return back()->with('error', 'Oops, something was not right in employee update page');
         }
     }
 
@@ -205,7 +205,7 @@ class EmployeeController extends Controller
             Employee::destroy($id);
             return back()->with('success', 'Employee Deleted Successfully!');
         } catch (\Exception $e) {
-            return back()->with('error', 'Oops, something was not right');
+            return back()->with('error', 'Oops, something was not right in employee delete function');
         }
     }
 }
