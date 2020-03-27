@@ -1,10 +1,15 @@
 <?php
 
 namespace App\Http\Controllers\Gym;
+use App\Employee;
+use App\Member;
+use App\Supplier;
+use App\Trainer;
 use App\Treasury;
 use App\Gym;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class TreasuryController extends Controller
 {
@@ -38,8 +43,12 @@ class TreasuryController extends Controller
      */
     public function create()
     {
-        $gym = Gym::all();
-        return view('gym.treasury.create')->with('gyms', $gym);
+        $gym_id = Auth::guard('employee')->user()->gym_id;
+        $employee = Employee::where('gym_id', $gym_id)->get();
+        $member = Member::where('gym_id', $gym_id)->get();
+        $trainer = Trainer::where('gym_id', $gym_id)->get();
+        $supplier = Supplier::where('gym_id', $gym_id)->get();
+        return view('gym.treasury.create', compact('employee','member','trainer','supplier'));
     }
 
     /**
