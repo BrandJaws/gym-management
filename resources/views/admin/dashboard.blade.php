@@ -12,7 +12,8 @@
                         <div class="kt-widget kt-widget--user-profile-4">
                             <div class="kt-widget__head">
                                 <div class="kt-widget__media">
-                                    <img class="kt-widget__img kt-hidden-" src="{{asset('assets/media/gym/gym1.jpg')}}" alt="image" height="100px">
+                                    <img class="kt-widget__img kt-hidden-" src="{{asset('assets/media/gym/gym1.jpg')}}"
+                                         alt="image" height="100px">
                                 </div>
                                 <div class="kt-widget__content">
                                     <div class="kt-widget__section">
@@ -40,7 +41,8 @@
                         <div class="kt-widget kt-widget--user-profile-4">
                             <div class="kt-widget__head">
                                 <div class="kt-widget__media">
-                                    <img class="kt-widget__img kt-hidden-" src="{{asset('assets/media/gym/machine1.jpg')}}" alt="image" height="100px">
+                                    <img class="kt-widget__img kt-hidden-"
+                                         src="{{asset('assets/media/gym/machine1.jpg')}}" alt="image" height="100px">
                                 </div>
                                 <div class="kt-widget__content">
                                     <div class="kt-widget__section">
@@ -68,7 +70,8 @@
                         <div class="kt-widget kt-widget--user-profile-4">
                             <div class="kt-widget__head">
                                 <div class="kt-widget__media">
-                                    <img class="kt-widget__img kt-hidden-" src="{{asset('assets/media/gym/customer1.jpg')}}" alt="image" height="100px">
+                                    <img class="kt-widget__img kt-hidden-"
+                                         src="{{asset('assets/media/gym/customer1.jpg')}}" alt="image" height="100px">
                                 </div>
                                 <div class="kt-widget__content">
                                     <div class="kt-widget__section">
@@ -96,7 +99,8 @@
                         <div class="kt-widget kt-widget--user-profile-4">
                             <div class="kt-widget__head">
                                 <div class="kt-widget__media">
-                                    <img class="kt-widget__img kt-hidden-" src="{{asset('assets/media/gym/employe1.jpg')}}" alt="image" height="100px">
+                                    <img class="kt-widget__img kt-hidden-"
+                                         src="{{asset('assets/media/gym/employe1.jpg')}}" alt="image" height="100px">
                                 </div>
                                 <div class="kt-widget__content">
                                     <div class="kt-widget__section">
@@ -126,7 +130,7 @@
                     <div class="kt-portlet__head">
                         <div class="kt-portlet__head-label">
                             <h3 class="kt-portlet__head-title">
-                                Latest Gyms
+                                Gyms
                             </h3>
                         </div>
                         <div class="kt-portlet__head-toolbar">
@@ -134,7 +138,7 @@
                                 <li class="nav-item">
                                     <a class="nav-link active" data-toggle="tab" href="#kt_widget4_tab1_content"
                                        role="tab">
-                                        Today
+                                        Action
                                     </a>
                                 </li>
                             </ul>
@@ -144,21 +148,23 @@
                         <div class="tab-content">
                             <div class="tab-pane active" id="kt_widget4_tab1_content">
                                 <div class="kt-widget4">
-                                    @if(count($latestGyms) <= 5)
-                                        @foreach($latestGyms as $Gym)
+                                    @foreach($latestGyms as $gym)
                                         <div class="kt-widget4__item">
                                             <div class="kt-widget4__pic kt-widget4__pic--pic">
-                                                <img src="assets/media/users/100_4.jpg" alt="">
+                                                {{--     <img src="{{asset('assets/media/users/100_4.jpg')}}" alt="">--}}
                                             </div>
                                             <div class="kt-widget4__info">
-                                                <a href="#" class="kt-widget4__username">
-                                                    {{$Gym->name}}
+                                                <a href="{{url('/admin/gym/edit', $gym->id)}}"
+                                                   class="kt-widget4__username">
+                                                    {{$gym->name}}
                                                 </a>
                                             </div>
-                                            <a href="#" class="btn btn-sm btn-label-brand btn-bold">Detail</a>
+                                            <a href="{{url('/admin/gym/edit', $gym->id)}}"
+                                               class="btn btn-sm btn-label-brand btn-bold">
+                                                <i class="fa flaticon2-delivery-package"></i>Detail
+                                            </a>
                                         </div>
-                                        @endforeach
-                                    @endif
+                                    @endforeach
                                 </div>
                             </div>
                         </div>
@@ -172,7 +178,7 @@
                     <div class="kt-portlet__head">
                         <div class="kt-portlet__head-label">
                             <h3 class="kt-portlet__head-title">
-                                Permissions
+                                Gym Panel Modules
                             </h3>
                         </div>
                         <div class="kt-portlet__head-toolbar">
@@ -180,7 +186,7 @@
                                 <li class="nav-item">
                                     <a class="nav-link active" data-toggle="tab" href="#kt_widget4_tab1_content"
                                        role="tab">
-                                        Today
+                                        -
                                     </a>
                                 </li>
                             </ul>
@@ -190,17 +196,17 @@
                         <div class="tab-content">
                             <div class="tab-pane active" id="kt_widget4_tab1_content">
                                 <div class="kt-widget4">
-                                    @foreach(Auth::guard('employee')->user()->parentGym->parentGymPermissions as $permission)
+                                    @foreach($gymModule as $module)
                                         <div class="kt-widget4__item">
-                                            <div class="kt-widget4__pic kt-widget4__pic--pic">
-                                                <img src="assets/media/users/100_4.jpg" alt="">
-                                            </div>
                                             <div class="kt-widget4__info">
                                                 <a href="#" class="kt-widget4__username">
-                                                    {{$permission->gymModules->name}}
+                                                    {{$module->name}}
                                                 </a>
                                             </div>
-                                            <a href="#" class="btn btn-sm btn-label-brand btn-bold">Detail</a>
+                                            <a href="#"
+                                               class="btn btn-sm btn-label-brand btn-bold">
+                                                <i class="{{$module->icon}}"></i>
+                                            </a>
                                         </div>
                                     @endforeach
                                 </div>

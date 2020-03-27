@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Admin;
 use App\Gym;
+use App\GymModule;
 use App\Http\Controllers\Controller;
 use App\License;
 use App\Permission;
@@ -18,11 +19,12 @@ class DashboardController extends Controller
             $gymInTrial = Gym::where('inTrial', 1)->count();
             $superAdmin = Admin::count();
             $license = License::count();
-            $latestGyms = Gym::orderBy('gyms.created_at','desc')->get();
+            $latestGyms = Gym::orderBy('id', 'desc')->take(10)->get();
+            $gymModule = GymModule::orderBy('created_at', 'desc')->get();
             return view('admin.dashboard', compact('superAdmin', 'gym',
-                'gymInTrial', 'license','latestGyms'))->render();
+                'gymInTrial', 'license', 'latestGyms', 'gymModule'))->render();
         } catch (\Exception $e) {
-            return back()->with('error', 'Oops, something was not right');
+            return back()->with('error', 'Oops, something was not right in admin dashboard');
         }
     }
 }
