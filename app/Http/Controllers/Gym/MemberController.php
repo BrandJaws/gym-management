@@ -83,7 +83,8 @@ class MemberController extends Controller
     public function create()
     {
         try {
-            $membership = Membership::all();
+            $gym_id = Auth::guard('employee')->user()->gym_id;
+            $membership = Membership::where('gym_id', $gym_id)->get();
             return view('gym.member.list.create', compact('membership'));
         } catch (\Exception $e) {
             return back()->with('error', 'Oops, something was not right in member add page');
