@@ -32,10 +32,14 @@
                                                 @endforeach
                                             </select>
                                         @else
-                                            <input type="hidden" name="gym_id" class="form-control" required
-                                                   value="{{ $gym[0]->id }}"/>
-                                            <input type="text" class="form-control" value="{{ $gym[0]->name }}"
-                                                   disabled/>
+                                            <select class="form-control kt-select2" id="kt_select2_3" name="gym_id[]"
+                                                    required
+                                                    multiple="multiple">
+                                                @foreach ($gym as $gymList)
+                                                    <option value="{{$gymList->id}}"
+                                                            selected>{{$gymList->name}}</option>
+                                                @endforeach
+                                            </select>
                                         @endif
                                     </div>
                                     <div class="col-lg-4">
