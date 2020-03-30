@@ -24,6 +24,7 @@ class Treasury extends Model
     {
         return $this->belongsTo(Employee::class, 'employee_id');
     }
+
     public static function getTreasuryList($searchTerm, $sort_by, $sort_type)
     {
         return self::select([
@@ -44,4 +45,6 @@ class Treasury extends Model
             }
         })->orderBy($sort_by, $sort_type)->paginate(10);
     }
+
+
 }

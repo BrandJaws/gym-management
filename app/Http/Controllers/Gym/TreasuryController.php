@@ -143,6 +143,7 @@ class TreasuryController extends Controller
     {
         try {
             $treasury = Treasury::find($id);
+            dd($treasury->treasuryType);
             $gym_id = Auth::guard('employee')->user()->gym_id;
             $employee = Employee::where('gym_id', $gym_id)->get();
             $member = Member::where('gym_id', $gym_id)->get();
