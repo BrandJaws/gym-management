@@ -29,7 +29,7 @@
 <!-- begin:: Header Mobile -->
 <div id="kt_header_mobile" class="kt-header-mobile  kt-header-mobile--fixed ">
     <div class="kt-header-mobile__logo">
-        <a href="{{url('/')}}">
+        <a href="{{url('admin/dashboard')}}">
             <img alt="Logo" src="{{asset('assets/media/logos/logo-light.png')}}"/>
         </a>
     </div>

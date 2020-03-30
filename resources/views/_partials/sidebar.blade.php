@@ -4,8 +4,8 @@
 
         <div class="kt-aside__brand kt-grid__item " id="kt_aside_brand">
             <div class="kt-aside__brand-logo">
-                <a href="{{url('/admin')}}">
-                    <img alt="Logo" src="{{asset('assets/media/logos/logo1.png')}}" width="170px" height="50px"/>
+                <a href="{{url('admin/dashboard')}}">
+                    <img alt="Logo" src="{{asset('assets/media/logos/zumba1.png')}}" width="170px" height="50px"/>
                 </a>
             </div>
             <div class="kt-aside__brand-tools">
