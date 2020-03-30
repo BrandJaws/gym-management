@@ -162,6 +162,7 @@ class TreasuryController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $id = $request->id;
         try {
             $validator = Validator::make($request->all(), [
                 'employee_id' => 'required',
@@ -174,7 +175,7 @@ class TreasuryController extends Controller
             if ($validator->fails()) {
                 return Redirect::back()->withErrors($validator);
             }
-            $treasury = Treasury::find($id);
+            $treasury = Treasury::where('id', $id)->first();
             $treasury->fill($request->only([
                 'employee_id',
                 'type',

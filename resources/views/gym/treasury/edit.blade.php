@@ -17,9 +17,10 @@
                             </div>
                         </div>
                         <!--begin::Form-->
-                        <form action="{{route('treasury.edit')}}" method="POST" enctype="multipart/form-data"
+                        <form action="{{ route('member.edit') }}" method="POST" enctype="multipart/form-data"
                               class="kt-form kt-form--label-right">
                             @csrf
+                            <input type="hidden" value="{{ $treasury->id }}" name="id">
                             <div class="kt-portlet__body">
                                 <div class="form-group row">
                                     <div class="col-lg-4">
