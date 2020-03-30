@@ -137,7 +137,7 @@
                                     <div class="col-lg-4 trainerField" style="display: none">
                                         <label>Purpose:</label>
                                         <select class="form-control" name="trainerPurpose">
-                                            <option value="Salary">Salary</option>
+                                            <option value="Salary" >Salary</option>
                                             <option value="Bonus">Bonus</option>
                                             <option value="Loan">Loan</option>
                                             <option value="Commission">Commission</option>
