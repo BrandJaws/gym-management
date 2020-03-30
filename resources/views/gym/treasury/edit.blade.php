@@ -17,7 +17,7 @@
                             </div>
                         </div>
                         <!--begin::Form-->
-                        <form action="{{ route('member.edit') }}" method="POST" enctype="multipart/form-data"
+                        <form action="{{ route('treasury.edit') }}" method="POST" enctype="multipart/form-data"
                               class="kt-form kt-form--label-right">
                             @csrf
                             <input type="hidden" value="{{ $treasury->id }}" name="id">
@@ -118,18 +118,18 @@
                                     <div class="col-lg-4 employeeField" style="display: none">
                                         <label>Purpose:</label>
                                         <select class="form-control" name="employeePurpose">
-                                            <option value="Salary">Salary</option>
-                                            <option value="Bonus">Bonus</option>
-                                            <option value="Loan">Loan</option>
-                                            <option value="Commission">Commission</option>
-                                            <option value="Others">Others</option>
+                                            <option value="Salary"  @if('Salary' == $treasury->purpose ) selected @endif>Salary</option>
+                                            <option value="Bonus" @if('Bonus' == $treasury->purpose ) selected @endif>Bonus</option>
+                                            <option value="Loan" @if('Loan' == $treasury->purpose ) selected @endif>Loan</option>
+                                            <option value="Commission" @if('Commission' == $treasury->purpose ) selected @endif>Commission</option>
+                                            <option value="Others" @if('Others' == $treasury->purpose ) selected @endif>Others</option>
                                         </select>
                                     </div>
                                     <div class="col-lg-4 employeeField" style="display: none">
                                         <label>Employee:</label>
                                         <select class="form-control" name="employeeId">
                                             @foreach($employee as $row)
-                                                <option value="{{ $row->id }}">{{ $row->name }}</option>
+                                                <option value="{{ $row->id }}" @if($row->id == $treasury->employeeId ) selected @endif>{{ $row->name }}</option>
                                             @endforeach
                                         </select>
                                     </div>
@@ -137,18 +137,18 @@
                                     <div class="col-lg-4 trainerField" style="display: none">
                                         <label>Purpose:</label>
                                         <select class="form-control" name="trainerPurpose">
-                                            <option value="Salary" >Salary</option>
-                                            <option value="Bonus">Bonus</option>
-                                            <option value="Loan">Loan</option>
-                                            <option value="Commission">Commission</option>
-                                            <option value="Others">Others</option>
+                                            <option value="Salary"  @if('Salary' == $treasury->purpose ) selected @endif>Salary</option>
+                                            <option value="Bonus" @if('Bonus' == $treasury->purpose ) selected @endif>Bonus</option>
+                                            <option value="Loan" @if('Loan' == $treasury->purpose ) selected @endif>Loan</option>
+                                            <option value="Commission" @if('Commission' == $treasury->purpose ) selected @endif>Commission</option>
+                                            <option value="Others" @if('Others' == $treasury->purpose ) selected @endif>Others</option>
                                         </select>
                                     </div>
                                     <div class="col-lg-4 trainerField" style="display: none">
                                         <label>Trainer:</label>
                                         <select class="form-control" name="trainer_id">
                                             @foreach($trainer as $row)
-                                                <option value="{{ $row->id }}">{{ $row->name }}</option>
+                                                <option value="{{ $row->id }}"  @if($row->id == $treasury->trainer_id ) selected @endif>{{ $row->name }}</option>
                                             @endforeach
                                         </select>
                                     </div>
@@ -156,18 +156,18 @@
                                     <div class="col-lg-4 memberField" style="display: none">
                                         <label>Purpose:</label>
                                         <select class="form-control" name="memberPurpose">
-                                            <option value="Membership">Membership Fee</option>
-                                            <option value="Trainer Fee">Trainer Fee</option>
-                                            <option value="Fine">Fine</option>
-                                            <option value="Extra Charges">Extra Charges</option>
-                                            <option value="Others">Others</option>
+                                            <option value="Membership" @if('Membership' == $treasury->purpose ) selected @endif>Membership Fee</option>
+                                            <option value="Trainer Fee" @if('Trainer Fee' == $treasury->purpose ) selected @endif>Trainer Fee</option>
+                                            <option value="Fine" @if('Fine' == $treasury->purpose ) selected @endif>Fine</option>
+                                            <option value="Extra Charges" @if('Extra Charges' == $treasury->purpose ) selected @endif>Extra Charges</option>
+                                            <option value="Others" @if('Others' == $treasury->purpose ) selected @endif>Others</option>
                                         </select>
                                     </div>
                                     <div class="col-lg-4 memberField" style="display: none">
                                         <label>Member:</label>
                                         <select class="form-control" name="member_id">
                                             @foreach($member as $row)
-                                                <option value="{{ $row->id }}">{{ $row->name }}</option>
+                                                <option value="{{ $row->id }}" @if($row->id == $treasury->member_id ) selected @endif>{{ $row->name }}</option>
                                             @endforeach
                                         </select>
                                     </div>
@@ -175,27 +175,27 @@
                                     <div class="col-lg-4 supplierField" style="display: none">
                                         <label>Purpose:</label>
                                         <select class="form-control" name="supplierPurpose">
-                                            <option value="Products Bill">Products Bill</option>
-                                            <option value="Others">Others</option>
+                                            <option value="Products Bill" @if('Products Bill' == $treasury->purpose ) selected @endif>Products Bill</option>
+                                            <option value="Others" @if('Others' == $treasury->purpose ) selected @endif>Others</option>
                                         </select>
                                     </div>
                                     <div class="col-lg-4 supplierField" style="display: none">
                                         <label>Supplier:</label>
                                         <select class="form-control" name="supplier_id">
                                             @foreach($supplier as $row)
-                                                <option value="{{ $row->id }}">{{ $row->name }}</option>
+                                                <option value="{{ $row->id }}" @if($row->id == $treasury->supplier_id ) selected @endif>{{ $row->name }}</option>
                                             @endforeach
                                         </select>
                                     </div>
 
                                     <div class="col-lg-4 otherField" style="display: none">
                                         <label>Purpose:</label>
-                                        <input type="text" name="otherPurpose" class="form-control"
+                                        <input type="text" name="otherPurpose" class="form-control" value="{{ $treasury->purpose }}"
                                                placeholder="Enter your Value"/>
                                     </div>
                                     <div class="col-lg-4">
                                         <label>Value:</label>
-                                        <input type="text" name="value" class="form-control" required
+                                        <input type="text" name="value" class="form-control" required value="{{ $treasury->value }}"
                                                value="{{ $treasury->value }}"
                                                placeholder="Enter your Value"/>
                                     </div>
