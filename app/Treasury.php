@@ -16,8 +16,10 @@ class Treasury extends Model
         'date',
         'purpose',
         'note',
-        'treasureable_type',
-        'treasureable_id',
+        'employeeId',
+        'member_id',
+        'trainer_id',
+        'supplier_id',
         'gym_id',
     ];
     public function employee()
@@ -39,9 +41,7 @@ class Treasury extends Model
                     ->orWhere('treasuries.value', 'like', '%' . $searchTerm . '%')
                     ->orWhere('treasuries.date', 'like', '%' . $searchTerm . '%')
                     ->orWhere('treasuries.purpose', 'like', '%' . $searchTerm . '%')
-                    ->orWhere('treasuries.note', 'like', '%' . $searchTerm . '%')
-                    ->orWhere('treasuries.treasureable_type', 'like', '%' . $searchTerm . '%')
-                    ->orWhere('treasuries.treasureable_id', 'like', '%' . $searchTerm . '%');
+                    ->orWhere('treasuries.note', 'like', '%' . $searchTerm . '%');
             }
         })->orderBy($sort_by, $sort_type)->paginate(10);
     }

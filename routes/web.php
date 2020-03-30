@@ -151,6 +151,7 @@ Route::group(['prefix' => 'gym', 'namespace' => 'Gym'], function () {
             Route::get('/create', ['as' => 'create', 'uses' => 'TreasuryController@create']);
             Route::post('/create', ['as' => 'create', 'uses' => 'TreasuryController@store']);
             Route::get('/edit/{id}', ['as' => 'edit', 'uses' => 'TreasuryController@edit']);
+            Route::post('/edit', ['as' => 'edit', 'uses' => 'TreasuryController@update']);
             Route::get('/destroy/{id}', ['as' => 'destroy', 'uses' => 'TreasuryController@destroy']);
         });
 

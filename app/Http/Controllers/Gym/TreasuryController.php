@@ -174,7 +174,7 @@ class TreasuryController extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
         $id = $request->id;
         try {
@@ -202,26 +202,38 @@ class TreasuryController extends Controller
             $value = $request->type;
             switch ($value) {
                 case 'Employee':
-                    $treasury->treasureable_id = $request->employeeId;
-                    $treasury->treasureable_type = 'App\Employee';
+                    $treasury->employeeId = $request->employeeId;
+                    $treasury->member_id =  '0';
+                    $treasury->supplier_id = '0';
+                    $treasury->trainer_id = '0';
                     $treasury->purpose = $request->employeePurpose;
                     break;
                 case 'Member':
-                    $treasury->treasureable_id = $request->member_id;
-                    $treasury->treasureable_type = 'App\Member';
+                    $treasury->member_id = $request->member_id;
+                    $treasury->employeeId = '0';
+                    $treasury->supplier_id = '0';
+                    $treasury->trainer_id = '0';
                     $treasury->purpose = $request->memberPurpose;
                     break;
                 case 'Supplier':
-                    $treasury->treasureable_id = $request->supplier_id;
-                    $treasury->treasureable_type = 'App\Supplier';
+                    $treasury->supplier_id = $request->supplier_id;
+                    $treasury->member_id = '0';
+                    $treasury->employeeId = '0';
+                    $treasury->trainer_id = '0';
                     $treasury->purpose = $request->supplierPurpose;
                     break;
                 case 'Trainer':
-                    $treasury->treasureable_id = $request->trainer_id;
-                    $treasury->treasureable_type = 'App\Trainer';
+                    $treasury->trainer_id = $request->trainer_id;
+                    $treasury->supplier_id = '0';
+                    $treasury->member_id = '0';
+                    $treasury->employeeId = '0';
                     $treasury->purpose = $request->trainerPurpose;
                     break;
                 case 'Other':
+                    $treasury->trainer_id = '0';
+                    $treasury->supplier_id = '0';
+                    $treasury->member_id = '0';
+                    $treasury->employeeId = '0';
                     $treasury->purpose = $request->otherPurpose;
                     break;
             }
