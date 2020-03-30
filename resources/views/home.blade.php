@@ -14,7 +14,7 @@
 <section class="gymSection">
     <div class="frontSection">
         <div class="logo">
-            <img alt="Logo" src="{{asset('assets/media/logos/zumba.png')}}" />
+            <img alt="Logo" src="{{asset('assets/media/logos/zumba1.png')}}" />
             <h2>Let Zumba Fitness Gym Software for billing take the worry out of getting paid</h2>
             <p>Here are the most widely recognized fitness terms clarified so you can turn into a specialist in exercise center language in a matter of seconds?</p>
         </div>

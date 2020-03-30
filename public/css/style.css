@@ -149,17 +149,17 @@
     padding-left: 0px;
 }
 .links ul li a:hover {
-    background: #e01972;
-    border: 2px solid #e01972;
+    background: #f15a24;
+    border: 2px solid #f15a24;
     color: #fff;
     transition: 0.6s;
 }
 .links ul li a {
     padding: 14px 20px;
-    outline: #e01972;
-    border: 2px solid #e01972;
+    outline: #f15a24;
+    border: 2px solid #f15a24;
     border-radius: 10px;
-    color: #e01972;
+    color: #f15a24;
 }
 .links {
     display: inline-block;
