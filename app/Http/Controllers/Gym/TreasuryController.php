@@ -26,7 +26,8 @@ class TreasuryController extends Controller
     public function index(Request $request)
     {
         try {
-            $treasury = Treasury::orderBy('id', 'asc')->paginate(4);
+            $gym_id = Auth::guard('employee')->user()->gym_id;
+            $treasury = Treasury::where('gym_id', $gym_id)->orderBy('id', 'asc')->paginate(4);
             if ($request->ajax()) {
                 $sort_by = $request->get('sortby');
                 $sort_type = $request->get('sorttype');
