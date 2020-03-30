@@ -37,7 +37,7 @@ class Member extends Model
                 'members.*',
             ]
         )->where(function ($query) use ($searchTerm, $sort_by, $sort_type) {
-            $query->where('type', 'Member')->where('gym_id', Auth::guard('employee')->user()->gym_id);
+            $query->where('members.type', 'Member')->where('members.gym_id', Auth::guard('employee')->user()->gym_id);
             if ($searchTerm) {
                 $query->where('members.name', 'like', '%' . $searchTerm . '%')
                     ->orWhere('members.email', 'like', '%' . $searchTerm . '%')
@@ -52,13 +52,14 @@ class Member extends Model
             }
         })->orderBy($sort_by, $sort_type)->paginate(10);
     }
+
     public static function getLeadList($searchTerm, $sort_by, $sort_type)
     {
         return self::select([
                 'members.*',
             ]
         )->where(function ($query) use ($searchTerm, $sort_by, $sort_type) {
-            $query->where('type', 'Lead')->where('gym_id', Auth::guard('employee')->user()->gym_id);
+            $query->where('members.type', 'Lead')->where('members.gym_id', Auth::guard('employee')->user()->gym_id);
             if ($searchTerm) {
                 $query->where('members.name', 'like', '%' . $searchTerm . '%')
                     ->orWhere('members.email', 'like', '%' . $searchTerm . '%')
@@ -80,7 +81,7 @@ class Member extends Model
                 'members.*',
             ]
         )->where(function ($query) use ($searchTerm, $sort_by, $sort_type) {
-            $query->where('status', 'Not Joined')->where('gym_id', Auth::guard('employee')->user()->gym_id);
+            $query->where('members.status', 'Not Joined')->where('members.gym_id', Auth::guard('employee')->user()->gym_id);
             if ($searchTerm) {
                 $query->where('members.name', 'like', '%' . $searchTerm . '%')
                     ->orWhere('members.email', 'like', '%' . $searchTerm . '%')
@@ -102,7 +103,7 @@ class Member extends Model
                 'members.*',
             ]
         )->where(function ($query) use ($searchTerm, $sort_by, $sort_type) {
-            $query->where('status', 'Expired')->where('gym_id', Auth::guard('employee')->user()->gym_id);
+            $query->where('members.status', 'Expired')->where('members.gym_id', Auth::guard('employee')->user()->gym_id);
             if ($searchTerm) {
                 $query->where('members.name', 'like', '%' . $searchTerm . '%')
                     ->orWhere('members.email', 'like', '%' . $searchTerm . '%')
@@ -124,7 +125,7 @@ class Member extends Model
                 'members.*',
             ]
         )->where(function ($query) use ($searchTerm, $sort_by, $sort_type) {
-            $query->where('status', 'In-Active')->where('gym_id', Auth::guard('employee')->user()->gym_id);
+            $query->where('members.status', 'In-Active')->where('members.gym_id', Auth::guard('employee')->user()->gym_id);
             if ($searchTerm) {
                 $query->where('members.name', 'like', '%' . $searchTerm . '%')
                     ->orWhere('members.email', 'like', '%' . $searchTerm . '%')
@@ -155,8 +156,8 @@ class Member extends Model
         return self::select([
                 'members.*',
             ]
-        )->where(function ($query) use ($fromDate, $toDate,$memberStatus) {
-            $query->whereBetween('created_at', array($fromDate,$toDate));
+        )->where(function ($query) use ($fromDate, $toDate, $memberStatus) {
+            $query->whereBetween('created_at', array($fromDate, $toDate));
 
         })->paginate(10);
     }

@@ -3,6 +3,7 @@
     <div class="kt-content  kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor" id="kt_content">
         <!-- begin:: Content -->
         <div class="kt-container  kt-container--fluid  kt-grid__item kt-grid__item--fluid">
+            @include('_layouts.flash-message')
             <div class="row">
                 <div class="col-sm-12">
                     <!--begin::Portlet-->
@@ -63,9 +64,6 @@
                                                             id="post_title_icon"></span></th>
                                                     <th class="sorting" data-sorting_type="asc"
                                                         data-column_name="note" style="cursor: pointer">Note <span
-                                                            id="post_title_icon"></span></th>
-                                                    <th class="sorting" data-sorting_type="asc"
-                                                        data-column_name="gym_id" style="cursor: pointer">Gym <span
                                                             id="post_title_icon"></span></th>
                                                     <th class="sorting" data-sorting_type="asc"
                                                         data-column_name=" " style="cursor: pointer">Actions <span

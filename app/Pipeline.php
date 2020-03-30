@@ -50,7 +50,7 @@ class Pipeline extends Model
                 'pipeline.*',
             ]
         )->where(function ($query) use ($searchTerm, $sort_by, $sort_type) {
-            $query->where('status', 'Failed Calls')->where('gym_id', Auth::guard('employee')->user()->gym_id);
+            $query->where('pipeline.status', 'Failed Calls')->where('pipeline.gym_id', Auth::guard('employee')->user()->gym_id);
             if ($searchTerm) {
                 $query->where('pipeline.employee_id', 'like', '%' . $searchTerm . '%')
                     ->orWhere('pipeline.customer_id', 'like', '%' . $searchTerm . '%')
@@ -72,7 +72,7 @@ class Pipeline extends Model
                 'pipeline.*',
             ]
         )->where(function ($query) use ($searchTerm, $sort_by, $sort_type) {
-            $query->where('type', 'For Call')->where('gym_id', Auth::guard('employee')->user()->gym_id)->orWhere('employee_id', Auth::guard('employee')->user()->id)->orWhere('transfer_id', Auth::guard('employee')->user()->id);
+            $query->where('pipeline.type', 'For Call')->where('pipeline.gym_id', Auth::guard('employee')->user()->gym_id)->orWhere('pipeline.employee_id', Auth::guard('employee')->user()->id)->orWhere('pipeline.transfer_id', Auth::guard('employee')->user()->id);
             if ($searchTerm) {
                 $query->where('pipeline.employee_id', 'like', '%' . $searchTerm . '%')
                     ->orWhere('pipeline.customer_id', 'like', '%' . $searchTerm . '%')
@@ -87,13 +87,14 @@ class Pipeline extends Model
             }
         })->orderBy($sort_by, $sort_type)->paginate(10);
     }
+
     public static function getTransferList($searchTerm, $sort_by, $sort_type)
     {
         return self::select([
                 'pipeline.*',
             ]
         )->where(function ($query) use ($searchTerm, $sort_by, $sort_type) {
-            $query->where('transferStatus', 'For Call')->where('gym_id', Auth::guard('employee')->user()->gym_id)->Where('transfer_id', Auth::guard('employee')->user()->id);
+            $query->where('pipeline.transferStatus', 'For Call')->where('pipeline.gym_id', Auth::guard('employee')->user()->gym_id)->Where('pipeline.transfer_id', Auth::guard('employee')->user()->id);
             if ($searchTerm) {
                 $query->where('pipeline.employee_id', 'like', '%' . $searchTerm . '%')
                     ->orWhere('pipeline.customer_id', 'like', '%' . $searchTerm . '%')
@@ -115,7 +116,7 @@ class Pipeline extends Model
                 'pipeline.*',
             ]
         )->where(function ($query) use ($searchTerm, $sort_by, $sort_type) {
-            $query->where('type', 'For Demo')->where('gym_id', Auth::guard('employee')->user()->gym_id)->orWhere('employee_id', Auth::guard('employee')->user()->id)->orWhere('transfer_id', Auth::guard('employee')->user()->id);
+            $query->where('pipeline.type', 'For Demo')->where('pipeline.gym_id', Auth::guard('employee')->user()->gym_id)->orWhere('pipeline.employee_id', Auth::guard('employee')->user()->id)->orWhere('pipeline.transfer_id', Auth::guard('employee')->user()->id);
             if ($searchTerm) {
                 $query->where('pipeline.employee_id', 'like', '%' . $searchTerm . '%')
                     ->orWhere('pipeline.customer_id', 'like', '%' . $searchTerm . '%')
@@ -142,7 +143,7 @@ class Pipeline extends Model
                 'employees.id',
             ]
         )->where(function ($query) use ($customerType, $type, $leadStatus, $fromDate, $toDate) {
-            $query->where('pipeline.gym_id', Auth::guard('employee')->user()->gym_id)->where('pipeline.type', '=', $type)->where('pipeline.status', '=', $leadStatus)->orWhereBetween('scheduleDate', array($fromDate, $toDate))->orWhereBetween('reScheduleDate', array($fromDate, $toDate));
+            $query->where('pipeline.gym_id', Auth::guard('employee')->user()->gym_id)->where('pipeline.type', '=', $type)->where('pipeline.status', '=', $leadStatus)->orWhereBetween('pipeline.scheduleDate', array($fromDate, $toDate))->orWhereBetween('pipeline.reScheduleDate', array($fromDate, $toDate));
         })->leftJoin('employees', function ($join) {
             $join->on('employees.id', 'pipeline.transfer_id');
         })->leftJoin('members', function ($join) {

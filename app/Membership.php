@@ -24,7 +24,7 @@ class Membership extends Model
                 'memberships.*',
             ]
         )->where(function ($query) use ($searchTerm, $sort_by, $sort_type) {
-            $query->where('gym_id', Auth::guard('employee')->user()->gym_id);
+            $query->where('memberships.gym_id', Auth::guard('employee')->user()->gym_id);
             if ($searchTerm) {
                 $query->where('memberships.name', 'like', '%' . $searchTerm . '%')
                     ->orWhere('memberships.duration', 'like', '%' . $searchTerm . '%')

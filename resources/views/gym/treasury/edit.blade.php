@@ -12,12 +12,12 @@
                         <div class="kt-portlet__head">
                             <div class="kt-portlet__head-label">
                                 <h3 class="kt-portlet__head-title">
-                                    Create A Treasury
+                                    Edit Treasury
                                 </h3>
                             </div>
                         </div>
                         <!--begin::Form-->
-                        <form action="{{route('treasury.create')}}" method="POST" enctype="multipart/form-data"
+                        <form action="{{route('treasury.edit')}}" method="POST" enctype="multipart/form-data"
                               class="kt-form kt-form--label-right">
                             @csrf
                             <div class="kt-portlet__body">
@@ -27,26 +27,31 @@
                                         <div class="kt-radio-inline">
                                             <label class="kt-radio kt-radio--solid">
                                                 <input type="radio" name="type" value="Employee" required
+                                                       @if($treasury->type == "Employee") checked @endif
                                                        onchange="changeDiv(this.value)"> Employee
                                                 <span></span>
                                             </label>
                                             <label class="kt-radio kt-radio--solid">
                                                 <input type="radio" name="type" value="Member" required
+                                                       @if($treasury->type == "Member") checked @endif
                                                        onchange="changeDiv(this.value)"> Member
                                                 <span></span>
                                             </label>
                                             <label class="kt-radio kt-radio--solid">
                                                 <input type="radio" name="type" value="Supplier" required
+                                                       @if($treasury->type == "Supplier") checked @endif
                                                        onchange="changeDiv(this.value)"> Supplier
                                                 <span></span>
                                             </label>
                                             <label class="kt-radio kt-radio--solid">
                                                 <input type="radio" name="type" value="Trainer" required
+                                                       @if($treasury->type == "Trainer") checked @endif
                                                        onchange="changeDiv(this.value)"> Trainer
                                                 <span></span>
                                             </label>
                                             <label class="kt-radio kt-radio--solid">
                                                 <input type="radio" name="type" value="Other" required
+                                                       @if($treasury->type == "Other") checked @endif
                                                        onchange="changeDiv(this.value)"> Other
                                                 <span></span>
                                             </label>
@@ -56,19 +61,23 @@
                                         <label>Flow:</label>
                                         <div class="kt-radio-inline">
                                             <label class="kt-radio kt-radio--solid">
-                                                <input type="radio" name="cashFlow" value="In" required> In
+                                                <input type="radio" name="cashFlow" value="In" required
+                                                       @if($treasury->cashFlow == "In") checked @endif> In
                                                 <span></span>
                                             </label>
                                             <label class="kt-radio kt-radio--solid">
-                                                <input type="radio" name="cashFlow" value="Out" required> Out
+                                                <input type="radio" name="cashFlow" value="Out" required
+                                                       @if($treasury->cashFlow == "Out") checked @endif> Out
                                                 <span></span>
                                             </label>
                                             <label class="kt-radio kt-radio--solid">
-                                                <input type="radio" name="cashFlow" value="Extra" required> Extra
+                                                <input type="radio" name="cashFlow" value="Extra" required
+                                                       @if($treasury->cashFlow == "Extra") checked @endif> Extra
                                                 <span></span>
                                             </label>
                                             <label class="kt-radio kt-radio--solid">
-                                                <input type="radio" name="cashFlow" value="Discount" required> Discount
+                                                <input type="radio" name="cashFlow" value="Discount" required
+                                                       @if($treasury->cashFlow == "Discount") checked @endif> Discount
                                                 <span></span>
                                             </label>
                                         </div>
@@ -85,7 +94,7 @@
                                         <select class="form-control" name="employee_id">
                                             @foreach($employee as $row)
                                                 <option value="{{ $row->id }}"
-                                                        @if($row->id == Auth::guard('employee')->user()->id ) selected @endif>{{ $row->name }}</option>
+                                                        @if($row->id == $treasury->employee_id ) selected @endif>{{ $row->name }}</option>
                                             @endforeach
                                         </select>
                                     </div>
@@ -93,6 +102,7 @@
                                         <label>Date:</label>
                                         <div class="kt-input-icon input-group">
                                             <input type="date" name="date" class="form-control"
+                                                   value="{{ \Carbon\Carbon::parse($treasury->date)->format('yy-m-d')}}"
                                                    placeholder="Enter your Date" required>
                                             <div class="input-group-append">
                                                 <span class="input-group-text">
@@ -185,15 +195,15 @@
                                     <div class="col-lg-4">
                                         <label>Value:</label>
                                         <input type="text" name="value" class="form-control" required
+                                               value="{{ $treasury->value }}"
                                                placeholder="Enter your Value"/>
                                     </div>
                                 </div>
-
                                 <div class="form-group row">
                                     <div class="col-lg-6">
                                         <label>Note:</label>
                                         <textarea class="form-control" name="note" required
-                                                  placeholder="Enter Your Note"></textarea>
+                                                  placeholder="Enter Your Note">{{ $treasury->note }}</textarea>
                                     </div>
                                 </div>
                             </div>

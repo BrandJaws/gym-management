@@ -21,6 +21,7 @@ class Gym extends Model
         'state',
         'license_id',
         'parent_id',
+        'gymType'
     ];
 
     public static function getGymList($searchTerm, $sort_by, $sort_type)
@@ -29,7 +30,7 @@ class Gym extends Model
                 'gyms.*',
             ]
         )->where(function ($query) use ($searchTerm,$sort_by,$sort_type) {
-            $query->where('gymType','=','parent');
+            $query->where('gyms.gymType','=','parent');
             if ($searchTerm) {
                 $query->where('gyms.name', 'like', '%' . $searchTerm . '%')
                     ->orWhere('gyms.city', 'like', '%' . $searchTerm . '%')
@@ -46,7 +47,7 @@ class Gym extends Model
                 'gyms.*',
             ]
         )->where(function ($query) use ($searchTerm,$sort_by,$sort_type,$id) {
-            $query->where('parent_id', $id)->where('gymType','=','child');
+            $query->where('gyms.parent_id', $id)->where('gyms.gymType','=','child');
             if ($searchTerm) {
                 $query->where('gyms.name', 'like', '%' . $searchTerm . '%')
                     ->orWhere('gyms.city', 'like', '%' . $searchTerm . '%')

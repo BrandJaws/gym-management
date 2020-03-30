@@ -15,7 +15,7 @@ class CreateTreasuriesTable extends Migration
     {
         Schema::create('treasuries', function (Blueprint $table) {
             $table->increments('id'); // 04134
-            $table->string('name'); // Ahmad
+            $table->integer('employee_id'); // 03
             $table->string('cashFlow'); // Cash In
             $table->string('type'); // From Other
             $table->integer('value'); // 9,000
