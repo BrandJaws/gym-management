@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Validator;
+use phpDocumentor\Reflection\Types\Nullable;
 
 class TreasuryController extends Controller
 {
@@ -65,7 +66,6 @@ class TreasuryController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request);
         try {
             $validator = Validator::make($request->all(), [
                 'employee_id' => 'required',
@@ -91,26 +91,38 @@ class TreasuryController extends Controller
             $value = $request->type;
             switch ($value) {
                 case 'Employee':
-                    $treasury->treasureable_id = $request->employeeId;
-                    $treasury->treasureable_type = 'App\Employee';
+                    $treasury->employeeId = $request->employeeId;
+                    $treasury->member_id =  '0';
+                    $treasury->supplier_id = '0';
+                    $treasury->trainer_id = '0';
                     $treasury->purpose = $request->employeePurpose;
                     break;
                 case 'Member':
-                    $treasury->treasureable_id = $request->member_id;
-                    $treasury->treasureable_type = 'App\Member';
+                    $treasury->member_id = $request->member_id;
+                    $treasury->employeeId = '0';
+                    $treasury->supplier_id = '0';
+                    $treasury->trainer_id = '0';
                     $treasury->purpose = $request->memberPurpose;
                     break;
                 case 'Supplier':
-                    $treasury->treasureable_id = $request->supplier_id;
-                    $treasury->treasureable_type = 'App\Supplier';
+                    $treasury->supplier_id = $request->supplier_id;
+                    $treasury->member_id = '0';
+                    $treasury->employeeId = '0';
+                    $treasury->trainer_id = '0';
                     $treasury->purpose = $request->supplierPurpose;
                     break;
                 case 'Trainer':
-                    $treasury->treasureable_id = $request->trainer_id;
-                    $treasury->treasureable_type = 'App\Trainer';
+                    $treasury->trainer_id = $request->trainer_id;
+                    $treasury->supplier_id = '0';
+                    $treasury->member_id = '0';
+                    $treasury->employeeId = '0';
                     $treasury->purpose = $request->trainerPurpose;
                     break;
                 case 'Other':
+                    $treasury->trainer_id = '0';
+                    $treasury->supplier_id = '0';
+                    $treasury->member_id = '0';
+                    $treasury->employeeId = '0';
                     $treasury->purpose = $request->otherPurpose;
                     break;
             }
@@ -149,7 +161,7 @@ class TreasuryController extends Controller
             $member = Member::where('gym_id', $gym_id)->get();
             $trainer = Trainer::where('gym_id', $gym_id)->get();
             $supplier = Supplier::where('gym_id', $gym_id)->get();
-            return view('gym.treasury.edit', compact('treasury','employee', 'member', 'trainer', 'supplier'));
+            return view('gym.treasury.edit', compact('treasury', 'employee', 'member', 'trainer', 'supplier'));
         } catch (\Exception $e) {
             return back()->with('error', 'Oops, something was not right in member edit page');
         }
