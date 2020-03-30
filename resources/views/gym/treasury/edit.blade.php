@@ -12,14 +12,15 @@
                         <div class="kt-portlet__head">
                             <div class="kt-portlet__head-label">
                                 <h3 class="kt-portlet__head-title">
-                                    Edit Treasury
+                                    Edit Treasury {{  $treasury->treasuryType }}
                                 </h3>
                             </div>
                         </div>
                         <!--begin::Form-->
-                        <form action="{{route('treasury.edit')}}" method="POST" enctype="multipart/form-data"
+                        <form action="{{ route('member.edit') }}" method="POST" enctype="multipart/form-data"
                               class="kt-form kt-form--label-right">
                             @csrf
+                            <input type="hidden" value="{{ $treasury->id }}" name="id">
                             <div class="kt-portlet__body">
                                 <div class="form-group row">
                                     <div class="col-lg-4">
@@ -136,7 +137,7 @@
                                     <div class="col-lg-4 trainerField" style="display: none">
                                         <label>Purpose:</label>
                                         <select class="form-control" name="trainerPurpose">
-                                            <option value="Salary">Salary</option>
+                                            <option value="Salary" >Salary</option>
                                             <option value="Bonus">Bonus</option>
                                             <option value="Loan">Loan</option>
                                             <option value="Commission">Commission</option>

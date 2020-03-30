@@ -22,7 +22,10 @@ class CreateTreasuriesTable extends Migration
             $table->dateTime('date'); // 03-03-2020
             $table->string('purpose')->nullable(true); // salary
             $table->string('note')->nullable(true); // null
-            $table->nullableMorphs('treasureable'); // employee modal and id
+            $table->integer('employeeId')->nullable(true); // null
+            $table->integer('member_id')->nullable(true); // null
+            $table->integer('trainer_id')->nullable(true); // null
+            $table->integer('supplier_id')->nullable(true); // null
             $table->integer('gym_id', false, true); // 03
             $table->timestamps();
         });

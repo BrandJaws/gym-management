@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 
 class Treasury extends Model
 {
@@ -23,13 +24,14 @@ class Treasury extends Model
     {
         return $this->belongsTo(Employee::class, 'employee_id');
     }
-    public static function getTreasuryList($searchTerm, $sort_by, $sort_type, $id)
+
+    public static function getTreasuryList($searchTerm, $sort_by, $sort_type)
     {
         return self::select([
                 'treasuries.*',
             ]
-        )->where(function ($query) use ($searchTerm, $sort_by, $sort_type, $id) {
-            $query->where('treasuries.parent_id', $id)->where('treasuries.gymType', '=', 'child');
+        )->where(function ($query) use ($searchTerm, $sort_by, $sort_type) {
+            $query->where('treasuries.gym_id', '=', Auth::guard('employee')->user()->gym_id);
             if ($searchTerm) {
                 $query->where('treasuries.employee_id', 'like', '%' . $searchTerm . '%')
                     ->orWhere('treasuries.cashFlow', 'like', '%' . $searchTerm . '%')
@@ -43,4 +45,6 @@ class Treasury extends Model
             }
         })->orderBy($sort_by, $sort_type)->paginate(10);
     }
+
+
 }

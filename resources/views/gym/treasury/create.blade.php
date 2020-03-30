@@ -107,6 +107,7 @@
                                     <div class="col-lg-4 employeeField" style="display: none">
                                         <label>Purpose:</label>
                                         <select class="form-control" name="employeePurpose">
+                                            <option disabled>Please select one . . . !</option>
                                             <option value="Salary">Salary</option>
                                             <option value="Bonus">Bonus</option>
                                             <option value="Loan">Loan</option>
@@ -117,6 +118,7 @@
                                     <div class="col-lg-4 employeeField" style="display: none">
                                         <label>Employee:</label>
                                         <select class="form-control" name="employeeId">
+                                            <option disabled>Please select one . . . !</option>
                                             @foreach($employee as $row)
                                                 <option value="{{ $row->id }}">{{ $row->name }}</option>
                                             @endforeach
@@ -126,6 +128,7 @@
                                     <div class="col-lg-4 trainerField" style="display: none">
                                         <label>Purpose:</label>
                                         <select class="form-control" name="trainerPurpose">
+                                            <option disabled>Please select one . . . !</option>
                                             <option value="Salary">Salary</option>
                                             <option value="Bonus">Bonus</option>
                                             <option value="Loan">Loan</option>
@@ -136,6 +139,7 @@
                                     <div class="col-lg-4 trainerField" style="display: none">
                                         <label>Trainer:</label>
                                         <select class="form-control" name="trainer_id">
+                                            <option disabled>Please select one . . . !</option>
                                             @foreach($trainer as $row)
                                                 <option value="{{ $row->id }}">{{ $row->name }}</option>
                                             @endforeach
@@ -145,6 +149,7 @@
                                     <div class="col-lg-4 memberField" style="display: none">
                                         <label>Purpose:</label>
                                         <select class="form-control" name="memberPurpose">
+                                            <option disabled>Please select one . . . !</option>
                                             <option value="Membership">Membership Fee</option>
                                             <option value="Trainer Fee">Trainer Fee</option>
                                             <option value="Fine">Fine</option>
@@ -155,6 +160,7 @@
                                     <div class="col-lg-4 memberField" style="display: none">
                                         <label>Member:</label>
                                         <select class="form-control" name="member_id">
+                                            <option disabled>Please select one . . . !</option>
                                             @foreach($member as $row)
                                                 <option value="{{ $row->id }}">{{ $row->name }}</option>
                                             @endforeach
@@ -164,6 +170,7 @@
                                     <div class="col-lg-4 supplierField" style="display: none">
                                         <label>Purpose:</label>
                                         <select class="form-control" name="supplierPurpose">
+                                            <option disabled>Please select one . . . !</option>
                                             <option value="Products Bill">Products Bill</option>
                                             <option value="Others">Others</option>
                                         </select>
@@ -171,6 +178,7 @@
                                     <div class="col-lg-4 supplierField" style="display: none">
                                         <label>Supplier:</label>
                                         <select class="form-control" name="supplier_id">
+                                            <option disabled>Please select one . . . !</option>
                                             @foreach($supplier as $row)
                                                 <option value="{{ $row->id }}">{{ $row->name }}</option>
                                             @endforeach

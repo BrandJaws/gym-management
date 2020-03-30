@@ -26,7 +26,8 @@ class TreasuryController extends Controller
     public function index(Request $request)
     {
         try {
-            $treasury = Treasury::orderBy('id', 'asc')->paginate(4);
+            $gym_id = Auth::guard('employee')->user()->gym_id;
+            $treasury = Treasury::where('gym_id', $gym_id)->orderBy('id', 'asc')->paginate(4);
             if ($request->ajax()) {
                 $sort_by = $request->get('sortby');
                 $sort_type = $request->get('sorttype');
@@ -64,6 +65,7 @@ class TreasuryController extends Controller
      */
     public function store(Request $request)
     {
+        dd($request);
         try {
             $validator = Validator::make($request->all(), [
                 'employee_id' => 'required',
@@ -162,6 +164,7 @@ class TreasuryController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $id = $request->id;
         try {
             $validator = Validator::make($request->all(), [
                 'employee_id' => 'required',
@@ -174,7 +177,7 @@ class TreasuryController extends Controller
             if ($validator->fails()) {
                 return Redirect::back()->withErrors($validator);
             }
-            $treasury = Treasury::find($id);
+            $treasury = Treasury::where('id', $id)->first();
             $treasury->fill($request->only([
                 'employee_id',
                 'type',
