@@ -30,6 +30,10 @@ class Member extends Model
     {
         return $this->morphOne(Image::class, 'image');
     }
+    public function membership()
+    {
+        return $this->belongsTo(Membership::class, 'membership_id');
+    }
 
     public static function getMemberList($searchTerm, $sort_by, $sort_type)
     {

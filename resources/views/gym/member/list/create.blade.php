@@ -105,6 +105,7 @@
                                             <div class="col-lg-6 textField" style="display: none">
                                                 <label>Membership :</label>
                                                 <select class="form-control" name="membership_id">
+                                                    <option value="">Select one . . . !</option>
                                                     @foreach($membership as $row)
                                                         <option value="{{ $row->id }}">{{ $row->name }}</option>
                                                     @endforeach
