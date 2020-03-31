@@ -133,8 +133,12 @@ Route::group(['prefix' => 'gym', 'namespace' => 'Gym'], function () {
             Route::get('/destroy/{id}', ['as' => 'destroy', 'uses' => 'TrainerController@destroy']);
         });
 
+        /*-----------------------------------------------------------------------------------*/
+        /*------------------------------------ Supplier Routes --------------------------------*/
+        /*-----------------------------------------------------------------------------------*/
+
         Route::group(['as' => 'supplier.', 'prefix' => 'supplier'], function () {
-            Route::get('/', ['as' => 'member', 'uses' => 'SupplierController@index']);
+            Route::get('/', ['as' => 'list', 'uses' => 'SupplierController@index']);
             Route::get('/create', ['as' => 'create', 'uses' => 'SupplierController@create']);
             Route::post('/create', ['as' => 'create', 'uses' => 'SupplierController@store']);
             Route::get('/edit/{id}', ['as' => 'edit', 'uses' => 'SupplierController@edit']);
@@ -156,7 +160,7 @@ Route::group(['prefix' => 'gym', 'namespace' => 'Gym'], function () {
         });
 
         /*-----------------------------------------------------------------------------------*/
-        /*------------------------------------ Treasury Routes --------------------------------*/
+        /*------------------------------------ service Routes --------------------------------*/
         /*-----------------------------------------------------------------------------------*/
 
         Route::group(['as' => 'service.', 'prefix' => 'service'], function () {
