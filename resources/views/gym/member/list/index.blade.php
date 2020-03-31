@@ -44,7 +44,7 @@
                                                         data-column_name="name" style="cursor: pointer">Name <span
                                                             id="id_icon"></span></th>
                                                     <th class="sorting" data-sorting_type="asc"
-                                                        data-column_name="duration" style="cursor: pointer">phone
+                                                        data-column_name="duration" style="cursor: pointer">Phone
                                                         <span
                                                             id="post_title_icon"></span></th>
                                                     <th class="sorting" data-sorting_type="asc"

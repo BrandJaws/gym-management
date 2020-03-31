@@ -12,24 +12,27 @@
                         <div class="kt-portlet__head">
                             <div class="kt-portlet__head-label">
                                 <h3 class="kt-portlet__head-title">
-                                    Create A Service
+                                    Update Service
                                 </h3>
                             </div>
                         </div>
                         <!--begin::Form-->
-                        <form action="{{route('service.create')}}" method="POST" enctype="multipart/form-data"
+                        <form action="{{route('service.edit')}}" method="POST" enctype="multipart/form-data"
                               class="kt-form kt-form--label-right">
                             @csrf
+                            <input type="hidden" name="id" required class="form-control" value="{{$gymServices->id}}"/>
                             <div class="kt-portlet__body">
                                 <div class="form-group row">
                                     <div class="col-lg-6">
                                         <label>Name:</label>
                                         <input type="text" name="name" required class="form-control"
+                                               value="{{$gymServices->name}}"
                                                placeholder="Enter Service Name"/>
                                     </div>
                                     <div class="col-lg-6">
                                         <label>Fee:</label>
                                         <input type="text" name="fee" required class="form-control"
+                                               value="{{$gymServices->fee}}"
                                                placeholder="Enter Service Fee"/>
                                     </div>
                                 </div>
@@ -38,11 +41,15 @@
                                         <label>Status:</label>
                                         <div class="kt-radio-inline">
                                             <label class="kt-radio kt-radio--solid">
-                                                <input type="radio" name="status" value="Active" required> Active
+                                                <input type="radio" name="status"
+                                                       @if($gymServices->status == "Active") checked
+                                                       @endif value="Active" required> Active
                                                 <span></span>
                                             </label>
                                             <label class="kt-radio kt-radio--solid">
-                                                <input type="radio" name="status" value="In-Active" required> In-Active
+                                                <input type="radio" name="status"
+                                                       @if($gymServices->status == "In-Active") checked
+                                                       @endif value="In-Active" required> In-Active
                                                 <span></span>
                                             </label>
                                         </div>
@@ -54,7 +61,8 @@
                                                     required
                                                     multiple="multiple">
                                                 @foreach ($gym as $gymList)
-                                                    <option value="{{$gymList->id}}">{{$gymList->name}}</option>
+                                                    <option
+                                                        value="{{$gymList->id}}" {{in_array("$gymList->id",$gymSelectedList)?"selected":""}}>{{$gymList->name}}</option>
                                                 @endforeach
                                             </select>
                                         @else

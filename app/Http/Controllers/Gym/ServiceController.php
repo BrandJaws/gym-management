@@ -21,32 +21,21 @@ class ServiceController extends Controller
      */
     public function index(Request $request)
     {
-        $gym_id = Auth::guard('employee')->user()->gym_id;
-
-        $gymSer = GymServices::all();
-        foreach ($gymSer as $fields) {
-            $gymId = explode(',', $fields->gym_id);
-            foreach ($gymId as $value) {
-                $gymServices = GymServices::where('gym_id', $value)->orderBy('id', 'asc')->paginate(10);
+        try {
+            $gym_id = Auth::guard('employee')->user()->gym_id;
+            $gymServices = GymServices::where('gym_id', $gym_id)->orderBy('id', 'asc')->paginate(10);
+            if ($request->ajax()) {
+                $sort_by = $request->get('sortby');
+                $sort_type = $request->get('sorttype');
+                $searchTerm = $request->get('query');
+                $searchTerm = str_replace(" ", "%", $searchTerm);
+                $gymServices = GymServices::getServiceList($searchTerm, $sort_by, $sort_type);
+                return view('gym.service.pagination_data', compact('gymServices'))->render();
             }
+            return view('gym.service.list', compact('gymServices'));
+        } catch (\Exception $e) {
+            return back()->with('error', 'Oops, something was not right');
         }
-
-
-//        foreach ($gymId as $fields) {
-//            array_push($gymSelectedList, $fields);
-//        }
-//
-//
-//        $gymServices = GymServices::where('parent_id', $gym_id)->orderBy('id', 'asc')->paginate(10);
-//        if ($request->ajax()) {
-//            $sort_by = $request->get('sortby');
-//            $sort_type = $request->get('sorttype');
-//            $searchTerm = $request->get('query');
-//            $searchTerm = str_replace(" ", "%", $searchTerm);
-//            $gymServices = Employee::getEmployeeList($searchTerm, $sort_by, $sort_type);
-//            return view('gym.employee.pagination_data', compact('gymServices'))->render();
-//        }
-        return view('gym.service.list', compact('gymServices'));
     }
 
     /**
@@ -56,9 +45,13 @@ class ServiceController extends Controller
      */
     public function create()
     {
-        $gym_id = Auth::guard('employee')->user()->gym_id;
-        $gym = Gym::where('parent_id', $gym_id)->get();
-        return view('gym.service.create', compact('gym'));
+        try {
+            $gym_id = Auth::guard('employee')->user()->gym_id;
+            $gym = Gym::where('parent_id', $gym_id)->get();
+            return view('gym.service.create', compact('gym'));
+        } catch (\Exception $e) {
+            return back()->with('error', 'Oops, something was not right');
+        }
     }
 
     /**
@@ -115,7 +108,19 @@ class ServiceController extends Controller
      */
     public function edit($id)
     {
-        //
+        try {
+            $gymSelectedList = [];
+            $gym_id = Auth::guard('employee')->user()->gym_id;
+            $gym = Gym::where('parent_id', $gym_id)->get();
+            $gymServices = GymServices::find($id);
+            $gymId = explode(',', $gymServices->gym_id);
+            foreach ($gymId as $fields) {
+                array_push($gymSelectedList, $fields);
+            }
+            return view('gym.service.edit', compact('gymServices', 'gym', 'gymSelectedList'));
+        } catch (\Exception $e) {
+            return back()->with('error', 'Oops, something was not right');
+        }
     }
 
     /**
@@ -125,9 +130,32 @@ class ServiceController extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        try {
+            $validator = Validator::make($request->all(), [
+                'name' => 'required',
+                'fee' => 'required',
+                'status' => 'required',
+            ]);
+            if ($validator->fails()) {
+                return Redirect::back()->withErrors($validator);
+            }
+            $service_id = $request->id;
+            $service = GymServices::where('id', $service_id)->first();
+            $service->fill($request->only([
+                'name',
+                'fee',
+                'status',
+            ]));
+            $service->gym_id = implode(',', $request->gym_id);
+            $service->save();
+            return back()->with('success', 'Service Updated Successfully!');
+        } catch (\Exception $e) {
+            return response()->json([
+                'response' => $e
+            ], 400);
+        }
     }
 
     /**
@@ -138,6 +166,11 @@ class ServiceController extends Controller
      */
     public function destroy($id)
     {
-        //
+        try {
+            GymServices::destroy($id);
+            return back()->with('success', 'Gym Service Deleted Successfully!');
+        } catch (\Exception $e) {
+            return back()->with('error', 'Oops, something was not right');
+        }
     }
 }
