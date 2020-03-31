@@ -11,6 +11,7 @@ use App\Http\Controllers\Controller;
 use App\MemberMembership;
 use App\Membership;
 use App\Pipeline;
+use App\Treasury;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -171,7 +172,8 @@ class MemberController extends Controller
             $lead = Member::find($id);
             $membership = Membership::all();
             $callHistory = Pipeline::where('customer_id', $id)->where('gym_id', Auth::guard('employee')->user()->gym_id)->paginate(10);
-            return view('gym.member.list.edit', compact('lead', 'membership', 'callHistory'));
+            $treasuryDetail = Treasury::where('member_id', $id)->where('gym_id', Auth::guard('employee')->user()->gym_id)->paginate(10);
+            return view('gym.member.list.edit', compact('lead', 'membership', 'callHistory','treasuryDetail'));
         } catch (\Exception $e) {
             return back()->with('error', 'Oops, something was not right in member edit page');
         }

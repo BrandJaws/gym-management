@@ -34,6 +34,10 @@ class Member extends Model
     {
         return $this->belongsTo(Membership::class, 'membership_id');
     }
+    public function treasury()
+    {
+        return $this->belongsTo(Treasury::class,'id','employee_id');
+    }
 
     public static function getMemberList($searchTerm, $sort_by, $sort_type)
     {

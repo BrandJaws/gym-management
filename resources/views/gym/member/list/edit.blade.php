@@ -123,7 +123,6 @@
                                                     <small>update {{$lead->type}} informaiton</small></h3>
                                             </div>
                                         </div>
-
                                         <input type="hidden" value="{{$lead->id}}" name="id">
                                         <div class="kt-portlet__body">
                                             <div class="kt-section kt-section--first">
@@ -336,69 +335,128 @@
                             </div>
                         </form>
                     </div>
+
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-12">
-                    <!--begin::Portlet-->
-                    <div class="kt-portlet">
-                        <div class="kt-portlet__head">
-                            <div class="kt-portlet__head-label">
-                                <h3 class="kt-portlet__head-title">
-                                    Call & Demo History
-                                </h3>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <div class="col-lg-12 ">
-                                <div class="kt-portlet__body">
-                                    <table class="table table-striped- table-bordered table-hover table-checkable">
-                                        <thead>
-                                        <tr>
-                                            <th>No.</th>
-                                            <th>Type</th>
-                                            <th>Employee</th>
-                                            <th>Date</th>
-                                            <th>Status</th>
-                                            <th>Transfer Status</th>
-                                            <th>Transfer Employee</th>
-                                            <th>Re-Schedule Date</th>
-                                            <th>Remarks</th>
-                                        </tr>
-                                        </thead>
-                                        <tbody>
-                                        <?php $i = 1; ?>
-                                        @foreach($callHistory as $row)
-                                            <tr>
-                                                <th>{{$i}}</th>
-                                                <td>{{ $row->type }}</td>
-                                                <td>{{ $row->employee->name }}</td>
-                                                <td>{{ $row->scheduleDate }}</td>
-                                                <td>{{ $row->status }}</td>
-                                                <td>{{ $row->transferStatus }}</td>
-                                                <td>@if($row->transferEmployee != NULL) {{ $row->transferEmployee->name }} @else
-                                                        --- @endif</td>
-                                                <td>@if($row->reScheduleDate != NULL) {{ $row->reScheduleDate }} @else
-                                                        --- @endif</td>
-                                                <td>{{ $row->remarks }}</td>
-                                            </tr>
-                                            <?php  $i++; ?>
-                                        @endforeach
-                                        <tr>
-                                            <td colspan="8" align="center">
-                                                {{ $callHistory->links() }}
-                                            </td>
-                                        </tr>
-                                        </tbody>
-                                    </table>
+                <div class="row">
+                    <div class="col-lg-12">
+                            <!--begin::Portlet-->
+                            <div class="kt-portlet">
+                                <div class="kt-portlet__head">
+                                    <div class="kt-portlet__head-label">
+                                        <h3 class="kt-portlet__head-title">
+                                            Account History
+                                        </h3>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-lg-12 ">
+                                        <div class="kt-portlet__body">
+                                            <table
+                                                class="table table-striped- table-bordered table-hover table-checkable">
+                                                <thead>
+                                                <tr>
+                                                    <th>No.</th>
+                                                    <th>Employee</th>
+                                                    <th>Cash Flow</th>
+                                                    <th>Type</th>
+                                                    <th>Value</th>
+                                                    <th>Date</th>
+                                                    <th>Purpose</th>
+                                                    <th>Note</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                <?php $i = 1; ?>
+                                                @foreach($treasuryDetail as $row)
+                                                    <tr>
+                                                        <th>{{$i}}</th>
+                                                        <td>{{ $row->employee->name }}</td>
+                                                        <td>{{ $row->cashFlow }}</td>
+                                                        <td>{{ $row->type }}</td>
+                                                        <td>{{ $row->value }}</td>
+                                                        <td>{{ $row->date }}</td>
+                                                        <td>{{ $row->purpose }}</td>
+                                                        <td>{{ $row->note }}</td>
+                                                    </tr>
+                                                    <?php  $i++; ?>
+                                                @endforeach
+                                                <tr>
+                                                    <td colspan="8" align="center">
+                                                        {{ $callHistory->links() }}
+                                                    </td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+
                                 </div>
                             </div>
-
+                            <!--end::Portlet-->
                         </div>
+                    <div class="col-lg-12">
+                        <!--begin::Portlet-->
+                        <div class="kt-portlet">
+                            <div class="kt-portlet__head">
+                                <div class="kt-portlet__head-label">
+                                    <h3 class="kt-portlet__head-title">
+                                        Call & Demo History
+                                    </h3>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-lg-12 ">
+                                    <div class="kt-portlet__body">
+                                        <table class="table table-striped- table-bordered table-hover table-checkable">
+                                            <thead>
+                                            <tr>
+                                                <th>No.</th>
+                                                <th>Type</th>
+                                                <th>Employee</th>
+                                                <th>Date</th>
+                                                <th>Status</th>
+                                                <th>Transfer Status</th>
+                                                <th>Transfer Employee</th>
+                                                <th>Re-Schedule Date</th>
+                                                <th>Remarks</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <?php $i = 1; ?>
+                                            @foreach($callHistory as $row)
+                                                <tr>
+                                                    <th>{{$i}}</th>
+                                                    <td>{{ $row->type }}</td>
+                                                    <td>{{ $row->employee->name }}</td>
+                                                    <td>{{ $row->scheduleDate }}</td>
+                                                    <td>{{ $row->status }}</td>
+                                                    <td>{{ $row->transferStatus }}</td>
+                                                    <td>@if($row->transferEmployee != NULL) {{ $row->transferEmployee->name }} @else
+                                                            --- @endif</td>
+                                                    <td>@if($row->reScheduleDate != NULL) {{ $row->reScheduleDate }} @else
+                                                            --- @endif</td>
+                                                    <td>{{ $row->remarks }}</td>
+                                                </tr>
+                                                <?php  $i++; ?>
+                                            @endforeach
+                                            <tr>
+                                                <td colspan="8" align="center">
+                                                    {{ $callHistory->links() }}
+                                                </td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <!--end::Portlet-->
                     </div>
-                    <!--end::Portlet-->
                 </div>
             </div>
+
+
         </div>
         @endsection
         @section('custom-script')
