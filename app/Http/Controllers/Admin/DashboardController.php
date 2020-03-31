@@ -19,7 +19,7 @@ class DashboardController extends Controller
             $gymInTrial = Gym::where('inTrial', 1)->count();
             $superAdmin = Admin::count();
             $license = License::count();
-            $latestGyms = Gym::orderBy('id', 'desc')->take(10)->get();
+            $latestGyms = Gym::where('gymType','Parent')->orderBy('id', 'desc')->take(10)->get();
             $gymModule = GymModule::orderBy('created_at', 'desc')->get();
             return view('admin.dashboard', compact('superAdmin', 'gym',
                 'gymInTrial', 'license', 'latestGyms', 'gymModule'))->render();
