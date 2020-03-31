@@ -44,7 +44,7 @@
                                 <div class="form-group row">
                                     <div class="col-lg-6">
                                         <label>Phone:</label>
-                                        <input type="text" name="phone" id="kt_inputmask_3" class="form-control" placeholder="Enter your Phone"/>
+                                        <input type="text" name="phone" class="form-control" placeholder="Enter your Phone"/>
                                     </div>
                                     <div class="col-lg-6">
                                         <label>Status:</label>

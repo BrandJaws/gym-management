@@ -16,13 +16,13 @@ class SupplierController extends Controller
     public function index(Request $request)
     {
         try {
-            $supplier = Supplier::orderBy('id', 'asc')->paginate(4);
+            $supplier = Supplier::orderBy('id', 'asc')->paginate(10);
             if ($request->ajax()) {
                 $sort_by = $request->get('sortby');
                 $sort_type = $request->get('sorttype');
                 $query = $request->get('query');
-                $query = str_replace(" ", "%", $query);
-                $supplier = Supplier::getSupplierList($query, $sort_by, $sort_type);
+                $searchTerm = str_replace(" ", "%", $query);
+                $supplier = Supplier::getSupplierList($searchTerm, $sort_by, $sort_type);
                 return view('gym.supplier.pagination_data', compact('supplier'))->render();
             }
             return view('gym.supplier.list', compact('supplier'));
@@ -38,8 +38,7 @@ class SupplierController extends Controller
      */
     public function create()
     {
-        $gym = Gym::all();
-        return view('gym.supplier.create')->with('gyms', $gym);
+        return view('gym.supplier.create');
     }
 
     /**
