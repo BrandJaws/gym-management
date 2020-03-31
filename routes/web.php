@@ -27,7 +27,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
         /*-----------------------------------------------------------------------------------*/
 
         Route::group(['as' => 'gym.', 'prefix' => 'gym'], function () {
-            Route::get('/', ['as' => 'member', 'uses' => 'GymController@index']);
+            Route::get('/', ['as' => 'list', 'uses' => 'GymController@index']);
             Route::get('/create', ['as' => 'create', 'uses' => 'GymController@create']);
             Route::post('/create', ['as' => 'create', 'uses' => 'GymController@store']);
             Route::get('/destroy/{id}', ['as' => 'destroy', 'uses' => 'GymController@destroy']);

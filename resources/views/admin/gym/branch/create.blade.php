@@ -8,7 +8,7 @@
             @include('_layouts.flash-message')
             <div class="kt-container  kt-container--fluid  kt-grid__item kt-grid__item--fluid">
                 <div class="row">
-                    <div class="col-lg-8">
+                    <div class="col-lg-12">
                         <!--begin::Portlet-->
                         <div class="kt-portlet">
                             <div class="kt-portlet__head">
@@ -110,7 +110,7 @@
                         </div>
                         <!--end::Portlet-->
                     </div>
-                    <div class="col-lg-4">
+                    <div class="col-lg-12">
                         <!--begin::Portlet-->
                         <div class="kt-portlet">
                             <div class="kt-portlet__head">
@@ -163,42 +163,14 @@
                     <div class="col-lg-12">
                         <!--begin::Portlet-->
                         <div class="kt-portlet">
-                            <div class="kt-portlet__head">
-                                <div class="kt-portlet__head-label">
-                                    <h3 class="kt-portlet__head-title">
-                                        Create Facilities
-                                    </h3>
-                                </div>
-                            </div>
                             <!--begin::Form-->
                             <div class="kt-portlet__body">
-                                <div class="form-group row">
-                                    <div class="kt-checkbox-list">
-                                        <div class="row">
-                                            @if(count($facilities) >= 0)
-                                                @foreach ($facilities as $facility)
-                                                    <div class="col-md-4">
-                                                        <label class="kt-checkbox">
-                                                            <input type="checkbox" name="facilities[]"
-                                                                   value="{{$facility->id}}"
-                                                                {{in_array("$facility->id",$facilityList)?"checked":""}}>
-                                                            {{$facility->name}}
-                                                            <span></span>
-                                                        </label>
-                                                    </div>
-                                                @endforeach
-                                            @else
-                                                <p>None</p>
-                                            @endif
-                                        </div>
-                                    </div>
-                                </div>
                                 <div class="kt-portlet__foot">
                                     <div class="kt-form__actions">
                                         <div class="row">
                                             <div class="col-12">
                                                 <input type="submit" value="Save" class="btn btn-primary">
-                                                <a href="{{route('gym.member')}}"
+                                                <a href="{{route('gym.list')}}"
                                                    class="btn btn-secondary">Cancel</a>
                                             </div>
                                         </div>
