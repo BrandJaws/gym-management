@@ -37,24 +37,24 @@
                                             </tr>
                                             </thead>
                                             <tbody>
-                                            <tr>
-                                                <th scope="row">1</th>
-                                                <td>Mohsin Ikram</td>
-                                                <td>4E^TwR5Y8</td>
-                                                <td>100$</td>
-                                                <td data-field="Status" class="kt-datatable__cell">
-                                                    <span class="kt-badge  kt-badge--primary kt-badge--inline kt-badge--pill">Active</span>
-                                                </td>
-                                                <td>.......</td>
-                                                <td>
-                                                    <a title="Edit details" class="btn btn-sm btn-clean btn-icon btn-icon-md">
-                                                        <i class="la la-edit"></i>
-                                                    </a>
-                                                    <a title="Delete" class="btn btn-sm btn-clean btn-icon btn-icon-md kt_sweetalert_demo_8">
-                                                        <i class="la la-trash"></i>
-                                                    </a>
-                                                </td>
-                                            </tr>
+                                            @foreach($gymServices as $row)
+                                                <tr>
+                                                    <td>{{ $row->id}}</td>
+                                                    <td>{{ $row->duration }}</td>
+                                                    <td>{{ $row->amount }}</td>
+                                                    <td>{{ $row->monthlyFee }}</td>
+                                                    <td>{{ $row->detail }}</td>
+                                                    <td>
+                                                        <a href="{{url('gym/membership/edit', $row->id)}}">
+                                                            <i class="fa fa-edit"></i>
+                                                        </a> &nbsp; | &nbsp;
+                                                        <a href="{{url('gym/membership/destroy', $row->id)}}"
+                                                           onclick="return confirm('Are you sure you want to delete it?')">
+                                                            <i class="fa fa-trash"></i>
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                            @endforeach
                                             <tr>
                                                 <th scope="row">2</th>
                                                 <td>Muhammad Bilal</td>

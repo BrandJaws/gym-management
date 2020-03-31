@@ -184,6 +184,64 @@
                     <!--end::Portlet-->
                 </div>
             </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <!--begin::Portlet-->
+                    <div class="kt-portlet">
+                        <div class="kt-portlet__head">
+                            <div class="kt-portlet__head-label">
+                                <h3 class="kt-portlet__head-title">
+                                    Account History
+                                </h3>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-lg-12 ">
+                                <div class="kt-portlet__body">
+                                    <table
+                                        class="table table-striped- table-bordered table-hover table-checkable">
+                                        <thead>
+                                        <tr>
+                                            <th>No.</th>
+                                            <th>Employee</th>
+                                            <th>Cash Flow</th>
+                                            <th>Type</th>
+                                            <th>Value</th>
+                                            <th>Date</th>
+                                            <th>Purpose</th>
+                                            <th>Note</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <?php $i = 1; ?>
+                                        @foreach($treasuryDetail as $row)
+                                            <tr>
+                                                <th>{{$i}}</th>
+                                                <td>{{ $row->employee->name }}</td>
+                                                <td>{{ $row->cashFlow }}</td>
+                                                <td>{{ $row->type }}</td>
+                                                <td>{{ $row->value }}</td>
+                                                <td>{{ $row->date }}</td>
+                                                <td>{{ $row->purpose }}</td>
+                                                <td>{{ $row->note }}</td>
+                                            </tr>
+                                            <?php  $i++; ?>
+                                        @endforeach
+                                        <tr>
+                                            <td colspan="8" align="center">
+                                                {{ $treasuryDetail->links() }}
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <!--end::Portlet-->
+                </div>
+            </div>
         </div>
         <!-- end:: Content -->
     </div>

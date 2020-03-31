@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Gym;
 use App\Employee;
 use App\Gym;
 use App\Http\Controllers\Controller;
+use App\Treasury;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -128,7 +129,8 @@ class EmployeeController extends Controller
         try {
             $employee = Employee::find($id);
             $gym = Gym::where('parent_id', '=', Auth::guard('employee')->user()->parentGym->id)->get();
-            return view('gym.employee.edit', compact('employee', 'gym'));
+            $treasuryDetail = Treasury::where('employeeId', $id)->where('gym_id', Auth::guard('employee')->user()->gym_id)->paginate(10);
+            return view('gym.employee.edit', compact('employee', 'gym','treasuryDetail'));
         } catch (\Exception $e) {
             return back()->with('error', 'Oops, something was not right in employee update page');
         }

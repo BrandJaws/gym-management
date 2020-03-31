@@ -9,20 +9,14 @@
                 </div>
             </div>
             <div class="kt-container  kt-container--fluid  kt-grid__item kt-grid__item--fluid">
-
                 <!--Begin::App-->
                 <div class="kt-grid kt-grid--desktop kt-grid--ver kt-grid--ver-desktop kt-app">
-
                     <!--Begin:: App Aside Mobile Toggle-->
                     <button class="kt-app__aside-close" id="kt_user_profile_aside_close">
                         <i class="la la-close"></i>
                     </button>
-
-                    <!--End:: App Aside Mobile Toggle-->
-
                     <!--Begin:: App Aside-->
                     <div class="kt-grid__item kt-app__toggle kt-app__aside" id="kt_user_profile_aside">
-
                         <!--begin:: Widgets/Applications/User/Profile1-->
                         <div class="kt-portlet ">
                             <div class="kt-portlet__head  kt-portlet__head--noborder">
@@ -32,7 +26,6 @@
                                 </div>
                             </div>
                             <div class="kt-portlet__body kt-portlet__body--fit-y">
-
                                 <!--begin::Widget -->
                                 <div class="kt-widget kt-widget--user-profile-1">
                                     <div class="kt-widget__head">
@@ -382,7 +375,7 @@
                                                 @endforeach
                                                 <tr>
                                                     <td colspan="8" align="center">
-                                                        {{ $callHistory->links() }}
+                                                        {{ $treasuryDetail->links() }}
                                                     </td>
                                                 </tr>
                                                 </tbody>

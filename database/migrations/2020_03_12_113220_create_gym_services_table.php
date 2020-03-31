@@ -15,11 +15,11 @@ class CreateGymServicesTable extends Migration
     {
         Schema::create('gym_services', function (Blueprint $table) {
             $table->increments('id'); // 012
-            $table->integer('facility_id'); // 01
+            $table->string('name'); // 01
             $table->string('code')->nullable(true);; // 0GHY%&GJHG
             $table->float('fee')->nullable(true); // null
             $table->string('status')->default('Active');
-            $table->integer('gym_id', false, true)->nullable(true); // 03
+            $table->string('gym_id')->nullable(true);
             $table->timestamps();
         });
     }

@@ -52,7 +52,7 @@ class TreasuryController extends Controller
     {
         $gym_id = Auth::guard('employee')->user()->gym_id;
         $employee = Employee::where('gym_id', $gym_id)->get();
-        $member = Member::where('gym_id', $gym_id)->get();
+        $member = Member::where('gym_id', $gym_id)->where('type','Member')->get();
         $trainer = Trainer::where('gym_id', $gym_id)->get();
         $supplier = Supplier::where('gym_id', $gym_id)->get();
         return view('gym.treasury.create', compact('employee', 'member', 'trainer', 'supplier'));

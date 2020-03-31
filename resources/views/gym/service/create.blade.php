@@ -16,42 +16,56 @@
                             </div>
                         </div>
                         <!--begin::Form-->
-                        <form action="#" method="POST" enctype="multipart/form-data" class="kt-form kt-form--label-right">
+                        <form action="{{route('service.create')}}" method="POST" enctype="multipart/form-data"
+                              class="kt-form kt-form--label-right">
                             @csrf
                             <div class="kt-portlet__body">
                                 <div class="form-group row">
                                     <div class="col-lg-6">
                                         <label>Name:</label>
-                                        <input type="text" name="name" class="form-control" placeholder="Enter your Name" />
+                                        <input type="text" name="name" required class="form-control"
+                                               placeholder="Enter Service Name"/>
                                     </div>
                                     <div class="col-lg-6">
-                                        <label>Code:</label>
-                                        <input type="email" name="email" class="form-control" placeholder="Enter your Email" />
+                                        <label>Fee:</label>
+                                        <input type="text" name="fee" required class="form-control"
+                                               placeholder="Enter Service Fee"/>
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <div class="col-lg-6">
-                                        <label>Fee:</label>
-                                        <input type="text" name="phone" class="form-control" placeholder="Enter your Phone"/>
-                                    </div>
                                     <div class="col-lg-6">
                                         <label>Status:</label>
                                         <div class="kt-radio-inline">
                                             <label class="kt-radio kt-radio--solid">
-                                                <input type="radio" name="status" value="2"> Active
+                                                <input type="radio" name="status" value="Active" required> Active
                                                 <span></span>
                                             </label>
                                             <label class="kt-radio kt-radio--solid">
-                                                <input type="radio" name="status" value="2"> Inactive
+                                                <input type="radio" name="status" value="In-Active" required> In-Active
                                                 <span></span>
                                             </label>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="form-group row">
                                     <div class="col-lg-6">
                                         <label>Gym:</label>
-                                        <input type="text" name="gym" id="gym" class="form-control" placeholder="Enter your Gym" />
+                                        @if(count($gym) > 1)
+                                            <select class="form-control kt-select2" id="kt_select2_3" name="gym_id[]"
+                                                    required
+                                                    multiple="multiple">
+                                                @foreach ($gym as $gymList)
+                                                    <option value="{{$gymList->id}}">{{$gymList->name}}</option>
+                                                @endforeach
+                                            </select>
+                                        @else
+                                            <select class="form-control kt-select2" id="kt_select2_3" name="gym_id[]"
+                                                    required
+                                                    multiple="multiple">
+                                                @foreach ($gym as $gymList)
+                                                    <option value="{{$gymList->id}}"
+                                                            selected>{{$gymList->name}}</option>
+                                                @endforeach
+                                            </select>
+                                        @endif
                                     </div>
                                 </div>
                             </div>
@@ -60,7 +74,7 @@
                                     <div class="row">
                                         <div class="col-12">
                                             <input type="submit" value="Save" class="btn btn-primary">
-                                            <a href="{{route('supplier.member')}}" class="btn btn-secondary">Cancel</a>
+                                            <a href="{{route('service.list')}}" class="btn btn-secondary">Cancel</a>
                                         </div>
                                     </div>
                                 </div>
@@ -74,4 +88,7 @@
         </div>
         <!-- end:: Content -->
     </div>
+@endsection
+@section('custom-script')
+    <script src="{{ asset('js/select2.js') }}"></script>
 @endsection
