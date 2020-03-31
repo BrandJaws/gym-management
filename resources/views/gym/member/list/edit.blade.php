@@ -71,6 +71,10 @@
                                                 <a href="#" class="kt-widget__data">{{$lead->phone}}</a>
                                             </div>
                                             <div class="kt-widget__info">
+                                                <span class="kt-widget__label">Code For Login:</span>
+                                                <a href="#" class="kt-widget__data">{{$lead->code}}</a>
+                                            </div>
+                                            <div class="kt-widget__info">
                                                 <span class="kt-widget__label">Location:</span>
                                                 <span class="kt-widget__data">{{$lead->address}}</span>
                                             </div>
