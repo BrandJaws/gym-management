@@ -23,9 +23,9 @@ class SupplierController extends Controller
                 $query = $request->get('query');
                 $query = str_replace(" ", "%", $query);
                 $supplier = Supplier::getSupplierList($query, $sort_by, $sort_type);
-                return view('gym.membership.pagination_data', compact('supplier'))->render();
+                return view('gym.supplier.pagination_data', compact('supplier'))->render();
             }
-            return view('gym.supplier.member', compact('supplier'));
+            return view('gym.supplier.list', compact('supplier'));
         } catch (\Exception $e) {
             return back()->with('error', 'Oops, something was not right');
         }

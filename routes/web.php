@@ -70,7 +70,7 @@ Route::group(['prefix' => 'gym', 'namespace' => 'Gym'], function () {
         Route::post('/profile', ['as' => 'gym.profile', 'uses' => 'AuthController@updateProfile']);
 
         Route::group(['as' => 'employee.', 'prefix' => 'employee'], function () {
-            Route::get('/', ['as' => 'member', 'uses' => 'EmployeeController@index']);
+            Route::get('/', ['as' => 'list', 'uses' => 'EmployeeController@index']);
             Route::get('/create', ['as' => 'create', 'uses' => 'EmployeeController@create']);
             Route::post('/create', ['as' => 'create', 'uses' => 'EmployeeController@store']);
             Route::get('/destroy/{id}', ['as' => 'destroy', 'uses' => 'EmployeeController@destroy']);
@@ -79,7 +79,7 @@ Route::group(['prefix' => 'gym', 'namespace' => 'Gym'], function () {
         });
 
         Route::group(['as' => 'membership.', 'prefix' => 'membership'], function () {
-            Route::get('/', ['as' => 'member', 'uses' => 'MembershipController@index']);
+            Route::get('/', ['as' => 'list', 'uses' => 'MembershipController@index']);
             Route::get('/create', ['as' => 'create', 'uses' => 'MembershipController@create']);
             Route::post('/create', ['as' => 'create', 'uses' => 'MembershipController@store']);
             Route::get('/destroy/{id}', ['as' => 'destroy', 'uses' => 'MembershipController@destroy']);
@@ -93,7 +93,7 @@ Route::group(['prefix' => 'gym', 'namespace' => 'Gym'], function () {
 
         Route::group(['as' => 'member.', 'prefix' => 'member'], function () {
             Route::get('/', ['as' => 'dashboard', 'uses' => 'MemberController@dashobard']);
-            Route::get('/list', ['as' => 'member', 'uses' => 'MemberController@index']);
+            Route::get('/list', ['as' => 'list', 'uses' => 'MemberController@index']);
             Route::get('/create', ['as' => 'create', 'uses' => 'MemberController@create']);
             Route::post('/create', ['as' => 'create', 'uses' => 'MemberController@store']);
             Route::get('/edit/{id}', ['as' => 'edit', 'uses' => 'MemberController@edit']);
@@ -126,7 +126,7 @@ Route::group(['prefix' => 'gym', 'namespace' => 'Gym'], function () {
         });
 
         Route::group(['as' => 'trainer.', 'prefix' => 'trainer'], function () {
-            Route::get('/', ['as' => 'member', 'uses' => 'TrainerController@index']);
+            Route::get('/', ['as' => 'list', 'uses' => 'TrainerController@index']);
             Route::get('/create', ['as' => 'create', 'uses' => 'TrainerController@create']);
             Route::post('/create', ['as' => 'create', 'uses' => 'TrainerController@store']);
             Route::get('/edit/{id}', ['as' => 'edit', 'uses' => 'TrainerController@edit']);
