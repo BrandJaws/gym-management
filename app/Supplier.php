@@ -14,6 +14,7 @@ class Supplier extends Model
         'phone',
         'status',
         'gym_id',
+        'note',
     ];
     public static function getSupplierList($searchTerm, $sort_by, $sort_type)
     {

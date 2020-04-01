@@ -4,6 +4,7 @@
     <div class="kt-content  kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor" id="kt_content">
         <!-- begin:: Content -->
         <div class="kt-container  kt-container--fluid  kt-grid__item kt-grid__item--fluid">
+            @include('_layouts.flash-message')
             <div class="row">
                 <div class="col-lg-12">
                     <!--begin::Portlet-->
@@ -16,48 +17,67 @@
                             </div>
                         </div>
                         <!--begin::Form-->
-                        <form action="#" method="POST" enctype="multipart/form-data" class="kt-form kt-form--label-right">
+                        <form action="{{route('supplier.create')}}" method="POST" enctype="multipart/form-data"
+                              class="kt-form kt-form--label-right">
                             @csrf
+                            <input type="hidden" class="form-control" name="gym_id" value="{{  Auth::guard('employee')->user()->gym->id }}"/>
                             <div class="kt-portlet__body">
                                 <div class="form-group row">
-                                    <div class="col-lg-4 countryDropdown">
+                                    <div class="col-lg-6 countryDropdown">
                                         <label class="">Gym:</label>
-                                        <select class="form-control kt-select2" id="kt_select2_1" name="gym">
-                                            @if(count($gyms) >= 0)
-                                                @foreach ($gyms as $gym)
-                                                    <option value="{{$gym->id}}">{{$gym->name}}</option>
-                                                @endforeach
-                                            @else
-                                                <p>None</p>
-                                            @endif
-                                        </select>
-                                    </div>
-                                    <div class="col-lg-4">
-                                        <label>Name:</label>
-                                        <input type="text" name="name" class="form-control" placeholder="Enter your Name" />
-                                    </div>
-                                    <div class="col-lg-4">
-                                        <label>Email:</label>
-                                        <input type="text" id="kt_inputmask_9" name="email" class="form-control" placeholder="Enter your Email" />
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <div class="col-lg-6">
-                                        <label>Phone:</label>
-                                        <input type="text" name="phone" class="form-control" placeholder="Enter your Phone"/>
+                                        <input type="text" class="form-control" disabled value="{{  Auth::guard('employee')->user()->gym->name }}"/>
+                                        @if($errors->has('gym_id'))
+                                            <div class="error">{{ $errors->first('gym_id') }}</div>
+                                        @endif
                                     </div>
                                     <div class="col-lg-6">
                                         <label>Status:</label>
                                         <div class="kt-radio-inline">
                                             <label class="kt-radio kt-radio--solid">
-                                                <input type="radio" name="status" value="2"> Active
+                                                <input type="radio" name="status" value="Active" required> Active
                                                 <span></span>
                                             </label>
                                             <label class="kt-radio kt-radio--solid">
-                                                <input type="radio" name="status" value="2"> Inactive
+                                                <input type="radio" name="status" value="In-Active" required> In-Active
                                                 <span></span>
                                             </label>
                                         </div>
+                                        @if($errors->has('status'))
+                                            <div class="error">{{ $errors->first('status') }}</div>
+                                        @endif
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-lg-6">
+                                        <label>Name:</label>
+                                        <input type="text" name="name" class="form-control" required
+                                               placeholder="Enter Supplier Name"/>
+                                        @if($errors->has('name'))
+                                            <div class="error">{{ $errors->first('name') }}</div>
+                                        @endif
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <label>Email:</label>
+                                        <input type="text" name="email" class="form-control"
+                                               placeholder="Enter Supplier Email"/>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-lg-6">
+                                        <label>Phone:</label>
+                                        <input type="number" name="phone" class="form-control" required
+                                               placeholder="Enter Supplier Phone"/>
+                                        @if($errors->has('phone'))
+                                            <div class="error">{{ $errors->first('phone') }}</div>
+                                        @endif
+                                    </div>
+
+                                    <div class="col-lg-6">
+                                        <label>Note:</label>
+                                        <textarea name="note" class="form-control" placeholder="Enter Note"></textarea>
+                                        @if($errors->has('note'))
+                                            <div class="error">{{ $errors->first('note') }}</div>
+                                        @endif
                                     </div>
                                 </div>
                             </div>
