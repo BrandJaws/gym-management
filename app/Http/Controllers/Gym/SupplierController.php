@@ -8,6 +8,7 @@ use App\Membership;
 use App\Supplier;
 use App\Gym;
 use App\Http\Controllers\Controller;
+use App\Treasury;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
@@ -116,7 +117,8 @@ class SupplierController extends Controller
     {
         try {
             $supplier = Supplier::find($id);
-            return view('gym.supplier.edit', compact('supplier'));
+            $treasuryDetail = Treasury::where('supplier_id', $id)->where('gym_id', Auth::guard('employee')->user()->gym_id)->paginate(10);
+            return view('gym.supplier.edit', compact('supplier','treasuryDetail'));
         } catch (\Exception $e) {
             return back()->with('error', 'Oops, something was not right');
         }

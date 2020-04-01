@@ -20,6 +20,10 @@ class Supplier extends Model
     {
         return $this->morphOne(Image::class, 'image');
     }
+    public function treasury()
+    {
+        return $this->belongsTo(Treasury::class,'id','employee_id');
+    }
     public static function getSupplierList($searchTerm, $sort_by, $sort_type)
     {
         return self::select([
