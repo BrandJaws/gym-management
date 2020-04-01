@@ -1,10 +1,14 @@
 <?php
 
 namespace App\Http\Controllers\Gym;
+use App\Membership;
 use App\Supplier;
 use App\Gym;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Validator;
 
 class SupplierController extends Controller
 {
@@ -49,7 +53,33 @@ class SupplierController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        try {
+            $validator = Validator::make($request->all(), [
+                'status' => 'required',
+                'name' => 'required',
+                'phone' => 'required',
+                'gym_id' => 'required',
+                'email' => 'nullable|email|unique:suppliers',
+            ]);
+            if ($validator->fails()) {
+                return Redirect::back()->withErrors($validator);
+            }
+            $supplier = new Supplier();
+            $supplier->fill($request->only([
+                'status',
+                'name',
+                'phone',
+                'email',
+                'note',
+                'gym_id'
+            ]));
+            $supplier->save();
+            return back()->with('success', 'Supplier Created Successfully!');
+        } catch (\Exception $e) {
+            return response()->json([
+                'response' => $e
+            ], 400);
+        }
     }
 
     /**
@@ -71,7 +101,12 @@ class SupplierController extends Controller
      */
     public function edit($id)
     {
-        //
+        try {
+            $supplier = Supplier::find($id);
+            return view('gym.supplier.edit', compact('supplier'));
+        } catch (\Exception $e) {
+            return back()->with('error', 'Oops, something was not right');
+        }
     }
 
     /**
@@ -81,9 +116,35 @@ class SupplierController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        $supplier_id = $request->id;
+        try {
+            $validator = Validator::make($request->all(), [
+                'status' => 'required',
+                'name' => 'required',
+                'phone' => 'required',
+                'gym_id' => 'required',
+                'email' => 'nullable|unique:suppliers,email,' . $supplier_id,
+            ]);
+            if ($validator->fails()) {
+                return Redirect::back()->withErrors($validator);
+            }
+            $supplier = Supplier::where('id', $supplier_id)->first();
+            $supplier->fill($request->only([
+                'name',
+                'duration',
+                'amount',
+                'monthlyFee',
+                'detail',
+            ]));
+            $supplier->save();
+            return back()->with('success', 'Supplier Updated Successfully!');
+        } catch (\Exception $e) {
+            return response()->json([
+                'response' => $e
+            ], 400);
+        }
     }
 
     /**
@@ -94,6 +155,11 @@ class SupplierController extends Controller
      */
     public function destroy($id)
     {
-        //
+        try {
+            Supplier::destroy($id);
+            return back()->with('success', 'Supplier Deleted Successfully!');
+        } catch (\Exception $e) {
+            return back()->with('error', 'Oops, something was not right');
+        }
     }
 }

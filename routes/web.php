@@ -142,6 +142,7 @@ Route::group(['prefix' => 'gym', 'namespace' => 'Gym'], function () {
             Route::get('/create', ['as' => 'create', 'uses' => 'SupplierController@create']);
             Route::post('/create', ['as' => 'create', 'uses' => 'SupplierController@store']);
             Route::get('/edit/{id}', ['as' => 'edit', 'uses' => 'SupplierController@edit']);
+            Route::post('/edit', ['as' => 'edit', 'uses' => 'SupplierController@update']);
             Route::get('/destroy/{id}', ['as' => 'destroy', 'uses' => 'SupplierController@destroy']);
         });
 

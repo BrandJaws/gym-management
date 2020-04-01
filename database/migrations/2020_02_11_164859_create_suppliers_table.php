@@ -19,6 +19,7 @@ class CreateSuppliersTable extends Migration
             $table->string('email')->unique(); // bilal@gmail.com
             $table->string('phone'); // +9300-00000000-0020
             $table->string('status'); // coming
+            $table->text('note'); // text
             $table->integer('gym_id',false,true)->nullable(true); // 03
             $table->timestamps();
         });
