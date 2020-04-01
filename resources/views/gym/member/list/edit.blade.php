@@ -209,8 +209,8 @@
                                                     <div class="form-group row">
                                                         <div class="col-lg-6">
                                                             <label>Type :</label>
-                                                            <select class="form-control" id="sel1" name="type"
-                                                                    onchange="changeDiv(this.value)">
+                                                            <select class="form-control" id="typeMember" name="type"
+                                                                    onclick="changeDiv()">
                                                                 <option value="Lead"
                                                                         @if($lead->type == "Lead" ) selected @endif>
                                                                     Lead
@@ -456,8 +456,23 @@
             <script src="{{asset('js/select2.js')}}"></script>
             <script src="{{asset('js/ktavatar.js')}}"></script>
             <script type="text/javascript">
-                function changeDiv(value) {
-                    if (value == "Member") {
+                $(document).ready(function () {
+                    var typeMemberValue = document.getElementById('typeMember').value;
+                    if (typeMemberValue === "Member") {
+                        var div = document.getElementsByClassName('textField');
+                        for (var i = 0; i < div.length; i++) {
+                            div[i].style.display = "block";
+                        }
+                    } else {
+                        var div = document.getElementsByClassName('textField');
+                        for (var i = 0; i < div.length; i++) {
+                            div[i].style.display = "none";
+                        }
+                    }
+                });
+                function changeDiv() {
+                    var typeMemberValue = document.getElementById('typeMember').value;
+                    if (typeMemberValue === "Member") {
                         var div = document.getElementsByClassName('textField');
                         for (var i = 0; i < div.length; i++) {
                             div[i].style.display = "block";

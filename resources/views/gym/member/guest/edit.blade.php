@@ -112,8 +112,8 @@
                                             </div>
                                             <div class="col-lg-6 form-group">
                                                 <label for="sel1">Transfer Status:</label>
-                                                <select class="form-control" id="sel1" name="transferStatus"
-                                                        onchange="changeDiv(this.value)">
+                                                <select class="form-control" id="transferStatus" name="transferStatus"
+                                                        onclick="changeDiv()">
                                                     <option value="None"
                                                             @if($pipeline->type == "None" ) selected @endif>None
                                                     </option>
@@ -215,7 +215,22 @@
     <script src="{{asset('js/select2.js')}}"></script>
     <script src="{{asset('js/ktavatar.js')}}"></script>
     <script type="text/javascript">
-        function changeDiv(value) {
+        $(document).ready(function () {
+            var value = document.getElementById('transferStatus').value;
+            if (value === "For Call" || value === "For Demo") {
+                var div = document.getElementsByClassName('textField');
+                for (var i = 0; i < div.length; i++) {
+                    div[i].style.display = "block";
+                }
+            } else {
+                var div = document.getElementsByClassName('textField');
+                for (var i = 0; i < div.length; i++) {
+                    div[i].style.display = "none";
+                }
+            }
+        });
+        function changeDiv() {
+            var value = document.getElementById('transferStatus').value;
             if (value === "For Call" || value === "For Demo") {
                 var div = document.getElementsByClassName('textField');
                 for (var i = 0; i < div.length; i++) {

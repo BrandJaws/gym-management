@@ -412,6 +412,9 @@ body a {
     transform: scale(1);
 }
 
+.textField:not:first-child {
+    margin-top: 12px;
+}
 
 
 
