@@ -1,10 +1,14 @@
 <?php
 
 namespace App\Http\Controllers\Gym;
+
+use App\Http\Traits\FileUpload;
+use App\Image;
 use App\Membership;
 use App\Supplier;
 use App\Gym;
 use App\Http\Controllers\Controller;
+use App\Treasury;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
@@ -12,6 +16,8 @@ use Illuminate\Support\Facades\Validator;
 
 class SupplierController extends Controller
 {
+    use FileUpload;
+
     /**
      * Display a listing of the resource.
      *
@@ -48,7 +54,7 @@ class SupplierController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -74,6 +80,14 @@ class SupplierController extends Controller
                 'gym_id'
             ]));
             $supplier->save();
+            if ($request->hasFile('image')) {
+                $images = [];
+                $image = $request->file('image');
+                $userImage = new Image();
+                $this->uploadEmployee($image, $userImage, 'path', null, $supplier->id);
+                $images[] = $userImage;
+                $supplier->userImage()->saveMany($images, $supplier);
+            }
             return back()->with('success', 'Supplier Created Successfully!');
         } catch (\Exception $e) {
             return response()->json([
@@ -85,7 +99,7 @@ class SupplierController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -96,14 +110,15 @@ class SupplierController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
         try {
             $supplier = Supplier::find($id);
-            return view('gym.supplier.edit', compact('supplier'));
+            $treasuryDetail = Treasury::where('supplier_id', $id)->where('gym_id', Auth::guard('employee')->user()->gym_id)->paginate(10);
+            return view('gym.supplier.edit', compact('supplier','treasuryDetail'));
         } catch (\Exception $e) {
             return back()->with('error', 'Oops, something was not right');
         }
@@ -112,8 +127,8 @@ class SupplierController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request)
@@ -139,6 +154,14 @@ class SupplierController extends Controller
                 'detail',
             ]));
             $supplier->save();
+            if ($request->hasFile('images')) {
+                $images = [];
+                $image = $request->file('images');
+                $userImage = new Image();
+                $this->uploadSupplier($image, $userImage, 'path', null, $supplier->id);
+                $images[] = $userImage;
+                $supplier->userImage()->saveMany($images, $supplier);
+            }
             return back()->with('success', 'Supplier Updated Successfully!');
         } catch (\Exception $e) {
             return response()->json([
@@ -150,7 +173,7 @@ class SupplierController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)

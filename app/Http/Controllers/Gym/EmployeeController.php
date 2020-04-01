@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Gym;
 use App\Employee;
 use App\Gym;
 use App\Http\Controllers\Controller;
+use App\Http\Traits\FileUpload;
+use App\Image;
 use App\Treasury;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -16,6 +18,8 @@ use Symfony\Component\Console\Input\Input;
 
 class EmployeeController extends Controller
 {
+    use FileUpload;
+
     /**
      * Display a listing of the resource.
      *
@@ -99,6 +103,14 @@ class EmployeeController extends Controller
             $code = Employee::getRentalNumber();
             $employee->code = $code;
             $employee->save();
+            if ($request->hasFile('image')) {
+                $images = [];
+                $image = $request->file('image');
+                $userImage = new Image();
+                $this->uploadEmployee($image, $userImage, 'path', null, $employee->id);
+                $images[] = $userImage;
+                $employee->userImage()->saveMany($images, $employee);
+            }
             return back()->with('success', 'Employee Created Successfully!');
         } catch (\Exception $e) {
             return response()->json([
@@ -130,7 +142,7 @@ class EmployeeController extends Controller
             $employee = Employee::find($id);
             $gym = Gym::where('parent_id', '=', Auth::guard('employee')->user()->parentGym->id)->get();
             $treasuryDetail = Treasury::where('employeeId', $id)->where('gym_id', Auth::guard('employee')->user()->gym_id)->paginate(10);
-            return view('gym.employee.edit', compact('employee', 'gym','treasuryDetail'));
+            return view('gym.employee.edit', compact('employee', 'gym', 'treasuryDetail'));
         } catch (\Exception $e) {
             return back()->with('error', 'Oops, something was not right in employee update page');
         }
@@ -187,6 +199,14 @@ class EmployeeController extends Controller
                 $employee->password = $password;
             }
             $employee->save();
+            if ($request->hasFile('images')) {
+                $images = [];
+                $image = $request->file('images');
+                $userImage = new Image();
+                $this->uploadEmployee($image, $userImage, 'path', null, $employee->id);
+                $images[] = $userImage;
+                $employee->userImage()->saveMany($images, $employee);
+            }
             return back()->with('success', 'Employee Updated Successfully!');
         } catch (\Exception $e) {
             return response()->json([
