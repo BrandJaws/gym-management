@@ -123,6 +123,8 @@
                                                     <option value="Expired">Expired</option>
                                                 </select>
                                             </div>
+                                        </div>
+                                        <div class="form-group row">
                                             <div class="col-lg-6">
                                                 <label>Remarks :</label>
                                                 <textarea name="remarks" class="form-control" required
@@ -204,6 +206,7 @@
                 for (var i = 0; i < div.length; i++) {
                     div[i].style.display = "block";
                 }
+                $(div).slice(1).css('margin-top',"12px");
             } else {
                 var div = document.getElementsByClassName('textField');
                 for (var i = 0; i < div.length; i++) {
