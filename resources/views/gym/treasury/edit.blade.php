@@ -27,33 +27,33 @@
                                         <label>Type:</label>
                                         <div class="kt-radio-inline">
                                             <label class="kt-radio kt-radio--solid">
-                                                <input type="radio" name="type" value="Employee" required
+                                                <input type="radio" name="type" id="employee" value="Employee" required
                                                        @if($treasury->type == "Employee") checked @endif
-                                                       onchange="changeDiv(this.value)"> Employee
+                                                       onclick="changeDiv()"> Employee
                                                 <span></span>
                                             </label>
                                             <label class="kt-radio kt-radio--solid">
-                                                <input type="radio" name="type" value="Member" required
+                                                <input type="radio" name="type" id="member" value="Member" required
                                                        @if($treasury->type == "Member") checked @endif
-                                                       onchange="changeDiv(this.value)"> Member
+                                                       onclick="changeDiv()"> Member
                                                 <span></span>
                                             </label>
                                             <label class="kt-radio kt-radio--solid">
-                                                <input type="radio" name="type" value="Supplier" required
+                                                <input type="radio" name="type" id="supplier" value="Supplier" required
                                                        @if($treasury->type == "Supplier") checked @endif
-                                                       onchange="changeDiv(this.value)"> Supplier
+                                                       onclick="changeDiv()"> Supplier
                                                 <span></span>
                                             </label>
                                             <label class="kt-radio kt-radio--solid">
-                                                <input type="radio" name="type" value="Trainer" required
+                                                <input type="radio" name="type" id="trainer" value="Trainer" required
                                                        @if($treasury->type == "Trainer") checked @endif
-                                                       onchange="changeDiv(this.value)"> Trainer
+                                                       onclick="changeDiv()"> Trainer
                                                 <span></span>
                                             </label>
                                             <label class="kt-radio kt-radio--solid">
-                                                <input type="radio" name="type" value="Other" required
+                                                <input type="radio" name="type" id="other" value="Other" required
                                                        @if($treasury->type == "Other") checked @endif
-                                                       onchange="changeDiv(this.value)"> Other
+                                                       onclick="changeDiv()"> Other
                                                 <span></span>
                                             </label>
                                         </div>
@@ -233,20 +233,21 @@
     <script src="{{ asset('js/select2.js') }}"></script>
     <script src="{{asset('js/input-mask.js')}}"></script>
     <script type="text/javascript">
-        function changeDiv(value) {
-            if (value === "Employee") {
+        $(document).ready(function () {
+            var employeeField = document.getElementById('employee');
+            if (employeeField.checked == true) {
                 var div = document.getElementsByClassName('employeeField');
                 for (var i = 0; i < div.length; i++) {
-                    div[i].style.display = "block";
+                    $(div[i]).show();
                 }
             } else {
                 var div = document.getElementsByClassName('employeeField');
                 for (var i = 0; i < div.length; i++) {
-                    div[i].style.display = "none";
+                    $(div[i]).hide();
                 }
             }
-
-            if (value === "Member") {
+            var memberField = document.getElementById('member');
+            if (memberField.checked === true) {
                 var div = document.getElementsByClassName('memberField');
                 for (var i = 0; i < div.length; i++) {
                     div[i].style.display = "block";
@@ -257,8 +258,8 @@
                     div[i].style.display = "none";
                 }
             }
-
-            if (value === "Supplier") {
+            var supplierField = document.getElementById('supplier');
+            if (supplierField.checked === true) {
                 var div = document.getElementsByClassName('supplierField');
                 for (var i = 0; i < div.length; i++) {
                     div[i].style.display = "block";
@@ -269,7 +270,8 @@
                     div[i].style.display = "none";
                 }
             }
-            if (value === "Trainer") {
+            var trainerField = document.getElementById('trainer');
+            if (trainerField.checked === true) {
                 var div = document.getElementsByClassName('trainerField');
                 for (var i = 0; i < div.length; i++) {
                     div[i].style.display = "block";
@@ -280,7 +282,70 @@
                     div[i].style.display = "none";
                 }
             }
-            if (value === "Other") {
+            var otherField = document.getElementById('other');
+            if (otherField.checked === true) {
+                var div = document.getElementsByClassName('otherField');
+                for (var i = 0; i < div.length; i++) {
+                    div[i].style.display = "block";
+                }
+            } else {
+                var div = document.getElementsByClassName('otherField');
+                for (var i = 0; i < div.length; i++) {
+                    div[i].style.display = "none";
+                }
+            }
+        });
+        function changeDiv() {
+            var employeeField = document.getElementById('employee');
+            if (employeeField.checked === true) {
+                var div = document.getElementsByClassName('employeeField');
+                for (var i = 0; i < div.length; i++) {
+                    $(div[i]).show();
+                }
+            } else {
+                var div = document.getElementsByClassName('employeeField');
+                for (var i = 0; i < div.length; i++) {
+                    $(div[i]).hide();
+                }
+            }
+            var memberField = document.getElementById('member');
+            if (memberField.checked === true) {
+                var div = document.getElementsByClassName('memberField');
+                for (var i = 0; i < div.length; i++) {
+                    div[i].style.display = "block";
+                }
+            } else {
+                var div = document.getElementsByClassName('memberField');
+                for (var i = 0; i < div.length; i++) {
+                    div[i].style.display = "none";
+                }
+            }
+            var supplierField = document.getElementById('supplier');
+            if (supplierField.checked === true) {
+                var div = document.getElementsByClassName('supplierField');
+                for (var i = 0; i < div.length; i++) {
+                    div[i].style.display = "block";
+                }
+            } else {
+                var div = document.getElementsByClassName('supplierField');
+                for (var i = 0; i < div.length; i++) {
+                    div[i].style.display = "none";
+                }
+            }
+            var trainerField = document.getElementById('trainer');
+            if (trainerField.checked === true) {
+                var div = document.getElementsByClassName('trainerField');
+                for (var i = 0; i < div.length; i++) {
+                    div[i].style.display = "block";
+                }
+            } else {
+                var div = document.getElementsByClassName('trainerField');
+                for (var i = 0; i < div.length; i++) {
+                    div[i].style.display = "none";
+                }
+            }
+            var otherField = document.getElementById('other');
+            if (otherField.checked === true) {
                 var div = document.getElementsByClassName('otherField');
                 for (var i = 0; i < div.length; i++) {
                     div[i].style.display = "block";
@@ -294,3 +359,5 @@
         }
     </script>
 @endsection
+
+
