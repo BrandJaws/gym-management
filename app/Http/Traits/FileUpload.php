@@ -2,6 +2,7 @@
 
 namespace App\Http\Traits;
 
+use App\Image;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
 
@@ -23,7 +24,7 @@ trait FileUpload
     {
         if ($filePath) {
             if (!is_null($modelObject->$propertyToUpdate) && $modelObject->$propertyToUpdate != '') {
-                $this->removeExistingFile($modelObject->$propertyToUpdate, $disk);
+                $this->removeExistingFile($filePath, $disk);
             }
             $modelObject->$propertyToUpdate = $filePath;
         }
@@ -47,4 +48,30 @@ trait FileUpload
         $this->updateModelProperty($file, $modelObject, $propertyToUpdate, $disk);
         return $file;
     }
+
+
+    public function uploadEmployee(UploadedFile $uploadedFile, $modelObject, $propertyToUpdate, $filename = null, $objectId = null, $disk = "public")
+    {
+        $name = !is_null($filename) ? $filename : substr($uploadedFile->getClientOriginalName(), 0, strrpos($uploadedFile->getClientOriginalName(), "."));
+        $psudoContainer = ($objectId) ? '/' . $objectId : '';
+        $folder = 'uploads/employee/' . strtolower(substr(get_class($modelObject), strrpos(get_class($modelObject), '\\') + 1)) . $psudoContainer;
+        $file = $uploadedFile->storeAs($folder, sprintf('%s_%s', str_replace(' ', '_', $name), str_replace(' ', '_', microtime())) . '.' . $uploadedFile->getClientOriginalExtension(), [
+            'disk' => $disk
+        ]);
+        $this->updateModelProperty($file, $modelObject, $propertyToUpdate, $disk);
+        return $file;
+    }
+
+    public function uploadSupplier(UploadedFile $uploadedFile, $modelObject, $propertyToUpdate, $filename = null, $objectId = null, $disk = "public")
+    {
+        $name = !is_null($filename) ? $filename : substr($uploadedFile->getClientOriginalName(), 0, strrpos($uploadedFile->getClientOriginalName(), "."));
+        $psudoContainer = ($objectId) ? '/' . $objectId : '';
+        $folder = 'uploads/supplier/' . strtolower(substr(get_class($modelObject), strrpos(get_class($modelObject), '\\') + 1)) . $psudoContainer;
+        $file = $uploadedFile->storeAs($folder, sprintf('%s_%s', str_replace(' ', '_', $name), str_replace(' ', '_', microtime())) . '.' . $uploadedFile->getClientOriginalExtension(), [
+            'disk' => $disk
+        ]);
+        $this->updateModelProperty($file, $modelObject, $propertyToUpdate, $disk);
+        return $file;
+    }
+
 }

@@ -10,10 +10,13 @@ class Image extends Model
     protected $fillable = [
         'path',
         'image_type',
-        'image_id',
-        'gym_id'
+        'image_id'
     ];
     public function userImage()
+    {
+        return $this->morphTo();
+    }
+    public function employeeImage()
     {
         return $this->morphTo();
     }

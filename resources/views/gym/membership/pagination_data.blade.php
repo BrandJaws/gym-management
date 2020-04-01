@@ -1,7 +1,7 @@
 @foreach($membership as $row)
     <tr>
         <td>{{ $row->name}}</td>
-        <td>{{ $row->duration }}</td>
+        <td>{{ $row->duration }} Days</td>
         <td>{{ $row->amount }}</td>
         <td>{{ $row->monthlyFee }}</td>
         <td>{{ $row->detail }}</td>

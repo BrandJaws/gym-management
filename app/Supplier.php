@@ -16,6 +16,10 @@ class Supplier extends Model
         'gym_id',
         'note',
     ];
+    public function userImage()
+    {
+        return $this->morphOne(Image::class, 'image');
+    }
     public static function getSupplierList($searchTerm, $sort_by, $sort_type)
     {
         return self::select([
