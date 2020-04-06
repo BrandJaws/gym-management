@@ -119,7 +119,7 @@
                                                                    data-toggle="kt-tooltip" title=""
                                                                    data-original-title="Change avatar">
                                                                 <i class="fa fa-pen"></i>
-                                                                <input type="file" name="images"
+                                                                <input type="file" name="image"
                                                                        accept=".png, .jpg, .jpeg">
                                                             </label>
                                                             <span class="kt-avatar__cancel"

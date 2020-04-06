@@ -158,7 +158,7 @@ class SupplierController extends Controller
                 $images = [];
                 $image = $request->file('image');
                 $userImage = new Image();
-                $this->uploadSupplier($image, $userImage, 'path', null, $supplier->id);
+                $this->uploadSupplier($image, $userImage, 'path', null, $supplier_id);
                 $images[] = $userImage;
                 $supplier->userImage()->saveMany($images, $supplier);
             }
