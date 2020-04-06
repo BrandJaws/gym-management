@@ -225,6 +225,7 @@ class EmployeeController extends Controller
     {
         try {
             Employee::destroy($id);
+            $this->deleteEmployeeImg($id);
             return back()->with('success', 'Employee Deleted Successfully!');
         } catch (\Exception $e) {
             return back()->with('error', 'Oops, something was not right in employee delete function');

@@ -137,7 +137,7 @@ class MemberController extends Controller
                 $images = [];
                 $image = $request->file('image');
                 $userImage = new Image();
-                $this->uploadOne($image, $userImage, 'path', null, $member->id);
+                $this->uploadMemberImg($image, $userImage, 'path', null, $member->id);
                 $images[] = $userImage;
                 $member->userImage()->saveMany($images, $member);
             }
@@ -228,11 +228,11 @@ class MemberController extends Controller
                 $images = [];
                 $image = $request->file('image');
                 $userImage = new Image();
-                $this->uploadOne($image, $userImage, 'path', null, $member->id);
+                $this->uploadMemberImg($image, $userImage, 'path', null, $id);
                 $images[] = $userImage;
                 $member->userImage()->saveMany($images, $member);
             }
-            return back()->with('success', 'Employee Updated Successfully!');
+            return back()->with('success', 'Member Updated Successfully!');
         } catch (\Exception $e) {
             return response()->json([
                 'response' => $e
@@ -272,6 +272,7 @@ class MemberController extends Controller
         try {
             Member::where('id', $id)->forcedelete();
             Pipeline::where('customer_id', $id)->forcedelete();
+            $this->deleteMemberImg($id);
             return back()->with('success', 'Permanently Deleted Successfully!');
         } catch (\Exception $e) {
             return back()->with('error', 'Oops, something was not right in member distroy function');

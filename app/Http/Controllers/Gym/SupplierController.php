@@ -84,7 +84,7 @@ class SupplierController extends Controller
                 $images = [];
                 $image = $request->file('image');
                 $userImage = new Image();
-                $this->uploadEmployee($image, $userImage, 'path', null, $supplier->id);
+                $this->uploadSupplier($image, $userImage, 'path', null, $supplier->id);
                 $images[] = $userImage;
                 $supplier->userImage()->saveMany($images, $supplier);
             }
@@ -154,9 +154,9 @@ class SupplierController extends Controller
                 'detail',
             ]));
             $supplier->save();
-            if ($request->hasFile('images')) {
+            if ($request->hasFile('image')) {
                 $images = [];
-                $image = $request->file('images');
+                $image = $request->file('image');
                 $userImage = new Image();
                 $this->uploadSupplier($image, $userImage, 'path', null, $supplier->id);
                 $images[] = $userImage;
@@ -180,6 +180,7 @@ class SupplierController extends Controller
     {
         try {
             Supplier::destroy($id);
+            $this->deleteSupplierImg($id);
             return back()->with('success', 'Supplier Deleted Successfully!');
         } catch (\Exception $e) {
             return back()->with('error', 'Oops, something was not right');

@@ -17,7 +17,7 @@ class CreateImagesTable extends Migration
             $table->increments('id'); // 0932
             $table->integer('gym_id')->nullable(true); // null
             $table->morphs('image'); // image_id = #dffre$53gre23f2c // image_type = employee or member.
-            $table->string('path'); // public/uploads/00000000.jpg
+            $table->text('path'); // public/uploads/00000000.jpg
             $table->timestamps();
         });
     }
