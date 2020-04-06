@@ -135,7 +135,7 @@ class AuthController extends Controller
                 $images = [];
                 $image = $request->file('image');
                 $userImage = new Image();
-                $this->uploadOne($image, $userImage, 'path', null, $gym->id);
+                $this->uploadAdminImg($image, $userImage, 'path', null, $id);
                 $images[] = $userImage;
                 $gym->userImage()->saveMany($images, $gym);
             }
