@@ -173,7 +173,11 @@ class MemberController extends Controller
             $membership = Membership::all();
             $callHistory = Pipeline::where('customer_id', $id)->where('gym_id', Auth::guard('employee')->user()->gym_id)->paginate(10);
             $treasuryDetail = Treasury::where('member_id', $id)->where('gym_id', Auth::guard('employee')->user()->gym_id)->paginate(10);
-            return view('gym.member.list.edit', compact('lead', 'membership', 'callHistory','treasuryDetail'));
+            $treasuryCashIn = Treasury::where('member_id', $id)->where('gym_id', Auth::guard('employee')->user()->gym_id)->where('cashFlow', 'In')->sum('value');
+            $treasuryCashOut = Treasury::where('member_id', $id)->where('gym_id', Auth::guard('employee')->user()->gym_id)->where('cashFlow', 'Out')->sum('value');
+            $treasuryCashExtra = Treasury::where('member_id', $id)->where('gym_id', Auth::guard('employee')->user()->gym_id)->where('cashFlow', 'Extra')->sum('value');
+            $treasuryCashDiscount = Treasury::where('member_id', $id)->where('gym_id', Auth::guard('employee')->user()->gym_id)->where('cashFlow', 'Discount')->sum('value');
+            return view('gym.member.list.edit', compact('lead', 'membership', 'callHistory','treasuryDetail','treasuryCashIn','treasuryCashOut','treasuryCashExtra','treasuryCashDiscount'));
         } catch (\Exception $e) {
             return back()->with('error', 'Oops, something was not right in member edit page');
         }

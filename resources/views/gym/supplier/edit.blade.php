@@ -3,148 +3,149 @@
 @section('content')
     <div class="kt-content  kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor" id="kt_content">
         <!-- begin:: Content -->
-        <div class="row">
-            <div class="col-xl-3 col-lg-3">
-                <div class="kt-portlet kt-portlet--height-fluid">
-                    <div class="kt-portlet__head kt-portlet__head--noborder">
-                        <div class="kt-portlet__head-label">
-                            <h3 class="kt-portlet__head-title">
-                            </h3>
-                        </div>
-                    </div>
-                    <div class="kt-portlet__body kt-portlet__body--fit-y">
-                        <!--begin::Widget -->
-                        <div class="kt-widget kt-widget--user-profile-4">
-                            <div class="kt-widget__head">
-                                <div class="kt-widget__media">
-                                    <img class="kt-widget__img kt-hidden-" src="{{asset('assets/media/gym/in.jpg')}}" alt="image" style="height: 100%;">
-                                </div>
-                                <div class="kt-widget__content">
-                                    <div class="kt-widget__section">
-                                        <a href="#" class="kt-widget__username">
-                                            Total Cash-In
-                                        </a>
-                                        <div class="kt-widget__button">
-                                            <h2>{{ $treasuryCashIn }}</h2>
-                                        </div>
-                                        <div class="kt-widget__button">
-                                            <span class="btn btn-label-warning btn-sm">Active</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
 
-                        <!--end::Widget -->
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-3 col-lg-3">
-                <div class="kt-portlet kt-portlet--height-fluid">
-                    <div class="kt-portlet__head kt-portlet__head--noborder">
-                        <div class="kt-portlet__head-label">
-                            <h3 class="kt-portlet__head-title">
-                            </h3>
-                        </div>
-                    </div>
-                    <div class="kt-portlet__body kt-portlet__body--fit-y">
-                        <!--begin::Widget -->
-                        <div class="kt-widget kt-widget--user-profile-4">
-                            <div class="kt-widget__head">
-                                <div class="kt-widget__media">
-                                    <img class="kt-widget__img kt-hidden-" src="{{asset('assets/media/gym/out.jpg')}}" alt="image" style="height: 100%;">
-                                </div>
-                                <div class="kt-widget__content">
-                                    <div class="kt-widget__section">
-                                        <a href="#" class="kt-widget__username">
-                                            Total Cash-Out
-                                        </a>
-                                        <div class="kt-widget__button">
-                                            <h2>{{ $treasuryCashOut }}</h2>
-                                        </div>
-                                        <div class="kt-widget__button">
-                                            <span class="btn btn-label-warning btn-sm">Active</span>
-                                        </div>
-                                        <br>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!--end::Widget -->
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-3 col-lg-3">
-                <div class="kt-portlet kt-portlet--height-fluid">
-                    <div class="kt-portlet__head kt-portlet__head--noborder">
-                        <div class="kt-portlet__head-label">
-                            <h3 class="kt-portlet__head-title">
-                            </h3>
-                        </div>
-                    </div>
-                    <div class="kt-portlet__body kt-portlet__body--fit-y">
-                        <!--begin::Widget -->
-                        <div class="kt-widget kt-widget--user-profile-4">
-                            <div class="kt-widget__head">
-                                <div class="kt-widget__media">
-                                    <img class="kt-widget__img kt-hidden-" src="{{asset('assets/media/gym/discount.jpg')}}" alt="image" style="height: 100%;">
-                                </div>
-                                <div class="kt-widget__content">
-                                    <div class="kt-widget__section">
-                                        <a href="#" class="kt-widget__username">
-                                            Total Cash-Discount
-                                        </a>
-                                        <div class="kt-widget__button">
-                                            <h2>{{ $treasuryCashDiscount }}</h2>
-                                        </div>
-                                        <div class="kt-widget__button">
-                                            <span class="btn btn-label-warning btn-sm">Active</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!--end::Widget -->
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-3 col-lg-3">
-                <div class="kt-portlet kt-portlet--height-fluid">
-                    <div class="kt-portlet__head kt-portlet__head--noborder">
-                        <div class="kt-portlet__head-label">
-                            <h3 class="kt-portlet__head-title">
-                            </h3>
-                        </div>
-                    </div>
-                    <div class="kt-portlet__body kt-portlet__body--fit-y">
-                        <!--begin::Widget -->
-                        <div class="kt-widget kt-widget--user-profile-4">
-                            <div class="kt-widget__head">
-                                <div class="kt-widget__media">
-                                    <img class="kt-widget__img kt-hidden-" src="{{asset('assets/media/gym/extra.png')}}" alt="image" style="height: 100%;">
-                                </div>
-                                <div class="kt-widget__content">
-                                    <div class="kt-widget__section">
-                                        <a href="#" class="kt-widget__username">
-                                            Total Cash-Extra
-                                        </a>
-                                        <div class="kt-widget__button">
-                                            <h2>{{ $treasuryCashExtra }}</h2>
-                                        </div>
-                                        <div class="kt-widget__button">
-                                            <span class="btn btn-label-warning btn-sm">Active</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!--end::Widget -->
-                    </div>
-                </div>
-            </div>
-        </div>
         <div class="kt-container  kt-container--fluid  kt-grid__item kt-grid__item--fluid">
+            <div class="row">
+                <div class="col-xl-3 col-lg-3">
+                    <div class="kt-portlet kt-portlet--height-fluid">
+                        <div class="kt-portlet__head kt-portlet__head--noborder">
+                            <div class="kt-portlet__head-label">
+                                <h3 class="kt-portlet__head-title">
+                                </h3>
+                            </div>
+                        </div>
+                        <div class="kt-portlet__body kt-portlet__body--fit-y">
+                            <!--begin::Widget -->
+                            <div class="kt-widget kt-widget--user-profile-4">
+                                <div class="kt-widget__head">
+                                    <div class="kt-widget__media">
+                                        <img class="kt-widget__img kt-hidden-" src="{{asset('assets/media/gym/in.jpg')}}" alt="image" style="height: 100%;">
+                                    </div>
+                                    <div class="kt-widget__content">
+                                        <div class="kt-widget__section">
+                                            <a href="#" class="kt-widget__username">
+                                                Total Cash-In
+                                            </a>
+                                            <div class="kt-widget__button">
+                                                <h2>{{ $treasuryCashIn }}</h2>
+                                            </div>
+                                            <div class="kt-widget__button">
+                                                <span class="btn btn-label-warning btn-sm">Active</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!--end::Widget -->
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-lg-3">
+                    <div class="kt-portlet kt-portlet--height-fluid">
+                        <div class="kt-portlet__head kt-portlet__head--noborder">
+                            <div class="kt-portlet__head-label">
+                                <h3 class="kt-portlet__head-title">
+                                </h3>
+                            </div>
+                        </div>
+                        <div class="kt-portlet__body kt-portlet__body--fit-y">
+                            <!--begin::Widget -->
+                            <div class="kt-widget kt-widget--user-profile-4">
+                                <div class="kt-widget__head">
+                                    <div class="kt-widget__media">
+                                        <img class="kt-widget__img kt-hidden-" src="{{asset('assets/media/gym/out.jpg')}}" alt="image" style="height: 100%;">
+                                    </div>
+                                    <div class="kt-widget__content">
+                                        <div class="kt-widget__section">
+                                            <a href="#" class="kt-widget__username">
+                                                Total Cash-Out
+                                            </a>
+                                            <div class="kt-widget__button">
+                                                <h2>{{ $treasuryCashOut }}</h2>
+                                            </div>
+                                            <div class="kt-widget__button">
+                                                <span class="btn btn-label-warning btn-sm">Active</span>
+                                            </div>
+                                            <br>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!--end::Widget -->
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-lg-3">
+                    <div class="kt-portlet kt-portlet--height-fluid">
+                        <div class="kt-portlet__head kt-portlet__head--noborder">
+                            <div class="kt-portlet__head-label">
+                                <h3 class="kt-portlet__head-title">
+                                </h3>
+                            </div>
+                        </div>
+                        <div class="kt-portlet__body kt-portlet__body--fit-y">
+                            <!--begin::Widget -->
+                            <div class="kt-widget kt-widget--user-profile-4">
+                                <div class="kt-widget__head">
+                                    <div class="kt-widget__media">
+                                        <img class="kt-widget__img kt-hidden-" src="{{asset('assets/media/gym/discount.jpg')}}" alt="image" style="height: 100%;">
+                                    </div>
+                                    <div class="kt-widget__content">
+                                        <div class="kt-widget__section">
+                                            <a href="#" class="kt-widget__username">
+                                                Total Cash-Discount
+                                            </a>
+                                            <div class="kt-widget__button">
+                                                <h2>{{ $treasuryCashDiscount }}</h2>
+                                            </div>
+                                            <div class="kt-widget__button">
+                                                <span class="btn btn-label-warning btn-sm">Active</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--end::Widget -->
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-lg-3">
+                    <div class="kt-portlet kt-portlet--height-fluid">
+                        <div class="kt-portlet__head kt-portlet__head--noborder">
+                            <div class="kt-portlet__head-label">
+                                <h3 class="kt-portlet__head-title">
+                                </h3>
+                            </div>
+                        </div>
+                        <div class="kt-portlet__body kt-portlet__body--fit-y">
+                            <!--begin::Widget -->
+                            <div class="kt-widget kt-widget--user-profile-4">
+                                <div class="kt-widget__head">
+                                    <div class="kt-widget__media">
+                                        <img class="kt-widget__img kt-hidden-" src="{{asset('assets/media/gym/extra.png')}}" alt="image" style="height: 100%;">
+                                    </div>
+                                    <div class="kt-widget__content">
+                                        <div class="kt-widget__section">
+                                            <a href="#" class="kt-widget__username">
+                                                Total Cash-Extra
+                                            </a>
+                                            <div class="kt-widget__button">
+                                                <h2>{{ $treasuryCashExtra }}</h2>
+                                            </div>
+                                            <div class="kt-widget__button">
+                                                <span class="btn btn-label-warning btn-sm">Active</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--end::Widget -->
+                        </div>
+                    </div>
+                </div>
+            </div>
             @include('_layouts.flash-message')
             <div class="row">
                 <div class="col-lg-12">
