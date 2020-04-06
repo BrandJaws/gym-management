@@ -118,7 +118,11 @@ class SupplierController extends Controller
         try {
             $supplier = Supplier::find($id);
             $treasuryDetail = Treasury::where('supplier_id', $id)->where('gym_id', Auth::guard('employee')->user()->gym_id)->paginate(10);
-            return view('gym.supplier.edit', compact('supplier','treasuryDetail'));
+            $treasuryCashIn = Treasury::where('supplier_id', $id)->where('gym_id', Auth::guard('employee')->user()->gym_id)->where('cashFlow', 'In')->sum('value');
+            $treasuryCashOut = Treasury::where('supplier_id', $id)->where('gym_id', Auth::guard('employee')->user()->gym_id)->where('cashFlow', 'Out')->sum('value');
+            $treasuryCashExtra = Treasury::where('supplier_id', $id)->where('gym_id', Auth::guard('employee')->user()->gym_id)->where('cashFlow', 'Extra')->sum('value');
+            $treasuryCashDiscount = Treasury::where('supplier_id', $id)->where('gym_id', Auth::guard('employee')->user()->gym_id)->where('cashFlow', 'Discount')->sum('value');
+            return view('gym.supplier.edit', compact('supplier','treasuryDetail','treasuryCashIn','treasuryCashOut','treasuryCashExtra','treasuryCashDiscount'));
         } catch (\Exception $e) {
             return back()->with('error', 'Oops, something was not right');
         }
