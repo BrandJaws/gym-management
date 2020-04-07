@@ -130,6 +130,7 @@ Route::group(['prefix' => 'gym', 'namespace' => 'Gym'], function () {
             Route::get('/create', ['as' => 'create', 'uses' => 'TrainerController@create']);
             Route::post('/create', ['as' => 'create', 'uses' => 'TrainerController@store']);
             Route::get('/edit/{id}', ['as' => 'edit', 'uses' => 'TrainerController@edit']);
+            Route::post('/edit', ['as' => 'edit', 'uses' => 'TrainerController@update']);
             Route::get('/destroy/{id}', ['as' => 'destroy', 'uses' => 'TrainerController@destroy']);
         });
 

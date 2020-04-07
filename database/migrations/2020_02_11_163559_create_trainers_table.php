@@ -15,16 +15,18 @@ class CreateTrainersTable extends Migration
     {
         Schema::create('trainers', function (Blueprint $table) {
             $table->increments('id'); // 032487
-            $table->string('name'); // Arslan
+            $table->string('firstName', 50);
+            $table->string('lastName', 50);
+            $table->date('dob')->nullable()->default(NULL);
             $table->string('gender')->nullable(true); // Male
             $table->string('phone')->nullable(true); // +92000-0000-000000
             $table->string('email')->unique(); // arslanaslam@gmail.com
             $table->string('password'); // !@#Arslan$%^
             $table->string('qualification')->nullable(true); // Masters
-            $table->string('speciality')->nullable(true); // null
             $table->string('note')->nullable(true); // null
             $table->string('status'); // Active
-            $table->integer('gym_id',false,true); // 03
+            $table->integer('gym_id', false, true); // 03
+            $table->text('specialities')->nullable()->default(NULL);
             $table->timestamps();
         });
     }

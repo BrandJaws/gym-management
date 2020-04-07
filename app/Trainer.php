@@ -7,6 +7,24 @@ use Illuminate\Database\Eloquent\Model;
 class Trainer extends Model
 {
     protected $table = 'trainers';
+    protected $fillable = [
+        'firstName',
+        'lastName',
+        'dob',
+        'gender',
+        'phone',
+        'email',
+        'password',
+        'qualification',
+        'note',
+        'status',
+        'gym_id',
+        'specialities',
+    ];
+    public function userImage()
+    {
+        return $this->morphOne(Image::class, 'image');
+    }
     public static function getTrainerList($query, $sort_by, $sort_type)
     {
         return DB::table('trainers')

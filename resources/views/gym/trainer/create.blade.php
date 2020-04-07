@@ -16,80 +16,126 @@
                             </div>
                         </div>
                         <!--begin::Form-->
-                        <form action="#" method="POST" enctype="multipart/form-data" class="kt-form kt-form--label-right">
+                        <form action="{{route('trainer.create')}}" method="POST" enctype="multipart/form-data"
+                              class="kt-form kt-form--label-right">
                             @csrf
+                            <input type="hidden" name="gym_id" class="form-control" disabled
+                                   value="{{ Auth::guard('employee')->user()->gym_id }}"/>
                             <div class="kt-portlet__body">
                                 <div class="form-group row">
-                                    <div class="col-lg-4 countryDropdown">
-                                        <label class="">Gym:</label>
-                                        <select class="form-control kt-select2" id="kt_select2_1" name="gym">
-                                            @if(count($gyms) >= 0)
-                                                @foreach ($gyms as $gym)
-                                                    <option value="{{$gym->id}}">{{$gym->name}}</option>
-                                                @endforeach
-                                            @else
-                                                <p>None</p>
-                                            @endif
-                                        </select>
-                                    </div>
-                                    <div class="col-lg-4">
-                                        <label>Name:</label>
-                                        <input type="text" maxlength="15" name="name" class="form-control" placeholder="Enter full name" />
-                                    </div>
-                                    <div class="col-lg-4">
-                                        <label>Email:</label>
-                                        <input type="text" id="kt_inputmask_9" name="email" class="form-control" placeholder="Enter full email" />
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <div class="col-lg-6">
-                                        <label>Password:</label>
-                                        <input type="text" name="password" class="form-control" placeholder="Enter Your Password"/>
-                                    </div>
-                                    <div class="col-lg-6">
-                                        <label>Gender:</label>
-                                        <div class="kt-radio-inline">
-                                            <label class="kt-radio kt-radio--solid">
-                                                <input type="radio" name="gender" value="2"> Male
-                                                <span></span>
-                                            </label>
-                                            <label class="kt-radio kt-radio--solid">
-                                                <input type="radio" name="gender" value="2"> Female
-                                                <span></span>
-                                            </label>
+                                    <div class="col-lg-8 ">
+                                        <div class="form-group row">
+                                            <div class="col-lg-4 ">
+                                                <label class="">Gym:</label>
+                                                <input type="text" class="form-control" disabled
+                                                       value="{{ Auth::guard('employee')->user()->gym->name }}"/>
+                                            </div>
+                                            <div class="col-lg-4">
+                                                <label>First Name:</label>
+                                                <input type="text" maxlength="25" name="firstName" class="form-control"
+                                                       required
+                                                       placeholder="Enter First Name"/>
+                                            </div>
+                                            <div class="col-lg-4">
+                                                <label>Last Name:</label>
+                                                <input type="text" maxlength="25" name="lastName" class="form-control"
+                                                       required
+                                                       placeholder="Enter Last Name"/>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <div class="col-lg-6">
+                                                <label>Date Of Birth:</label>
+                                                <input type="date" name="dob" class="form-control" required/>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <label>Gender:</label>
+                                                <div class="kt-radio-inline">
+                                                    <label class="kt-radio kt-radio--solid">
+                                                        <input type="radio" name="gender" value="Male" required> Male
+                                                        <span></span>
+                                                    </label>
+                                                    <label class="kt-radio kt-radio--solid">
+                                                        <input type="radio" name="gender" value="Female" required>
+                                                        Female
+                                                        <span></span>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <div class="col-lg-6">
+                                                <label>Phone #</label>
+                                                <input type="number" name="phone" class="form-control"
+                                                       placeholder="Enter Phone Number "/>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <label>Email:</label>
+                                                <input type="text" name="email" class="form-control" required
+                                                       placeholder="Enter full email"/>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <div class="col-lg-6">
+                                                <label>Password:</label>
+                                                <input type="text" name="password" class="form-control"
+                                                       placeholder="Enter Password"/>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <label>Re-Password:</label>
+                                                <input type="text" name="password_confirmation" class="form-control"
+                                                       placeholder="Enter Password Confirmation"/>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <div class="col-lg-6">
+                                                <label>Qualification:</label>
+                                                <input type="text" name="qualification" class="form-control"
+                                                       placeholder="Enter Your Qualification"/>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <label>Specialites:</label>
+                                                <input type="text" name="specialites" class="form-control"
+                                                       placeholder="Enter Your Specialites"/>
+                                                <span class="help-block m-b-none" style="font-style: italic">Each separated with a comma.</span>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <div class="col-lg-12">
+                                                <label>Note:</label>
+                                                <textarea type="text" name="note" class="form-control"></textarea>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="form-group row">
-                                    <div class="col-lg-6">
-                                        <label>Phone:</label>
-                                        <input type="text" id="kt_inputmask_3" name="phone" class="form-control" placeholder="Enter Your Phone"/>
-                                    </div>
-                                    <div class="col-lg-6">
-                                        <label>Qualification:</label>
-                                        <input type="text" name="qualification" class="form-control" placeholder="Enter Your Qualification" />
-                                    </div>
-                                </div>
-                                <div class="form-group row">
                                     <div class="col-lg-4">
-                                        <label>Speciality:</label>
-                                        <input type="text" name="speciality" class="form-control" placeholder="Enter Your Speciality"/>
-                                    </div>
-                                    <div class="col-lg-4">
-                                        <label>Note:</label>
-                                        <input type="text" name="note" class="form-control" placeholder="Enter Your Note" />
-                                    </div>
-                                    <div class="col-lg-4">
-                                        <label>Status:</label>
-                                        <div class="kt-radio-inline">
-                                            <label class="kt-radio kt-radio--solid">
-                                                <input type="radio" name="status" value="2"> Active
-                                                <span></span>
-                                            </label>
-                                            <label class="kt-radio kt-radio--solid">
-                                                <input type="radio" name="status" value="2"> Inactive
-                                                <span></span>
-                                            </label>
+                                        <div class="form-group row">
+                                            <div class="col-lg-12">
+                                                <div class="profileImageSide">
+                                                    <label class="col-form-label">Trainer Image</label>
+                                                    <div class="profileImage">
+                                                        <div class="kt-avatar kt-avatar--outline kt-avatar--circle"
+                                                             id="kt_user_avatar_3">
+                                                            <div class="kt-avatar__holder"
+                                                                 style="background-image: url({{asset('assets/media/users/avatar.png')}})">
+                                                            </div>
+                                                            <label class="kt-avatar__upload" data-toggle="kt-tooltip"
+                                                                   title=""
+                                                                   data-original-title="Change avatar">
+                                                                <i class="fa fa-pen"></i>
+                                                                <input type="file" name="image"
+                                                                       accept=".png, .jpg, .jpeg">
+                                                            </label>
+                                                            <span class="kt-avatar__cancel" data-toggle="kt-tooltip"
+                                                                  title=""
+                                                                  data-original-title="Cancel avatar">
+                                                                <i class="fa fa-times"></i>
+                                                            </span>
+                                                        </div>
+                                                        <span
+                                                            class="form-text text-muted">Allowed file types: png, jpg, jpeg.</span>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>

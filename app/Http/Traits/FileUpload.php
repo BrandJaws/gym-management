@@ -56,6 +56,7 @@ trait FileUpload
             return $file;
         }
     }
+
     public function deleteEmployeeImg($id, $disk = "public")
     {
         $imageDelete = Image::where('image_type', 'App\Employee')->where('image_id', $id)->get();
@@ -98,6 +99,7 @@ trait FileUpload
             return $file;
         }
     }
+
     public function deleteSupplierImg($id, $disk = "public")
     {
         $imageDelete = Image::where('image_type', 'App\Supplier')->where('image_id', $id)->get();
@@ -140,6 +142,7 @@ trait FileUpload
             return $file;
         }
     }
+
     public function deleteMemberImg($id, $disk = "public")
     {
         $imageDelete = Image::where('image_type', 'App\Member')->where('image_id', $id)->get();
@@ -184,5 +187,48 @@ trait FileUpload
         }
     }
 
+
+    public function uploadTrainerImg(UploadedFile $uploadedFile, $modelObject, $propertyToUpdate, $filename = null, $objectId = null, $disk = "public")
+    {
+        $imageDelete = Image::where('image_type', 'App\Trainer')->where('image_id', $objectId)->get();
+        if (count($imageDelete) > -1) {
+            foreach ($imageDelete as $image) {
+                $image_path = $image->path;
+                if (file_exists($image_path)) {
+                    Storage::disk($disk)->delete($image_path);
+                }
+                Image::destroy($image->id);
+            }
+            $name = !is_null($filename) ? $filename : substr($uploadedFile->getClientOriginalName(), 0, strrpos($uploadedFile->getClientOriginalName(), "."));
+            $psudoContainer = ($objectId) ? '/' . $objectId : '';
+            $folder = 'uploads/gym/trainer' . strtolower(substr(get_class($modelObject), strrpos(get_class($modelObject), '\\') + 1)) . $psudoContainer;
+            $file = $uploadedFile->storeAs($folder, sprintf('%s_%s', str_replace(' ', '_', $name), str_replace(' ', '_', microtime())) . '.' . $uploadedFile->getClientOriginalExtension(), [
+                'disk' => $disk
+            ]);
+            $this->updateModelProperty($file, $modelObject, $propertyToUpdate, $disk);
+            return $file;
+        } else {
+            $name = !is_null($filename) ? $filename : substr($uploadedFile->getClientOriginalName(), 0, strrpos($uploadedFile->getClientOriginalName(), "."));
+            $psudoContainer = ($objectId) ? '/' . $objectId : '';
+            $folder = 'uploads/gym/trainer' . strtolower(substr(get_class($modelObject), strrpos(get_class($modelObject), '\\') + 1)) . $psudoContainer;
+            $file = $uploadedFile->storeAs($folder, sprintf('%s_%s', str_replace(' ', '_', $name), str_replace(' ', '_', microtime())) . '.' . $uploadedFile->getClientOriginalExtension(), [
+                'disk' => $disk
+            ]);
+            $this->updateModelProperty($file, $modelObject, $propertyToUpdate, $disk);
+            return $file;
+        }
+    }
+
+    public function deleteTrainerImg($id, $disk = "public")
+    {
+        $imageDelete = Image::where('image_type', 'App\Trainer')->where('image_id', $id)->get();
+        foreach ($imageDelete as $image) {
+            $image_path = $image->path;
+            if (file_exists($image_path)) {
+                Storage::disk($disk)->delete($image_path);
+            }
+            Image::destroy($image->id);
+        }
+    }
 
 }
