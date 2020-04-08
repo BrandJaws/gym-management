@@ -26,7 +26,7 @@ class SupplierController extends Controller
     public function index(Request $request)
     {
         try {
-            $supplier = Supplier::orderBy('id', 'asc')->paginate(10);
+            $supplier = Supplier::where('gym_id', '=', Auth::guard('employee')->user()->gym_id)->orderBy('id', 'asc')->paginate(10);
             if ($request->ajax()) {
                 $sort_by = $request->get('sortby');
                 $sort_type = $request->get('sorttype');
@@ -122,7 +122,7 @@ class SupplierController extends Controller
             $treasuryCashOut = Treasury::where('supplier_id', $id)->where('gym_id', Auth::guard('employee')->user()->gym_id)->where('cashFlow', 'Out')->sum('value');
             $treasuryCashExtra = Treasury::where('supplier_id', $id)->where('gym_id', Auth::guard('employee')->user()->gym_id)->where('cashFlow', 'Extra')->sum('value');
             $treasuryCashDiscount = Treasury::where('supplier_id', $id)->where('gym_id', Auth::guard('employee')->user()->gym_id)->where('cashFlow', 'Discount')->sum('value');
-            return view('gym.supplier.edit', compact('supplier','treasuryDetail','treasuryCashIn','treasuryCashOut','treasuryCashExtra','treasuryCashDiscount'));
+            return view('gym.supplier.edit', compact('supplier', 'treasuryDetail', 'treasuryCashIn', 'treasuryCashOut', 'treasuryCashExtra', 'treasuryCashDiscount'));
         } catch (\Exception $e) {
             return back()->with('error', 'Oops, something was not right');
         }

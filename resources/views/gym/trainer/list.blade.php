@@ -45,13 +45,16 @@
                                                 <thead>
                                                 <tr>
                                                     <th class="sorting" data-sorting_type="asc"
-                                                        data-column_name="name" style="cursor: pointer">Name <span
+                                                        data-column_name="firstName" style="cursor: pointer">First Name <span
                                                             id="id_icon"></span></th>
                                                     <th class="sorting" data-sorting_type="asc"
-                                                        data-column_name="email" style="cursor: pointer">Email <span
-                                                            id="post_title_icon"></span></th>
+                                                        data-column_name="lastName" style="cursor: pointer">Last Name <span
+                                                            id="id_icon"></span></th>
                                                     <th class="sorting" data-sorting_type="asc"
                                                         data-column_name="gender" style="cursor: pointer">Gender <span
+                                                            id="post_title_icon"></span></th>
+                                                    <th class="sorting" data-sorting_type="asc"
+                                                        data-column_name="email" style="cursor: pointer">Email <span
                                                             id="post_title_icon"></span></th>
                                                     <th class="sorting" data-sorting_type="asc"
                                                         data-column_name="phone" style="cursor: pointer">Phone <span
@@ -60,16 +63,10 @@
                                                         data-column_name="qualification" style="cursor: pointer">Qualification <span
                                                             id="post_title_icon"></span></th>
                                                     <th class="sorting" data-sorting_type="asc"
-                                                        data-column_name="speciality" style="cursor: pointer">Speciality <span
+                                                        data-column_name="specialities" style="cursor: pointer">Specialities <span
                                                             id="post_title_icon"></span></th>
                                                     <th class="sorting" data-sorting_type="asc"
                                                         data-column_name="status" style="cursor: pointer">Status <span
-                                                            id="post_title_icon"></span></th>
-                                                    <th class="sorting" data-sorting_type="asc"
-                                                        data-column_name="note" style="cursor: pointer">Note <span
-                                                            id="post_title_icon"></span></th>
-                                                    <th class="sorting" data-sorting_type="asc"
-                                                        data-column_name="gym_id" style="cursor: pointer">Gym <span
                                                             id="post_title_icon"></span></th>
                                                     <th class="sorting" data-sorting_type="asc"
                                                         data-column_name=" " style="cursor: pointer">Actions <span

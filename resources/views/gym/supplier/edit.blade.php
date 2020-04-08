@@ -360,4 +360,5 @@
 @section('custom-script')
     <script src="{{ asset('js/select2.js') }}"></script>
     <script src="{{asset('js/input-mask.js')}}"></script>
+    <script src="{{asset('js/ktavatar.js')}}"></script>
 @endsection

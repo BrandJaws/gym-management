@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 
 class Trainer extends Model
 {
@@ -21,22 +22,29 @@ class Trainer extends Model
         'gym_id',
         'specialities',
     ];
+
     public function userImage()
     {
         return $this->morphOne(Image::class, 'image');
     }
-    public static function getTrainerList($query, $sort_by, $sort_type)
+
+    public static function getTrainerList($searchTerm, $sort_by, $sort_type)
     {
-        return DB::table('trainers')
-            ->where('name', 'like', '%' . $query . '%')
-            ->orWhere('email', 'like', '%' . $query . '%')
-            ->orWhere('gender', 'like', '%' . $query . '%')
-            ->orWhere('phone', 'like', '%' . $query . '%')
-            ->orWhere('qualification', 'like', '%' . $query . '%')
-            ->orWhere('speciality', 'like', '%' . $query . '%')
-            ->orWhere('status', 'like', '%' . $query . '%')
-            ->orWhere('note', 'like', '%' . $query . '%')
-            ->orderBy($sort_by, $sort_type)
-            ->paginate(10);
+        return self::select([
+                'trainers.*',
+            ]
+        )->where(function ($query) use ($searchTerm, $sort_by, $sort_type) {
+            $query->where('trainers.gym_id', '=', Auth::guard('employee')->user()->gym_id);
+            if ($searchTerm) {
+                $query->where('trainers.firstName', 'like', '%' . $searchTerm . '%')
+                    ->orWhere('trainers.lastName', 'like', '%' . $searchTerm . '%')
+                    ->orWhere('trainers.gender', 'like', '%' . $searchTerm . '%')
+                    ->orWhere('trainers.phone', 'like', '%' . $searchTerm . '%')
+                    ->orWhere('trainers.email', 'like', '%' . $searchTerm . '%')
+                    ->orWhere('trainers.qualification', 'like', '%' . $searchTerm . '%')
+                    ->orWhere('trainers.specialities', 'like', '%' . $searchTerm . '%')
+                    ->orWhere('trainers.status', 'like', '%' . $searchTerm . '%');
+            }
+        })->orderBy($sort_by, $sort_type)->paginate(10);
     }
 }

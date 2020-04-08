@@ -27,6 +27,11 @@ class Treasury extends Model
         return $this->belongsTo(Employee::class, 'employee_id');
     }
 
+    public function trainer()
+    {
+        return $this->belongsTo(Trainer::class, 'trainer_id');
+    }
+
     public static function getTreasuryList($searchTerm, $sort_by, $sort_type)
     {
         return self::select([

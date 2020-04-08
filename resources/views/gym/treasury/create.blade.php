@@ -141,7 +141,7 @@
                                         <select class="form-control" name="trainer_id">
                                             <option disabled>Please select one . . . !</option>
                                             @foreach($trainer as $row)
-                                                <option value="{{ $row->id }}">{{ $row->name }}</option>
+                                                <option value="{{ $row->id }}">{{ $row->firstName }}</option>
                                             @endforeach
                                         </select>
                                     </div>

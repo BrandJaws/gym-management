@@ -148,7 +148,7 @@
                                         <label>Trainer:</label>
                                         <select class="form-control" name="trainer_id">
                                             @foreach($trainer as $row)
-                                                <option value="{{ $row->id }}"  @if($row->id == $treasury->trainer_id ) selected @endif>{{ $row->name }}</option>
+                                                <option value="{{ $row->id }}"  @if($row->id == $treasury->trainer_id ) selected @endif>{{ $row->firstName }}</option>
                                             @endforeach
                                         </select>
                                     </div>
