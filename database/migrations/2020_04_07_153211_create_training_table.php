@@ -26,6 +26,7 @@ class CreateTrainingTable extends Migration
             $table->string('promotionType')->nullable()->default(null);
             $table->date('startDate')->nullable()->default(null);
             $table->date('endDate')->nullable()->default(null);
+            $table->string('status')->nullable()->default(null);
             $table->timestamps();
         });
     }

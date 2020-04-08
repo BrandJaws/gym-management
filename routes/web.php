@@ -125,6 +125,10 @@ Route::group(['prefix' => 'gym', 'namespace' => 'Gym'], function () {
             Route::post('/daterange/fetch_data', ['as' => 'fetch_data', 'uses' => 'MemberController@fetch_data']);
         });
 
+        /*-----------------------------------------------------------------------------------*/
+        /*------------------------------------ Trainer Routes --------------------------------*/
+        /*-----------------------------------------------------------------------------------*/
+
         Route::group(['as' => 'trainer.', 'prefix' => 'trainer'], function () {
             Route::get('/', ['as' => 'list', 'uses' => 'TrainerController@index']);
             Route::get('/create', ['as' => 'create', 'uses' => 'TrainerController@create']);
@@ -132,6 +136,19 @@ Route::group(['prefix' => 'gym', 'namespace' => 'Gym'], function () {
             Route::get('/edit/{id}', ['as' => 'edit', 'uses' => 'TrainerController@edit']);
             Route::post('/edit', ['as' => 'edit', 'uses' => 'TrainerController@update']);
             Route::get('/destroy/{id}', ['as' => 'destroy', 'uses' => 'TrainerController@destroy']);
+        });
+
+        /*-----------------------------------------------------------------------------------*/
+        /*------------------------------------ Training Routes --------------------------------*/
+        /*-----------------------------------------------------------------------------------*/
+
+        Route::group(['as' => 'training.', 'prefix' => 'training'], function () {
+            Route::get('/', ['as' => 'list', 'uses' => 'TrainingController@index']);
+            Route::get('/create', ['as' => 'create', 'uses' => 'TrainingController@create']);
+            Route::post('/create', ['as' => 'create', 'uses' => 'TrainingController@store']);
+            Route::get('/edit/{id}', ['as' => 'edit', 'uses' => 'TrainingController@edit']);
+            Route::post('/edit', ['as' => 'edit', 'uses' => 'TrainingController@update']);
+            Route::get('/destroy/{id}', ['as' => 'destroy', 'uses' => 'TrainingController@destroy']);
         });
 
         /*-----------------------------------------------------------------------------------*/
