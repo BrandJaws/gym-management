@@ -167,7 +167,6 @@
                                                     </div>
                                                     <span></span>
                                                 </div>
-
                                             </div>
                                         </div>
                                         <div class="col-lg-12 videoField m-5" style="display: none">

@@ -20,7 +20,8 @@
                         <form action="{{route('trainer.create')}}" method="POST" enctype="multipart/form-data"
                               class="kt-form kt-form--label-right">
                             @csrf
-                            <input type="hidden" name="gym_id" class="form-control" value="{{ Auth::guard('employee')->user()->gym_id }}"/>
+                            <input type="hidden" name="gym_id" class="form-control"
+                                   value="{{ Auth::guard('employee')->user()->gym_id }}"/>
                             @if($errors->has('gym_id'))
                                 <div class="error">{{ $errors->first('gym_id') }}</div>
                             @endif
@@ -28,128 +29,60 @@
                                 <div class="form-group row">
                                     <div class="col-lg-8 ">
                                         <div class="form-group row">
-                                            <div class="col-lg-4 ">
-                                                <label class="">Gym:</label>
-                                                <input type="text" class="form-control" disabled
-                                                       value="{{ Auth::guard('employee')->user()->gym->name }}"/>
-                                            </div>
-                                            <div class="col-lg-4">
-                                                <label>First Name:</label>
-                                                <input type="text" maxlength="25" name="firstName" class="form-control"
-                                                       required
-                                                       placeholder="Enter First Name"/>
-                                                @if($errors->has('firstName'))
-                                                    <div class="error">{{ $errors->first('firstName') }}</div>
-                                                @endif
-                                            </div>
-                                            <div class="col-lg-4">
-                                                <label>Last Name:</label>
-                                                <input type="text" maxlength="25" name="lastName" class="form-control"
-                                                       required placeholder="Enter Last Name"/>
-                                                @if($errors->has('lastName'))
-                                                    <div class="error">{{ $errors->first('lastName') }}</div>
-                                                @endif
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
                                             <div class="col-lg-6">
-                                                <label>Date Of Birth:</label>
-                                                <input type="date" name="dob" class="form-control" required/>
-                                                @if($errors->has('dob'))
-                                                    <div class="error">{{ $errors->first('dob') }}</div>
+                                                <label>Name:</label>
+                                                <input type="text" maxlength="25" name="name" class="form-control"
+                                                       required placeholder="Enter Name"/>
+                                                @if($errors->has('name'))
+                                                    <div class="error">{{ $errors->first('name') }}</div>
                                                 @endif
                                             </div>
                                             <div class="col-lg-6">
-                                                <label>Gender:</label>
-                                                <div class="kt-radio-inline">
-                                                    <label class="kt-radio kt-radio--solid">
-                                                        <input type="radio" name="gender" value="Male" required> Male
-                                                        <span></span>
-                                                    </label>
-                                                    <label class="kt-radio kt-radio--solid">
-                                                        <input type="radio" name="gender" value="Female" required>
-                                                        Female
-                                                        <span></span>
-                                                    </label>
-                                                    @if($errors->has('gender'))
-                                                        <div class="error">{{ $errors->first('gender') }}</div>
-                                                    @endif
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <div class="col-lg-6">
-                                                <label>Phone #</label>
-                                                <input type="number" name="phone" class="form-control"
-                                                       placeholder="Enter Phone Number "/>
-                                                @if($errors->has('phone'))
-                                                    <div class="error">{{ $errors->first('phone') }}</div>
-                                                @endif
-                                            </div>
-                                            <div class="col-lg-6">
-                                                <label>Email:</label>
-                                                <input type="text" name="email" class="form-control" required
-                                                       placeholder="Enter full email"/>
-                                                @if($errors->has('email'))
-                                                    <div class="error">{{ $errors->first('email') }}</div>
-                                                @endif
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <div class="col-lg-6">
-                                                <label>Password:</label>
-                                                <input type="password" name="password" class="form-control"
-                                                       placeholder="Enter password"/>
-                                                @if($errors->has('password'))
-                                                    <div class="error">{{ $errors->first('password') }}</div>
-                                                @endif
-                                            </div>
-                                            <div class="col-lg-6">
-                                                <label>Re-Password:</label>
-                                                <input type="password" name="password_confirmation" class="form-control"
-                                                       placeholder="Enter Password Confirmation"/>
-                                                @if($errors->has('password_confirmation'))
-                                                    <div
-                                                        class="error">{{ $errors->first('password_confirmation') }}</div>
-                                                @endif
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <div class="col-lg-6">
-                                                <label>Qualification:</label>
-                                                <input type="text" name="qualification" class="form-control"
-                                                       placeholder="Enter Your Qualification"/>
-                                                @if($errors->has('qualification'))
-                                                    <div class="error">{{ $errors->first('qualification') }}</div>
-                                                @endif
-                                            </div>
-                                            <div class="col-lg-6">
-                                                <label>Specialites:</label>
-                                                <input type="text" name="specialities" class="form-control"
-                                                       placeholder="Enter Your Specialites"/>
-                                                @if($errors->has('specialities'))
-                                                    <div class="error">{{ $errors->first('specialities') }}</div>
-                                                @endif
-                                                <span class="help-block m-b-none" style="font-style: italic">Each separated with a comma.</span>
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <div class="col-lg-6">
-                                                <label>Status:</label>
-                                                <select name="status" class="form-control">
+                                                <label>Category:</label>
+                                                <select name="category_id" class="form-control">
                                                     <option value="Active">Active</option>
-                                                    <option value="Block">Block</option>
                                                 </select>
-                                                @if($errors->has('status'))
-                                                    <div class="error">{{ $errors->first('status') }}</div>
+                                                @if($errors->has('category_id'))
+                                                    <div class="error">{{ $errors->first('category_id') }}</div>
                                                 @endif
                                             </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <div class="col-lg-6">
+                                                <label>Price:</label>
+                                                <input type="number" name="price" class="form-control" required/>
+                                                @if($errors->has('price'))
+                                                    <div class="error">{{ $errors->first('price') }}</div>
+                                                @endif
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <label>In Stock:</label>
+                                                <select name="in_stock" class="form-control">
+                                                    <option value="Yes">Yes</option>
+                                                    <option value="No">No</option>
+                                                </select>
+                                                @if($errors->has('in_stock'))
+                                                    <div class="error">{{ $errors->first('in_stock') }}</div>
+                                                @endif
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
                                             <div class="col-lg-6">
                                                 <label>Note:</label>
-                                                <textarea type="text" name="note" class="form-control"
-                                                          placeholder="Enter Note"></textarea>
-                                                @if($errors->has('note'))
-                                                    <div class="error">{{ $errors->first('note') }}</div>
+                                                <textarea type="text" name="description" class="form-control"
+                                                          placeholder="Enter Description"></textarea>
+                                                @if($errors->has('description'))
+                                                    <div class="error">{{ $errors->first('description') }}</div>
+                                                @endif
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <label>In Stock:</label>
+                                                <select name="visible" class="form-control">
+                                                    <option value="Yes">Yes</option>
+                                                    <option value="No">No</option>
+                                                </select>
+                                                @if($errors->has('visible'))
+                                                    <div class="error">{{ $errors->first('visible') }}</div>
                                                 @endif
                                             </div>
                                         </div>
@@ -157,27 +90,23 @@
                                     <div class="col-lg-4">
                                         <div class="form-group row">
                                             <div class="col-lg-12">
-                                                <div class="profileImageSide">
-                                                    <label class="col-form-label">Trainer Image</label>
-                                                    <div class="profileImage">
-                                                        <div class="kt-avatar kt-avatar--outline kt-avatar--circle"
-                                                             id="kt_user_avatar_3">
+                                                <div class="form-group row">
+                                                    <label class="col-xl-4 col-lg-4 col-form-label">Select Image File</label>
+                                                    <div class="col-lg-12">
+                                                        <div class="kt-avatar" id="kt_user_avatar_2">
                                                             <div class="kt-avatar__holder"
-                                                                 style="background-image: url({{asset('assets/media/users/avatar.png')}})">
-                                                            </div>
-                                                            <label class="kt-avatar__upload" data-toggle="kt-tooltip"
-                                                                   title="" data-original-title="Change avatar">
+                                                                 style="background-image: url({{asset('assets/media/users/trainingImg.png')}})"></div>
+                                                            <label class="kt-avatar__upload"
+                                                                   data-toggle="kt-tooltip" title=""
+                                                                   data-original-title="Change avatar">
                                                                 <i class="fa fa-pen"></i>
                                                                 <input type="file" name="image"
                                                                        accept=".png, .jpg, .jpeg">
                                                             </label>
-                                                            <span class="kt-avatar__cancel" data-toggle="kt-tooltip"
-                                                                  title="" data-original-title="Cancel avatar">
-                                                                <i class="fa fa-times"></i>
-                                                            </span>
+                                                            <span class="kt-avatar__cancel" data-toggle="kt-tooltip" title="" data-original-title="Cancel avatar"><i class="fa fa-times"></i></span>
                                                         </div>
-                                                        <span
-                                                            class="form-text text-muted">Allowed file types: png, jpg, jpeg.</span>
+                                                        <span class="form-text text-muted">Allowed file types: png, jpg, jpeg.</span>
+                                                        <span></span>
                                                     </div>
                                                 </div>
                                             </div>
