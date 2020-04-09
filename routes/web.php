@@ -190,5 +190,18 @@ Route::group(['prefix' => 'gym', 'namespace' => 'Gym'], function () {
             Route::post('/edit', ['as' => 'edit', 'uses' => 'ServiceController@update']);
             Route::get('/destroy/{id}', ['as' => 'destroy', 'uses' => 'ServiceController@destroy']);
         });
+
+        /*-----------------------------------------------------------------------------------*/
+        /*------------------------------------ Shop Routes --------------------------------*/
+        /*-----------------------------------------------------------------------------------*/
+
+        Route::group(['as' => 'shop.', 'prefix' => 'shop'], function () {
+            Route::get('/', ['as' => 'list', 'uses' => 'ShopController@index']);
+            Route::get('/create', ['as' => 'create', 'uses' => 'ShopController@create']);
+            Route::post('/create', ['as' => 'create', 'uses' => 'ShopController@store']);
+            Route::get('/edit/{id}', ['as' => 'edit', 'uses' => 'ShopController@edit']);
+            Route::post('/edit', ['as' => 'edit', 'uses' => 'ShopController@update']);
+            Route::get('/destroy/{id}', ['as' => 'destroy', 'uses' => 'ShopController@destroy']);
+        });
     });
 });

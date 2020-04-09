@@ -23,6 +23,7 @@ class GymModulesSeeder extends Seeder
             array('name' => 'Treasuries', 'route' => 'treasury.list', 'activeRoute' => 'gym/treasury', 'icon' => 'flaticon2-avatar'),
             array('name' => 'Services', 'route' => 'service.list', 'activeRoute' => 'gym/service', 'icon' => 'flaticon2-avatar'),
             array('name' => 'Profile', 'route' => 'gym.profile', 'activeRoute' => 'admin/auth', 'icon' => 'flaticon-user'),
+            array('name' => 'Shop', 'route' => 'shop.list', 'activeRoute' => 'gym/shop', 'icon' => 'flaticon-users-1'),
         );
         GymModule::insert($modules);
     }
