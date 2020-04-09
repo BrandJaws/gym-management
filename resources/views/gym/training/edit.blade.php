@@ -17,11 +17,11 @@
                             </div>
                         </div>
                         <!--begin::Form-->
-                        <form action="{{route('training.create')}}" method="POST" enctype="multipart/form-data"
+                        <form action="{{route('training.edit')}}" method="POST" enctype="multipart/form-data"
                               class="kt-form kt-form--label-right">
                             @csrf
-                            <input type="hidden" name="gym_id" class="form-control"
-                                   value="{{ Auth::guard('employee')->user()->gym_id }}"/>
+                            <input type="hidden" class="form-control" name="id" value="{{ $training->id }}"/>
+                            <input type="hidden" name="gym_id" class="form-control" value="{{ Auth::guard('employee')->user()->gym_id }}"/>
                             @if($errors->has('gym_id'))
                                 <div class="error">{{ $errors->first('gym_id') }}</div>
                             @endif
@@ -36,7 +36,8 @@
                                             </div>
                                             <div class="col-lg-6">
                                                 <label>Training Name:</label>
-                                                <input type="text" maxlength="25" name="name" class="form-control" value="{{ $training->name }}"
+                                                <input type="text" maxlength="25" name="name" class="form-control"
+                                                       value="{{ $training->name }}"
                                                        required placeholder="Enter Training Name"/>
                                                 @if($errors->has('name'))
                                                     <div class="error">{{ $errors->first('name') }}</div>
@@ -46,7 +47,8 @@
                                         <div class="form-group row">
                                             <div class="col-lg-6">
                                                 <label>Number of seats available:</label>
-                                                <input type="number" maxlength="25" name="seats" class="form-control"  value="{{ $training->seats }}"
+                                                <input type="number" maxlength="25" name="seats" class="form-control"
+                                                       value="{{ $training->seats }}"
                                                        required placeholder="Enter Number of seats available"/>
                                                 @if($errors->has('seats'))
                                                     <div class="error">{{ $errors->first('seats') }}</div>
@@ -54,7 +56,8 @@
                                             </div>
                                             <div class="col-lg-6">
                                                 <label>Number of Sessions:</label>
-                                                <input type="number" maxlength="25" name="sessions" class="form-control" value="{{ $training->sessions }}"
+                                                <input type="number" maxlength="25" name="sessions" class="form-control"
+                                                       value="{{ $training->sessions }}"
                                                        required placeholder="Enter Number of Sessions"/>
                                                 @if($errors->has('sessions'))
                                                     <div class="error">{{ $errors->first('sessions') }}</div>
@@ -64,14 +67,16 @@
                                         <div class="form-group row">
                                             <div class="col-lg-6">
                                                 <label>Start Date:</label>
-                                                <input type="date" name="startDate" value="{{ $training->startDate }}" class="form-control" required />
+                                                <input type="date" name="startDate" value="{{ $training->startDate }}"
+                                                       class="form-control" required/>
                                                 @if($errors->has('startDate'))
                                                     <div class="error">{{ $errors->first('startDate') }}</div>
                                                 @endif
                                             </div>
                                             <div class="col-lg-6">
                                                 <label>End Date:</label>
-                                                <input type="date" name="endDate" class="form-control" value="{{ $training->endDate }}" required />
+                                                <input type="date" name="endDate" class="form-control"
+                                                       value="{{ $training->endDate }}" required/>
                                                 @if($errors->has('endDate'))
                                                     <div class="error">{{ $errors->first('endDate') }}</div>
                                                 @endif
@@ -80,7 +85,8 @@
                                         <div class="form-group row">
                                             <div class="col-lg-6">
                                                 <label>Price:</label>
-                                                <input type="number" name="price" class="form-control" value="{{ $training->price }}"
+                                                <input type="number" name="price" class="form-control"
+                                                       value="{{ $training->price }}"
                                                        placeholder="Enter Price"/>
                                                 @if($errors->has('price'))
                                                     <div class="error">{{ $errors->first('price') }}</div>
@@ -89,8 +95,12 @@
                                             <div class="col-lg-6">
                                                 <label>Status:</label>
                                                 <select name="status" class="form-control">
-                                                    <option value="Active" @if($training->status == "Active") selected @endif >Active</option>
-                                                    <option value="Block" @if($training->status == "Block") selected @endif >Block</option>
+                                                    <option value="Active"
+                                                            @if($training->status == "Active") selected @endif >Active
+                                                    </option>
+                                                    <option value="Block"
+                                                            @if($training->status == "Block") selected @endif >Block
+                                                    </option>
                                                 </select>
                                                 @if($errors->has('status'))
                                                     <div class="error">{{ $errors->first('status') }}</div>
@@ -114,7 +124,8 @@
                                                 <label>Trainer Name:</label>
                                                 <select name="trainer_id" class="form-control">
                                                     @foreach($trainer as $value)
-                                                        <option value="{{ $value->id }}">{{ $value->firstName }}</option>
+                                                        <option
+                                                            value="{{ $value->id }}" @if($value->id == $training->trainer_id) selected @endif >{{ $value->firstName }}</option>
                                                     @endforeach
                                                 </select>
                                                 @if($errors->has('trainer_id'))
@@ -126,11 +137,15 @@
                                             <label>Select Training Media:</label>
                                             <div class="kt-radio-inline">
                                                 <label class="kt-radio kt-radio--solid">
-                                                    <input type="radio" name="promotionType" {{ ($training->promotionType=="Image")? "checked" : "" }}  value="Image" id="Image"  onclick="changeDiv()"  required> Image
+                                                    <input type="radio" name="promotionType"
+                                                           {{ ($training->promotionType=="Image")? "checked" : "" }}  value="Image"
+                                                           id="Image" onclick="changeDiv()" required> Image
                                                     <span></span>
                                                 </label>
                                                 <label class="kt-radio kt-radio--solid">
-                                                    <input type="radio" name="promotionType" {{ ($training->promotionType=="Video")? "checked" : "" }}  value="Video" id="Video"  onclick="changeDiv()" required> Video
+                                                    <input type="radio" name="promotionType"
+                                                           {{ ($training->promotionType=="Video")? "checked" : "" }}  value="Video"
+                                                           id="Video" onclick="changeDiv()" required> Video
                                                     <span></span>
                                                 </label>
                                                 @if($errors->has('promotionType'))
@@ -147,7 +162,7 @@
                                                         <div class="kt-avatar" id="kt_user_avatar_2">
                                                             @if($training->userImage != "")
                                                                 <div class="kt-avatar__holder"
-                                                                     style="background-image: url('{{ URL::to('/') }}/{{ $employee->userImage->path }}')">
+                                                                     style="background-image: url('{{ URL::to('/') }}/{{ $training->userImage->path }}')">
                                                                 </div>
                                                             @endif
                                                             @if($training->userImage == "")
@@ -159,7 +174,7 @@
                                                                    data-toggle="kt-tooltip" title=""
                                                                    data-original-title="Change avatar">
                                                                 <i class="fa fa-pen"></i>
-                                                                <input type="file" name="profile_avatar"
+                                                                <input type="file" name="image"
                                                                        accept=".png, .jpg, .jpeg">
                                                             </label>
                                                             <span class="kt-avatar__cancel"
@@ -177,10 +192,15 @@
                                         </div>
                                         <div class="col-lg-12 videoField m-5" style="display: none">
                                             <div class="form-group row">
-                                                <label class="col-xl-6 col-lg-6 col-form-label">Link to Youtube/Vimeo Video</label>
+                                                <label class="col-xl-6 col-lg-6 col-form-label">Link to Youtube/Vimeo
+                                                    Video</label>
                                                 <div class="col-lg-11">
-                                                    <iframe width="460" height="315" src="{{((strtolower($training->promotionType) == 'video')?$training->promotionContent:'')}}" frameborder="0" allowfullscreen></iframe>
-                                                    <input type="url" name="promotionContent" value="{{ $training->promotionContent }}" class="form-control" placeholder="Paste Url" >
+                                                    <iframe width="460" height="315"
+                                                            src="{{((strtolower($training->promotionType) == 'video')?$training->promotionContent:'')}}"
+                                                            frameborder="0" allowfullscreen></iframe>
+                                                    <input type="url" name="promotionContent"
+                                                           value="{{ $training->promotionContent }}"
+                                                           class="form-control" placeholder="Paste Url">
                                                     <span></span>
                                                 </div>
                                             </div>
@@ -241,6 +261,7 @@
                 }
             }
         });
+
         function changeDiv() {
             var imageField = document.getElementById('Image');
             if (imageField.checked === true) {
