@@ -106,12 +106,7 @@ class TrainingController extends Controller
         try {
             $training = Training::find($id);
             $trainer = Trainer::where('gym_id', '=', Auth::guard('employee')->user()->gym_id)->orderBy('id', 'asc')->get();
-            $treasuryDetail = Treasury::where('trainer_id', $id)->where('gym_id', Auth::guard('employee')->user()->gym_id)->paginate(10);
-            $treasuryCashIn = Treasury::where('trainer_id', $id)->where('gym_id', Auth::guard('employee')->user()->gym_id)->where('cashFlow', 'In')->sum('value');
-            $treasuryCashOut = Treasury::where('trainer_id', $id)->where('gym_id', Auth::guard('employee')->user()->gym_id)->where('cashFlow', 'Out')->sum('value');
-            $treasuryCashExtra = Treasury::where('trainer_id', $id)->where('gym_id', Auth::guard('employee')->user()->gym_id)->where('cashFlow', 'Extra')->sum('value');
-            $treasuryCashDiscount = Treasury::where('trainer_id', $id)->where('gym_id', Auth::guard('employee')->user()->gym_id)->where('cashFlow', 'Discount')->sum('value');
-            return view('gym.training.edit', compact('training', 'trainer', 'treasuryDetail', 'treasuryCashIn', 'treasuryCashOut', 'treasuryCashExtra', 'treasuryCashDiscount'));
+            return view('gym.training.edit', compact('training', 'trainer'));
         } catch (\Exception $e) {
             return back()->with('error', 'Oops, something was not right in treasury update page');
         }

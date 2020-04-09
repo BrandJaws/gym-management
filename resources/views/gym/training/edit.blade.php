@@ -224,6 +224,61 @@
                     <!--end::Portlet-->
                 </div>
             </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <!--begin::Portlet-->
+                    <div class="kt-portlet">
+                        <div class="kt-portlet__head">
+                            <div class="kt-portlet__head-label">
+                                <h3 class="kt-portlet__head-title">
+                                    Persons Taking This Training
+                                </h3>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-lg-12 ">
+                                <div class="kt-portlet__body">
+                                    <table class="table table-striped- table-bordered table-hover table-checkable">
+                                        <thead>
+                                        <tr>
+                                            <th>No.</th>
+                                            <th>Trainer</th>
+                                            <th>Cash Flow</th>
+                                            <th>Type</th>
+                                            <th>Value</th>
+                                            <th>Date</th>
+                                            <th>Purpose</th>
+                                            <th>Note</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <?php $i = 1; ?>
+                                            <tr>
+                                                <th>{{$i}}</th>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                            </tr>
+                                            <?php  $i++; ?>
+                                        <tr>
+                                            <td colspan="8" align="center">
+{{--                                                {{ $treasuryDetail->links() }}--}}
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <!--end::Portlet-->
+                </div>
+            </div>
         </div>
         <!-- end:: Content -->
     </div>
