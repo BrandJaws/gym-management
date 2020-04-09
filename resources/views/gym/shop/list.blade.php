@@ -28,12 +28,13 @@
                                         <div class="row">
                                             <div class="col-md-3">
                                                 <div class="dropdown dropdown-inline">
-                                                    <a href="#" type="button" class="btn btn-brand btn-icon-sm">
+                                                    <a href="#" type="button"
+                                                       class="btn btn-brand btn-icon-sm"
+                                                       data-toggle="modal" data-target="#kt_modal_6">
                                                         <i class="flaticon2-plus"></i> Add Category
                                                     </a>
                                                 </div>
-
-                                                <div class="table-responsive m-2">
+                                                <div class="table-responsive" style="margin-top: 10px;">
                                                     <table class="table table-striped table-bordered">
                                                         <thead>
                                                         <tr>
@@ -132,6 +133,35 @@
         <!-- end:: Content -->
     </div>
 
+
+
+    {{--    Modal Content    --}}
+
+    <div class="modal fade" id="kt_modal_6" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" style="display: none;" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Shop Category</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form action="">
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" name="name" class="form-control" placeholder="Enter Your Name" />
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
     <script>
 
         $(document).ready(function () {
@@ -199,4 +229,5 @@
 @endsection
 @section('custom-script')
     <script src="{{ asset('js/sweetalert2.js') }}"></script>
+
 @endsection
