@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Gym;
 
 use App\Http\Controllers\Controller;
+use App\Http\Traits\FileUpload;
 use App\Image;
 use App\ShopCategory;
 use App\ShopProduct;
@@ -13,6 +14,7 @@ use Illuminate\Support\Facades\Validator;
 
 class ShopController extends Controller
 {
+    use FileUpload;
     public function index(Request $request)
     {
         try {
@@ -33,40 +35,44 @@ class ShopController extends Controller
     }
     public function create()
     {
-        return view('gym.shop.create');
+        $shopCategory = ShopProduct::where('gym_id', '=', Auth::guard('employee')->user()->gym_id)->orderBy('id', 'asc')->get();
+        return view('gym.shop.create', compact('shopCategory'));
     }
     public function store(Request $request)
     {
         try {
             $validator = Validator::make($request->all(), [
-                'status' => 'required',
-                'name' => 'required',
-                'phone' => 'required',
+                'category_id' => 'required',
                 'gym_id' => 'required',
-                'email' => 'nullable|email|unique:suppliers',
+                'name' => 'required',
+                'description' => 'required',
+                'price' => 'required',
+                'in_stock' => 'required',
+                'visible' => 'required',
             ]);
             if ($validator->fails()) {
                 return Redirect::back()->withErrors($validator);
             }
-            $supplier = new Supplier();
-            $supplier->fill($request->only([
-                'status',
+            $shopProduct = new ShopProduct();
+            $shopProduct->fill($request->only([
+                'category_id',
+                'gym_id',
                 'name',
-                'phone',
-                'email',
-                'note',
-                'gym_id'
+                'description',
+                'price',
+                'in_stock',
+                'visible'
             ]));
-            $supplier->save();
+            $shopProduct->save();
             if ($request->hasFile('image')) {
                 $images = [];
                 $image = $request->file('image');
                 $userImage = new Image();
-                $this->uploadSupplier($image, $userImage, 'path', null, $supplier->id);
+                $this->uploadProductImg($image, $userImage, 'path', null, $shopProduct->id);
                 $images[] = $userImage;
-                $supplier->userImage()->saveMany($images, $supplier);
+                $shopProduct->userImage()->saveMany($images, $shopProduct);
             }
-            return back()->with('success', 'Supplier Created Successfully!');
+            return back()->with('success', 'Product Created Successfully!');
         } catch (\Exception $e) {
             return response()->json([
                 'response' => $e
@@ -94,8 +100,9 @@ class ShopController extends Controller
     public function edit($id)
     {
         try {
+            $shopCategory = ShopProduct::where('gym_id', '=', Auth::guard('employee')->user()->gym_id)->orderBy('id', 'asc')->get();
             $shop = ShopCategory::find($id);
-            return view('gym.shop.edit', compact('shop'));
+            return view('gym.shop.edit', compact('shop','shopCategory'));
         } catch (\Exception $e) {
             return back()->with('error', 'Oops, something was not right');
         }
@@ -110,36 +117,40 @@ class ShopController extends Controller
      */
     public function update(Request $request)
     {
-        $supplier_id = $request->id;
+        $product_id = $request->id;
         try {
             $validator = Validator::make($request->all(), [
-                'status' => 'required',
-                'name' => 'required',
-                'phone' => 'required',
+                'category_id' => 'required',
                 'gym_id' => 'required',
-                'email' => 'nullable|unique:suppliers,email,' . $supplier_id,
+                'name' => 'required',
+                'description' => 'required',
+                'price' => 'required',
+                'in_stock' => 'required',
+                'visible' => 'required',
             ]);
             if ($validator->fails()) {
                 return Redirect::back()->withErrors($validator);
             }
-            $supplier = Supplier::where('id', $supplier_id)->first();
-            $supplier->fill($request->only([
+            $shopProduct = ShopProduct::where('id', $product_id)->first();
+            $shopProduct->fill($request->only([
+                'category_id',
+                'gym_id',
                 'name',
-                'duration',
-                'amount',
-                'monthlyFee',
-                'detail',
+                'description',
+                'price',
+                'in_stock',
+                'visible'
             ]));
-            $supplier->save();
+            $shopProduct->save();
             if ($request->hasFile('image')) {
                 $images = [];
                 $image = $request->file('image');
                 $userImage = new Image();
-                $this->uploadSupplier($image, $userImage, 'path', null, $supplier_id);
+                $this->uploadProductImg($image, $userImage, 'path', null, $product_id);
                 $images[] = $userImage;
-                $supplier->userImage()->saveMany($images, $supplier);
+                $shopProduct->userImage()->saveMany($images, $shopProduct);
             }
-            return back()->with('success', 'Supplier Updated Successfully!');
+            return back()->with('success', 'Product Updated Successfully!');
         } catch (\Exception $e) {
             return response()->json([
                 'response' => $e
@@ -156,9 +167,9 @@ class ShopController extends Controller
     public function destroy($id)
     {
         try {
-            Supplier::destroy($id);
-            $this->deleteSupplierImg($id);
-            return back()->with('success', 'Supplier Deleted Successfully!');
+            ShopProduct::destroy($id);
+            $this->deleteProductImg($id);
+            return back()->with('success', 'Product Deleted Successfully!');
         } catch (\Exception $e) {
             return back()->with('error', 'Oops, something was not right');
         }

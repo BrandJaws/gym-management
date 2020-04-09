@@ -12,12 +12,12 @@
                         <div class="kt-portlet__head">
                             <div class="kt-portlet__head-label">
                                 <h3 class="kt-portlet__head-title">
-                                    Create A Trainer
+                                    Create A Product
                                 </h3>
                             </div>
                         </div>
                         <!--begin::Form-->
-                        <form action="{{route('trainer.create')}}" method="POST" enctype="multipart/form-data"
+                        <form action="{{route('shop.create')}}" method="POST" enctype="multipart/form-data"
                               class="kt-form kt-form--label-right">
                             @csrf
                             <input type="hidden" name="gym_id" class="form-control"
@@ -40,7 +40,9 @@
                                             <div class="col-lg-6">
                                                 <label>Category:</label>
                                                 <select name="category_id" class="form-control">
-                                                    <option value="Active">Active</option>
+                                                    @foreach($shopCategory as $row)
+                                                        <option value="{{ $row->id}}">{{ $row->name}}</option>
+                                                    @endforeach
                                                 </select>
                                                 @if($errors->has('category_id'))
                                                     <div class="error">{{ $errors->first('category_id') }}</div>
@@ -50,7 +52,8 @@
                                         <div class="form-group row">
                                             <div class="col-lg-6">
                                                 <label>Price:</label>
-                                                <input type="number" name="price" class="form-control" required/>
+                                                <input type="number" name="price" class="form-control"
+                                                       placeholder="Enter Price" required/>
                                                 @if($errors->has('price'))
                                                     <div class="error">{{ $errors->first('price') }}</div>
                                                 @endif
@@ -91,7 +94,8 @@
                                         <div class="form-group row">
                                             <div class="col-lg-12">
                                                 <div class="form-group row">
-                                                    <label class="col-xl-4 col-lg-4 col-form-label">Select Image File</label>
+                                                    <label class="col-xl-4 col-lg-4 col-form-label">Select Image
+                                                        File</label>
                                                     <div class="col-lg-12">
                                                         <div class="kt-avatar" id="kt_user_avatar_2">
                                                             <div class="kt-avatar__holder"
@@ -103,7 +107,9 @@
                                                                 <input type="file" name="image"
                                                                        accept=".png, .jpg, .jpeg">
                                                             </label>
-                                                            <span class="kt-avatar__cancel" data-toggle="kt-tooltip" title="" data-original-title="Cancel avatar"><i class="fa fa-times"></i></span>
+                                                            <span class="kt-avatar__cancel" data-toggle="kt-tooltip"
+                                                                  title="" data-original-title="Cancel avatar"><i
+                                                                    class="fa fa-times"></i></span>
                                                         </div>
                                                         <span class="form-text text-muted">Allowed file types: png, jpg, jpeg.</span>
                                                         <span></span>
