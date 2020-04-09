@@ -140,17 +140,46 @@
                                         </div>
                                         <div class="col-lg-12 imageField m-5" style="display: none">
                                             <div class="form-group row">
-                                                <label class="col-xl-4 col-lg-4 col-form-label">Select Image File</label>
+                                                <label class="col-xl-4 col-lg-4 col-form-label">Select Image
+                                                    File</label>
                                                 <div class="col-lg-11">
-                                                    <input type="file"  name="image" class="form-control" >
+                                                    <div class="col-lg-9 col-xl-6">
+                                                        <div class="kt-avatar" id="kt_user_avatar_2">
+                                                            @if($training->userImage != "")
+                                                                <div class="kt-avatar__holder"
+                                                                     style="background-image: url('{{ URL::to('/') }}/{{ $employee->userImage->path }}')">
+                                                                </div>
+                                                            @endif
+                                                            @if($training->userImage == "")
+                                                                <div class="kt-avatar__holder"
+                                                                     style="background-image: url({{asset('assets/media/users/trainingImg.png')}})">
+                                                                </div>
+                                                            @endif
+                                                            <label class="kt-avatar__upload"
+                                                                   data-toggle="kt-tooltip" title=""
+                                                                   data-original-title="Change avatar">
+                                                                <i class="fa fa-pen"></i>
+                                                                <input type="file" name="profile_avatar"
+                                                                       accept=".png, .jpg, .jpeg">
+                                                            </label>
+                                                            <span class="kt-avatar__cancel"
+                                                                  data-toggle="kt-tooltip" title=""
+                                                                  data-original-title="Cancel avatar">
+														<i class="fa fa-times"></i>
+													</span>
+                                                        </div>
+                                                        <span class="form-text text-muted">Allowed file types: png, jpg, jpeg.</span>
+                                                    </div>
                                                     <span></span>
                                                 </div>
+
                                             </div>
                                         </div>
                                         <div class="col-lg-12 videoField m-5" style="display: none">
                                             <div class="form-group row">
                                                 <label class="col-xl-6 col-lg-6 col-form-label">Link to Youtube/Vimeo Video</label>
                                                 <div class="col-lg-11">
+                                                    <iframe width="460" height="315" src="{{((strtolower($training->promotionType) == 'video')?$training->promotionContent:'')}}" frameborder="0" allowfullscreen></iframe>
                                                     <input type="url" name="promotionContent" value="{{ $training->promotionContent }}" class="form-control" placeholder="Paste Url" >
                                                     <span></span>
                                                 </div>
@@ -186,6 +215,32 @@
     <script src="{{asset('js/input-mask.js')}}"></script>
     <script src="{{asset('js/ktavatar.js')}}"></script>
     <script type="text/javascript">
+        $(document).ready(function () {
+            var imageField = document.getElementById('Image');
+            if (imageField.checked == true) {
+                var div = document.getElementsByClassName('imageField');
+                for (var i = 0; i < div.length; i++) {
+                    $(div[i]).show();
+                }
+            } else {
+                var div = document.getElementsByClassName('imageField');
+                for (var i = 0; i < div.length; i++) {
+                    $(div[i]).hide();
+                }
+            }
+            var videoField = document.getElementById('Video');
+            if (videoField.checked === true) {
+                var div = document.getElementsByClassName('videoField');
+                for (var i = 0; i < div.length; i++) {
+                    div[i].style.display = "block";
+                }
+            } else {
+                var div = document.getElementsByClassName('videoField');
+                for (var i = 0; i < div.length; i++) {
+                    div[i].style.display = "none";
+                }
+            }
+        });
         function changeDiv() {
             var imageField = document.getElementById('Image');
             if (imageField.checked === true) {

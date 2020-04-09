@@ -23,10 +23,13 @@ class CreateTrainingTable extends Migration
             $table->integer('sessions', false, true)->default(0);
             $table->integer('price', false, true)->default(0);
             $table->text('promotionContent')->nullable()->default(null);
-            $table->string('promotionType')->nullable()->default(null);
             $table->date('startDate')->nullable()->default(null);
             $table->date('endDate')->nullable()->default(null);
             $table->string('status')->nullable()->default(null);
+            $table->enum('promotionType', [
+                config('global.contentType.Image'),
+                config('global.contentType.Video')
+            ])->default(config('global.contentType.image'));
             $table->timestamps();
         });
     }

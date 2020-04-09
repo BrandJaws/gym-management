@@ -1,6 +1,6 @@
 <?php
 return [
-    
+
     'gender' => [
         'male' => 'MALE',
         'female' => 'FEMALE'
@@ -83,8 +83,8 @@ return [
     ],
 
     'contentType' => [
-        'image' => 'IMAGE',
-        'video' => 'VIDEO'
+        'Image' => 'Image',
+        'Video' => 'Video'
     ],
     'image_path' => [
         'user_profile_path' => 'uploads/profile/{member_id}/',

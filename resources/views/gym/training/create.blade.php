@@ -64,14 +64,14 @@
                                         <div class="form-group row">
                                             <div class="col-lg-6">
                                                 <label>Start Date:</label>
-                                                <input type="date" name="startDate" class="form-control" required />
+                                                <input type="date" name="startDate" class="form-control" required/>
                                                 @if($errors->has('startDate'))
                                                     <div class="error">{{ $errors->first('startDate') }}</div>
                                                 @endif
                                             </div>
                                             <div class="col-lg-6">
                                                 <label>End Date:</label>
-                                                <input type="date" name="endDate" class="form-control" required />
+                                                <input type="date" name="endDate" class="form-control" required/>
                                                 @if($errors->has('endDate'))
                                                     <div class="error">{{ $errors->first('endDate') }}</div>
                                                 @endif
@@ -110,27 +110,30 @@
                                     </div>
                                     <div class="col-lg-4">
                                         <div class="form-group row">
-                                        <div class="col-lg-12">
-                                            <label>Trainer Name:</label>
-                                            <select name="trainer_id" class="form-control">
-                                                @foreach($trainer as $value)
-                                                    <option value="{{ $value->id }}">{{ $value->firstName }}</option>
-                                                @endforeach
-                                            </select>
-                                            @if($errors->has('trainer_id'))
-                                                <div class="error">{{ $errors->first('trainer_id') }}</div>
-                                            @endif
-                                        </div>
+                                            <div class="col-lg-12">
+                                                <label>Trainer Name:</label>
+                                                <select name="trainer_id" class="form-control">
+                                                    @foreach($trainer as $value)
+                                                        <option
+                                                            value="{{ $value->id }}">{{ $value->firstName }}</option>
+                                                    @endforeach
+                                                </select>
+                                                @if($errors->has('trainer_id'))
+                                                    <div class="error">{{ $errors->first('trainer_id') }}</div>
+                                                @endif
+                                            </div>
                                         </div>
                                         <div class="col-lg-12">
                                             <label>Select Training Media:</label>
                                             <div class="kt-radio-inline">
                                                 <label class="kt-radio kt-radio--solid">
-                                                    <input type="radio" name="promotionType" value="Image" id="Image"  onclick="changeDiv()"  required> Image
+                                                    <input type="radio" name="promotionType" value="Image" id="Image"
+                                                           onclick="changeDiv()" required> Image
                                                     <span></span>
                                                 </label>
                                                 <label class="kt-radio kt-radio--solid">
-                                                    <input type="radio" name="promotionType" value="Video" id="Video"  onclick="changeDiv()" required> Video
+                                                    <input type="radio" name="promotionType" value="Video" id="Video"
+                                                           onclick="changeDiv()" required> Video
                                                     <span></span>
                                                 </label>
                                                 @if($errors->has('promotionType'))
@@ -140,22 +143,51 @@
                                         </div>
                                         <div class="col-lg-12 imageField m-5" style="display: none">
                                             <div class="form-group row">
-                                                <label class="col-xl-4 col-lg-4 col-form-label">Select Image File</label>
+                                                <label class="col-xl-4 col-lg-4 col-form-label">Select Image
+                                                    File</label>
                                                 <div class="col-lg-11">
-                                                    <input type="file"  name="image" class="form-control" >
+                                                    <div class="col-lg-9 col-xl-6">
+                                                        <div class="kt-avatar" id="kt_user_avatar_2">
+                                                            <div class="kt-avatar__holder"
+                                                                 style="background-image: url({{asset('assets/media/users/trainingImg.png')}})"></div>
+                                                            <label class="kt-avatar__upload"
+                                                                   data-toggle="kt-tooltip" title=""
+                                                                   data-original-title="Change avatar">
+                                                                <i class="fa fa-pen"></i>
+                                                                <input type="file" name="image"
+                                                                       accept=".png, .jpg, .jpeg">
+                                                            </label>
+                                                            <span class="kt-avatar__cancel"
+                                                                  data-toggle="kt-tooltip" title=""
+                                                                  data-original-title="Cancel avatar">
+														<i class="fa fa-times"></i>
+													</span>
+                                                        </div>
+                                                        <span class="form-text text-muted">Allowed file types: png, jpg, jpeg.</span>
+                                                    </div>
                                                     <span></span>
                                                 </div>
+
                                             </div>
                                         </div>
                                         <div class="col-lg-12 videoField m-5" style="display: none">
                                             <div class="form-group row">
-                                                <label class="col-xl-6 col-lg-6 col-form-label">Link to Youtube/Vimeo Video</label>
+                                                <label class="col-xl-6 col-lg-6 col-form-label">Link to Youtube/Vimeo
+                                                    Video</label>
                                                 <div class="col-lg-11">
-                                                    <input type="url" name="promotionContent" class="form-control" placeholder="Paste Url" >
+                                                    <input type="url" name="promotionContent" class="form-control"
+                                                           placeholder="Paste Url">
                                                     <span></span>
                                                 </div>
+
                                             </div>
                                         </div>
+                                        @if($errors->has('image'))
+                                            <div class="error">{{ $errors->first('image') }}</div>
+                                        @endif
+                                        @if($errors->has('promotionContent'))
+                                            <div class="error">{{ $errors->first('promotionContent') }}</div>
+                                        @endif
                                     </div>
                                 </div>
                             </div>

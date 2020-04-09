@@ -69,12 +69,13 @@ class TrainingController extends Controller
                 'trainer_id' => 'required',
                 'seats' => 'required',
                 'sessions' => 'required',
-                'startDate' => 'required',
-                'endDate' => 'required',
+                'startDate' => 'required|date_format:Y-m-d',
+                'endDate' => 'required|date_format:Y-m-d',
                 'price' => 'required',
                 'status' => 'required',
                 'promotionType' => 'required',
-                'description' => 'required',
+                'image' => 'nullable|image|image|mimes:jpeg,bmp,png,jpg|max:1024',
+                'description' => 'required|min:1,max:250',
             ]);
             if ($validator->fails()) {
                 return Redirect::back()->withErrors($validator);
