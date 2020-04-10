@@ -1,6 +1,8 @@
+<?php $i = 1; ?>
 @foreach($shopProduct as $row)
     <tr>
-        <td>{{ $row->category_id}}</td>
+        <th>{{$i}}</th>
+        <td>{{ $row->category->name }}</td>
         <td>{{ $row->name }}</td>
         <td>{{ $row->description }}</td>
         <td>{{ $row->price }}</td>
@@ -16,9 +18,10 @@
             </a>
         </td>
     </tr>
+    <?php  $i++; ?>
 @endforeach
 <tr>
-    <td colspan="7" align="center">
+    <td colspan="8" align="center">
         {!! $shopProduct->links() !!}
     </td>
 </tr>

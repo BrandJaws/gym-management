@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Validator;
 class ShopController extends Controller
 {
     use FileUpload;
+
     public function index(Request $request)
     {
         try {
@@ -28,16 +29,18 @@ class ShopController extends Controller
                 $shopProduct = ShopProduct::getProductList($searchTerm, $sort_by, $sort_type);
                 return view('gym.shop.pagination_data', compact('shopProduct'))->render();
             }
-            return view('gym.shop.list', compact('shopProduct','shopCategory'));
+            return view('gym.shop.list', compact('shopProduct', 'shopCategory'));
         } catch (\Exception $e) {
             return back()->with('error', 'Oops, something was not right');
         }
     }
+
     public function create()
     {
-        $shopCategory = ShopProduct::where('gym_id', '=', Auth::guard('employee')->user()->gym_id)->orderBy('id', 'asc')->get();
+        $shopCategory = ShopCategory::where('gym_id', '=', Auth::guard('employee')->user()->gym_id)->orderBy('id', 'asc')->get();
         return view('gym.shop.create', compact('shopCategory'));
     }
+
     public function store(Request $request)
     {
         try {
@@ -102,7 +105,7 @@ class ShopController extends Controller
         try {
             $shopCategory = ShopProduct::where('gym_id', '=', Auth::guard('employee')->user()->gym_id)->orderBy('id', 'asc')->get();
             $shop = ShopCategory::find($id);
-            return view('gym.shop.edit', compact('shop','shopCategory'));
+            return view('gym.shop.edit', compact('shop', 'shopCategory'));
         } catch (\Exception $e) {
             return back()->with('error', 'Oops, something was not right');
         }
@@ -174,4 +177,39 @@ class ShopController extends Controller
             return back()->with('error', 'Oops, something was not right');
         }
     }
+
+    public function storeCategory(Request $request)
+    {
+        try {
+            $validator = Validator::make($request->all(), [
+                'gym_id' => 'required',
+                'name' => 'required',
+            ]);
+            if ($validator->fails()) {
+                return Redirect::back()->withErrors($validator);
+            }
+            $shopCategory = new ShopCategory();
+            $shopCategory->fill($request->only([
+                'gym_id',
+                'name',
+            ]));
+            $shopCategory->save();
+            return back()->with('success', 'Category Created Successfully!');
+        } catch (\Exception $e) {
+            return response()->json([
+                'response' => $e
+            ], 400);
+        }
+    }
+
+    public function destroyCategory($id)
+    {
+        try {
+            ShopCategory::destroy($id);
+            return back()->with('success', 'Category Deleted Successfully!');
+        } catch (\Exception $e) {
+            return back()->with('error', 'Oops, something was not right');
+        }
+    }
+
 }

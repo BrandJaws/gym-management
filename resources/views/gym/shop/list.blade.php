@@ -44,19 +44,28 @@
                                                         </tr>
                                                         </thead>
                                                         <tbody>
+                                                        <?php $i = 1; ?>
                                                         @foreach($shopCategory as $row)
                                                             <tr>
-                                                                <td>1</td>
+                                                                <th>{{$i}}</th>
                                                                 <td>{{ $row->name}}</td>
-                                                                <td>{{ $row->name}}</td>
+                                                                <td>
+                                                                    <a href="{{url('/gym/shop/edit', $row->id)}}">
+                                                                        <i class="fa fa-edit"></i>
+                                                                    </a> &nbsp; | &nbsp;
+                                                                    <a href="{{url('/gym/shop/destroyCategory', $row->id)}}"
+                                                                       onclick="return confirm('Are you sure you want to delete it?')">
+                                                                        <i class="fa fa-trash"></i>
+                                                                    </a>
+                                                                </td>
                                                             </tr>
+                                                            <?php  $i++; ?>
                                                         @endforeach
                                                         <tr>
                                                             <td colspan="3" align="center">
                                                                 {!! $shopCategory->links() !!}
                                                             </td>
                                                         </tr>
-
                                                         </tbody>
                                                     </table>
                                                 </div>
@@ -84,22 +93,28 @@
                                                     <table class="table table-striped table-bordered">
                                                         <thead>
                                                         <tr>
+                                                            <th>No.</th>
                                                             <th class="sorting" data-sorting_type="asc"
-                                                                data-column_name="category_id" style="cursor: pointer">Category <span id="id_icon"></span></th>
+                                                                data-column_name="category_id" style="cursor: pointer">
+                                                                Category <span id="id_icon"></span></th>
                                                             <th class="sorting" data-sorting_type="asc"
-                                                                data-column_name="name" style="cursor: pointer">Name <span id="id_icon"></span></th>
+                                                                data-column_name="name" style="cursor: pointer">Name
+                                                                <span id="id_icon"></span></th>
                                                             <th class="sorting" data-sorting_type="asc"
-                                                                data-column_name="description" style="cursor: pointer">Description
+                                                                data-column_name="description" style="cursor: pointer">
+                                                                Description
                                                                 <span id="post_title_icon"></span></th>
                                                             <th class="sorting" data-sorting_type="asc"
                                                                 data-column_name="price" style="cursor: pointer">Price
                                                                 <span id="post_title_icon"></span></th>
                                                             <th class="sorting" data-sorting_type="asc"
-                                                                data-column_name="in_stock" style="cursor: pointer">In Stock
+                                                                data-column_name="in_stock" style="cursor: pointer">In
+                                                                Stock
                                                                 <span id="post_title_icon"></span></th>
                                                             <th class="sorting" data-sorting_type="asc"
                                                                 data-column_name="visible"
-                                                                style="cursor: pointer">Visible <span id="post_title_icon"></span></th>
+                                                                style="cursor: pointer">Visible <span
+                                                                    id="post_title_icon"></span></th>
                                                             <th class="sorting" data-sorting_type="asc"
                                                                 data-column_name=" " style="cursor: pointer">Actions
                                                                 <span id="post_title_icon"></span></th>
@@ -137,27 +152,38 @@
 
     {{--    Modal Content    --}}
 
-    <div class="modal fade" id="kt_modal_6" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" style="display: none;" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLongTitle">Shop Category</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <form action="">
+    <div class="modal fade" id="kt_modal_6" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+         style="display: none;" aria-hidden="true">
+        <form action="{{route('shop.storeCategory')}}" method="POST" enctype="multipart/form-data">
+            @csrf
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <input type="hidden" name="gym_id" class="form-control"
+                       value="{{ Auth::guard('employee')->user()->gym_id }}"/>
+                @if($errors->has('gym_id'))
+                    <div class="error">{{ $errors->first('gym_id') }}</div>
+                @endif
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle">Shop Category</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        </button>
+                    </div>
+                    <div class="modal-body">
                         <div class="form-group">
                             <label for="name">Name</label>
-                            <input type="text" name="name" class="form-control" placeholder="Enter Your Name" />
+                            <input type="text" name="name" class="form-control" required
+                                   placeholder="Enter Category Name"/>
                         </div>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-primary">Save</button>
+                        @if($errors->has('name'))
+                            <div class="error">{{ $errors->first('name') }}</div>
+                        @endif
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary">Save</button>
+                    </div>
                 </div>
             </div>
-        </div>
+        </form>
     </div>
 
 

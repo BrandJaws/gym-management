@@ -21,6 +21,12 @@ class ShopProduct extends Model
     {
         return $this->morphOne(Image::class, 'image');
     }
+
+    public function category()
+    {
+        return $this->belongsTo(ShopCategory::class,'category_id');
+    }
+
     public static function getProductList($searchTerm, $sort_by, $sort_type)
     {
         return self::select([
