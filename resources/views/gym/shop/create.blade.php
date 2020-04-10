@@ -61,8 +61,8 @@
                                             <div class="col-lg-6">
                                                 <label>In Stock:</label>
                                                 <select name="in_stock" class="form-control">
-                                                    <option value="Yes">Yes</option>
-                                                    <option value="No">No</option>
+                                                    <option value="YES">Yes</option>
+                                                    <option value="NO">No</option>
                                                 </select>
                                                 @if($errors->has('in_stock'))
                                                     <div class="error">{{ $errors->first('in_stock') }}</div>
@@ -81,8 +81,8 @@
                                             <div class="col-lg-6">
                                                 <label>In Stock:</label>
                                                 <select name="visible" class="form-control">
-                                                    <option value="Yes">Yes</option>
-                                                    <option value="No">No</option>
+                                                    <option value="YES">Yes</option>
+                                                    <option value="NO">No</option>
                                                 </select>
                                                 @if($errors->has('visible'))
                                                     <div class="error">{{ $errors->first('visible') }}</div>

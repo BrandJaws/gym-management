@@ -20,6 +20,7 @@
                         <form action="{{route('shop.edit')}}" method="POST" enctype="multipart/form-data"
                               class="kt-form kt-form--label-right">
                             @csrf
+                            <input type="hidden" name="id" value="{{ $shop->id }}"/>
                             <input type="hidden" name="gym_id" class="form-control"
                                    value="{{ Auth::guard('employee')->user()->gym_id }}"/>
                             @if($errors->has('gym_id'))
@@ -31,7 +32,7 @@
                                         <div class="form-group row">
                                             <div class="col-lg-6">
                                                 <label>Name:</label>
-                                                <input type="text" maxlength="25" name="name" class="form-control"
+                                                <input type="text" maxlength="25" name="name" class="form-control" value="{{ $shop->name }}"
                                                        required placeholder="Enter Name"/>
                                                 @if($errors->has('name'))
                                                     <div class="error">{{ $errors->first('name') }}</div>
@@ -41,7 +42,7 @@
                                                 <label>Category:</label>
                                                 <select name="category_id" class="form-control">
                                                     @foreach($shopCategory as $row)
-                                                        <option value="{{ $row->id}}">{{ $row->name}}</option>
+                                                        <option value="{{ $row->id }}" @if($shop->category_id ==  $row->id) selected @endif>{{ $row->name}}</option>
                                                     @endforeach
                                                 </select>
                                                 @if($errors->has('category_id'))
@@ -52,7 +53,7 @@
                                         <div class="form-group row">
                                             <div class="col-lg-6">
                                                 <label>Price:</label>
-                                                <input type="number" name="price" class="form-control"
+                                                <input type="number" name="price" class="form-control" value="{{ $shop->price }}"
                                                        placeholder="Enter Price" required/>
                                                 @if($errors->has('price'))
                                                     <div class="error">{{ $errors->first('price') }}</div>
@@ -61,8 +62,8 @@
                                             <div class="col-lg-6">
                                                 <label>In Stock:</label>
                                                 <select name="in_stock" class="form-control">
-                                                    <option value="Yes">Yes</option>
-                                                    <option value="No">No</option>
+                                                    <option value="YES" @if($shop->in_stock ==  "YES") selected @endif>Yes</option>
+                                                    <option value="NO" @if($shop->in_stock ==  "NO") selected @endif>No</option>
                                                 </select>
                                                 @if($errors->has('in_stock'))
                                                     <div class="error">{{ $errors->first('in_stock') }}</div>
@@ -73,7 +74,7 @@
                                             <div class="col-lg-6">
                                                 <label>Note:</label>
                                                 <textarea type="text" name="description" class="form-control"
-                                                          placeholder="Enter Description"></textarea>
+                                                          placeholder="Enter Description">{{ $shop->description }}</textarea>
                                                 @if($errors->has('description'))
                                                     <div class="error">{{ $errors->first('description') }}</div>
                                                 @endif
@@ -81,8 +82,8 @@
                                             <div class="col-lg-6">
                                                 <label>In Stock:</label>
                                                 <select name="visible" class="form-control">
-                                                    <option value="Yes">Yes</option>
-                                                    <option value="No">No</option>
+                                                    <option value="YES" @if($shop->visible ==  "YES") selected @endif>Yes</option>
+                                                    <option value="NO" @if($shop->visible ==  "NO") selected @endif>No</option>
                                                 </select>
                                                 @if($errors->has('visible'))
                                                     <div class="error">{{ $errors->first('visible') }}</div>
@@ -98,8 +99,16 @@
                                                         File</label>
                                                     <div class="col-lg-12">
                                                         <div class="kt-avatar" id="kt_user_avatar_2">
-                                                            <div class="kt-avatar__holder"
-                                                                 style="background-image: url({{asset('assets/media/users/trainingImg.png')}})"></div>
+                                                            @if($shop->userImage != "")
+                                                                <div class="kt-avatar__holder"
+                                                                     style="background-image: url('{{ URL::to('/') }}/{{ $shop->userImage->path }}')">
+                                                                </div>
+                                                            @endif
+                                                            @if($shop->userImage == "")
+                                                                <div class="kt-avatar__holder"
+                                                                     style="background-image: url({{asset('assets/media/users/trainingImg.png')}})">
+                                                                </div>
+                                                            @endif
                                                             <label class="kt-avatar__upload"
                                                                    data-toggle="kt-tooltip" title=""
                                                                    data-original-title="Change avatar">

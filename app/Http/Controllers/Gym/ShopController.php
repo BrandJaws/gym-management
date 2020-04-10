@@ -20,7 +20,7 @@ class ShopController extends Controller
     {
         try {
             $shopProduct = ShopProduct::where('gym_id', '=', Auth::guard('employee')->user()->gym_id)->orderBy('id', 'asc')->paginate(10);
-            $shopCategory = ShopCategory::where('gym_id', '=', Auth::guard('employee')->user()->gym_id)->orderBy('id', 'asc')->paginate(10);
+            $shopCategory = ShopCategory::where('gym_id', '=', Auth::guard('employee')->user()->gym_id)->orderBy('id', 'asc')->get();
             if ($request->ajax()) {
                 $sort_by = $request->get('sortby');
                 $sort_type = $request->get('sorttype');
@@ -103,8 +103,8 @@ class ShopController extends Controller
     public function edit($id)
     {
         try {
-            $shopCategory = ShopProduct::where('gym_id', '=', Auth::guard('employee')->user()->gym_id)->orderBy('id', 'asc')->get();
-            $shop = ShopCategory::find($id);
+            $shopCategory = ShopCategory::where('gym_id', '=', Auth::guard('employee')->user()->gym_id)->orderBy('id', 'asc')->get();
+            $shop = ShopProduct::find($id);
             return view('gym.shop.edit', compact('shop', 'shopCategory'));
         } catch (\Exception $e) {
             return back()->with('error', 'Oops, something was not right');
@@ -180,21 +180,19 @@ class ShopController extends Controller
 
     public function storeCategory(Request $request)
     {
+
         try {
             $validator = Validator::make($request->all(), [
-                'gym_id' => 'required',
                 'name' => 'required',
             ]);
             if ($validator->fails()) {
                 return Redirect::back()->withErrors($validator);
             }
-            $shopCategory = new ShopCategory();
-            $shopCategory->fill($request->only([
-                'gym_id',
-                'name',
-            ]));
+            $shopCategory = new ShopCategory ();
+            $shopCategory->gym_id = Auth::guard('employee')->user()->gym_id;
+            $shopCategory->name = $request->name;
             $shopCategory->save();
-            return back()->with('success', 'Category Created Successfully!');
+            return response()->json($shopCategory);
         } catch (\Exception $e) {
             return response()->json([
                 'response' => $e
@@ -202,11 +200,32 @@ class ShopController extends Controller
         }
     }
 
-    public function destroyCategory($id)
+    public function editItem(Request $req)
     {
         try {
-            ShopCategory::destroy($id);
-            return back()->with('success', 'Category Deleted Successfully!');
+            $validator = Validator::make($req->all(), [
+                'name' => 'required',
+            ]);
+            if ($validator->fails()) {
+                return Redirect::back()->withErrors($validator);
+            }
+            $shopCategory = ShopCategory::find($req->id);
+            $shopCategory->name = $req->name;
+            $shopCategory->save();
+            return response()->json($shopCategory);
+        } catch (\Exception $e) {
+            return response()->json([
+                'response' => $e
+            ], 400);
+        }
+    }
+
+    public function destroyCategory(Request $req)
+    {
+        try {
+            ShopCategory::find( $req->id )->delete ();
+            ShopProduct::where('category_id',$req->id )->delete ();
+            return response ()->json ();
         } catch (\Exception $e) {
             return back()->with('error', 'Oops, something was not right');
         }

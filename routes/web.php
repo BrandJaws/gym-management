@@ -202,9 +202,10 @@ Route::group(['prefix' => 'gym', 'namespace' => 'Gym'], function () {
             Route::get('/edit/{id}', ['as' => 'edit', 'uses' => 'ShopController@edit']);
             Route::post('/edit', ['as' => 'edit', 'uses' => 'ShopController@update']);
             Route::get('/destroy/{id}', ['as' => 'destroy', 'uses' => 'ShopController@destroy']);
-
+            /*------------------------------------ Shop Category Routes --------------------------------*/
             Route::post('/storeCategory', ['as' => 'storeCategory', 'uses' => 'ShopController@storeCategory']);
-            Route::get('/destroyCategory/{id}', ['as' => 'destroyCategory', 'uses' => 'ShopController@destroyCategory']);
+            Route::post('/destroyCategory', ['as' => 'destroyCategory', 'uses' => 'ShopController@destroyCategory']);
+            Route::post('/editItem', ['as' => 'editItem', 'uses' => 'ShopController@editItem']);
         });
     });
 });
