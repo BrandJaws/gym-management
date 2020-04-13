@@ -149,6 +149,13 @@ Route::group(['prefix' => 'gym', 'namespace' => 'Gym'], function () {
             Route::get('/edit/{id}', ['as' => 'edit', 'uses' => 'TrainingController@edit']);
             Route::post('/edit', ['as' => 'edit', 'uses' => 'TrainingController@update']);
             Route::get('/destroy/{id}', ['as' => 'destroy', 'uses' => 'TrainingController@destroy']);
+
+            /*------------------------------------ Training Group Routes --------------------------------*/
+            Route::post('/createTrainingGroup', ['as' => 'createTrainingGroup', 'uses' => 'TrainingController@createTrainingGroup']);
+            Route::get('/editTrainingGroup/{id}', ['as' => 'editTrainingGroup', 'uses' => 'TrainingController@editTrainingGroup']);
+            Route::post('/editTrainingGroup', ['as' => 'editTrainingGroup', 'uses' => 'TrainingController@updateTrainingGroup']);
+            Route::delete('/destroyTrainingGroup/{id}', ['as' => 'destroyTrainingGroup', 'uses' => 'TrainingController@destroyTrainingGroup']);
+
         });
 
         /*-----------------------------------------------------------------------------------*/

@@ -5,8 +5,10 @@ namespace App\Http\Controllers\Gym;
 use App\Http\Controllers\Controller;
 use App\Http\Traits\FileUpload;
 use App\Image;
+use App\Member;
 use App\Trainer;
 use App\Training;
+use App\TrainingGroup;
 use App\Treasury;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -105,8 +107,11 @@ class TrainingController extends Controller
     {
         try {
             $training = Training::find($id);
+            $trainingGroup = TrainingGroup::where('gym_id', '=', Auth::guard('employee')->user()->gym_id)->where('training_id', '=', $id)->orderBy('id', 'desc')->paginate(5);
+            $groupCount = $trainingGroup->count();
             $trainer = Trainer::where('gym_id', '=', Auth::guard('employee')->user()->gym_id)->orderBy('id', 'asc')->get();
-            return view('gym.training.edit', compact('training', 'trainer'));
+            $member = Member::where('gym_id', '=', Auth::guard('employee')->user()->gym_id)->orderBy('id', 'asc')->get();
+            return view('gym.training.edit', compact('training', 'trainer', 'trainingGroup', 'member', 'groupCount'));
         } catch (\Exception $e) {
             return back()->with('error', 'Oops, something was not right in treasury update page');
         }
@@ -177,6 +182,46 @@ class TrainingController extends Controller
             return back()->with('success', 'Trainer Deleted Successfully!');
         } catch (\Exception $e) {
             return back()->with('error', 'Oops, something was not right in training delete function');
+        }
+    }
+
+
+    public function createTrainingGroup(Request $request)
+    {
+
+        $request->validate([
+            'member_id'       => 'required',
+            'training_id' => 'required',
+        ]);
+            $group = TrainingGroup::where('member_id', '=', $request->member_id)->first();
+            if ($group === null) {
+                $post = TrainingGroup::updateOrCreate(['id' => $request->id], [
+                    'member_id' => $request->member_id,
+                    'gym_id' => Auth::guard('employee')->user()->gym_id,
+                    'training_id' => $request->training_id,
+                ]);
+                return response()->json(['code' => 200, 'message' => 'Post Created successfully', 'data' => $post], 200);
+            }
+                return response()->json(['code' => 400, 'message' => 'error'], 400);
+    }
+
+    public function editTrainingGroup($id)
+    {
+        try {
+            $post = TrainingGroup::find($id);
+            return response()->json($post);
+        } catch (\Exception $e) {
+            return back()->with('error', 'Oops, something was not right in treasury update page');
+        }
+    }
+
+    public function destroyTrainingGroup($id)
+    {
+        try {
+            TrainingGroup::find($id)->delete();
+            return response()->json(['success' => 'Post Deleted successfully']);
+        } catch (\Exception $e) {
+            return back()->with('error', 'Oops, something was not right in treasury update page');
         }
     }
 
