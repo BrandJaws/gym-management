@@ -79,7 +79,7 @@
                                                 @endif
                                             </div>
                                             <div class="col-lg-6">
-                                                <label>In Stock:</label>
+                                                <label>Visible:</label>
                                                 <select name="visible" class="form-control">
                                                     <option value="YES">Yes</option>
                                                     <option value="NO">No</option>

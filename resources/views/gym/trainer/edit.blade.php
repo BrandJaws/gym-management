@@ -7,13 +7,7 @@
             <div class="row">
                 <div class="col-xl-3 col-lg-3">
                     <div class="kt-portlet kt-portlet--height-fluid">
-                        <div class="kt-portlet__head kt-portlet__head--noborder">
-                            <div class="kt-portlet__head-label">
-                                <h3 class="kt-portlet__head-title">
-                                </h3>
-                            </div>
-                        </div>
-                        <div class="kt-portlet__body kt-portlet__body--fit-y">
+                        <div class="kt-portlet__body kt-portlet__body--fit-y dashboardTopBox">
                             <!--begin::Widget -->
                             <div class="kt-widget kt-widget--user-profile-4">
                                 <div class="kt-widget__head">
@@ -35,20 +29,13 @@
                                     </div>
                                 </div>
                             </div>
-
                             <!--end::Widget -->
                         </div>
                     </div>
                 </div>
                 <div class="col-xl-3 col-lg-3">
                     <div class="kt-portlet kt-portlet--height-fluid">
-                        <div class="kt-portlet__head kt-portlet__head--noborder">
-                            <div class="kt-portlet__head-label">
-                                <h3 class="kt-portlet__head-title">
-                                </h3>
-                            </div>
-                        </div>
-                        <div class="kt-portlet__body kt-portlet__body--fit-y">
+                        <div class="kt-portlet__body kt-portlet__body--fit-y dashboardTopBox">
                             <!--begin::Widget -->
                             <div class="kt-widget kt-widget--user-profile-4">
                                 <div class="kt-widget__head">
@@ -78,13 +65,7 @@
                 </div>
                 <div class="col-xl-3 col-lg-3">
                     <div class="kt-portlet kt-portlet--height-fluid">
-                        <div class="kt-portlet__head kt-portlet__head--noborder">
-                            <div class="kt-portlet__head-label">
-                                <h3 class="kt-portlet__head-title">
-                                </h3>
-                            </div>
-                        </div>
-                        <div class="kt-portlet__body kt-portlet__body--fit-y">
+                        <div class="kt-portlet__body kt-portlet__body--fit-y dashboardTopBox">
                             <!--begin::Widget -->
                             <div class="kt-widget kt-widget--user-profile-4">
                                 <div class="kt-widget__head">
@@ -112,13 +93,7 @@
                 </div>
                 <div class="col-xl-3 col-lg-3">
                     <div class="kt-portlet kt-portlet--height-fluid">
-                        <div class="kt-portlet__head kt-portlet__head--noborder">
-                            <div class="kt-portlet__head-label">
-                                <h3 class="kt-portlet__head-title">
-                                </h3>
-                            </div>
-                        </div>
-                        <div class="kt-portlet__body kt-portlet__body--fit-y">
+                        <div class="kt-portlet__body kt-portlet__body--fit-y dashboardTopBox">
                             <!--begin::Widget -->
                             <div class="kt-widget kt-widget--user-profile-4">
                                 <div class="kt-widget__head">
