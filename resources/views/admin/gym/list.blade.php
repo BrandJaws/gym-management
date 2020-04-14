@@ -79,13 +79,13 @@
                             <!--end::Section-->
                         </div>
                         <!--end::Form-->
-                        <div class="kt-portlet__foot" style="padding: 10px 25px;">
-                            <div class="dropdown float-right">
-                                <a href="{{route('gym.licenseList')}}" type="button" class="btn btn-brand btn-icon-sm">
-                                    <i class="flaticon2-right-arrow"></i> License
-                                </a>
-                            </div>
-                        </div>
+{{--                        <div class="kt-portlet__foot" style="padding: 10px 25px;">--}}
+{{--                            <div class="dropdown float-right">--}}
+{{--                                <a href="{{route('gym.licenseList')}}" type="button" class="btn btn-brand btn-icon-sm">--}}
+{{--                                    <i class="flaticon2-right-arrow"></i> License--}}
+{{--                                </a>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
                     </div>
                     <!--end::Portlet-->
                 </div>

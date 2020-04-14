@@ -212,7 +212,7 @@
                                 <div class="kt-form__actions">
                                     <div class="row">
                                         <div class="col-12">
-                                            <input type="submit" value="Save" class="btn btn-primary">
+                                            <input type="submit" value="Update" class="btn btn-primary">
                                             <a href="{{route('treasury.list')}}" class="btn btn-secondary">Cancel</a>
                                         </div>
                                     </div>

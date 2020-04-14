@@ -60,7 +60,7 @@
                     <a href="{{asset(url('/'))}}" type="button" class="btn btn-primary">Go to Site</a>
                 </div>
                 <!--begin::Body-->
-                <div class="kt-login__body">
+                <div class="kt-login__body loginSection">
                     <!--begin::Signin-->
                     <div class="kt-login__form">
                         <div class="kt-login__title">

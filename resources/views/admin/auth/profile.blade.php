@@ -2,12 +2,16 @@
 @section('content')
     <div class="kt-content  kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor" id="kt_content">
         <!-- begin:: Content -->
-        @include('_layouts.flash-message')
         <form action="{{route('admin.profile')}}" method="POST" enctype="multipart/form-data"
               class="kt-form kt-form--label-right">
             {{csrf_field()}}
             <input type="hidden" value="{{ Auth::guard('admin')->user()->id }}" name="user_id">
             <div class="kt-container  kt-container--fluid  kt-grid__item kt-grid__item--fluid">
+                <div class="row">
+                    <div class="col-md-12 mt-2">
+                        @include('_layouts.flash-message')
+                    </div>
+                </div>
                 <div class="row">
                     <div class="col-lg-12">
                         <!--begin::Portlet-->

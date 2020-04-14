@@ -47,7 +47,7 @@
                                             </label>
                                         </div>
                                     </div>
-                                    <div class="col-lg-6">
+                                    <div class="col-lg-6 gymDropdown">
                                         <label>Gym:</label>
                                         @if(count($gym) > 1)
                                             <select class="form-control kt-select2" id="kt_select2_3" name="gym_id[]"
@@ -92,4 +92,6 @@
 @endsection
 @section('custom-script')
     <script src="{{ asset('js/select2.js') }}"></script>
+
 @endsection
+

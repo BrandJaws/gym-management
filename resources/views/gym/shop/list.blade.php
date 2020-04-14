@@ -150,13 +150,13 @@
         </div>
         <!-- end:: Content -->
     </div>
-    <div id="myModal" class="modal fade" role="dialog">
+    <div id="myModal" class="modal fade shopCategoryModal" role="dialog">
         <div class="modal-dialog">
             <!-- Modal content-->
             <div class="modal-content">
                 <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title"></h4>
+                    <button type="button" class="close" data-dismiss="modal"></button>
+                    <h4 class="modal-title">Edit</h4>
                 </div>
                 <div class="modal-body">
                     <form action="{{route('shop.storeCategory')}}" class="form-horizontal" role="form" method="POST"
@@ -256,7 +256,6 @@
             });
 
         </script>
-
 @endsection
 @section('custom-script')
             <script src="{{ asset('js/sweetalert2.js') }}"></script>

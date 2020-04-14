@@ -76,7 +76,21 @@
     padding: 16px 0px;
     font-size: 17px;
 }
-
+.loginSection .alert button.close {
+    position: absolute;
+    right: 0;
+    margin-right: 10px;
+    color: #fff;
+    opacity: 1;
+    font-size: 26px;
+    margin-top: 5px;
+}
+.loginSection .alert {
+    position: relative;
+    padding: 16px 20px;
+    font-size: 17px;
+    display: flex;
+}
 .gymDropdown span.select2 {
     width:100%!important;
 }
@@ -86,6 +100,7 @@
 }
 .gymDropdown span.select2 .select2-selection--multiple .select2-selection__rendered {
     padding: 4px 14px;
+    list-style-type: none;
 }
 .select2-container--default .select2-selection--multiple .select2-selection__rendered .select2-selection__choice {
     padding: 2px;
@@ -417,4 +432,7 @@ body a {
 }
 
 
+.shopCategoryModal .modal-content .modal-header {
+    display: block;
+}
 
