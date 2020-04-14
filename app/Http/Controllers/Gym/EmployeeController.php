@@ -56,14 +56,8 @@ class EmployeeController extends Controller
     {
         try {
             $gym = Gym::where('parent_id', '=', Auth::guard('employee')->user()->parentGym->id)->get();
-            $moduleList = [];
-            $gymModule = GymModule::all();
-            $gymPermission = GymPermission::where('gym_id', Auth::guard('employee')->user()->parentGym->id)->get();
-            foreach ($gymPermission as $permissions) {
-                array_push($moduleList, $permissions->gym_module_id);
-            }
-
-            return view('gym.employee.create', compact('gym','gymModule','moduleList'));
+            $gymModule = GymPermission::where('gym_id', '=', Auth::guard('employee')->user()->parentGym->id)->get();
+            return view('gym.employee.create', compact('gym', 'gymModule'));
         } catch (\Exception $e) {
             return back()->with('error', 'Oops, something was not right in employee add page');
         }
@@ -127,7 +121,7 @@ class EmployeeController extends Controller
                     EmployeePermission::insert(
                         [
                             'gym_module_id' => $value,
-                            'employee_id' =>  $employee->id,
+                            'employee_id' => $employee->id,
                             'gym_id' => Auth::guard('employee')->user()->gym->id
                         ]
                     );
@@ -161,10 +155,16 @@ class EmployeeController extends Controller
     public function edit($id)
     {
         try {
+            $moduleList = [];
             $employee = Employee::find($id);
             $gym = Gym::where('parent_id', '=', Auth::guard('employee')->user()->parentGym->id)->get();
             $treasuryDetail = Treasury::where('employeeId', $id)->where('gym_id', Auth::guard('employee')->user()->gym_id)->paginate(10);
-            return view('gym.employee.edit', compact('employee', 'gym', 'treasuryDetail'));
+            $gymModule = GymPermission::where('gym_id', '=', Auth::guard('employee')->user()->parentGym->id)->get();
+            $gymPermission = EmployeePermission::where('employee_id', $id)->get();
+            foreach ($gymPermission as $permissions) {
+                array_push($moduleList, $permissions->gym_module_id);
+            }
+            return view('gym.employee.edit', compact('employee', 'gym', 'treasuryDetail', 'gymModule','moduleList'));
         } catch (\Exception $e) {
             return back()->with('error', 'Oops, something was not right in employee update page');
         }
@@ -228,6 +228,19 @@ class EmployeeController extends Controller
                 $this->uploadEmployee($image, $userImage, 'path', null, $employee->id);
                 $images[] = $userImage;
                 $employee->userImage()->saveMany($images, $employee);
+            }
+            EmployeePermission::where('employee_id', $id)->delete();
+            $modules = $request->get('modules');
+            if ($modules != "") {
+                foreach ($modules as $value) {
+                    EmployeePermission::insert(
+                        [
+                            'gym_module_id' => $value,
+                            'employee_id' => $id,
+                            'gym_id' => Auth::guard('employee')->user()->gym_id
+                        ]
+                    );
+                }
             }
             return back()->with('success', 'Employee Updated Successfully!');
         } catch (\Exception $e) {
