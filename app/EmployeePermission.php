@@ -16,6 +16,6 @@ class EmployeePermission extends Model
 
     public function gymModules()
     {
-        return $this->belongsTo(GymModule::class, 'gym_module_id', 'id');
+        return $this->belongsToMany(GymModule::class, 'gym_module_id');
     }
 }
