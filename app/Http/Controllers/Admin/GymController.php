@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Country;
 use App\Employee;
+use App\EmployeePermission;
 use App\Facilities;
 use App\Gym;
 use App\GymModule;
@@ -13,6 +14,7 @@ use App\Http\Controllers\Controller;
 use App\License;
 use App\Service;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Validator;
@@ -138,6 +140,13 @@ class GymController extends Controller
                             'gym_id' => $gymId
                         ]
                     );
+                    EmployeePermission::insert(
+                        [
+                            'gym_module_id' => $value,
+                            'employee_id' =>  $employee->id,
+                            'gym_id' => $gymId
+                        ]
+                    );
                 }
             }
             return back()->with('success', 'Gym Created Successfully!');
@@ -253,12 +262,20 @@ class GymController extends Controller
             ]));
             $license->save();
             GymPermission::where('gym_id', $gym_Id)->delete();
+            EmployeePermission::where('gym_id', $gym_Id)->delete();
             $modules = $request->get('modules');
             if ($modules != "") {
                 foreach ($modules as $value) {
                     GymPermission::insert(
                         [
                             'gym_module_id' => $value,
+                            'gym_id' => $gym_Id
+                        ]
+                    );
+                    EmployeePermission::insert(
+                        [
+                            'gym_module_id' => $value,
+                            'employee_id' =>  $employee->id,
                             'gym_id' => $gym_Id
                         ]
                     );

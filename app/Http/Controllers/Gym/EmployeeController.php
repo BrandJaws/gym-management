@@ -3,7 +3,10 @@
 namespace App\Http\Controllers\Gym;
 
 use App\Employee;
+use App\EmployeePermission;
 use App\Gym;
+use App\GymModule;
+use App\GymPermission;
 use App\Http\Controllers\Controller;
 use App\Http\Traits\FileUpload;
 use App\Image;
@@ -53,7 +56,14 @@ class EmployeeController extends Controller
     {
         try {
             $gym = Gym::where('parent_id', '=', Auth::guard('employee')->user()->parentGym->id)->get();
-            return view('gym.employee.create', compact('gym'));
+            $moduleList = [];
+            $gymModule = GymModule::all();
+            $gymPermission = GymPermission::where('gym_id', Auth::guard('employee')->user()->parentGym->id)->get();
+            foreach ($gymPermission as $permissions) {
+                array_push($moduleList, $permissions->gym_module_id);
+            }
+
+            return view('gym.employee.create', compact('gym','gymModule','moduleList'));
         } catch (\Exception $e) {
             return back()->with('error', 'Oops, something was not right in employee add page');
         }
@@ -110,6 +120,18 @@ class EmployeeController extends Controller
                 $this->uploadEmployee($image, $userImage, 'path', null, $employee->id);
                 $images[] = $userImage;
                 $employee->userImage()->saveMany($images, $employee);
+            }
+            $modules = $request->get('modules');
+            if ($modules != "") {
+                foreach ($modules as $value) {
+                    EmployeePermission::insert(
+                        [
+                            'gym_module_id' => $value,
+                            'employee_id' =>  $employee->id,
+                            'gym_id' => Auth::guard('employee')->user()->gym->id
+                        ]
+                    );
+                }
             }
             return back()->with('success', 'Employee Created Successfully!');
         } catch (\Exception $e) {
