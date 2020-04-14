@@ -3,6 +3,7 @@
     <div class="kt-content  kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor" id="kt_content">
         <!-- begin:: Content -->
         <div class="kt-container  kt-container--fluid  kt-grid__item kt-grid__item--fluid">
+            @include('_layouts.flash-message')
             <div class="row">
                 <div class="col-sm-12">
                     <!--begin::Portlet-->
@@ -19,7 +20,6 @@
                                 </a>
                             </div>
                         </div>
-                        @include('_layouts.flash-message')
                         <div class="kt-portlet__body">
                             <!--begin::Section-->
                             <div class="kt-section">
