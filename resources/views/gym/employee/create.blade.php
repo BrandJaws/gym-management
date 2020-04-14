@@ -227,10 +227,7 @@
                                                                 @foreach ($gymModule as $module)
                                                                     <div class="col-md-5">
                                                                         <label class="kt-checkbox">
-                                                                            <input type="checkbox" name="modules[]"
-                                                                                   value="{{$module->id}}"
-                                                                                {{in_array("$module->id",$moduleList)?"checked":""}}>
-                                                                            {{$module->name}}
+                                                                            <input type="checkbox" name="modules[]" value="{{$module->gym_module_id}}">{{$module->gymModules->name}}
                                                                             <span></span>
                                                                         </label>
                                                                     </div>

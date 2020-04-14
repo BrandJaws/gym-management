@@ -8,6 +8,7 @@ class GymModule extends Model
 {
     protected $table = 'gym_modules';
     protected $fillable = [
+        'id',
         'name',
         'status',
     ];

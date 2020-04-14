@@ -224,6 +224,40 @@
                                                 </div>
                                             </div>
                                         </div>
+                                        <div class="kt-portlet">
+                                            <div class="kt-portlet__head">
+                                                <div class="kt-portlet__head-label">
+                                                    <h3 class="kt-portlet__head-title">
+                                                        Update Permissions
+                                                    </h3>
+                                                </div>
+                                            </div>
+                                            <!--begin::Form-->
+                                            <div class="kt-portlet__body">
+                                                <div class="form-group row">
+                                                    <div class="kt-checkbox-list">
+                                                        <div class="row">
+                                                            @if(count($gymModule) >= 0)
+                                                                @foreach ($gymModule as $module)
+                                                                    <div class="col-md-5">
+                                                                        <label class="kt-checkbox">
+                                                                            <input type="checkbox" name="modules[]" value="{{$module->gym_module_id}}"
+                                                                                {{in_array("$module->gym_module_id",$moduleList)?"checked":""}}
+                                                                            >{{$module->gymModules->name}}
+                                                                            <span></span>
+                                                                        </label>
+                                                                    </div>
+                                                                @endforeach
+                                                            @else
+                                                                <p>None</p>
+                                                            @endif
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!--end::Form-->
+                                            </div>
+                                            <!--end::Form-->
+                                        </div>
                                     </div>
                                 </div>
                             </div>
