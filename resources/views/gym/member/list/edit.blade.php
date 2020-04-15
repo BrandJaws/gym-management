@@ -575,7 +575,7 @@
                                                 <?php  $i++; ?>
                                             @endforeach
                                             <tr>
-                                                <td colspan="8" align="center">
+                                                <td colspan="9" align="center">
                                                     {{ $callHistory->links() }}
                                                 </td>
                                             </tr>

@@ -80,7 +80,7 @@
 
                                             <div class="col-lg-6">
                                                 <label>Note:</label>
-                                                <textarea name="note" class="form-control"
+                                                <textarea name="note" class="form-control" required
                                                           placeholder="Enter Note"></textarea>
                                                 @if($errors->has('note'))
                                                     <div class="error">{{ $errors->first('note') }}</div>
