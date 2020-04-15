@@ -474,6 +474,60 @@
                 </div>
                 <div class="row">
                     <div class="col-lg-12">
+                        <!--begin::Portlet-->
+                        <div class="kt-portlet">
+                            <div class="kt-portlet__head">
+                                <div class="kt-portlet__head-label">
+                                    <h3 class="kt-portlet__head-title">
+                                        Training History
+                                    </h3>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-lg-12 ">
+                                    <div class="kt-portlet__body">
+                                        <table
+                                            class="table table-striped- table-bordered table-hover table-checkable">
+                                            <thead>
+                                            <tr>
+                                                <th>No.</th>
+                                                <th>Training</th>
+                                                <th>Start Date</th>
+                                                <th>End Date</th>
+                                                <th>Session</th>
+                                                <th>Price</th>
+                                                <th>Trainer</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <?php $i = 1; ?>
+                                            @foreach($training as $row)
+                                                <tr>
+                                                    <th>{{$i}}</th>
+                                                    <td>{{ $row->training->name }}</td>
+                                                    <td>{{ $row->training->startDate }}</td>
+                                                    <td>{{ $row->training->endDate }}</td>
+                                                    <td>{{ $row->training->sessions }}</td>
+                                                    <td>{{ $row->training->price }}</td>
+                                                    <td> @if($row->training->trainer != "") {{ $row->training->trainer->firstName }} @endif</td>
+                                                </tr>
+                                                <?php  $i++; ?>
+                                            @endforeach
+                                            <tr>
+                                                <td colspan="8" align="center">
+                                                    {{ $treasuryDetail->links() }}
+                                                </td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <!--end::Portlet-->
+                    </div>
+                    <div class="col-lg-12">
                             <!--begin::Portlet-->
                             <div class="kt-portlet">
                                 <div class="kt-portlet__head">

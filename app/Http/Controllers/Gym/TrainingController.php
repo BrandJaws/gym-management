@@ -110,7 +110,7 @@ class TrainingController extends Controller
             $trainingGroup = TrainingGroup::where('gym_id', '=', Auth::guard('employee')->user()->gym_id)->where('training_id', '=', $id)->orderBy('id', 'desc')->paginate(5);
             $groupCount = $trainingGroup->count();
             $trainer = Trainer::where('gym_id', '=', Auth::guard('employee')->user()->gym_id)->orderBy('id', 'asc')->get();
-            $member = Member::where('gym_id', '=', Auth::guard('employee')->user()->gym_id)->orderBy('id', 'asc')->get();
+            $member = Member::where('gym_id', '=', Auth::guard('employee')->user()->gym_id)->where('type', '=', 'Member')->orderBy('id', 'asc')->get();
             return view('gym.training.edit', compact('training', 'trainer', 'trainingGroup', 'member', 'groupCount'));
         } catch (\Exception $e) {
             return back()->with('error', 'Oops, something was not right in treasury update page');

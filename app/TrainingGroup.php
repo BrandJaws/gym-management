@@ -18,4 +18,9 @@ class TrainingGroup extends Model
     {
         return $this->belongsTo(Member::class, 'member_id');
     }
+
+    public function training()
+    {
+        return $this->belongsTo(Training::class, 'training_id');
+    }
 }
