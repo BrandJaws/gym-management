@@ -232,6 +232,7 @@
                             </ul>
                         </div>
                     </div>
+
                     <div class="kt-portlet__body">
                         <div class="tab-content">
                             <div class="tab-pane active" id="kt_widget4_tab1_content">

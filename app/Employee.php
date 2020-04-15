@@ -47,10 +47,9 @@ class Employee extends Authenticatable
     {
         return $this->belongsTo(Gym::class, 'gym_id', 'parent_id');
     }
-
     public function employeePermissions()
     {
-        return $this->belongsTo(EmployeePermission::class, 'id','employee_id');
+        return $this->hasMany(EmployeePermission::class, 'employee_id', 'id');
     }
 
     public static function getEmployeeList($searchTerm, $sort_by, $sort_type)
@@ -83,4 +82,7 @@ class Employee extends Authenticatable
         $string = preg_replace("/[^0-9\.]/", '', $latest->code);
         return 'Emp-' . sprintf('%04d', $string + 1);
     }
+
 }
+
+
