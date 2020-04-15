@@ -15,13 +15,9 @@
     @yield('custom-css')
     @include('_partials.css-assets')
 <!--end::Layout Skins -->
-    <link rel="shortcut icon" href="{{asset('assets/media/logos/favicon.ico')}}"/>
-
+    <link rel="shortcut icon" href="{{asset('assets/media/logos/brandjaws.png')}}"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
-
-
 </head>
 <!-- end::Head -->
 <!-- begin::Body -->
@@ -35,7 +31,6 @@
             <img alt="Logo" src="{{asset('assets/media/logos/logo-light.png')}}"/>
         </a>
     </div>
-
     <div class="kt-header-mobile__toolbar">
         <button class="kt-header-mobile__toggler kt-header-mobile__toggler--left" id="kt_aside_mobile_toggler">
             <span></span>
@@ -51,7 +46,6 @@
         <!-- Uncomment this to display the close button of the panel
 <button class="kt-aside-close " id="kt_aside_close_btn"><i class="la la-close"></i></button>
 -->
-
     @if(Request::is('gym/*') || Request::is('gym'))
         @include('gym.__partials.sidebar')
     @else
@@ -86,12 +80,10 @@
     </div>
 </div>
 <!-- end:: Page -->
-
 <!-- begin::Scrolltop -->
 <div id="kt_scrolltop" class="kt-scrolltop">
     <i class="fa fa-arrow-up"></i>
 </div>
-
 <!-- begin::Global Config(global config for global JS sciprts) -->
 <script>
     var KTAppOptions = {
@@ -126,7 +118,6 @@
 <!-- end::Global Config -->
 <script src="{{ asset('js/app.js') }}"></script>
 @yield('custom-script')
-
 <!--end::Page Scripts -->
 </body>
 <!-- end::Body -->

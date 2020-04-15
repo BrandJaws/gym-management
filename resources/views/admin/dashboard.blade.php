@@ -76,7 +76,7 @@
                                 <div class="kt-widget__content">
                                     <div class="kt-widget__section">
                                         <a href="#" class="kt-widget__username">
-                                            Total Super Admins
+                                            Total Admins
                                         </a>
                                         <div class="kt-widget__button">
                                             <h2>{{$superAdmin}}</h2>

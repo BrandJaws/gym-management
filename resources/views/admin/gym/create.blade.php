@@ -27,7 +27,7 @@
                                 <div class="form-group row">
                                     <div class="col-md-6">
                                         <label>Name:</label>
-                                        <input type="text" name="name" minlength="10" class="form-control" autofocus
+                                        <input type="text" name="name" minlength="5" class="form-control" autofocus
                                                placeholder="Enter full name" required/>
                                         @if($errors->has('name'))
                                             <div class="error">{{ $errors->first('name') }}</div>

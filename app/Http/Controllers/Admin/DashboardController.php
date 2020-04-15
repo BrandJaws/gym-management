@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Admin;
+use App\Employee;
 use App\Gym;
 use App\GymModule;
 use App\Http\Controllers\Controller;
@@ -17,7 +18,7 @@ class DashboardController extends Controller
         try {
             $gym = Gym::count();
             $gymInTrial = Gym::where('inTrial', 1)->count();
-            $superAdmin = Admin::count();
+            $superAdmin = Employee::count();
             $license = License::count();
             $latestGyms = Gym::where('gymType', 'Parent')->orderBy('id', 'desc')->take(10)->get();
             $gymModule = GymModule::orderBy('created_at', 'desc')->get();

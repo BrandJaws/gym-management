@@ -14,7 +14,7 @@
     <!--end::Fonts -->
 @include('_partials.css-assets')
 <!--end::Layout Skins -->
-    <link rel="shortcut icon" href="{{asset('assets/media/logos/favicon.ico')}}"/>
+    <link rel="shortcut icon" href="{{asset('assets/media/logos/brandjaws.png')}}"/>
 </head>
 <!-- end::Head -->
 <!-- begin::Body -->
@@ -31,7 +31,7 @@
                  style="background-image: url({{asset('assets/media/bg/bg-4.jpg')}});">
                 <div class="kt-grid__item">
                     <a href="#" class="kt-login__logo">
-                        <img src="{{asset('assets/media/logos/zumba1.png')}}" width="150">
+                        <img src="{{asset('assets/media/logos/brandjaws.png')}}" width="150">
                     </a>
                 </div>
                 <div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--ver">
