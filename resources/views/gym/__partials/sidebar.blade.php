@@ -71,8 +71,8 @@
                             <span class="kt-menu__link-text">Dashboard</span>
                         </a>
                     </li>
-                    @if(Auth::guard('employee')->user()->parentGym != "")
-                        @foreach(Auth::guard('employee')->user()->parentGym->parentGymPermissions as $permissions)
+                    @if(Auth::guard('employee')->user()->employeePermissions != "")
+                        @foreach(Auth::guard('employee')->user()->employeePermissions as $permissions)
                             <li class="kt-menu__item  kt-menu__item--{{ Request::is($permissions->gymModules->activeRoute) ? 'active' : Request::is($permissions->gymModules->activeRoute,'/*') ? 'active' : null }}"
                                 aria-haspopup="true"
                                 data-ktmenu-submenu-toggle="hover">
