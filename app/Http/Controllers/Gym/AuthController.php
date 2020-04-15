@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Gym;
 
 use App\Employee;
+use App\Gym;
 use App\Http\Controllers\Controller;
 use App\Http\Traits\FileUpload;
 use App\Image;
@@ -118,6 +119,15 @@ class AuthController extends Controller
                 $this->uploadEmployee($image, $userImage, 'path', null, $id);
                 $images[] = $userImage;
                 $gym->userImage()->saveMany($images, $gym);
+            }
+            $gymId = Gym::where('id',Auth::guard('employee')->user()->gym->id)->first();
+            if ($request->hasFile('gymImage')) {
+                $images = [];
+                $image = $request->file('gymImage');
+                $userImage = new Image();
+                $this->uploadGymLogo($image, $userImage, 'path', null, $gymId->id);
+                $images[] = $userImage;
+                $gymId->gymImage()->saveMany($images, $gym);
             }
             $gym->save();
             return back()->with('success', 'Profile Updated Successfully!');

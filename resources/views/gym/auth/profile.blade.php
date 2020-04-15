@@ -72,16 +72,15 @@
                                                class="btn btn-secondary">Cancel</a>
                                         </div>
                                     </div>
-                                    <div class="col-lg-6">
+                                    <div class="col-lg-3">
                                         <div class="profileImageSide">
-                                            <label class="col-form-label">Profile Image</label>
+                                            <label class="col-form-label">Admin Image</label>
                                             <div class="profileImage">
                                                 <div class="kt-avatar kt-avatar--outline kt-avatar--circle"
                                                      id="kt_user_avatar_3">
                                                     @if(Auth::guard('employee')->user()->userImage != "")
                                                         <div class="kt-avatar__holder"
                                                              style="background-image: url('{{ URL::to('/') }}/{{ Auth::guard('employee')->user()->userImage->path }}')">
-
                                                         </div>
                                                     @endif
                                                     @if(Auth::guard('employee')->user()->userImage == "")
@@ -94,6 +93,37 @@
                                                            data-original-title="Change avatar">
                                                         <i class="fa fa-pen"></i>
                                                         <input type="file" name="image" accept=".png, .jpg, .jpeg">
+                                                    </label>
+                                                    <span class="kt-avatar__cancel" data-toggle="kt-tooltip" title=""
+                                                          data-original-title="Cancel avatar">
+                                                <i class="fa fa-times"></i>
+                                            </span>
+                                                </div>
+                                                <span
+                                                    class="form-text text-muted">Allowed file types: png, jpg, jpeg.</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-3">
+                                        <div class="profileImageSide">
+                                            <label class="col-form-label">Gym Logo</label>
+                                            <div class="profileImage">
+                                                <div class="kt-avatar kt-avatar--outline kt-avatar--circle"
+                                                     id="kt_user_avatar_1">
+                                                    @if(Auth::guard('employee')->user()->userImage != "")
+                                                        <div class="kt-avatar__holder"
+                                                             style="background-image: url('{{ URL::to('/') }}/{{ Auth::guard('employee')->user()->gym->gymImage->path }}')">
+                                                        </div>
+                                                    @endif
+                                                    @if(Auth::guard('employee')->user()->userImage == "")
+                                                        <div class="kt-avatar__holder"
+                                                             style="background-image: url({{asset('assets/media/logos/gymLogo.jpg')}})">
+                                                        </div>
+                                                    @endif
+                                                    <label class="kt-avatar__upload" data-toggle="kt-tooltip" title=""
+                                                           data-original-title="Change avatar">
+                                                        <i class="fa fa-pen"></i>
+                                                        <input type="file" name="gymImage" accept=".png, .jpg, .jpeg">
                                                     </label>
                                                     <span class="kt-avatar__cancel" data-toggle="kt-tooltip" title=""
                                                           data-original-title="Cancel avatar">

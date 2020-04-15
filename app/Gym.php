@@ -58,6 +58,11 @@ class Gym extends Model
         })->orderBy($sort_by, $sort_type)->paginate(10);
     }
 
+    public function gymImage()
+    {
+        return $this->morphOne(Image::class, 'image');
+    }
+
     public function employee()
     {
         return $this->hasOne(Employee::class, 'gym_id');
