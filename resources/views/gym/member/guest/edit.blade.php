@@ -102,8 +102,8 @@
                                                         Success
                                                     </option>
                                                     <option value="Failed Call"
-                                                            @if($pipeline->status == "Failed Calls" ) selected @endif >
-                                                        Failed Calls
+                                                            @if($pipeline->status == "Failed Call" ) selected @endif >
+                                                        Failed Call
                                                     </option>
                                                 </select>
                                                 @if($errors->has('status'))

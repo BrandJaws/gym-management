@@ -434,7 +434,7 @@ class MemberController extends Controller
                 'type',
                 'reScheduleDate'
             ]));
-            if ($member->intersetedPackages != "") {
+            if ($request->intersetedPackages != "") {
                 $member->intersetedPackages = implode(',', $request->intersetedPackages);
             }
             $member->save();
@@ -503,7 +503,7 @@ class MemberController extends Controller
                 'remarks'
             ]));
 
-            if ($pipeline->intersetedPackages != "") {
+            if ($request->intersetedPackages != "") {
                 $pipeline->intersetedPackages = implode(',', $request->intersetedPackages);
             }
             $pipeline->save();
