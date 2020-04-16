@@ -136,16 +136,77 @@
                 $('#id_icon').html('');
                 $('#post_title_icon').html('');
             }
-
+            @if($breadcrumbs == "Leads")
             function fetch_data(page, sort_type, sort_by, query) {
                 $.ajax({
-                    url: "/gym/member/archive/{{ $breadcrumbs }}?page=" + page + "&sortby=" + sort_by + "&sorttype=" + sort_type + "&query=" + query,
+                    url: "/gym/member/archive/leads?page=" + page + "&sortby=" + sort_by + "&sorttype=" + sort_type + "&query=" + query,
                     success: function (data) {
                         $('tbody').html('');
                         $('tbody').html(data);
                     }
                 })
             }
+            @elseif($breadcrumbs == "Failed Calls")
+            function fetch_data(page, sort_type, sort_by, query) {
+                $.ajax({
+                    url: "/gym/member/archive/failedCalls?page=" + page + "&sortby=" + sort_by + "&sorttype=" + sort_type + "&query=" + query,
+                    success: function (data) {
+                        $('tbody').html('');
+                        $('tbody').html(data);
+                    }
+                })
+            }
+            @elseif($breadcrumbs == "Not Joined Members")
+            function fetch_data(page, sort_type, sort_by, query) {
+                $.ajax({
+                    url: "/gym/member/archive/notJoinedMembers?page=" + page + "&sortby=" + sort_by + "&sorttype=" + sort_type + "&query=" + query,
+                    success: function (data) {
+                        $('tbody').html('');
+                        $('tbody').html(data);
+                    }
+                })
+            }
+            @elseif($breadcrumbs == "Expired Members")
+            function fetch_data(page, sort_type, sort_by, query) {
+                $.ajax({
+                    url: "/gym/member/archive/expiredMembers?page=" + page + "&sortby=" + sort_by + "&sorttype=" + sort_type + "&query=" + query,
+                    success: function (data) {
+                        $('tbody').html('');
+                        $('tbody').html(data);
+                    }
+                })
+            }
+            @elseif($breadcrumbs == "In Active Members")
+            function fetch_data(page, sort_type, sort_by, query) {
+                $.ajax({
+                    url: "/gym/member/archive/inActiveMembers?page=" + page + "&sortby=" + sort_by + "&sorttype=" + sort_type + "&query=" + query,
+                    success: function (data) {
+                        $('tbody').html('');
+                        $('tbody').html(data);
+                    }
+                })
+            }
+            @elseif($breadcrumbs == "Old Members")
+            function fetch_data(page, sort_type, sort_by, query) {
+                $.ajax({
+                    url: "/gym/member/archive/oldMembers?page=" + page + "&sortby=" + sort_by + "&sorttype=" + sort_type + "&query=" + query,
+                    success: function (data) {
+                        $('tbody').html('');
+                        $('tbody').html(data);
+                    }
+                })
+            }
+            @elseif($breadcrumbs == "Disabled List")
+            function fetch_data(page, sort_type, sort_by, query) {
+                $.ajax({
+                    url: "/gym/member/archive/disabledList?page=" + page + "&sortby=" + sort_by + "&sorttype=" + sort_type + "&query=" + query,
+                    success: function (data) {
+                        $('tbody').html('');
+                        $('tbody').html(data);
+                    }
+                })
+            }
+            @endif
 
             $(document).on('keyup', '#serach', function () {
                 var query = $('#serach').val();
