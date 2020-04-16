@@ -140,7 +140,12 @@
                     <!--use below badge element instead the user avatar to display username's first letter(remove kt-hidden class to display it) -->
                     <span
                         class="kt-badge kt-badge--username kt-badge--unified-success kt-badge--lg kt-badge--rounded kt-badge--bold">
-                        <img src="{{asset('assets/media/users/avatar.png')}}" alt="image">
+                          @if(Auth::guard('employee')->user()->userImage != "")
+                            <img src="{{asset(Auth::guard('employee')->user()->userImage->path)}}" alt="image">
+                        @endif
+                        @if(Auth::guard('employee')->user()->userImage == "")
+                            <img src="{{asset('assets/media/users/avatar.png')}}" alt="image">
+                        @endif
                     </span>
                 </div>
             </div>
@@ -155,7 +160,12 @@
                         <img class="kt-hidden" alt="Pic" src="{{asset('assets/media/users/300_25.jpg')}}"/>
                         <!--use below badge element instead the user avatar to display username's first letter(remove kt-hidden class to display it) -->
                         <span class="kt-badge kt-badge--lg kt-badge--rounded kt-badge--bold kt-font-success">
-                            <img src="{{asset('assets/media/users/avatar.png')}}" alt="image">
+                           @if(Auth::guard('employee')->user()->userImage != "")
+                                <img src="{{asset(Auth::guard('employee')->user()->userImage->path)}}" alt="image">
+                            @endif
+                            @if(Auth::guard('employee')->user()->userImage == "")
+                                <img src="{{asset('assets/media/users/avatar.png')}}" alt="image">
+                            @endif
                         </span>
                     </div>
                     <div class="kt-user-card__name">
