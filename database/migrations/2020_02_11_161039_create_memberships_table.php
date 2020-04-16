@@ -16,9 +16,12 @@ class CreateMembershipsTable extends Migration
         Schema::create('memberships', function (Blueprint $table) {
             $table->increments('id'); // 02
             $table->string('name'); // Silver
-            $table->integer('duration'); // 60 days
-            $table->string('amount'); // 15,000
+            $table->string('registrationFee');
             $table->integer('monthlyFee'); // 5,000
+            $table->string('affiliateStatus');
+            $table->string('spouse')->nullable(true);
+            $table->string('children')->nullable(true);
+            $table->string('noOfMembers')->nullable(true);
             $table->text('detail')->nullable(true); // This Membership provide you a lot facilities.
             $table->text('gym_id');
             $table->timestamps();

@@ -22,6 +22,7 @@ class CreateEmployeesTable extends Migration
             $table->string('gender')->nullable(true); // Male
             $table->string('cnic')->nullable(true); // 00000-000000000-00
             $table->string('phone')->nullable(true); // +92000-0000000
+            $table->date('dateOfJoining')->nullable(true);
             $table->string('specialization')->nullable(true); // null
             $table->string('address'); // Kamahan Road, Lahore.
             $table->integer('gym_id',false,true); // 03

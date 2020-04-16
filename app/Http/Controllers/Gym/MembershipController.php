@@ -63,9 +63,9 @@ class MembershipController extends Controller
         try {
             $validator = Validator::make($request->all(), [
                 'name' => 'required',
-                'duration' => 'required',
-                'amount' => 'required',
+                'registrationFee' => 'required',
                 'monthlyFee' => 'required',
+                'affiliateStatus' => 'required',
                 'detail' => 'required',
                 'gym_id' => 'required'
             ]);
@@ -75,10 +75,13 @@ class MembershipController extends Controller
             $membership = new Membership();
             $membership->fill($request->only([
                 'name',
-                'duration',
-                'amount',
+                'registrationFee',
                 'monthlyFee',
-                'detail'
+                'affiliateStatus',
+                'spouse',
+                'children',
+                'noOfMembers',
+                'detail',
             ]));
             $membership->gym_id = implode(',', $request->gym_id);
             $membership->save();
@@ -134,12 +137,12 @@ class MembershipController extends Controller
     {
         try {
             $validator = Validator::make($request->all(), [
-                'id' => 'required',
                 'name' => 'required',
-                'duration' => 'required',
-                'amount' => 'required',
+                'registrationFee' => 'required',
                 'monthlyFee' => 'required',
+                'affiliateStatus' => 'required',
                 'detail' => 'required',
+                'gym_id' => 'required'
             ]);
             if ($validator->fails()) {
                 return Redirect::back()->withErrors($validator);
@@ -148,14 +151,21 @@ class MembershipController extends Controller
             $membership = Membership::where('id', $membership_id)->first();
             $membership->fill($request->only([
                 'name',
-                'duration',
-                'amount',
+                'registrationFee',
                 'monthlyFee',
+                'affiliateStatus',
+                'spouse',
+                'children',
+                'noOfMembers',
                 'detail',
             ]));
+            if ($request->affiliateStatus == "No"){
+                $membership->spouse = " ";
+                $membership->children = " ";
+            }
             $membership->gym_id = implode(',', $request->gym_id);
             $membership->save();
-            return back()->with('success', 'Member Ship Updated Successfully!');
+            return back()->with('success', 'Membership Updated Successfully!');
         } catch (\Exception $e) {
             return response()->json([
                 'response' => $e

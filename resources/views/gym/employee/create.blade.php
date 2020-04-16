@@ -81,6 +81,24 @@
                                                 </div>
                                             </div>
                                             <div class="col-lg-6">
+                                                <label>Date Of Joining:</label>
+                                                <input type="date" name="dateOfJoining" class="form-control" required />
+                                                @if($errors->has('dateOfJoining'))
+                                                    <div class="error">{{ $errors->first('dateOfJoining') }}</div>
+                                                @endif
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <div class="col-lg-6">
+                                                <label>Phone:</label>
+                                                <input type="text" name="phone" class="form-control" maxlength="14"
+                                                       required
+                                                       placeholder="Enter Phone No.">
+                                                @if($errors->has('phone'))
+                                                    <div class="error">{{ $errors->first('phone') }}</div>
+                                                @endif
+                                            </div>
+                                            <div class="col-lg-6">
                                                 <label>Email:</label>
                                                 <input type="text" name="email" class="form-control"
                                                        maxlength="65"
@@ -131,15 +149,6 @@
                                         </div>
                                         <div class="form-group row">
                                             <div class="col-lg-6">
-                                                <label>Phone:</label>
-                                                <input type="text" name="phone" class="form-control" maxlength="14"
-                                                       required
-                                                       placeholder="Enter Phone No.">
-                                                @if($errors->has('phone'))
-                                                    <div class="error">{{ $errors->first('phone') }}</div>
-                                                @endif
-                                            </div>
-                                            <div class="col-lg-6">
                                                 <label>CNIC:</label>
                                                 <input type="text" name="cnic" class="form-control" required
                                                        maxlength="21"
@@ -148,8 +157,6 @@
                                                     <div class="error">{{ $errors->first('cnic') }}</div>
                                                 @endif
                                             </div>
-                                        </div>
-                                        <div class="form-group row">
                                             <div class="col-lg-6">
                                                 <label>Salary:</label>
                                                 <input type="number" name="salary" class="form-control" required
@@ -159,6 +166,8 @@
                                                     <div class="error">{{ $errors->first('salary') }}</div>
                                                 @endif
                                             </div>
+                                        </div>
+                                        <div class="form-group row">
                                             <div class="col-lg-6">
                                                 <label>Specialization:</label>
                                                 <input type="text" name="specialization" class="form-control"
@@ -169,8 +178,6 @@
                                                     <div class="error">{{ $errors->first('specialization') }}</div>
                                                 @endif
                                             </div>
-                                        </div>
-                                        <div class="form-group row">
                                             <div class="col-lg-6">
                                                 <label>Address:</label>
                                                 <textarea name="address" class="form-control" required maxlength="155"

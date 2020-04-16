@@ -84,6 +84,7 @@ class EmployeeController extends Controller
                 'phone' => 'required',
                 'salary' => 'required',
                 'specialization' => 'required',
+                'dateOfJoining' => 'required',
                 'address' => 'required',
             ]);
             if ($validator->fails()) {
@@ -101,6 +102,7 @@ class EmployeeController extends Controller
                 'address',
                 'timeIn',
                 'timeOut',
+                'dateOfJoining',
                 'gym_id'
             ]));
             $employee->password = bcrypt($request['password']);
@@ -195,6 +197,7 @@ class EmployeeController extends Controller
                 'phone' => 'required',
                 'salary' => 'required',
                 'specialization' => 'required',
+                'dateOfJoining' => 'required',
                 'address' => 'required',
             ]);
             if ($validator->fails()) {
@@ -213,6 +216,7 @@ class EmployeeController extends Controller
                 'address',
                 'timeIn',
                 'timeOut',
+                'dateOfJoining',
                 'gym_id'
             ]));
             if (!empty($request->password)) {

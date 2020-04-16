@@ -25,6 +25,7 @@ class Employee extends Authenticatable
         'salary',
         'specialization',
         'address',
+        'dateOfJoining',
         'timeIn',
         'timeOut',
         'gym_id'
