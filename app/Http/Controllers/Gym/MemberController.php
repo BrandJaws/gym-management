@@ -131,6 +131,7 @@ class MemberController extends Controller
             ]));
             $code = Member::getMemeberCode($request->name);
             $member->code = $code;
+            $member->employee_id = Auth::guard('employee')->user()->id;
             $member->password = Hash::make($request->password);
             $member->gym_id = Auth::guard('employee')->user()->gym_id;
             $member->save();
@@ -561,45 +562,45 @@ class MemberController extends Controller
             switch ($value) {
                 case 'previewCalls':
                     $breadcrumbs = "Preview Calls";
-                    $data = Pipeline::where('type', 'For Call')->where('gym_id', Auth::guard('employee')->user()->gym_id)->orWhere('employee_id', Auth::guard('employee')->user()->id)->orWhere('transfer_id', Auth::guard('employee')->user()->id)->paginate(10);
+                    $member = Pipeline::where('type', 'For Call')->where('gym_id', Auth::guard('employee')->user()->gym_id)->orWhere('employee_id', Auth::guard('employee')->user()->id)->orWhere('transfer_id', Auth::guard('employee')->user()->id)->paginate(10);
                     if ($request->ajax()) {
                         $sort_by = $request->get('sortby');
                         $sort_type = $request->get('sorttype');
                         $query = $request->get('query');
                         $query = str_replace(" ", "%", $query);
                         $member = Pipeline::getCallsList($query, $sort_by, $sort_type);
-                        return view('gym.member.pagination_data', compact('member'))->render();
+                        return view('gym.member.guest.pagination_data', compact('breadcrumbs','member'))->render();
                     }
                     break;
                 case 'transferCalls':
                     $breadcrumbs = "Transfer Calls";
-                    $data = Pipeline::where('transferStatus', 'For Call')->where('gym_id', Auth::guard('employee')->user()->gym_id)->Where('transfer_id', Auth::guard('employee')->user()->id)->paginate(10);
+                    $member = Pipeline::where('transferStatus', 'For Call')->where('gym_id', Auth::guard('employee')->user()->gym_id)->Where('transfer_id', Auth::guard('employee')->user()->id)->paginate(10);
                     if ($request->ajax()) {
                         $sort_by = $request->get('sortby');
                         $sort_type = $request->get('sorttype');
                         $query = $request->get('query');
                         $query = str_replace(" ", "%", $query);
                         $member = Pipeline::getTransferList($query, $sort_by, $sort_type);
-                        return view('gym.member.pagination_data', compact('member'))->render();
+                        return view('gym.member.guest.pagination_data', compact('breadcrumbs','member'))->render();
                     }
                     break;
                 case 'preivewAppointments':
                     $breadcrumbs = "Preivew Appointments";
-                    $data = Pipeline::where('type', 'For Demo')->where('gym_id', Auth::guard('employee')->user()->gym_id)->orWhere('employee_id', Auth::guard('employee')->user()->id)->orWhere('transfer_id', Auth::guard('employee')->user()->id)->paginate(10);
+                    $member = Pipeline::where('type', 'For Demo')->where('gym_id', Auth::guard('employee')->user()->gym_id)->orWhere('employee_id', Auth::guard('employee')->user()->id)->orWhere('transfer_id', Auth::guard('employee')->user()->id)->paginate(10);
                     if ($request->ajax()) {
                         $sort_by = $request->get('sortby');
                         $sort_type = $request->get('sorttype');
                         $query = $request->get('query');
                         $query = str_replace(" ", "%", $query);
                         $member = Pipeline::getAppointmentsList($query, $sort_by, $sort_type);
-                        return view('gym.member.pagination_data', compact('member'))->render();
+                        return view('gym.member.guest.pagination_data', compact('breadcrumbs','member'))->render();
                     }
                     break;
                 case 'previewGuestCards':
                     $breadcrumbs = "Preview Guest Cards";
                     break;
             }
-            return view('gym.member.guest.list', compact('breadcrumbs', 'data'))->render();
+            return view('gym.member.guest.list', compact('breadcrumbs', 'member'))->render();
         } catch (\Exception $e) {
             return back()->with('error', 'Oops, something was not right in guest function');
         }
