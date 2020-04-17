@@ -58,17 +58,29 @@
                                             </div>
                                             <div class="col-lg-6 form-group">
                                                 <label>Type :</label>
-                                                <select class="form-control" name="type">
-                                                    <option value="For Demo"
-                                                            @if($breadcrumbs == "For Demo" ) selected @endif >
-                                                        For Demo
-                                                    </option>
-                                                    <option value="For Call"
-                                                            @if($breadcrumbs == "For Call" ) selected @endif >
-                                                        For Call
-                                                    </option>
+                                                <select class="form-control" name="status">
+                                                    <option value="Call Scheduled">Call Scheduled</option>
+                                                    <option value="Appointment Scheduled">Appointment Scheduled</option>
+                                                    <option value="Presentation Scheduled">Presentation Scheduled</option>
+                                                    <option value="Contract Sent">Contract Sent</option>
+                                                    <option value="Qualified To Buy">Qualified To Buy</option>
+                                                    <option value="Closed Won">Closed Won</option>
+                                                    <option value="Closed Lost">Closed Lost</option>
                                                 </select>
                                             </div>
+{{--                                            <div class="col-lg-6 form-group">--}}
+{{--                                                <label>Type :</label>--}}
+{{--                                                <select class="form-control" name="type">--}}
+{{--                                                    <option value="For Demo"--}}
+{{--                                                            @if($breadcrumbs == "For Demo" ) selected @endif >--}}
+{{--                                                        For Demo--}}
+{{--                                                    </option>--}}
+{{--                                                    <option value="For Call"--}}
+{{--                                                            @if($breadcrumbs == "For Call" ) selected @endif >--}}
+{{--                                                        For Call--}}
+{{--                                                    </option>--}}
+{{--                                                </select>--}}
+{{--                                            </div>--}}
                                             <div class="col-lg-6 form-group">
                                                 <label>Schedule Date & Time :</label>
                                                 <input type="datetime-local" name="scheduleDate" class="form-control" required/>
@@ -81,21 +93,12 @@
                                                 <select class="form-control" name="status">
                                                     <option value="Pending">Pending</option>
                                                     <option value="Success">Success</option>
+                                                    <option value="Answered">Answered</option>
+                                                    <option value="Un-Answered">Un-Answered</option>
                                                     <option value="Failed Call">Failed Calls</option>
                                                 </select>
                                             </div>
-                                            <div class="col-lg-6 form-group">
-                                                <label>Deal Status :</label>
-                                                <select class="form-control" name="status">
-                                                    <option value="Call Scheduled">Call Scheduled</option>
-                                                    <option value="Appointment Scheduled">Appointment Scheduled</option>
-                                                    <option value="Qualified To Buy">Qualified To Buy</option>
-                                                    <option value="Presentation Scheduled">Presentation Scheduled</option>
-                                                    <option value="Contract Sent">Contract Sent</option>
-                                                    <option value="Closed Won">Closed Won</option>
-                                                    <option value="Closed Lost">Closed Lost</option>
-                                                </select>
-                                            </div>
+
                                             <div class="col-lg-6 form-group">
                                                 <label for="sel1">Transfer Status:</label>
                                                 <select class="form-control" id="sel1" name="transferStatus"
