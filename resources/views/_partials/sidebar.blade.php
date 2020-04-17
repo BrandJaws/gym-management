@@ -5,7 +5,8 @@
             <div class="kt-aside__brand-logo">
                 <a href="{{url('admin/dashboard')}}">
 {{--                    <img alt="Logo" src="{{asset('assets/media/logos/logo.png')}}" style=" box-shadow: 0 4px 8px 0 rgba(255, 0, 0, 0.2);, 0 6px 20px 0 rgba(255, 0, 0, 0.2);;" width="170px" height="50px"/>--}}
-                    <h2 style="font-family: Times New Roman, Times, serif;color: #f1efee">BRAND JAWS</h2>
+                    <img src="{{asset('assets/media/logos/logo.svg')}}" alt="Logo">
+{{--                    <h2 style="font-family: Times New Roman, Times, serif;color: #f1efee">BRAND JAWS</h2>--}}
                 </a>
             </div>
             <div class="kt-aside__brand-tools">

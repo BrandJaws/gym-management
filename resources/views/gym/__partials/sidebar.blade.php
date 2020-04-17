@@ -2,7 +2,7 @@
     <div class="kt-aside  kt-aside--fixed  kt-grid__item kt-grid kt-grid--desktop kt-grid--hor-desktop" id="kt_aside">
         <!-- begin:: Aside -->
         <div class="kt-aside__brand kt-grid__item " id="kt_aside_brand">
-            <div class="kt-aside__brand-logo">
+            <div class="kt-aside__brand-logo gymLogoDashboard">
                 <a href="{{url('/gym/dashboard')}}">
                     @if(Auth::guard('employee')->user()->userImage != "")
                         <img alt="Logo"
@@ -58,7 +58,7 @@
             <div id="kt_aside_menu" class="kt-aside-menu " data-ktmenu-vertical="1" data-ktmenu-scroll="1"
                  data-ktmenu-dropdown-timeout="500">
                 <ul class="kt-menu__nav ">
-                    <li class="kt-menu__item  kt-menu__item--{{ Request::is('gym') ? 'active' : null }} "
+                    <li class="kt-menu__item  kt-menu__item--{{ Request::is('gym/dashboard') ? 'active' : null }} "
                         aria-haspopup="true">
                         <a href="{{route('gym.home')}}" class="kt-menu__link ">
                         <span class="kt-menu__link-icon"><svg xmlns="http://www.w3.org/2000/svg"
