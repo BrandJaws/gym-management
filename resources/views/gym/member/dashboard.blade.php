@@ -153,7 +153,7 @@
             <!--End::Row-->
             <!--Begin::Row-->
             <div class="row">
-                <div class="col-xl-12 col-lg-12">
+                <div class="col-lg-8">
                     <div class="kt-portlet kt-portlet--height-fluid kt-portlet--mobile ">
                         <div
                             class="kt-portlet__head kt-portlet__head--lg kt-portlet__head--noborder kt-portlet__head--break-sm">
@@ -206,6 +206,75 @@
                             <!--end: Datatable -->
                         </div>
                     </div>
+                </div>
+                <div class="col-lg-4 order-lg-1 order-xl-1">
+                    <!--Begin::Portlet-->
+                    <div class="kt-portlet kt-portlet--height-fluid">
+                        <div class="kt-portlet__head">
+                            <div class="kt-portlet__head-label">
+                                <h3 class="kt-portlet__head-title">
+                                    Today Activities
+                                </h3>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="kt-portlet__body">
+                                    <div class="kt-portlet__head-label">
+                                        <h6 class="kt-portlet__head-title">
+                                           <u> Schaduale </u>
+                                        </h6><br>
+                                    </div>
+                                    <!--Begin::Timeline 3 -->
+                                    <div class="kt-timeline-v2">
+                                        <div class="kt-timeline-v2__items  kt-padding-top-25 kt-padding-bottom-30">
+                                            @foreach($dailySchaduale as $activity)
+                                                <div class="kt-timeline-v2__item">
+                                                <span
+                                                    class="kt-timeline-v2__item-time">{{ \Carbon\Carbon::parse($activity->scheduleDate)->format('H:i')}}</span>
+                                                    <div class="kt-timeline-v2__item-cricle">
+                                                        <i class="fa fa-genderless kt-font-danger"></i>
+                                                    </div>
+                                                    <div class="kt-timeline-v2__item-text  kt-padding-top-5">
+                                                        {{ $activity->type }}
+                                                    </div>
+                                                </div>
+                                            @endforeach
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="kt-portlet__body">
+                                    <div class="kt-portlet__head-label">
+                                        <h6 class="kt-portlet__head-title">
+                                            <u> Re-Schaduale </u>
+                                        </h6>
+                                    </div>
+                                    <br>
+                                    <!--Begin::Timeline 3 -->
+                                    <div class="kt-timeline-v2">
+                                        <div class="kt-timeline-v2__items  kt-padding-top-25 kt-padding-bottom-30">
+                                            @foreach($dailyReSchaduale as $activity)
+                                                <div class="kt-timeline-v2__item">
+                                                <span
+                                                    class="kt-timeline-v2__item-time">{{ \Carbon\Carbon::parse($activity->reScheduleDate)->format('H:i')}}</span>
+                                                    <div class="kt-timeline-v2__item-cricle">
+                                                        <i class="fa fa-genderless kt-font-danger"></i>
+                                                    </div>
+                                                    <div class="kt-timeline-v2__item-text  kt-padding-top-5">
+                                                        {{ $activity->transferStatus }}
+                                                    </div>
+                                                </div>
+                                            @endforeach
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--End::Portlet-->
                 </div>
             </div>
             <!--End::Row-->

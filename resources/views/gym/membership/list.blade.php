@@ -47,16 +47,13 @@
                                                     data-column_name="name" style="cursor: pointer">Name <span
                                                         id="id_icon"></span></th>
                                                 <th class="sorting" data-sorting_type="asc"
-                                                    data-column_name="duration" style="cursor: pointer">Duration <span
+                                                    data-column_name="duration" style="cursor: pointer">Registration Fee <span
                                                         id="post_title_icon"></span></th>
                                                 <th class="sorting" data-sorting_type="asc"
-                                                    data-column_name="amount" style="cursor: pointer">Amount <span
+                                                    data-column_name="amount" style="cursor: pointer">Monthly Fee <span
                                                         id="post_title_icon"></span></th>
                                                 <th class="sorting" data-sorting_type="asc"
-                                                    data-column_name="monthlyFee" style="cursor: pointer">Monthly Fee <span
-                                                        id="post_title_icon"></span></th>
-                                                <th class="sorting" data-sorting_type="asc"
-                                                    data-column_name="detail" style="cursor: pointer">Detail <span
+                                                    data-column_name="monthlyFee" style="cursor: pointer">Include Members<span
                                                         id="post_title_icon"></span></th>
                                                 <th class="sorting" data-sorting_type="asc"
                                                     data-column_name=" " style="cursor: pointer">Actions <span

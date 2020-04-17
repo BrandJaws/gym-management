@@ -15,6 +15,7 @@ class Member extends Model
         'membership_id',
         'name',
         'code',
+        'employee_id',
         'email',
         'password',
         'phone',

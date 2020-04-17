@@ -10,10 +10,12 @@ class Membership extends Model
     protected $table = 'memberships';
     protected $fillable = [
         'name',
-        'duration',
-        'amount',
-        'includedMember',
+        'registrationFee',
         'monthlyFee',
+        'affiliateStatus',
+        'spouse',
+        'children',
+        'noOfMembers',
         'detail',
         'gym_id',
     ];
@@ -27,11 +29,12 @@ class Membership extends Model
             $query->where('memberships.gym_id', Auth::guard('employee')->user()->gym_id);
             if ($searchTerm) {
                 $query->where('memberships.name', 'like', '%' . $searchTerm . '%')
-                    ->orWhere('memberships.duration', 'like', '%' . $searchTerm . '%')
-                    ->orWhere('memberships.amount', 'like', '%' . $searchTerm . '%')
+                    ->orWhere('memberships.registrationFee', 'like', '%' . $searchTerm . '%')
                     ->orWhere('memberships.monthlyFee', 'like', '%' . $searchTerm . '%')
-                    ->orWhere('memberships.detail', 'like', '%' . $searchTerm . '%')
-                    ->orWhere('memberships.gym_id', 'like', '%' . $searchTerm . '%');
+                    ->orWhere('memberships.affiliateStatus', 'like', '%' . $searchTerm . '%')
+                    ->orWhere('memberships.spouse', 'like', '%' . $searchTerm . '%')
+                    ->orWhere('memberships.children', 'like', '%' . $searchTerm . '%')
+                    ->orWhere('memberships.noOfMembers', 'like', '%' . $searchTerm . '%');
             }
         })->orderBy($sort_by, $sort_type)->paginate(10);
     }

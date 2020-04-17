@@ -57663,7 +57663,7 @@ td > .kt-radio.kt-radio--single {
 }
 
 .kt-svg-icon g [fill] {
-  fill: #5d78ff;
+  fill: #6ba9ec;
 }
 
 .kt-svg-icon.kt-svg-icon--brand g [fill] {
@@ -65509,7 +65509,7 @@ body {
 .kt-aside-menu .kt-menu__nav > .kt-menu__item > .kt-menu__link .kt-menu__link-icon svg g [fill] {
   -webkit-transition: fill 0.3s ease;
   transition: fill 0.3s ease;
-  fill: #494b74;
+  fill: #e4e4ef;
 }
 
 .kt-aside-menu .kt-menu__nav > .kt-menu__item > .kt-menu__heading .kt-menu__link-icon svg:hover g [fill],
@@ -66347,7 +66347,7 @@ body {
 
 .kt-aside .kt-aside-menu > .kt-menu__nav .kt-menu__item > .kt-menu__link:not(.kt-menu__link--active):not(.kt-menu__link--here):not(.kt-menu__link--hover) [class^=flaticon2-],
 .kt-aside .kt-aside-menu > .kt-menu__nav .kt-menu__item > .kt-menu__link:not(.kt-menu__link--active):not(.kt-menu__link--here):not(.kt-menu__link--hover) [class*=" flaticon2-"] {
-  /*color: #284255;*/
+  color: #e4e4ef;
 }
 
 @media (min-width: 1025px) {

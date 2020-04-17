@@ -100,16 +100,37 @@
                 $('#id_icon').html('');
                 $('#post_title_icon').html('');
             }
-
+            @if($breadcrumbs == "Preview Calls")
             function fetch_data(page, sort_type, sort_by, query) {
                 $.ajax({
-                    url: "/gym/member/guest?page=" + page + "&sortby=" + sort_by + "&sorttype=" + sort_type + "&query=" + query,
+                    url: "/gym/member/archive/previewCalls?page=" + page + "&sortby=" + sort_by + "&sorttype=" + sort_type + "&query=" + query,
                     success: function (data) {
                         $('tbody').html('');
                         $('tbody').html(data);
                     }
                 })
             }
+            @elseif($breadcrumbs == "Transfer Calls")
+            function fetch_data(page, sort_type, sort_by, query) {
+                $.ajax({
+                    url: "/gym/member/archive/transferCalls?page=" + page + "&sortby=" + sort_by + "&sorttype=" + sort_type + "&query=" + query,
+                    success: function (data) {
+                        $('tbody').html('');
+                        $('tbody').html(data);
+                    }
+                })
+            }
+            @elseif($breadcrumbs == "Preivew Appointments")
+            function fetch_data(page, sort_type, sort_by, query) {
+                $.ajax({
+                    url: "/gym/member/archive/preivewAppointments?page=" + page + "&sortby=" + sort_by + "&sorttype=" + sort_type + "&query=" + query,
+                    success: function (data) {
+                        $('tbody').html('');
+                        $('tbody').html(data);
+                    }
+                })
+            }
+            @endif
 
             $(document).on('keyup', '#serach', function () {
                 var query = $('#serach').val();

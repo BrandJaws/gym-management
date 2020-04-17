@@ -86,6 +86,24 @@
                                                 </div>
                                             </div>
                                             <div class="col-lg-6">
+                                                <label>Date Of Joining:</label>
+                                                <input type="date" name="dateOfJoining"  value="{{ \Carbon\Carbon::parse($employee->dateOfJoining)->format('yy-m-d')}}" class="form-control" required/>
+                                                @if($errors->has('dateOfJoining'))
+                                                    <div class="error">{{ $errors->first('dateOfJoining') }}</div>
+                                                @endif
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <div class="col-lg-6">
+                                                <label>Phone:</label>
+                                                <input type="text" name="phone" class="form-control" required
+                                                       maxlength="50"
+                                                       value="{{$employee->phone}}" placeholder="Enter Phone No.">
+                                                @if($errors->has('phone'))
+                                                    <div class="error">{{ $errors->first('phone') }}</div>
+                                                @endif
+                                            </div>
+                                            <div class="col-lg-6">
                                                 <label>Email:</label>
                                                 <input type="email" name="email" class="form-control" required
                                                        maxlength="20"
@@ -137,12 +155,12 @@
                                         </div>
                                         <div class="form-group row">
                                             <div class="col-lg-6">
-                                                <label>Phone:</label>
-                                                <input type="text" name="phone" class="form-control" required
+                                                <label>Salary:</label>
+                                                <input type="number" name="salary" class="form-control" required
                                                        maxlength="50"
-                                                       value="{{$employee->phone}}" placeholder="Enter Phone No.">
-                                                @if($errors->has('phone'))
-                                                    <div class="error">{{ $errors->first('phone') }}</div>
+                                                       value="{{$employee->salary}}" placeholder="Enter Salary">
+                                                @if($errors->has('salary'))
+                                                    <div class="error">{{ $errors->first('salary') }}</div>
                                                 @endif
                                             </div>
                                             <div class="col-lg-6">
@@ -157,15 +175,6 @@
                                         </div>
                                         <div class="form-group row">
                                             <div class="col-lg-6">
-                                                <label>Salary:</label>
-                                                <input type="number" name="salary" class="form-control" required
-                                                       maxlength="50"
-                                                       value="{{$employee->salary}}" placeholder="Enter Salary">
-                                                @if($errors->has('salary'))
-                                                    <div class="error">{{ $errors->first('salary') }}</div>
-                                                @endif
-                                            </div>
-                                            <div class="col-lg-6">
                                                 <label>Specialization:</label>
                                                 <input type="text" name="specialization" class="form-control" required
                                                        maxlength="50"
@@ -175,8 +184,6 @@
                                                     <div class="error">{{ $errors->first('specialization') }}</div>
                                                 @endif
                                             </div>
-                                        </div>
-                                        <div class="form-group row">
                                             <div class="col-lg-6">
                                                 <label>Address:</label>
                                                 <textarea name="address" class="form-control" required maxlength="155"
@@ -241,7 +248,8 @@
                                                                 @foreach ($gymModule as $module)
                                                                     <div class="col-md-5">
                                                                         <label class="kt-checkbox">
-                                                                            <input type="checkbox" name="modules[]" value="{{$module->gym_module_id}}"
+                                                                            <input type="checkbox" name="modules[]"
+                                                                                   value="{{$module->gym_module_id}}"
                                                                                 {{in_array("$module->gym_module_id",$moduleList)?"checked":""}}
                                                                             >{{$module->gymModules->name}}
                                                                             <span></span>

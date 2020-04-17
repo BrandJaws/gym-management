@@ -14,8 +14,8 @@
                     <div class="kt-portlet">
                         <div class="kt-portlet__head">
                             <div class="kt-portlet__head-label">
-                                <h3 class="kt-portlet__head-title">
-                                    Create A Member
+                                <h3 class="kt-portlet__head-title ">
+                                    Create A Lead
                                 </h3>
                             </div>
                         </div>
@@ -28,19 +28,59 @@
                                     <div class="kt-portlet__body">
                                         <div class="form-group row">
                                             <div class="col-lg-6 ">
-                                                <label>Name :</label>
-                                                <input type="text" name="name" class="form-control" required
-                                                       placeholder="Enter name"/>
-                                                @if($errors->has('name'))
-                                                    <div class="error">{{ $errors->first('name') }}</div>
+                                                <label>Lead Owner :</label>
+                                                <input type="text" name="leadOwner" class="form-control" disabled
+                                                       value="{{ Auth::guard('employee')->user()->name }}"/>
+                                                @if($errors->has('leadOwner'))
+                                                    <div class="error">{{ $errors->first('leadOwner') }}</div>
                                                 @endif
                                             </div>
+                                            <div class="col-lg-6 ">
+                                                <label>Salutation :</label>
+                                                <select class="form-control" name="salutation">
+                                                    <option value="Mr.">Mr.</option>
+                                                    <option value="Ms.">Ms.</option>
+                                                    <option value="Mrs.">Mrs.</option>
+                                                    <option value="Dr.">Dr.</option>
+                                                    <option value="Prof.">Prof.</option>
+                                                </select>
+                                                @if($errors->has('salutation'))
+                                                    <div class="error">{{ $errors->first('salutation') }}</div>
+                                                @endif
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <div class="col-lg-6 ">
+                                                <label>First Name :</label>
+                                                <input type="text" name="firstName" class="form-control" required placeholder="Enter First Name"/>
+                                                @if($errors->has('firstName'))
+                                                    <div class="error">{{ $errors->first('firstName') }}</div>
+                                                @endif
+                                            </div>
+                                            <div class="col-lg-6 ">
+                                                <label>Last Name :</label>
+                                                <input type="text" name="lastName" class="form-control" required
+                                                       placeholder="Enter Last Name"/>
+                                                @if($errors->has('lastName'))
+                                                    <div class="error">{{ $errors->first('lastName') }}</div>
+                                                @endif
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
                                             <div class="col-lg-6">
                                                 <label>Phone :</label>
                                                 <input type="number" name="phone" class="form-control" required
                                                        placeholder="Enter phone"/>
                                                 @if($errors->has('phone'))
                                                     <div class="error">{{ $errors->first('phone') }}</div>
+                                                @endif
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <label>Email :</label>
+                                                <input type="email" name="email" class="form-control"
+                                                       placeholder="Enter email"/>
+                                                @if($errors->has('email'))
+                                                    <div class="error">{{ $errors->first('email') }}</div>
                                                 @endif
                                             </div>
                                         </div>
@@ -61,11 +101,14 @@
                                                 @endif
                                             </div>
                                             <div class="col-lg-6">
-                                                <label>Email :</label>
-                                                <input type="email" name="email" class="form-control"
-                                                       placeholder="Enter email"/>
-                                                @if($errors->has('email'))
-                                                    <div class="error">{{ $errors->first('email') }}</div>
+                                                <label>Rating :</label>
+                                                <select class="form-control" name="rating">
+                                                    <option value="Hot">Hot</option>
+                                                    <option value="Warm">Warm</option>
+                                                    <option value="Cold">Cold</option>
+                                                </select>
+                                                @if($errors->has('rating'))
+                                                    <div class="error">{{ $errors->first('rating') }}</div>
                                                 @endif
                                             </div>
                                         </div>
@@ -123,6 +166,14 @@
                                                     <option value="Expired">Expired</option>
                                                 </select>
                                             </div>
+                                            <div class="col-lg-6">
+                                                <label>Address:</label>
+                                                <textarea name="address" class="form-control" required
+                                                          placeholder="Enter Address"></textarea>
+                                                @if($errors->has('address'))
+                                                    <div class="error">{{ $errors->first('address') }}</div>
+                                                @endif
+                                            </div>
                                         </div>
                                         <div class="form-group row">
                                             <div class="col-lg-6">
@@ -131,14 +182,6 @@
                                                           placeholder="Enter Remarks"></textarea>
                                                 @if($errors->has('remarks'))
                                                     <div class="error">{{ $errors->first('remarks') }}</div>
-                                                @endif
-                                            </div>
-                                            <div class="col-lg-6">
-                                                <label>Address:</label>
-                                                <textarea name="address" class="form-control" required
-                                                          placeholder="Enter Address"></textarea>
-                                                @if($errors->has('address'))
-                                                    <div class="error">{{ $errors->first('address') }}</div>
                                                 @endif
                                             </div>
                                         </div>
@@ -206,7 +249,7 @@
                 for (var i = 0; i < div.length; i++) {
                     div[i].style.display = "block";
                 }
-                $(div).slice(1).css('margin-top',"12px");
+                $(div).slice(1).css('margin-top', "12px");
             } else {
                 var div = document.getElementsByClassName('textField');
                 for (var i = 0; i < div.length; i++) {

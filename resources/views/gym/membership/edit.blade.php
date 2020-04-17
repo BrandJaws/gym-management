@@ -22,7 +22,7 @@
                             <input type="hidden" value="{{$membership->id}}" name="id">
                             <div class="kt-portlet__body">
                                 <div class="form-group row">
-                                    <div class="col-lg-4 gymDropdown ">
+                                    <div class="col-lg-6 gymDropdown ">
                                         <label>Gym:</label>
                                         @if(count($gym) > 1)
                                             <select class="form-control kt-select2" id="kt_select2_3" name="gym_id[]"
@@ -44,44 +44,83 @@
                                             </select>
                                         @endif
                                     </div>
-                                    <div class="col-lg-4">
+                                    <div class="col-lg-6">
                                         <label>Name:</label>
-                                        <input type="text" name="name" class="form-control" required maxlength="55"
-                                               value="{{$membership->name}}"/>
+                                        <input type="text" name="name" maxlength="55" class="form-control" required
+                                               value="{{$membership->name}}" placeholder="Enter your name"/>
                                         @if($errors->has('name'))
                                             <div class="error">{{ $errors->first('name') }}</div>
-                                        @endif
-                                    </div>
-                                    <div class="col-lg-4">
-                                        <label>Duration:</label>
-                                        <input type="number" name="duration" class="form-control" required
-                                               maxlength="55" placeholder="Enter Total Days"
-                                               value="{{$membership->duration}}"/>
-                                        @if($errors->has('duration'))
-                                            <div class="error">{{ $errors->first('duration') }}</div>
                                         @endif
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-lg-6">
-                                        <label>Amount:</label>
-                                        <input type="number" name="amount" class="form-control" required maxlength="55"
-                                               value="{{$membership->amount}}">
-                                        @if($errors->has('amount'))
-                                            <div class="error">{{ $errors->first('amount') }}</div>
+                                        <label>Registration Fee:</label>
+                                        <input type="number" name="registrationFee" maxlength="55" class="form-control"
+                                               value="{{$membership->registrationFee}}"
+                                               required placeholder="Enter Registration Fee">
+                                        @if($errors->has('registrationFee'))
+                                            <div class="error">{{ $errors->first('registrationFee') }}</div>
                                         @endif
                                     </div>
                                     <div class="col-lg-6">
                                         <label>Monthly Fee:</label>
-                                        <input type="number" name="monthlyFee" class="form-control" required
-                                               maxlength="55"
-                                               value="{{$membership->monthlyFee}}"/>
+                                        <input type="number" name="monthlyFee" maxlength="55" class="form-control"
+                                               value="{{$membership->monthlyFee}}"
+                                               required placeholder="Enter Monthly fee"/>
                                         @if($errors->has('monthlyFee'))
                                             <div class="error">{{ $errors->first('monthlyFee') }}</div>
                                         @endif
                                     </div>
                                 </div>
                                 <div class="form-group row">
+                                    <div class="col-lg-6">
+                                        <label>Affiliate Status:</label>
+                                        <div class="kt-radio-inline">
+                                            <label class="kt-radio kt-radio--solid">
+                                                <input type="radio" name="affiliateStatus"
+                                                       @if( $membership->affiliateStatus == "Yes") checked
+                                                       @endif value="Yes" required> Yes
+                                                <span></span>
+                                            </label>
+                                            <label class="kt-radio kt-radio--solid">
+                                                <input type="radio" name="affiliateStatus"
+                                                       @if( $membership->affiliateStatus == "No") checked
+                                                       @endif value="No" required>
+                                                No
+                                                <span></span>
+                                            </label>
+                                            @if($errors->has('affiliateStatus'))
+                                                <div class="error">{{ $errors->first('affiliateStatus') }}</div>
+                                            @endif
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-3">
+                                        <label>Include Members:</label>
+                                        <div class="kt-radio-inline">
+                                            <label>
+                                                <input type="checkbox" name="spouse"
+                                                       @if( $membership->spouse == "Spouse") checked
+                                                       @endif value="Spouse"> Spouse
+                                                <span></span>
+                                            </label>
+                                            <label>
+                                                <input type="checkbox" name="children"
+                                                       @if( $membership->children == "Children") checked
+                                                       @endif value="Children">
+                                                Children
+                                                <span></span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-lg-6">
+                                        <label>No. Of Members:</label>
+                                        <input type="number" name="noOfMembers" maxlength="55" class="form-control"
+                                               value="{{$membership->noOfMembers}}"
+                                               placeholder="Enter No. Of Members"/>
+                                    </div>
                                     <div class="col-lg-6">
                                         <label>Detail:</label>
                                         <textarea name="detail" class="form-control" required maxlength="155"

@@ -14,6 +14,7 @@ use App\Pipeline;
 use App\TrainingGroup;
 use App\Treasury;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Redirect;
@@ -51,7 +52,10 @@ class MemberController extends Controller
             $expiredMembers = Member::where('gym_id', $gym_id)->where('status', '=', 'Expired')->count();
             $notJoinedMembers = Member::where('gym_id', $gym_id)->where('status', '=', 'Not Joined')->count();
             $assignTasksEmployee = Pipeline::where('gym_id', $gym_id)->where('employee_id', '=', $employee_id)->orWhere('transfer_id', '=', $employee_id)->orderBy('id', 'asc')->paginate(10);
-            return view('gym.member.dashboard', compact('memberships', 'totalCalls', 'callsForAppointments', 'activeMembers',
+            $today = Carbon::today()->format('Y-m-d');
+            $dailySchaduale = Pipeline::where('gym_id', $gym_id)->where('employee_id', '=', $employee_id)->where('scheduleDate', '=', $today)->orderBy('id', 'asc')->get();
+            $dailyReSchaduale = Pipeline::where('gym_id', $gym_id)->where('employee_id', '=', $employee_id)->where('reScheduleDate', '=', $today)->orderBy('id', 'asc')->get();
+            return view('gym.member.dashboard', compact('memberships', 'totalCalls', 'callsForAppointments', 'activeMembers', 'dailySchaduale', 'dailyReSchaduale',
                 'transferCalls', 'failedCalls', 'leads', 'inActiveMembers', 'expiredMembers', 'notJoinedMembers',
                 'assignTasksEmployee'));
         } catch (\Exception $e) {
@@ -131,6 +135,7 @@ class MemberController extends Controller
             ]));
             $code = Member::getMemeberCode($request->name);
             $member->code = $code;
+            $member->employee_id = Auth::guard('employee')->user()->id;
             $member->password = Hash::make($request->password);
             $member->gym_id = Auth::guard('employee')->user()->gym_id;
             $member->save();
@@ -181,7 +186,7 @@ class MemberController extends Controller
 
             $training = TrainingGroup::where('member_id', $id)->where('gym_id', Auth::guard('employee')->user()->gym_id)->paginate(10);;
 
-            return view('gym.member.list.edit', compact('lead', 'membership', 'callHistory','treasuryDetail','treasuryCashIn','treasuryCashOut','treasuryCashExtra','treasuryCashDiscount','training'));
+            return view('gym.member.list.edit', compact('lead', 'membership', 'callHistory', 'treasuryDetail', 'treasuryCashIn', 'treasuryCashOut', 'treasuryCashExtra', 'treasuryCashDiscount', 'training'));
         } catch (\Exception $e) {
             return back()->with('error', 'Oops, something was not right in member edit page');
         }
@@ -561,45 +566,45 @@ class MemberController extends Controller
             switch ($value) {
                 case 'previewCalls':
                     $breadcrumbs = "Preview Calls";
-                    $data = Pipeline::where('type', 'For Call')->where('gym_id', Auth::guard('employee')->user()->gym_id)->orWhere('employee_id', Auth::guard('employee')->user()->id)->orWhere('transfer_id', Auth::guard('employee')->user()->id)->paginate(10);
+                    $member = Pipeline::where('type', 'For Call')->where('gym_id', Auth::guard('employee')->user()->gym_id)->orWhere('employee_id', Auth::guard('employee')->user()->id)->orWhere('transfer_id', Auth::guard('employee')->user()->id)->paginate(10);
                     if ($request->ajax()) {
                         $sort_by = $request->get('sortby');
                         $sort_type = $request->get('sorttype');
                         $query = $request->get('query');
                         $query = str_replace(" ", "%", $query);
                         $member = Pipeline::getCallsList($query, $sort_by, $sort_type);
-                        return view('gym.member.pagination_data', compact('member'))->render();
+                        return view('gym.member.guest.pagination_data', compact('breadcrumbs', 'member'))->render();
                     }
                     break;
                 case 'transferCalls':
                     $breadcrumbs = "Transfer Calls";
-                    $data = Pipeline::where('transferStatus', 'For Call')->where('gym_id', Auth::guard('employee')->user()->gym_id)->Where('transfer_id', Auth::guard('employee')->user()->id)->paginate(10);
+                    $member = Pipeline::where('transferStatus', 'For Call')->where('gym_id', Auth::guard('employee')->user()->gym_id)->Where('transfer_id', Auth::guard('employee')->user()->id)->paginate(10);
                     if ($request->ajax()) {
                         $sort_by = $request->get('sortby');
                         $sort_type = $request->get('sorttype');
                         $query = $request->get('query');
                         $query = str_replace(" ", "%", $query);
                         $member = Pipeline::getTransferList($query, $sort_by, $sort_type);
-                        return view('gym.member.pagination_data', compact('member'))->render();
+                        return view('gym.member.guest.pagination_data', compact('breadcrumbs', 'member'))->render();
                     }
                     break;
                 case 'preivewAppointments':
                     $breadcrumbs = "Preivew Appointments";
-                    $data = Pipeline::where('type', 'For Demo')->where('gym_id', Auth::guard('employee')->user()->gym_id)->orWhere('employee_id', Auth::guard('employee')->user()->id)->orWhere('transfer_id', Auth::guard('employee')->user()->id)->paginate(10);
+                    $member = Pipeline::where('type', 'For Demo')->where('gym_id', Auth::guard('employee')->user()->gym_id)->orWhere('employee_id', Auth::guard('employee')->user()->id)->orWhere('transfer_id', Auth::guard('employee')->user()->id)->paginate(10);
                     if ($request->ajax()) {
                         $sort_by = $request->get('sortby');
                         $sort_type = $request->get('sorttype');
                         $query = $request->get('query');
                         $query = str_replace(" ", "%", $query);
                         $member = Pipeline::getAppointmentsList($query, $sort_by, $sort_type);
-                        return view('gym.member.pagination_data', compact('member'))->render();
+                        return view('gym.member.guest.pagination_data', compact('breadcrumbs', 'member'))->render();
                     }
                     break;
                 case 'previewGuestCards':
                     $breadcrumbs = "Preview Guest Cards";
                     break;
             }
-            return view('gym.member.guest.list', compact('breadcrumbs', 'data'))->render();
+            return view('gym.member.guest.list', compact('breadcrumbs', 'member'))->render();
         } catch (\Exception $e) {
             return back()->with('error', 'Oops, something was not right in guest function');
         }

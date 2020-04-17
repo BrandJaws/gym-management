@@ -1,5 +1,5 @@
 <?php $i = 1; ?>
-@foreach($data as $row)
+@foreach($member as $row)
     <tr>
         <th>{{$i}}</th>
         <td>@if($row->employee != NULL) {{ $row->employee->name }} @else --- @endif</td>
@@ -37,6 +37,6 @@
 @endforeach
 <tr>
     <td colspan="8" align="center">
-        {{ $data->links() }}
+        {{ $member->links() }}
     </td>
 </tr>

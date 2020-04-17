@@ -111,18 +111,18 @@
                                                 @endif
                                             </div>
                                             <div class="col-lg-6 form-group">
-                                                <label for="sel1">Transfer Status:</label>
+                                                <label for="sel1">Transfer Status:</label>{{ $pipeline->type }}
                                                 <select class="form-control" id="transferStatus" name="transferStatus"
                                                         onclick="changeDiv()">
                                                     <option value="None"
-                                                            @if($pipeline->type == "None" ) selected @endif>None
+                                                            @if($pipeline->transferStatus == "None" ) selected @endif>None
                                                     </option>
                                                     <option value="For Call"
-                                                            @if($pipeline->type == "For Calls" ) selected @endif>For
+                                                            @if($pipeline->transferStatus == "For Call" ) selected @endif>For
                                                         Call
                                                     </option>
                                                     <option value="For Demo"
-                                                            @if($pipeline->type == "For Demo" ) selected @endif>For Demo
+                                                            @if($pipeline->transferStatus == "For Demo" ) selected @endif>For Demo
                                                     </option>
                                                 </select>
                                             </div>
