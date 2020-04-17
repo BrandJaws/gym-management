@@ -30,9 +30,8 @@
                                     <div class="kt-portlet__body">
                                         <div class="form-group row">
                                             <div class="col-lg-6 form-group">
-                                                <label>Customer Name :</label>
-                                                <input type="text" class="form-control" value="{{ $member->name }}"
-                                                       disabled/>
+                                                <label>Lead Name :</label>
+                                                <input type="text" class="form-control" value="{{ $member->name }}" disabled/>
                                             </div>
                                             <div class="col-lg-6 form-group">
                                                 <label>Phone :</label>
@@ -71,8 +70,8 @@
                                                 </select>
                                             </div>
                                             <div class="col-lg-6 form-group">
-                                                <label>Schedule Date :</label>
-                                                <input type="date" name="scheduleDate" class="form-control" required/>
+                                                <label>Schedule Date & Time :</label>
+                                                <input type="datetime-local" name="scheduleDate" class="form-control" required/>
                                                 @if($errors->has('scheduleDate'))
                                                     <div class="error">{{ $errors->first('scheduleDate') }}</div>
                                                 @endif
@@ -83,6 +82,18 @@
                                                     <option value="Pending">Pending</option>
                                                     <option value="Success">Success</option>
                                                     <option value="Failed Call">Failed Calls</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-lg-6 form-group">
+                                                <label>Deal Status :</label>
+                                                <select class="form-control" name="status">
+                                                    <option value="Call Scheduled">Call Scheduled</option>
+                                                    <option value="Appointment Scheduled">Appointment Scheduled</option>
+                                                    <option value="Qualified To Buy">Qualified To Buy</option>
+                                                    <option value="Presentation Scheduled">Presentation Scheduled</option>
+                                                    <option value="Contract Sent">Contract Sent</option>
+                                                    <option value="Closed Won">Closed Won</option>
+                                                    <option value="Closed Lost">Closed Lost</option>
                                                 </select>
                                             </div>
                                             <div class="col-lg-6 form-group">
@@ -104,8 +115,8 @@
                                                 </select>
                                             </div>
                                             <div class="col-lg-6 form-group textField" style="display: none">
-                                                <label>Re-Schedule Date :</label>
-                                                <input type="date" name="reScheduleDate" class="form-control"/>
+                                                <label>Re-Schedule Date & Time :</label>
+                                                <input type="datetime-local" name="reScheduleDate" class="form-control"/>
                                             </div>
                                             <div class="col-lg-6 form-group">
                                                 <label>Interested Packages :</label>

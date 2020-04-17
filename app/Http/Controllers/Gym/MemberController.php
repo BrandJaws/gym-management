@@ -14,6 +14,7 @@ use App\Pipeline;
 use App\TrainingGroup;
 use App\Treasury;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Redirect;
@@ -51,7 +52,10 @@ class MemberController extends Controller
             $expiredMembers = Member::where('gym_id', $gym_id)->where('status', '=', 'Expired')->count();
             $notJoinedMembers = Member::where('gym_id', $gym_id)->where('status', '=', 'Not Joined')->count();
             $assignTasksEmployee = Pipeline::where('gym_id', $gym_id)->where('employee_id', '=', $employee_id)->orWhere('transfer_id', '=', $employee_id)->orderBy('id', 'asc')->paginate(10);
-            return view('gym.member.dashboard', compact('memberships', 'totalCalls', 'callsForAppointments', 'activeMembers',
+            $today = Carbon::today()->format('Y-m-d');
+            $dailySchaduale = Pipeline::where('gym_id', $gym_id)->where('employee_id', '=', $employee_id)->where('scheduleDate', '=', $today)->orderBy('id', 'asc')->get();
+            $dailyReSchaduale = Pipeline::where('gym_id', $gym_id)->where('employee_id', '=', $employee_id)->where('reScheduleDate', '=', $today)->orderBy('id', 'asc')->get();
+            return view('gym.member.dashboard', compact('memberships', 'totalCalls', 'callsForAppointments', 'activeMembers', 'dailySchaduale', 'dailyReSchaduale',
                 'transferCalls', 'failedCalls', 'leads', 'inActiveMembers', 'expiredMembers', 'notJoinedMembers',
                 'assignTasksEmployee'));
         } catch (\Exception $e) {
@@ -182,7 +186,7 @@ class MemberController extends Controller
 
             $training = TrainingGroup::where('member_id', $id)->where('gym_id', Auth::guard('employee')->user()->gym_id)->paginate(10);;
 
-            return view('gym.member.list.edit', compact('lead', 'membership', 'callHistory','treasuryDetail','treasuryCashIn','treasuryCashOut','treasuryCashExtra','treasuryCashDiscount','training'));
+            return view('gym.member.list.edit', compact('lead', 'membership', 'callHistory', 'treasuryDetail', 'treasuryCashIn', 'treasuryCashOut', 'treasuryCashExtra', 'treasuryCashDiscount', 'training'));
         } catch (\Exception $e) {
             return back()->with('error', 'Oops, something was not right in member edit page');
         }
@@ -569,7 +573,7 @@ class MemberController extends Controller
                         $query = $request->get('query');
                         $query = str_replace(" ", "%", $query);
                         $member = Pipeline::getCallsList($query, $sort_by, $sort_type);
-                        return view('gym.member.guest.pagination_data', compact('breadcrumbs','member'))->render();
+                        return view('gym.member.guest.pagination_data', compact('breadcrumbs', 'member'))->render();
                     }
                     break;
                 case 'transferCalls':
@@ -581,7 +585,7 @@ class MemberController extends Controller
                         $query = $request->get('query');
                         $query = str_replace(" ", "%", $query);
                         $member = Pipeline::getTransferList($query, $sort_by, $sort_type);
-                        return view('gym.member.guest.pagination_data', compact('breadcrumbs','member'))->render();
+                        return view('gym.member.guest.pagination_data', compact('breadcrumbs', 'member'))->render();
                     }
                     break;
                 case 'preivewAppointments':
@@ -593,7 +597,7 @@ class MemberController extends Controller
                         $query = $request->get('query');
                         $query = str_replace(" ", "%", $query);
                         $member = Pipeline::getAppointmentsList($query, $sort_by, $sort_type);
-                        return view('gym.member.guest.pagination_data', compact('breadcrumbs','member'))->render();
+                        return view('gym.member.guest.pagination_data', compact('breadcrumbs', 'member'))->render();
                     }
                     break;
                 case 'previewGuestCards':
