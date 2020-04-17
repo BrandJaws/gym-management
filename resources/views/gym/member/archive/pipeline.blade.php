@@ -56,10 +56,13 @@
                                                         <option value="{{ $row->id }}">{{ $row->name }}</option>
                                                     @endforeach
                                                 </select>
+                                                @if($errors->has('employee_id'))
+                                                    <div class="error">{{ $errors->first('employee_id') }}</div>
+                                                @endif
                                             </div>
                                             <div class="col-lg-6 form-group">
                                                 <label>Deal Stage :</label>
-                                                <select class="form-control" name="status">
+                                                <select class="form-control" name="stage">
                                                     <option value="Call Scheduled">Call Scheduled</option>
                                                     <option value="Appointment Scheduled">Appointment Scheduled</option>
                                                     <option value="Presentation Scheduled">Presentation Scheduled
@@ -69,6 +72,9 @@
                                                     <option value="Closed Won">Closed Won</option>
                                                     <option value="Closed Lost">Closed Lost</option>
                                                 </select>
+                                                @if($errors->has('stage'))
+                                                    <div class="error">{{ $errors->first('stage') }}</div>
+                                                @endif
                                             </div>
                                             <div class="col-lg-6 form-group">
                                                 <label>Schedule Date & Time :</label>
@@ -90,7 +96,7 @@
                                             </div>
                                             <div class="col-lg-6 form-group">
                                                 <label>Transfer Stage :</label>
-                                                <select class="form-control" id="sel1" name="transferStatus"
+                                                <select class="form-control" id="sel1" name="transferStage"
                                                         onchange="changeDiv(this.value)">
                                                     <option value="None">None</option>
                                                     <option value="Call Scheduled">Call Scheduled</option>

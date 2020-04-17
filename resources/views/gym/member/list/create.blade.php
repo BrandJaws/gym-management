@@ -52,7 +52,8 @@
                                         <div class="form-group row">
                                             <div class="col-lg-6 ">
                                                 <label>Name :</label>
-                                                <input type="text" name="name" class="form-control" required placeholder="Enter Name"/>
+                                                <input type="text" name="name" class="form-control" required
+                                                       placeholder="Enter Name"/>
                                                 @if($errors->has('name'))
                                                     <div class="error">{{ $errors->first('name') }}</div>
                                                 @endif
@@ -70,7 +71,7 @@
                                             <div class="col-lg-6">
                                                 <label>Email :</label>
                                                 <input type="email" name="email" class="form-control"
-                                                       placeholder="Enter email"/>
+                                                       placeholder="Enter Email"/>
                                                 @if($errors->has('email'))
                                                     <div class="error">{{ $errors->first('email') }}</div>
                                                 @endif
@@ -123,7 +124,7 @@
                                             <div class="col-lg-6 textField" style="display: none">
                                                 <label>Password</label>
                                                 <input type="password" name="password" class="form-control"
-                                                       placeholder="Enter your password  ">
+                                                       placeholder="Enter Password  ">
                                                 @if($errors->has('password'))
                                                     <div class="error">{{ $errors->first('password') }}</div>
                                                 @endif
@@ -145,8 +146,8 @@
                                                         <option value="{{ $row->id }}">{{ $row->name }}</option>
                                                     @endforeach
                                                 </select>
-                                                @if($errors->has('source'))
-                                                    <div class="error">{{ $errors->first('source') }}</div>
+                                                @if($errors->has('membership_id'))
+                                                    <div class="error">{{ $errors->first('membership_id') }}</div>
                                                 @endif
                                             </div>
                                             <div class="col-lg-6 textField" style="display: none">
@@ -170,7 +171,7 @@
                                             </div>
                                             <div class="col-lg-6">
                                                 <label>Remarks :</label>
-                                                <textarea name="remarks" class="form-control" required
+                                                <textarea name="remarks" class="form-control"
                                                           placeholder="Enter Remarks"></textarea>
                                                 @if($errors->has('remarks'))
                                                     <div class="error">{{ $errors->first('remarks') }}</div>

@@ -108,9 +108,10 @@ class MemberController extends Controller
         try {
             $validator = Validator::make($request->all(), [
                 'name' => 'required',
+                'salutation' => 'required',
                 'phone' => 'required',
-                'remarks' => 'required',
                 'address' => 'required',
+                'rating' => 'required',
                 'source' => 'required',
                 'type' => 'required',
                 'email' => 'nullable|email|unique:members',
@@ -123,9 +124,11 @@ class MemberController extends Controller
             $member = new Member();
             $member->fill($request->only([
                 'name',
+                'salutation',
                 'email',
                 'phone',
                 'remarks',
+                'rating',
                 'address',
                 'source',
                 'membership_id',
@@ -135,7 +138,7 @@ class MemberController extends Controller
             ]));
             $code = Member::getMemeberCode($request->name);
             $member->code = $code;
-            $member->employee_id = Auth::guard('employee')->user()->id;
+            $member->leadOwner = Auth::guard('employee')->user()->id;
             $member->password = Hash::make($request->password);
             $member->gym_id = Auth::guard('employee')->user()->gym_id;
             $member->save();
@@ -205,13 +208,14 @@ class MemberController extends Controller
         try {
             $validator = Validator::make($request->all(), [
                 'name' => 'required',
+                'salutation' => 'required',
                 'phone' => 'required',
-                'remarks' => 'required',
                 'address' => 'required',
+                'rating' => 'required',
                 'source' => 'required',
                 'type' => 'required',
-                'email' => 'nullable|unique:members,email,' . $id,
-                'password' => 'nullable|between:6,12,password' . $id,
+                'email' => 'nullable|email|unique:members',
+                'password' => 'nullable|between:6,12,password',
                 'password_confirmation' => 'nullable|same:password',
             ]);
             if ($validator->fails()) {
@@ -221,9 +225,11 @@ class MemberController extends Controller
             $password = $member->password;
             $member->fill($request->only([
                 'name',
+                'salutation',
                 'email',
                 'phone',
                 'remarks',
+                'rating',
                 'address',
                 'source',
                 'membership_id',
