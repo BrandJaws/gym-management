@@ -51,22 +51,13 @@
                                         </div>
                                         <div class="form-group row">
                                             <div class="col-lg-6 ">
-                                                <label>First Name :</label>
-                                                <input type="text" name="firstName" class="form-control" required placeholder="Enter First Name"/>
-                                                @if($errors->has('firstName'))
-                                                    <div class="error">{{ $errors->first('firstName') }}</div>
+                                                <label>Name :</label>
+                                                <input type="text" name="name" class="form-control" required
+                                                       placeholder="Enter Name"/>
+                                                @if($errors->has('name'))
+                                                    <div class="error">{{ $errors->first('name') }}</div>
                                                 @endif
                                             </div>
-                                            <div class="col-lg-6 ">
-                                                <label>Last Name :</label>
-                                                <input type="text" name="lastName" class="form-control" required
-                                                       placeholder="Enter Last Name"/>
-                                                @if($errors->has('lastName'))
-                                                    <div class="error">{{ $errors->first('lastName') }}</div>
-                                                @endif
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
                                             <div class="col-lg-6">
                                                 <label>Phone :</label>
                                                 <input type="number" name="phone" class="form-control" required
@@ -75,16 +66,16 @@
                                                     <div class="error">{{ $errors->first('phone') }}</div>
                                                 @endif
                                             </div>
+                                        </div>
+                                        <div class="form-group row">
                                             <div class="col-lg-6">
                                                 <label>Email :</label>
                                                 <input type="email" name="email" class="form-control"
-                                                       placeholder="Enter email"/>
+                                                       placeholder="Enter Email"/>
                                                 @if($errors->has('email'))
                                                     <div class="error">{{ $errors->first('email') }}</div>
                                                 @endif
                                             </div>
-                                        </div>
-                                        <div class="form-group row">
                                             <div class="col-lg-6">
                                                 <label>Source :</label>
                                                 <select class="form-control" name="source">
@@ -100,6 +91,8 @@
                                                     <div class="error">{{ $errors->first('source') }}</div>
                                                 @endif
                                             </div>
+                                        </div>
+                                        <div class="form-group row">
                                             <div class="col-lg-6">
                                                 <label>Rating :</label>
                                                 <select class="form-control" name="rating">
@@ -111,8 +104,6 @@
                                                     <div class="error">{{ $errors->first('rating') }}</div>
                                                 @endif
                                             </div>
-                                        </div>
-                                        <div class="form-group row">
                                             <div class="col-lg-6">
                                                 <label>Type :</label>
                                                 <select class="form-control" id="typeMember" name="type"
@@ -124,6 +115,8 @@
                                                     <div class="error">{{ $errors->first('type') }}</div>
                                                 @endif
                                             </div>
+                                        </div>
+                                        <div class="form-group row">
                                             <div class="col-lg-6 textField" style="display: none">
                                                 <label>Joining Date</label>
                                                 <input type="date" name="joiningDate" class="form-control"/>
@@ -131,7 +124,7 @@
                                             <div class="col-lg-6 textField" style="display: none">
                                                 <label>Password</label>
                                                 <input type="password" name="password" class="form-control"
-                                                       placeholder="Enter your password  ">
+                                                       placeholder="Enter Password  ">
                                                 @if($errors->has('password'))
                                                     <div class="error">{{ $errors->first('password') }}</div>
                                                 @endif
@@ -153,8 +146,8 @@
                                                         <option value="{{ $row->id }}">{{ $row->name }}</option>
                                                     @endforeach
                                                 </select>
-                                                @if($errors->has('source'))
-                                                    <div class="error">{{ $errors->first('source') }}</div>
+                                                @if($errors->has('membership_id'))
+                                                    <div class="error">{{ $errors->first('membership_id') }}</div>
                                                 @endif
                                             </div>
                                             <div class="col-lg-6 textField" style="display: none">
@@ -166,6 +159,8 @@
                                                     <option value="Expired">Expired</option>
                                                 </select>
                                             </div>
+                                        </div>
+                                        <div class="form-group row">
                                             <div class="col-lg-6">
                                                 <label>Address:</label>
                                                 <textarea name="address" class="form-control" required
@@ -174,11 +169,9 @@
                                                     <div class="error">{{ $errors->first('address') }}</div>
                                                 @endif
                                             </div>
-                                        </div>
-                                        <div class="form-group row">
                                             <div class="col-lg-6">
                                                 <label>Remarks :</label>
-                                                <textarea name="remarks" class="form-control" required
+                                                <textarea name="remarks" class="form-control"
                                                           placeholder="Enter Remarks"></textarea>
                                                 @if($errors->has('remarks'))
                                                     <div class="error">{{ $errors->first('remarks') }}</div>

@@ -20,12 +20,12 @@ class CreatePipelineTable extends Migration
             $table->string('customer_id');
             $table->string('transfer_id')->nullable(true); // null
             $table->dateTime('scheduleDate');
+            $table->string('stage')->nullable(true);
             $table->string('status');
-            $table->string('transferStatus')->nullable(true); // null
+            $table->string('transferStage')->nullable(true); // null
+            $table->dateTime('reScheduleDate')->nullable(true);
             $table->string('intersetedPackages')->nullable(true); // null
             $table->string('remarks')->nullable(true); // null
-            $table->string('type')->nullable(true); // null
-            $table->dateTime('reScheduleDate')->nullable(true); // null
             $table->softDeletes();
             $table->timestamps();
         });
