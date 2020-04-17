@@ -6,6 +6,10 @@
     <!-- begin:: Content -->
         <div class="kt-container  kt-container--fluid  kt-grid__item kt-grid__item--fluid">
             <!--Begin::App-->
+            <form action="{{route('gym.profile')}}" method="POST" enctype="multipart/form-data"
+                  class="kt-form kt-form--label-right">
+                {{csrf_field()}}
+                <input type="hidden" value="{{ Auth::guard('employee')->user()->id }}" name="user_id">
             <div class="kt-grid kt-grid--desktop kt-grid--ver kt-grid--ver-desktop kt-app">
                 <!--Begin:: App Aside Mobile Toggle-->
                 <button class="kt-app__aside-close" id="kt_user_profile_aside_close">
@@ -132,10 +136,6 @@
                 <div class="kt-grid__item kt-grid__item--fluid kt-app__content">
                     <div class="row">
                         <div class="col-lg-12">
-                            <form action="{{route('gym.profile')}}" method="POST" enctype="multipart/form-data"
-                                  class="kt-form kt-form--label-right">
-                                {{csrf_field()}}
-                                <input type="hidden" value="{{ Auth::guard('employee')->user()->id }}" name="user_id">
                                 <!--begin::Portlet-->
                                 <div class="kt-portlet">
                                     <div class="kt-portlet__head">
@@ -255,7 +255,7 @@
                                 </div>
                                 <!--end::Portlet-->
                                 <!-- end:: Content -->
-                            </form>
+
                         </div>
                     </div>
                 </div>
@@ -263,8 +263,8 @@
             </div>
 
             <!--End::App-->
-        </div>
 
+        </form>
         <!-- end:: Content -->
     </div>
 
