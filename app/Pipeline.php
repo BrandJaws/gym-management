@@ -16,12 +16,12 @@ class Pipeline extends Model
         'customer_id',
         'transfer_id',
         'scheduleDate',
+        'stage',
         'status',
-        'transferStatus',
+        'transferStage',
+        'reScheduleDate',
         'intersetedPackages',
         'remarks',
-        'type',
-        'reScheduleDate'
     ];
 
     public function gym()

@@ -12,13 +12,15 @@ class Member extends Model
     protected $table = 'members';
     protected $fillable = [
         'gym_id',
+        'leadOwner_id',
         'membership_id',
+        'salutation',
         'name',
         'code',
-        'employee_id',
         'email',
         'password',
         'phone',
+        'rating',
         'joiningDate',
         'address',
         'source',
