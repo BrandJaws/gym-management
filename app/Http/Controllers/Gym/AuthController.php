@@ -33,10 +33,10 @@ class AuthController extends Controller
 
     public function login(Request $request)
     {
+        $this->validator($request);
         $email = $request->email;
         $employee = Employee::where('email', $email)->first();
         if ($employee->gym->status == "Active") {
-            $this->validator($request);
             if (Auth::guard('employee')->attempt($request->only('email', 'password'), $request->filled('remember'))) {
                 //Authentication passed...
                 return redirect()
