@@ -74,7 +74,8 @@
                                         <select class="form-control kt-select2" id="kt_select2_1" name="country">
                                             @if(count($countries) >= 0)
                                                 @foreach ($countries as $country)
-                                                    <option value="{{$country->name}}" @if($country->name == $gym->country) selected @endif >{{$country->name}}</option>
+                                                    <option value="{{$country->name}}"
+                                                            @if($country->name == $gym->country) selected @endif >{{$country->name}}</option>
                                                 @endforeach
                                             @else
                                                 <p>None</p>
@@ -109,6 +110,16 @@
                                                placeholder="Enter your address" required/>
                                         @if($errors->has('address'))
                                             <div class="error">{{ $errors->first('address') }}</div>
+                                        @endif
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label>Status:</label>
+                                        <select class="form-control" name="status">
+                                            <option value="Active" @if('Active' == $gym->status) selected @endif >Active</option>
+                                            <option value="Block" @if('Block' == $gym->status) selected @endif>Block</option>
+                                        </select>
+                                        @if($errors->has('status'))
+                                            <div class="error">{{ $errors->first('status') }}</div>
                                         @endif
                                     </div>
                                 </div>

@@ -33,15 +33,21 @@ class AuthController extends Controller
 
     public function login(Request $request)
     {
-        $this->validator($request);
-        if (Auth::guard('employee')->attempt($request->only('email', 'password'), $request->filled('remember'))) {
-            //Authentication passed...
-            return redirect()
-                ->intended(route('gym.home'))
-                ->with('status', 'You are Logged in as Gym Super-Admin!');
+        $email = $request->email;
+        $employee = Employee::where('email', $email)->first();
+        if ($employee->gym->status == "Active") {
+            $this->validator($request);
+            if (Auth::guard('employee')->attempt($request->only('email', 'password'), $request->filled('remember'))) {
+                //Authentication passed...
+                return redirect()
+                    ->intended(route('gym.home'))
+                    ->with('status', 'You are Logged in as Gym Super-Admin!');
+            }
+            //Authentication failed...
+            return $this->loginFailed();
+        } else {
+            return $this->loginBlock();
         }
-        //Authentication failed...
-        return $this->loginFailed();
     }
 
     public function logout()
@@ -75,6 +81,14 @@ class AuthController extends Controller
             ->back()
             ->withInput()
             ->with('error', 'Login failed, please try again!');
+    }
+
+    private function loginBlock()
+    {
+        return redirect()
+            ->back()
+            ->withInput()
+            ->with('error', 'Login failed, Because your licence has been blocked ! Kindly update your licence ');
     }
 
     public function reset()
@@ -120,7 +134,7 @@ class AuthController extends Controller
                 $images[] = $userImage;
                 $gym->userImage()->saveMany($images, $gym);
             }
-            $gymId = Gym::where('id',Auth::guard('employee')->user()->gym->id)->first();
+            $gymId = Gym::where('id', Auth::guard('employee')->user()->gym->id)->first();
             if ($request->hasFile('gymImage')) {
                 $images = [];
                 $image = $request->file('gymImage');

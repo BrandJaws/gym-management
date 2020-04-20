@@ -43,7 +43,6 @@ class GymController extends Controller
         } catch (\Exception $e) {
             return back()->with('error', 'Oops, something was not right');
         }
-
     }
 
     /**
@@ -87,6 +86,7 @@ class GymController extends Controller
                 'salary' => 'required',
                 'specialization' => 'required',
                 'empAddress' => 'required',
+                'status' => 'required',
             ]);
             if ($validator->fails()) {
                 return Redirect::back()->withErrors($validator);
@@ -100,6 +100,7 @@ class GymController extends Controller
                 'state',
                 'city',
                 'address',
+                'status'
             ]));
             $gym->gymType = 'Parent';
             $gym->save();
@@ -143,7 +144,7 @@ class GymController extends Controller
                     EmployeePermission::insert(
                         [
                             'gym_module_id' => $value,
-                            'employee_id' =>  $employee->id,
+                            'employee_id' => $employee->id,
                             'gym_id' => $gymId
                         ]
                     );
@@ -193,7 +194,7 @@ class GymController extends Controller
             $gymBranch = Gym::getGymBranchList($searchTerm, $sort_by, $sort_type, $id);
             return view('admin.gym.branch.pagination_data', compact('gymBranch'))->render();
         }
-        return view('admin.gym.edit', compact('gym',  'countries',  'gymBranch', 'gymModule', 'moduleList'))->render();
+        return view('admin.gym.edit', compact('gym', 'countries', 'gymBranch', 'gymModule', 'moduleList'))->render();
     }
 
     /**
@@ -220,6 +221,7 @@ class GymController extends Controller
                 'salary' => 'required',
                 'specialization' => 'required',
                 'empAddress' => 'required',
+                'status' => 'required',
             ]);
             if ($validator->fails()) {
                 return Redirect::back()->withErrors($validator);
@@ -234,6 +236,7 @@ class GymController extends Controller
                 'state',
                 'city',
                 'address',
+                'status'
             ]));
             $gym->save();
             $employee = Employee::where('gym_id', $gym_Id)->first();
@@ -275,7 +278,7 @@ class GymController extends Controller
                     EmployeePermission::insert(
                         [
                             'gym_module_id' => $value,
-                            'employee_id' =>  $employee->id,
+                            'employee_id' => $employee->id,
                             'gym_id' => $gym_Id
                         ]
                     );

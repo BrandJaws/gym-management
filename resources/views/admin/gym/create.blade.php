@@ -52,7 +52,8 @@
                                     <div class="col-md-4 trialEndsAt" style="display: none;">
                                         <label>Trial Ends At:</label>
                                         <div class="kt-input-icon input-group">
-                                            <input type="text" name="trialEndsAt" id="kt_inputmask_1" class="form-control" autofocus
+                                            <input type="date" name="trialEndsAt" id="kt_inputmask_1"
+                                                   class="form-control" autofocus
                                                    placeholder="Enter your date">
                                             <div class="input-group-append">
                                                 <span class="input-group-text">
@@ -106,6 +107,16 @@
                                                placeholder="Enter your address" required/>
                                         @if($errors->has('address'))
                                             <div class="error">{{ $errors->first('address') }}</div>
+                                        @endif
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label>Status:</label>
+                                        <select class="form-control" name="status">
+                                            <option value="Active">Active</option>
+                                            <option value="Block">Block</option>
+                                        </select>
+                                        @if($errors->has('status'))
+                                            <div class="error">{{ $errors->first('status') }}</div>
                                         @endif
                                     </div>
                                 </div>
@@ -180,7 +191,8 @@
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text">@</span>
                                             </div>
-                                            <input type="email" name="email" class="form-control" autofocus placeholder="Email your email" required/>
+                                            <input type="email" name="email" class="form-control" autofocus
+                                                   placeholder="Email your email" required/>
                                         </div>
                                         @if($errors->has('email'))
                                             <div class="error">{{ $errors->first('email') }}</div>
