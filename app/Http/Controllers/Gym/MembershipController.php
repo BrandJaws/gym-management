@@ -78,11 +78,13 @@ class MembershipController extends Controller
                 'registrationFee',
                 'monthlyFee',
                 'affiliateStatus',
-                'spouse',
-                'children',
                 'noOfMembers',
                 'detail',
             ]));
+            if ($request->affiliateStatus == "No") {
+                $membership->spouse = " ";
+                $membership->children = " ";
+            }
             $membership->gym_id = implode(',', $request->gym_id);
             $membership->save();
             return back()->with('success', 'Membership Created Successfully!');
@@ -159,7 +161,7 @@ class MembershipController extends Controller
                 'noOfMembers',
                 'detail',
             ]));
-            if ($request->affiliateStatus == "No"){
+            if ($request->affiliateStatus == "No") {
                 $membership->spouse = " ";
                 $membership->children = " ";
             }
