@@ -80,6 +80,8 @@ class MembershipController extends Controller
                 'affiliateStatus',
                 'noOfMembers',
                 'detail',
+                'spouse',
+                'children'
             ]));
             if ($request->affiliateStatus == "No") {
                 $membership->spouse = " ";
