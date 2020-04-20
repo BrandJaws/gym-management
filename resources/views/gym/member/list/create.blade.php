@@ -29,7 +29,7 @@
                                         <div class="form-group row">
                                             <div class="col-lg-6 ">
                                                 <label>Lead Owner :</label>
-                                                <input type="text" name="leadOwner" class="form-control" disabled
+                                                <input type="text" name="leadOwner_id" class="form-control" disabled
                                                        value="{{ Auth::guard('employee')->user()->name }}"/>
                                                 @if($errors->has('leadOwner'))
                                                     <div class="error">{{ $errors->first('leadOwner') }}</div>
@@ -140,7 +140,8 @@
                                             </div>
                                             <div class="col-lg-6 textField" style="display: none">
                                                 <label>Membership :</label>
-                                                <select class="form-control" name="membership_id">
+                                                <select class="form-control typeField2" style="display: block"
+                                                        name="membership_id">
                                                     <option value="">Select one . . . !</option>
                                                     @foreach($membership as $row)
                                                         <option value="{{ $row->id }}">{{ $row->name }}</option>
@@ -149,6 +150,8 @@
                                                 @if($errors->has('membership_id'))
                                                     <div class="error">{{ $errors->first('membership_id') }}</div>
                                                 @endif
+                                                <p class="danger-light typeField" style="display: none">Membership will
+                                                    be same as your Parent !</p>
                                             </div>
                                             <div class="col-lg-6 textField" style="display: none">
                                                 <label>Status :</label>
@@ -158,6 +161,52 @@
                                                     <option value="In-Active">In-Active</option>
                                                     <option value="Expired">Expired</option>
                                                 </select>
+                                            </div>
+                                            <div class="col-lg-6 textField" style="display: none">
+                                                <label>Member Type :</label>
+                                                <select class="form-control" name="memberType" id="memberType"
+                                                        onclick="changeType()">
+                                                    <option value="Parent">Parent</option>
+                                                    <option value="Affiliate Member">Affiliate Member</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-lg-6 countryDropdown typeField" style="display: none">
+                                                <label class="">Member Type:</label>
+                                                <select class="form-control kt-select2" id="kt_select2_1"
+                                                        name="memberParent_id" autofocus>
+                                                    @if(count($member) >= 0)
+                                                        <option value="0" >---None---</option>
+                                                        @foreach ($member as $value)
+                                                            <option value="{{$value->id}}">{{$value->name}}</option>
+                                                        @endforeach
+                                                    @else
+                                                        <p>None</p>
+                                                    @endif
+                                                </select>
+                                                @if($errors->has('memberParent_id'))
+                                                    <div class="error">{{ $errors->first('memberParent_id') }}</div>
+                                                @endif
+                                            </div>
+                                            <div class="col-lg-6 countryDropdown typeField" style="display: none">
+                                                <label class="">Member Relationship:</label>
+                                                <div class="kt-checkbox-list">
+                                                    <div class="kt-radio-inline">
+                                                        <label class="kt-radio kt-radio--brand">
+                                                            <input type="radio" name="relationShip" value="Spouse">
+                                                            Spouse
+                                                            <span></span>
+                                                        </label>
+                                                        <label class="kt-radio kt-radio--brand">
+                                                            <input type="radio" name="relationShip" value="Children">
+                                                            Children
+                                                            <span></span>
+                                                        </label>
+                                                        @if($errors->has('relationShip'))
+                                                            <div
+                                                                class="error">{{ $errors->first('relationShip') }}</div>
+                                                        @endif
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="form-group row">
@@ -245,6 +294,36 @@
                 $(div).slice(1).css('margin-top', "12px");
             } else {
                 var div = document.getElementsByClassName('textField');
+                for (var i = 0; i < div.length; i++) {
+                    div[i].style.display = "none";
+                }
+            }
+        }
+
+        function changeType() {
+            var memberTypeValue = document.getElementById('memberType').value;
+            if (memberTypeValue === "Affiliate Member") {
+                var div = document.getElementsByClassName('typeField');
+                for (var i = 0; i < div.length; i++) {
+                    div[i].style.display = "block";
+                }
+                $(div).slice(1).css('margin-top', "12px");
+            } else {
+                var div = document.getElementsByClassName('typeField');
+                for (var i = 0; i < div.length; i++) {
+                    div[i].style.display = "none";
+                }
+            }
+
+            var memberTypeValue2 = document.getElementById('memberType').value;
+            if (memberTypeValue2 === "Parent") {
+                var div = document.getElementsByClassName('typeField2');
+                for (var i = 0; i < div.length; i++) {
+                    div[i].style.display = "block";
+                }
+                $(div).slice(1).css('margin-top', "12px");
+            } else {
+                var div = document.getElementsByClassName('typeField2');
                 for (var i = 0; i < div.length; i++) {
                     div[i].style.display = "none";
                 }

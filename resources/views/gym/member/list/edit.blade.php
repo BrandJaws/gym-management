@@ -19,7 +19,9 @@
                                 <div class="kt-widget kt-widget--user-profile-4">
                                     <div class="kt-widget__head">
                                         <div class="kt-widget__media">
-                                            <img class="kt-widget__img kt-hidden-" src="{{asset('assets/media/gym/in.jpg')}}" alt="image" style="height: 100%;">
+                                            <img class="kt-widget__img kt-hidden-"
+                                                 src="{{asset('assets/media/gym/in.jpg')}}" alt="image"
+                                                 style="height: 100%;">
                                         </div>
                                         <div class="kt-widget__content">
                                             <div class="kt-widget__section">
@@ -54,7 +56,9 @@
                                 <div class="kt-widget kt-widget--user-profile-4">
                                     <div class="kt-widget__head">
                                         <div class="kt-widget__media">
-                                            <img class="kt-widget__img kt-hidden-" src="{{asset('assets/media/gym/out.jpg')}}" alt="image" style="height: 100%;">
+                                            <img class="kt-widget__img kt-hidden-"
+                                                 src="{{asset('assets/media/gym/out.jpg')}}" alt="image"
+                                                 style="height: 100%;">
                                         </div>
                                         <div class="kt-widget__content">
                                             <div class="kt-widget__section">
@@ -90,7 +94,9 @@
                                 <div class="kt-widget kt-widget--user-profile-4">
                                     <div class="kt-widget__head">
                                         <div class="kt-widget__media">
-                                            <img class="kt-widget__img kt-hidden-" src="{{asset('assets/media/gym/discount.jpg')}}" alt="image" style="height: 100%;">
+                                            <img class="kt-widget__img kt-hidden-"
+                                                 src="{{asset('assets/media/gym/discount.jpg')}}" alt="image"
+                                                 style="height: 100%;">
                                         </div>
                                         <div class="kt-widget__content">
                                             <div class="kt-widget__section">
@@ -124,7 +130,9 @@
                                 <div class="kt-widget kt-widget--user-profile-4">
                                     <div class="kt-widget__head">
                                         <div class="kt-widget__media">
-                                            <img class="kt-widget__img kt-hidden-" src="{{asset('assets/media/gym/extra.png')}}" alt="image" style="height: 100%;">
+                                            <img class="kt-widget__img kt-hidden-"
+                                                 src="{{asset('assets/media/gym/extra.png')}}" alt="image"
+                                                 style="height: 100%;">
                                         </div>
                                         <div class="kt-widget__content">
                                             <div class="kt-widget__section">
@@ -182,12 +190,10 @@
                                         <div class="kt-widget__content">
                                             <div class="kt-widget__section">
                                                 <a href="#" class="kt-widget__username">
-                                                    {{$lead->name}}
+                                                    {{$lead->salutation}}  {{$lead->name}}
                                                     <i class="flaticon2-correct kt-font-success"></i>
                                                 </a>
-                                                <span class="kt-widget__subtitle">
-																{{$lead->type}}
-															</span>
+                                                <span class="kt-widget__subtitle">{{$lead->type}}</span>
                                             </div>
                                             <div class="kt-widget__action">
                                                 <button type="button"
@@ -197,6 +203,10 @@
                                     </div>
                                     <div class="kt-widget__body">
                                         <div class="kt-widget__content">
+                                            <div class="kt-widget__info">
+                                                <span class="kt-widget__label">Rating:</span>
+                                                <a href="#" class="kt-widget__data">{{$lead->rating}}</a>
+                                            </div>
                                             <div class="kt-widget__info">
                                                 <span class="kt-widget__label">Email:</span>
                                                 <a href="#" class="kt-widget__data">{{$lead->email}}</a>
@@ -301,6 +311,47 @@
                                                     </div>
                                                     <div class="form-group row">
                                                         <div class="col-lg-6 ">
+                                                            <label>Lead Owner :</label>
+                                                            <input type="text" name="leadOwner_id" class="form-control"
+                                                                   disabled
+                                                                   value="{{ Auth::guard('employee')->user()->name }}"/>
+                                                            @if($errors->has('leadOwner'))
+                                                                <div
+                                                                    class="error">{{ $errors->first('leadOwner') }}</div>
+                                                            @endif
+                                                        </div>
+                                                        <div class="col-lg-6 ">
+                                                            <label>Salutation :</label>
+                                                            <select class="form-control" name="salutation">
+                                                                <option value="Mr."
+                                                                        @if($lead->salutation == "Mr." ) selected @endif>
+                                                                    Mr.
+                                                                </option>
+                                                                <option value="Ms."
+                                                                        @if($lead->salutation == "Ms." ) selected @endif>
+                                                                    Ms.
+                                                                </option>
+                                                                <option value="Mrs."
+                                                                        @if($lead->salutation == "Mrs." ) selected @endif>
+                                                                    Mrs.
+                                                                </option>
+                                                                <option value="Dr."
+                                                                        @if($lead->salutation == "Dr." ) selected @endif>
+                                                                    Dr.
+                                                                </option>
+                                                                <option value="Prof."
+                                                                        @if($lead->salutation == "Prof." ) selected @endif>
+                                                                    Prof.
+                                                                </option>
+                                                            </select>
+                                                            @if($errors->has('salutation'))
+                                                                <div
+                                                                    class="error">{{ $errors->first('salutation') }}</div>
+                                                            @endif
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <div class="col-lg-6 ">
                                                             <label>Name :</label>
                                                             <input type="text" name="name" class="form-control" required
                                                                    value="{{$lead->name}}"
@@ -322,33 +373,69 @@
                                                     </div>
                                                     <div class="form-group row">
                                                         <div class="col-lg-6">
+                                                            <label>Email :</label>
+                                                            <input type="email" name="email" class="form-control"
+                                                                   value="{{$lead->email}}" placeholder="Enter email"/>
+                                                            @if($errors->has('email'))
+                                                                <div class="error">{{ $errors->first('email') }}</div>
+                                                            @endif
+                                                        </div>
+                                                        <div class="col-lg-6">
                                                             <label>Source :</label>
                                                             <select class="form-control" name="source">
-                                                                <option value="{{$lead->source}}"
-                                                                        disabled>{{$lead->source}}</option>
-                                                                <option value="None">None</option>
-                                                                <option value="NewsPaper">NewsPaper</option>
-                                                                <option value="TV">TV</option>
-                                                                <option value="Radio">Radio</option>
-                                                                <option value="Friends">Friends</option>
-                                                                <option value="Magazine">Magazine</option>
-                                                                <option value="Social Media">Social Media</option>
+                                                                <option value="None"
+                                                                        @if($lead->source == "None" ) selected @endif>
+                                                                    None
+                                                                </option>
+                                                                <option value="NewsPaper"
+                                                                        @if($lead->source == "NewsPaper" ) selected @endif>
+                                                                    NewsPaper
+                                                                </option>
+                                                                <option value="TV"
+                                                                        @if($lead->source == "TV" ) selected @endif>TV
+                                                                </option>
+                                                                <option value="Radio"
+                                                                        @if($lead->source == "Radio" ) selected @endif>
+                                                                    Radio
+                                                                </option>
+                                                                <option value="Friends"
+                                                                        @if($lead->source == "Friends" ) selected @endif>
+                                                                    Friends
+                                                                </option>
+                                                                <option value="Magazine"
+                                                                        @if($lead->source == "Magazine" ) selected @endif>
+                                                                    Magazine
+                                                                </option>
+                                                                <option value="Social Media"
+                                                                        @if($lead->source == "Social Media" ) selected @endif>
+                                                                    Social Media
+                                                                </option>
                                                             </select>
                                                             @if($errors->has('source'))
                                                                 <div class="error">{{ $errors->first('source') }}</div>
                                                             @endif
                                                         </div>
-                                                        <div class="col-lg-6">
-                                                            <label>Email :</label>
-                                                            <input type="email" name="email" class="form-control"
-                                                                   value="{{$lead->email}}"
-                                                                   placeholder="Enter email"/>
-                                                            @if($errors->has('email'))
-                                                                <div class="error">{{ $errors->first('email') }}</div>
-                                                            @endif
-                                                        </div>
                                                     </div>
                                                     <div class="form-group row">
+                                                        <div class="col-lg-6">
+                                                            <label>Rating :</label>
+                                                            <select class="form-control" name="rating">
+                                                                <option value="Hot"
+                                                                        @if($lead->rating == "Hot" ) selected @endif>Hot
+                                                                </option>
+                                                                <option value="Warm"
+                                                                        @if($lead->rating == "Warm" ) selected @endif>
+                                                                    Warm
+                                                                </option>
+                                                                <option value="Cold"
+                                                                        @if($lead->rating == "Cold" ) selected @endif>
+                                                                    Cold
+                                                                </option>
+                                                            </select>
+                                                            @if($errors->has('rating'))
+                                                                <div class="error">{{ $errors->first('rating') }}</div>
+                                                            @endif
+                                                        </div>
                                                         <div class="col-lg-6">
                                                             <label>Type :</label>
                                                             <select class="form-control" id="typeMember" name="type"
@@ -366,14 +453,14 @@
                                                                 <div class="error">{{ $errors->first('source') }}</div>
                                                             @endif
                                                         </div>
+                                                    </div>
+                                                    <div class="form-group row">
                                                         <div class="col-lg-6 textField" style="display: none">
                                                             <label>Joining Date</label>
                                                             <input type="date" name="joiningDate"
                                                                    value="{{ \Carbon\Carbon::parse($lead->joiningDate)->format('yy-m-d')}}"
                                                                    class="form-control"/>
                                                         </div>
-                                                    </div>
-                                                    <div class="form-group row">
                                                         <div class="col-lg-6 textField" style="display: none">
                                                             <label>Password</label>
                                                             <input type="password" name="password" class="form-control"
@@ -393,8 +480,6 @@
                                                                     class="error">{{ $errors->first('password_confirmation') }}</div>
                                                             @endif
                                                         </div>
-                                                    </div>
-                                                    <div class="form-group row">
                                                         <div class="col-lg-6 textField" style="display: none">
                                                             <label>Membership :</label>
                                                             <select class="form-control" name="membership_id">
@@ -429,6 +514,68 @@
                                                                     Expired
                                                                 </option>
                                                             </select>
+                                                        </div>
+                                                        <div class="col-lg-6 textField" style="display: none">
+                                                            <label>Member Type :</label>
+                                                            <select class="form-control" name="memberType"
+                                                                    id="memberType"
+                                                                    onclick="changeType()">
+                                                                <option value="Parent"
+                                                                        @if($lead->memberType == "Parent" ) selected @endif>
+                                                                    Parent
+                                                                </option>
+                                                                <option value="Affiliate Member"
+                                                                        @if($lead->memberType == "Affiliate Member" ) selected @endif>
+                                                                    Affiliate Member
+                                                                </option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="col-lg-6 countryDropdown typeField"
+                                                             style="display: none">
+                                                            <label class="">Member Type:</label>
+                                                            <select class="form-control kt-select2" id="kt_select2_1"
+                                                                    name="memberParent_id" autofocus>
+                                                                @if(count($member) >= 0)
+                                                                    <option value="0">---None---</option>
+                                                                    @foreach ($member as $value)
+                                                                        <option value="{{$value->id}}"
+                                                                                @if($value->id == $lead->memberParent_id ) selected @endif>{{$value->name}}</option>
+                                                                    @endforeach
+                                                                @else
+                                                                    <p>None</p>
+                                                                @endif
+                                                            </select>
+                                                            @if($errors->has('memberParent_id'))
+                                                                <div
+                                                                    class="error">{{ $errors->first('memberParent_id') }}</div>
+                                                            @endif
+                                                        </div>
+                                                        <div class="col-lg-6 countryDropdown typeField"
+                                                             style="display: none">
+                                                            <label class="">Member Relationship:</label>
+                                                            <div class="kt-checkbox-list">
+                                                                <div class="kt-radio-inline">
+                                                                    <label class="kt-radio kt-radio--brand">
+                                                                        <input type="radio" name="relationShip"
+                                                                               @if( $lead->relationShip == "Spouse" ) checked
+                                                                               @endif value="Spouse">
+                                                                        Spouse
+                                                                        <span></span>
+                                                                    </label>
+                                                                    <label class="kt-radio kt-radio--brand">
+                                                                        <input type="radio" name="relationShip"
+                                                                               value="Children"
+                                                                               @if( $lead->relationShip == "Children" ) checked
+                                                                            @endif>
+                                                                        Children
+                                                                        <span></span>
+                                                                    </label>
+                                                                    @if($errors->has('relationShip'))
+                                                                        <div
+                                                                            class="error">{{ $errors->first('relationShip') }}</div>
+                                                                    @endif
+                                                                </div>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                     <div class="form-group row">
@@ -528,61 +675,61 @@
                         <!--end::Portlet-->
                     </div>
                     <div class="col-lg-12">
-                            <!--begin::Portlet-->
-                            <div class="kt-portlet">
-                                <div class="kt-portlet__head">
-                                    <div class="kt-portlet__head-label">
-                                        <h3 class="kt-portlet__head-title">
-                                            Account History
-                                        </h3>
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <div class="col-lg-12 ">
-                                        <div class="kt-portlet__body">
-                                            <table
-                                                class="table table-striped- table-bordered table-hover table-checkable">
-                                                <thead>
-                                                <tr>
-                                                    <th>No.</th>
-                                                    <th>Employee</th>
-                                                    <th>Cash Flow</th>
-                                                    <th>Type</th>
-                                                    <th>Value</th>
-                                                    <th>Date</th>
-                                                    <th>Purpose</th>
-                                                    <th>Note</th>
-                                                </tr>
-                                                </thead>
-                                                <tbody>
-                                                <?php $i = 1; ?>
-                                                @foreach($treasuryDetail as $row)
-                                                    <tr>
-                                                        <th>{{$i}}</th>
-                                                        <td>{{ $row->employee->name }}</td>
-                                                        <td>{{ $row->cashFlow }}</td>
-                                                        <td>{{ $row->type }}</td>
-                                                        <td>{{ $row->value }}</td>
-                                                        <td>{{ $row->date }}</td>
-                                                        <td>{{ $row->purpose }}</td>
-                                                        <td>{{ $row->note }}</td>
-                                                    </tr>
-                                                    <?php  $i++; ?>
-                                                @endforeach
-                                                <tr>
-                                                    <td colspan="8" align="center">
-                                                        {{ $treasuryDetail->links() }}
-                                                    </td>
-                                                </tr>
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </div>
-
+                        <!--begin::Portlet-->
+                        <div class="kt-portlet">
+                            <div class="kt-portlet__head">
+                                <div class="kt-portlet__head-label">
+                                    <h3 class="kt-portlet__head-title">
+                                        Account History
+                                    </h3>
                                 </div>
                             </div>
-                            <!--end::Portlet-->
+                            <div class="form-group row">
+                                <div class="col-lg-12 ">
+                                    <div class="kt-portlet__body">
+                                        <table
+                                            class="table table-striped- table-bordered table-hover table-checkable">
+                                            <thead>
+                                            <tr>
+                                                <th>No.</th>
+                                                <th>Employee</th>
+                                                <th>Cash Flow</th>
+                                                <th>Type</th>
+                                                <th>Value</th>
+                                                <th>Date</th>
+                                                <th>Purpose</th>
+                                                <th>Note</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <?php $i = 1; ?>
+                                            @foreach($treasuryDetail as $row)
+                                                <tr>
+                                                    <th>{{$i}}</th>
+                                                    <td>{{ $row->employee->name }}</td>
+                                                    <td>{{ $row->cashFlow }}</td>
+                                                    <td>{{ $row->type }}</td>
+                                                    <td>{{ $row->value }}</td>
+                                                    <td>{{ $row->date }}</td>
+                                                    <td>{{ $row->purpose }}</td>
+                                                    <td>{{ $row->note }}</td>
+                                                </tr>
+                                                <?php  $i++; ?>
+                                            @endforeach
+                                            <tr>
+                                                <td colspan="8" align="center">
+                                                    {{ $treasuryDetail->links() }}
+                                                </td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+
+                            </div>
                         </div>
+                        <!--end::Portlet-->
+                    </div>
                     <div class="col-lg-12">
                         <!--begin::Portlet-->
                         <div class="kt-portlet">
@@ -666,6 +813,7 @@
                         }
                     }
                 });
+
                 function changeDiv() {
                     var typeMemberValue = document.getElementById('typeMember').value;
                     if (typeMemberValue === "Member") {
@@ -675,6 +823,37 @@
                         }
                     } else {
                         var div = document.getElementsByClassName('textField');
+                        for (var i = 0; i < div.length; i++) {
+                            div[i].style.display = "none";
+                        }
+                    }
+                }
+
+                $(document).ready(function () {
+                    var memberTypeValue = document.getElementById('memberType').value;
+                    if (memberTypeValue === "Affiliate Member") {
+                        var div = document.getElementsByClassName('typeField');
+                        for (var i = 0; i < div.length; i++) {
+                            div[i].style.display = "block";
+                        }
+                    } else {
+                        var div = document.getElementsByClassName('typeField');
+                        for (var i = 0; i < div.length; i++) {
+                            div[i].style.display = "none";
+                        }
+                    }
+                });
+
+                function changeType() {
+                    var memberTypeValue = document.getElementById('memberType').value;
+                    if (memberTypeValue === "Affiliate Member") {
+                        var div = document.getElementsByClassName('typeField');
+                        for (var i = 0; i < div.length; i++) {
+                            div[i].style.display = "block";
+                        }
+                        $(div).slice(1).css('margin-top', "12px");
+                    } else {
+                        var div = document.getElementsByClassName('typeField');
                         for (var i = 0; i < div.length; i++) {
                             div[i].style.display = "none";
                         }

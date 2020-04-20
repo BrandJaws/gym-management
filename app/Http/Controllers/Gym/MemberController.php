@@ -19,6 +19,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Validator;
+use phpDocumentor\Reflection\Types\Nullable;
 
 class MemberController extends Controller
 {
@@ -36,12 +37,12 @@ class MemberController extends Controller
             $employee_id = Auth::guard('employee')->user()->id;
             $memberships = Membership::where('gym_id', $gym_id)->count();
             /*Count total Calls*/
-            $calls = Pipeline::where('gym_id', $gym_id)->where('employee_id', '=', $employee_id)->where('type', 'For Call')->count();
-            $transferCalls = Pipeline::where('gym_id', $gym_id)->where('transfer_id', '=', $employee_id)->where('transferStatus', 'For Call')->count();
+            $calls = Pipeline::where('gym_id', $gym_id)->where('employee_id', '=', $employee_id)->where('stage', 'For Call')->count();
+            $transferCalls = Pipeline::where('gym_id', $gym_id)->where('transfer_id', '=', $employee_id)->where('transferStage', 'For Call')->count();
             $totalCalls = $calls + $transferCalls;
             /*Count total Demo*/
-            $demo = Pipeline::where('gym_id', $gym_id)->where('employee_id', '=', $employee_id)->where('type', 'For Demo')->count();
-            $transferDemo = Pipeline::where('gym_id', $gym_id)->where('transfer_id', '=', $employee_id)->where('transferStatus', 'For Demo')->count();
+            $demo = Pipeline::where('gym_id', $gym_id)->where('employee_id', '=', $employee_id)->where('stage', 'For Demo')->count();
+            $transferDemo = Pipeline::where('gym_id', $gym_id)->where('transfer_id', '=', $employee_id)->where('transferStage', 'For Demo')->count();
             $callsForAppointments = $demo + $transferDemo;
             /*Count total failed Calls*/
             $failedCalls = Pipeline::where('gym_id', $gym_id)->where('employee_id', '=', $employee_id)->where('status', '=', 'Failed Calls')->count();
@@ -59,7 +60,7 @@ class MemberController extends Controller
                 'transferCalls', 'failedCalls', 'leads', 'inActiveMembers', 'expiredMembers', 'notJoinedMembers',
                 'assignTasksEmployee'));
         } catch (\Exception $e) {
-            return back()->with('error', 'Oops, something was not right in member dahboard');
+            return back()->with('error', 'Oops, something was not right in member dashobard page');
         }
     }
 
@@ -91,7 +92,8 @@ class MemberController extends Controller
         try {
             $gym_id = Auth::guard('employee')->user()->gym_id;
             $membership = Membership::where('gym_id', $gym_id)->get();
-            return view('gym.member.list.create', compact('membership'));
+            $member = Member::where('gym_id', $gym_id)->where('type', 'Member')->where('memberType', 'Parent')->get();
+            return view('gym.member.list.create', compact('membership', 'member'));
         } catch (\Exception $e) {
             return back()->with('error', 'Oops, something was not right in member add page');
         }
@@ -121,6 +123,15 @@ class MemberController extends Controller
             if ($validator->fails()) {
                 return Redirect::back()->withErrors($validator);
             }
+//            $parentMember = Member::where('id', $request->memberParent_id)->first();
+//            if ($parentMember->membership->affiliateStatus == "Yes"){
+//              dd($request->relationShip);
+//                if (($parentMember->membership->spouse || $parentMember->membership->children)  ==  $request->relationShip) {
+//                    dd( $parentMember->id);
+//                }
+//            }else{
+//                dd("yes");
+//            }
             $member = new Member();
             $member->fill($request->only([
                 'name',
@@ -134,11 +145,14 @@ class MemberController extends Controller
                 'membership_id',
                 'joiningDate',
                 'status',
-                'type'
+                'memberType',
+                'type',
+                'memberParent_id',
+                'relationShip'
             ]));
             $code = Member::getMemeberCode($request->name);
             $member->code = $code;
-            $member->leadOwner = Auth::guard('employee')->user()->id;
+            $member->leadOwner_id = Auth::guard('employee')->user()->id;
             $member->password = Hash::make($request->password);
             $member->gym_id = Auth::guard('employee')->user()->gym_id;
             $member->save();
@@ -178,18 +192,19 @@ class MemberController extends Controller
     public function edit($id)
     {
         try {
+            $gym_id = Auth::guard('employee')->user()->gym_id;
             $lead = Member::find($id);
             $membership = Membership::all();
-            $callHistory = Pipeline::where('customer_id', $id)->where('gym_id', Auth::guard('employee')->user()->gym_id)->paginate(10);
-            $treasuryDetail = Treasury::where('member_id', $id)->where('gym_id', Auth::guard('employee')->user()->gym_id)->paginate(10);
-            $treasuryCashIn = Treasury::where('member_id', $id)->where('gym_id', Auth::guard('employee')->user()->gym_id)->where('cashFlow', 'In')->sum('value');
-            $treasuryCashOut = Treasury::where('member_id', $id)->where('gym_id', Auth::guard('employee')->user()->gym_id)->where('cashFlow', 'Out')->sum('value');
-            $treasuryCashExtra = Treasury::where('member_id', $id)->where('gym_id', Auth::guard('employee')->user()->gym_id)->where('cashFlow', 'Extra')->sum('value');
-            $treasuryCashDiscount = Treasury::where('member_id', $id)->where('gym_id', Auth::guard('employee')->user()->gym_id)->where('cashFlow', 'Discount')->sum('value');
-
+            $callHistory = Pipeline::where('customer_id', $id)->where('gym_id', $gym_id)->paginate(10);
+            $treasuryDetail = Treasury::where('member_id', $id)->where('gym_id', $gym_id)->paginate(10);
+            $treasuryCashIn = Treasury::where('member_id', $id)->where('gym_id', $gym_id)->where('cashFlow', 'In')->sum('value');
+            $treasuryCashOut = Treasury::where('member_id', $id)->where('gym_id', $gym_id)->where('cashFlow', 'Out')->sum('value');
+            $treasuryCashExtra = Treasury::where('member_id', $id)->where('gym_id', $gym_id)->where('cashFlow', 'Extra')->sum('value');
+            $treasuryCashDiscount = Treasury::where('member_id', $id)->where('gym_id', $gym_id)->where('cashFlow', 'Discount')->sum('value');
+            $member = Member::where('gym_id', $gym_id)->where('type', 'Member')->get();
             $training = TrainingGroup::where('member_id', $id)->where('gym_id', Auth::guard('employee')->user()->gym_id)->paginate(10);;
 
-            return view('gym.member.list.edit', compact('lead', 'membership', 'callHistory', 'treasuryDetail', 'treasuryCashIn', 'treasuryCashOut', 'treasuryCashExtra', 'treasuryCashDiscount', 'training'));
+            return view('gym.member.list.edit', compact('lead', 'membership', 'callHistory', 'treasuryDetail', 'member', 'treasuryCashIn', 'treasuryCashOut', 'treasuryCashExtra', 'treasuryCashDiscount', 'training'));
         } catch (\Exception $e) {
             return back()->with('error', 'Oops, something was not right in member edit page');
         }
@@ -214,8 +229,8 @@ class MemberController extends Controller
                 'rating' => 'required',
                 'source' => 'required',
                 'type' => 'required',
-                'email' => 'nullable|email|unique:members',
-                'password' => 'nullable|between:6,12,password',
+                'email' => 'unique:members,email,' . $id,
+                'password' => 'nullable|between:6,12,password' . $id,
                 'password_confirmation' => 'nullable|same:password',
             ]);
             if ($validator->fails()) {
@@ -235,8 +250,15 @@ class MemberController extends Controller
                 'membership_id',
                 'joiningDate',
                 'status',
-                'type'
+                'memberType',
+                'type',
+                'memberParent_id',
+                'relationShip'
             ]));
+            if ($request->memberType == "Parent") {
+                $member->memberParent_id = '0';
+                $member->relationShip = ' ';
+            }
             if (!empty($request->password)) {
                 $member->password = Hash::make($request->password);
             } else {
@@ -440,7 +462,7 @@ class MemberController extends Controller
                 'transfer_id',
                 'scheduleDate',
                 'status',
-                'transferStatus',
+                'transferStage',
                 'remarks',
                 'type',
                 'reScheduleDate'
@@ -508,7 +530,7 @@ class MemberController extends Controller
                 'type',
                 'scheduleDate',
                 'status',
-                'transferStatus',
+                'transferStage',
                 'transfer_id',
                 'reScheduleDate',
                 'remarks'
@@ -584,7 +606,7 @@ class MemberController extends Controller
                     break;
                 case 'transferCalls':
                     $breadcrumbs = "Transfer Calls";
-                    $member = Pipeline::where('transferStatus', 'For Call')->where('gym_id', Auth::guard('employee')->user()->gym_id)->Where('transfer_id', Auth::guard('employee')->user()->id)->paginate(10);
+                    $member = Pipeline::where('transferStage', 'For Call')->where('gym_id', Auth::guard('employee')->user()->gym_id)->Where('transfer_id', Auth::guard('employee')->user()->id)->paginate(10);
                     if ($request->ajax()) {
                         $sort_by = $request->get('sortby');
                         $sort_type = $request->get('sorttype');

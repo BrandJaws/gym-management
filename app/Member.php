@@ -26,7 +26,10 @@ class Member extends Model
         'source',
         'remarks',
         'status',
-        'type'
+        'type',
+        'memberType',
+        'memberParent_id',
+        'relationShip'
     ];
 
     public function userImage()

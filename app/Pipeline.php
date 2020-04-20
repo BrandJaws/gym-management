@@ -57,10 +57,10 @@ class Pipeline extends Model
                     ->orWhere('pipeline.transfer_id', 'like', '%' . $searchTerm . '%')
                     ->orWhere('pipeline.scheduleDate', 'like', '%' . $searchTerm . '%')
                     ->orWhere('pipeline.status', 'like', '%' . $searchTerm . '%')
-                    ->orWhere('pipeline.transferStatus', 'like', '%' . $searchTerm . '%')
+                    ->orWhere('pipeline.transferStage', 'like', '%' . $searchTerm . '%')
                     ->orWhere('pipeline.intersetedPackages', 'like', '%' . $searchTerm . '%')
                     ->orWhere('pipeline.remarks', 'like', '%' . $searchTerm . '%')
-                    ->orWhere('pipeline.type', 'like', '%' . $searchTerm . '%')
+                    ->orWhere('pipeline.stage', 'like', '%' . $searchTerm . '%')
                     ->orWhere('pipeline.reScheduleDate', 'like', '%' . $searchTerm . '%');
             }
         })->orderBy($sort_by, $sort_type)->paginate(10);
@@ -79,10 +79,10 @@ class Pipeline extends Model
                     ->orWhere('pipeline.transfer_id', 'like', '%' . $searchTerm . '%')
                     ->orWhere('pipeline.scheduleDate', 'like', '%' . $searchTerm . '%')
                     ->orWhere('pipeline.status', 'like', '%' . $searchTerm . '%')
-                    ->orWhere('pipeline.transferStatus', 'like', '%' . $searchTerm . '%')
+                    ->orWhere('pipeline.transferStage', 'like', '%' . $searchTerm . '%')
                     ->orWhere('pipeline.intersetedPackages', 'like', '%' . $searchTerm . '%')
                     ->orWhere('pipeline.remarks', 'like', '%' . $searchTerm . '%')
-                    ->orWhere('pipeline.type', 'like', '%' . $searchTerm . '%')
+                    ->orWhere('pipeline.stage', 'like', '%' . $searchTerm . '%')
                     ->orWhere('pipeline.reScheduleDate', 'like', '%' . $searchTerm . '%');
             }
         })->orderBy($sort_by, $sort_type)->paginate(10);
@@ -94,17 +94,17 @@ class Pipeline extends Model
                 'pipeline.*',
             ]
         )->where(function ($query) use ($searchTerm, $sort_by, $sort_type) {
-            $query->where('pipeline.transferStatus', 'For Call')->where('pipeline.gym_id', Auth::guard('employee')->user()->gym_id)->Where('pipeline.transfer_id', Auth::guard('employee')->user()->id);
+            $query->where('pipeline.transferStage', 'For Call')->where('pipeline.gym_id', Auth::guard('employee')->user()->gym_id)->Where('pipeline.transfer_id', Auth::guard('employee')->user()->id);
             if ($searchTerm) {
                 $query->where('pipeline.employee_id', 'like', '%' . $searchTerm . '%')
                     ->orWhere('pipeline.customer_id', 'like', '%' . $searchTerm . '%')
                     ->orWhere('pipeline.transfer_id', 'like', '%' . $searchTerm . '%')
                     ->orWhere('pipeline.scheduleDate', 'like', '%' . $searchTerm . '%')
                     ->orWhere('pipeline.status', 'like', '%' . $searchTerm . '%')
-                    ->orWhere('pipeline.transferStatus', 'like', '%' . $searchTerm . '%')
+                    ->orWhere('pipeline.transferStage', 'like', '%' . $searchTerm . '%')
                     ->orWhere('pipeline.intersetedPackages', 'like', '%' . $searchTerm . '%')
                     ->orWhere('pipeline.remarks', 'like', '%' . $searchTerm . '%')
-                    ->orWhere('pipeline.type', 'like', '%' . $searchTerm . '%')
+                    ->orWhere('pipeline.stage', 'like', '%' . $searchTerm . '%')
                     ->orWhere('pipeline.reScheduleDate', 'like', '%' . $searchTerm . '%');
             }
         })->orderBy($sort_by, $sort_type)->paginate(10);
@@ -123,10 +123,10 @@ class Pipeline extends Model
                     ->orWhere('pipeline.transfer_id', 'like', '%' . $searchTerm . '%')
                     ->orWhere('pipeline.scheduleDate', 'like', '%' . $searchTerm . '%')
                     ->orWhere('pipeline.status', 'like', '%' . $searchTerm . '%')
-                    ->orWhere('pipeline.transferStatus', 'like', '%' . $searchTerm . '%')
+                    ->orWhere('pipeline.transferStage', 'like', '%' . $searchTerm . '%')
                     ->orWhere('pipeline.intersetedPackages', 'like', '%' . $searchTerm . '%')
                     ->orWhere('pipeline.remarks', 'like', '%' . $searchTerm . '%')
-                    ->orWhere('pipeline.type', 'like', '%' . $searchTerm . '%')
+                    ->orWhere('pipeline.stage', 'like', '%' . $searchTerm . '%')
                     ->orWhere('pipeline.reScheduleDate', 'like', '%' . $searchTerm . '%');
             }
         })->orderBy($sort_by, $sort_type)->paginate(10);
@@ -143,7 +143,7 @@ class Pipeline extends Model
                 'employees.id',
             ]
         )->where(function ($query) use ($customerType, $type, $leadStatus, $fromDate, $toDate) {
-            $query->where('pipeline.gym_id', Auth::guard('employee')->user()->gym_id)->where('pipeline.type', '=', $type)->where('pipeline.status', '=', $leadStatus)->orWhereBetween('pipeline.scheduleDate', array($fromDate, $toDate))->orWhereBetween('pipeline.reScheduleDate', array($fromDate, $toDate));
+            $query->where('pipeline.gym_id', Auth::guard('employee')->user()->gym_id)->where('pipeline.stage', '=', $type)->where('pipeline.status', '=', $leadStatus)->orWhereBetween('pipeline.scheduleDate', array($fromDate, $toDate))->orWhereBetween('pipeline.reScheduleDate', array($fromDate, $toDate));
         })->leftJoin('employees', function ($join) {
             $join->on('employees.id', 'pipeline.transfer_id');
         })->leftJoin('members', function ($join) {

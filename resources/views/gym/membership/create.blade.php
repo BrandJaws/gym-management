@@ -92,7 +92,7 @@
                                         <label>Include Members:</label>
                                         <div class="kt-checkbox-list">
                                             <label class="kt-checkbox kt-checkbox--bold kt-checkbox--brand">
-                                                <input type="checkbox" checked name="spouse" value="Spouse"> Checked
+                                                <input type="checkbox" checked name="spouse" value="Spouse">Spouse
                                                 <span></span>
                                             </label>
                                             <label class="kt-checkbox kt-checkbox--bold kt-checkbox--brand">
