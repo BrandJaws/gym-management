@@ -51,11 +51,14 @@
                                                         data-column_name="amount" style="cursor: pointer">Source <span
                                                             id="post_title_icon"></span></th>
                                                     <th class="sorting" data-sorting_type="asc"
-                                                        data-column_name="monthlyFee" style="cursor: pointer">Address
+                                                        data-column_name="monthlyFee" style="cursor: pointer">Rating
                                                          <span
                                                             id="post_title_icon"></span></th>
                                                     <th class="sorting" data-sorting_type="asc"
-                                                        data-column_name="detail" style="cursor: pointer">Remarks <span
+                                                        data-column_name="detail" style="cursor: pointer">Status <span
+                                                            id="post_title_icon"></span></th>
+                                                    <th class="sorting" data-sorting_type="asc"
+                                                        data-column_name="detail" style="cursor: pointer">Type <span
                                                             id="post_title_icon"></span></th>
                                                     <th class="sorting" data-sorting_type="asc"
                                                         data-column_name=" " style="cursor: pointer">Actions <span

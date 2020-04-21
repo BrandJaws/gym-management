@@ -54,14 +54,12 @@ class Member extends Model
             $query->where('members.type', 'Member')->where('members.gym_id', Auth::guard('employee')->user()->gym_id);
             if ($searchTerm) {
                 $query->where('members.name', 'like', '%' . $searchTerm . '%')
-                    ->orWhere('members.email', 'like', '%' . $searchTerm . '%')
-                    ->orWhere('members.code', 'like', '%' . $searchTerm . '%')
-                    ->orWhere('members.email', 'like', '%' . $searchTerm . '%')
                     ->orWhere('members.phone', 'like', '%' . $searchTerm . '%')
-                    ->orWhere('members.joiningDate', 'like', '%' . $searchTerm . '%')
-                    ->orWhere('members.address', 'like', '%' . $searchTerm . '%')
-                    ->orWhere('members.remarks', 'like', '%' . $searchTerm . '%')
+                    ->orWhere('members.salutation', 'like', '%' . $searchTerm . '%')
+                    ->orWhere('members.source', 'like', '%' . $searchTerm . '%')
+                    ->orWhere('members.rating', 'like', '%' . $searchTerm . '%')
                     ->orWhere('members.status', 'like', '%' . $searchTerm . '%')
+                    ->orWhere('members.memberType', 'like', '%' . $searchTerm . '%')
                     ->orWhere('members.type', 'like', '%' . $searchTerm . '%');
             }
         })->orderBy($sort_by, $sort_type)->paginate(10);
