@@ -175,7 +175,7 @@
                                                 <select class="form-control kt-select2" id="kt_select2_1"
                                                         name="memberParent_id" autofocus>
                                                     @if(count($member) >= 0)
-                                                        <option value="0" >---None---</option>
+                                                        <option value="0">---None---</option>
                                                         @foreach ($member as $value)
                                                             <option value="{{$value->id}}">{{$value->name}}</option>
                                                         @endforeach
