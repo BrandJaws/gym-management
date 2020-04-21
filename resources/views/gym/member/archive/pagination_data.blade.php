@@ -43,11 +43,11 @@
     @foreach($member as $row)
         <tr>
             <th>{{$i}}</th>
-            <td>{{ $row->name}}</td>
+            <td>{{ $row->salutation }} {{ $row->name}}</td>
             <td>{{ $row->phone }}</td>
             <td>{{ $row->source }}</td>
-            <td>{{ $row->address }}</td>
-            <td>{{ $row->remarks }}</td>
+            <td>{{ $row->rating }}</td>
+            <td>{{ $row->type }}</td>
             <td>
                 <a href="{{url('/gym/member/edit', $row->id)}}" class="dropdown-toggle" id="dropdownMenuButton"
                    data-toggle="dropdown">
@@ -72,7 +72,7 @@
         <?php  $i++; ?>
     @endforeach
     <tr>
-        <td colspan="7" align="center">
+        <td colspan="8" align="center">
             {{ $member->links() }}
         </td>
     </tr>

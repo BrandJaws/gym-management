@@ -78,7 +78,7 @@
                                                 @else
                                                     <thead>
                                                     <tr>
-                                                        <th>No.</th>
+                                                        <th>No. </th>
                                                         <th class="sorting" data-sorting_type="asc"
                                                             data-column_name="name" style="cursor: pointer">Name <span
                                                                 id="id_icon"></span></th>
@@ -87,17 +87,14 @@
                                                             <span
                                                                 id="post_title_icon"></span></th>
                                                         <th class="sorting" data-sorting_type="asc"
-                                                            data-column_name="amount" style="cursor: pointer">Source
+                                                            data-column_name="amount" style="cursor: pointer">Source <span
+                                                                id="post_title_icon"></span></th>
+                                                        <th class="sorting" data-sorting_type="asc"
+                                                            data-column_name="monthlyFee" style="cursor: pointer">Rating
                                                             <span
                                                                 id="post_title_icon"></span></th>
                                                         <th class="sorting" data-sorting_type="asc"
-                                                            data-column_name="monthlyFee" style="cursor: pointer">
-                                                            Address
-                                                            Fee <span
-                                                                id="post_title_icon"></span></th>
-                                                        <th class="sorting" data-sorting_type="asc"
-                                                            data-column_name="detail" style="cursor: pointer">Remarks
-                                                            <span
+                                                            data-column_name="detail" style="cursor: pointer">Type <span
                                                                 id="post_title_icon"></span></th>
                                                         <th class="sorting" data-sorting_type="asc"
                                                             data-column_name=" " style="cursor: pointer">Actions <span
