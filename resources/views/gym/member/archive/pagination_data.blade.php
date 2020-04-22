@@ -51,22 +51,29 @@
             <td>
                 <a href="{{url('/gym/member/edit', $row->id)}}" class="dropdown-toggle" id="dropdownMenuButton"
                    data-toggle="dropdown">
-                    <i class="fa flaticon2-graph"></i>
+                    <i class="fa fa-braille"></i>
                 </a>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton"
                      style="transform: translate3d(912px, 221px, 0px)!important;">
-                    <a class="dropdown-item" href="{{url('/gym/member/archive/forCall', $row->id)}}"> <i
-                            class="fa flaticon2-phone"></i> For Call</a>
-                    <a class="dropdown-item" href="{{url('/gym/member/archive/forDemo', $row->id)}}"><i
-                            class="fa flaticon2-graphic-design"></i> For Demo</a>
-                    <a class="dropdown-item" href="{{url('/gym/member/archive/transferLead', $row->id)}}"><i
-                            class="fa flaticon2-delivery-truck"></i>Transfer Lead</a>
-                    <a class="dropdown-item" href="{{url('/gym/member/edit', $row->id)}}"><i
-                            class="fa flaticon2-edit"></i>
-                        Edit</a>
-                    <a class="dropdown-item" href="{{url('/gym/member/disabled', $row->id)}}"><i
-                            class="fa flaticon2-delete"></i> Disabled</a>
-                </div>
+                    <a class="dropdown-item" href="{{url('/gym/member/archive/callScheduled', $row->id)}}"> <i
+                            class="fa fa-phone-alt"></i> Call Scheduled</a>
+                    <a class="dropdown-item" href="{{url('/gym/member/archive/appointmentScheduled', $row->id)}}"><i
+                            class="fa fa-file-signature"></i> Appointment Scheduled</a>
+                    <a class="dropdown-item" href="{{url('/gym/member/archive/presentationScheduled', $row->id)}}"><i
+                            class="fa fa-book-open"></i>Presentation Scheduled</a>
+                    <a class="dropdown-item" href="{{url('/gym/member/archive/contractSent', $row->id)}}"><i
+                            class="fa fa-file-contract"></i>Contract Sent</a>
+                    <a class="dropdown-item" href="{{url('/gym/member/archive/qualifiedToBuy', $row->id)}}"><i
+                            class="fa fa-user-check"></i>Qualified To Buy</a>
+                    <a class="dropdown-item" href="{{url('/gym/member/archive/closedWon', $row->id)}}"><i
+                            class="fa fa-check"></i>Closed Won</a>
+                    <a class="dropdown-item" href="{{url('/gym/member/archive/closedLost', $row->id)}}"><i
+                            class="fa fa-user-times"></i>Closed Lost</a>
+                    <a class="dropdown-item" href="{{url('/gym/member/archive/transferStage', $row->id)}}"><i
+                            class="fa fa-user-times"></i>Transfer Stage</a>
+                </div> |
+                <a  href="{{url('/gym/member/edit', $row->id)}}"><i class="fa fa-edit"></i></a> |
+                <a  href="{{url('/gym/member/disabled', $row->id)}}"><i class="fa flaticon2-delete"></i> </a>
             </td>
         </tr>
         <?php  $i++; ?>

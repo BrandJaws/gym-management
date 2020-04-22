@@ -43,12 +43,11 @@
                                                 <tr>
                                                     <th>No.</th>
                                                     <th class="sorting" data-sorting_type="asc"
-                                                        data-column_name="name" style="cursor: pointer">Employee <span
-                                                            id="id_icon"></span></th>
+                                                        data-column_name="member_id" style="cursor: pointer">Member
+                                                        <span id="post_title_icon"></span></th>
                                                     <th class="sorting" data-sorting_type="asc"
-                                                        data-column_name="duration" style="cursor: pointer">Member
-                                                        <span
-                                                            id="post_title_icon"></span></th>
+                                                        data-column_name="stage" style="cursor: pointer">Stage <span
+                                                            id="id_icon"></span></th>
                                                     <th class="sorting" data-sorting_type="asc"
                                                         data-column_name="amount" style="cursor: pointer">Date <span
                                                             id="post_title_icon"></span></th>

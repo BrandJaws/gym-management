@@ -747,9 +747,9 @@
                                             <thead>
                                             <tr>
                                                 <th>No.</th>
-                                                <th>Type</th>
+                                                <th>Stage</th>
                                                 <th>Employee</th>
-                                                <th>Date</th>
+                                                <th>Date & Time</th>
                                                 <th>Status</th>
                                                 <th>Transfer Status</th>
                                                 <th>Transfer Employee</th>
@@ -762,16 +762,17 @@
                                             @foreach($callHistory as $row)
                                                 <tr>
                                                     <th>{{$i}}</th>
-                                                    <td>{{ $row->type }}</td>
+                                                    <td>{{ $row->stage }}</td>
                                                     <td>{{ $row->employee->name }}</td>
                                                     <td>{{ $row->scheduleDate }}</td>
                                                     <td>{{ $row->status }}</td>
-                                                    <td>{{ $row->transferStatus }}</td>
+                                                    <td>{{ $row->transferStage }}</td>
                                                     <td>@if($row->transferEmployee != NULL) {{ $row->transferEmployee->name }} @else
                                                             --- @endif</td>
                                                     <td>@if($row->reScheduleDate != NULL) {{ $row->reScheduleDate }} @else
                                                             --- @endif</td>
-                                                    <td>{{ $row->remarks }}</td>
+                                                    <td>@if($row->remarks != NULL) {{ $row->remarks }} @else
+                                                            --- @endif</td>
                                                 </tr>
                                                 <?php  $i++; ?>
                                             @endforeach

@@ -14,7 +14,7 @@
                                     List of {{ $breadcrumbs }}
                                 </h3>
                             </div>
-                            @if($breadcrumbs == "Leads")
+                            @if($breadcrumbs == "Leads" || $breadcrumbs == "Lead Board")
                                 <div class="dropdown dropdown-inline">
                                     <a href="{{route('member.create')}}" type="button"
                                        class="btn btn-brand btn-icon-sm">
@@ -23,6 +23,31 @@
                                 </div>
                             @endif
                         </div>
+                        @if($breadcrumbs == "Lead Board")
+                        <a class="dropdown-item" href="{{url('/gym/member/archive/leads')}}"> <i
+                                class="la la-clipboard"></i> Leads View In Table</a>
+                        <div class="kt-container  kt-container--fluid  kt-grid__item kt-grid__item--fluid">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="kt-portlet">
+                                        <div class="kt-portlet__head">
+                                            <div class="kt-portlet__head-label">
+                                                <h3 class="kt-portlet__head-title">
+                                                    Custom Colors Demo
+                                                </h3>
+                                            </div>
+                                        </div>
+                                        <div class="kt-portlet__body">
+                                            <div id="kanban2"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        @endif
+                        @if($breadcrumbs != "Lead Board" )
+                            <a class="dropdown-item" href="{{url('/gym/member/archive/leadBoard')}}"> <i
+                                    class="la la-clipboard"></i> Leads View In Board </a>
                         <div class="kt-portlet__body">
                             <!--begin::Section-->
                             <div class="kt-section">
@@ -117,6 +142,7 @@
                             </div>
                             <!--end::Section-->
                         </div>
+                        @endif
                         <!--end::Form-->
                     </div>
                     <!--end::Portlet-->
@@ -125,6 +151,9 @@
         </div>
         <!-- end:: Content -->
     </div>
+
+    <script src="{{asset('js/kanban.bundle.js')}}"  type="text/javascript"></script>
+    <script src="{{asset('js/kanban-board.js')}}" type="text/javascript"></script>
 
     <script>
 

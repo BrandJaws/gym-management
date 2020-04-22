@@ -18,6 +18,9 @@
     <link rel="shortcut icon" href="{{asset('assets/media/logos/brandjaws.png')}}"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <link href="{{asset('css/kanban.bundle.css')}}" rel="stylesheet" type="text/css" />
+
 </head>
 <!-- end::Head -->
 <!-- begin::Body -->

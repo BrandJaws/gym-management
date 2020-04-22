@@ -63,14 +63,34 @@
                                             <div class="col-lg-6 form-group">
                                                 <label>Deal Stage :</label>
                                                 <select class="form-control" name="stage">
-                                                    <option value="Call Scheduled">Call Scheduled</option>
-                                                    <option value="Appointment Scheduled">Appointment Scheduled</option>
-                                                    <option value="Presentation Scheduled">Presentation Scheduled
+                                                    <option value="Call Scheduled"
+                                                            @if( $breadcrumbs == "Call Scheduled") selected @endif>Call
+                                                        Scheduled
                                                     </option>
-                                                    <option value="Contract Sent">Contract Sent</option>
-                                                    <option value="Qualified To Buy">Qualified To Buy</option>
-                                                    <option value="Closed Won">Closed Won</option>
-                                                    <option value="Closed Lost">Closed Lost</option>
+                                                    <option value="Appointment Scheduled"
+                                                            @if( $breadcrumbs == "Appointment Scheduled") selected @endif>
+                                                        Appointment Scheduled
+                                                    </option>
+                                                    <option value="Presentation Scheduled"
+                                                            @if( $breadcrumbs == "Presentation Scheduled") selected @endif>
+                                                        Presentation Scheduled
+                                                    </option>
+                                                    <option value="Contract Sent"
+                                                            @if( $breadcrumbs == "Contract Sent") selected @endif>
+                                                        Contract Sent
+                                                    </option>
+                                                    <option value="Qualified To Buy"
+                                                            @if( $breadcrumbs == "Qualified To Buy") selected @endif>
+                                                        Qualified To Buy
+                                                    </option>
+                                                    <option value="Closed Won"
+                                                            @if( $breadcrumbs == "Closed Won") selected @endif>Closed
+                                                        Won
+                                                    </option>
+                                                    <option value="Closed Lost"
+                                                            @if( $breadcrumbs == "Closed Lost") selected @endif>Closed
+                                                        Lost
+                                                    </option>
                                                 </select>
                                                 @if($errors->has('stage'))
                                                     <div class="error">{{ $errors->first('stage') }}</div>
@@ -101,7 +121,8 @@
                                                     <option value="None">None</option>
                                                     <option value="Call Scheduled">Call Scheduled</option>
                                                     <option value="Appointment Scheduled">Appointment Scheduled</option>
-                                                    <option value="Presentation Scheduled">Presentation Scheduled</option>
+                                                    <option value="Presentation Scheduled">Presentation Scheduled
+                                                    </option>
                                                     <option value="Contract Sent">Contract Sent</option>
                                                     <option value="Qualified To Buy">Qualified To Buy</option>
                                                     <option value="Closed Won">Closed Won</option>

@@ -376,9 +376,9 @@ class MemberController extends Controller
                             $memberExsit = Member::where('id', $id)->first();
                             $parentMember = Member::where('id', $request->memberParent_id)->first();
                             $childMember = Member::where('memberParent_id', $request->memberParent_id)->count();
-                            if ($memberExsit->memberParent_id == $request->memberParent_id ){
+                            if ($memberExsit->memberParent_id == $request->memberParent_id) {
                                 $allMember = $childMember;
-                            }else{
+                            } else {
                                 $allMember = $childMember + 1;
                             }
                             $totalMember = $parentMember->membership->noOfMembers - $allMember;
@@ -492,6 +492,10 @@ class MemberController extends Controller
     {
         try {
             switch ($value) {
+                case 'leadBoard':
+                    $breadcrumbs = "Lead Board";
+                    $member = Member::where('type', 'Lead')->where('gym_id', Auth::guard('employee')->user()->gym_id)->orderBy('id', 'asc')->paginate(10);
+                    break;
                 case 'leads':
                     $breadcrumbs = "Leads";
                     $member = Member::where('type', 'Lead')->where('gym_id', Auth::guard('employee')->user()->gym_id)->orderBy('id', 'asc')->paginate(10);
@@ -580,17 +584,29 @@ class MemberController extends Controller
     {
         try {
             switch ($value) {
-                case 'forCall':
-                    $breadcrumbs = "For Call";
+                case 'callScheduled':
+                    $breadcrumbs = "Call Scheduled";
                     break;
-                case 'forDemo':
-                    $breadcrumbs = "For Demo";
+                case 'appointmentScheduled':
+                    $breadcrumbs = "Appointment Scheduled";
                     break;
-                case 'transferLead':
-                    $breadcrumbs = "Transfer Lead";
+                case 'presentationScheduled':
+                    $breadcrumbs = "Presentation Scheduled";
                     break;
-                case 'previewGuestCards':
-                    $breadcrumbs = "Preview Guest Cards";
+                case 'contractSent':
+                    $breadcrumbs = "Contract Sent";
+                    break;
+                case 'transferStage':
+                    $breadcrumbs = "Transfer Stage";
+                    break;
+                case 'qualifiedToBuy':
+                    $breadcrumbs = "Qualified To Buy";
+                    break;
+                case 'closedWon':
+                    $breadcrumbs = "Closed Won";
+                    break;
+                case 'closedLost':
+                    $breadcrumbs = "closed Lost";
                     break;
             }
             $member = Member::find($id);
@@ -607,6 +623,9 @@ class MemberController extends Controller
         try {
             $validator = Validator::make($request->all(), [
                 'scheduleDate' => 'required',
+                'employee_id' => 'required',
+                'stage' => 'required',
+                'status' => 'required',
             ]);
             if ($validator->fails()) {
                 return Redirect::back()->withErrors($validator);
@@ -618,11 +637,11 @@ class MemberController extends Controller
                 'customer_id',
                 'transfer_id',
                 'scheduleDate',
+                'stage',
                 'status',
                 'transferStage',
-                'remarks',
-                'type',
-                'reScheduleDate'
+                'reScheduleDate',
+                'remarks'
             ]));
             if ($request->intersetedPackages != "") {
                 $member->intersetedPackages = implode(',', $request->intersetedPackages);
@@ -751,7 +770,7 @@ class MemberController extends Controller
             switch ($value) {
                 case 'previewCalls':
                     $breadcrumbs = "Preview Calls";
-                    $member = Pipeline::where('type', 'For Call')->where('gym_id', Auth::guard('employee')->user()->gym_id)->orWhere('employee_id', Auth::guard('employee')->user()->id)->orWhere('transfer_id', Auth::guard('employee')->user()->id)->paginate(10);
+                    $member = Pipeline::where('stage', 'Call Scheduled')->where('gym_id', Auth::guard('employee')->user()->gym_id)->orWhere('employee_id', Auth::guard('employee')->user()->id)->orWhere('transfer_id', Auth::guard('employee')->user()->id)->paginate(10);
                     if ($request->ajax()) {
                         $sort_by = $request->get('sortby');
                         $sort_type = $request->get('sorttype');
@@ -763,7 +782,7 @@ class MemberController extends Controller
                     break;
                 case 'transferCalls':
                     $breadcrumbs = "Transfer Calls";
-                    $member = Pipeline::where('transferStage', 'For Call')->where('gym_id', Auth::guard('employee')->user()->gym_id)->Where('transfer_id', Auth::guard('employee')->user()->id)->paginate(10);
+                    $member = Pipeline::where('transferStage', 'Call Scheduled')->where('gym_id', Auth::guard('employee')->user()->gym_id)->Where('transfer_id', Auth::guard('employee')->user()->id)->paginate(10);
                     if ($request->ajax()) {
                         $sort_by = $request->get('sortby');
                         $sort_type = $request->get('sorttype');
@@ -775,7 +794,7 @@ class MemberController extends Controller
                     break;
                 case 'preivewAppointments':
                     $breadcrumbs = "Preivew Appointments";
-                    $member = Pipeline::where('type', 'For Demo')->where('gym_id', Auth::guard('employee')->user()->gym_id)->orWhere('employee_id', Auth::guard('employee')->user()->id)->orWhere('transfer_id', Auth::guard('employee')->user()->id)->paginate(10);
+                    $member = Pipeline::where('stage', 'Appointment Scheduled')->where('gym_id', Auth::guard('employee')->user()->gym_id)->orWhere('employee_id', Auth::guard('employee')->user()->id)->orWhere('transfer_id', Auth::guard('employee')->user()->id)->paginate(10);
                     if ($request->ajax()) {
                         $sort_by = $request->get('sortby');
                         $sort_type = $request->get('sorttype');
