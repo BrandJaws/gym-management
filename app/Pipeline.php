@@ -68,38 +68,40 @@ class Pipeline extends Model
 
     public static function getCallsList($searchTerm, $sort_by, $sort_type)
     {
-        return self::select([
-                'pipeline.*',
-            ]
-        )->where(function ($query) use ($searchTerm, $sort_by, $sort_type) {
-            $query->where('pipeline.stage', 'Call Scheduled')->where('pipeline.gym_id', Auth::guard('employee')->user()->gym_id)->orWhere('pipeline.employee_id', Auth::guard('employee')->user()->id)->orWhere('pipeline.transfer_id', Auth::guard('employee')->user()->id);
-            if ($searchTerm) {
-                $query->where('pipeline.customer_id', 'like', '%' . $searchTerm . '%')
-                    ->orWhere('pipeline.stage', 'like', '%' . $searchTerm . '%')
-                    ->orWhere('pipeline.scheduleDate', 'like', '%' . $searchTerm . '%')
-                    ->orWhere('pipeline.transferStage', 'like', '%' . $searchTerm . '%')
-                    ->orWhere('pipeline.transfer_id', 'like', '%' . $searchTerm . '%')
-                    ->orWhere('pipeline.reScheduleDate', 'like', '%' . $searchTerm . '%');
-            }
-        })->orderBy($sort_by, $sort_type)->paginate(10);
+        return self::where('stage', '=', 'Call Scheduled')
+            ->where('employee_id', '=' , Auth::guard('employee')->user()->id)
+            ->where(function ($query) use ($searchTerm) {
+                if ($searchTerm) {
+                    $query->orWhere('pipeline.customer_id', 'like', "%$searchTerm%");
+                    $query->orWhere('pipeline.stage', 'like', "%$searchTerm%");
+                    $query->orWhere('pipeline.scheduleDate', 'like', "%$searchTerm%");
+                    $query->orWhere('pipeline.transferStage', 'like', "%$searchTerm%");
+                    $query->orWhere('pipeline.transfer_id', 'like', "%$searchTerm%");
+                    $query->orWhere('pipeline.reScheduleDate', 'like', "%$searchTerm%");
+                }
+            })
+            ->select('pipeline.customer_id', 'pipeline.stage', 'pipeline.scheduleDate', 'pipeline.transferStage', 'pipeline.transfer_id', 'pipeline.reScheduleDate')
+            ->orderby($sort_by, $sort_type)
+            ->paginate(10);
     }
 
     public static function getTransferList($searchTerm, $sort_by, $sort_type)
     {
-        return self::select([
-                'pipeline.*',
-            ]
-        )->where(function ($query) use ($searchTerm, $sort_by, $sort_type) {
-            $query->where('pipeline.transferStage', 'Call Scheduled')->where('pipeline.gym_id', Auth::guard('employee')->user()->gym_id)->Where('pipeline.transfer_id', Auth::guard('employee')->user()->id);
-            if ($searchTerm) {
-                $query->where('pipeline.customer_id', 'like', '%' . $searchTerm . '%')
-                    ->orWhere('pipeline.stage', 'like', '%' . $searchTerm . '%')
-                    ->orWhere('pipeline.scheduleDate', 'like', '%' . $searchTerm . '%')
-                    ->orWhere('pipeline.transferStage', 'like', '%' . $searchTerm . '%')
-                    ->orWhere('pipeline.transfer_id', 'like', '%' . $searchTerm . '%')
-                    ->orWhere('pipeline.reScheduleDate', 'like', '%' . $searchTerm . '%');
-            }
-        })->orderBy($sort_by, $sort_type)->paginate(10);
+        return self::where('transferStage', '=', 'Call Scheduled')
+            ->where('transfer_id', '=' , Auth::guard('employee')->user()->id)
+            ->where(function ($query) use ($searchTerm) {
+                if ($searchTerm) {
+                    $query->orWhere('pipeline.customer_id', 'like', "%$searchTerm%");
+                    $query->orWhere('pipeline.stage', 'like', "%$searchTerm%");
+                    $query->orWhere('pipeline.scheduleDate', 'like', "%$searchTerm%");
+                    $query->orWhere('pipeline.transferStage', 'like', "%$searchTerm%");
+                    $query->orWhere('pipeline.transfer_id', 'like', "%$searchTerm%");
+                    $query->orWhere('pipeline.reScheduleDate', 'like', "%$searchTerm%");
+                }
+            })
+            ->select('pipeline.customer_id', 'pipeline.stage', 'pipeline.scheduleDate', 'pipeline.transferStage', 'pipeline.transfer_id', 'pipeline.reScheduleDate')
+            ->orderby($sort_by, $sort_type)
+            ->paginate(10);
     }
 
     public static function getAppointmentsList($searchTerm, $sort_by, $sort_type)
@@ -108,7 +110,7 @@ class Pipeline extends Model
                 'pipeline.*',
             ]
         )->where(function ($query) use ($searchTerm, $sort_by, $sort_type) {
-            $query->where('pipeline.type', 'Appointment Scheduled')->where('pipeline.gym_id', Auth::guard('employee')->user()->gym_id)->orWhere('pipeline.employee_id', Auth::guard('employee')->user()->id)->orWhere('pipeline.transfer_id', Auth::guard('employee')->user()->id);
+            $query->where('stage', 'Appointment Scheduled')->where('employee_id', Auth::guard('employee')->user()->id);
             if ($searchTerm) {
                 $query->where('pipeline.customer_id', 'like', '%' . $searchTerm . '%')
                     ->orWhere('pipeline.stage', 'like', '%' . $searchTerm . '%')

@@ -49,18 +49,18 @@
                                                         data-column_name="stage" style="cursor: pointer">Stage <span
                                                             id="id_icon"></span></th>
                                                     <th class="sorting" data-sorting_type="asc"
-                                                        data-column_name="amount" style="cursor: pointer">Date <span
+                                                        data-column_name="scheduleDate" style="cursor: pointer">Date <span
                                                             id="post_title_icon"></span></th>
                                                     <th class="sorting" data-sorting_type="asc"
-                                                        data-column_name="monthlyFee" style="cursor: pointer">Transfer
+                                                        data-column_name="transferStage" style="cursor: pointer">Transfer
                                                         Status<span
                                                             id="post_title_icon"></span></th>
                                                     <th class="sorting" data-sorting_type="asc"
-                                                        data-column_name="detail" style="cursor: pointer">Transfer
+                                                        data-column_name="transfer_id" style="cursor: pointer">Transfer
                                                         Employee <span
                                                             id="post_title_icon"></span></th>
                                                     <th class="sorting" data-sorting_type="asc"
-                                                        data-column_name="detail" style="cursor: pointer">Re-Schedule
+                                                        data-column_name="reScheduleDate" style="cursor: pointer">Re-Schedule
                                                         Date <span
                                                             id="post_title_icon"></span></th>
                                                     <th class="sorting" data-sorting_type="asc"
@@ -102,7 +102,7 @@
             @if($breadcrumbs == "Preview Calls")
             function fetch_data(page, sort_type, sort_by, query) {
                 $.ajax({
-                    url: "/gym/member/archive/previewCalls?page=" + page + "&sortby=" + sort_by + "&sorttype=" + sort_type + "&query=" + query,
+                    url: "/gym/member/guest/previewCalls?page=" + page + "&sortby=" + sort_by + "&sorttype=" + sort_type + "&query=" + query,
                     success: function (data) {
                         $('tbody').html('');
                         $('tbody').html(data);
@@ -112,7 +112,7 @@
             @elseif($breadcrumbs == "Transfer Calls")
             function fetch_data(page, sort_type, sort_by, query) {
                 $.ajax({
-                    url: "/gym/member/archive/transferCalls?page=" + page + "&sortby=" + sort_by + "&sorttype=" + sort_type + "&query=" + query,
+                    url: "/gym/member/guest/transferCalls?page=" + page + "&sortby=" + sort_by + "&sorttype=" + sort_type + "&query=" + query,
                     success: function (data) {
                         $('tbody').html('');
                         $('tbody').html(data);
@@ -122,7 +122,7 @@
             @elseif($breadcrumbs == "Preivew Appointments")
             function fetch_data(page, sort_type, sort_by, query) {
                 $.ajax({
-                    url: "/gym/member/archive/preivewAppointments?page=" + page + "&sortby=" + sort_by + "&sorttype=" + sort_type + "&query=" + query,
+                    url: "/gym/member/guest/preivewAppointments?page=" + page + "&sortby=" + sort_by + "&sorttype=" + sort_type + "&query=" + query,
                     success: function (data) {
                         $('tbody').html('');
                         $('tbody').html(data);

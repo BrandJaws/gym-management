@@ -655,23 +655,9 @@ class MemberController extends Controller
         }
     }
 
-    public function pipelineEdit($value, $id)
+    public function pipelineEdit($id)
     {
         try {
-            switch ($value) {
-                case 'previewCalls':
-                    $breadcrumbs = "Edit Call";
-                    break;
-                case 'transferCalls':
-                    $breadcrumbs = "Edit Transfer Call";
-                    break;
-                case 'preivewAppointments':
-                    $breadcrumbs = "Edit Appointment";
-                    break;
-                case 'failedCalls':
-                    $breadcrumbs = "Edit Failed Call";
-                    break;
-            }
             $packageList = [];
             $pipeline = Pipeline::find($id);
             $packageId = explode(',', $pipeline->intersetedPackages);
@@ -680,7 +666,7 @@ class MemberController extends Controller
             }
             $membership = Membership::all();
             $employee = Employee::all();
-            return view('gym.member.guest.edit', compact('breadcrumbs', 'membership', 'pipeline', 'employee', 'packageList'))->render();
+            return view('gym.member.guest.edit', compact( 'membership', 'pipeline', 'employee', 'packageList'))->render();
         } catch (\Exception $e) {
             return back()->with('error', 'Oops, something was not right in member pipelineEdit function');
         }
@@ -770,19 +756,19 @@ class MemberController extends Controller
             switch ($value) {
                 case 'previewCalls':
                     $breadcrumbs = "Preview Calls";
-                    $member = Pipeline::where('stage', 'Call Scheduled')->where('gym_id', Auth::guard('employee')->user()->gym_id)->orWhere('employee_id', Auth::guard('employee')->user()->id)->orWhere('transfer_id', Auth::guard('employee')->user()->id)->paginate(10);
+                    $member = Pipeline::where('stage', 'Call Scheduled')->where('employee_id', Auth::guard('employee')->user()->id)->paginate(10);
                     if ($request->ajax()) {
                         $sort_by = $request->get('sortby');
                         $sort_type = $request->get('sorttype');
-                        $query = $request->get('query');
-                        $query = str_replace(" ", "%", $query);
-                        $member = Pipeline::getCallsList($query, $sort_by, $sort_type);
+                        $searchTerm = $request->get('query');
+                        $searchTerm = str_replace(" ", "%", $searchTerm);
+                        $member = Pipeline::getCallsList($searchTerm, $sort_by, $sort_type);
                         return view('gym.member.guest.pagination_data', compact('breadcrumbs', 'member'))->render();
                     }
                     break;
                 case 'transferCalls':
                     $breadcrumbs = "Transfer Calls";
-                    $member = Pipeline::where('transferStage', 'Call Scheduled')->where('gym_id', Auth::guard('employee')->user()->gym_id)->Where('transfer_id', Auth::guard('employee')->user()->id)->paginate(10);
+                    $member = Pipeline::where('transferStage', 'Call Scheduled')->Where('transfer_id', Auth::guard('employee')->user()->id)->paginate(10);
                     if ($request->ajax()) {
                         $sort_by = $request->get('sortby');
                         $sort_type = $request->get('sorttype');
@@ -794,7 +780,7 @@ class MemberController extends Controller
                     break;
                 case 'preivewAppointments':
                     $breadcrumbs = "Preivew Appointments";
-                    $member = Pipeline::where('stage', 'Appointment Scheduled')->where('gym_id', Auth::guard('employee')->user()->gym_id)->orWhere('employee_id', Auth::guard('employee')->user()->id)->orWhere('transfer_id', Auth::guard('employee')->user()->id)->paginate(10);
+                    $member = Pipeline::where('stage', 'Appointment Scheduled')->where('employee_id', Auth::guard('employee')->user()->id)->paginate(10);
                     if ($request->ajax()) {
                         $sort_by = $request->get('sortby');
                         $sort_type = $request->get('sorttype');
@@ -803,9 +789,6 @@ class MemberController extends Controller
                         $member = Pipeline::getAppointmentsList($query, $sort_by, $sort_type);
                         return view('gym.member.guest.pagination_data', compact('breadcrumbs', 'member'))->render();
                     }
-                    break;
-                case 'previewGuestCards':
-                    $breadcrumbs = "Preview Guest Cards";
                     break;
             }
             return view('gym.member.guest.list', compact('breadcrumbs', 'member'))->render();

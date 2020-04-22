@@ -15,7 +15,7 @@
                         <div class="kt-portlet__head">
                             <div class="kt-portlet__head-label">
                                 <h3 class="kt-portlet__head-title">
-                                    Action <small> {{$breadcrumbs}} </small>
+                                    Action <small> {{ $pipeline->stage }}  </small>
                                 </h3>
                             </div>
                         </div>
@@ -30,7 +30,7 @@
                                     <div class="kt-portlet__body">
                                         <div class="form-group row">
                                             <div class="col-lg-6 form-group">
-                                                <label>Customer Name :</label>
+                                                <label>Lead Name :</label>
                                                 <input type="text" class="form-control"
                                                        value="{{ $pipeline->member->name }}"
                                                        disabled/>
@@ -67,24 +67,44 @@
                                             </div>
                                             <div class="col-lg-6 form-group">
                                                 <label>Type :</label>
-                                                <select class="form-control" name="type">
-                                                    <option value="For Demo"
-                                                            @if($breadcrumbs == "For Demo" ) selected @endif >
-                                                        For Demo
+                                                <select class="form-control" name="stage">
+                                                    <option value="Call Scheduled"
+                                                            @if( $pipeline->stage == "Call Scheduled") selected @endif>Call
+                                                        Scheduled
                                                     </option>
-                                                    <option value="For Call"
-                                                            @if($breadcrumbs == "Edit Call" || $breadcrumbs == "Edit Failed Call" ||  $breadcrumbs == "Edit Transfer Call" ) selected @endif >
-                                                        For Call
+                                                    <option value="Appointment Scheduled"
+                                                            @if( $pipeline->stage == "Appointment Scheduled") selected @endif>
+                                                        Appointment Scheduled
+                                                    </option>
+                                                    <option value="Presentation Scheduled"
+                                                            @if( $pipeline->stage == "Presentation Scheduled") selected @endif>
+                                                        Presentation Scheduled
+                                                    </option>
+                                                    <option value="Contract Sent"
+                                                            @if( $pipeline->stage == "Contract Sent") selected @endif>
+                                                        Contract Sent
+                                                    </option>
+                                                    <option value="Qualified To Buy"
+                                                            @if( $pipeline->stage == "Qualified To Buy") selected @endif>
+                                                        Qualified To Buy
+                                                    </option>
+                                                    <option value="Closed Won"
+                                                            @if( $pipeline->stage == "Closed Won") selected @endif>Closed
+                                                        Won
+                                                    </option>
+                                                    <option value="Closed Lost"
+                                                            @if( $pipeline->stage == "Closed Lost") selected @endif>Closed
+                                                        Lost
                                                     </option>
                                                 </select>
-                                                @if($errors->has('type'))
-                                                    <div class="error">{{ $errors->first('type') }}</div>
+                                                @if($errors->has('stage'))
+                                                    <div class="error">{{ $errors->first('stage') }}</div>
                                                 @endif
                                             </div>
                                             <div class="col-lg-6 form-group">
-                                                <label>Schedule Date :</label>
-                                                <input type="date" name="scheduleDate" class="form-control"
-                                                       value="{{ \Carbon\Carbon::parse($pipeline->joiningDate)->format('yy-m-d')}}"
+                                                <label>Schedule Date & Time : :</label>
+                                                <input type="datetime-local" name="scheduleDate" class="form-control"
+                                                       value="{{ \Carbon\Carbon::parse($pipeline->joiningDate)->format('Y-m-d\TH:i')}}"
                                                        required/>
                                                 @if($errors->has('scheduleDate'))
                                                     <div class="error">{{ $errors->first('scheduleDate') }}</div>
@@ -93,18 +113,11 @@
                                             <div class="col-lg-6 form-group">
                                                 <label>Status :</label>
                                                 <select class="form-control" name="status">
-                                                    <option value="Pending"
-                                                            @if($pipeline->status == "Pending" ) selected @endif >
-                                                        Pending
-                                                    </option>
-                                                    <option value="Success"
-                                                            @if($pipeline->status == "Success" ) selected @endif >
-                                                        Success
-                                                    </option>
-                                                    <option value="Failed Call"
-                                                            @if($pipeline->status == "Failed Call" ) selected @endif >
-                                                        Failed Call
-                                                    </option>
+                                                    <option value="Pending"  @if($pipeline->status == "Pending" ) selected @endif >Pending</option>
+                                                    <option value="Success"  @if($pipeline->status == "Success" ) selected @endif >Success</option>
+                                                    <option value="Absent"  @if($pipeline->status == "Absent" ) selected @endif >Absent</option>
+                                                    <option value="Un-Answered"  @if($pipeline->status == "Un-Answered" ) selected @endif >Un-Answered</option>
+                                                    <option value="Failed Call"  @if($pipeline->status == "Failed Calls" ) selected @endif >Failed Calls</option>
                                                 </select>
                                                 @if($errors->has('status'))
                                                     <div class="error">{{ $errors->first('status') }}</div>
@@ -114,15 +127,33 @@
                                                 <label for="sel1">Transfer Status:</label>{{ $pipeline->type }}
                                                 <select class="form-control" id="transferStatus" name="transferStatus"
                                                         onclick="changeDiv()">
-                                                    <option value="None"
-                                                            @if($pipeline->transferStatus == "None" ) selected @endif>None
+                                                    <option value="Call Scheduled"
+                                                            @if( $pipeline->transferStatus == "Call Scheduled") selected @endif>Call
+                                                        Scheduled
                                                     </option>
-                                                    <option value="For Call"
-                                                            @if($pipeline->transferStatus == "For Call" ) selected @endif>For
-                                                        Call
+                                                    <option value="Appointment Scheduled"
+                                                            @if( $pipeline->transferStatus == "Appointment Scheduled") selected @endif>
+                                                        Appointment Scheduled
                                                     </option>
-                                                    <option value="For Demo"
-                                                            @if($pipeline->transferStatus == "For Demo" ) selected @endif>For Demo
+                                                    <option value="Presentation Scheduled"
+                                                            @if( $pipeline->transferStatus == "Presentation Scheduled") selected @endif>
+                                                        Presentation Scheduled
+                                                    </option>
+                                                    <option value="Contract Sent"
+                                                            @if( $pipeline->transferStatus == "Contract Sent") selected @endif>
+                                                        Contract Sent
+                                                    </option>
+                                                    <option value="Qualified To Buy"
+                                                            @if( $pipeline->transferStatus == "Qualified To Buy") selected @endif>
+                                                        Qualified To Buy
+                                                    </option>
+                                                    <option value="Closed Won"
+                                                            @if( $pipeline->transferStatus == "Closed Won") selected @endif>Closed
+                                                        Won
+                                                    </option>
+                                                    <option value="Closed Lost"
+                                                            @if( $pipeline->transferStatus == "Closed Lost") selected @endif>Closed
+                                                        Lost
                                                     </option>
                                                 </select>
                                             </div>

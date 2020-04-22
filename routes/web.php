@@ -108,7 +108,7 @@ Route::group(['prefix' => 'gym', 'namespace' => 'Gym'], function () {
             /*-----------------------------------------------------------------------------------*/
             Route::get('/archive/{action}/{id}', ['as' => 'pipelineCreate', 'uses' => 'MemberController@pipelineCreate']);
             Route::post('/archive', ['as' => 'pipelineStore', 'uses' => 'MemberController@pipelineStore']);
-            Route::get('/guest/{status}/{id}', ['as' => 'pipelineEdit', 'uses' => 'MemberController@pipelineEdit']);
+            Route::get('/guests/{id}', ['as' => 'pipelineEdit', 'uses' => 'MemberController@pipelineEdit']);
             Route::get('/archive/{status}', ['as' => 'archive', 'uses' => 'MemberController@archive']);
             Route::get('/guest/{status}', ['as' => 'guest', 'uses' => 'MemberController@guest']);
             Route::post('/pipelineUpdate', ['as' => 'pipelineUpdate', 'uses' => 'MemberController@pipelineUpdate']);

@@ -15,19 +15,7 @@
             </a>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton"
                  style="transform: translate3d(912px, 221px, 0px)!important;">
-                @if( $breadcrumbs == "Preview Calls" )
-                    <a class="dropdown-item" href="{{url('/gym/member/guest/previewCalls', $row->id)}}"><i
-                            class="fa flaticon2-edit"></i>
-                        Edit</a>
-                @elseif($breadcrumbs == "Transfer Calls")
-                    <a class="dropdown-item" href="{{url('/gym/member/guest/transferCalls', $row->id)}}"><i
-                            class="fa flaticon2-edit"></i>
-                        Edit</a>
-                @elseif($breadcrumbs == "Preivew Appointments")
-                    <a class="dropdown-item" href="{{url('/gym/member/guest/preivewAppointments', $row->id)}}"><i
-                            class="fa flaticon2-edit"></i>
-                        Edit</a>
-                @endif
+                    <a class="dropdown-item" href="{{url('/gym/member/guests', $row->id)}}"><i class="fa flaticon2-edit"></i>Edit</a>
                 <a class="dropdown-item" href="{{url('/gym/member/pipelineDisable', $row->id)}}"><i
                             class="fa flaticon2-delete"></i> Disabled</a>
             </div>
