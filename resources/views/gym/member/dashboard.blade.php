@@ -41,24 +41,43 @@
                                                 <canvas id="kt_chart_profit_share"
                                                         style="height: 140px; width: 140px;"></canvas>
                                                 <input type="hidden" id="appointmentCalls"
-                                                       value="{{ $callsForAppointments }}">
+                                                       value="{{ $appointmentScheduled }}">
                                                 <input type="hidden" id="transferCalls" value="{{ $transferCalls }}">
                                                 <input type="hidden" id="failedCalls" value="{{ $failedCalls }}">
+                                                <input type="hidden" id="presentationScheduled"
+                                                       value="{{ $presentationScheduled }}">
+                                                <input type="hidden" id="contractSent" value="{{ $contractSent }}">
+                                                <input type="hidden" id="qualifiedToBuy" value="{{ $qualifiedToBuy }}">
                                             </div>
                                             <div class="kt-widget14__legends">
                                                 <div class="kt-widget14__legend">
                                                     <span class="kt-widget14__bullet kt-bg-success"></span>
                                                     <span
-                                                        class="kt-widget14__stats">{{ $callsForAppointments }} Appointment Calls</span>
-                                                </div>
-                                                <div class="kt-widget14__legend">
-                                                    <span class="kt-widget14__bullet kt-bg-brand"></span>
-                                                    <span class="kt-widget14__stats">{{ $transferCalls }} Transfered Calls</span>
+                                                        class="kt-widget14__stats">{{ $appointmentScheduled }} Appointment Scheduled</span>
                                                 </div>
                                                 <div class="kt-widget14__legend">
                                                     <span class="kt-widget14__bullet kt-bg-danger"></span>
+                                                    <span class="kt-widget14__stats">{{ $transferCalls }} Transfered Calls</span>
+                                                </div>
+                                                <div class="kt-widget14__legend">
+                                                    <span class="kt-widget14__bullet kt-bg-brand"></span>
                                                     <span
                                                         class="kt-widget14__stats">{{ $failedCalls }} Failed Calls</span>
+                                                </div>
+                                                <div class="kt-widget14__legend">
+                                                    <span class="kt-widget14__bullet kt-bg-warning"></span>
+                                                    <span
+                                                        class="kt-widget14__stats">{{ $presentationScheduled }} Presentation Scheduled</span>
+                                                </div>
+                                                <div class="kt-widget14__legend">
+                                                    <span class="kt-widget14__bullet kt-bg-primary"></span>
+                                                    <span
+                                                        class="kt-widget14__stats">{{ $contractSent }} Contract Sent</span>
+                                                </div>
+                                                <div class="kt-widget14__legend">
+                                                    <span class="kt-widget14__bullet kt-bg-success"></span>
+                                                    <span
+                                                        class="kt-widget14__stats">{{ $qualifiedToBuy }} Qualified To Buy</span>
                                                 </div>
                                             </div>
                                         </div>
@@ -74,11 +93,17 @@
                         <div class="kt-portlet__body">
                             <div class="kt-iconbox__body">
                                 <div class="kt-iconbox__icon">
-                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1" class="kt-svg-icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                         width="24px" height="24px" viewBox="0 0 24 24" version="1.1"
+                                         class="kt-svg-icon">
                                         <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                            <rect x="0" y="0" width="24" height="24" />
-                                            <path d="M2.56066017,10.6819805 L4.68198052,8.56066017 C5.26776695,7.97487373 6.21751442,7.97487373 6.80330086,8.56066017 L8.9246212,10.6819805 C9.51040764,11.267767 9.51040764,12.2175144 8.9246212,12.8033009 L6.80330086,14.9246212 C6.21751442,15.5104076 5.26776695,15.5104076 4.68198052,14.9246212 L2.56066017,12.8033009 C1.97487373,12.2175144 1.97487373,11.267767 2.56066017,10.6819805 Z M14.5606602,10.6819805 L16.6819805,8.56066017 C17.267767,7.97487373 18.2175144,7.97487373 18.8033009,8.56066017 L20.9246212,10.6819805 C21.5104076,11.267767 21.5104076,12.2175144 20.9246212,12.8033009 L18.8033009,14.9246212 C18.2175144,15.5104076 17.267767,15.5104076 16.6819805,14.9246212 L14.5606602,12.8033009 C13.9748737,12.2175144 13.9748737,11.267767 14.5606602,10.6819805 Z" fill="#000000" opacity="0.3" />
-                                            <path d="M8.56066017,16.6819805 L10.6819805,14.5606602 C11.267767,13.9748737 12.2175144,13.9748737 12.8033009,14.5606602 L14.9246212,16.6819805 C15.5104076,17.267767 15.5104076,18.2175144 14.9246212,18.8033009 L12.8033009,20.9246212 C12.2175144,21.5104076 11.267767,21.5104076 10.6819805,20.9246212 L8.56066017,18.8033009 C7.97487373,18.2175144 7.97487373,17.267767 8.56066017,16.6819805 Z M8.56066017,4.68198052 L10.6819805,2.56066017 C11.267767,1.97487373 12.2175144,1.97487373 12.8033009,2.56066017 L14.9246212,4.68198052 C15.5104076,5.26776695 15.5104076,6.21751442 14.9246212,6.80330086 L12.8033009,8.9246212 C12.2175144,9.51040764 11.267767,9.51040764 10.6819805,8.9246212 L8.56066017,6.80330086 C7.97487373,6.21751442 7.97487373,5.26776695 8.56066017,4.68198052 Z" fill="#000000" />
+                                            <rect x="0" y="0" width="24" height="24"/>
+                                            <path
+                                                d="M2.56066017,10.6819805 L4.68198052,8.56066017 C5.26776695,7.97487373 6.21751442,7.97487373 6.80330086,8.56066017 L8.9246212,10.6819805 C9.51040764,11.267767 9.51040764,12.2175144 8.9246212,12.8033009 L6.80330086,14.9246212 C6.21751442,15.5104076 5.26776695,15.5104076 4.68198052,14.9246212 L2.56066017,12.8033009 C1.97487373,12.2175144 1.97487373,11.267767 2.56066017,10.6819805 Z M14.5606602,10.6819805 L16.6819805,8.56066017 C17.267767,7.97487373 18.2175144,7.97487373 18.8033009,8.56066017 L20.9246212,10.6819805 C21.5104076,11.267767 21.5104076,12.2175144 20.9246212,12.8033009 L18.8033009,14.9246212 C18.2175144,15.5104076 17.267767,15.5104076 16.6819805,14.9246212 L14.5606602,12.8033009 C13.9748737,12.2175144 13.9748737,11.267767 14.5606602,10.6819805 Z"
+                                                fill="#000000" opacity="0.3"/>
+                                            <path
+                                                d="M8.56066017,16.6819805 L10.6819805,14.5606602 C11.267767,13.9748737 12.2175144,13.9748737 12.8033009,14.5606602 L14.9246212,16.6819805 C15.5104076,17.267767 15.5104076,18.2175144 14.9246212,18.8033009 L12.8033009,20.9246212 C12.2175144,21.5104076 11.267767,21.5104076 10.6819805,20.9246212 L8.56066017,18.8033009 C7.97487373,18.2175144 7.97487373,17.267767 8.56066017,16.6819805 Z M8.56066017,4.68198052 L10.6819805,2.56066017 C11.267767,1.97487373 12.2175144,1.97487373 12.8033009,2.56066017 L14.9246212,4.68198052 C15.5104076,5.26776695 15.5104076,6.21751442 14.9246212,6.80330086 L12.8033009,8.9246212 C12.2175144,9.51040764 11.267767,9.51040764 10.6819805,8.9246212 L8.56066017,6.80330086 C7.97487373,6.21751442 7.97487373,5.26776695 8.56066017,4.68198052 Z"
+                                                fill="#000000"/>
                                         </g>
                                     </svg>
                                 </div>
@@ -86,12 +111,14 @@
                                     <div class="kt-widget14">
                                         <div class="kt-widget14__content">
                                             <div class="kt-widget14__chart">
-                                                <div id="kt_chart_revenue_change" style="height: 150px; width: 150px;"></div>
+                                                <div id="kt_chart_revenue_change"
+                                                     style="height: 150px; width: 150px;"></div>
                                                 <input type="hidden" id="leadValue" value="{{$leads}}">
                                                 <input type="hidden" id="activeMembers" value="{{$activeMembers}}">
                                                 <input type="hidden" id="inActiveMembers" value="{{$inActiveMembers}}">
                                                 <input type="hidden" id="expiredMembers" value="{{$expiredMembers}}">
-                                                <input type="hidden" id="notJoinedMembers" value="{{$notJoinedMembers}}">
+                                                <input type="hidden" id="notJoinedMembers"
+                                                       value="{{$notJoinedMembers}}">
                                             </div>
                                             <div class="kt-widget14__legends">
                                                 <div class="kt-widget14__legend">
@@ -100,7 +127,8 @@
                                                 </div>
                                                 <div class="kt-widget14__legend">
                                                     <span class="kt-widget14__bullet kt-bg-danger"></span>
-                                                    <span class="kt-widget14__stats">{{$activeMembers}}  Active Members</span>
+                                                    <span
+                                                        class="kt-widget14__stats">{{$activeMembers}}  Active Members</span>
                                                 </div>
                                                 <div class="kt-widget14__legend">
                                                     <span class="kt-widget14__bullet kt-bg-brand"></span>
@@ -127,127 +155,139 @@
 
             <div class="row ">
                 <div class="col-lg-8 ">
-                    <div class="kt-portlet kt-portlet--height-fluid kt-portlet--mobile ">
-                        <div
-                            class="kt-portlet__head kt-portlet__head--lg kt-portlet__head--noborder kt-portlet__head--break-sm">
-                            <div class="kt-portlet__head-label">
-                                <h3 class="kt-portlet__head-title">
-                                    Calls & Demo
-                                </h3>
+                    <div class="kt-iconbox__icon">
+                        <h6>
+                            Calls & Demo List
+                        </h6>
+                    </div>
+                    <div class="kt-portlet kt-iconbox kt-iconbox--brand kt-iconbox--animate-slower">
+                        <div class="kt-portlet__body">
+                            <div class="kt-iconbox__body">
+
+                                <div class="kt-iconbox__desc">
+                                    <div class="table-responsive">
+                                        <table class="table table-striped table-bordered table-light--info">
+                                            <thead>
+                                            <tr>
+                                                <th>No.</th>
+                                                <th>Employee</th>
+                                                <th>Customer</th>
+                                                <th>Stage</th>
+                                                <th>Date</th>
+                                                <th>Transfer Stage</th>
+                                                <th>Transfered</th>
+                                                <th>Date</th>
+                                                <th>Status</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <?php $i = 1; ?>
+                                            @foreach($assignTasksEmployee as $row)
+                                                <tr>
+                                                    <th>{{$i}}</th>
+                                                    <td>@if($row->employee != NULL) {{ $row->employee->name }} @else
+                                                            --- @endif</td>
+                                                    <td>@if($row->member != NULL) {{ $row->member->name }} @else
+                                                            --- @endif</td>
+                                                    <td>{{ $row->stage }}</td>
+                                                    <td>{{ $row->scheduleDate }}</td>
+                                                    <td>{{ $row->transferStage }}</td>
+                                                    <td>@if($row->transferEmployee != NULL) {{ $row->transferEmployee->name }} @else
+                                                            --- @endif</td>
+                                                    <td>@if($row->reScheduleDate != NULL) {{ $row->reScheduleDate }} @else
+                                                            --- @endif</td>
+                                                    <td>{{ $row->status }}</td>
+                                                    <?php  $i++; ?>
+                                                </tr>
+                                            @endforeach
+                                            <tr>
+                                                <td colspan="9" align="center">
+                                                    {{ $assignTasksEmployee->links() }}
+                                                </td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                        <!--end: Datatable -->
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                        <div class="table-responsive">
-                            <table class="table table-striped table-bordered">
-                                <thead>
-                                <tr>
-                                    <th>No.</th>
-                                    <th>Employee</th>
-                                    <th>Customer</th>
-                                    <th>Date</th>
-                                    <th>Transfer Status</th>
-                                    <th>Transfered</th>
-                                    <th>Re-Schedule Date</th>
-                                    <th>Status</th>
-                                    <th>Type</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <?php $i = 1; ?>
-                                @foreach($assignTasksEmployee as $row)
-                                    <tr>
-                                        <th>{{$i}}</th>
-                                        <td>@if($row->employee != NULL) {{ $row->employee->name }} @else --- @endif</td>
-                                        <td>@if($row->member != NULL) {{ $row->member->name }} @else --- @endif</td>
-                                        <td>{{ $row->scheduleDate }}</td>
-                                        <td>{{ $row->transferStatus }}</td>
-                                        <td>@if($row->transferEmployee != NULL) {{ $row->transferEmployee->name }} @else
-                                                --- @endif</td>
-                                        <td>@if($row->reScheduleDate != NULL) {{ $row->reScheduleDate }} @else
-                                                --- @endif</td>
-                                        <td>{{ $row->status }}</td>
-                                        <td>{{ $row->type }}</td>
-                                        <?php  $i++; ?>
-                                    </tr>
-                                @endforeach
-                                <tr>
-                                    <td colspan="9" align="center">
-                                        {{ $assignTasksEmployee->links() }}
-                                    </td>
-                                </tr>
-                                </tbody>
-                            </table>
-                            <!--end: Datatable -->
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-4 order-lg-1 order-xl-1">
-                    <!--Begin::Portlet-->
-                    <div class="kt-portlet kt-portlet--height-fluid">
-                        <div class="kt-portlet__head">
-                            <div class="kt-portlet__head-label">
-                                <h3 class="kt-portlet__head-title">
-                                    Today Activities
-                                </h3>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-6">
-                                <div class="kt-portlet__body">
-                                    <div class="kt-portlet__head-label">
-                                        <h6 class="kt-portlet__head-title">
-                                            <u> Schaduale </u>
-                                        </h6><br>
-                                    </div>
-                                    <!--Begin::Timeline 3 -->
-                                    <div class="kt-timeline-v2">
-                                        <div class="kt-timeline-v2__items  kt-padding-top-25 kt-padding-bottom-30">
-                                            @foreach($dailySchaduale as $activity)
-                                                <div class="kt-timeline-v2__item">
-                                                <span
-                                                    class="kt-timeline-v2__item-time">{{ \Carbon\Carbon::parse($activity->scheduleDate)->format('H:i')}}</span>
-                                                    <div class="kt-timeline-v2__item-cricle">
-                                                        <i class="fa fa-genderless kt-font-danger"></i>
-                                                    </div>
-                                                    <div class="kt-timeline-v2__item-text  kt-padding-top-5">
-                                                        {{ $activity->type }}
+                    <div class="kt-iconbox__icon">
+                        <h6>
+                            Today Activities
+                        </h6>
+                    </div>
+                    <div class="kt-portlet kt-iconbox kt-iconbox--danger kt-iconbox--animate-faster">
+                        <div class="kt-portlet__body">
+                            <div class="kt-iconbox__body">
+                                <div class="kt-iconbox__desc">
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <div class="kt-portlet__body">
+                                                <div class="kt-portlet__head-label">
+                                                    <h6 class="kt-portlet__head-title">
+                                                        <u> Schaduale </u>
+                                                    </h6><br>
+                                                </div>
+                                                <!--Begin::Timeline 3 -->
+                                                <div class="kt-timeline-v2">
+                                                    <div
+                                                        class="kt-timeline-v2__items  kt-padding-top-25 kt-padding-bottom-30">
+                                                        @foreach($dailySchaduale as $activity)
+                                                            <div class="kt-timeline-v2__item">
+                                                                <span class="kt-timeline-v2__item-time">
+                                                                        {{ \Carbon\Carbon::parse($activity->scheduleDate)->format('H:i')}}
+                                                                </span>
+                                                                <div class="kt-timeline-v2__item-cricle">
+                                                                    <i class="fa fa-genderless kt-font-danger"></i>
+                                                                </div>
+                                                                <div
+                                                                    class="kt-timeline-v2__item-text  kt-padding-top-5">
+                                                                    {{ $activity->stage }}
+                                                                </div>
+                                                            </div>
+                                                        @endforeach
                                                     </div>
                                                 </div>
-                                            @endforeach
+                                            </div>
                                         </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="kt-portlet__body">
-                                    <div class="kt-portlet__head-label">
-                                        <h6 class="kt-portlet__head-title">
-                                            <u> Re-Schaduale </u>
-                                        </h6>
-                                    </div>
-                                    <br>
-                                    <!--Begin::Timeline 3 -->
-                                    <div class="kt-timeline-v2">
-                                        <div class="kt-timeline-v2__items  kt-padding-top-25 kt-padding-bottom-30">
-                                            @foreach($dailyReSchaduale as $activity)
-                                                <div class="kt-timeline-v2__item">
-                                                <span
-                                                    class="kt-timeline-v2__item-time">{{ \Carbon\Carbon::parse($activity->reScheduleDate)->format('H:i')}}</span>
-                                                    <div class="kt-timeline-v2__item-cricle">
-                                                        <i class="fa fa-genderless kt-font-danger"></i>
-                                                    </div>
-                                                    <div class="kt-timeline-v2__item-text  kt-padding-top-5">
-                                                        {{ $activity->transferStatus }}
+                                        <div class="col-lg-6">
+                                            <div class="kt-portlet__body">
+                                                <div class="kt-portlet__head-label">
+                                                    <h6 class="kt-portlet__head-title">
+                                                        <u> Re-Schaduale </u>
+                                                    </h6>
+                                                </div>
+                                                <br>
+                                                <!--Begin::Timeline 3 -->
+                                                <div class="kt-timeline-v2">
+                                                    <div
+                                                        class="kt-timeline-v2__items  kt-padding-top-25 kt-padding-bottom-30">
+                                                        @foreach($dailyReSchaduale as $activity)
+                                                            <div class="kt-timeline-v2__item">
+                                                                <span
+                                                                    class="kt-timeline-v2__item-time">{{ \Carbon\Carbon::parse($activity->reScheduleDate)->format('H:i')}}</span>
+                                                                <div class="kt-timeline-v2__item-cricle">
+                                                                    <i class="fa fa-genderless kt-font-danger"></i>
+                                                                </div>
+                                                                <div
+                                                                    class="kt-timeline-v2__item-text  kt-padding-top-5">
+                                                                    {{ $activity->transferStage }}
+                                                                </div>
+                                                            </div>
+                                                        @endforeach
                                                     </div>
                                                 </div>
-                                            @endforeach
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-
-                    <!--End::Portlet-->
                 </div>
             </div>
             <!--End::Row-->

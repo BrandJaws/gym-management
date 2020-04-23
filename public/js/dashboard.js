@@ -178,23 +178,32 @@ var KTDashboard = function () {
         var appointmentCalls = $('#appointmentCalls').val();
         var transferCalls = $('#transferCalls').val();
         var failedCalls = $('#failedCalls').val();
+        var presentationScheduled = $('#presentationScheduled').val();
+        var contractSent = $('#contractSent').val();
+        var qualifiedToBuy = $('#qualifiedToBuy').val();
         var config = {
             type: 'doughnut',
             data: {
                 datasets: [{
                     data: [
-                        appointmentCalls, failedCalls, transferCalls
+                        appointmentCalls, failedCalls, transferCalls , presentationScheduled ,contractSent ,qualifiedToBuy
                     ],
                     backgroundColor: [
                         KTApp.getStateColor('success'),
                         KTApp.getStateColor('danger'),
-                        KTApp.getStateColor('brand')
+                        KTApp.getStateColor('brand'),
+                        KTApp.getStateColor('warning'),
+                        KTApp.getStateColor('primary'),
+                        KTApp.getStateColor('default'),
                     ]
                 }],
                 labels: [
                     'Appointment Calls',
                     'Transfered Calls',
-                    'Failed Calls'
+                    'Failed Calls',
+                    'Presentation',
+                    'Contract Sent',
+                    'Qualified To Buy'
                 ]
             },
             options: {

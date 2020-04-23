@@ -63,33 +63,19 @@
                                             <div class="col-lg-6 form-group">
                                                 <label>Deal Stage :</label>
                                                 <select class="form-control" name="stage">
-                                                    <option value="Call Scheduled"
-                                                            @if( $breadcrumbs == "Call Scheduled") selected @endif>Call
-                                                        Scheduled
+                                                    <option value="Call Scheduled" @if( $breadcrumbs == "Call Scheduled") selected @endif>Call Scheduled
                                                     </option>
-                                                    <option value="Appointment Scheduled"
-                                                            @if( $breadcrumbs == "Appointment Scheduled") selected @endif>
-                                                        Appointment Scheduled
+                                                    <option value="Appointment Scheduled" @if( $breadcrumbs == "Appointment Scheduled") selected @endif>Appointment Scheduled
                                                     </option>
-                                                    <option value="Presentation Scheduled"
-                                                            @if( $breadcrumbs == "Presentation Scheduled") selected @endif>
-                                                        Presentation Scheduled
+                                                    <option value="Presentation Scheduled" @if( $breadcrumbs == "Presentation Scheduled") selected @endif>Presentation Scheduled
                                                     </option>
-                                                    <option value="Contract Sent"
-                                                            @if( $breadcrumbs == "Contract Sent") selected @endif>
-                                                        Contract Sent
+                                                    <option value="Contract Sent" @if( $breadcrumbs == "Contract Sent") selected @endif>Contract Sent
                                                     </option>
-                                                    <option value="Qualified To Buy"
-                                                            @if( $breadcrumbs == "Qualified To Buy") selected @endif>
-                                                        Qualified To Buy
+                                                    <option value="Qualified To Buy" @if( $breadcrumbs == "Qualified To Buy") selected @endif>Qualified To Buy
                                                     </option>
-                                                    <option value="Closed Won"
-                                                            @if( $breadcrumbs == "Closed Won") selected @endif>Closed
-                                                        Won
+                                                    <option value="Closed Won" @if( $breadcrumbs == "Closed Won") selected @endif>Closed Won
                                                     </option>
-                                                    <option value="Closed Lost"
-                                                            @if( $breadcrumbs == "Closed Lost") selected @endif>Closed
-                                                        Lost
+                                                    <option value="Closed Lost" @if( $breadcrumbs == "Closed Lost") selected @endif>Closed Lost
                                                     </option>
                                                 </select>
                                                 @if($errors->has('stage'))
@@ -111,7 +97,7 @@
                                                     <option value="Success">Success</option>
                                                     <option value="Absent">Absent</option>
                                                     <option value="Un-Answered">Un-Answered</option>
-                                                    <option value="Failed Call">Failed Calls</option>
+                                                    <option value="Failed Call">Failed Call</option>
                                                 </select>
                                             </div>
                                             <div class="col-lg-6 form-group">

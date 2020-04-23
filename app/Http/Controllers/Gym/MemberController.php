@@ -37,27 +37,40 @@ class MemberController extends Controller
             $employee_id = Auth::guard('employee')->user()->id;
             $memberships = Membership::where('gym_id', $gym_id)->count();
             /*Count total Calls*/
-            $calls = Pipeline::where('gym_id', $gym_id)->where('employee_id', '=', $employee_id)->where('stage', 'For Call')->count();
-            $transferCalls = Pipeline::where('gym_id', $gym_id)->where('transfer_id', '=', $employee_id)->where('transferStage', 'For Call')->count();
+            $calls = Pipeline::where('employee_id', '=', $employee_id)->where('stage', 'Call Scheduled')->count();
+            $transferCalls = Pipeline::where('transfer_id', '=', $employee_id)->where('transferStage', 'Call Scheduled')->count();
             $totalCalls = $calls + $transferCalls;
             /*Count total Demo*/
-            $demo = Pipeline::where('gym_id', $gym_id)->where('employee_id', '=', $employee_id)->where('stage', 'For Demo')->count();
-            $transferDemo = Pipeline::where('gym_id', $gym_id)->where('transfer_id', '=', $employee_id)->where('transferStage', 'For Demo')->count();
-            $callsForAppointments = $demo + $transferDemo;
+            $demo = Pipeline::where('employee_id', '=', $employee_id)->where('stage', 'Appointment Scheduled')->count();
+            $transferDemo = Pipeline::where('transfer_id', '=', $employee_id)->where('transferStage', 'Appointment Scheduled')->count();
+            $appointmentScheduled = $demo + $transferDemo;
             /*Count total failed Calls*/
-            $failedCalls = Pipeline::where('gym_id', $gym_id)->where('employee_id', '=', $employee_id)->where('status', '=', 'Failed Calls')->count();
+            $failedCalls = Pipeline::where('employee_id', '=', $employee_id)->where('status', '=', 'Failed Call')->count();
+            /*Count total Presentation Scheduled */
+            $demo1 = Pipeline::where('employee_id', '=', $employee_id)->where('stage', 'Presentation Scheduled')->count();
+            $transferDemo1 = Pipeline::where('transfer_id', '=', $employee_id)->where('transferStage', 'Presentation Scheduled')->count();
+            $presentationScheduled = $demo1 + $transferDemo1;
+            /*Count total Contract Sent */
+            $demo2 = Pipeline::where('employee_id', '=', $employee_id)->where('stage', 'Contract Sent')->count();
+            $transferDemo2 = Pipeline::where('transfer_id', '=', $employee_id)->where('transferStage', 'Contract Sent')->count();
+            $contractSent = $demo2 + $transferDemo2;
+            /*Count total Qualified To Buy */
+            $demo3 = Pipeline::where('employee_id', '=', $employee_id)->where('stage', 'Qualified To Buy')->count();
+            $transferDemo3 = Pipeline::where('transfer_id', '=', $employee_id)->where('transferStage', 'Qualified To Buy')->count();
+            $qualifiedToBuy = $demo3 + $transferDemo3;
+
             /*count lead, members*/
             $leads = Member::where('gym_id', $gym_id)->where('type', '=', 'Lead')->count();
             $activeMembers = Member::where('gym_id', $gym_id)->where('status', '=', 'Active')->count();
             $inActiveMembers = Member::where('gym_id', $gym_id)->where('status', '=', 'In-Active')->count();
             $expiredMembers = Member::where('gym_id', $gym_id)->where('status', '=', 'Expired')->count();
             $notJoinedMembers = Member::where('gym_id', $gym_id)->where('status', '=', 'Not Joined')->count();
-            $assignTasksEmployee = Pipeline::where('gym_id', $gym_id)->where('employee_id', '=', $employee_id)->orWhere('transfer_id', '=', $employee_id)->orderBy('id', 'asc')->paginate(10);
+            $assignTasksEmployee = Pipeline::orWhere('employee_id', '=', $employee_id)->orWhere('transfer_id', '=', $employee_id)->orderBy('id', 'asc')->paginate(10);
             $today = Carbon::today()->format('Y-m-d');
-            $dailySchaduale = Pipeline::where('gym_id', $gym_id)->where('employee_id', '=', $employee_id)->where('scheduleDate', '=', $today)->orderBy('id', 'asc')->get();
-            $dailyReSchaduale = Pipeline::where('gym_id', $gym_id)->where('employee_id', '=', $employee_id)->where('reScheduleDate', '=', $today)->orderBy('id', 'asc')->get();
-            return view('gym.member.dashboard', compact('memberships', 'totalCalls', 'callsForAppointments', 'activeMembers', 'dailySchaduale', 'dailyReSchaduale',
-                'transferCalls', 'failedCalls', 'leads', 'inActiveMembers', 'expiredMembers', 'notJoinedMembers',
+            $dailySchaduale = Pipeline::where('employee_id', '=', $employee_id)->whereDate('scheduleDate', '=', $today)->orderBy('id', 'asc')->get();
+            $dailyReSchaduale = Pipeline::where('employee_id', '=', $employee_id)->whereDate('reScheduleDate', '=', $today)->orderBy('id', 'asc')->get();
+            return view('gym.member.dashboard', compact('memberships', 'totalCalls', 'appointmentScheduled', 'activeMembers', 'dailySchaduale', 'dailyReSchaduale','qualifiedToBuy',
+                'transferCalls', 'failedCalls', 'leads', 'inActiveMembers', 'expiredMembers', 'notJoinedMembers','presentationScheduled','contractSent',
                 'assignTasksEmployee'));
         } catch (\Exception $e) {
             return back()->with('error', 'Oops, something was not right in member dashobard page');
