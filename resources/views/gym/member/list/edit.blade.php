@@ -646,9 +646,9 @@
                         <div class="kt-portlet">
                             <div class="kt-portlet__head">
                                 <div class="kt-portlet__head-label">
-                                    <h3 class="kt-portlet__head-title">
+                                    <h6>
                                         Training History
-                                    </h3>
+                                    </h6>
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -657,7 +657,7 @@
                                         <table
                                             class="table table-striped- table-bordered table-hover table-checkable">
                                             <thead>
-                                            <tr>
+                                            <tr class="kt-callout kt-callout--brand">
                                                 <th>No.</th>
                                                 <th>Training</th>
                                                 <th>Start Date</th>
@@ -700,9 +700,9 @@
                         <div class="kt-portlet">
                             <div class="kt-portlet__head">
                                 <div class="kt-portlet__head-label">
-                                    <h3 class="kt-portlet__head-title">
+                                    <h6>
                                         Account History
-                                    </h3>
+                                    </h6>
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -711,7 +711,7 @@
                                         <table
                                             class="table table-striped- table-bordered table-hover table-checkable">
                                             <thead>
-                                            <tr>
+                                            <tr class="kt-callout kt-callout--brand">
                                                 <th>No.</th>
                                                 <th>Employee</th>
                                                 <th>Cash Flow</th>
@@ -756,9 +756,9 @@
                         <div class="kt-portlet">
                             <div class="kt-portlet__head">
                                 <div class="kt-portlet__head-label">
-                                    <h3 class="kt-portlet__head-title">
+                                    <h6>
                                         Call & Demo History
-                                    </h3>
+                                    </h6>
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -766,7 +766,7 @@
                                     <div class="kt-portlet__body">
                                         <table class="table table-striped- table-bordered table-hover table-checkable">
                                             <thead>
-                                            <tr>
+                                            <tr class="kt-callout kt-callout--brand">
                                                 <th>No.</th>
                                                 <th>Stage</th>
                                                 <th>Employee</th>
