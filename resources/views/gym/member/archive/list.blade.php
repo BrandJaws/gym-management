@@ -76,7 +76,8 @@
                                                     </span>
                                                     </div>
                                                 </div>
-                                            </div><br>
+                                            </div>
+                                            <br>
                                             <div class="table-responsive">
                                                 <table class="table table-striped table-bordered">
                                                     @if($breadcrumbs == "Failed Calls")

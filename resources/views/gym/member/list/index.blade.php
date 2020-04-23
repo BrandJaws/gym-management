@@ -56,12 +56,13 @@
                                                     </span>
                                                 </div>
                                             </div>
-                                        </div><br>
+                                        </div>
+                                        <br>
                                         <div class="table-responsive">
                                             <table class="table table-striped table-bordered">
                                                 <thead>
                                                 <tr>
-                                                    <th>No. </th>
+                                                    <th>No.</th>
                                                     <th class="sorting" data-sorting_type="asc"
                                                         data-column_name="name" style="cursor: pointer">Name <span
                                                             id="id_icon"></span></th>
@@ -74,7 +75,7 @@
                                                             id="post_title_icon"></span></th>
                                                     <th class="sorting" data-sorting_type="asc"
                                                         data-column_name="rating" style="cursor: pointer">Rating
-                                                         <span
+                                                        <span
                                                             id="post_title_icon"></span></th>
                                                     <th class="sorting" data-sorting_type="asc"
                                                         data-column_name="status" style="cursor: pointer">Status <span
