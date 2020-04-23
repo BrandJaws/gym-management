@@ -69,7 +69,8 @@
                                                 <label>Type :</label>
                                                 <select class="form-control" name="stage">
                                                     <option value="Call Scheduled"
-                                                            @if( $pipeline->stage == "Call Scheduled") selected @endif>Call
+                                                            @if( $pipeline->stage == "Call Scheduled") selected @endif>
+                                                        Call
                                                         Scheduled
                                                     </option>
                                                     <option value="Appointment Scheduled"
@@ -89,11 +90,13 @@
                                                         Qualified To Buy
                                                     </option>
                                                     <option value="Closed Won"
-                                                            @if( $pipeline->stage == "Closed Won") selected @endif>Closed
+                                                            @if( $pipeline->stage == "Closed Won") selected @endif>
+                                                        Closed
                                                         Won
                                                     </option>
                                                     <option value="Closed Lost"
-                                                            @if( $pipeline->stage == "Closed Lost") selected @endif>Closed
+                                                            @if( $pipeline->stage == "Closed Lost") selected @endif>
+                                                        Closed
                                                         Lost
                                                     </option>
                                                 </select>
@@ -104,7 +107,7 @@
                                             <div class="col-lg-6 form-group">
                                                 <label>Schedule Date & Time : :</label>
                                                 <input type="datetime-local" name="scheduleDate" class="form-control"
-                                                       value="{{ \Carbon\Carbon::parse($pipeline->joiningDate)->format('Y-m-d\TH:i')}}"
+                                                       value="{{ \Carbon\Carbon::parse($pipeline->scheduleDate)->format('Y-m-d\TH:i')}}"
                                                        required/>
                                                 @if($errors->has('scheduleDate'))
                                                     <div class="error">{{ $errors->first('scheduleDate') }}</div>
@@ -113,46 +116,67 @@
                                             <div class="col-lg-6 form-group">
                                                 <label>Status :</label>
                                                 <select class="form-control" name="status">
-                                                    <option value="Pending"  @if($pipeline->status == "Pending" ) selected @endif >Pending</option>
-                                                    <option value="Success"  @if($pipeline->status == "Success" ) selected @endif >Success</option>
-                                                    <option value="Absent"  @if($pipeline->status == "Absent" ) selected @endif >Absent</option>
-                                                    <option value="Un-Answered"  @if($pipeline->status == "Un-Answered" ) selected @endif >Un-Answered</option>
-                                                    <option value="Failed Call"  @if($pipeline->status == "Failed Calls" ) selected @endif >Failed Calls</option>
+                                                    <option value="Pending"
+                                                            @if($pipeline->status == "Pending" ) selected @endif >
+                                                        Pending
+                                                    </option>
+                                                    <option value="Success"
+                                                            @if($pipeline->status == "Success" ) selected @endif >
+                                                        Success
+                                                    </option>
+                                                    <option value="Absent"
+                                                            @if($pipeline->status == "Absent" ) selected @endif >Absent
+                                                    </option>
+                                                    <option value="Un-Answered"
+                                                            @if($pipeline->status == "Un-Answered" ) selected @endif >
+                                                        Un-Answered
+                                                    </option>
+                                                    <option value="Failed Call"
+                                                            @if($pipeline->status == "Failed Calls" ) selected @endif >
+                                                        Failed Calls
+                                                    </option>
                                                 </select>
                                                 @if($errors->has('status'))
                                                     <div class="error">{{ $errors->first('status') }}</div>
                                                 @endif
                                             </div>
                                             <div class="col-lg-6 form-group">
-                                                <label for="sel1">Transfer Status:</label>{{ $pipeline->type }}
-                                                <select class="form-control" id="transferStatus" name="transferStatus"
+                                                <label for="sel1">Transfer Status:</label>
+                                                <select class="form-control" id="transferStage" name="transferStage"
                                                         onclick="changeDiv()">
+                                                    <option value="None"
+                                                            @if( $pipeline->transferStage == "None") selected @endif>
+                                                        None
+                                                    </option>
                                                     <option value="Call Scheduled"
-                                                            @if( $pipeline->transferStatus == "Call Scheduled") selected @endif>Call
+                                                            @if( $pipeline->transferStage == "Call Scheduled") selected @endif>
+                                                        Call
                                                         Scheduled
                                                     </option>
                                                     <option value="Appointment Scheduled"
-                                                            @if( $pipeline->transferStatus == "Appointment Scheduled") selected @endif>
+                                                            @if( $pipeline->transferStage == "Appointment Scheduled") selected @endif>
                                                         Appointment Scheduled
                                                     </option>
                                                     <option value="Presentation Scheduled"
-                                                            @if( $pipeline->transferStatus == "Presentation Scheduled") selected @endif>
+                                                            @if( $pipeline->transferStage == "Presentation Scheduled") selected @endif>
                                                         Presentation Scheduled
                                                     </option>
                                                     <option value="Contract Sent"
-                                                            @if( $pipeline->transferStatus == "Contract Sent") selected @endif>
+                                                            @if( $pipeline->transferStage == "Contract Sent") selected @endif>
                                                         Contract Sent
                                                     </option>
                                                     <option value="Qualified To Buy"
-                                                            @if( $pipeline->transferStatus == "Qualified To Buy") selected @endif>
+                                                            @if( $pipeline->transferStage == "Qualified To Buy") selected @endif>
                                                         Qualified To Buy
                                                     </option>
                                                     <option value="Closed Won"
-                                                            @if( $pipeline->transferStatus == "Closed Won") selected @endif>Closed
+                                                            @if( $pipeline->transferStage == "Closed Won") selected @endif>
+                                                        Closed
                                                         Won
                                                     </option>
                                                     <option value="Closed Lost"
-                                                            @if( $pipeline->transferStatus == "Closed Lost") selected @endif>Closed
+                                                            @if( $pipeline->transferStage == "Closed Lost") selected @endif>
+                                                        Closed
                                                         Lost
                                                     </option>
                                                 </select>
@@ -169,8 +193,8 @@
                                             </div>
                                             <div class="col-lg-6 form-group textField" style="display: none">
                                                 <label>Re-Schedule Date :</label>
-                                                <input type="date" name="reScheduleDate"
-                                                       value="{{ \Carbon\Carbon::parse($pipeline->reScheduleDate)->format('yy-m-d')}}"
+                                                <input type="datetime-local" name="reScheduleDate"
+                                                       value="{{ \Carbon\Carbon::parse($pipeline->reScheduleDate)->format('Y-m-d\TH:i')}}"
                                                        class="form-control"/>
                                             </div>
                                             <div class="col-lg-6 form-group">
@@ -242,37 +266,39 @@
         <!-- end:: Content -->
     </div>
 @endsection
+<script type="text/javascript">
+    $(document).ready(function () {
+        var value = document.getElementById('transferStage').value;
+        if (value != "None") {
+            var div = document.getElementsByClassName('textField');
+            for (var i = 0; i < div.length; i++) {
+                div[i].style.display = "block";
+            }
+        } else {
+            var div = document.getElementsByClassName('textField');
+            for (var i = 0; i < div.length; i++) {
+                div[i].style.display = "none";
+            }
+        }
+    });
+
+    function changeDiv() {
+        var value = document.getElementById('transferStage').value;
+        if (value != "None") {
+            var div = document.getElementsByClassName('textField');
+            for (var i = 0; i < div.length; i++) {
+                div[i].style.display = "block";
+            }
+        } else {
+            var div = document.getElementsByClassName('textField');
+            for (var i = 0; i < div.length; i++) {
+                div[i].style.display = "none";
+            }
+        }
+    }
+</script>
 @section('custom-script')
     <script src="{{asset('js/select2.js')}}"></script>
     <script src="{{asset('js/ktavatar.js')}}"></script>
-    <script type="text/javascript">
-        $(document).ready(function () {
-            var value = document.getElementById('transferStatus').value;
-            if (value === "For Call" || value === "For Demo") {
-                var div = document.getElementsByClassName('textField');
-                for (var i = 0; i < div.length; i++) {
-                    div[i].style.display = "block";
-                }
-            } else {
-                var div = document.getElementsByClassName('textField');
-                for (var i = 0; i < div.length; i++) {
-                    div[i].style.display = "none";
-                }
-            }
-        });
-        function changeDiv() {
-            var value = document.getElementById('transferStatus').value;
-            if (value === "For Call" || value === "For Demo") {
-                var div = document.getElementsByClassName('textField');
-                for (var i = 0; i < div.length; i++) {
-                    div[i].style.display = "block";
-                }
-            } else {
-                var div = document.getElementsByClassName('textField');
-                for (var i = 0; i < div.length; i++) {
-                    div[i].style.display = "none";
-                }
-            }
-        }
-    </script>
+
 @endsection

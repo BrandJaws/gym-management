@@ -677,27 +677,28 @@ class MemberController extends Controller
         $id = $request->pipeline_id;
         try {
             $validator = Validator::make($request->all(), [
-                'employee_id' => 'required',
-                'pipeline_id' => 'required',
-                'type' => 'required',
                 'scheduleDate' => 'required',
+                'employee_id' => 'required',
+                'stage' => 'required',
                 'status' => 'required',
+                'pipeline_id' => 'required',
             ]);
             if ($validator->fails()) {
                 return Redirect::back()->withErrors($validator);
             }
             $pipeline = Pipeline::where('id', $id)->first();
             $pipeline->fill($request->only([
+                'gym_id',
                 'employee_id',
-                'type',
+                'customer_id',
+                'transfer_id',
                 'scheduleDate',
+                'stage',
                 'status',
                 'transferStage',
-                'transfer_id',
                 'reScheduleDate',
                 'remarks'
             ]));
-
             if ($request->intersetedPackages != "") {
                 $pipeline->intersetedPackages = implode(',', $request->intersetedPackages);
             }
