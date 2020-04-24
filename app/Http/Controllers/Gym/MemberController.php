@@ -592,6 +592,29 @@ class MemberController extends Controller
         }
     }
 
+    public function dragLead()
+    {
+        $presentationScheduled = Pipeline::where('stage','Presentation Scheduled')->orderBy('order')->get();
+        $appointmentScheduled = Pipeline::where('stage','Appointment Scheduled')->orderBy('order')->get();
+        return view('gym.member.archive.dragLeads',compact('presentationScheduled','appointmentScheduled'));
+    }
+
+   public function updateDragLead(Request $request)
+   {
+       $input = $request->all();
+       dd($input['presentationArr']);
+       foreach ($input['presentationArr'] as $key => $value) {
+           $key = $key+1;
+           Pipeline::where('id',$value)->update(['stage'=>'Presentation Scheduled','order'=>$key]);
+       }
+
+       foreach ($input['appointmentArr'] as $key => $value) {
+           $key = $key+1;
+           Pipeline::where('id',$value)->update(['stage'=>'Appointment Scheduled','order'=>$key]);
+       }
+
+       return response()->json(['status'=>'success']);
+   }
 
     public function pipelineCreate($value, $id)
     {

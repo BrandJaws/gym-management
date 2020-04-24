@@ -24,7 +24,7 @@
                             @endif
                         </div>
                         @if($breadcrumbs == "Lead Board")
-                            <a class="dropdown-item" href="{{url('/gym/member/archive/leads')}}"> <i
+                            <a class="dropdown-item" href="{{url('/gym/member/drag/leads')}}"> <i
                                     class="la la-clipboard"></i> Leads View In Table</a>
                             <div class="kt-container  kt-container--fluid  kt-grid__item kt-grid__item--fluid">
                                 <div class="row">

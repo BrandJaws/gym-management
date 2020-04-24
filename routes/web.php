@@ -123,6 +123,13 @@ Route::group(['prefix' => 'gym', 'namespace' => 'Gym'], function () {
 
             Route::get('/reports', ['as' => 'reports', 'uses' => 'MemberController@reports']);
             Route::post('/daterange/fetch_data', ['as' => 'fetch_data', 'uses' => 'MemberController@fetch_data']);
+
+            /*-----------------------------------------------------------------------------------*/
+            /*------------------------------------ Drap Drop Lead Routes --------------------------------*/
+            /*-----------------------------------------------------------------------------------*/
+
+            Route::get('/drag/leads', array('as'=> 'drag.leads', 'uses' => 'MemberController@dragLead'));
+            Route::post('/drag/leads', array('as'=> 'update.leads', 'uses' => 'MemberController@updateDragLead'));
         });
 
         /*-----------------------------------------------------------------------------------*/
