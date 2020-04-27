@@ -12,3 +12,6 @@ npm-debug.log
 yarn-error.log
 .idea
 .idea/workspace.xml
+.idea/gym-management.iml
+.idea/modules.xml
+.idea/vcs.xml

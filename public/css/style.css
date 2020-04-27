@@ -253,10 +253,15 @@
 
 
 
-
-
-
-
+/* Drag Leads Style */
+.dragLeadsBox table thead tr th span {
+    height: 4px;
+    border-radius: 50%!important;
+    width: 16px;
+}
+.bg-none {
+    background: #fbfbfb!important;
+}
 
 /*Member Style*/
 
