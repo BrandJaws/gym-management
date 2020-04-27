@@ -197,9 +197,9 @@
                                                        value="{{ \Carbon\Carbon::parse($pipeline->reScheduleDate)->format('Y-m-d\TH:i')}}"
                                                        class="form-control"/>
                                             </div>
-                                            <div class="col-lg-6 form-group">
-                                                <label>Interested Packages : </label>
+                                            <div class="col-lg-6 form-group textField" style="display: none">
                                                 @if(count($membership) > 0)
+                                                <label>Interested Packages : </label>
                                                     <select class="form-control kt-select2" id="kt_select2_3"
                                                             name="intersetedPackages[]"
                                                             multiple="multiple">

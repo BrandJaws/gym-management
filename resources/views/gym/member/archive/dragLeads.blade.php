@@ -1,88 +1,168 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>jQuery UI Draggable - Default functionality-nicesnippets.com</title>
+@extends('_layouts.index')
+@section('content')
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="col-md-3  m-5 p-3   shadow-lg complete-item">
+                        <h6><u>Call Scheduled</u></h6>
+                        <ul class="list-group  connectedSortable" id="Call-Scheduled">
+                            @if(!empty($callScheduled) && $callScheduled->count())
+                                @foreach($callScheduled as $key=>$value)
+                                    @if($value->count() > -1)
+                                        <li class="list-group-item "
+                                            item-id="{{ $value->id }}">{{ $value->member->name }}</li>
+                                    @else
+                                        <li class="list-group-item "> none</li>
+                                    @endif
+                                @endforeach
+                            @endif
+                        </ul>
+                    </div>
+                    <div class="col-md-3  m-5 p-3   shadow-lg complete-item">
+                        <h6><u>Appointment Scheduled</u></h6>
+                        <ul class="list-group  connectedSortable" id="Appointment-Scheduled">
+                            @if(!empty($appointmentScheduled) && $appointmentScheduled->count())
+                                @foreach($appointmentScheduled as $key=>$value)
+                                    <li class="list-group-item "
+                                        item-id="{{ $value->id }}">{{ $value->member->name }}</li>
+                                @endforeach
+                            @endif
+                        </ul>
+                    </div>
+                    <div class="col-md-3  m-5 p-3 shadow-lg complete-item">
+                        <h6><u>Presentation Scheduled</u></h6>
+                        <ul class="list-group shadow-lg connectedSortable" id="Presentation-Scheduled">
+                            @if(!empty($presentationScheduled) && $presentationScheduled->count())
+                                @foreach($presentationScheduled as $key=>$value)
+                                    <li class="list-group-item"
+                                        item-id="{{ $value->id }}">{{ $value->member->name }}</li>
+                                @endforeach
+                            @endif
+                        </ul>
+                    </div>
+                    <div class="col-md-3  m-5 p-3   shadow-lg complete-item">
+                        <h6><u>Contract Sent</u></h6>
+                        <ul class="list-group  connectedSortable" id="Contract-Sent">
+                            @if(!empty($contractSent) && $contractSent->count())
+                                @foreach($contractSent as $key=>$value)
+                                    <li class="list-group-item "
+                                        item-id="{{ $value->id }}">{{ $value->member->name }}</li>
+                                @endforeach
+                            @endif
+                        </ul>
+                    </div>
+                    <div class="col-md-3  m-5 p-3 shadow-lg complete-item">
+                        <h6><u>Qualified To Buy</u></h6>
+                        <ul class="list-group shadow-lg connectedSortable" id="Qualified-Buy">
+                            @if(!empty($qualifiedBuy) && $qualifiedBuy->count())
+                                @foreach($qualifiedBuy as $key=>$value)
+                                    <li class="list-group-item"
+                                        item-id="{{ $value->id }}">{{ $value->member->name }}</li>
+                                @endforeach
+                            @endif
+                        </ul>
+                    </div>
+                    <div class="col-md-3  m-5 p-3 shadow-lg complete-item">
+                        <h6><u>Closed Won</u></h6>
+                        <ul class="list-group shadow-lg connectedSortable" id="Closed-Won">
+                            @if(!empty($closedWon) && $closedWon->count())
+                                @foreach($closedWon as $key=>$value)
+                                    <li class="list-group-item"
+                                        item-id="{{ $value->id }}">{{ $value->member->name }}</li>
+                                @endforeach
+                            @endif
+                        </ul>
+                    </div>
+                    <div class="col-md-3 m-5 p-3 shadow-lg complete-item">
+                        <h6><u>Closed Lost</u></h6>
+                        <ul class="list-group shadow-lg connectedSortable" id="Closed-Lost">
+                            @if(!empty($closedLost) && $closedLost->count())
+                                @foreach($closedLost as $key=>$value)
+                                    <li class="list-group-item"
+                                        item-id="{{ $value->id }}">{{ $value->member->name }}</li>
+                                @endforeach
+                            @endif
+                        </ul>
+                    </div>
 
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-
-    <style>
-        #draggable {
-            width: 150px;
-            height: 150px;
-            padding: 0.5em;
-        }
-    </style>
-</head>
-<body class="bg-light">
-<div class="container">
-    <div class="row">
-        <div class="col-md-12">
-            <h2 class="text-center pb-3 pt-1">Drag and Droppable Cards using Laravel 6 JQuery UI Example <span class="bg-success p-1">nicesnippets.com</span></h2>
-            <div class="row">
-                <div class="col-md-5 p-3 bg-dark offset-md-1">
-                    <ul class="list-group shadow-lg connectedSortable" id="Presentation-Scheduled">
-                        @if(!empty($presentationScheduled) && $presentationScheduled->count())
-                            @foreach($presentationScheduled as $key=>$value)
-                                <li class="list-group-item" item-id="{{ $value->id }}">{{ $value->stage }}</li>
-                            @endforeach
-                        @endif
-                    </ul>
-                </div>
-                <div class="col-md-5 p-3 bg-dark offset-md-1 shadow-lg complete-item">
-                    <ul class="list-group  connectedSortable" id="Appointment-Scheduled">
-                        @if(!empty($appointmentScheduled) && $appointmentScheduled->count())
-                            @foreach($appointmentScheduled as $key=>$value)
-                                <li class="list-group-item " item-id="{{ $value->id }}">{{ $value->stage }}</li>
-                            @endforeach
-                        @endif
-                    </ul>
                 </div>
             </div>
         </div>
     </div>
-</div>
-<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+@endsection
+@section('custom-script')
+    <script src="{{ asset('js/jquery-3.4.1.js') }}"></script>
+    <script src="{{ asset('js/bootstrap.min.js') }}"
+            integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+            crossorigin="anonymous"></script>
+    <script src="{{ asset('js/jquery-ui.js') }}"></script>
+    <script>
+        $(function () {
+            $("#Presentation-Scheduled, #Appointment-Scheduled, #Call-Scheduled, #Contract-Sent, #Qualified-Buy, #Closed-Won, #Closed-Lost").sortable({
+                connectWith: ".connectedSortable",
+                opacity: 0.5,
+            }).disableSelection();
 
-<script>
-    $( function() {
-        $( "#Presentation-Scheduled, #Appointment-Scheduled" ).sortable({
-            connectWith: ".connectedSortable",
-            opacity: 0.5,
-        }).disableSelection();
+            $(".connectedSortable").on("sortupdate", function (event, ui) {
+                var presentationArr = [];
+                var appointmentArr = [];
+                var callArr = [];
+                var contractArr = [];
+                var qualifiedArr = [];
+                var wonArr = [];
+                var lostArr = [];
 
-        $( ".connectedSortable" ).on( "sortupdate", function( event, ui ) {
-            var presentationArr = [];
-            var appointmentArr = [];
+                $("#Presentation-Scheduled li").each(function (index) {
+                    presentationArr[index] = $(this).attr('item-id');
+                });
 
-            $("#Presentation-Scheduled li").each(function( index ) {
-                presentationArr[index] = $(this).attr('item-id');
+                $("#Appointment-Scheduled li").each(function (index) {
+                    appointmentArr[index] = $(this).attr('item-id');
+                });
+
+                $("#Call-Scheduled li").each(function (index) {
+                    callArr[index] = $(this).attr('item-id');
+                });
+
+                $("#Contract-Sent li").each(function (index) {
+                    contractArr[index] = $(this).attr('item-id');
+                });
+
+                $("#Qualified-Buy li").each(function (index) {
+                    qualifiedArr[index] = $(this).attr('item-id');
+                });
+
+                $("#Closed-Won li").each(function (index) {
+                    wonArr[index] = $(this).attr('item-id');
+                });
+
+                $("#Closed-Lost li").each(function (index) {
+                    lostArr[index] = $(this).attr('item-id');
+                });
+
+                $.ajax({
+                    url: "{{ route('member.update.leads') }}",
+                    method: 'POST',
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    data: {
+                        presentationArr: presentationArr,
+                        appointmentArr: appointmentArr,
+                        callArr: callArr,
+                        contractArr: contractArr,
+                        qualifiedArr: qualifiedArr,
+                        wonArr: wonArr,
+                        lostArr: lostArr
+                    },
+
+                    success: function (data) {
+                        console.log('success');
+                    }
+                });
+
             });
-
-            $("#Appointment-Scheduled li").each(function( index ) {
-                appointmentArr[index] = $(this).attr('item-id');
-            });
-            console.log(presentationArr,appointmentArr);
-            $.ajax({
-                url: "{{ route('member.update.leads') }}",
-                method: 'POST',
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                },
-                data: {presentationArr:presentationArr,appointmentArr:appointmentArr},
-
-                success: function(data) {
-                    console.log('success');
-                }
-            });
-
         });
-    });
-</script>
-</body>
-</html>
+    </script>
+@endsection

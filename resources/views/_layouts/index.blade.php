@@ -20,7 +20,13 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
     <link href="{{asset('css/kanban.bundle.css')}}" rel="stylesheet" type="text/css" />
-
+    <style>
+        #draggable {
+            width: 150px;
+            height: 150px;
+            padding: 0.5em;
+        }
+    </style>
 </head>
 <!-- end::Head -->
 <!-- begin::Body -->

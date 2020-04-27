@@ -69,8 +69,8 @@ class MemberController extends Controller
             $today = Carbon::today()->format('Y-m-d');
             $dailySchaduale = Pipeline::where('employee_id', '=', $employee_id)->whereDate('scheduleDate', '=', $today)->orderBy('id', 'asc')->get();
             $dailyReSchaduale = Pipeline::where('employee_id', '=', $employee_id)->whereDate('reScheduleDate', '=', $today)->orderBy('id', 'asc')->get();
-            return view('gym.member.dashboard', compact('memberships', 'totalCalls', 'appointmentScheduled', 'activeMembers', 'dailySchaduale', 'dailyReSchaduale','qualifiedToBuy',
-                'transferCalls', 'failedCalls', 'leads', 'inActiveMembers', 'expiredMembers', 'notJoinedMembers','presentationScheduled','contractSent',
+            return view('gym.member.dashboard', compact('memberships', 'totalCalls', 'appointmentScheduled', 'activeMembers', 'dailySchaduale', 'dailyReSchaduale', 'qualifiedToBuy',
+                'transferCalls', 'failedCalls', 'leads', 'inActiveMembers', 'expiredMembers', 'notJoinedMembers', 'presentationScheduled', 'contractSent',
                 'assignTasksEmployee'));
         } catch (\Exception $e) {
             return back()->with('error', 'Oops, something was not right in member dashobard page');
@@ -594,26 +594,58 @@ class MemberController extends Controller
 
     public function dragLead()
     {
-        $presentationScheduled = Pipeline::where('stage','Presentation Scheduled')->orderBy('order')->get();
-        $appointmentScheduled = Pipeline::where('stage','Appointment Scheduled')->orderBy('order')->get();
-        return view('gym.member.archive.dragLeads',compact('presentationScheduled','appointmentScheduled'));
+        $employee_id = Auth::guard('employee')->user()->id;
+        $callScheduled = Pipeline::where('employee_id', $employee_id)->where('stage', 'Call Scheduled')->orderBy('order')->get();
+        $presentationScheduled = Pipeline::where('employee_id', $employee_id)->where('stage', 'Presentation Scheduled')->orderBy('order')->get();
+        $appointmentScheduled = Pipeline::where('employee_id', $employee_id)->where('stage', 'Appointment Scheduled')->orderBy('order')->get();
+        $contractSent = Pipeline::where('employee_id', $employee_id)->where('stage', 'Contract Sent')->orderBy('order')->get();
+        $qualifiedBuy = Pipeline::where('employee_id', $employee_id)->where('stage', 'Qualified To Buy')->orderBy('order')->get();
+        $closedWon = Pipeline::where('employee_id', $employee_id)->where('stage', 'Closed Won')->orderBy('order')->get();
+        $closedLost = Pipeline::where('employee_id', $employee_id)->where('stage', 'Closed Lost')->orderBy('order')->get();
+        return view('gym.member.archive.dragLeads', compact('presentationScheduled', 'appointmentScheduled', 'contractSent', 'qualifiedBuy', 'closedWon', 'closedLost', 'callScheduled'));
     }
 
-   public function updateDragLead(Request $request)
-   {
-       $input = $request->all();
-       foreach ($input['presentationArr'] as $key => $value) {
-           $key = $key+1;
-           Pipeline::where('id',$value)->update(['stage'=>'Presentation Scheduled','order'=>$key]);
-       }
+    public function updateDragLead(Request $request)
+    {
+        $input = $request->all();
 
-       foreach ($input['appointmentArr'] as $key => $value) {
-           $key = $key+1;
-           Pipeline::where('id',$value)->update(['stage'=>'Appointment Scheduled','order'=>$key]);
-       }
+        foreach ($input['callArr'] as $key => $value) {
+            $key = $key + 1;
+            Pipeline::where('id', $value)->update(['stage' => 'Call Scheduled', 'order' => $key]);
+        }
 
-       return response()->json(['status'=>'success']);
-   }
+        foreach ($input['presentationArr'] as $key => $value) {
+            $key = $key + 1;
+            Pipeline::where('id', $value)->update(['stage' => 'Presentation Scheduled', 'order' => $key]);
+        }
+
+        foreach ($input['appointmentArr'] as $key => $value) {
+            $key = $key + 1;
+            Pipeline::where('id', $value)->update(['stage' => 'Appointment Scheduled', 'order' => $key]);
+        }
+
+        foreach ($input['contractArr'] as $key => $value) {
+            $key = $key + 1;
+            Pipeline::where('id', $value)->update(['stage' => 'Contract Sent', 'order' => $key]);
+        }
+
+        foreach ($input['qualifiedArr'] as $key => $value) {
+            $key = $key + 1;
+            Pipeline::where('id', $value)->update(['stage' => 'Qualified To Buy', 'order' => $key]);
+        }
+
+        foreach ($input['wonArr'] as $key => $value) {
+            $key = $key + 1;
+            Pipeline::where('id', $value)->update(['stage' => 'Closed Won', 'order' => $key]);
+        }
+
+        foreach ($input['lostArr'] as $key => $value) {
+            $key = $key + 1;
+            Pipeline::where('id', $value)->update(['stage' => 'Closed Lost', 'order' => $key]);
+        }
+
+        return response()->json(['status' => 'success']);
+    }
 
     public function pipelineCreate($value, $id)
     {
@@ -641,7 +673,7 @@ class MemberController extends Controller
                     $breadcrumbs = "Closed Won";
                     break;
                 case 'closedLost':
-                    $breadcrumbs = "closed Lost";
+                    $breadcrumbs = "Closed Lost";
                     break;
             }
             $member = Member::find($id);
@@ -701,7 +733,7 @@ class MemberController extends Controller
             }
             $membership = Membership::all();
             $employee = Employee::all();
-            return view('gym.member.guest.edit', compact( 'membership', 'pipeline', 'employee', 'packageList'))->render();
+            return view('gym.member.guest.edit', compact('membership', 'pipeline', 'employee', 'packageList'))->render();
         } catch (\Exception $e) {
             return back()->with('error', 'Oops, something was not right in member pipelineEdit function');
         }
