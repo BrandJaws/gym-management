@@ -22,8 +22,7 @@ class Pipeline extends Model
         'reScheduleDate',
         'intersetedPackages',
         'remarks',
-        'order',
-        'dragStatus'
+        'order'
     ];
 
     public function gym()
