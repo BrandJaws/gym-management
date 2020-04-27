@@ -26,6 +26,10 @@
             height: 150px;
             padding: 0.5em;
         }
+        .inner{
+            background: #e4e8ee30;
+            padding: 1px;
+        }
     </style>
 </head>
 <!-- end::Head -->

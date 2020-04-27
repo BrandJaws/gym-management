@@ -608,7 +608,6 @@ class MemberController extends Controller
     public function updateDragLead(Request $request)
     {
         $input = $request->all();
-
         foreach ($input['callArr'] as $key => $value) {
             $key = $key + 1;
             Pipeline::where('id', $value)->update(['stage' => 'Call Scheduled', 'order' => $key]);

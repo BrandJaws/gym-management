@@ -7,14 +7,11 @@
                     <div class="col-md-3  m-5 p-3   shadow-lg complete-item">
                         <h6><u>Call Scheduled</u></h6>
                         <ul class="list-group  connectedSortable" id="Call-Scheduled">
+                            <li class="list-group-item inner"></li>
                             @if(!empty($callScheduled) && $callScheduled->count())
                                 @foreach($callScheduled as $key=>$value)
-                                    @if($value->count() > -1)
-                                        <li class="list-group-item "
-                                            item-id="{{ $value->id }}">{{ $value->member->name }}</li>
-                                    @else
-                                        <li class="list-group-item "> none</li>
-                                    @endif
+                                    <li class="list-group-item "
+                                        item-id="{{ $value->id }}">{{ $value->member->name }}</li>
                                 @endforeach
                             @endif
                         </ul>
@@ -22,6 +19,7 @@
                     <div class="col-md-3  m-5 p-3   shadow-lg complete-item">
                         <h6><u>Appointment Scheduled</u></h6>
                         <ul class="list-group  connectedSortable" id="Appointment-Scheduled">
+                            <li class="list-group-item inner"></li>
                             @if(!empty($appointmentScheduled) && $appointmentScheduled->count())
                                 @foreach($appointmentScheduled as $key=>$value)
                                     <li class="list-group-item "
@@ -33,6 +31,7 @@
                     <div class="col-md-3  m-5 p-3 shadow-lg complete-item">
                         <h6><u>Presentation Scheduled</u></h6>
                         <ul class="list-group shadow-lg connectedSortable" id="Presentation-Scheduled">
+                            <li class="list-group-item inner"></li>
                             @if(!empty($presentationScheduled) && $presentationScheduled->count())
                                 @foreach($presentationScheduled as $key=>$value)
                                     <li class="list-group-item"
@@ -44,6 +43,7 @@
                     <div class="col-md-3  m-5 p-3   shadow-lg complete-item">
                         <h6><u>Contract Sent</u></h6>
                         <ul class="list-group  connectedSortable" id="Contract-Sent">
+                            <li class="list-group-item inner"></li>
                             @if(!empty($contractSent) && $contractSent->count())
                                 @foreach($contractSent as $key=>$value)
                                     <li class="list-group-item "
@@ -55,6 +55,7 @@
                     <div class="col-md-3  m-5 p-3 shadow-lg complete-item">
                         <h6><u>Qualified To Buy</u></h6>
                         <ul class="list-group shadow-lg connectedSortable" id="Qualified-Buy">
+                            <li class="list-group-item inner"></li>
                             @if(!empty($qualifiedBuy) && $qualifiedBuy->count())
                                 @foreach($qualifiedBuy as $key=>$value)
                                     <li class="list-group-item"
@@ -66,6 +67,7 @@
                     <div class="col-md-3  m-5 p-3 shadow-lg complete-item">
                         <h6><u>Closed Won</u></h6>
                         <ul class="list-group shadow-lg connectedSortable" id="Closed-Won">
+                            <li class="list-group-item inner"></li>
                             @if(!empty($closedWon) && $closedWon->count())
                                 @foreach($closedWon as $key=>$value)
                                     <li class="list-group-item"
@@ -77,6 +79,7 @@
                     <div class="col-md-3 m-5 p-3 shadow-lg complete-item">
                         <h6><u>Closed Lost</u></h6>
                         <ul class="list-group shadow-lg connectedSortable" id="Closed-Lost">
+                            <li class="list-group-item inner"></li>
                             @if(!empty($closedLost) && $closedLost->count())
                                 @foreach($closedLost as $key=>$value)
                                     <li class="list-group-item"
