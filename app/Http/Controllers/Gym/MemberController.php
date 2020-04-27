@@ -610,14 +610,7 @@ class MemberController extends Controller
         $input = $request->all();
         foreach ($input['callArr'] as $key => $value) {
             $key = $key + 1;
-            $query = Pipeline::where('id', $value)->first();
-//            update(['stage' => 'Call Scheduled','dragStatus' => '1', 'order' => $key]);
-            Pipeline::insert(
-                    [
-                        'gym_module_id' => $value,
-                        'gym_id' => $gymId
-                    ]
-                );
+            Pipeline::where('id', $value)->update(['stage' => 'Call Scheduled', 'order' => $key]);
         }
 
         foreach ($input['presentationArr'] as $key => $value) {
