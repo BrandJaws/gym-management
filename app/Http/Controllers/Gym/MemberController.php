@@ -595,13 +595,13 @@ class MemberController extends Controller
     public function dragLead()
     {
         $employee_id = Auth::guard('employee')->user()->id;
-        $callScheduled = Pipeline::where('employee_id', $employee_id)->where('stage', 'Call Scheduled')->orderBy('order')->get();
-        $presentationScheduled = Pipeline::where('employee_id', $employee_id)->where('stage', 'Presentation Scheduled')->orderBy('order')->get();
-        $appointmentScheduled = Pipeline::where('employee_id', $employee_id)->where('stage', 'Appointment Scheduled')->orderBy('order')->get();
-        $contractSent = Pipeline::where('employee_id', $employee_id)->where('stage', 'Contract Sent')->orderBy('order')->get();
-        $qualifiedBuy = Pipeline::where('employee_id', $employee_id)->where('stage', 'Qualified To Buy')->orderBy('order')->get();
-        $closedWon = Pipeline::where('employee_id', $employee_id)->where('stage', 'Closed Won')->orderBy('order')->get();
-        $closedLost = Pipeline::where('employee_id', $employee_id)->where('stage', 'Closed Lost')->orderBy('order')->get();
+        $callScheduled = Pipeline::where('employee_id', $employee_id)->where('stage', 'Call Scheduled')->where('dragStatus', '0')->orderBy('order')->get();
+        $presentationScheduled = Pipeline::where('employee_id', $employee_id)->where('stage', 'Presentation Scheduled')->where('dragStatus', '0')->orderBy('order')->get();
+        $appointmentScheduled = Pipeline::where('employee_id', $employee_id)->where('stage', 'Appointment Scheduled')->where('dragStatus', '0')->orderBy('order')->get();
+        $contractSent = Pipeline::where('employee_id', $employee_id)->where('stage', 'Contract Sent')->where('dragStatus', '0')->orderBy('order')->get();
+        $qualifiedBuy = Pipeline::where('employee_id', $employee_id)->where('stage', 'Qualified To Buy')->where('dragStatus', '0')->orderBy('order')->get();
+        $closedWon = Pipeline::where('employee_id', $employee_id)->where('stage', 'Closed Won')->where('dragStatus', '0')->orderBy('order')->get();
+        $closedLost = Pipeline::where('employee_id', $employee_id)->where('stage', 'Closed Lost')->where('dragStatus', '0')->orderBy('order')->get();
         return view('gym.member.archive.dragLeads', compact('presentationScheduled', 'appointmentScheduled', 'contractSent', 'qualifiedBuy', 'closedWon', 'closedLost', 'callScheduled'));
     }
 
@@ -610,7 +610,14 @@ class MemberController extends Controller
         $input = $request->all();
         foreach ($input['callArr'] as $key => $value) {
             $key = $key + 1;
-            Pipeline::where('id', $value)->update(['stage' => 'Call Scheduled', 'order' => $key]);
+            $query = Pipeline::where('id', $value)->first();
+//            update(['stage' => 'Call Scheduled','dragStatus' => '1', 'order' => $key]);
+            Pipeline::insert(
+                    [
+                        'gym_module_id' => $value,
+                        'gym_id' => $gymId
+                    ]
+                );
         }
 
         foreach ($input['presentationArr'] as $key => $value) {

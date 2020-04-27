@@ -23,6 +23,7 @@ class CreatePipelineTable extends Migration
             $table->string('stage')->nullable(true);
             $table->integer('order')->nullable(true);
             $table->string('status');
+            $table->string('dragStatus')->default('0');
             $table->string('transferStage')->nullable(true); // null
             $table->dateTime('reScheduleDate')->nullable(true);
             $table->string('intersetedPackages')->nullable(true); // null
