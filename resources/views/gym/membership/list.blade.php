@@ -75,8 +75,7 @@
                                                         <span
                                                             id="post_title_icon"></span></th>
                                                     <th class="sorting" data-sorting_type="asc"
-                                                        data-column_name="monthlyFee" style="cursor: pointer">Include
-                                                        Members<span
+                                                        data-column_name="monthlyFee" style="cursor: pointer">Members<span
                                                             id="post_title_icon"></span></th>
                                                     <th class="sorting" data-sorting_type="asc"
                                                         data-column_name=" " style="cursor: pointer">Actions <span
