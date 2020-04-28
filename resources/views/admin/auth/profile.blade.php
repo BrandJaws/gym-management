@@ -27,7 +27,7 @@
                             <div class="kt-portlet__body">
                                 <div class="row">
                                     <div class="col-lg-6">
-                                        <div class="form-group">
+                                        <div class="form-group mb-15">
                                             <label>Name:</label>
                                             <input type="text" name="name" class="form-control"
                                                    value="{{ Auth::guard('admin')->user()->name }}"
@@ -36,7 +36,7 @@
                                                 <div class="error">{{ $errors->first('name') }}</div>
                                             @endif
                                         </div>
-                                        <div class="form-group">
+                                        <div class="form-group mb-15">
                                             <label>Phone No.</label>
                                             <input type="number" name="phone" class="form-control"
                                                    value="{{ Auth::guard('admin')->user()->phone }}"
@@ -45,7 +45,7 @@
                                                 <div class="error">{{ $errors->first('phone') }}</div>
                                             @endif
                                         </div>
-                                        <div class="form-group">
+                                        <div class="form-group mb-15">
                                             <label>Email:</label>
                                             <input type="email" name="email" class="form-control"
                                                    value="{{ Auth::guard('admin')->user()->email }}"
@@ -54,7 +54,7 @@
                                                 <div class="error">{{ $errors->first('email') }}</div>
                                             @endif
                                         </div>
-                                        <div class="form-group">
+                                        <div class="form-group mb-15">
                                             <label>Password :</label>
                                             <input type="password" name="password" class="form-control"
                                                    placeholder="Enter New Password"/>
@@ -62,7 +62,7 @@
                                                 <div class="error">{{ $errors->first('password') }}</div>
                                             @endif
                                         </div>
-                                        <div class="form-group">
+                                        <div class="form-group mb-15">
                                             <label>Re-Password :</label>
                                             <input type="password" name="re-password" class="form-control"
                                                    placeholder="Enter New Re-Password"/>
@@ -70,7 +70,7 @@
                                                 <div class="error">{{ $errors->first('re-password') }}</div>
                                             @endif
                                         </div>
-                                        <div class="form-group">
+                                        <div class="form-group mb-15">
                                             <input type="submit" value="Save" class="btn btn-primary">
                                             <a href="{{route('admin.home')}}"
                                                class="btn btn-secondary">Cancel</a>

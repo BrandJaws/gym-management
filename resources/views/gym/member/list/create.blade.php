@@ -23,10 +23,10 @@
                         <form action="{{ route('member.create') }}" method="POST" enctype="multipart/form-data"
                               class="kt-form kt-form--label-right">
                             @csrf
-                            <div class="form-group row">
+                            <div class="row" style="display: flex;align-items: center;">
                                 <div class="col-lg-8 ">
                                     <div class="kt-portlet__body">
-                                        <div class="form-group row">
+                                        <div class="form-group row mb-15">
                                             <div class="col-lg-6 ">
                                                 <label>Lead Owner :</label>
                                                 <input type="text" name="leadOwner_id" class="form-control" disabled
@@ -49,7 +49,7 @@
                                                 @endif
                                             </div>
                                         </div>
-                                        <div class="form-group row">
+                                        <div class="form-group row mb-15">
                                             <div class="col-lg-6 ">
                                                 <label>Name :</label>
                                                 <input type="text" name="name" class="form-control" required
@@ -67,7 +67,7 @@
                                                 @endif
                                             </div>
                                         </div>
-                                        <div class="form-group row">
+                                        <div class="form-group row mb-15">
                                             <div class="col-lg-6">
                                                 <label>Email :</label>
                                                 <input type="email" name="email" class="form-control"
@@ -92,7 +92,7 @@
                                                 @endif
                                             </div>
                                         </div>
-                                        <div class="form-group row">
+                                        <div class="form-group row mb-15">
                                             <div class="col-lg-6">
                                                 <label>Rating :</label>
                                                 <select class="form-control" name="rating">
@@ -116,7 +116,7 @@
                                                 @endif
                                             </div>
                                         </div>
-                                        <div class="form-group row">
+                                        <div class="form-group row mb-15">
                                             <div class="col-lg-6 textField" style="display: none">
                                                 <label>Joining Date</label>
                                                 <input type="date" name="joiningDate" class="form-control"/>
@@ -202,14 +202,13 @@
                                                             <span></span>
                                                         </label>
                                                         @if($errors->has('relationShip'))
-                                                            <div
-                                                                class="error">{{ $errors->first('relationShip') }}</div>
+                                                            <div class="error">{{ $errors->first('relationShip') }}</div>
                                                         @endif
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="form-group row">
+                                        <div class="form-group row mb-15">
                                             <div class="col-lg-6">
                                                 <label>Address:</label>
                                                 <textarea name="address" class="form-control" required
@@ -230,30 +229,24 @@
                                     </div>
                                 </div>
                                 <div class="col-lg-4 ">
-                                    <div class="form-group row">
+                                    <div class="form-group row mb-15">
                                         <div class="col-lg-12">
                                             <div class="profileImageSide">
                                                 <label class="col-form-label">Profile Image</label>
                                                 <div class="profileImage">
                                                     <div class="kt-avatar kt-avatar--outline kt-avatar--circle"
                                                          id="kt_user_avatar_3">
-                                                        <div class="kt-avatar__holder"
-                                                             style="background-image: url({{asset('assets/media/users/avatar.png')}})">
+                                                        <div class="kt-avatar__holder" style="background-image: url({{asset('assets/media/users/avatar.png')}})">
                                                         </div>
-                                                        <label class="kt-avatar__upload" data-toggle="kt-tooltip"
-                                                               title=""
-                                                               data-original-title="Change avatar">
+                                                        <label class="kt-avatar__upload" data-toggle="kt-tooltip" title="" data-original-title="Change avatar">
                                                             <i class="fa fa-pen"></i>
                                                             <input type="file" name="image" accept=".png, .jpg, .jpeg">
                                                         </label>
-                                                        <span class="kt-avatar__cancel" data-toggle="kt-tooltip"
-                                                              title=""
-                                                              data-original-title="Cancel avatar">
-                                                <i class="fa fa-times"></i>
-                                            </span>
+                                                        <span class="kt-avatar__cancel" data-toggle="kt-tooltip" title="" data-original-title="Cancel avatar">
+                                                            <i class="fa fa-times"></i>
+                                                        </span>
                                                     </div>
-                                                    <span
-                                                        class="form-text text-muted">Allowed file types: png, jpg, jpeg.</span>
+                                                    <span class="form-text text-muted">Allowed file types: png, jpg, jpeg.</span>
                                                 </div>
                                             </div>
                                         </div>
@@ -291,7 +284,7 @@
                 for (var i = 0; i < div.length; i++) {
                     div[i].style.display = "block";
                 }
-                $(div).slice(1).css('margin-top', "12px");
+                $(div).slice(2).css('margin-top', "12px");
             } else {
                 var div = document.getElementsByClassName('textField');
                 for (var i = 0; i < div.length; i++) {

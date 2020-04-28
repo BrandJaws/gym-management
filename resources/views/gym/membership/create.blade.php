@@ -73,13 +73,13 @@
                                 <div class="form-group row">
                                     <div class="col-lg-6">
                                         <label>Affiliate Status:</label>
-                                        <div class="kt-radio-inline">
+                                        <div class="kt-radio-inline" id="affiliateStatus">
                                             <label class="kt-radio kt-radio--brand">
-                                                <input type="radio" name="affiliateStatus" value="Yes" required> Yes
+                                                <input type="radio" name="affiliateStatus" onchange="getAffiliatedValue(this.value)" value="Yes" required> Yes
                                                 <span></span>
                                             </label>
                                             <label class="kt-radio kt-radio--brand">
-                                                <input type="radio" name="affiliateStatus" value="No" required>
+                                                <input type="radio" name="affiliateStatus" onchange="getAffiliatedValue(this.value)" value="No" required>
                                                 No
                                                 <span></span>
                                             </label>
@@ -154,5 +154,12 @@
                 }
             });
         });
+        function getAffiliatedValue(value) {
+            if (value === "Yes") {
+                $(".includeOthers").css('display', 'block');
+            } else {
+                $(".includeOthers").css('display', 'none');
+            }
+        }
     </script>
 @endsection

@@ -78,13 +78,13 @@
                                         <label>Affiliate Status:</label>
                                         <div class="kt-radio-inline">
                                             <label class="kt-radio kt-radio--brand" >
-                                                <input type="radio" name="affiliateStatus"
+                                                <input type="radio" name="affiliateStatus" onchange="getAffiliatedValue(this.value)"
                                                        @if( $membership->affiliateStatus == "Yes") checked
                                                        @endif value="Yes" required> Yes
                                                 <span></span>
                                             </label>
                                             <label class="kt-radio kt-radio--brand" >
-                                                <input type="radio" name="affiliateStatus"
+                                                <input type="radio" name="affiliateStatus" onchange="getAffiliatedValue(this.value)"
                                                        @if( $membership->affiliateStatus == "No") checked
                                                        @endif value="No" required>
                                                 No
@@ -157,14 +157,20 @@
     <script src="{{ asset('js/select2.js') }}"></script>
     <script>
         $(document).ready(function () {
-            $('input[type="radio"]').click(function () {
-                if ($(this).attr("value") == "No") {
-                    $(".includeOthers").css('display', 'none');
-                }
-                if ($(this).attr("value") == "Yes") {
-                    $(".includeOthers").css('display', 'block');
-                }
-            });
+            @if ( $membership->affiliateStatus === "Yes") {
+                $(".includeOthers").css('display', 'block');
+            }
+            @else {
+                $(".includeOthers").css('display', 'none');
+            }
+            @endif
         });
+        function getAffiliatedValue(value) {
+            if (value === "Yes") {
+                $(".includeOthers").css('display', 'block');
+            } else {
+                $(".includeOthers").css('display', 'none');
+            }
+        }
     </script>
 @endsection

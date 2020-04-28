@@ -37,11 +37,11 @@
                                         <label>Trial In:</label>
                                         <div class="kt-radio-inline">
                                             <label class="kt-radio kt-radio--solid">
-                                                <input type="radio" name="inTrial" value="1" autofocus required> Yes
+                                                <input type="radio" name="inTrial" onchange="getTrialInValue(this.value)" value="1" autofocus required> Yes
                                                 <span></span>
                                             </label>
                                             <label class="kt-radio kt-radio--solid">
-                                                <input type="radio" name="inTrial" value="0" autofocus required> No
+                                                <input type="radio" name="inTrial" onchange="getTrialInValue(this.value)" value="0" autofocus required> No
                                                 <span></span>
                                             </label>
                                             @if($errors->has('inTrial'))
@@ -361,6 +361,13 @@
                 }
             });
         });
+        function getTrialInValue(value) {
+            if (value === "1") {
+                $(".trialEndsAt").css('display', 'block');
+            } else {
+                $(".trialEndsAt").css('display', 'none');
+            }
+        }
     </script>
     <script src="{{asset('js/select2.js')}}"></script>
 @endsection

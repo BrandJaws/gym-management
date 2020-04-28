@@ -25,9 +25,9 @@
                               class="kt-form kt-form--label-right">
                             @csrf
                             <div class="kt-portlet__body">
-                                <div class="form-group row">
+                                <div class="row">
                                     <div class="col-lg-8">
-                                        <div class="form-group row">
+                                        <div class="form-group row mb-15">
                                             <div class="col-lg-6 countryDropdown">
                                                 <label>Gym:</label>
                                                 @if(count($gym) > 1)
@@ -62,7 +62,7 @@
                                                 @endif
                                             </div>
                                         </div>
-                                        <div class="form-group row">
+                                        <div class="form-group row mb-15">
                                             <div class="col-lg-6">
                                                 <label>Gender:</label>
                                                 <div class="kt-radio-inline">
@@ -88,7 +88,7 @@
                                                 @endif
                                             </div>
                                         </div>
-                                        <div class="form-group row">
+                                        <div class="form-group row mb-15">
                                             <div class="col-lg-6">
                                                 <label>Phone:</label>
                                                 <input type="text" name="phone" class="form-control" maxlength="14"
@@ -109,7 +109,7 @@
                                                 @endif
                                             </div>
                                         </div>
-                                        <div class="form-group row">
+                                        <div class="form-group row mb-15">
                                             <div class="col-lg-6">
                                                 <label>Password:</label>
                                                 <input type="password" name="password" class="form-control" required
@@ -131,7 +131,7 @@
                                                 @endif
                                             </div>
                                         </div>
-                                        <div class="form-group row">
+                                        <div class="form-group row mb-15">
                                             <div class="col-lg-6">
                                                 <label>Time In:</label>
                                                 <input type="time" name="timeIn" class="form-control" required>
@@ -147,7 +147,7 @@
                                                 @endif
                                             </div>
                                         </div>
-                                        <div class="form-group row">
+                                        <div class="form-group row mb-15">
                                             <div class="col-lg-6">
                                                 <label>CNIC:</label>
                                                 <input type="text" name="cnic" class="form-control" required
@@ -167,7 +167,7 @@
                                                 @endif
                                             </div>
                                         </div>
-                                        <div class="form-group row">
+                                        <div class="form-group row mb-15">
                                             <div class="col-lg-6">
                                                 <label>Specialization:</label>
                                                 <input type="text" name="specialization" class="form-control"
@@ -189,7 +189,7 @@
                                         </div>
                                     </div>
                                     <div class="col-lg-4">
-                                        <div class="form-group row">
+                                        <div class="form-group row mb-15">
                                             <div class="col-lg-12">
                                                 <div class="profileImageSide">
                                                     <label class="col-form-label">Employee Image</label>

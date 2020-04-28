@@ -21,7 +21,7 @@
                               class="kt-form kt-form--label-right">
                             @csrf
                             <div class="kt-portlet__body">
-                                <div class="form-group row">
+                                <div class="form-group row mb-15">
                                     <div class="col-lg-6">
                                         <label>Name:</label>
                                         <input type="text" name="name" required class="form-control"
@@ -33,7 +33,7 @@
                                                placeholder="Enter Service Fee"/>
                                     </div>
                                 </div>
-                                <div class="form-group row">
+                                <div class="form-group row mb-15">
                                     <div class="col-lg-6">
                                         <label>Status:</label>
                                         <div class="kt-radio-inline">

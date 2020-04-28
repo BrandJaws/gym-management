@@ -38,12 +38,12 @@
                                         <label>Trial In:</label>
                                         <div class="kt-radio-inline">
                                             <label class="kt-radio kt-radio--solid">
-                                                <input type="radio" name="inTrial" value="1"
+                                                <input type="radio" name="inTrial" value="1" onchange="getTrialInValue(this.value)"
                                                        {{ ($gym->inTrial=="1")? "checked" : "" }} required> Yes
                                                 <span></span>
                                             </label>
                                             <label class="kt-radio kt-radio--solid">
-                                                <input type="radio" name="inTrial" value="0"
+                                                <input type="radio" name="inTrial" value="0" onchange="getTrialInValue(this.value)"
                                                        {{ ($gym->inTrial=="0")? "checked" : "" }} required> No
                                                 <span></span>
                                             </label>
@@ -437,15 +437,21 @@
 @section('custom-script')
     <script>
         $(document).ready(function () {
-            $('input[type="radio"]').click(function () {
-                if ($(this).attr("value") == "0") {
-                    $(".trialEndsAt").css('display', 'none');
-                }
-                if ($(this).attr("value") == "1") {
-                    $(".trialEndsAt").css('display', 'block');
-                }
-            });
+            @if ( $gym->inTrial == "1") {
+                $(".trialEndsAt").css('display', 'block');
+            }
+            @else {
+                $(".trialEndsAt").css('display', 'none');
+            }
+            @endif
         });
+        function getTrialInValue(value) {
+            if (value === "1") {
+                $(".trialEndsAt").css('display', 'block');
+            } else {
+                $(".trialEndsAt").css('display', 'none');
+            }
+        }
         $(document).ready(function () {
             function clear_icon() {
                 $('#id_icon').html('');
