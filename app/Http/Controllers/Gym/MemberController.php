@@ -604,41 +604,39 @@ class MemberController extends Controller
     public function updateDragLead(Request $request)
     {
         $input = $request->all();
-        if ($request->callArr != null) {
-            foreach ($input['callArr'] as $key => $value) {
-                $key = $key + 1;
-                Pipeline::where('id', $value)->update(['stage' => 'Call Scheduled', 'order' => $key]);
-            }
-        } elseif ($request->presentationArr != null) {
-            foreach ($input['presentationArr'] as $key => $value) {
-                $key = $key + 1;
-                Pipeline::where('id', $value)->update(['stage' => 'Presentation Scheduled', 'order' => $key]);
-            }
-        } elseif ($request->appointmentArr != null) {
-            foreach ($input['appointmentArr'] as $key => $value) {
-                $key = $key + 1;
-                Pipeline::where('id', $value)->update(['stage' => 'Appointment Scheduled', 'order' => $key]);
-            }
-        } elseif ($request->contractArr != null) {
-            foreach ($input['contractArr'] as $key => $value) {
-                $key = $key + 1;
-                Pipeline::where('id', $value)->update(['stage' => 'Contract Sent', 'order' => $key]);
-            }
-        } elseif ($request->qualifiedArr != null) {
-            foreach ($input['qualifiedArr'] as $key => $value) {
-                $key = $key + 1;
-                Pipeline::where('id', $value)->update(['stage' => 'Qualified To Buy', 'order' => $key]);
-            }
-        } elseif ($request->wonArr != null) {
-            foreach ($input['wonArr'] as $key => $value) {
-                $key = $key + 1;
-                Pipeline::where('id', $value)->update(['stage' => 'Closed Won', 'order' => $key]);
-            }
-        } elseif ($request->lostArr != null) {
-            foreach ($input['lostArr'] as $key => $value) {
-                $key = $key + 1;
-                Pipeline::where('id', $value)->update(['stage' => 'Closed Lost', 'order' => $key]);
-            }
+
+        foreach ($input['callArr'] as $key => $value) {
+            $key = $key + 1;
+            Pipeline::where('id', $value)->update(['stage' => 'Call Scheduled', 'status' => 'Success', 'order' => $key]);
+        }
+
+        foreach ($input['appointmentArr'] as $key => $value) {
+            $key = $key + 1;
+            Pipeline::where('id', $value)->update(['stage' => 'Appointment Scheduled', 'status' => 'Success', 'order' => $key]);
+        }
+
+        foreach ($input['presentationArr'] as $key => $value) {
+            $key = $key + 1;
+            Pipeline::where('id', $value)->update(['stage' => 'Presentation Scheduled', 'status' => 'Success', 'order' => $key]);
+        }
+
+
+        foreach ($input['contractArr'] as $key => $value) {
+            $key = $key + 1;
+            Pipeline::where('id', $value)->update(['stage' => 'Contract Sent', 'status' => 'Success', 'order' => $key]);
+        }
+
+        foreach ($input['qualifiedArr'] as $key => $value) {
+            $key = $key + 1;
+            Pipeline::where('id', $value)->update(['stage' => 'Qualified To Buy', 'status' => 'Success', 'order' => $key]);
+        }
+        foreach ($input['wonArr'] as $key => $value) {
+            $key = $key + 1;
+            Pipeline::where('id', $value)->update(['stage' => 'Closed Won', 'status' => 'Success', 'order' => $key]);
+        }
+        foreach ($input['lostArr'] as $key => $value) {
+            $key = $key + 1;
+            Pipeline::where('id', $value)->update(['stage' => 'Closed Lost', 'status' => 'Success', 'order' => $key]);
         }
         return response()->json(['status' => 'success']);
     }

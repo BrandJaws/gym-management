@@ -20,9 +20,15 @@
                                 <!--begin::Nav-->
                                 <ul class="kt-nav">
                                     <li class="kt-nav__separator"></li>
-                                    <li class="kt-nav__item"><a  class="kt-nav__link" href="{{route('member.create')}}" ><i class="la la-plus"></i>  &nbsp; Add New Lead</a></li>
-                                    <li class="kt-nav__item"><a class="kt-nav__link" href="{{url('/gym/member/archive/leads')}}"> <i class="la la-table"></i> &nbsp; View In Table</a></li>
-                                    <li class="kt-nav__item"><a class="kt-nav__link" href="{{url('/gym/member/drag/leads')}}"> <i class="la la-clipboard"></i> &nbsp; All Leads</a></li>
+                                    <li class="kt-nav__item"><a class="kt-nav__link"
+                                                                href="{{route('member.create')}}"><i
+                                                class="la la-plus"></i> &nbsp; Add New Lead</a></li>
+                                    <li class="kt-nav__item"><a class="kt-nav__link"
+                                                                href="{{url('/gym/member/archive/leads')}}"> <i
+                                                class="la la-table"></i> &nbsp; View In Table</a></li>
+                                    <li class="kt-nav__item"><a class="kt-nav__link"
+                                                                href="{{url('/gym/member/drag/leads')}}"> <i
+                                                class="la la-clipboard"></i> &nbsp; All Leads</a></li>
                                     <li class="kt-nav__separator"></li>
                                 </ul>
                                 <!--end::Nav-->
@@ -126,7 +132,32 @@
                                             @if(!empty($callScheduled) && $callScheduled->count())
                                                 @foreach($callScheduled as $key=>$value)
                                                     <li class="list-group-item "
-                                                        item-id="{{ $value->id }}">{{ $value->member->name }}</li>
+                                                        item-id="{{ $value->id }}">
+                                                        <div class="row">
+                                                            <div class="col-md-6">
+                                                                <i class="fa fa-user"
+                                                                   style="color: rgba(61,187,165,0.65)"></i> {{ $value->member->name }}
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                @if( $value->status == "Success")
+                                                                    <i class="fa flaticon2-correct"
+                                                                       style="color: rgba(30,187,31,0.65)"></i>
+                                                                @else
+                                                                    <i class="fa fa-question"
+                                                                       style="color: rgba(187,14,61,0.65)"></i>
+                                                                @endif
+                                                                {{ $value->status }}
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <i class="fa fa-calendar-day"
+                                                                   style="color: rgba(100,155,187,0.65)"></i> {{ Carbon\Carbon::parse($value->scheduleDate)->format('d-M') }}
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <i class="fa fa-clock"
+                                                                   style="color: rgba(185,158,187,0.65)"></i> {{ Carbon\Carbon::parse($value->scheduleDate)->format('H:m') }}
+                                                            </div>
+                                                        </div>
+                                                    </li>
                                                 @endforeach
                                             @endif
                                         </ul>
@@ -137,7 +168,32 @@
                                             @if(!empty($appointmentScheduled) && $appointmentScheduled->count())
                                                 @foreach($appointmentScheduled as $key=>$value)
                                                     <li class="list-group-item "
-                                                        item-id="{{ $value->id }}">{{ $value->member->name }}</li>
+                                                        item-id="{{ $value->id }}">
+                                                        <div class="row">
+                                                            <div class="col-md-6">
+                                                                <i class="fa fa-user"
+                                                                   style="color: rgba(61,187,165,0.65)"></i> {{ $value->member->name }}
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                @if( $value->status == "Success")
+                                                                    <i class="fa flaticon2-correct"
+                                                                       style="color: rgba(30,187,31,0.65)"></i>
+                                                                @else
+                                                                    <i class="fa fa-question"
+                                                                       style="color: rgba(187,14,61,0.65)"></i>
+                                                                @endif
+                                                                {{ $value->status }}
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <i class="fa fa-calendar-day"
+                                                                   style="color: rgba(100,155,187,0.65)"></i> {{ Carbon\Carbon::parse($value->scheduleDate)->format('d-M') }}
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <i class="fa fa-clock"
+                                                                   style="color: rgba(185,158,187,0.65)"></i> {{ Carbon\Carbon::parse($value->scheduleDate)->format('H:m') }}
+                                                            </div>
+                                                        </div>
+                                                    </li>
                                                 @endforeach
                                             @endif
                                         </ul>
@@ -149,7 +205,32 @@
                                             @if(!empty($presentationScheduled) && $presentationScheduled->count())
                                                 @foreach($presentationScheduled as $key=>$value)
                                                     <li class="list-group-item"
-                                                        item-id="{{ $value->id }}">{{ $value->member->name }}</li>
+                                                        item-id="{{ $value->id }}">
+                                                        <div class="row">
+                                                            <div class="col-md-6">
+                                                                <i class="fa fa-user"
+                                                                   style="color: rgba(61,187,165,0.65)"></i> {{ $value->member->name }}
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                @if( $value->status == "Success")
+                                                                    <i class="fa flaticon2-correct"
+                                                                       style="color: rgba(30,187,31,0.65)"></i>
+                                                                @else
+                                                                    <i class="fa fa-question"
+                                                                       style="color: rgba(187,14,61,0.65)"></i>
+                                                                @endif
+                                                                {{ $value->status }}
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <i class="fa fa-calendar-day"
+                                                                   style="color: rgba(100,155,187,0.65)"></i> {{ Carbon\Carbon::parse($value->scheduleDate)->format('d-M') }}
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <i class="fa fa-clock"
+                                                                   style="color: rgba(185,158,187,0.65)"></i> {{ Carbon\Carbon::parse($value->scheduleDate)->format('H:m') }}
+                                                            </div>
+                                                        </div>
+                                                    </li>
                                                 @endforeach
                                             @endif
                                         </ul>
@@ -160,7 +241,32 @@
                                             @if(!empty($contractSent) && $contractSent->count())
                                                 @foreach($contractSent as $key=>$value)
                                                     <li class="list-group-item "
-                                                        item-id="{{ $value->id }}">{{ $value->member->name }}</li>
+                                                        item-id="{{ $value->id }}">
+                                                        <div class="row">
+                                                            <div class="col-md-6">
+                                                                <i class="fa fa-user"
+                                                                   style="color: rgba(61,187,165,0.65)"></i> {{ $value->member->name }}
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                @if( $value->status == "Success")
+                                                                    <i class="fa flaticon2-correct"
+                                                                       style="color: rgba(30,187,31,0.65)"></i>
+                                                                @else
+                                                                    <i class="fa fa-question"
+                                                                       style="color: rgba(187,14,61,0.65)"></i>
+                                                                @endif
+                                                                {{ $value->status }}
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <i class="fa fa-calendar-day"
+                                                                   style="color: rgba(100,155,187,0.65)"></i> {{ Carbon\Carbon::parse($value->scheduleDate)->format('d-M') }}
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <i class="fa fa-clock"
+                                                                   style="color: rgba(185,158,187,0.65)"></i> {{ Carbon\Carbon::parse($value->scheduleDate)->format('H:m') }}
+                                                            </div>
+                                                        </div>
+                                                    </li>
                                                 @endforeach
                                             @endif
                                         </ul>
@@ -171,7 +277,32 @@
                                             @if(!empty($qualifiedBuy) && $qualifiedBuy->count())
                                                 @foreach($qualifiedBuy as $key=>$value)
                                                     <li class="list-group-item"
-                                                        item-id="{{ $value->id }}">{{ $value->member->name }}</li>
+                                                        item-id="{{ $value->id }}">
+                                                        <div class="row">
+                                                            <div class="col-md-6">
+                                                                <i class="fa fa-user"
+                                                                   style="color: rgba(61,187,165,0.65)"></i> {{ $value->member->name }}
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                @if( $value->status == "Success")
+                                                                    <i class="fa flaticon2-correct"
+                                                                       style="color: rgba(30,187,31,0.65)"></i>
+                                                                @else
+                                                                    <i class="fa fa-question"
+                                                                       style="color: rgba(187,14,61,0.65)"></i>
+                                                                @endif
+                                                                {{ $value->status }}
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <i class="fa fa-calendar-day"
+                                                                   style="color: rgba(100,155,187,0.65)"></i> {{ Carbon\Carbon::parse($value->scheduleDate)->format('d-M') }}
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <i class="fa fa-clock"
+                                                                   style="color: rgba(185,158,187,0.65)"></i> {{ Carbon\Carbon::parse($value->scheduleDate)->format('H:m') }}
+                                                            </div>
+                                                        </div>
+                                                    </li>
                                                 @endforeach
                                             @endif
                                         </ul>
@@ -182,7 +313,32 @@
                                             @if(!empty($closedWon) && $closedWon->count())
                                                 @foreach($closedWon as $key=>$value)
                                                     <li class="list-group-item"
-                                                        item-id="{{ $value->id }}">{{ $value->member->name }}</li>
+                                                        item-id="{{ $value->id }}">
+                                                        <div class="row">
+                                                            <div class="col-md-6">
+                                                                <i class="fa fa-user"
+                                                                   style="color: rgba(61,187,165,0.65)"></i> {{ $value->member->name }}
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                @if( $value->status == "Success")
+                                                                    <i class="fa flaticon2-correct"
+                                                                       style="color: rgba(30,187,31,0.65)"></i>
+                                                                @else
+                                                                    <i class="fa fa-question"
+                                                                       style="color: rgba(187,14,61,0.65)"></i>
+                                                                @endif
+                                                                {{ $value->status }}
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <i class="fa fa-calendar-day"
+                                                                   style="color: rgba(100,155,187,0.65)"></i> {{ Carbon\Carbon::parse($value->scheduleDate)->format('d-M') }}
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <i class="fa fa-clock"
+                                                                   style="color: rgba(185,158,187,0.65)"></i> {{ Carbon\Carbon::parse($value->scheduleDate)->format('H:m') }}
+                                                            </div>
+                                                        </div>
+                                                    </li>
                                                 @endforeach
                                             @endif
                                         </ul>
@@ -193,7 +349,32 @@
                                             @if(!empty($closedLost) && $closedLost->count())
                                                 @foreach($closedLost as $key=>$value)
                                                     <li class="list-group-item"
-                                                        item-id="{{ $value->id }}">{{ $value->member->name }}</li>
+                                                        item-id="{{ $value->id }}">
+                                                        <div class="row">
+                                                            <div class="col-md-6">
+                                                                <i class="fa fa-user"
+                                                                   style="color: rgba(61,187,165,0.65)"></i> {{ $value->member->name }}
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                @if( $value->status == "Success")
+                                                                    <i class="fa flaticon2-correct"
+                                                                       style="color: rgba(30,187,31,0.65)"></i>
+                                                                @else
+                                                                    <i class="fa fa-question"
+                                                                       style="color: rgba(187,14,61,0.65)"></i>
+                                                                @endif
+                                                                {{ $value->status }}
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <i class="fa fa-calendar-day"
+                                                                   style="color: rgba(100,155,187,0.65)"></i> {{ Carbon\Carbon::parse($value->scheduleDate)->format('d-M') }}
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <i class="fa fa-clock"
+                                                                   style="color: rgba(185,158,187,0.65)"></i> {{ Carbon\Carbon::parse($value->scheduleDate)->format('H:m') }}
+                                                            </div>
+                                                        </div>
+                                                    </li>
                                                 @endforeach
                                             @endif
                                         </ul>
@@ -232,31 +413,73 @@
                 var lostArr = [];
 
                 $("#Presentation-Scheduled li").each(function (index) {
-                    presentationArr[index] = $(this).attr('item-id');
+                    var id = $(this).attr('item-id');
+                    if (id == undefined) {
+                        var dumyId = '0';
+                        presentationArr[index] = dumyId;
+                    } else {
+                        presentationArr[index] = $(this).attr('item-id');
+                    }
                 });
 
                 $("#Appointment-Scheduled li").each(function (index) {
-                    appointmentArr[index] = $(this).attr('item-id');
+                    var id = $(this).attr('item-id');
+                    if (id == undefined) {
+                        var dumyId = '0';
+                        appointmentArr[index] = dumyId;
+                    } else {
+                        appointmentArr[index] = $(this).attr('item-id');
+                    }
                 });
 
                 $("#Call-Scheduled li").each(function (index) {
-                    callArr[index] = $(this).attr('item-id');
+                    var id = $(this).attr('item-id');
+                    if (id == undefined) {
+                        var dumyId = '0';
+                        callArr[index] = dumyId;
+                    } else {
+                        callArr[index] = $(this).attr('item-id');
+                    }
                 });
 
                 $("#Contract-Sent li").each(function (index) {
-                    contractArr[index] = $(this).attr('item-id');
+                    var id = $(this).attr('item-id');
+                    if (id == undefined) {
+                        var dumyId = '0';
+                        contractArr[index] = dumyId;
+                    } else {
+                        contractArr[index] = $(this).attr('item-id');
+                    }
                 });
 
                 $("#Qualified-Buy li").each(function (index) {
-                    qualifiedArr[index] = $(this).attr('item-id');
+                    var id = $(this).attr('item-id');
+                    if (id == undefined) {
+                        var dumyId = '0';
+                        qualifiedArr[index] = dumyId;
+                    } else {
+                        qualifiedArr[index] = $(this).attr('item-id');
+                    }
                 });
 
                 $("#Closed-Won li").each(function (index) {
-                    wonArr[index] = $(this).attr('item-id');
+                    var id = $(this).attr('item-id');
+                    if (id == undefined) {
+                        var dumyId = '0';
+                        wonArr[index] = dumyId;
+                    } else {
+                        wonArr[index] = $(this).attr('item-id');
+                    }
                 });
 
                 $("#Closed-Lost li").each(function (index) {
-                    lostArr[index] = $(this).attr('item-id');
+                    var id = $(this).attr('item-id');
+                    if (id == undefined) {
+                        var dumyId = '0';
+                        lostArr[index] = dumyId;
+                    } else {
+                        lostArr[index] = $(this).attr('item-id');
+                    }
                 });
 
                 $.ajax({
