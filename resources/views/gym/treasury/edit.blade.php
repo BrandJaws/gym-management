@@ -22,7 +22,7 @@
                             @csrf
                             <input type="hidden" value="{{ $treasury->id }}" name="id">
                             <div class="kt-portlet__body">
-                                <div class="form-group row">
+                                <div class="form-group row mb-15">
                                     <div class="col-lg-4">
                                         <label>Type:</label>
                                         <div class="kt-radio-inline">
@@ -84,7 +84,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="form-group row">
+                                <div class="form-group row mb-15">
                                     <div class="col-lg-4 countryDropdown">
                                         <label class="">Gym:</label>
                                         <input type="text" value="{{ Auth::guard('employee')->user()->gym->name }}"
@@ -114,7 +114,7 @@
                                     </div>
                                 </div>
 
-                                <div class="form-group row">
+                                <div class="form-group row mb-15">
                                     <div class="col-lg-4 employeeField" style="display: none">
                                         <label>Purpose:</label>
                                         <select class="form-control" name="employeePurpose">
@@ -200,7 +200,7 @@
                                                placeholder="Enter your Value"/>
                                     </div>
                                 </div>
-                                <div class="form-group row">
+                                <div class="form-group row mb-15">
                                     <div class="col-lg-6">
                                         <label>Note:</label>
                                         <textarea class="form-control" name="note" required

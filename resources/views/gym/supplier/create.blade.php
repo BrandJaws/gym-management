@@ -23,9 +23,9 @@
                             <input type="hidden" class="form-control" name="gym_id"
                                    value="{{  Auth::guard('employee')->user()->gym->id }}"/>
                             <div class="kt-portlet__body">
-                                <div class="form-group row">
+                                <div class="row">
                                     <div class="col-lg-8">
-                                        <div class="form-group row">
+                                        <div class="form-group row mb-15">
                                             <div class="col-lg-6 countryDropdown">
                                                 <label class="">Gym:</label>
                                                 <input type="text" class="form-control" disabled
@@ -53,7 +53,7 @@
                                                 @endif
                                             </div>
                                         </div>
-                                        <div class="form-group row">
+                                        <div class="form-group row mb-15">
                                             <div class="col-lg-6">
                                                 <label>Name:</label>
                                                 <input type="text" name="name" class="form-control" required
@@ -68,7 +68,7 @@
                                                        placeholder="Enter Supplier Email"/>
                                             </div>
                                         </div>
-                                        <div class="form-group row">
+                                        <div class="form-group row mb-15">
                                             <div class="col-lg-6">
                                                 <label>Phone:</label>
                                                 <input type="number" name="phone" class="form-control" required
@@ -89,7 +89,7 @@
                                         </div>
                                     </div>
                                     <div class="col-lg-4">
-                                        <div class="form-group row">
+                                        <div class="form-group row mb-15">
                                             <div class="col-lg-12">
                                                 <div class="profileImageSide">
                                                     <label class="col-form-label">Supplier Image</label>

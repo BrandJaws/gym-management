@@ -26,9 +26,9 @@
                                 <div class="error">{{ $errors->first('gym_id') }}</div>
                             @endif
                             <div class="kt-portlet__body">
-                                <div class="form-group row">
+                                <div class="row">
                                     <div class="col-lg-8 ">
-                                        <div class="form-group row">
+                                        <div class="form-group row mb-15">
                                             <div class="col-lg-6 ">
                                                 <label class="">Gym:</label>
                                                 <input type="text" class="form-control" disabled
@@ -43,7 +43,7 @@
                                                 @endif
                                             </div>
                                         </div>
-                                        <div class="form-group row">
+                                        <div class="form-group row mb-15">
                                             <div class="col-lg-6">
                                                 <label>Number of seats available:</label>
                                                 <input type="number" maxlength="25" name="seats" class="form-control"
@@ -61,7 +61,7 @@
                                                 @endif
                                             </div>
                                         </div>
-                                        <div class="form-group row">
+                                        <div class="form-group row mb-15">
                                             <div class="col-lg-6">
                                                 <label>Start Date:</label>
                                                 <input type="date" name="startDate" class="form-control" required/>
@@ -77,7 +77,7 @@
                                                 @endif
                                             </div>
                                         </div>
-                                        <div class="form-group row">
+                                        <div class="form-group row mb-15">
                                             <div class="col-lg-6">
                                                 <label>Price:</label>
                                                 <input type="number" name="price" class="form-control"
@@ -97,7 +97,7 @@
                                                 @endif
                                             </div>
                                         </div>
-                                        <div class="form-group row">
+                                        <div class="form-group row mb-15">
                                             <div class="col-lg-6">
                                                 <label>Description:</label>
                                                 <textarea type="text" name="description" class="form-control"
@@ -109,7 +109,7 @@
                                         </div>
                                     </div>
                                     <div class="col-lg-4">
-                                        <div class="form-group row">
+                                        <div class="form-group row mb-15">
                                             <div class="col-lg-12">
                                                 <label>Trainer Name:</label>
                                                 <select name="trainer_id" class="form-control">
@@ -142,7 +142,7 @@
                                             </div>
                                         </div>
                                         <div class="col-lg-12 imageField m-5" style="display: none">
-                                            <div class="form-group row">
+                                            <div class="form-group row mb-15">
                                                 <label class="col-xl-4 col-lg-4 col-form-label">Select Image
                                                     File</label>
                                                 <div class="col-lg-11">

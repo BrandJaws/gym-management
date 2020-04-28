@@ -485,6 +485,12 @@ body a {
     justify-content: center;
     width: 100%;
 }
+.kt-aside-menu .kt-menu__nav > .kt-menu__item:hover .kt-menu__link span.kt-menu__link-icon i.flaticon2-shopping-cart-1 {
+    color: #5d78ff!important;
+}
 .kt-aside-menu .kt-menu__nav > .kt-menu__item.kt-menu__item--active > .kt-menu__heading, .kt-aside-menu .kt-menu__nav > .kt-menu__item.kt-menu__item--active > .kt-menu__link span.kt-menu__link-icon i.flaticon2-shopping-cart-1 {
     color: #5d78ff!important;
+}
+.mb-15 {
+    margin-bottom: 12px;
 }

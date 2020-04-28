@@ -144,9 +144,9 @@
                             <input type="hidden" name="id" class="form-control"
                                    value="{{ $trainer->id }}"/>
                             <div class="kt-portlet__body">
-                                <div class="form-group row">
+                                <div class="row">
                                     <div class="col-lg-8 ">
-                                        <div class="form-group row">
+                                        <div class="form-group row mb-15">
                                             <div class="col-lg-4 ">
                                                 <label class="">Gym:</label>
                                                 <input type="text" class="form-control" disabled
@@ -172,7 +172,7 @@
                                                 @endif
                                             </div>
                                         </div>
-                                        <div class="form-group row">
+                                        <div class="form-group row mb-15">
                                             <div class="col-lg-6">
                                                 <label>Date Of Birth:</label>
                                                 <input type="date" name="dob" value="{{ $trainer->dob }}"
@@ -202,7 +202,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="form-group row">
+                                        <div class="form-group row mb-15">
                                             <div class="col-lg-6">
                                                 <label>Phone #</label>
                                                 <input type="number" name="phone" class="form-control"
@@ -222,7 +222,7 @@
                                                 @endif
                                             </div>
                                         </div>
-                                        <div class="form-group row">
+                                        <div class="form-group row mb-15">
                                             <div class="col-lg-6">
                                                 <label>Password:</label>
                                                 <input type="password" name="password" class="form-control"
@@ -241,7 +241,7 @@
                                                 @endif
                                             </div>
                                         </div>
-                                        <div class="form-group row">
+                                        <div class="form-group row mb-15">
                                             <div class="col-lg-6">
                                                 <label>Qualification:</label>
                                                 <input type="text" name="qualification" class="form-control"
@@ -262,7 +262,7 @@
                                                 <span class="help-block m-b-none" style="font-style: italic">Each separated with a comma.</span>
                                             </div>
                                         </div>
-                                        <div class="form-group row">
+                                        <div class="form-group row mb-15">
                                             <div class="col-lg-6">
                                                 <label>Status:</label>
                                                 <select name="status" class="form-control">
@@ -285,7 +285,7 @@
                                         </div>
                                     </div>
                                     <div class="col-lg-4">
-                                        <div class="form-group row">
+                                        <div class="form-group row mb-15">
                                             <label class="col-xl-3 col-lg-3 col-form-label">Image</label>
                                             <div class="col-lg-9 col-xl-6">
                                                 <div class="profileImageSide">
