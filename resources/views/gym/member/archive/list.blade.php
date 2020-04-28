@@ -14,18 +14,29 @@
                                     List of {{ $breadcrumbs }}
                                 </h3>
                             </div>
-                            @if($breadcrumbs == "Leads" || $breadcrumbs == "Lead Board")
-                                <div class="dropdown dropdown-inline">
-                                    <a href="{{route('member.create')}}" type="button"
-                                       class="btn btn-brand btn-icon-sm">
-                                        <i class="flaticon2-plus"></i> Add New
-                                    </a>
+                            @if($breadcrumbs == "Leads" )
+                                <div class="kt-portlet__head-toolbar">
+                                    <div class="dropdown dropdown-inline">
+                                        <button type="button" class="btn btn-clean btn-sm btn-icon btn-icon-md"
+                                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <i class="flaticon-more-1"></i>
+                                        </button>
+                                        <div class="dropdown-menu dropdown-menu-right dropdown-menu-fit dropdown-menu-md">
+                                            <!--begin::Nav-->
+                                            <ul class="kt-nav">
+                                                <li class="kt-nav__separator"></li>
+                                                <li class="kt-nav__item"><a  class="kt-nav__link" href="{{route('member.create')}}" ><i class="la la-plus"></i>  &nbsp; Add New Lead</a></li>
+                                                <li class="kt-nav__item"><a class="kt-nav__link" href="{{url('/gym/member/archive/leads')}}"> <i class="la la-table"></i> &nbsp; View In Table</a></li>
+                                                <li class="kt-nav__item"><a class="kt-nav__link" href="{{url('/gym/member/drag/leads')}}"> <i class="la la-clipboard"></i> &nbsp; All Leads</a></li>
+                                                <li class="kt-nav__separator"></li>
+                                            </ul>
+                                            <!--end::Nav-->
+                                        </div>
+                                    </div>
                                 </div>
                             @endif
                         </div>
-                        @if($breadcrumbs != "Lead Board" )
-                            <a class="dropdown-item" href="{{url('/gym/member/drag/leads')}}"> <i
-                                    class="la la-clipboard"></i> Leads View In Board </a>
+                        @if($breadcrumbs != "Last Month Leads" )
                             <div class="kt-portlet__body">
                                 <!--begin::Section-->
                                 <div class="kt-section">
