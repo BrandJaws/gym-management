@@ -505,10 +505,6 @@ class MemberController extends Controller
     {
         try {
             switch ($value) {
-                case 'leadBoard':
-                    $breadcrumbs = "Lead Board";
-                    $member = Member::where('type', 'Lead')->where('gym_id', Auth::guard('employee')->user()->gym_id)->orderBy('id', 'asc')->paginate(10);
-                    break;
                 case 'leads':
                     $breadcrumbs = "Leads";
                     $member = Member::where('type', 'Lead')->where('gym_id', Auth::guard('employee')->user()->gym_id)->orderBy('id', 'asc')->paginate(10);

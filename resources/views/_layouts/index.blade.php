@@ -23,7 +23,7 @@
     <style>
         #draggable {
             width: 150px;
-            height: 150px;
+            height: 250px;
             padding: 0.5em;
         }
         .inner{

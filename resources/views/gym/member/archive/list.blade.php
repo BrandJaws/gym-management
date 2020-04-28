@@ -23,23 +23,8 @@
                                 </div>
                             @endif
                         </div>
-                        @if($breadcrumbs == "Lead Board")
-                            <a class="dropdown-item" href="{{url('/gym/member/drag/leads')}}"> <i
-                                    class="la la-clipboard"></i> Leads View In Table</a>
-                            <div class="kt-container  kt-container--fluid  kt-grid__item kt-grid__item--fluid">
-                                <div class="row">
-                                    <div class="col-lg-12">
-                                        <div class="kt-portlet">
-                                            <div class="kt-portlet__body">
-                                                <div id="kanban2"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        @endif
                         @if($breadcrumbs != "Lead Board" )
-                            <a class="dropdown-item" href="{{url('/gym/member/archive/leadBoard')}}"> <i
+                            <a class="dropdown-item" href="{{url('/gym/member/drag/leads')}}"> <i
                                     class="la la-clipboard"></i> Leads View In Board </a>
                             <div class="kt-portlet__body">
                                 <!--begin::Section-->
