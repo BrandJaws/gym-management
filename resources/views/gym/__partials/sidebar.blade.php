@@ -6,12 +6,10 @@
                 <a href="{{url('/gym/dashboard')}}">
                     @if(Auth::guard('employee')->user()->userImage != "")
                         <img alt="Logo"
-                             src="{{ URL::to('/') }}/{{ Auth::guard('employee')->user()->gym->gymImage->path }}"
-                             width="170px" height="50px"/>
+                             src="{{ URL::to('/') }}/{{ Auth::guard('employee')->user()->gym->gymImage->path }}" height="50px"/>
                     @endif
                     @if(Auth::guard('employee')->user()->userImage == "")
-                        <img alt="Logo" src="{{asset('assets/media/logos/brandjaws.png')}}" width="170px"
-                             height="50px"/>
+                        <img alt="Logo" src="{{asset('assets/media/logos/brandjaws.png')}}" height="50px"/>
                     @endif
                 </a>
             </div>

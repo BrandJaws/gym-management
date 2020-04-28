@@ -26,7 +26,7 @@
     top: 50%!important;
 }
 .countryDropdown span.select2 .select2-selection--single .select2-selection__rendered {
-    line-height: 38px!important;
+    line-height: 20px!important;
     padding-left: 12px!important;
 }
 .countryDropdown span.select2 .select2-selection--single {
@@ -35,6 +35,8 @@
     outline: none!important;
 
 }
+
+
 .kt-nav {
     padding:0!important;
 }
@@ -442,3 +444,47 @@ body a {
     display: block;
 }
 
+.kt-header-menu {
+    align-items: center;
+}
+.adminLogoDashboard img {
+    max-width: 200px;
+}
+.kt-aside__brand {
+    padding: 0 15px;
+    background: #fbfbfb;
+}
+.kt-aside {
+    background: #fbfbfb;
+}
+.kt-aside .kt-aside-menu {
+    background: #fbfbfb;
+}
+.kt-aside-menu .kt-menu__nav > .kt-menu__item.kt-menu__item--active > .kt-menu__heading, .kt-aside-menu .kt-menu__nav > .kt-menu__item.kt-menu__item--active > .kt-menu__link {
+    background: #f7f7f7;
+    color: #5d78ff;
+}
+.kt-aside-menu .kt-menu__nav > .kt-menu__item.kt-menu__item--active > .kt-menu__heading .kt-menu__link-text, .kt-aside-menu .kt-menu__nav > .kt-menu__item.kt-menu__item--active > .kt-menu__link .kt-menu__link-text {
+    color: #5d78ff;
+}
+.kt-aside-menu .kt-menu__nav > .kt-menu__item:not(.kt-menu__item--parent):not(.kt-menu__item--open):not(.kt-menu__item--here):not(.kt-menu__item--active):hover > .kt-menu__heading, .kt-aside-menu .kt-menu__nav > .kt-menu__item:not(.kt-menu__item--parent):not(.kt-menu__item--open):not(.kt-menu__item--here):not(.kt-menu__item--active):hover > .kt-menu__link {
+    background: #fbfbfb;
+    color: #5d78ff;
+}
+.kt-aside-menu .kt-menu__nav > .kt-menu__item:not(.kt-menu__item--parent):not(.kt-menu__item--open):not(.kt-menu__item--here):not(.kt-menu__item--active):hover > .kt-menu__heading .kt-menu__link-text, .kt-aside-menu .kt-menu__nav > .kt-menu__item:not(.kt-menu__item--parent):not(.kt-menu__item--open):not(.kt-menu__item--here):not(.kt-menu__item--active):hover > .kt-menu__link .kt-menu__link-text {
+    color: #5d78ff;
+}
+.kt-content {
+    padding-top: 0;
+}
+.kt-header--fixed.kt-subheader--fixed.kt-subheader--enabled .kt-wrapper {
+    padding-top: 90px;
+}
+
+.gymLogoDashboard {
+    justify-content: center;
+    width: 100%;
+}
+.kt-aside-menu .kt-menu__nav > .kt-menu__item.kt-menu__item--active > .kt-menu__heading, .kt-aside-menu .kt-menu__nav > .kt-menu__item.kt-menu__item--active > .kt-menu__link span.kt-menu__link-icon i.flaticon2-shopping-cart-1 {
+    color: #5d78ff!important;
+}
