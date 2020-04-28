@@ -19,10 +19,10 @@ import "bootstrap/dist/js/bootstrap.min.js";
 import "@fortawesome/fontawesome-free/css/all.css";
 import "@fortawesome/fontawesome-free/js/all.js";
 
+import VueGoodTablePlugin from 'vue-good-table';
 
 
-
-
+Vue.use(VueGoodTablePlugin);
 Vue.config.productionTip = false;
 
 new Vue({

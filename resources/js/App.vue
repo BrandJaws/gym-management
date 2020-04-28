@@ -4,7 +4,7 @@
 
         <router-view />
 
-        <member></member>
+
     </div>
 </template>
 <script>
