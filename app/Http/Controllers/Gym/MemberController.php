@@ -105,7 +105,7 @@ class MemberController extends Controller
         try {
             $gym_id = Auth::guard('employee')->user()->gym_id;
             $membership = Membership::where('gym_id', $gym_id)->get();
-            $member = Member::where('gym_id', $gym_id)->where('type', 'Member')->where('memberType', 'Parent')->get();
+            $member = Member::where('gym_id', $gym_id)->where('type', 'Member')->where('memberType', 'Parent')->where('membership_id', '!=', '')->get();
             return view('gym.member.list.create', compact('membership', 'member'));
         } catch (\Exception $e) {
             return back()->with('error', 'Oops, something was not right in member add page');
@@ -205,43 +205,47 @@ class MemberController extends Controller
                             return back()->with('success', 'Member Created Successfully!');
                             break;
                         case 'Affiliate Member':
-                            $parentMember = Member::where('id', $request->memberParent_id)->first();
-                            $childMember = Member::where('memberParent_id', $request->memberParent_id)->count();
-                            $allMember = $childMember + 1;
-                            $totalMember = $parentMember->membership->noOfMembers - $allMember;
-                            if ($parentMember->membership->affiliateStatus == "Yes" && $totalMember > 0 && ($parentMember->membership->spouse || $parentMember->membership->children) == $request->relationShip) {
-                                $member = new Member();
-                                $member->fill($request->only([
-                                    'name',
-                                    'salutation',
-                                    'email',
-                                    'phone',
-                                    'remarks',
-                                    'rating',
-                                    'address',
-                                    'source',
-                                    'type',
-                                    'joiningDate',
-                                    'status',
-                                    'memberType',
-                                    'memberParent_id',
-                                    'relationShip'
-                                ]));
-                                $code = Member::getMemeberCode($request->name);
-                                $member->code = $code;
-                                $member->leadOwner_id = Auth::guard('employee')->user()->id;
-                                $member->password = Hash::make($request->password);
-                                $member->gym_id = Auth::guard('employee')->user()->gym_id;
-                                $member->save();
-                                if ($request->hasFile('image')) {
-                                    $images = [];
-                                    $image = $request->file('image');
-                                    $userImage = new Image();
-                                    $this->uploadMemberImg($image, $userImage, 'path', null, $member->id);
-                                    $images[] = $userImage;
-                                    $member->userImage()->saveMany($images, $member);
+                            if ($request->memberParent_id != '0') {
+                                $parentMember = Member::where('id', $request->memberParent_id)->first();
+                                $childMember = Member::where('memberParent_id', $request->memberParent_id)->count();
+                                $allMember = $childMember + 1;
+                                $totalMember = $parentMember->membership->noOfMembers - $allMember;
+                                if ($parentMember->membership->affiliateStatus == "Yes" && $totalMember > 0 && ($parentMember->membership->spouse || $parentMember->membership->children) == $request->relationShip) {
+                                    $member = new Member();
+                                    $member->fill($request->only([
+                                        'name',
+                                        'salutation',
+                                        'email',
+                                        'phone',
+                                        'remarks',
+                                        'rating',
+                                        'address',
+                                        'source',
+                                        'type',
+                                        'joiningDate',
+                                        'status',
+                                        'memberType',
+                                        'memberParent_id',
+                                        'relationShip'
+                                    ]));
+                                    $code = Member::getMemeberCode($request->name);
+                                    $member->code = $code;
+                                    $member->leadOwner_id = Auth::guard('employee')->user()->id;
+                                    $member->password = Hash::make($request->password);
+                                    $member->gym_id = Auth::guard('employee')->user()->gym_id;
+                                    $member->save();
+                                    if ($request->hasFile('image')) {
+                                        $images = [];
+                                        $image = $request->file('image');
+                                        $userImage = new Image();
+                                        $this->uploadMemberImg($image, $userImage, 'path', null, $member->id);
+                                        $images[] = $userImage;
+                                        $member->userImage()->saveMany($images, $member);
+                                    }
+                                    return back()->with('success', 'Member Created Successfully!');
+                                } else {
+                                    return back()->with('error', 'Sorry! Please register yourself in new membership');
                                 }
-                                return back()->with('success', 'Member Created Successfully!');
                             } else {
                                 return back()->with('error', 'Sorry! Please register yourself in new membership');
                             }
@@ -386,53 +390,57 @@ class MemberController extends Controller
                             return back()->with('success', 'Member Updated Successfully!');
                             break;
                         case 'Affiliate Member':
-                            $memberExsit = Member::where('id', $id)->first();
-                            $parentMember = Member::where('id', $request->memberParent_id)->first();
-                            $childMember = Member::where('memberParent_id', $request->memberParent_id)->count();
-                            if ($memberExsit->memberParent_id == $request->memberParent_id) {
-                                $allMember = $childMember;
-                            } else {
-                                $allMember = $childMember + 1;
-                            }
-                            $totalMember = $parentMember->membership->noOfMembers - $allMember;
-                            if ($parentMember->membership->affiliateStatus == "Yes" && $totalMember > 0 && ($parentMember->membership->spouse || $parentMember->membership->children) == $request->relationShip) {
-                                $member = Member::where('id', $id)->first();
-                                $password = $member->password;
-                                $member->fill($request->only([
-                                    'name',
-                                    'salutation',
-                                    'email',
-                                    'phone',
-                                    'remarks',
-                                    'rating',
-                                    'address',
-                                    'source',
-                                    'type',
-                                    'joiningDate',
-                                    'status',
-                                    'memberType',
-                                    'memberParent_id',
-                                    'relationShip'
-                                ]));
-                                $code = Member::getMemeberCode($request->name);
-                                $member->code = $code;
-                                if (!empty($request->password)) {
-                                    $member->password = Hash::make($request->password);
+                            if ($request->memberParent_id != '0') {
+                                $memberExsit = Member::where('id', $id)->first();
+                                $parentMember = Member::where('id', $request->memberParent_id)->first();
+                                $childMember = Member::where('memberParent_id', $request->memberParent_id)->count();
+                                if ($memberExsit->memberParent_id == $request->memberParent_id) {
+                                    $allMember = $childMember;
                                 } else {
-                                    $member->password = $password;
+                                    $allMember = $childMember + 1;
                                 }
-                                $member->leadOwner_id = Auth::guard('employee')->user()->id;
-                                $member->gym_id = Auth::guard('employee')->user()->gym_id;
-                                $member->save();
-                                if ($request->hasFile('image')) {
-                                    $images = [];
-                                    $image = $request->file('image');
-                                    $userImage = new Image();
-                                    $this->uploadMemberImg($image, $userImage, 'path', null, $member->id);
-                                    $images[] = $userImage;
-                                    $member->userImage()->saveMany($images, $member);
+                                $totalMember = $parentMember->membership->noOfMembers - $allMember;
+                                if ($parentMember->membership->affiliateStatus == "Yes" && $totalMember > 0 && ($parentMember->membership->spouse || $parentMember->membership->children) == $request->relationShip) {
+                                    $member = Member::where('id', $id)->first();
+                                    $password = $member->password;
+                                    $member->fill($request->only([
+                                        'name',
+                                        'salutation',
+                                        'email',
+                                        'phone',
+                                        'remarks',
+                                        'rating',
+                                        'address',
+                                        'source',
+                                        'type',
+                                        'joiningDate',
+                                        'status',
+                                        'memberType',
+                                        'memberParent_id',
+                                        'relationShip'
+                                    ]));
+                                    $code = Member::getMemeberCode($request->name);
+                                    $member->code = $code;
+                                    if (!empty($request->password)) {
+                                        $member->password = Hash::make($request->password);
+                                    } else {
+                                        $member->password = $password;
+                                    }
+                                    $member->leadOwner_id = Auth::guard('employee')->user()->id;
+                                    $member->gym_id = Auth::guard('employee')->user()->gym_id;
+                                    $member->save();
+                                    if ($request->hasFile('image')) {
+                                        $images = [];
+                                        $image = $request->file('image');
+                                        $userImage = new Image();
+                                        $this->uploadMemberImg($image, $userImage, 'path', null, $member->id);
+                                        $images[] = $userImage;
+                                        $member->userImage()->saveMany($images, $member);
+                                    }
+                                    return back()->with('success', 'Member Updated Successfully!');
+                                } else {
+                                    return back()->with('error', 'Sorry! Please register yourself in new membership');
                                 }
-                                return back()->with('success', 'Member Updated Successfully!');
                             } else {
                                 return back()->with('error', 'Sorry! Please register yourself in new membership');
                             }
@@ -867,6 +875,7 @@ class MemberController extends Controller
             return back()->with('error', 'Oops, something was not right  in reports page');
         }
     }
+
     public function leadReport(Request $request)
     {
         try {
