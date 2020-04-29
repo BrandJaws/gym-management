@@ -2,6 +2,7 @@ import ReportsService from '../services/reportsService';
 import { reject, resolve } from 'any-promise';
 
 export default {
+    strict: true,
     state: {
         leadList:[]
     },

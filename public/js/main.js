@@ -7057,7 +7057,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'VGTable',
@@ -7105,11 +7104,15 @@ __webpack_require__.r(__webpack_exports__);
       }]
     };
   },
+  headers: {
+    "Content-Type": "multipart/form-data"
+  },
   created: function created() {
     this.fetchLeads();
   },
   computed: {
     leadList: function leadList() {
+      console.log(this.$store.getters.leadList);
       return this.$store.getters.leadList;
     }
   },
@@ -43532,14 +43535,6 @@ var render = function() {
             { staticClass: "table table-border" },
             [
               _c("vue-good-table", {
-                directives: [
-                  {
-                    name: "loading",
-                    rawName: "v-loading",
-                    value: _vm.loading,
-                    expression: "loading"
-                  }
-                ],
                 staticClass: "styled",
                 attrs: {
                   columns: _vm.columns,
@@ -60252,15 +60247,23 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
 
 /* harmony default export */ __webpack_exports__["default"] = (function () {
-  return axios__WEBPACK_IMPORTED_MODULE_0___default.a.create({
-    baseURL: 'http://127.0.0.1:8000',
+  var instance = axios__WEBPACK_IMPORTED_MODULE_0___default.a.create({
+    baseURL: "http://127.0.0.1:8000/customer",
     withCredentials: false,
     headers: {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json',
-      'Authorization': 'Bearer ' + localStorage.getItem('token')
+      Accept: "application/json",
+      "Content-Type": "application/json"
     }
+  }); // before a request is made start the nprogress
+
+  instance.interceptors.request.use(function (config) {
+    return config;
+  }); // before a response is returned stop nprogress
+
+  instance.interceptors.response.use(function (response) {
+    return response;
   });
+  return instance;
 });
 
 /***/ }),
@@ -60378,6 +60381,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+  strict: true,
   state: {
     leadList: []
   },

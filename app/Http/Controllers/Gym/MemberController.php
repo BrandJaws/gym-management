@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Gym;
 use App\Employee;
 use App\Gym;
 use App\Http\Traits\FileUpload;
-use App\Http\Traits\ResponseProvider;
 use App\Image;
 use App\Member;
 use App\Http\Controllers\Controller;
@@ -868,15 +867,34 @@ class MemberController extends Controller
         }
     }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     public function memberReport(Request $request)
     {
+        $leadList=  Member::where('gym_id', Auth::guard('employee')->user()->gym_id)->where('type', 'Lead')->get();
+        return response()->json([
+            'response' => $leadList
+        ], 200);
 
-
-            if ($request->json()) {
-             Member::where('gym_id', Auth::guard('employee')->user()->gym_id)->where('type', 'Lead')->get();
-                return response('correct', 200)->json([]);
-            }
-            return view('gym.member.report.list');
+//        return view('gym.member.report.list');
 
     }
 

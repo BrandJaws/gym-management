@@ -5,7 +5,6 @@
                 <div class="page-vue-good-table">
                     <div class="table table-border">
                         <vue-good-table
-                            v-loading="loading"
                             :columns="columns"
                             :rows="leadList"
                             :globalSearch="true"
@@ -24,9 +23,7 @@
 </template>
 
 <script>
-
     import loading from 'vue-loading';
-
     export default {
         name: 'VGTable',
         data() {
@@ -79,11 +76,15 @@
                 ],
             }
         },
+        headers: {
+            "Content-Type": "multipart/form-data"
+        },
         created() {
             this.fetchLeads();
         },
         computed: {
             leadList() {
+                console.log(this.$store.getters.leadList);
                 return this.$store.getters.leadList;
             },
         },
