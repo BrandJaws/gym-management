@@ -1,6 +1,31 @@
 <template>
     <div class="container-fluid">
         <div class="row">
+            <div class="col-lg-2 form-group">
+                <label>Stage :</label>
+                <select class="form-control" name="stage" v-model="form.stage">
+                    <option value="Call Scheduled">Call Scheduled</option>
+                    <option value="Appointment Scheduled">Appointment Scheduled</option>
+                    <option value="Presentation Scheduled">Presentation Scheduled</option>
+                    <option value="Contract Sent">Contract Sent</option>
+                    <option value="Qualified To Buy">Qualified To Buy</option>
+                    <option value="Closed Won">Closed Won</option>
+                    <option value="Closed Lost">Closed Lost</option>
+                </select>
+            </div>
+            <div class="col-lg-2 form-group">
+                <label>Lead Name :</label>
+                <input type="date" class="form-control" v-model="form.fromDate"/>
+            </div>
+            <div class="col-md-2">
+                <span>To Date</span>
+                <input type="date" class="form-control" v-model="form.toDate" name="toDate"/>
+            </div>
+            <div class="col-md-2">
+                <button @click="fetchLeads" class="btn btn-info">Search</button>
+            </div>
+        </div>
+        <div class="row">
             <div class="col-md-12">
                 <div class="page-vue-good-table">
                     <div class="table table-border">
@@ -24,55 +49,51 @@
 
 <script>
     import loading from 'vue-loading';
+
     export default {
         name: 'VGTable',
         data() {
             return {
                 loading: true,
+                form: {
+                    fromDate: '',
+                    toDate: '',
+                    stage: ''
+                },
+
                 columns: [
                     {
-                        label: 'Name',
-                        field: 'id',
+                        label: 'Member',
+                        field: 'Member',
                         tdClass: 'text-center',
                         thClass: 'text-center',
-                        sortable: false,
+                        sortable: true,
                         filterable: true,
                     },
                     {
-                        label: 'Type',
-                        field: 'id',
+                        label: 'Schedule Date',
+                        field: 'scheduleDate',
                         tdClass: 'text-center',
                         thClass: 'text-center',
-                        sortable: false,
+                        sortable: true,
                         filterable: true,
                     },
                     {
-                        label: 'Email',
-                        field: 'id',
-                        type: 'email',
-                        html: false,
+                        label: 'Stage',
+                        field: 'stage',
                         tdClass: 'text-center',
                         thClass: 'text-center',
-                        sortable: false,
+                        sortable: true,
                         filterable: true,
                     },
                     {
-                        label: 'Phone',
-                        field: 'id',
-                        type: 'number',
-                        html: false,
+                        label: 'Status',
+                        field: 'status',
                         tdClass: 'text-center',
                         thClass: 'text-center',
-                        sortable: false,
+                        sortable: true,
                         filterable: true,
                     },
-                    {
-                        label: "Actions",
-                        tdClass: 'text-center',
-                        thClass: 'text-center',
-                        sortable: false,
-                        field: "action"
-                    }
                 ],
             }
         },
@@ -93,7 +114,7 @@
                 this.error = '';
                 this.loading = true;
                 try {
-                    this.$store.dispatch("fetchLeads");
+                    this.$store.dispatch("fetchLeads", this.form);
                 } catch (e) {
                     this.error = e
                 }

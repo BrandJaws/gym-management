@@ -125,7 +125,7 @@ class Pipeline extends Model
     }
 
 
-    public static function getLeadList($customerType, $type, $leadStatus, $fromDate, $toDate)
+    public static function getLeadList($gymId,$fromDate, $toDate,$stage)
     {
         return self::select([
                 'pipeline.*',
@@ -134,8 +134,8 @@ class Pipeline extends Model
                 'employees.name as Employee',
                 'employees.id',
             ]
-        )->where(function ($query) use ($customerType, $type, $leadStatus, $fromDate, $toDate) {
-            $query->where('pipeline.gym_id', Auth::guard('employee')->user()->gym_id)->where('pipeline.stage', '=', $type)->where('pipeline.status', '=', $leadStatus)->orWhereBetween('pipeline.scheduleDate', array($fromDate, $toDate))->orWhereBetween('pipeline.reScheduleDate', array($fromDate, $toDate));
+        )->where(function ($query) use ($gymId,$fromDate, $toDate,$stage) {
+            $query->where('pipeline.gym_id', $gymId)->where('pipeline.stage', '=', $stage)->whereBetween('pipeline.scheduleDate', array($fromDate, $toDate));
         })->leftJoin('employees', function ($join) {
             $join->on('employees.id', 'pipeline.transfer_id');
         })->leftJoin('members', function ($join) {

@@ -121,7 +121,8 @@ Route::group(['prefix' => 'gym', 'namespace' => 'Gym'], function () {
             /*------------------------------------ Member Report Routes --------------------------------*/
             /*-----------------------------------------------------------------------------------*/
 
-            Route::get('/reports', ['as' => 'reports', 'uses' => 'MemberController@memberReport']);
+            Route::get('/reports', ['as' => 'reports', 'uses' => 'MemberController@report']);
+            Route::post('/reports', ['as' => 'reports', 'uses' => 'MemberController@leadReport']);
 //            Route::post('/daterange/fetch_data', ['as' => 'fetch_data', 'uses' => 'MemberController@fetch_data']);
             Route::get('/report', ['as' => 'reports', 'uses' => 'MemberController@leadReport']);
 

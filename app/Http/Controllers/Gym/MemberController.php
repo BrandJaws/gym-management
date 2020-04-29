@@ -867,44 +867,21 @@ class MemberController extends Controller
         }
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    public function memberReport(Request $request)
+    public function report(Request $request)
     {
-        $leadList=  Member::where('gym_id', Auth::guard('employee')->user()->gym_id)->where('type', 'Lead')->get();
-        return response()->json([
-            'response' => $leadList
-        ], 200);
-
-//        return view('gym.member.report.list');
-
+        return view('gym.member.report.list');
     }
 
     public function leadReport(Request $request)
     {
-        try {
-            return view('gym.member.report.list');
-        } catch (\Exception $e) {
-            return back()->with('error', 'Oops, something was not right  in reports page');
-        }
+        $fromDate = $request->fromDate;
+        $toDate = $request->toDate;
+        $stage = $request->stage;
+        $gymId = Auth::guard('employee')->user()->gym_id;
+        $leadList = Pipeline::getLeadList($gymId,$fromDate, $toDate,$stage);
+        return response()->json([
+            'response' => $leadList
+        ], 200);
     }
 
 //    function fetch_data(Request $request)

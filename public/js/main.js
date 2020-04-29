@@ -7057,50 +7057,70 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'VGTable',
   data: function data() {
     return {
       loading: true,
+      form: {
+        fromDate: '',
+        toDate: '',
+        stage: ''
+      },
       columns: [{
-        label: 'Name',
-        field: 'id',
+        label: 'Member',
+        field: 'Member',
         tdClass: 'text-center',
         thClass: 'text-center',
-        sortable: false,
+        sortable: true,
         filterable: true
       }, {
-        label: 'Type',
-        field: 'id',
+        label: 'Schedule Date',
+        field: 'scheduleDate',
         tdClass: 'text-center',
         thClass: 'text-center',
-        sortable: false,
+        sortable: true,
         filterable: true
       }, {
-        label: 'Email',
-        field: 'id',
-        type: 'email',
-        html: false,
+        label: 'Stage',
+        field: 'stage',
         tdClass: 'text-center',
         thClass: 'text-center',
-        sortable: false,
+        sortable: true,
         filterable: true
       }, {
-        label: 'Phone',
-        field: 'id',
-        type: 'number',
-        html: false,
+        label: 'Status',
+        field: 'status',
         tdClass: 'text-center',
         thClass: 'text-center',
-        sortable: false,
+        sortable: true,
         filterable: true
-      }, {
-        label: "Actions",
-        tdClass: 'text-center',
-        thClass: 'text-center',
-        sortable: false,
-        field: "action"
       }]
     };
   },
@@ -7122,7 +7142,7 @@ __webpack_require__.r(__webpack_exports__);
       this.loading = true;
 
       try {
-        this.$store.dispatch("fetchLeads");
+        this.$store.dispatch("fetchLeads", this.form);
       } catch (e) {
         this.error = e;
       }
@@ -43528,6 +43548,134 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "container-fluid" }, [
     _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-lg-2 form-group" }, [
+        _c("label", [_vm._v("Stage :")]),
+        _vm._v(" "),
+        _c(
+          "select",
+          {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.form.stage,
+                expression: "form.stage"
+              }
+            ],
+            staticClass: "form-control",
+            attrs: { name: "stage" },
+            on: {
+              change: function($event) {
+                var $$selectedVal = Array.prototype.filter
+                  .call($event.target.options, function(o) {
+                    return o.selected
+                  })
+                  .map(function(o) {
+                    var val = "_value" in o ? o._value : o.value
+                    return val
+                  })
+                _vm.$set(
+                  _vm.form,
+                  "stage",
+                  $event.target.multiple ? $$selectedVal : $$selectedVal[0]
+                )
+              }
+            }
+          },
+          [
+            _c("option", { attrs: { value: "Call Scheduled" } }, [
+              _vm._v("Call Scheduled")
+            ]),
+            _vm._v(" "),
+            _c("option", { attrs: { value: "Appointment Scheduled" } }, [
+              _vm._v("Appointment Scheduled")
+            ]),
+            _vm._v(" "),
+            _c("option", { attrs: { value: "Presentation Scheduled" } }, [
+              _vm._v("Presentation Scheduled")
+            ]),
+            _vm._v(" "),
+            _c("option", { attrs: { value: "Contract Sent" } }, [
+              _vm._v("Contract Sent")
+            ]),
+            _vm._v(" "),
+            _c("option", { attrs: { value: "Qualified To Buy" } }, [
+              _vm._v("Qualified To Buy")
+            ]),
+            _vm._v(" "),
+            _c("option", { attrs: { value: "Closed Won" } }, [
+              _vm._v("Closed Won")
+            ]),
+            _vm._v(" "),
+            _c("option", { attrs: { value: "Closed Lost" } }, [
+              _vm._v("Closed Lost")
+            ])
+          ]
+        )
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-lg-2 form-group" }, [
+        _c("label", [_vm._v("Lead Name :")]),
+        _vm._v(" "),
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.form.fromDate,
+              expression: "form.fromDate"
+            }
+          ],
+          staticClass: "form-control",
+          attrs: { type: "date" },
+          domProps: { value: _vm.form.fromDate },
+          on: {
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.$set(_vm.form, "fromDate", $event.target.value)
+            }
+          }
+        })
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-md-2" }, [
+        _c("span", [_vm._v("To Date")]),
+        _vm._v(" "),
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.form.toDate,
+              expression: "form.toDate"
+            }
+          ],
+          staticClass: "form-control",
+          attrs: { type: "date", name: "toDate" },
+          domProps: { value: _vm.form.toDate },
+          on: {
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.$set(_vm.form, "toDate", $event.target.value)
+            }
+          }
+        })
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-md-2" }, [
+        _c(
+          "button",
+          { staticClass: "btn btn-info", on: { click: _vm.fetchLeads } },
+          [_vm._v("Search")]
+        )
+      ])
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "row" }, [
       _c("div", { staticClass: "col-md-12" }, [
         _c("div", { staticClass: "page-vue-good-table" }, [
           _c(
@@ -60248,7 +60396,7 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony default export */ __webpack_exports__["default"] = (function () {
   var instance = axios__WEBPACK_IMPORTED_MODULE_0___default.a.create({
-    baseURL: "http://127.0.0.1:8000/customer",
+    baseURL: "http://127.0.0.1:8000",
     withCredentials: false,
     headers: {
       Accept: "application/json",
@@ -60299,8 +60447,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _services_Api__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../services/Api */ "./resources/js/services/Api.js");
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  fetchLeads: function fetchLeads() {
-    return Object(_services_Api__WEBPACK_IMPORTED_MODULE_0__["default"])().get('/gym/member/reports');
+  fetchLeads: function fetchLeads(params) {
+    return Object(_services_Api__WEBPACK_IMPORTED_MODULE_0__["default"])().post('/gym/member/reports', params);
   }
 });
 
