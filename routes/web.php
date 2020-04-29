@@ -118,11 +118,12 @@ Route::group(['prefix' => 'gym', 'namespace' => 'Gym'], function () {
             Route::get('/restorePipeline/{id}', ['as' => 'restorePipeline', 'uses' => 'MemberController@restorePipeline']);
 
             /*-----------------------------------------------------------------------------------*/
-            /*------------------------------------ Report Routes --------------------------------*/
+            /*------------------------------------ Member Report Routes --------------------------------*/
             /*-----------------------------------------------------------------------------------*/
 
-            Route::get('/reports', ['as' => 'reports', 'uses' => 'MemberController@reports']);
-            Route::post('/daterange/fetch_data', ['as' => 'fetch_data', 'uses' => 'MemberController@fetch_data']);
+            Route::get('/reports', ['as' => 'reports', 'uses' => 'MemberController@memberReport']);
+//            Route::post('/daterange/fetch_data', ['as' => 'fetch_data', 'uses' => 'MemberController@fetch_data']);
+            Route::get('/report', ['as' => 'reports', 'uses' => 'MemberController@leadReport']);
 
             /*-----------------------------------------------------------------------------------*/
             /*------------------------------------ Drap Drop Lead Routes --------------------------------*/

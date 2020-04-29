@@ -74,12 +74,12 @@
                                         <div class="profileImage">
                                             <div class="kt-avatar kt-avatar--outline kt-avatar--circle"
                                                  id="kt_user_avatar_1">
-                                                @if(Auth::guard('employee')->user()->userImage != "")
+                                                @if(Auth::guard('employee')->user()->gym->gymImage != "")
                                                     <div class="kt-avatar__holder"
                                                          style="background-image: url('{{ URL::to('/') }}/{{ Auth::guard('employee')->user()->gym->gymImage->path }}')">
                                                     </div>
                                                 @endif
-                                                @if(Auth::guard('employee')->user()->userImage == "")
+                                                @if(Auth::guard('employee')->user()->gym->gymImage == "")
                                                     <div class="kt-avatar__holder"
                                                          style="background-image: url({{asset('assets/media/logos/gymLogo.jpg')}})">
                                                     </div>

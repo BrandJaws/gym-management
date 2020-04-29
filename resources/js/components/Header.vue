@@ -3,7 +3,7 @@
   <div class="container-fluid">
     <nav class="navbar navbar-expand-lg navbar-light bg-white">
       <router-link :to="{ name: 'member' }" class="navbar-brand">
-        <img src="#" />
+          <img style="height:100px" src="../assets/img/report.jpg" />
       </router-link>
       <button
         class="navbar-toggler"
@@ -18,23 +18,11 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav ml-auto menu">
-          <li class="nav-item active">
-            <router-link :to="{ name: 'member' }" class="nav-link router-link-exact-active router-link-active"><span class="sr-only">(current)</span>Home</router-link>
+          <li class="nav-item">
+            <router-link :to="{ name: 'leadReport' }" class="nav-link router-link-exact-active router-link-active"><span class="sr-only">(current)</span> Leads Report</router-link>
           </li>
           <li class="nav-item">
-            <router-link :to="{ name: 'reports' }" class="nav-link">Reports</router-link>
-          </li>
-          <li class="nav-item">
-            <router-link :to="{ name: 'member' }" class="nav-link">Listing</router-link>
-          </li>
-          <li class="nav-item">
-            <router-link :to="{ name: 'member' }" class="nav-link">Features</router-link>
-          </li>
-          <li class="nav-item">
-            <router-link :to="{ name: 'member' }" class="nav-link">Contact</router-link>
-          </li>
-          <li class="nav-item">
-            <router-link :to="{ name: 'member' }" class="nav-link">List your car</router-link>
+            <router-link :to="{ name: 'memberReport' }" class="nav-link router-link-exact-active router-link-active"><span class="sr-only">(current)</span> Member Report</router-link>
           </li>
         </ul>
       </div>

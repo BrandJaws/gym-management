@@ -4,11 +4,11 @@
         <div class="kt-aside__brand kt-grid__item " id="kt_aside_brand">
             <div class="kt-aside__brand-logo gymLogoDashboard">
                 <a href="{{url('/gym/dashboard')}}">
-                    @if(Auth::guard('employee')->user()->userImage != "")
+                    @if(Auth::guard('employee')->user()->gym->gymImage != "")
                         <img alt="Logo"
                              src="{{ URL::to('/') }}/{{ Auth::guard('employee')->user()->gym->gymImage->path }}" height="50px"/>
                     @endif
-                    @if(Auth::guard('employee')->user()->userImage == "")
+                    @if(Auth::guard('employee')->user()->gym->gymImage == "")
                         <img alt="Logo" src="{{asset('assets/media/logos/brandjaws.png')}}" height="50px"/>
                     @endif
                 </a>

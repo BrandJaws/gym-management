@@ -1,8 +1,6 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 
-
-
 import members from './members';
 import reports from './reports';
 
@@ -13,9 +11,10 @@ Vue.use(Router)
 
 const router = new Router({
 	mode: 'history',
+    base: process.env.USER_IMG_PATH,
 	routes: [
-        members,
-        reports
+        ...members.routes,
+        ...reports.routes
 	]
 })
 

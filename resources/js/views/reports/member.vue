@@ -25,7 +25,7 @@
             return {
                 columns: [
                     {
-                        label: 'Namea',
+                        label: 'Name',
                         field: 'name',
                         filterable: true,
                     },

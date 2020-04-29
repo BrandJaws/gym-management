@@ -1,7 +1,16 @@
-import Reports from '../views/reports/leads.vue';
+import Lead from '../views/reports/leads.vue';
+import Member from '../views/reports/member.vue';
 
 export default{
-	path: '/gym/member/reports',
-	name: 'reports',
-	component: Reports,
+    routes: [
+        {
+            path: '/gym/member/reports',
+            name: 'leadReport',
+            component: Lead,
+        },   {
+            path: '/gym/member/report',
+            name: 'memberReport',
+            component: Member,
+        },
+    ]
 };

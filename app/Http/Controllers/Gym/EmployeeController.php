@@ -225,11 +225,11 @@ class EmployeeController extends Controller
                 $employee->password = $password;
             }
             $employee->save();
-            if ($request->hasFile('images')) {
+            if ($request->hasFile('image')) {
                 $images = [];
-                $image = $request->file('images');
+                $image = $request->file('image');
                 $userImage = new Image();
-                $this->uploadEmployee($image, $userImage, 'path', null, $employee->id);
+                $this->uploadEmployee($image, $userImage, 'path', null, $id);
                 $images[] = $userImage;
                 $employee->userImage()->saveMany($images, $employee);
             }

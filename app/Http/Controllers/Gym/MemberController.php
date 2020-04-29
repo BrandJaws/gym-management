@@ -859,7 +859,15 @@ class MemberController extends Controller
         }
     }
 
-    public function reports(Request $request)
+    public function memberReport(Request $request)
+    {
+        try {
+            return view('gym.member.report.list');
+        } catch (\Exception $e) {
+            return back()->with('error', 'Oops, something was not right  in reports page');
+        }
+    }
+    public function leadReport(Request $request)
     {
         try {
             return view('gym.member.report.list');
@@ -868,30 +876,30 @@ class MemberController extends Controller
         }
     }
 
-    function fetch_data(Request $request)
-    {
-        try {
-            if ($request->ajax()) {
-                $fromDate = $request->from_date;
-                $toDate = $request->to_date;
-                $type = $request->type;
-                $memberStatus = $request->memberStatus;
-                $leadStatus = $request->leadStatus;
-                $customerType = $request->customerType;
-                if ($fromDate != '' && $toDate != '') {
-                    if ($customerType == 'Member') {
-                        $data = Member::where('gym_id', Auth::guard('employee')->user()->gym_id)->where('type', $customerType)->where('status', $memberStatus)->whereBetween('created_at', array($fromDate, $toDate))->get();
-                    } elseif ($customerType == 'Lead') {
-                        $data = Pipeline::getLeadList($customerType, $type, $leadStatus, $fromDate, $toDate);
-                    }
-                } else {
-                    $data = Member::orderBy('joiningDate', 'desc')->get();
-                }
-                echo json_encode($data);
-            }
-        } catch (\Exception $e) {
-            return back()->with('error', 'Oops, something was not right  in fetch_data function');
-        }
-    }
+//    function fetch_data(Request $request)
+//    {
+//        try {
+//            if ($request->ajax()) {
+//                $fromDate = $request->from_date;
+//                $toDate = $request->to_date;
+//                $type = $request->type;
+//                $memberStatus = $request->memberStatus;
+//                $leadStatus = $request->leadStatus;
+//                $customerType = $request->customerType;
+//                if ($fromDate != '' && $toDate != '') {
+//                    if ($customerType == 'Member') {
+//                        $data = Member::where('gym_id', Auth::guard('employee')->user()->gym_id)->where('type', $customerType)->where('status', $memberStatus)->whereBetween('created_at', array($fromDate, $toDate))->get();
+//                    } elseif ($customerType == 'Lead') {
+//                        $data = Pipeline::getLeadList($customerType, $type, $leadStatus, $fromDate, $toDate);
+//                    }
+//                } else {
+//                    $data = Member::orderBy('joiningDate', 'desc')->get();
+//                }
+//                echo json_encode($data);
+//            }
+//        } catch (\Exception $e) {
+//            return back()->with('error', 'Oops, something was not right  in fetch_data function');
+//        }
+//    }
 
 }
