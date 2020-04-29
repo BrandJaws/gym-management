@@ -125,7 +125,7 @@ class Pipeline extends Model
     }
 
 
-    public static function getLeadList($gymId,$fromDate, $toDate,$stage)
+    public static function getLeadList($empId,$fromDate, $toDate)
     {
         return self::select([
                 'pipeline.*',
@@ -134,8 +134,9 @@ class Pipeline extends Model
                 'employees.name as Employee',
                 'employees.id',
             ]
-        )->where(function ($query) use ($gymId,$fromDate, $toDate,$stage) {
-            $query->where('pipeline.gym_id', $gymId)->where('pipeline.stage', '=', $stage)->whereBetween('pipeline.scheduleDate', array($fromDate, $toDate));
+        )->where(function ($query) use ($empId,$fromDate, $toDate) {
+            $query->where('pipeline.employee_id', $empId)->whereBetween('pipeline.scheduleDate', array($fromDate, $toDate));
+            $query->orWhere('pipeline.transfer_id', $empId)->whereBetween('pipeline.reScheduleDate', array($fromDate, $toDate));
         })->leftJoin('employees', function ($join) {
             $join->on('employees.id', 'pipeline.transfer_id');
         })->leftJoin('members', function ($join) {

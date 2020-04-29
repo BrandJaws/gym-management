@@ -876,9 +876,8 @@ class MemberController extends Controller
     {
         $fromDate = $request->fromDate;
         $toDate = $request->toDate;
-        $stage = $request->stage;
-        $gymId = Auth::guard('employee')->user()->gym_id;
-        $leadList = Pipeline::getLeadList($gymId,$fromDate, $toDate,$stage);
+        $empId = Auth::guard('employee')->user()->id;
+        $leadList = Pipeline::getLeadList($empId,$fromDate, $toDate);
         return response()->json([
             'response' => $leadList
         ], 200);

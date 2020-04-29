@@ -7072,16 +7072,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'VGTable',
@@ -7090,10 +7080,16 @@ __webpack_require__.r(__webpack_exports__);
       loading: true,
       form: {
         fromDate: '',
-        toDate: '',
-        stage: ''
+        toDate: ''
       },
       columns: [{
+        label: 'Employee',
+        field: 'employee_id',
+        tdClass: 'text-center',
+        thClass: 'text-center',
+        sortable: true,
+        filterable: true
+      }, {
         label: 'Member',
         field: 'Member',
         tdClass: 'text-center',
@@ -7117,6 +7113,27 @@ __webpack_require__.r(__webpack_exports__);
       }, {
         label: 'Status',
         field: 'status',
+        tdClass: 'text-center',
+        thClass: 'text-center',
+        sortable: true,
+        filterable: true
+      }, {
+        label: 'Transfer Employee',
+        field: 'Employee',
+        tdClass: 'text-center',
+        thClass: 'text-center',
+        sortable: true,
+        filterable: true
+      }, {
+        label: 'Transfer Stage',
+        field: 'transferStage',
+        tdClass: 'text-center',
+        thClass: 'text-center',
+        sortable: true,
+        filterable: true
+      }, {
+        label: 'Schedule Date',
+        field: 'scheduleDate',
         tdClass: 'text-center',
         thClass: 'text-center',
         sortable: true,
@@ -43548,74 +43565,10 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "container-fluid" }, [
     _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-lg-2 form-group" }, [
-        _c("label", [_vm._v("Stage :")]),
-        _vm._v(" "),
-        _c(
-          "select",
-          {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.form.stage,
-                expression: "form.stage"
-              }
-            ],
-            staticClass: "form-control",
-            attrs: { name: "stage" },
-            on: {
-              change: function($event) {
-                var $$selectedVal = Array.prototype.filter
-                  .call($event.target.options, function(o) {
-                    return o.selected
-                  })
-                  .map(function(o) {
-                    var val = "_value" in o ? o._value : o.value
-                    return val
-                  })
-                _vm.$set(
-                  _vm.form,
-                  "stage",
-                  $event.target.multiple ? $$selectedVal : $$selectedVal[0]
-                )
-              }
-            }
-          },
-          [
-            _c("option", { attrs: { value: "Call Scheduled" } }, [
-              _vm._v("Call Scheduled")
-            ]),
-            _vm._v(" "),
-            _c("option", { attrs: { value: "Appointment Scheduled" } }, [
-              _vm._v("Appointment Scheduled")
-            ]),
-            _vm._v(" "),
-            _c("option", { attrs: { value: "Presentation Scheduled" } }, [
-              _vm._v("Presentation Scheduled")
-            ]),
-            _vm._v(" "),
-            _c("option", { attrs: { value: "Contract Sent" } }, [
-              _vm._v("Contract Sent")
-            ]),
-            _vm._v(" "),
-            _c("option", { attrs: { value: "Qualified To Buy" } }, [
-              _vm._v("Qualified To Buy")
-            ]),
-            _vm._v(" "),
-            _c("option", { attrs: { value: "Closed Won" } }, [
-              _vm._v("Closed Won")
-            ]),
-            _vm._v(" "),
-            _c("option", { attrs: { value: "Closed Lost" } }, [
-              _vm._v("Closed Lost")
-            ])
-          ]
-        )
-      ]),
+      _c("div", { staticClass: "col-lg-2 form-group" }),
       _vm._v(" "),
       _c("div", { staticClass: "col-lg-2 form-group" }, [
-        _c("label", [_vm._v("Lead Name :")]),
+        _c("label", [_vm._v("From Date :")]),
         _vm._v(" "),
         _c("input", {
           directives: [

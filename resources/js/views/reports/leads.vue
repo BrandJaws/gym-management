@@ -2,19 +2,9 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-2 form-group">
-                <label>Stage :</label>
-                <select class="form-control" name="stage" v-model="form.stage">
-                    <option value="Call Scheduled">Call Scheduled</option>
-                    <option value="Appointment Scheduled">Appointment Scheduled</option>
-                    <option value="Presentation Scheduled">Presentation Scheduled</option>
-                    <option value="Contract Sent">Contract Sent</option>
-                    <option value="Qualified To Buy">Qualified To Buy</option>
-                    <option value="Closed Won">Closed Won</option>
-                    <option value="Closed Lost">Closed Lost</option>
-                </select>
             </div>
             <div class="col-lg-2 form-group">
-                <label>Lead Name :</label>
+                <label>From Date :</label>
                 <input type="date" class="form-control" v-model="form.fromDate"/>
             </div>
             <div class="col-md-2">
@@ -57,11 +47,18 @@
                 loading: true,
                 form: {
                     fromDate: '',
-                    toDate: '',
-                    stage: ''
+                    toDate: ''
                 },
 
                 columns: [
+                    {
+                        label: 'Employee',
+                        field: 'employee_id',
+                        tdClass: 'text-center',
+                        thClass: 'text-center',
+                        sortable: true,
+                        filterable: true,
+                    },
                     {
                         label: 'Member',
                         field: 'Member',
@@ -89,6 +86,30 @@
                     {
                         label: 'Status',
                         field: 'status',
+                        tdClass: 'text-center',
+                        thClass: 'text-center',
+                        sortable: true,
+                        filterable: true,
+                    },
+                    {
+                        label: 'Transfer Employee',
+                        field: 'Employee',
+                        tdClass: 'text-center',
+                        thClass: 'text-center',
+                        sortable: true,
+                        filterable: true,
+                    },
+                    {
+                        label: 'Transfer Stage',
+                        field: 'transferStage',
+                        tdClass: 'text-center',
+                        thClass: 'text-center',
+                        sortable: true,
+                        filterable: true,
+                    },
+                    {
+                        label: 'Schedule Date',
+                        field: 'scheduleDate',
                         tdClass: 'text-center',
                         thClass: 'text-center',
                         sortable: true,
