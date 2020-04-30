@@ -7027,8 +7027,8 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var vue_loading__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue-loading */ "./node_modules/vue-loading/dist/vue-loading.js");
-/* harmony import */ var vue_loading__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue_loading__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _components_Header__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../components/Header */ "./resources/js/components/Header.vue");
+//
 //
 //
 //
@@ -7075,6 +7075,9 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'VGTable',
+  components: {
+    "top-bar": _components_Header__WEBPACK_IMPORTED_MODULE_0__["default"]
+  },
   data: function data() {
     return {
       loading: true,
@@ -7182,6 +7185,8 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue_loading__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue-loading */ "./node_modules/vue-loading/dist/vue-loading.js");
 /* harmony import */ var vue_loading__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue_loading__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _components_Header__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../components/Header */ "./resources/js/components/Header.vue");
+//
 //
 //
 //
@@ -7226,8 +7231,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'VGTable',
+  components: {
+    "top-bar": _components_Header__WEBPACK_IMPORTED_MODULE_1__["default"]
+  },
   data: function data() {
     return {
       loading: true,
@@ -42818,12 +42827,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { attrs: { id: "app" } },
-    [_c("top-bar"), _vm._v(" "), _c("router-view")],
-    1
-  )
+  return _c("div", { attrs: { id: "app" } }, [_c("router-view")], 1)
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -43553,107 +43557,114 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "container-fluid " }, [
-    _c("div", { staticStyle: { "margin-top": "5%" } }),
-    _vm._v(" "),
-    _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-lg-1 form-group" }),
+  return _c(
+    "div",
+    { staticClass: "container-fluid " },
+    [
+      _c("top-bar"),
       _vm._v(" "),
-      _c("div", { staticClass: "col-lg-3 form-group" }, [
-        _c("label", { staticStyle: { float: "left" } }, [
-          _vm._v("From Date :")
+      _c("div", { staticStyle: { "margin-top": "5%" } }),
+      _vm._v(" "),
+      _c("div", { staticClass: "row" }, [
+        _c("div", { staticClass: "col-lg-1 form-group" }),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-lg-3 form-group" }, [
+          _c("label", { staticStyle: { float: "left" } }, [
+            _vm._v("From Date :")
+          ]),
+          _vm._v(" "),
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.form.fromDate,
+                expression: "form.fromDate"
+              }
+            ],
+            staticClass: "form-control",
+            attrs: { type: "date", required: "" },
+            domProps: { value: _vm.form.fromDate },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.$set(_vm.form, "fromDate", $event.target.value)
+              }
+            }
+          })
         ]),
         _vm._v(" "),
-        _c("input", {
-          directives: [
-            {
-              name: "model",
-              rawName: "v-model",
-              value: _vm.form.fromDate,
-              expression: "form.fromDate"
-            }
-          ],
-          staticClass: "form-control",
-          attrs: { type: "date", required: "" },
-          domProps: { value: _vm.form.fromDate },
-          on: {
-            input: function($event) {
-              if ($event.target.composing) {
-                return
+        _c("div", { staticClass: "col-md-3" }, [
+          _c("label", { staticStyle: { float: "left" } }, [_vm._v("To Date")]),
+          _vm._v(" "),
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.form.toDate,
+                expression: "form.toDate"
               }
-              _vm.$set(_vm.form, "fromDate", $event.target.value)
-            }
-          }
-        })
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-md-3" }, [
-        _c("label", { staticStyle: { float: "left" } }, [_vm._v("To Date")]),
-        _vm._v(" "),
-        _c("input", {
-          directives: [
-            {
-              name: "model",
-              rawName: "v-model",
-              value: _vm.form.toDate,
-              expression: "form.toDate"
-            }
-          ],
-          staticClass: "form-control",
-          attrs: { type: "date", required: "", name: "toDate" },
-          domProps: { value: _vm.form.toDate },
-          on: {
-            input: function($event) {
-              if ($event.target.composing) {
-                return
-              }
-              _vm.$set(_vm.form, "toDate", $event.target.value)
-            }
-          }
-        })
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-md-2" }, [
-        _c("label", [_vm._v("-")]),
-        _vm._v(" "),
-        _c(
-          "button",
-          {
-            staticClass: "form-control btn btn-info",
-            on: { click: _vm.fetchLeads }
-          },
-          [_vm._v("Search")]
-        )
-      ])
-    ]),
-    _vm._v(" "),
-    _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-md-12" }, [
-        _c("div", { staticClass: "page-vue-good-table" }, [
-          _c(
-            "div",
-            { staticClass: "table table-border" },
-            [
-              _c("vue-good-table", {
-                staticClass: "styled",
-                attrs: {
-                  mode: "remote",
-                  columns: _vm.columns,
-                  rows: _vm.leadList,
-                  globalSearch: true,
-                  paginate: true,
-                  responsive: true,
-                  lineNumbers: true,
-                  styleClass: "table"
-                }
-              })
             ],
-            1
+            staticClass: "form-control",
+            attrs: { type: "date", required: "", name: "toDate" },
+            domProps: { value: _vm.form.toDate },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.$set(_vm.form, "toDate", $event.target.value)
+              }
+            }
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-md-2" }, [
+          _c("label", [_vm._v("-")]),
+          _vm._v(" "),
+          _c(
+            "button",
+            {
+              staticClass: "form-control btn btn-info",
+              on: { click: _vm.fetchLeads }
+            },
+            [_vm._v("Search")]
           )
         ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "row" }, [
+        _c("div", { staticClass: "col-md-12" }, [
+          _c("div", { staticClass: "page-vue-good-table" }, [
+            _c(
+              "div",
+              { staticClass: "table table-border" },
+              [
+                _c("vue-good-table", {
+                  staticClass: "styled",
+                  attrs: {
+                    mode: "remote",
+                    columns: _vm.columns,
+                    rows: _vm.leadList,
+                    globalSearch: true,
+                    paginate: true,
+                    responsive: true,
+                    lineNumbers: true,
+                    styleClass: "table"
+                  }
+                })
+              ],
+              1
+            )
+          ])
+        ])
       ])
-    ])
-  ])
+    ],
+    1
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -43677,107 +43688,114 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "container-fluid " }, [
-    _c("div", { staticStyle: { "margin-top": "5%" } }),
-    _vm._v(" "),
-    _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-lg-1 form-group" }),
+  return _c(
+    "div",
+    { staticClass: "container-fluid " },
+    [
+      _c("top-bar"),
       _vm._v(" "),
-      _c("div", { staticClass: "col-lg-3 form-group" }, [
-        _c("label", { staticStyle: { float: "left" } }, [
-          _vm._v("From Date :")
+      _c("div", { staticStyle: { "margin-top": "5%" } }),
+      _vm._v(" "),
+      _c("div", { staticClass: "row" }, [
+        _c("div", { staticClass: "col-lg-1 form-group" }),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-lg-3 form-group" }, [
+          _c("label", { staticStyle: { float: "left" } }, [
+            _vm._v("From Date :")
+          ]),
+          _vm._v(" "),
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.form.fromDate,
+                expression: "form.fromDate"
+              }
+            ],
+            staticClass: "form-control",
+            attrs: { type: "date", required: "" },
+            domProps: { value: _vm.form.fromDate },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.$set(_vm.form, "fromDate", $event.target.value)
+              }
+            }
+          })
         ]),
         _vm._v(" "),
-        _c("input", {
-          directives: [
-            {
-              name: "model",
-              rawName: "v-model",
-              value: _vm.form.fromDate,
-              expression: "form.fromDate"
-            }
-          ],
-          staticClass: "form-control",
-          attrs: { type: "date", required: "" },
-          domProps: { value: _vm.form.fromDate },
-          on: {
-            input: function($event) {
-              if ($event.target.composing) {
-                return
+        _c("div", { staticClass: "col-md-3" }, [
+          _c("label", { staticStyle: { float: "left" } }, [_vm._v("To Date")]),
+          _vm._v(" "),
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.form.toDate,
+                expression: "form.toDate"
               }
-              _vm.$set(_vm.form, "fromDate", $event.target.value)
-            }
-          }
-        })
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-md-3" }, [
-        _c("label", { staticStyle: { float: "left" } }, [_vm._v("To Date")]),
-        _vm._v(" "),
-        _c("input", {
-          directives: [
-            {
-              name: "model",
-              rawName: "v-model",
-              value: _vm.form.toDate,
-              expression: "form.toDate"
-            }
-          ],
-          staticClass: "form-control",
-          attrs: { type: "date", required: "", name: "toDate" },
-          domProps: { value: _vm.form.toDate },
-          on: {
-            input: function($event) {
-              if ($event.target.composing) {
-                return
-              }
-              _vm.$set(_vm.form, "toDate", $event.target.value)
-            }
-          }
-        })
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-md-2" }, [
-        _c("label", [_vm._v("-")]),
-        _vm._v(" "),
-        _c(
-          "button",
-          {
-            staticClass: "form-control btn btn-info",
-            on: { click: _vm.fetchLeads }
-          },
-          [_vm._v("Search")]
-        )
-      ])
-    ]),
-    _vm._v(" "),
-    _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-md-12" }, [
-        _c("div", { staticClass: "page-vue-good-table" }, [
-          _c(
-            "div",
-            { staticClass: "table table-border" },
-            [
-              _c("vue-good-table", {
-                staticClass: "styled",
-                attrs: {
-                  mode: "remote",
-                  columns: _vm.columns,
-                  rows: _vm.leadList,
-                  globalSearch: true,
-                  paginate: true,
-                  responsive: true,
-                  lineNumbers: true,
-                  styleClass: "table"
-                }
-              })
             ],
-            1
+            staticClass: "form-control",
+            attrs: { type: "date", required: "", name: "toDate" },
+            domProps: { value: _vm.form.toDate },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.$set(_vm.form, "toDate", $event.target.value)
+              }
+            }
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-md-2" }, [
+          _c("label", [_vm._v("-")]),
+          _vm._v(" "),
+          _c(
+            "button",
+            {
+              staticClass: "form-control btn btn-info",
+              on: { click: _vm.fetchLeads }
+            },
+            [_vm._v("Search")]
           )
         ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "row" }, [
+        _c("div", { staticClass: "col-md-12" }, [
+          _c("div", { staticClass: "page-vue-good-table" }, [
+            _c(
+              "div",
+              { staticClass: "table table-border" },
+              [
+                _c("vue-good-table", {
+                  staticClass: "styled",
+                  attrs: {
+                    mode: "remote",
+                    columns: _vm.columns,
+                    rows: _vm.leadList,
+                    globalSearch: true,
+                    paginate: true,
+                    responsive: true,
+                    lineNumbers: true,
+                    styleClass: "table"
+                  }
+                })
+              ],
+              1
+            )
+          ])
+        ])
       ])
-    ])
-  ])
+    ],
+    1
+  )
 }
 var staticRenderFns = []
 render._withStripped = true

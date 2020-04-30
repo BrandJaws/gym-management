@@ -1,5 +1,6 @@
 <template>
     <div class="container-fluid ">
+        <top-bar></top-bar>
         <div style="margin-top:5%">
 <!--            {{ form.total}}-->
         </div>
@@ -42,10 +43,13 @@
 </template>
 
 <script>
-    import loading from 'vue-loading';
+    import Header from "../../components/Header";
 
     export default {
         name: 'VGTable',
+        components: {
+            "top-bar": Header,
+        },
         data() {
             return {
                 loading: true,
