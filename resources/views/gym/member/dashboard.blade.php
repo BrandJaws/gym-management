@@ -163,8 +163,7 @@
                     <div class="kt-portlet kt-iconbox kt-iconbox--brand kt-iconbox--animate-slower">
                         <div class="kt-portlet__body">
                             <div class="kt-iconbox__body">
-
-                                <div class="kt-iconbox__desc">
+                                <div class="kt-iconbox__desc" style="width: 100%;">
                                     <div class="table-responsive">
                                         <table class="table table-striped table-bordered table-light--info">
                                             <thead>
