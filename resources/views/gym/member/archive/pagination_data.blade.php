@@ -9,7 +9,6 @@
             <td>{{ $row->transferStatus }}</td>
             <td>@if($row->transferEmployee != NULL) {{ $row->transferEmployee->name }} @else --- @endif</td>
             <td>@if($row->reScheduleDate != NULL) {{ $row->reScheduleDate }} @else --- @endif</td>
-            <td>@if($row->remakrs != NULL) {{ $row->reScheduleDate }} @else --- @endif</td>
             <td>
                 <a href="{{url('/gym/member/edit', $row->id)}}" class="dropdown-toggle" id="dropdownMenuButton"
                    data-toggle="dropdown">

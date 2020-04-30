@@ -21,13 +21,20 @@
                                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                             <i class="flaticon-more-1"></i>
                                         </button>
-                                        <div class="dropdown-menu dropdown-menu-right dropdown-menu-fit dropdown-menu-md">
+                                        <div
+                                            class="dropdown-menu dropdown-menu-right dropdown-menu-fit dropdown-menu-md">
                                             <!--begin::Nav-->
                                             <ul class="kt-nav">
                                                 <li class="kt-nav__separator"></li>
-                                                <li class="kt-nav__item"><a  class="kt-nav__link" href="{{route('member.create')}}" ><i class="la la-plus"></i>  &nbsp; Add New Lead</a></li>
-                                                <li class="kt-nav__item"><a class="kt-nav__link" href="{{url('/gym/member/archive/leads')}}"> <i class="la la-table"></i> &nbsp; View In Table</a></li>
-                                                <li class="kt-nav__item"><a class="kt-nav__link" href="{{url('/gym/member/drag/leads')}}"> <i class="la la-clipboard"></i> &nbsp; All Leads</a></li>
+                                                <li class="kt-nav__item"><a class="kt-nav__link"
+                                                                            href="{{route('member.create')}}"><i
+                                                            class="la la-plus"></i> &nbsp; Add New Lead</a></li>
+                                                <li class="kt-nav__item"><a class="kt-nav__link"
+                                                                            href="{{url('/gym/member/archive/leads')}}">
+                                                        <i class="la la-table"></i> &nbsp; View In Table</a></li>
+                                                <li class="kt-nav__item"><a class="kt-nav__link"
+                                                                            href="{{url('/gym/member/drag/leads')}}"> <i
+                                                            class="la la-clipboard"></i> &nbsp; All Leads</a></li>
                                                 <li class="kt-nav__separator"></li>
                                             </ul>
                                             <!--end::Nav-->
@@ -36,6 +43,111 @@
                                 </div>
                             @endif
                         </div>
+                        @if($breadcrumbs == "Leads" )
+                            <div class="kt-portlet">
+                                <div class="kt-portlet__body  kt-portlet__body--fit">
+                                    <div class="row row-no-padding row-col-separator-lg">
+                                        <div class="col-md-12 col-lg-6 col-xl-4">
+                                            <!--begin::Total Profit-->
+                                            <div class="kt-widget24">
+                                                <div class="kt-widget24__details">
+                                                    <div class="kt-widget24__info">
+                                                        <h4 class="kt-widget24__title">
+                                                            Total Leads
+                                                        </h4>
+                                                        <span class="kt-widget24__desc">
+															Count
+                                                    </span>
+                                                    </div>
+                                                    <span class="kt-widget24__stats kt-font-brand">
+														{{ $totalLead }}
+													</span>
+                                                </div>
+                                                <div class="progress progress--sm">
+                                                    <div class="progress-bar kt-bg-brand" role="progressbar"
+                                                         style="width: {{ number_format($totalLead/$total * 100 , 0, '.', ',')  }}%;"
+                                                         aria-valuenow="50" aria-valuemin="0"
+                                                         aria-valuemax="100"></div>
+                                                </div>
+                                                <div class="kt-widget24__action">
+													<span class="kt-widget24__change">
+													</span>
+                                                    <span class="kt-widget24__number">
+														{{ number_format($totalLead/$total * 100 , 0, '.', ',')  }} %
+													</span>
+                                                </div>
+                                            </div>
+                                            <!--end::Total Profit-->
+                                        </div>
+                                        <div class="col-md-12 col-lg-6 col-xl-4">
+                                            <!--begin::New Feedbacks-->
+                                            <div class="kt-widget24">
+                                                <div class="kt-widget24__details">
+                                                    <div class="kt-widget24__info">
+                                                        <h4 class="kt-widget24__title">
+                                                            Hot Rating
+                                                        </h4>
+                                                        <span class="kt-widget24__desc">
+															 Count
+                                                    </span>
+                                                    </div>
+                                                    <span class="kt-widget24__stats kt-font-warning">
+														{{$hotRating}}
+													</span>
+                                                </div>
+                                                <div class="progress progress--sm">
+                                                    <div class="progress-bar kt-bg-warning" role="progressbar"
+                                                         style="width: {{ number_format($hotRating/$total * 100 , 0, '.', ',')  }}%"
+                                                         aria-valuenow="50" aria-valuemin="0"
+                                                         aria-valuemax="100"></div>
+                                                </div>
+                                                <div class="kt-widget24__action">
+													<span class="kt-widget24__change">
+													</span>
+                                                    <span class="kt-widget24__number">
+														{{ number_format($hotRating/$total * 100 , 0, '.', ',')  }} %
+													</span>
+                                                </div>
+                                            </div>
+                                            <!--end::New Feedbacks-->
+                                        </div>
+                                        <div class="col-md-12 col-lg-6 col-xl-4">
+                                            <!--begin::New Users-->
+                                            <div class="kt-widget24">
+                                                <div class="kt-widget24__details">
+                                                    <div class="kt-widget24__info">
+                                                        <h4 class="kt-widget24__title">
+                                                            New Members
+                                                        </h4>
+                                                        <span class="kt-widget24__desc">
+															Joined User
+														</span>
+                                                    </div>
+                                                    <span class="kt-widget24__stats kt-font-success">
+														{{ $totalMember }}
+													</span>
+                                                </div>
+                                                <div class="progress progress--sm">
+                                                    <div class="progress-bar kt-bg-success" role="progressbar"
+                                                         style="width: {{ number_format($totalMember/$total * 100 , 0, '.', ',')  }}%;"
+                                                         aria-valuenow="50" aria-valuemin="0"
+                                                         aria-valuemax="100"></div>
+                                                </div>
+                                                <div class="kt-widget24__action">
+													<span class="kt-widget24__change">
+														Change
+													</span>
+                                                    <span class="kt-widget24__number">
+														{{ number_format($totalMember/$total * 100 , 0, '.', ',')  }}%
+													</span>
+                                                </div>
+                                            </div>
+                                            <!--end::New Users-->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        @endif
                         @if($breadcrumbs != "Last Month Leads" )
                             <div class="kt-portlet__body">
                                 <!--begin::Section-->
@@ -106,11 +218,6 @@
                                                             <th class="sorting" data-sorting_type="asc"
                                                                 data-column_name="duration" style="cursor: pointer">Re
                                                                 Schedule Date
-                                                                <span
-                                                                    id="post_title_icon"></span></th>
-                                                            <th class="sorting" data-sorting_type="asc"
-                                                                data-column_name="detail" style="cursor: pointer">
-                                                                Remarks
                                                                 <span
                                                                     id="post_title_icon"></span></th>
                                                             <th class="sorting" data-sorting_type="asc"

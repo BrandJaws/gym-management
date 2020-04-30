@@ -36,13 +36,15 @@ class Member extends Model
     {
         return $this->morphOne(Image::class, 'image');
     }
+
     public function membership()
     {
         return $this->belongsTo(Membership::class, 'membership_id');
     }
+
     public function treasury()
     {
-        return $this->belongsTo(Treasury::class,'id','employee_id');
+        return $this->belongsTo(Treasury::class, 'id', 'employee_id');
     }
 
     public static function getMemberList($searchTerm, $sort_by, $sort_type)
@@ -170,7 +172,7 @@ class Member extends Model
         })->paginate(10);
     }
 
-    public static function getMemberReport($empId,$fromDate, $toDate)
+    public static function getMemberReport($empId, $fromDate, $toDate)
     {
         return self::select([
                 'members.leadOwner_id',
@@ -190,7 +192,7 @@ class Member extends Model
                 'memberships.id',
                 'memberships.name as Membership',
             ]
-        )->where(function ($query) use ($empId,$fromDate, $toDate) {
+        )->where(function ($query) use ($empId, $fromDate, $toDate) {
             $query->orWhere('members.leadOwner_id', $empId)->whereBetween('members.created_at', array($fromDate, $toDate));
         })->leftJoin('employees', function ($join) {
             $join->on('employees.id', 'members.leadOwner_id');
