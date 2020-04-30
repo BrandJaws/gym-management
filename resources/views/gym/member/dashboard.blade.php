@@ -29,7 +29,7 @@
                                     </span>
                                 </div>
                                 <div class="progress progress--sm">
-                                    @if($totalLead/$total > 0)
+                                    @if($total > 0)
                                         <div class="progress-bar kt-bg-brand" role="progressbar"
                                              style="width: {{ number_format($totalLead/$total * 100 , 0, '.', ',')  }}%;"
                                              aria-valuenow="50" aria-valuemin="0"
@@ -42,7 +42,13 @@
                                     @endif
                                 </div>
                                 <div class="kt-widget24__action"><span class="kt-widget24__change"></span>
-                                    <span class="kt-widget24__number">{{ number_format($totalLead/$total * 100 , 2, '.', ',')  }} %</span>
+                                    <span class="kt-widget24__number">
+                                    @if($total > 0)
+                                            {{ number_format($totalLead/$total * 100 , 2, '.', ',')  }} %
+                                        @else
+                                            <b>0</b>
+                                        @endif
+                                    </span>
                                 </div>
                             </div>
                             <!--end::Total Profit-->
@@ -64,7 +70,7 @@
                                     </span>
                                 </div>
                                 <div class="progress progress--sm">
-                                    @if($hotRating/$total > 0)
+                                    @if($total > 0)
                                         <div class="progress-bar kt-bg-warning" role="progressbar"
                                              style="width: {{ number_format($hotRating/$total * 100 , 0, '.', ',')  }}%"
                                              aria-valuenow="50" aria-valuemin="0"
@@ -79,7 +85,11 @@
                                 <div class="kt-widget24__action">
                                     <span class="kt-widget24__change"></span>
                                     <span class="kt-widget24__number">
-                                        {{ number_format($hotRating/$total * 100 , 2, '.', ',')  }} %
+                                         @if($total > 0)
+                                            {{ number_format($hotRating/$total * 100 , 2, '.', ',')  }} %
+                                        @else
+                                            <b>0</b>
+                                        @endif
                                     </span>
                                 </div>
                             </div>
@@ -102,7 +112,7 @@
                                     </span>
                                 </div>
                                 <div class="progress progress--sm">
-                                    @if($totalMember/$total > 0)
+                                    @if($total > 0)
                                         <div class="progress-bar kt-bg-success" role="progressbar"
                                              style="width: {{ number_format($totalMember/$total * 100 , 0, '.', ',')  }}%;"
                                              aria-valuenow="50" aria-valuemin="0"
@@ -119,7 +129,11 @@
                                         Change
                                     </span>
                                     <span class="kt-widget24__number">
-                                        {{ number_format($totalMember/$total * 100 , 2, '.', ',')  }}%
+                                        @if($total > 0)
+                                            {{ number_format($totalMember/$total * 100 , 2, '.', ',')  }} %
+                                        @else
+                                            <b>0</b>
+                                        @endif
                                     </span>
                                 </div>
                             </div>
