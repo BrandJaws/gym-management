@@ -21,25 +21,28 @@
                                             Owner Leads
                                         </h4>
                                         <span class="kt-widget24__desc">
-															Count
-                                                    </span>
+                                            Count
+                                        </span>
                                     </div>
                                     <span class="kt-widget24__stats kt-font-brand">
-														{{ $totalLead }}
-													</span>
+                                        {{ $totalLead }}
+                                    </span>
                                 </div>
                                 <div class="progress progress--sm">
-                                    <div class="progress-bar kt-bg-brand" role="progressbar"
-                                         style="width: {{ number_format($totalLead/$total * 100 , 0, '.', ',')  }}%;"
-                                         aria-valuenow="50" aria-valuemin="0"
-                                         aria-valuemax="100"></div>
+                                    @if($totalLead/$total > 0)
+                                        <div class="progress-bar kt-bg-brand" role="progressbar"
+                                             style="width: {{ number_format($totalLead/$total * 100 , 0, '.', ',')  }}%;"
+                                             aria-valuenow="50" aria-valuemin="0"
+                                             aria-valuemax="100"></div>
+                                    @else
+                                        <div class="progress-bar kt-bg-brand" role="progressbar"
+                                             style="width:0%;"
+                                             aria-valuenow="50" aria-valuemin="0"
+                                             aria-valuemax="100"></div>
+                                    @endif
                                 </div>
-                                <div class="kt-widget24__action">
-													<span class="kt-widget24__change">
-													</span>
-                                    <span class="kt-widget24__number">
-														{{ number_format($totalLead/$total * 100 , 0, '.', ',')  }} %
-													</span>
+                                <div class="kt-widget24__action"><span class="kt-widget24__change"></span>
+                                    <span class="kt-widget24__number">{{ number_format($totalLead/$total * 100 , 2, '.', ',')  }} %</span>
                                 </div>
                             </div>
                             <!--end::Total Profit-->
@@ -53,25 +56,31 @@
                                             Hot Rating
                                         </h4>
                                         <span class="kt-widget24__desc">
-															 Count
-                                                    </span>
+                                            Count
+                                        </span>
                                     </div>
                                     <span class="kt-widget24__stats kt-font-warning">
-														{{$hotRating}}
-													</span>
+                                        {{$hotRating}}
+                                    </span>
                                 </div>
                                 <div class="progress progress--sm">
-                                    <div class="progress-bar kt-bg-warning" role="progressbar"
-                                         style="width: {{ number_format($hotRating/$total * 100 , 0, '.', ',')  }}%"
-                                         aria-valuenow="50" aria-valuemin="0"
-                                         aria-valuemax="100"></div>
+                                    @if($hotRating/$total > 0)
+                                        <div class="progress-bar kt-bg-warning" role="progressbar"
+                                             style="width: {{ number_format($hotRating/$total * 100 , 0, '.', ',')  }}%"
+                                             aria-valuenow="50" aria-valuemin="0"
+                                             aria-valuemax="100"></div>
+                                    @else
+                                        <div class="progress-bar kt-bg-brand" role="progressbar"
+                                             style="width:0%;"
+                                             aria-valuenow="50" aria-valuemin="0"
+                                             aria-valuemax="100"></div>
+                                    @endif
                                 </div>
                                 <div class="kt-widget24__action">
-													<span class="kt-widget24__change">
-													</span>
+                                    <span class="kt-widget24__change"></span>
                                     <span class="kt-widget24__number">
-														{{ number_format($hotRating/$total * 100 , 0, '.', ',')  }} %
-													</span>
+                                        {{ number_format($hotRating/$total * 100 , 2, '.', ',')  }} %
+                                    </span>
                                 </div>
                             </div>
                             <!--end::New Feedbacks-->
@@ -85,26 +94,33 @@
                                             New Members
                                         </h4>
                                         <span class="kt-widget24__desc">
-															Joined User
-														</span>
+                                            Joined User
+                                        </span>
                                     </div>
                                     <span class="kt-widget24__stats kt-font-success">
-														{{ $totalMember }}
-													</span>
+                                        {{ $totalMember }}
+                                    </span>
                                 </div>
                                 <div class="progress progress--sm">
-                                    <div class="progress-bar kt-bg-success" role="progressbar"
-                                         style="width: {{ number_format($totalMember/$total * 100 , 0, '.', ',')  }}%;"
-                                         aria-valuenow="50" aria-valuemin="0"
-                                         aria-valuemax="100"></div>
+                                    @if($totalMember/$total > 0)
+                                        <div class="progress-bar kt-bg-success" role="progressbar"
+                                             style="width: {{ number_format($totalMember/$total * 100 , 0, '.', ',')  }}%;"
+                                             aria-valuenow="50" aria-valuemin="0"
+                                             aria-valuemax="100"></div>
+                                    @else
+                                        <div class="progress-bar kt-bg-brand" role="progressbar"
+                                             style="width:0%;"
+                                             aria-valuenow="50" aria-valuemin="0"
+                                             aria-valuemax="100"></div>
+                                    @endif
                                 </div>
                                 <div class="kt-widget24__action">
-													<span class="kt-widget24__change">
-														Change
-													</span>
+                                    <span class="kt-widget24__change">
+                                        Change
+                                    </span>
                                     <span class="kt-widget24__number">
-														{{ number_format($totalMember/$total * 100 , 0, '.', ',')  }}%
-													</span>
+                                        {{ number_format($totalMember/$total * 100 , 2, '.', ',')  }}%
+                                    </span>
                                 </div>
                             </div>
                             <!--end::New Users-->
