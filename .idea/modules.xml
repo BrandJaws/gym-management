@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/admin-penal.iml" filepath="$PROJECT_DIR$/.idea/admin-penal.iml" />
       <module fileurl="file://$PROJECT_DIR$/../attendanceform/.idea/attendanceform.iml" filepath="$PROJECT_DIR$/../attendanceform/.idea/attendanceform.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../gym/.idea/gym.iml" filepath="$PROJECT_DIR$/../gym/.idea/gym.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/gym-management.iml" filepath="$PROJECT_DIR$/.idea/gym-management.iml" />
     </modules>
   </component>
