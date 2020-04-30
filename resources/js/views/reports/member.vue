@@ -1,75 +1,171 @@
 <template>
-    <div class="page-vue-good-table scrollable only-y">
-        <div class="vue-good-table-box card-base card-shadow--medium">
-            <vue-good-table
-                :columns="columns"
-                :rows="rows"
-                :globalSearch="true"
-                :paginate="true"
-                :responsive="true"
-                :lineNumbers="false"
-                class="styled"
-                mode="remote"
-                styleClass="table">
-            </vue-good-table>
+    <div class="container-fluid ">
+        <div style="margin-top:5%">
+<!--            <p v-for="value in leadList">{{ value.length }}</p>-->
+        </div>
+        <div class="row">
+            <div class="col-lg-1 form-group">
+            </div>
+            <div class="col-lg-3 form-group">
+                <label style="float:left">From Date :</label>
+                <input type="date" class="form-control" required v-model="form.fromDate"/>
+            </div>
+            <div class="col-md-3">
+                <label style="float:left">To Date</label>
+                <input type="date" class="form-control" required v-model="form.toDate" name="toDate"/>
+            </div>
+            <div class="col-md-2">
+                <label>-</label>
+                <button @click="fetchLeads" class="form-control btn btn-info">Search</button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="page-vue-good-table">
+                    <div class="table table-border">
+                        <vue-good-table
+                            mode="remote"
+                            :columns="columns"
+                            :rows="leadList"
+                            :globalSearch="true"
+                            :paginate="true"
+                            :responsive="true"
+                            :lineNumbers="true"
+                            class="styled"
+                            styleClass="table">
+                        </vue-good-table>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </template>
 
 <script>
-
+    import loading from 'vue-loading';
 
     export default {
         name: 'VGTable',
-        data(){
+        data() {
             return {
+                loading: true,
+                form: {
+                    fromDate: '',
+                    toDate: '',
+                    status: '',
+                    value: 'Member'
+                },
                 columns: [
                     {
-                        label: 'Name',
+                        label: 'Lead Owner',
+                        field: 'Employee',
+                        tdClass: 'text-center',
+                        thClass: 'text-center',
+                        sortable: true,
+                        filterable: true,
+                    },
+                    {
+                        label: 'Member',
                         field: 'name',
+                        tdClass: 'text-center',
+                        thClass: 'text-center',
+                        sortable: true,
                         filterable: true,
                     },
                     {
-                        label: 'Age',
-                        field: 'age',
-                        type: 'number',
-                        html: false,
+                        label: 'Phone',
+                        field: 'phone',
+                        tdClass: 'text-center',
+                        thClass: 'text-center',
+                        sortable: true,
                         filterable: true,
                     },
                     {
-                        label: 'Created On',
-                        field: 'createdAt',
-                        type: 'date',
-                        inputFormat: 'YYYY-MM-DD',
-                        outputFormat: 'MMM Do YY',
+                        label: 'Source',
+                        field: 'source',
+                        tdClass: 'text-center',
+                        thClass: 'text-center',
+                        sortable: true,
+                        filterable: true,
                     },
                     {
-                        label: 'Percent',
-                        field: 'score',
-                        type: 'percentage',
-                        html: false,
+                        label: 'Rating',
+                        field: 'rating',
+                        tdClass: 'text-center',
+                        thClass: 'text-center',
+                        sortable: true,
+                        filterable: true,
                     },
-                ],
-                rows: [
-                    {id:1, name:"John",age:20,createdAt: '2010-10-31',score: 0.03343},
-                    {id:2, name:"Jane",age:24,createdAt: '2011-10-31',score: 0.03343},
-                    {id:3, name:"Susan",age:16,createdAt: '2011-10-30',score: 0.03343},
-                    {id:4, name:"Chris",age:55,createdAt: '2011-10-11',score: 0.03343},
-                    {id:5, name:"Dan",age:40,createdAt: '2011-10-21',score: 0.03343},
-                    {id:6, name:"John",age:20,createdAt: '2011-10-31',score: 0.03343},
-                    {id:7, name:"Jane",age:24,createdAt: '20111031'},
-                    {id:8, name:"Susan",age:16,createdAt: '2013-10-31',score: 0.03343},
-                    {id:9, name:"Chris",age:55,createdAt: '2012-10-31',score: 0.03343},
-                    {id:10, name:"Dan",age:40,createdAt: '2011-10-31',score: 0.03343},
-                    {id:11, name:"John",age:20,createdAt: '2011-10-31',score: 0.03343},
-                    {id:12, name:"Jane",age:24,createdAt: '2011-07-31',score: 0.03343},
-                    {id:13, name:"Susan",age:16,createdAt: '2017-02-28',score: 0.03343},
-                    {id:14, name:"Chris",age:55,createdAt: '',score: 0.03343},
-                    {id:15, name:"Dan",age:40,createdAt: '2011-10-31',score: 0.03343},
-                    {id:19, name:"Chris",age:55,createdAt: '2011-10-31',score: 0.03343},
-                    {id:20, name:"Dan",age:40,createdAt: '2011-10-31',score: 0.03343},
+                    {
+                        label: 'Type',
+                        field: 'type',
+                        tdClass: 'text-center',
+                        thClass: 'text-center',
+                        sortable: true,
+                        filterable: true,
+                    },
+                    {
+                        label: 'Status',
+                        field: 'status',
+                        tdClass: 'text-center',
+                        thClass: 'text-center',
+                        sortable: true,
+                        filterable: true,
+                    },
+                    {
+                        label: 'Member Type',
+                        field: 'memberType',
+                        tdClass: 'text-center',
+                        thClass: 'text-center',
+                        sortable: true,
+                        filterable: true,
+                    },
+                    {
+                        label: 'Membership',
+                        field: 'Membership',
+                        tdClass: 'text-center',
+                        thClass: 'text-center',
+                        sortable: true,
+                        filterable: true,
+                    },
+                    {
+                        label: 'Joining Date',
+                        field: 'joiningDate',
+                        tdClass: 'text-center',
+                        thClass: 'text-center',
+                        sortable: true,
+                        filterable: true,
+                    },
+
                 ],
             }
+        },
+        headers: {
+            "Content-Type": "multipart/form-data"
+        },
+        created() {
+            this.fetchLeads();
+        },
+        computed: {
+            leadList() {
+                return this.$store.getters.leadList;
+            },
+        },
+        methods: {
+            fetchLeads() {
+                this.error = '';
+                this.loading = true;
+                try {
+                    this.$store.dispatch("fetchLeads", this.form);
+                } catch (e) {
+                    this.error = e
+                }
+                this.loading = false;
+            },
+            handleFilter() {
+                this.fetchLeads();
+            },
+
         }
     }
 </script>
@@ -77,6 +173,15 @@
 <style lang="scss">
     .page-vue-good-table {
         overflow: hidden;
+    }
+
+    .table input[type="text"][data-v-d89f00e8], .table select[data-v-d89f00e8] {
+        float: right;
+        width: 20% !important;
+    }
+
+    .magnifying-glass[data-v-d89f00e8] {
+        border: 3px solid #fff !important;
     }
 </style>
 

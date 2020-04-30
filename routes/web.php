@@ -124,7 +124,7 @@ Route::group(['prefix' => 'gym', 'namespace' => 'Gym'], function () {
             Route::get('/reports', ['as' => 'reports', 'uses' => 'MemberController@report']);
             Route::post('/reports', ['as' => 'reports', 'uses' => 'MemberController@leadReport']);
 //            Route::post('/daterange/fetch_data', ['as' => 'fetch_data', 'uses' => 'MemberController@fetch_data']);
-            Route::get('/report', ['as' => 'reports', 'uses' => 'MemberController@leadReport']);
+            Route::get('/report', ['as' => 'reports', 'uses' => 'MemberController@report']);
 
             /*-----------------------------------------------------------------------------------*/
             /*------------------------------------ Drap Drop Lead Routes --------------------------------*/

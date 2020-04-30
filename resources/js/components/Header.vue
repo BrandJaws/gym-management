@@ -1,32 +1,31 @@
 <template>
   <!-- Header Section start -->
   <div class="container-fluid">
-    <nav class="navbar navbar-expand-lg navbar-light bg-white">
-      <router-link :to="{ name: 'member' }" class="navbar-brand">
-          <img style="height:100px" src="../assets/img/report.jpg" />
-      </router-link>
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-toggle="collapse"
-        data-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav ml-auto menu">
-          <li class="nav-item">
-            <router-link :to="{ name: 'leadReport' }" class="nav-link router-link-exact-active router-link-active"><span class="sr-only">(current)</span> Leads Report</router-link>
-          </li>
-          <li class="nav-item">
-            <router-link :to="{ name: 'memberReport' }" class="nav-link router-link-exact-active router-link-active"><span class="sr-only">(current)</span> Member Report</router-link>
-          </li>
-        </ul>
+      <div class="kt-subheader   kt-grid__item" id="kt_subheader">
+          <div class="kt-container  kt-container--fluid ">
+              <div class="kt-subheader__main">
+                  <h3 class="kt-subheader__title">
+                     Report </h3>
+                  <span class="kt-subheader__separator kt-hidden"></span>
+                  <div class="kt-subheader__breadcrumbs">
+                      <a href="#" class="kt-subheader__breadcrumbs-home"><i class="flaticon2-shelter"></i></a>
+                      <span class="kt-subheader__breadcrumbs-separator"></span>
+                      <router-link :to="{ name: 'leadReport' }" class="kt-subheader__breadcrumbs-link"> Leads Report</router-link>
+                      <span class="kt-subheader__breadcrumbs-separator"></span>
+                      <router-link :to="{ name: 'memberReport' }" class="kt-subheader__breadcrumbs-link"> Member Report</router-link>
+                      <span class="kt-subheader__breadcrumbs-separator"></span>
+                      <!-- <span class="kt-subheader__breadcrumbs-link kt-subheader__breadcrumbs-link--active">Active link</span> -->
+                  </div>
+              </div>
+              <div class="kt-subheader__toolbar">
+                  <div class="kt-subheader__wrapper">
+
+                  </div>
+              </div>
+          </div>
+
       </div>
-    </nav>
+
   </div>
   <!-- Header Section End -->
 </template>

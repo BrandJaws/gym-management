@@ -1,18 +1,22 @@
 <template>
-    <div class="container-fluid">
+    <div class="container-fluid ">
+        <div style="margin-top:5%">
+<!--            {{ form.total}}-->
+        </div>
         <div class="row">
-            <div class="col-lg-2 form-group">
+            <div class="col-lg-1 form-group">
             </div>
-            <div class="col-lg-2 form-group">
-                <label>From Date :</label>
-                <input type="date" class="form-control" v-model="form.fromDate"/>
+            <div class="col-lg-3 form-group">
+                <label style="float:left">From Date :</label>
+                <input type="date" class="form-control" required v-model="form.fromDate"/>
+            </div>
+            <div class="col-md-3">
+                <label style="float:left">To Date</label>
+                <input type="date" class="form-control" required v-model="form.toDate" name="toDate"/>
             </div>
             <div class="col-md-2">
-                <span>To Date</span>
-                <input type="date" class="form-control" v-model="form.toDate" name="toDate"/>
-            </div>
-            <div class="col-md-2">
-                <button @click="fetchLeads" class="btn btn-info">Search</button>
+                <label>-</label>
+                <button @click="fetchLeads" class="form-control btn btn-info">Search</button>
             </div>
         </div>
         <div class="row">
@@ -20,14 +24,14 @@
                 <div class="page-vue-good-table">
                     <div class="table table-border">
                         <vue-good-table
+                            mode="remote"
                             :columns="columns"
                             :rows="leadList"
                             :globalSearch="true"
                             :paginate="true"
                             :responsive="true"
-                            :lineNumbers="false"
+                            :lineNumbers="true"
                             class="styled"
-                            mode="remote"
                             styleClass="table">
                         </vue-good-table>
                     </div>
@@ -47,18 +51,13 @@
                 loading: true,
                 form: {
                     fromDate: '',
-                    toDate: ''
+                    toDate: '',
+                    status: '',
+                    total :'',
+                    value: 'Lead'
                 },
 
                 columns: [
-                    {
-                        label: 'Employee',
-                        field: 'employee_id',
-                        tdClass: 'text-center',
-                        thClass: 'text-center',
-                        sortable: true,
-                        filterable: true,
-                    },
                     {
                         label: 'Member',
                         field: 'Member',
@@ -108,8 +107,8 @@
                         filterable: true,
                     },
                     {
-                        label: 'Schedule Date',
-                        field: 'scheduleDate',
+                        label: 'Re-Schedule Date',
+                        field: 'reScheduleDate',
                         tdClass: 'text-center',
                         thClass: 'text-center',
                         sortable: true,
@@ -126,7 +125,8 @@
         },
         computed: {
             leadList() {
-                console.log(this.$store.getters.leadList);
+                var total = this.$store.getters.leadList.length;
+                this.form.total = total;
                 return this.$store.getters.leadList;
             },
         },
@@ -152,6 +152,15 @@
 <style lang="scss">
     .page-vue-good-table {
         overflow: hidden;
+    }
+
+    .table input[type="text"][data-v-d89f00e8], .table select[data-v-d89f00e8] {
+        float: right;
+        width: 20% !important;
+    }
+
+    .magnifying-glass[data-v-d89f00e8] {
+        border: 3px solid #fff !important;
     }
 </style>
 

@@ -170,4 +170,34 @@ class Member extends Model
         })->paginate(10);
     }
 
+    public static function getMemberReport($empId,$fromDate, $toDate)
+    {
+        return self::select([
+                'members.leadOwner_id',
+                'members.membership_id',
+                'members.name',
+                'members.rating',
+                'members.phone',
+                'members.source',
+                'members.joiningDate',
+                'members.status',
+                'members.type',
+                'members.memberType',
+                'members.relationShip',
+                'members.created_at',
+                'employees.id',
+                'employees.name as Employee',
+                'memberships.id',
+                'memberships.name as Membership',
+            ]
+        )->where(function ($query) use ($empId,$fromDate, $toDate) {
+            $query->orWhere('members.leadOwner_id', $empId)->whereBetween('members.created_at', array($fromDate, $toDate));
+        })->leftJoin('employees', function ($join) {
+            $join->on('employees.id', 'members.leadOwner_id');
+        })->leftJoin('memberships', function ($join) {
+            $join->on('memberships.id', 'members.membership_id');
+        })->get();
+    }
+
+
 }

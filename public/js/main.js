@@ -6668,9 +6668,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
 
 
 
@@ -7015,7 +7012,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "header"
 });
@@ -7072,6 +7068,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'VGTable',
@@ -7080,16 +7080,12 @@ __webpack_require__.r(__webpack_exports__);
       loading: true,
       form: {
         fromDate: '',
-        toDate: ''
+        toDate: '',
+        status: '',
+        total: '',
+        value: 'Lead'
       },
       columns: [{
-        label: 'Employee',
-        field: 'employee_id',
-        tdClass: 'text-center',
-        thClass: 'text-center',
-        sortable: true,
-        filterable: true
-      }, {
         label: 'Member',
         field: 'Member',
         tdClass: 'text-center',
@@ -7132,8 +7128,8 @@ __webpack_require__.r(__webpack_exports__);
         sortable: true,
         filterable: true
       }, {
-        label: 'Schedule Date',
-        field: 'scheduleDate',
+        label: 'Re-Schedule Date',
+        field: 'reScheduleDate',
         tdClass: 'text-center',
         thClass: 'text-center',
         sortable: true,
@@ -7149,7 +7145,8 @@ __webpack_require__.r(__webpack_exports__);
   },
   computed: {
     leadList: function leadList() {
-      console.log(this.$store.getters.leadList);
+      var total = this.$store.getters.leadList.length;
+      this.form.total = total;
       return this.$store.getters.leadList;
     }
   },
@@ -7183,6 +7180,8 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var vue_loading__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue-loading */ "./node_modules/vue-loading/dist/vue-loading.js");
+/* harmony import */ var vue_loading__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue_loading__WEBPACK_IMPORTED_MODULE_0__);
 //
 //
 //
@@ -7201,135 +7200,143 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'VGTable',
   data: function data() {
     return {
+      loading: true,
+      form: {
+        fromDate: '',
+        toDate: '',
+        status: '',
+        value: 'Member'
+      },
       columns: [{
-        label: 'Name',
+        label: 'Lead Owner',
+        field: 'Employee',
+        tdClass: 'text-center',
+        thClass: 'text-center',
+        sortable: true,
+        filterable: true
+      }, {
+        label: 'Member',
         field: 'name',
+        tdClass: 'text-center',
+        thClass: 'text-center',
+        sortable: true,
         filterable: true
       }, {
-        label: 'Age',
-        field: 'age',
-        type: 'number',
-        html: false,
+        label: 'Phone',
+        field: 'phone',
+        tdClass: 'text-center',
+        thClass: 'text-center',
+        sortable: true,
         filterable: true
       }, {
-        label: 'Created On',
-        field: 'createdAt',
-        type: 'date',
-        inputFormat: 'YYYY-MM-DD',
-        outputFormat: 'MMM Do YY'
+        label: 'Source',
+        field: 'source',
+        tdClass: 'text-center',
+        thClass: 'text-center',
+        sortable: true,
+        filterable: true
       }, {
-        label: 'Percent',
-        field: 'score',
-        type: 'percentage',
-        html: false
-      }],
-      rows: [{
-        id: 1,
-        name: "John",
-        age: 20,
-        createdAt: '2010-10-31',
-        score: 0.03343
+        label: 'Rating',
+        field: 'rating',
+        tdClass: 'text-center',
+        thClass: 'text-center',
+        sortable: true,
+        filterable: true
       }, {
-        id: 2,
-        name: "Jane",
-        age: 24,
-        createdAt: '2011-10-31',
-        score: 0.03343
+        label: 'Type',
+        field: 'type',
+        tdClass: 'text-center',
+        thClass: 'text-center',
+        sortable: true,
+        filterable: true
       }, {
-        id: 3,
-        name: "Susan",
-        age: 16,
-        createdAt: '2011-10-30',
-        score: 0.03343
+        label: 'Status',
+        field: 'status',
+        tdClass: 'text-center',
+        thClass: 'text-center',
+        sortable: true,
+        filterable: true
       }, {
-        id: 4,
-        name: "Chris",
-        age: 55,
-        createdAt: '2011-10-11',
-        score: 0.03343
+        label: 'Member Type',
+        field: 'memberType',
+        tdClass: 'text-center',
+        thClass: 'text-center',
+        sortable: true,
+        filterable: true
       }, {
-        id: 5,
-        name: "Dan",
-        age: 40,
-        createdAt: '2011-10-21',
-        score: 0.03343
+        label: 'Membership',
+        field: 'Membership',
+        tdClass: 'text-center',
+        thClass: 'text-center',
+        sortable: true,
+        filterable: true
       }, {
-        id: 6,
-        name: "John",
-        age: 20,
-        createdAt: '2011-10-31',
-        score: 0.03343
-      }, {
-        id: 7,
-        name: "Jane",
-        age: 24,
-        createdAt: '20111031'
-      }, {
-        id: 8,
-        name: "Susan",
-        age: 16,
-        createdAt: '2013-10-31',
-        score: 0.03343
-      }, {
-        id: 9,
-        name: "Chris",
-        age: 55,
-        createdAt: '2012-10-31',
-        score: 0.03343
-      }, {
-        id: 10,
-        name: "Dan",
-        age: 40,
-        createdAt: '2011-10-31',
-        score: 0.03343
-      }, {
-        id: 11,
-        name: "John",
-        age: 20,
-        createdAt: '2011-10-31',
-        score: 0.03343
-      }, {
-        id: 12,
-        name: "Jane",
-        age: 24,
-        createdAt: '2011-07-31',
-        score: 0.03343
-      }, {
-        id: 13,
-        name: "Susan",
-        age: 16,
-        createdAt: '2017-02-28',
-        score: 0.03343
-      }, {
-        id: 14,
-        name: "Chris",
-        age: 55,
-        createdAt: '',
-        score: 0.03343
-      }, {
-        id: 15,
-        name: "Dan",
-        age: 40,
-        createdAt: '2011-10-31',
-        score: 0.03343
-      }, {
-        id: 19,
-        name: "Chris",
-        age: 55,
-        createdAt: '2011-10-31',
-        score: 0.03343
-      }, {
-        id: 20,
-        name: "Dan",
-        age: 40,
-        createdAt: '2011-10-31',
-        score: 0.03343
+        label: 'Joining Date',
+        field: 'joiningDate',
+        tdClass: 'text-center',
+        thClass: 'text-center',
+        sortable: true,
+        filterable: true
       }]
     };
+  },
+  headers: {
+    "Content-Type": "multipart/form-data"
+  },
+  created: function created() {
+    this.fetchLeads();
+  },
+  computed: {
+    leadList: function leadList() {
+      return this.$store.getters.leadList;
+    }
+  },
+  methods: {
+    fetchLeads: function fetchLeads() {
+      this.error = '';
+      this.loading = true;
+
+      try {
+        this.$store.dispatch("fetchLeads", this.form);
+      } catch (e) {
+        this.error = e;
+      }
+
+      this.loading = false;
+    },
+    handleFilter: function handleFilter() {
+      this.fetchLeads();
+    }
   }
 });
 
@@ -11944,7 +11951,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".page-vue-good-table {\n  overflow: hidden;\n}", ""]);
+exports.push([module.i, ".page-vue-good-table {\n  overflow: hidden;\n}\n.table input[type=text][data-v-d89f00e8], .table select[data-v-d89f00e8] {\n  float: right;\n  width: 20% !important;\n}\n.magnifying-glass[data-v-d89f00e8] {\n  border: 3px solid #fff !important;\n}", ""]);
 
 // exports
 
@@ -11963,7 +11970,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".page-vue-good-table {\n  overflow: hidden;\n}", ""]);
+exports.push([module.i, ".page-vue-good-table {\n  overflow: hidden;\n}\n.table input[type=text][data-v-d89f00e8], .table select[data-v-d89f00e8] {\n  float: right;\n  width: 20% !important;\n}\n.magnifying-glass[data-v-d89f00e8] {\n  border: 3px solid #fff !important;\n}", ""]);
 
 // exports
 
@@ -43412,78 +43419,63 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "container-fluid" }, [
     _c(
-      "nav",
-      { staticClass: "navbar navbar-expand-lg navbar-light bg-white" },
+      "div",
+      {
+        staticClass: "kt-subheader   kt-grid__item",
+        attrs: { id: "kt_subheader" }
+      },
       [
-        _c(
-          "router-link",
-          { staticClass: "navbar-brand", attrs: { to: { name: "member" } } },
-          [
-            _c("img", {
-              staticStyle: { height: "100px" },
-              attrs: { src: __webpack_require__(/*! ../assets/img/report.jpg */ "./resources/js/assets/img/report.jpg") }
-            })
-          ]
-        ),
-        _vm._v(" "),
-        _vm._m(0),
-        _vm._v(" "),
-        _c(
-          "div",
-          {
-            staticClass: "collapse navbar-collapse",
-            attrs: { id: "navbarSupportedContent" }
-          },
-          [
-            _c("ul", { staticClass: "navbar-nav ml-auto menu" }, [
-              _c(
-                "li",
-                { staticClass: "nav-item" },
-                [
-                  _c(
-                    "router-link",
-                    {
-                      staticClass:
-                        "nav-link router-link-exact-active router-link-active",
-                      attrs: { to: { name: "leadReport" } }
-                    },
-                    [
-                      _c("span", { staticClass: "sr-only" }, [
-                        _vm._v("(current)")
-                      ]),
-                      _vm._v(" Leads Report")
-                    ]
-                  )
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c(
-                "li",
-                { staticClass: "nav-item" },
-                [
-                  _c(
-                    "router-link",
-                    {
-                      staticClass:
-                        "nav-link router-link-exact-active router-link-active",
-                      attrs: { to: { name: "memberReport" } }
-                    },
-                    [
-                      _c("span", { staticClass: "sr-only" }, [
-                        _vm._v("(current)")
-                      ]),
-                      _vm._v(" Member Report")
-                    ]
-                  )
-                ],
-                1
-              )
-            ])
-          ]
-        )
-      ],
-      1
+        _c("div", { staticClass: "kt-container  kt-container--fluid " }, [
+          _c("div", { staticClass: "kt-subheader__main" }, [
+            _c("h3", { staticClass: "kt-subheader__title" }, [
+              _vm._v("\n                   Report ")
+            ]),
+            _vm._v(" "),
+            _c("span", { staticClass: "kt-subheader__separator kt-hidden" }),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "kt-subheader__breadcrumbs" },
+              [
+                _vm._m(0),
+                _vm._v(" "),
+                _c("span", {
+                  staticClass: "kt-subheader__breadcrumbs-separator"
+                }),
+                _vm._v(" "),
+                _c(
+                  "router-link",
+                  {
+                    staticClass: "kt-subheader__breadcrumbs-link",
+                    attrs: { to: { name: "leadReport" } }
+                  },
+                  [_vm._v(" Leads Report")]
+                ),
+                _vm._v(" "),
+                _c("span", {
+                  staticClass: "kt-subheader__breadcrumbs-separator"
+                }),
+                _vm._v(" "),
+                _c(
+                  "router-link",
+                  {
+                    staticClass: "kt-subheader__breadcrumbs-link",
+                    attrs: { to: { name: "memberReport" } }
+                  },
+                  [_vm._v(" Member Report")]
+                ),
+                _vm._v(" "),
+                _c("span", {
+                  staticClass: "kt-subheader__breadcrumbs-separator"
+                })
+              ],
+              1
+            )
+          ]),
+          _vm._v(" "),
+          _vm._m(1)
+        ])
+      ]
     )
   ])
 }
@@ -43493,20 +43485,18 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c(
-      "button",
-      {
-        staticClass: "navbar-toggler",
-        attrs: {
-          type: "button",
-          "data-toggle": "collapse",
-          "data-target": "#navbarSupportedContent",
-          "aria-controls": "navbarSupportedContent",
-          "aria-expanded": "false",
-          "aria-label": "Toggle navigation"
-        }
-      },
-      [_c("span", { staticClass: "navbar-toggler-icon" })]
+      "a",
+      { staticClass: "kt-subheader__breadcrumbs-home", attrs: { href: "#" } },
+      [_c("i", { staticClass: "flaticon2-shelter" })]
     )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "kt-subheader__toolbar" }, [
+      _c("div", { staticClass: "kt-subheader__wrapper" })
+    ])
   }
 ]
 render._withStripped = true
@@ -43563,12 +43553,16 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "container-fluid" }, [
+  return _c("div", { staticClass: "container-fluid " }, [
+    _c("div", { staticStyle: { "margin-top": "5%" } }),
+    _vm._v(" "),
     _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-lg-2 form-group" }),
+      _c("div", { staticClass: "col-lg-1 form-group" }),
       _vm._v(" "),
-      _c("div", { staticClass: "col-lg-2 form-group" }, [
-        _c("label", [_vm._v("From Date :")]),
+      _c("div", { staticClass: "col-lg-3 form-group" }, [
+        _c("label", { staticStyle: { float: "left" } }, [
+          _vm._v("From Date :")
+        ]),
         _vm._v(" "),
         _c("input", {
           directives: [
@@ -43580,7 +43574,7 @@ var render = function() {
             }
           ],
           staticClass: "form-control",
-          attrs: { type: "date" },
+          attrs: { type: "date", required: "" },
           domProps: { value: _vm.form.fromDate },
           on: {
             input: function($event) {
@@ -43593,8 +43587,8 @@ var render = function() {
         })
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "col-md-2" }, [
-        _c("span", [_vm._v("To Date")]),
+      _c("div", { staticClass: "col-md-3" }, [
+        _c("label", { staticStyle: { float: "left" } }, [_vm._v("To Date")]),
         _vm._v(" "),
         _c("input", {
           directives: [
@@ -43606,7 +43600,7 @@ var render = function() {
             }
           ],
           staticClass: "form-control",
-          attrs: { type: "date", name: "toDate" },
+          attrs: { type: "date", required: "", name: "toDate" },
           domProps: { value: _vm.form.toDate },
           on: {
             input: function($event) {
@@ -43620,9 +43614,14 @@ var render = function() {
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "col-md-2" }, [
+        _c("label", [_vm._v("-")]),
+        _vm._v(" "),
         _c(
           "button",
-          { staticClass: "btn btn-info", on: { click: _vm.fetchLeads } },
+          {
+            staticClass: "form-control btn btn-info",
+            on: { click: _vm.fetchLeads }
+          },
           [_vm._v("Search")]
         )
       ])
@@ -43638,13 +43637,13 @@ var render = function() {
               _c("vue-good-table", {
                 staticClass: "styled",
                 attrs: {
+                  mode: "remote",
                   columns: _vm.columns,
                   rows: _vm.leadList,
                   globalSearch: true,
                   paginate: true,
                   responsive: true,
-                  lineNumbers: false,
-                  mode: "remote",
+                  lineNumbers: true,
                   styleClass: "table"
                 }
               })
@@ -43678,27 +43677,106 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "page-vue-good-table scrollable only-y" }, [
-    _c(
-      "div",
-      { staticClass: "vue-good-table-box card-base card-shadow--medium" },
-      [
-        _c("vue-good-table", {
-          staticClass: "styled",
-          attrs: {
-            columns: _vm.columns,
-            rows: _vm.rows,
-            globalSearch: true,
-            paginate: true,
-            responsive: true,
-            lineNumbers: false,
-            mode: "remote",
-            styleClass: "table"
+  return _c("div", { staticClass: "container-fluid " }, [
+    _c("div", { staticStyle: { "margin-top": "5%" } }),
+    _vm._v(" "),
+    _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-lg-1 form-group" }),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-lg-3 form-group" }, [
+        _c("label", { staticStyle: { float: "left" } }, [
+          _vm._v("From Date :")
+        ]),
+        _vm._v(" "),
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.form.fromDate,
+              expression: "form.fromDate"
+            }
+          ],
+          staticClass: "form-control",
+          attrs: { type: "date", required: "" },
+          domProps: { value: _vm.form.fromDate },
+          on: {
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.$set(_vm.form, "fromDate", $event.target.value)
+            }
           }
         })
-      ],
-      1
-    )
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-md-3" }, [
+        _c("label", { staticStyle: { float: "left" } }, [_vm._v("To Date")]),
+        _vm._v(" "),
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.form.toDate,
+              expression: "form.toDate"
+            }
+          ],
+          staticClass: "form-control",
+          attrs: { type: "date", required: "", name: "toDate" },
+          domProps: { value: _vm.form.toDate },
+          on: {
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.$set(_vm.form, "toDate", $event.target.value)
+            }
+          }
+        })
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-md-2" }, [
+        _c("label", [_vm._v("-")]),
+        _vm._v(" "),
+        _c(
+          "button",
+          {
+            staticClass: "form-control btn btn-info",
+            on: { click: _vm.fetchLeads }
+          },
+          [_vm._v("Search")]
+        )
+      ])
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-md-12" }, [
+        _c("div", { staticClass: "page-vue-good-table" }, [
+          _c(
+            "div",
+            { staticClass: "table table-border" },
+            [
+              _c("vue-good-table", {
+                staticClass: "styled",
+                attrs: {
+                  mode: "remote",
+                  columns: _vm.columns,
+                  rows: _vm.leadList,
+                  globalSearch: true,
+                  paginate: true,
+                  responsive: true,
+                  lineNumbers: true,
+                  styleClass: "table"
+                }
+              })
+            ],
+            1
+          )
+        ])
+      ])
+    ])
   ])
 }
 var staticRenderFns = []
@@ -59958,17 +60036,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_App_vue_vue_type_template_id_f348271a___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
-
-/***/ }),
-
-/***/ "./resources/js/assets/img/report.jpg":
-/*!********************************************!*\
-  !*** ./resources/js/assets/img/report.jpg ***!
-  \********************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "/images/report.jpg?d7ba05495b0db9f3cd8c38526e2443d9";
 
 /***/ }),
 
