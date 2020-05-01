@@ -19,7 +19,7 @@ class CreatePipelineTable extends Migration
             $table->string('employee_id');
             $table->string('customer_id');
             $table->string('transfer_id')->nullable(true); // null
-            $table->dateTime('scheduleDate');
+            $table->dateTime('scheduleDate')->nullable(true);
             $table->string('stage')->nullable(true);
             $table->integer('order')->nullable(true);
             $table->string('status')->nullable(true);
