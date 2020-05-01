@@ -104,15 +104,6 @@
                                                 @endif
                                             </div>
                                             <div class="col-lg-6 form-group">
-                                                <label>Schedule Date & Time : :</label>
-                                                <input type="datetime-local" name="scheduleDate" class="form-control"
-                                                       value="{{ \Carbon\Carbon::parse($pipeline->scheduleDate)->format('Y-m-d\TH:i')}}"
-                                                       required/>
-                                                @if($errors->has('scheduleDate'))
-                                                    <div class="error">{{ $errors->first('scheduleDate') }}</div>
-                                                @endif
-                                            </div>
-                                            <div class="col-lg-6 form-group">
                                                 <label>Status :</label>
                                                 <select class="form-control" name="status">
                                                     <option value="Pending"
@@ -137,6 +128,15 @@
                                                 </select>
                                                 @if($errors->has('status'))
                                                     <div class="error">{{ $errors->first('status') }}</div>
+                                                @endif
+                                            </div>
+                                            <div class="col-lg-6 form-group">
+                                                <label>Schedule Date & Time : :</label>
+                                                <input type="datetime-local" name="scheduleDate" class="form-control"
+                                                       value="{{ \Carbon\Carbon::parse($pipeline->scheduleDate)->format('Y-m-d\TH:i')}}"
+                                                       required/>
+                                                @if($errors->has('scheduleDate'))
+                                                    <div class="error">{{ $errors->first('scheduleDate') }}</div>
                                                 @endif
                                             </div>
                                             <div class="col-lg-6 form-group">
@@ -181,6 +181,34 @@
                                                 </select>
                                             </div>
                                             <div class="col-lg-6 form-group textField" style="display: none">
+                                                <label>Re-Status :</label>
+                                                <select class="form-control" name="reStatus">
+                                                    <option value="Pending"
+                                                            @if($pipeline->reStatus == "Pending" ) selected @endif >
+                                                        Pending
+                                                    </option>
+                                                    <option value="Success"
+                                                            @if($pipeline->reStatus == "Success" ) selected @endif >
+                                                        Success
+                                                    </option>
+                                                    <option value="Absent"
+                                                            @if($pipeline->reStatus == "Absent" ) selected @endif >
+                                                        Absent
+                                                    </option>
+                                                    <option value="Un-Answered"
+                                                            @if($pipeline->reStatus == "Un-Answered" ) selected @endif >
+                                                        Un-Answered
+                                                    </option>
+                                                    <option value="Failed Call"
+                                                            @if($pipeline->reStatus == "Failed Call" ) selected @endif >
+                                                        Failed Call
+                                                    </option>
+                                                </select>
+                                                @if($errors->has('reStatus'))
+                                                    <div class="error">{{ $errors->first('reStatus') }}</div>
+                                                @endif
+                                            </div>
+                                            <div class="col-lg-6 form-group textField" style="display: none">
                                                 <label>Transfer Employee :</label>
                                                 <select class="form-control" name="transfer_id">
                                                     <option value=" ">Please Select</option>
@@ -198,7 +226,7 @@
                                             </div>
                                             <div class="col-lg-6 form-group">
                                                 @if(count($membership) > 0)
-                                                <label>Interested Packages : </label>
+                                                    <label>Interested Packages : </label>
                                                     <select class="form-control kt-select2" id="kt_select2_3"
                                                             name="intersetedPackages[]"
                                                             multiple="multiple">
@@ -284,6 +312,7 @@
                 }
             }
         });
+
         function changeDiv(value) {
             if (value === "Call Scheduled" || value === "Appointment Scheduled" || value === "Presentation Scheduled" || value === "Contract Sent" || value === "Qualified To Buy" || value === "Closed Won" || value === "Closed Lost") {
                 var div = document.getElementsByClassName('textField');

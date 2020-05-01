@@ -63,31 +63,37 @@
                                             <div class="col-lg-6 form-group">
                                                 <label>Deal Stage :</label>
                                                 <select class="form-control" name="stage">
-                                                    <option value="Call Scheduled" @if( $breadcrumbs == "Call Scheduled") selected @endif>Call Scheduled
+                                                    <option value="Call Scheduled"
+                                                            @if( $breadcrumbs == "Call Scheduled") selected @endif>Call
+                                                        Scheduled
                                                     </option>
-                                                    <option value="Appointment Scheduled" @if( $breadcrumbs == "Appointment Scheduled") selected @endif>Appointment Scheduled
+                                                    <option value="Appointment Scheduled"
+                                                            @if( $breadcrumbs == "Appointment Scheduled") selected @endif>
+                                                        Appointment Scheduled
                                                     </option>
-                                                    <option value="Presentation Scheduled" @if( $breadcrumbs == "Presentation Scheduled") selected @endif>Presentation Scheduled
+                                                    <option value="Presentation Scheduled"
+                                                            @if( $breadcrumbs == "Presentation Scheduled") selected @endif>
+                                                        Presentation Scheduled
                                                     </option>
-                                                    <option value="Contract Sent" @if( $breadcrumbs == "Contract Sent") selected @endif>Contract Sent
+                                                    <option value="Contract Sent"
+                                                            @if( $breadcrumbs == "Contract Sent") selected @endif>
+                                                        Contract Sent
                                                     </option>
-                                                    <option value="Qualified To Buy" @if( $breadcrumbs == "Qualified To Buy") selected @endif>Qualified To Buy
+                                                    <option value="Qualified To Buy"
+                                                            @if( $breadcrumbs == "Qualified To Buy") selected @endif>
+                                                        Qualified To Buy
                                                     </option>
-                                                    <option value="Closed Won" @if( $breadcrumbs == "Closed Won") selected @endif>Closed Won
+                                                    <option value="Closed Won"
+                                                            @if( $breadcrumbs == "Closed Won") selected @endif>Closed
+                                                        Won
                                                     </option>
-                                                    <option value="Closed Lost" @if( $breadcrumbs == "Closed Lost") selected @endif>Closed Lost
+                                                    <option value="Closed Lost"
+                                                            @if( $breadcrumbs == "Closed Lost") selected @endif>Closed
+                                                        Lost
                                                     </option>
                                                 </select>
                                                 @if($errors->has('stage'))
                                                     <div class="error">{{ $errors->first('stage') }}</div>
-                                                @endif
-                                            </div>
-                                            <div class="col-lg-6 form-group">
-                                                <label>Schedule Date & Time :</label>
-                                                <input type="datetime-local" name="scheduleDate" class="form-control"
-                                                       required/>
-                                                @if($errors->has('scheduleDate'))
-                                                    <div class="error">{{ $errors->first('scheduleDate') }}</div>
                                                 @endif
                                             </div>
                                             <div class="col-lg-6 form-group">
@@ -99,6 +105,14 @@
                                                     <option value="Un-Answered">Un-Answered</option>
                                                     <option value="Failed Call">Failed Call</option>
                                                 </select>
+                                            </div>
+                                            <div class="col-lg-6 form-group">
+                                                <label>Schedule Date & Time :</label>
+                                                <input type="datetime-local" name="scheduleDate" class="form-control"
+                                                       required/>
+                                                @if($errors->has('scheduleDate'))
+                                                    <div class="error">{{ $errors->first('scheduleDate') }}</div>
+                                                @endif
                                             </div>
                                             <div class="col-lg-6 form-group">
                                                 <label>Transfer Stage :</label>
@@ -122,6 +136,16 @@
                                                     @foreach($employee as $row)
                                                         <option value="{{ $row->id }}">{{ $row->name }}</option>
                                                     @endforeach
+                                                </select>
+                                            </div>
+                                            <div class="col-lg-6 form-group textField" style="display: none">
+                                                <label>Re-Status :</label>
+                                                <select class="form-control" name="reStatus">
+                                                    <option value="Pending">Pending</option>
+                                                    <option value="Success">Success</option>
+                                                    <option value="Absent">Absent</option>
+                                                    <option value="Un-Answered">Un-Answered</option>
+                                                    <option value="Failed Call">Failed Call</option>
                                                 </select>
                                             </div>
                                             <div class="col-lg-6 form-group textField" style="display: none">

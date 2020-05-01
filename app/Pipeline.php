@@ -23,7 +23,8 @@ class Pipeline extends Model
         'intersetedPackages',
         'remarks',
         'order',
-        'dragStatus'
+        'dragStatus',
+        'reStatus'
     ];
 
     public function gym()

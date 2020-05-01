@@ -724,6 +724,7 @@ class MemberController extends Controller
                 'status',
                 'transferStage',
                 'reScheduleDate',
+                'reStatus',
                 'remarks'
             ]));
             if ($request->intersetedPackages != "") {
@@ -780,6 +781,7 @@ class MemberController extends Controller
                 'status',
                 'transferStage',
                 'reScheduleDate',
+                'reStatus',
                 'remarks'
             ]));
             if ($request->intersetedPackages != "") {
