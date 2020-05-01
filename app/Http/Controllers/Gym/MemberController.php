@@ -836,6 +836,10 @@ class MemberController extends Controller
                     $searchTerm = $request->get('query');
                     $searchTerm = str_replace(" ", "%", $searchTerm);
                     $member = Pipeline::getCallsList($searchTerm, 'id', 'asc');
+                    $stage = Pipeline::where('stage', 'Call Scheduled')->where('gym_id', Auth::guard('employee')->user()->gym_id)->count();
+                    $reStage = Pipeline::where('transferStage', 'Call Scheduled')->where('gym_id', Auth::guard('employee')->user()->gym_id)->count();
+                    $totalStage = $stage + $reStage;
+                    $total = Pipeline::where('gym_id', Auth::guard('employee')->user()->gym_id)->count();
                     if ($request->ajax()) {
                         $sort_by = $request->get('sortby');
                         $sort_type = $request->get('sorttype');
@@ -848,6 +852,10 @@ class MemberController extends Controller
                     $searchTerm = $request->get('query');
                     $searchTerm = str_replace(" ", "%", $searchTerm);
                     $member = Pipeline::getAppointmentsList($searchTerm, 'id', 'asc');
+                    $stage = Pipeline::where('stage', 'Appointment Scheduled')->where('gym_id', Auth::guard('employee')->user()->gym_id)->count();
+                    $reStage = Pipeline::where('transferStage', 'Appointment Scheduled')->where('gym_id', Auth::guard('employee')->user()->gym_id)->count();
+                    $totalStage = $stage + $reStage;
+                    $total = Pipeline::where('gym_id', Auth::guard('employee')->user()->gym_id)->count();
                     if ($request->ajax()) {
                         $sort_by = $request->get('sortby');
                         $sort_type = $request->get('sorttype');
@@ -860,6 +868,10 @@ class MemberController extends Controller
                     $searchTerm = $request->get('query');
                     $searchTerm = str_replace(" ", "%", $searchTerm);
                     $member = Pipeline::getPresentationsList($searchTerm, 'id', 'asc');
+                    $stage = Pipeline::where('stage', 'Presentation Scheduled')->where('gym_id', Auth::guard('employee')->user()->gym_id)->count();
+                    $reStage = Pipeline::where('transferStage', 'Presentation Scheduled')->where('gym_id', Auth::guard('employee')->user()->gym_id)->count();
+                    $totalStage = $stage + $reStage;
+                    $total = Pipeline::where('gym_id', Auth::guard('employee')->user()->gym_id)->count();
                     if ($request->ajax()) {
                         $sort_by = $request->get('sortby');
                         $sort_type = $request->get('sorttype');
@@ -872,6 +884,10 @@ class MemberController extends Controller
                     $searchTerm = $request->get('query');
                     $searchTerm = str_replace(" ", "%", $searchTerm);
                     $member = Pipeline::getContractList($searchTerm, 'id', 'asc');
+                    $stage = Pipeline::where('stage', 'Contract Sent')->where('gym_id', Auth::guard('employee')->user()->gym_id)->count();
+                    $reStage = Pipeline::where('transferStage', 'Contract Sent')->where('gym_id', Auth::guard('employee')->user()->gym_id)->count();
+                    $totalStage = $stage + $reStage;
+                    $total = Pipeline::where('gym_id', Auth::guard('employee')->user()->gym_id)->count();
                     if ($request->ajax()) {
                         $sort_by = $request->get('sortby');
                         $sort_type = $request->get('sorttype');
@@ -884,6 +900,10 @@ class MemberController extends Controller
                     $searchTerm = $request->get('query');
                     $searchTerm = str_replace(" ", "%", $searchTerm);
                     $member = Pipeline::getQualifiedList($searchTerm, 'id', 'asc');
+                    $stage = Pipeline::where('stage', 'Qualified To Buy')->where('gym_id', Auth::guard('employee')->user()->gym_id)->count();
+                    $reStage = Pipeline::where('transferStage', 'Qualified To Buy')->where('gym_id', Auth::guard('employee')->user()->gym_id)->count();
+                    $totalStage = $stage + $reStage;
+                    $total = Pipeline::where('gym_id', Auth::guard('employee')->user()->gym_id)->count();
                     if ($request->ajax()) {
                         $sort_by = $request->get('sortby');
                         $sort_type = $request->get('sorttype');
@@ -896,6 +916,10 @@ class MemberController extends Controller
                     $searchTerm = $request->get('query');
                     $searchTerm = str_replace(" ", "%", $searchTerm);
                     $member = Pipeline::getWonList($searchTerm, 'id', 'asc');
+                    $stage = Pipeline::where('stage', 'Closed Won')->where('gym_id', Auth::guard('employee')->user()->gym_id)->count();
+                    $reStage = Pipeline::where('transferStage', 'Closed Won')->where('gym_id', Auth::guard('employee')->user()->gym_id)->count();
+                    $totalStage = $stage + $reStage;
+                    $total = Pipeline::where('gym_id', Auth::guard('employee')->user()->gym_id)->count();
                     if ($request->ajax()) {
                         $sort_by = $request->get('sortby');
                         $sort_type = $request->get('sorttype');
@@ -904,7 +928,7 @@ class MemberController extends Controller
                     }
                     break;
             }
-            return view('gym.member.guest.list', compact('breadcrumbs', 'member'))->render();
+            return view('gym.member.guest.list', compact('breadcrumbs', 'member', 'totalStage', 'total'))->render();
         } catch (\Exception $e) {
             return back()->with('error', 'Oops, something was not right in guest function');
         }

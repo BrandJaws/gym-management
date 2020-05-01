@@ -3,7 +3,6 @@
         <td>{{ $row->name}}</td>
         <td>{{ $row->registrationFee }} Days</td>
         <td>{{ $row->monthlyFee }}</td>
-        <td>{{ $row->spouse }} | {{ $row->children }}</td>
         <td>
             <a href="{{url('gym/membership/edit', $row->id)}}">
                 <i class="fa fa-edit"></i>
