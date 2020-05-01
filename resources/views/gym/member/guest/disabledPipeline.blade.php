@@ -65,9 +65,9 @@
                                                                 --- @endif</td>
                                                         <td>@if($row->member != NULL) {{ $row->member->name }} @else
                                                                 --- @endif</td>
-                                                        <td>{{ $row->type }}</td>
+                                                        <td>{{ $row->stage }}</td>
                                                         <td>{{ $row->scheduleDate }}</td>
-                                                        <td>{{ $row->transferStatus }}</td>
+                                                        <td>{{ $row->transferStage }}</td>
                                                         <td>@if($row->transferEmployee != NULL) {{ $row->transferEmployee->name }} @else
                                                                 --- @endif</td>
                                                         <td>@if($row->reScheduleDate != NULL) {{ $row->reScheduleDate }} @else

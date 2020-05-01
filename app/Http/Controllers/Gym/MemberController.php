@@ -833,37 +833,73 @@ class MemberController extends Controller
             switch ($value) {
                 case 'previewCalls':
                     $breadcrumbs = "Preview Calls";
-                    $member = Pipeline::where('stage', 'Call Scheduled')->where('employee_id', Auth::guard('employee')->user()->id)->paginate(10);
+                    $searchTerm = $request->get('query');
+                    $searchTerm = str_replace(" ", "%", $searchTerm);
+                    $member = Pipeline::getCallsList($searchTerm, 'id', 'asc');
                     if ($request->ajax()) {
                         $sort_by = $request->get('sortby');
                         $sort_type = $request->get('sorttype');
-                        $searchTerm = $request->get('query');
-                        $searchTerm = str_replace(" ", "%", $searchTerm);
                         $member = Pipeline::getCallsList($searchTerm, $sort_by, $sort_type);
                         return view('gym.member.guest.pagination_data', compact('breadcrumbs', 'member'))->render();
                     }
                     break;
-                case 'transferCalls':
-                    $breadcrumbs = "Transfer Calls";
-                    $member = Pipeline::where('transferStage', 'Call Scheduled')->Where('transfer_id', Auth::guard('employee')->user()->id)->paginate(10);
+                case 'previewAppointments':
+                    $breadcrumbs = "Preview Appointments";
+                    $searchTerm = $request->get('query');
+                    $searchTerm = str_replace(" ", "%", $searchTerm);
+                    $member = Pipeline::getAppointmentsList($searchTerm, 'id', 'asc');
                     if ($request->ajax()) {
                         $sort_by = $request->get('sortby');
                         $sort_type = $request->get('sorttype');
-                        $query = $request->get('query');
-                        $query = str_replace(" ", "%", $query);
-                        $member = Pipeline::getTransferList($query, $sort_by, $sort_type);
+                        $member = Pipeline::getAppointmentsList($searchTerm, $sort_by, $sort_type);
                         return view('gym.member.guest.pagination_data', compact('breadcrumbs', 'member'))->render();
                     }
                     break;
-                case 'preivewAppointments':
-                    $breadcrumbs = "Preivew Appointments";
-                    $member = Pipeline::where('stage', 'Appointment Scheduled')->where('employee_id', Auth::guard('employee')->user()->id)->paginate(10);
+                case 'previewPresentations':
+                    $breadcrumbs = "Preview Presentations";
+                    $searchTerm = $request->get('query');
+                    $searchTerm = str_replace(" ", "%", $searchTerm);
+                    $member = Pipeline::getPresentationsList($searchTerm, 'id', 'asc');
                     if ($request->ajax()) {
                         $sort_by = $request->get('sortby');
                         $sort_type = $request->get('sorttype');
-                        $query = $request->get('query');
-                        $query = str_replace(" ", "%", $query);
-                        $member = Pipeline::getAppointmentsList($query, $sort_by, $sort_type);
+                        $member = Pipeline::getPresentationsList($searchTerm, $sort_by, $sort_type);
+                        return view('gym.member.guest.pagination_data', compact('breadcrumbs', 'member'))->render();
+                    }
+                    break;
+                case 'contractSent':
+                    $breadcrumbs = "Contract Sent";
+                    $searchTerm = $request->get('query');
+                    $searchTerm = str_replace(" ", "%", $searchTerm);
+                    $member = Pipeline::getContractList($searchTerm, 'id', 'asc');
+                    if ($request->ajax()) {
+                        $sort_by = $request->get('sortby');
+                        $sort_type = $request->get('sorttype');
+                        $member = Pipeline::getContractList($searchTerm, $sort_by, $sort_type);
+                        return view('gym.member.guest.pagination_data', compact('breadcrumbs', 'member'))->render();
+                    }
+                    break;
+                case 'previewQualified':
+                    $breadcrumbs = "Qualified To Buy";
+                    $searchTerm = $request->get('query');
+                    $searchTerm = str_replace(" ", "%", $searchTerm);
+                    $member = Pipeline::getQualifiedList($searchTerm, 'id', 'asc');
+                    if ($request->ajax()) {
+                        $sort_by = $request->get('sortby');
+                        $sort_type = $request->get('sorttype');
+                        $member = Pipeline::getQualifiedList($searchTerm, $sort_by, $sort_type);
+                        return view('gym.member.guest.pagination_data', compact('breadcrumbs', 'member'))->render();
+                    }
+                    break;
+                case 'closedWon':
+                    $breadcrumbs = "Closed Won";
+                    $searchTerm = $request->get('query');
+                    $searchTerm = str_replace(" ", "%", $searchTerm);
+                    $member = Pipeline::getWonList($searchTerm, 'id', 'asc');
+                    if ($request->ajax()) {
+                        $sort_by = $request->get('sortby');
+                        $sort_type = $request->get('sorttype');
+                        $member = Pipeline::getWonList($searchTerm, $sort_by, $sort_type);
                         return view('gym.member.guest.pagination_data', compact('breadcrumbs', 'member'))->render();
                     }
                     break;

@@ -23,11 +23,12 @@
                                 </div>
                             @endif
                         </div>
-                        <div class="kt-portlet__body">
+
+                            <div class="kt-portlet__body">
                             <!--begin::Section-->
                             <div class="kt-section">
                                 <div class="kt-section__content">
-                                    <div class="table-responsive">
+                                    <div class="">
                                         <div class="row">
                                             <div class="col-md-9">
                                             </div>
@@ -60,13 +61,16 @@
                                             </div>
                                         </div>
                                         <br>
-                                        <div class="table-responsive">
+                                        <div class="">
                                             <table class="table table-striped table-bordered">
                                                 <thead>
                                                 <tr>
                                                     <th>No.</th>
                                                     <th class="sorting" data-sorting_type="asc"
-                                                        data-column_name="member_id" style="cursor: pointer">Member
+                                                        data-column_name="EmployeeName" style="cursor: pointer">Employee
+                                                        <span id="post_title_icon"></span></th>
+                                                    <th class="sorting" data-sorting_type="asc"
+                                                        data-column_name="Member" style="cursor: pointer">Member
                                                         <span id="post_title_icon"></span></th>
                                                     <th class="sorting" data-sorting_type="asc"
                                                         data-column_name="stage" style="cursor: pointer">Stage <span
@@ -77,9 +81,8 @@
                                                             id="post_title_icon"></span></th>
                                                     <th class="sorting" data-sorting_type="asc"
                                                         data-column_name="transferStage" style="cursor: pointer">
-                                                        Transfer
-                                                        Status<span
-                                                            id="post_title_icon"></span></th>
+                                                        Transfer Status
+                                                        <span id="post_title_icon"></span></th>
                                                     <th class="sorting" data-sorting_type="asc"
                                                         data-column_name="transfer_id" style="cursor: pointer">Transfer
                                                         Employee <span
@@ -109,6 +112,7 @@
                             </div>
                             <!--end::Section-->
                         </div>
+
                         <!--end::Form-->
                     </div>
                     <!--end::Portlet-->
@@ -117,9 +121,7 @@
         </div>
         <!-- end:: Content -->
     </div>
-
     <script>
-
         $(document).ready(function () {
             function clear_icon() {
                 $('#id_icon').html('');

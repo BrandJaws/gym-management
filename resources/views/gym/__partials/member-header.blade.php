@@ -71,13 +71,28 @@
                                 </a>
                             </li>
                             <li class="kt-menu__item " aria-haspopup="true">
-                                <a href="{{url('/gym/member/guest', "transferCalls")}}" class="kt-menu__link ">
-                                    <span class="kt-menu__link-text">My Transfer calls</span>
+                                <a href="{{url('/gym/member/guest', "previewAppointments")}}" class="kt-menu__link ">
+                                    <span class="kt-menu__link-text">Preview Appointments</span>
+                                </a>
+                            </li>
+                            <li class="kt-menu__item " aria-haspopup="true">
+                                <a href="{{url('/gym/member/guest', "previewPresentations")}}" class="kt-menu__link ">
+                                    <span class="kt-menu__link-text">Preview Presentations</span>
+                                </a>
+                            </li>
+                            <li class="kt-menu__item " aria-haspopup="true">
+                                <a href="{{url('/gym/member/guest', "contractSent")}}" class="kt-menu__link ">
+                                    <span class="kt-menu__link-text">Contract Sent</span>
                                 </a>
                             </li>
                             <li class="kt-menu__item" aria-haspopup="true">
-                                <a href="{{url('/gym/member/guest', "preivewAppointments")}}" class="kt-menu__link ">
-                                    <span class="kt-menu__link-text">Preivew Appointments</span>
+                                <a href="{{url('/gym/member/guest', "previewQualified")}}" class="kt-menu__link ">
+                                    <span class="kt-menu__link-text">Preview Qualified</span>
+                                </a>
+                            </li>
+                            <li class="kt-menu__item" aria-haspopup="true">
+                                <a href="{{url('/gym/member/guest', "closedWon")}}" class="kt-menu__link ">
+                                    <span class="kt-menu__link-text">Closed Won</span>
                                 </a>
                             </li>
                             <li class="kt-menu__item" aria-haspopup="true">
