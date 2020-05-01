@@ -87,6 +87,13 @@ class MemberController extends Controller
     {
         try {
             $member = Member::where('type', 'Member')->where('gym_id', Auth::guard('employee')->user()->gym_id)->orderBy('id', 'asc')->paginate(10);
+            $parent = Member::where('type', 'Member')->where('memberType', 'Parent')->where('gym_id', Auth::guard('employee')->user()->gym_id)->count();
+            $affiliate = Member::where('type', 'Member')->where('memberType', 'Affiliate Member')->where('gym_id', Auth::guard('employee')->user()->gym_id)->count();
+            $notJoined = Member::where('type', 'Member')->where('status', 'Not Joined')->where('gym_id', Auth::guard('employee')->user()->gym_id)->count();
+            $active = Member::where('type', 'Member')->where('status', 'Active')->where('gym_id', Auth::guard('employee')->user()->gym_id)->count();
+            $inActive = Member::where('type', 'Member')->where('status', 'In-Active')->where('gym_id', Auth::guard('employee')->user()->gym_id)->count();
+            $expired = Member::where('type', 'Member')->where('status', 'Expired')->where('gym_id', Auth::guard('employee')->user()->gym_id)->count();
+            $total = Member::where('type', 'Member')->where('gym_id', Auth::guard('employee')->user()->gym_id)->count();
             if ($request->ajax()) {
                 $sort_by = $request->get('sortby');
                 $sort_type = $request->get('sorttype');
@@ -95,7 +102,7 @@ class MemberController extends Controller
                 $member = Member::getMemberList($query, $sort_by, $sort_type);
                 return view('gym.member.list.pagination_data', compact('member'))->render();
             }
-            return view('gym.member.list.index', compact('member'));
+            return view('gym.member.list.index', compact('member','parent','affiliate','notJoined','active','inActive','expired','total'));
         } catch (\Exception $e) {
             return back()->with('error', 'Oops, something was not right in member list page');
         }
