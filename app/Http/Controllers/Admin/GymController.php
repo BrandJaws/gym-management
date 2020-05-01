@@ -331,6 +331,7 @@ class GymController extends Controller
                 'state' => 'required',
                 'city' => 'required',
                 'address' => 'required',
+                'status' => 'required',
             ]);
             if ($validator->fails()) {
                 return Redirect::back()->withErrors($validator);
@@ -344,6 +345,7 @@ class GymController extends Controller
                 'state',
                 'city',
                 'address',
+                'status'
             ]));
             $gym->gymType = 'Child';
             $gym->parent_id = $request->get('gym_id');
@@ -392,6 +394,7 @@ class GymController extends Controller
                 'state' => 'required',
                 'city' => 'required',
                 'address' => 'required',
+                'status' => 'required',
             ]);
             if ($validator->fails()) {
                 return Redirect::back()->withErrors($validator);
@@ -406,6 +409,7 @@ class GymController extends Controller
                 'state',
                 'city',
                 'address',
+                'status',
             ]));
             $gym->save();
             $license = License::where('gym_id', $gym_Id)->first();
