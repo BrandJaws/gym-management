@@ -7091,50 +7091,50 @@ __webpack_require__.r(__webpack_exports__);
       columns: [{
         label: 'Member',
         field: 'Member',
-        tdClass: 'text-center',
-        thClass: 'text-center',
+        tdClass: 'text-left',
+        thClass: 'text-left',
         sortable: true,
         filterable: true
       }, {
         label: 'Schedule Date',
         field: 'scheduleDate',
-        tdClass: 'text-center',
-        thClass: 'text-center',
+        tdClass: 'text-left',
+        thClass: 'text-left',
         sortable: true,
         filterable: true
       }, {
         label: 'Stage',
         field: 'stage',
-        tdClass: 'text-center',
-        thClass: 'text-center',
+        tdClass: 'text-left',
+        thClass: 'text-left',
         sortable: true,
         filterable: true
       }, {
         label: 'Status',
         field: 'status',
-        tdClass: 'text-center',
-        thClass: 'text-center',
+        tdClass: 'text-left',
+        thClass: 'text-left',
         sortable: true,
         filterable: true
       }, {
         label: 'Transfer Employee',
         field: 'Employee',
-        tdClass: 'text-center',
-        thClass: 'text-center',
+        tdClass: 'text-left',
+        thClass: 'text-left',
         sortable: true,
         filterable: true
       }, {
         label: 'Transfer Stage',
         field: 'transferStage',
-        tdClass: 'text-center',
-        thClass: 'text-center',
+        tdClass: 'text-left',
+        thClass: 'text-left',
         sortable: true,
         filterable: true
       }, {
         label: 'Re-Schedule Date',
         field: 'reScheduleDate',
-        tdClass: 'text-center',
-        thClass: 'text-center',
+        tdClass: 'text-left',
+        thClass: 'text-left',
         sortable: true,
         filterable: true
       }]
@@ -7249,71 +7249,71 @@ __webpack_require__.r(__webpack_exports__);
       columns: [{
         label: 'Lead Owner',
         field: 'Employee',
-        tdClass: 'text-center',
-        thClass: 'text-center',
+        tdClass: 'text-left',
+        thClass: 'text-left',
         sortable: true,
         filterable: true
       }, {
         label: 'Member',
         field: 'name',
-        tdClass: 'text-center',
-        thClass: 'text-center',
+        tdClass: 'text-left',
+        thClass: 'text-left',
         sortable: true,
         filterable: true
       }, {
         label: 'Phone',
         field: 'phone',
-        tdClass: 'text-center',
-        thClass: 'text-center',
+        tdClass: 'text-left',
+        thClass: 'text-left',
         sortable: true,
         filterable: true
       }, {
         label: 'Source',
         field: 'source',
-        tdClass: 'text-center',
-        thClass: 'text-center',
+        tdClass: 'text-left',
+        thClass: 'text-left',
         sortable: true,
         filterable: true
       }, {
         label: 'Rating',
         field: 'rating',
-        tdClass: 'text-center',
-        thClass: 'text-center',
+        tdClass: 'text-left',
+        thClass: 'text-left',
         sortable: true,
         filterable: true
       }, {
         label: 'Type',
         field: 'type',
-        tdClass: 'text-center',
-        thClass: 'text-center',
+        tdClass: 'text-left',
+        thClass: 'text-left',
         sortable: true,
         filterable: true
       }, {
         label: 'Status',
         field: 'status',
-        tdClass: 'text-center',
-        thClass: 'text-center',
+        tdClass: 'text-left',
+        thClass: 'text-left',
         sortable: true,
         filterable: true
       }, {
         label: 'Member Type',
         field: 'memberType',
-        tdClass: 'text-center',
-        thClass: 'text-center',
+        tdClass: 'text-left',
+        thClass: 'text-left',
         sortable: true,
         filterable: true
       }, {
         label: 'Membership',
         field: 'Membership',
-        tdClass: 'text-center',
-        thClass: 'text-center',
+        tdClass: 'text-left',
+        thClass: 'text-left',
         sortable: true,
         filterable: true
       }, {
         label: 'Joining Date',
         field: 'joiningDate',
-        tdClass: 'text-center',
-        thClass: 'text-center',
+        tdClass: 'text-left',
+        thClass: 'text-left',
         sortable: true,
         filterable: true
       }]
@@ -11960,7 +11960,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".page-vue-good-table {\n  overflow: hidden;\n}\n.table input[type=text][data-v-d89f00e8], .table select[data-v-d89f00e8] {\n  float: right;\n  width: 20% !important;\n}\n.magnifying-glass[data-v-d89f00e8] {\n  border: 3px solid #fff !important;\n}", ""]);
+exports.push([module.i, ".page-vue-good-table {\n  overflow: hidden;\n}\n.table input[type=text][data-v-d89f00e8], .table select[data-v-d89f00e8] {\n  float: right;\n  width: 20% !important;\n}\n.magnifying-glass[data-v-d89f00e8] {\n  border: 1px solid #fff !important;\n}", ""]);
 
 // exports
 
@@ -11979,7 +11979,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".page-vue-good-table {\n  overflow: hidden;\n}\n.table input[type=text][data-v-d89f00e8], .table select[data-v-d89f00e8] {\n  float: right;\n  width: 20% !important;\n}\n.magnifying-glass[data-v-d89f00e8] {\n  border: 3px solid #fff !important;\n}", ""]);
+exports.push([module.i, ".page-vue-good-table {\n  overflow: hidden;\n}\n.table input[type=text][data-v-d89f00e8], .table select[data-v-d89f00e8] {\n  float: right;\n  width: 20% !important;\n}\n.magnifying-glass[data-v-d89f00e8] {\n  border: 1px solid #fff !important;\n}", ""]);
 
 // exports
 
@@ -42827,7 +42827,12 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { attrs: { id: "app" } }, [_c("router-view")], 1)
+  return _c(
+    "div",
+    { staticClass: "reportSection", attrs: { id: "app" } },
+    [_c("router-view")],
+    1
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -43565,7 +43570,7 @@ var render = function() {
       _vm._v(" "),
       _c("div", { staticStyle: { "margin-top": "5%" } }),
       _vm._v(" "),
-      _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "row topbarSearchRow" }, [
         _c("div", { staticClass: "col-lg-1 form-group" }),
         _vm._v(" "),
         _c("div", { staticClass: "col-lg-3 form-group" }, [
@@ -43638,7 +43643,7 @@ var render = function() {
       _vm._v(" "),
       _c("div", { staticClass: "row" }, [
         _c("div", { staticClass: "col-md-12" }, [
-          _c("div", { staticClass: "page-vue-good-table" }, [
+          _c("div", { staticClass: "page-vue-good-table reportTable" }, [
             _c(
               "div",
               { staticClass: "table table-border" },
@@ -43653,7 +43658,7 @@ var render = function() {
                     paginate: true,
                     responsive: true,
                     lineNumbers: true,
-                    styleClass: "table"
+                    styleClass: "table-bordered table-striped"
                   }
                 })
               ],
@@ -43696,7 +43701,7 @@ var render = function() {
       _vm._v(" "),
       _c("div", { staticStyle: { "margin-top": "5%" } }),
       _vm._v(" "),
-      _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "row topbarSearchRow" }, [
         _c("div", { staticClass: "col-lg-1 form-group" }),
         _vm._v(" "),
         _c("div", { staticClass: "col-lg-3 form-group" }, [
@@ -43769,7 +43774,7 @@ var render = function() {
       _vm._v(" "),
       _c("div", { staticClass: "row" }, [
         _c("div", { staticClass: "col-md-12" }, [
-          _c("div", { staticClass: "page-vue-good-table" }, [
+          _c("div", { staticClass: "page-vue-good-table reportTable" }, [
             _c(
               "div",
               { staticClass: "table table-border" },
@@ -43784,7 +43789,7 @@ var render = function() {
                     paginate: true,
                     responsive: true,
                     lineNumbers: true,
-                    styleClass: "table"
+                    styleClass: "table-bordered table-striped"
                   }
                 })
               ],
@@ -60832,7 +60837,7 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\wamp64\www\gym\resources\js\main.js */"./resources/js/main.js");
+module.exports = __webpack_require__(/*! C:\wamp64\www\web-portal\resources\js\main.js */"./resources/js/main.js");
 
 
 /***/ })

@@ -4,7 +4,7 @@
         <div style="margin-top:5%">
 <!--            <p v-for="value in leadList">{{ value.length }}</p>-->
         </div>
-        <div class="row">
+        <div class="row topbarSearchRow">
             <div class="col-lg-1 form-group">
             </div>
             <div class="col-lg-3 form-group">
@@ -22,7 +22,7 @@
         </div>
         <div class="row">
             <div class="col-md-12">
-                <div class="page-vue-good-table">
+                <div class="page-vue-good-table reportTable">
                     <div class="table table-border">
                         <vue-good-table
                             mode="remote"
@@ -33,7 +33,7 @@
                             :responsive="true"
                             :lineNumbers="true"
                             class="styled"
-                            styleClass="table">
+                            styleClass="table-bordered table-striped">
                         </vue-good-table>
                     </div>
                 </div>
@@ -64,80 +64,80 @@
                     {
                         label: 'Lead Owner',
                         field: 'Employee',
-                        tdClass: 'text-center',
-                        thClass: 'text-center',
+                        tdClass: 'text-left',
+                        thClass: 'text-left',
                         sortable: true,
                         filterable: true,
                     },
                     {
                         label: 'Member',
                         field: 'name',
-                        tdClass: 'text-center',
-                        thClass: 'text-center',
+                        tdClass: 'text-left',
+                        thClass: 'text-left',
                         sortable: true,
                         filterable: true,
                     },
                     {
                         label: 'Phone',
                         field: 'phone',
-                        tdClass: 'text-center',
-                        thClass: 'text-center',
+                        tdClass: 'text-left',
+                        thClass: 'text-left',
                         sortable: true,
                         filterable: true,
                     },
                     {
                         label: 'Source',
                         field: 'source',
-                        tdClass: 'text-center',
-                        thClass: 'text-center',
+                        tdClass: 'text-left',
+                        thClass: 'text-left',
                         sortable: true,
                         filterable: true,
                     },
                     {
                         label: 'Rating',
                         field: 'rating',
-                        tdClass: 'text-center',
-                        thClass: 'text-center',
+                        tdClass: 'text-left',
+                        thClass: 'text-left',
                         sortable: true,
                         filterable: true,
                     },
                     {
                         label: 'Type',
                         field: 'type',
-                        tdClass: 'text-center',
-                        thClass: 'text-center',
+                        tdClass: 'text-left',
+                        thClass: 'text-left',
                         sortable: true,
                         filterable: true,
                     },
                     {
                         label: 'Status',
                         field: 'status',
-                        tdClass: 'text-center',
-                        thClass: 'text-center',
+                        tdClass: 'text-left',
+                        thClass: 'text-left',
                         sortable: true,
                         filterable: true,
                     },
                     {
                         label: 'Member Type',
                         field: 'memberType',
-                        tdClass: 'text-center',
-                        thClass: 'text-center',
+                        tdClass: 'text-left',
+                        thClass: 'text-left',
                         sortable: true,
                         filterable: true,
                     },
                     {
                         label: 'Membership',
                         field: 'Membership',
-                        tdClass: 'text-center',
-                        thClass: 'text-center',
+                        tdClass: 'text-left',
+                        thClass: 'text-left',
                         sortable: true,
                         filterable: true,
                     },
                     {
                         label: 'Joining Date',
                         field: 'joiningDate',
-                        tdClass: 'text-center',
-                        thClass: 'text-center',
+                        tdClass: 'text-left',
+                        thClass: 'text-left',
                         sortable: true,
                         filterable: true,
                     },
@@ -186,7 +186,7 @@
     }
 
     .magnifying-glass[data-v-d89f00e8] {
-        border: 3px solid #fff !important;
+        border: 1px solid #fff !important;
     }
 </style>
 

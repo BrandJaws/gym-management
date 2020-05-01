@@ -4,7 +4,7 @@
         <div style="margin-top:5%">
 <!--            {{ form.total}}-->
         </div>
-        <div class="row">
+        <div class="row topbarSearchRow">
             <div class="col-lg-1 form-group">
             </div>
             <div class="col-lg-3 form-group">
@@ -22,7 +22,7 @@
         </div>
         <div class="row">
             <div class="col-md-12">
-                <div class="page-vue-good-table">
+                <div class="page-vue-good-table reportTable">
                     <div class="table table-border">
                         <vue-good-table
                             mode="remote"
@@ -33,7 +33,7 @@
                             :responsive="true"
                             :lineNumbers="true"
                             class="styled"
-                            styleClass="table">
+                            styleClass="table-bordered table-striped">
                         </vue-good-table>
                     </div>
                 </div>
@@ -65,56 +65,56 @@
                     {
                         label: 'Member',
                         field: 'Member',
-                        tdClass: 'text-center',
-                        thClass: 'text-center',
+                        tdClass: 'text-left',
+                        thClass: 'text-left',
                         sortable: true,
                         filterable: true,
                     },
                     {
                         label: 'Schedule Date',
                         field: 'scheduleDate',
-                        tdClass: 'text-center',
-                        thClass: 'text-center',
+                        tdClass: 'text-left',
+                        thClass: 'text-left',
                         sortable: true,
                         filterable: true,
                     },
                     {
                         label: 'Stage',
                         field: 'stage',
-                        tdClass: 'text-center',
-                        thClass: 'text-center',
+                        tdClass: 'text-left',
+                        thClass: 'text-left',
                         sortable: true,
                         filterable: true,
                     },
                     {
                         label: 'Status',
                         field: 'status',
-                        tdClass: 'text-center',
-                        thClass: 'text-center',
+                        tdClass: 'text-left',
+                        thClass: 'text-left',
                         sortable: true,
                         filterable: true,
                     },
                     {
                         label: 'Transfer Employee',
                         field: 'Employee',
-                        tdClass: 'text-center',
-                        thClass: 'text-center',
+                        tdClass: 'text-left',
+                        thClass: 'text-left',
                         sortable: true,
                         filterable: true,
                     },
                     {
                         label: 'Transfer Stage',
                         field: 'transferStage',
-                        tdClass: 'text-center',
-                        thClass: 'text-center',
+                        tdClass: 'text-left',
+                        thClass: 'text-left',
                         sortable: true,
                         filterable: true,
                     },
                     {
                         label: 'Re-Schedule Date',
                         field: 'reScheduleDate',
-                        tdClass: 'text-center',
-                        thClass: 'text-center',
+                        tdClass: 'text-left',
+                        thClass: 'text-left',
                         sortable: true,
                         filterable: true,
                     },
@@ -164,7 +164,7 @@
     }
 
     .magnifying-glass[data-v-d89f00e8] {
-        border: 3px solid #fff !important;
+        border: 1px solid #fff !important;
     }
 </style>
 
