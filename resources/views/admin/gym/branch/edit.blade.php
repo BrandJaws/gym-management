@@ -69,7 +69,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <div class="col-md-4 countryDropdown">
+                                    <div class="col-md-6 countryDropdown">
                                         <label>Country:</label>
                                         <select class="form-control kt-select2" id="kt_select2_1" name="country">
                                             @if(count($countries) >= 0)
@@ -85,7 +85,7 @@
                                             <div class="error">{{ $errors->first('country') }}</div>
                                         @endif
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-6">
                                         <label>State:</label>
                                         <input type="text" name="state" class="form-control" value="{{ $gym->state }}"
                                                placeholder="Enter your state" required/>
@@ -93,12 +93,24 @@
                                             <div class="error">{{ $errors->first('state') }}</div>
                                         @endif
                                     </div>
-                                    <div class="col-md-4">
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-md-6">
                                         <label>City:</label>
                                         <input type="text" name="city" class="form-control" value="{{ $gym->city }}"
                                                placeholder="Enter your city" required/>
                                         @if($errors->has('city'))
                                             <div class="error">{{ $errors->first('city') }}</div>
+                                        @endif
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label>Status:</label>
+                                        <select class="form-control" name="status">
+                                            <option value="Active" @if('Active' == $gym->status) selected @endif >Active</option>
+                                            <option value="Block" @if('Block' == $gym->status) selected @endif>Block</option>
+                                        </select>
+                                        @if($errors->has('status'))
+                                            <div class="error">{{ $errors->first('status') }}</div>
                                         @endif
                                     </div>
                                 </div>

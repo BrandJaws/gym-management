@@ -108,8 +108,7 @@
                                             </div>
                                             <div class="col-lg-6 form-group">
                                                 <label>Schedule Date & Time :</label>
-                                                <input type="datetime-local" name="scheduleDate" class="form-control"
-                                                       required/>
+                                                <input type="datetime-local" name="scheduleDate" class="form-control"/>
                                                 @if($errors->has('scheduleDate'))
                                                     <div class="error">{{ $errors->first('scheduleDate') }}</div>
                                                 @endif
