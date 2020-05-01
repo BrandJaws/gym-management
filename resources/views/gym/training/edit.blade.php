@@ -247,8 +247,10 @@
                                 @if($groupCount == $training->seats )
                                     <blink>Booking Full</blink>
                                 @else
-                                    <a href="javascript:void(0)" class="btn btn-success mb-3" id="create-new-member"
-                                       onclick="addPost()">Add Member</a>
+                                    <a href="javascript:void(0)" id="create-new-member"
+                                       onclick="addPost()" type="button" class="btn btn-brand btn-icon-sm">
+                                        <i class="flaticon2-plus"></i> Add Member
+                                    </a>
                                 @endif
                             </div>
                         </div>

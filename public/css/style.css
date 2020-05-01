@@ -497,4 +497,9 @@ body a {
 .reportSection .container-fluid .reportTable {
     padding:20px 30px;
 }
-
+.memberDashboardBigBox {
+    min-height:310px;
+}
+.memberDashboardSmallBox {
+    min-height:200px;
+}

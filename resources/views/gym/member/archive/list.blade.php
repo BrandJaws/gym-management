@@ -3,6 +3,147 @@
     <div class="kt-content  kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor" id="kt_content">
         <!-- begin:: Content -->
         <div class="kt-container  kt-container--fluid  kt-grid__item kt-grid__item--fluid">
+            @if($breadcrumbs == "Leads" )
+                <div class="kt-portlet">
+                    <div class="kt-portlet__body  kt-portlet__body--fit">
+                        <div class="row row-no-padding row-col-separator-lg">
+                            <div class="col-md-12 col-lg-6 col-xl-4">
+                                <!--begin::Total Profit-->
+                                <div class="kt-widget24">
+                                    <div class="kt-widget24__details">
+                                        <div class="kt-widget24__info">
+                                            <h4 class="kt-widget24__title">
+                                                Total Leads
+                                            </h4>
+                                            <span class="kt-widget24__desc">
+                                                    Count
+                                            </span>
+                                        </div>
+                                        <span class="kt-widget24__stats kt-font-brand">
+                                            {{ $totalLead }}
+                                        </span>
+                                    </div>
+                                    <div class="progress progress--sm">
+                                        @if($total > 0)
+                                            <div class="progress-bar kt-bg-brand" role="progressbar"
+                                                 style="width: {{ number_format($totalLead/$total * 100 , 0, '.', ',')  }}%;"
+                                                 aria-valuenow="50" aria-valuemin="0"
+                                                 aria-valuemax="100"></div>
+                                        @else
+                                            <div class="progress-bar kt-bg-brand" role="progressbar"
+                                                 style="width:0%;"
+                                                 aria-valuenow="50" aria-valuemin="0"
+                                                 aria-valuemax="100"></div>
+                                        @endif
+                                    </div>
+                                    <div class="kt-widget24__action">
+													<span class="kt-widget24__change">
+													</span>
+                                        <span class="kt-widget24__number">
+                                                        @if($total > 0)
+                                                {{ number_format($totalLead/$total * 100 , 2, '.', ',')  }}
+                                                %
+                                            @else
+                                                <b>0</b>
+                                            @endif
+													</span>
+                                    </div>
+                                </div>
+                                <!--end::Total Profit-->
+                            </div>
+                            <div class="col-md-12 col-lg-6 col-xl-4">
+                                <!--begin::New Feedbacks-->
+                                <div class="kt-widget24">
+                                    <div class="kt-widget24__details">
+                                        <div class="kt-widget24__info">
+                                            <h4 class="kt-widget24__title">
+                                                Hot Rating
+                                            </h4>
+                                            <span class="kt-widget24__desc">
+															 Count
+                                                    </span>
+                                        </div>
+                                        <span class="kt-widget24__stats kt-font-warning">
+														{{$hotRating}}
+													</span>
+                                    </div>
+                                    <div class="progress progress--sm">
+                                        @if($total > 0)
+                                            <div class="progress-bar kt-bg-warning" role="progressbar"
+                                                 style="width: {{ number_format($hotRating/$total * 100 , 0, '.', ',')  }}%"
+                                                 aria-valuenow="50" aria-valuemin="0"
+                                                 aria-valuemax="100"></div>
+                                        @else
+                                            <div class="progress-bar kt-bg-brand" role="progressbar"
+                                                 style="width:0%;"
+                                                 aria-valuenow="50" aria-valuemin="0"
+                                                 aria-valuemax="100"></div>
+                                        @endif
+                                    </div>
+                                    <div class="kt-widget24__action">
+													<span class="kt-widget24__change">
+													</span>
+                                        <span class="kt-widget24__number">
+                                                        @if($total > 0)
+                                                {{ number_format($hotRating/$total * 100 , 2, '.', ',')  }}
+                                                %
+                                            @else
+                                                <b>0</b>
+                                            @endif
+													</span>
+                                    </div>
+                                </div>
+                                <!--end::New Feedbacks-->
+                            </div>
+                            <div class="col-md-12 col-lg-6 col-xl-4">
+                                <!--begin::New Users-->
+                                <div class="kt-widget24">
+                                    <div class="kt-widget24__details">
+                                        <div class="kt-widget24__info">
+                                            <h4 class="kt-widget24__title">
+                                                New Members
+                                            </h4>
+                                            <span class="kt-widget24__desc">
+															Joined User
+														</span>
+                                        </div>
+                                        <span class="kt-widget24__stats kt-font-success">
+														{{ $totalMember }}
+													</span>
+                                    </div>
+                                    <div class="progress progress--sm">
+                                        @if($total > 0)
+                                            <div class="progress-bar kt-bg-success" role="progressbar"
+                                                 style="width: {{ number_format($totalMember/$total * 100 , 0, '.', ',')  }}%;"
+                                                 aria-valuenow="50" aria-valuemin="0"
+                                                 aria-valuemax="100"></div>
+                                        @else
+                                            <div class="progress-bar kt-bg-brand" role="progressbar"
+                                                 style="width:0%;"
+                                                 aria-valuenow="50" aria-valuemin="0"
+                                                 aria-valuemax="100"></div>
+                                        @endif
+                                    </div>
+                                    <div class="kt-widget24__action">
+													<span class="kt-widget24__change">
+														Change
+													</span>
+                                        <span class="kt-widget24__number">
+                                                         @if($total > 0)
+                                                {{ number_format($totalMember/$total * 100 , 2, '.', ',')  }}
+                                                %
+                                            @else
+                                                <b>0</b>
+                                            @endif
+													</span>
+                                    </div>
+                                </div>
+                                <!--end::New Users-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            @endif
             @include('_layouts.flash-message')
             <div class="row">
                 <div class="col-sm-12">
@@ -43,147 +184,6 @@
                                 </div>
                             @endif
                         </div>
-                        @if($breadcrumbs == "Leads" )
-                            <div class="kt-portlet">
-                                <div class="kt-portlet__body  kt-portlet__body--fit">
-                                    <div class="row row-no-padding row-col-separator-lg">
-                                        <div class="col-md-12 col-lg-6 col-xl-4">
-                                            <!--begin::Total Profit-->
-                                            <div class="kt-widget24">
-                                                <div class="kt-widget24__details">
-                                                    <div class="kt-widget24__info">
-                                                        <h4 class="kt-widget24__title">
-                                                            Total Leads
-                                                        </h4>
-                                                        <span class="kt-widget24__desc">
-															Count
-                                                    </span>
-                                                    </div>
-                                                    <span class="kt-widget24__stats kt-font-brand">
-														{{ $totalLead }}
-													</span>
-                                                </div>
-                                                <div class="progress progress--sm">
-                                                    @if($total > 0)
-                                                        <div class="progress-bar kt-bg-brand" role="progressbar"
-                                                             style="width: {{ number_format($totalLead/$total * 100 , 0, '.', ',')  }}%;"
-                                                             aria-valuenow="50" aria-valuemin="0"
-                                                             aria-valuemax="100"></div>
-                                                    @else
-                                                        <div class="progress-bar kt-bg-brand" role="progressbar"
-                                                             style="width:0%;"
-                                                             aria-valuenow="50" aria-valuemin="0"
-                                                             aria-valuemax="100"></div>
-                                                    @endif
-                                                </div>
-                                                <div class="kt-widget24__action">
-													<span class="kt-widget24__change">
-													</span>
-                                                    <span class="kt-widget24__number">
-                                                        @if($total > 0)
-                                                            {{ number_format($totalLead/$total * 100 , 2, '.', ',')  }}
-                                                            %
-                                                        @else
-                                                            <b>0</b>
-                                                        @endif
-													</span>
-                                                </div>
-                                            </div>
-                                            <!--end::Total Profit-->
-                                        </div>
-                                        <div class="col-md-12 col-lg-6 col-xl-4">
-                                            <!--begin::New Feedbacks-->
-                                            <div class="kt-widget24">
-                                                <div class="kt-widget24__details">
-                                                    <div class="kt-widget24__info">
-                                                        <h4 class="kt-widget24__title">
-                                                            Hot Rating
-                                                        </h4>
-                                                        <span class="kt-widget24__desc">
-															 Count
-                                                    </span>
-                                                    </div>
-                                                    <span class="kt-widget24__stats kt-font-warning">
-														{{$hotRating}}
-													</span>
-                                                </div>
-                                                <div class="progress progress--sm">
-                                                    @if($total > 0)
-                                                        <div class="progress-bar kt-bg-warning" role="progressbar"
-                                                             style="width: {{ number_format($hotRating/$total * 100 , 0, '.', ',')  }}%"
-                                                             aria-valuenow="50" aria-valuemin="0"
-                                                             aria-valuemax="100"></div>
-                                                    @else
-                                                        <div class="progress-bar kt-bg-brand" role="progressbar"
-                                                             style="width:0%;"
-                                                             aria-valuenow="50" aria-valuemin="0"
-                                                             aria-valuemax="100"></div>
-                                                    @endif
-                                                </div>
-                                                <div class="kt-widget24__action">
-													<span class="kt-widget24__change">
-													</span>
-                                                    <span class="kt-widget24__number">
-                                                        @if($total > 0)
-                                                            {{ number_format($hotRating/$total * 100 , 2, '.', ',')  }}
-                                                            %
-                                                        @else
-                                                            <b>0</b>
-                                                        @endif
-													</span>
-                                                </div>
-                                            </div>
-                                            <!--end::New Feedbacks-->
-                                        </div>
-                                        <div class="col-md-12 col-lg-6 col-xl-4">
-                                            <!--begin::New Users-->
-                                            <div class="kt-widget24">
-                                                <div class="kt-widget24__details">
-                                                    <div class="kt-widget24__info">
-                                                        <h4 class="kt-widget24__title">
-                                                            New Members
-                                                        </h4>
-                                                        <span class="kt-widget24__desc">
-															Joined User
-														</span>
-                                                    </div>
-                                                    <span class="kt-widget24__stats kt-font-success">
-														{{ $totalMember }}
-													</span>
-                                                </div>
-                                                <div class="progress progress--sm">
-                                                    @if($total > 0)
-                                                        <div class="progress-bar kt-bg-success" role="progressbar"
-                                                             style="width: {{ number_format($totalMember/$total * 100 , 0, '.', ',')  }}%;"
-                                                             aria-valuenow="50" aria-valuemin="0"
-                                                             aria-valuemax="100"></div>
-                                                    @else
-                                                        <div class="progress-bar kt-bg-brand" role="progressbar"
-                                                             style="width:0%;"
-                                                             aria-valuenow="50" aria-valuemin="0"
-                                                             aria-valuemax="100"></div>
-                                                    @endif
-                                                </div>
-                                                <div class="kt-widget24__action">
-													<span class="kt-widget24__change">
-														Change
-													</span>
-                                                    <span class="kt-widget24__number">
-                                                         @if($total > 0)
-                                                            {{ number_format($totalMember/$total * 100 , 2, '.', ',')  }}
-                                                            %
-                                                        @else
-                                                            <b>0</b>
-                                                        @endif
-													</span>
-                                                </div>
-                                            </div>
-                                            <!--end::New Users-->
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        @endif
                         @if($breadcrumbs != "Last Month Leads" )
                             <div class="kt-portlet__body">
                                 <!--begin::Section-->

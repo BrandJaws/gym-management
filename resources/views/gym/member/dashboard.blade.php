@@ -145,7 +145,7 @@
             <div class="row">
                 <div class="col-xl-6 col-lg-6">
                     <!--begin:: Widgets/Profit Share-->
-                    <div class="kt-portlet kt-iconbox kt-iconbox--success kt-iconbox--animate-slow">
+                    <div class="kt-portlet kt-iconbox kt-iconbox--success kt-iconbox--animate-slow memberDashboardBigBox">
                         <div class="kt-portlet__body">
                             <div class="kt-iconbox__body">
                                 <div class="kt-iconbox__icon">
@@ -222,7 +222,7 @@
                     <!--end:: Widgets/Profit Share-->
                 </div>
                 <div class="col-xl-6 col-lg-6">
-                    <div class="kt-portlet kt-iconbox kt-iconbox--warning kt-iconbox--animate-fast">
+                    <div class="kt-portlet kt-iconbox kt-iconbox--warning kt-iconbox--animate-fast memberDashboardBigBox">
                         <div class="kt-portlet__body">
                             <div class="kt-iconbox__body">
                                 <div class="kt-iconbox__icon">
@@ -293,7 +293,7 @@
                             All Tasks
                         </h6>
                     </div>
-                    <div class="kt-portlet kt-iconbox kt-iconbox--brand kt-iconbox--animate-slower">
+                    <div class="kt-portlet kt-iconbox kt-iconbox--brand kt-iconbox--animate-slower memberDashboardSmallBox">
                         <div class="kt-portlet__body">
                             <div class="kt-iconbox__body">
                                 <div class="kt-iconbox__desc" style="width: 100%;">
@@ -352,7 +352,7 @@
                             Today Activities
                         </h6>
                     </div>
-                    <div class="kt-portlet kt-iconbox kt-iconbox--danger kt-iconbox--animate-faster">
+                    <div class="kt-portlet kt-iconbox kt-iconbox--danger kt-iconbox--animate-faster memberDashboardSmallBox">
                         <div class="kt-portlet__body">
                             <div class="kt-iconbox__body">
                                 <div class="kt-iconbox__desc">

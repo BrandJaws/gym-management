@@ -153,7 +153,7 @@
                                                 <input type="datetime-local" name="reScheduleDate"
                                                        class="form-control"/>
                                             </div>
-                                            <div class="col-lg-6 form-group">
+                                            <div class="col-lg-6 form-group gymDropdown">
                                                 <label>Interested Packages :</label>
                                                 @if(count($membership) > 0)
                                                     <select class="form-control kt-select2" id="kt_select2_3"

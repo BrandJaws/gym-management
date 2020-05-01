@@ -7,13 +7,13 @@
     <div class="kt-header-menu-wrapper" id="kt_header_menu_wrapper">
         <div id="kt_header_menu" class="kt-header-menu kt-header-menu-mobile  kt-header-menu--layout-default ">
             <ul class="kt-menu__nav ">
-                <li class="kt-menu__item  kt-menu__item--submenu kt-menu__item--rel" data-ktmenu-submenu-toggle="click"
+                <li class="kt-menu__item  kt-menu__item--submenu kt-menu__item--rel {{ Request::is('gym/member') ? 'kt-menu__item--active' : null }}" data-ktmenu-submenu-toggle="click"
                     aria-haspopup="true">
                     <a href="{{url('gym/member')}}" class="kt-menu__link ">
                         <span class="kt-menu__link-text">Home</span>
                     </a>
                 </li>
-                <li class="kt-menu__item  kt-menu__item--submenu kt-menu__item--rel" data-ktmenu-submenu-toggle="click"
+                <li class="kt-menu__item  kt-menu__item--submenu kt-menu__item--rel {{ Request::is('gym/member/archive/*') ? 'kt-menu__item--active' : null }}" data-ktmenu-submenu-toggle="click"
                     aria-haspopup="true">
                     <a href="javascript:;" class="kt-menu__link kt-menu__toggle">
                         <span class="kt-menu__link-text">Archive</span>
@@ -58,7 +58,7 @@
                         </ul>
                     </div>
                 </li>
-                <li class="kt-menu__item  kt-menu__item--submenu kt-menu__item--rel" data-ktmenu-submenu-toggle="click"
+                <li class="kt-menu__item  kt-menu__item--submenu kt-menu__item--rel {{ Request::is('gym/member/guest/*') ? 'kt-menu__item--active' : null }}" data-ktmenu-submenu-toggle="click"
                     aria-haspopup="true">
                     <a href="javascript:;" class="kt-menu__link kt-menu__toggle">
                         <span class="kt-menu__link-text">Guest</span>
@@ -103,7 +103,7 @@
                         </ul>
                     </div>
                 </li>
-                <li class="kt-menu__item  kt-menu__item--submenu kt-menu__item--rel" data-ktmenu-submenu-toggle="click"
+                <li class="kt-menu__item  kt-menu__item--submenu kt-menu__item--rel {{ Request::is('gym/member/list') ? 'kt-menu__item--active' : Request::is('gym/member/create') ? 'kt-menu__item--active' : null }}" data-ktmenu-submenu-toggle="click"
                     aria-haspopup="true">
                     <a href="javascript:;" class="kt-menu__link kt-menu__toggle">
                         <span class="kt-menu__link-text">Member</span>
@@ -123,7 +123,7 @@
                         </ul>
                     </div>
                 </li>
-                <li class="kt-menu__item  kt-menu__item--submenu kt-menu__item--rel" data-ktmenu-submenu-toggle="click"
+                <li class="kt-menu__item  kt-menu__item--submenu kt-menu__item--rel {{ Request::is('gym/member/reports') ? 'kt-menu__item--active' : null }}" data-ktmenu-submenu-toggle="click"
                     aria-haspopup="true">
                     <a href="{{url('gym/member/reports')}}" class="kt-menu__link ">
                         <span class="kt-menu__link-text">Reports</span>

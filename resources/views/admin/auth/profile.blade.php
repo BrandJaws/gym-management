@@ -62,7 +62,7 @@
                                                 <div class="error">{{ $errors->first('password') }}</div>
                                             @endif
                                         </div>
-                                        <div class="form-group mb-15">
+                                        <div class="form-group">
                                             <label>Re-Password :</label>
                                             <input type="password" name="re-password" class="form-control"
                                                    placeholder="Enter New Re-Password"/>
@@ -70,8 +70,8 @@
                                                 <div class="error">{{ $errors->first('re-password') }}</div>
                                             @endif
                                         </div>
-                                        <div class="form-group mb-15">
-                                            <input type="submit" value="Save" class="btn btn-primary">
+                                        <div class="form-group">
+                                            <input type="submit" value="Update" class="btn btn-primary">
                                             <a href="{{route('admin.home')}}"
                                                class="btn btn-secondary">Cancel</a>
                                         </div>

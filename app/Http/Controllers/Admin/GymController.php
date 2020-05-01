@@ -415,7 +415,7 @@ class GymController extends Controller
                 'endDate',
             ]));
             $license->save();
-            return back()->with('success', 'Gym Updated Successfully!');
+            return back()->with('success', 'Gym Branch Updated Successfully!');
         } catch (\Exception $e) {
             return response()->json([
                 'response' => $e

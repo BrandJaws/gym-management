@@ -166,7 +166,7 @@ class TrainingController extends Controller
                 $this->deleteTrainingImg($id);
             }
             $training->save();
-            return back()->with('success', 'Training Created Successfully!');
+            return back()->with('success', 'Training Updated Successfully!');
         } catch (\Exception $e) {
             return response()->json([
                 'response' => $e
