@@ -705,7 +705,6 @@ class MemberController extends Controller
     {
         try {
             $validator = Validator::make($request->all(), [
-                'scheduleDate' => 'required',
                 'employee_id' => 'required',
                 'stage' => 'required',
                 'status' => 'required',
@@ -761,7 +760,6 @@ class MemberController extends Controller
         $id = $request->pipeline_id;
         try {
             $validator = Validator::make($request->all(), [
-                'scheduleDate' => 'required',
                 'employee_id' => 'required',
                 'stage' => 'required',
                 'status' => 'required',
