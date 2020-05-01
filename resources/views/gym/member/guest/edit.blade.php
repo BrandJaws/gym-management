@@ -66,7 +66,7 @@
                                                 @endif
                                             </div>
                                             <div class="col-lg-6 form-group">
-                                                <label>Type :</label>
+                                                <label>Deal Stage :</label>
                                                 <select class="form-control" name="stage">
                                                     <option value="Call Scheduled"
                                                             @if( $pipeline->stage == "Call Scheduled") selected @endif>
@@ -96,8 +96,7 @@
                                                     </option>
                                                     <option value="Closed Lost"
                                                             @if( $pipeline->stage == "Closed Lost") selected @endif>
-                                                        Closed
-                                                        Lost
+                                                        Closed Lost
                                                     </option>
                                                 </select>
                                                 @if($errors->has('stage'))
@@ -197,7 +196,7 @@
                                                        value="{{ \Carbon\Carbon::parse($pipeline->reScheduleDate)->format('Y-m-d\TH:i')}}"
                                                        class="form-control"/>
                                             </div>
-                                            <div class="col-lg-6 form-group textField" style="display: none">
+                                            <div class="col-lg-6 form-group">
                                                 @if(count($membership) > 0)
                                                 <label>Interested Packages : </label>
                                                     <select class="form-control kt-select2" id="kt_select2_3"
@@ -266,39 +265,37 @@
         <!-- end:: Content -->
     </div>
 @endsection
-<script type="text/javascript">
-    $(document).ready(function () {
-        var value = document.getElementById('transferStage').value;
-        if (value != "None") {
-            var div = document.getElementsByClassName('textField');
-            for (var i = 0; i < div.length; i++) {
-                div[i].style.display = "block";
-            }
-        } else {
-            var div = document.getElementsByClassName('textField');
-            for (var i = 0; i < div.length; i++) {
-                div[i].style.display = "none";
-            }
-        }
-    });
 
-    function changeDiv() {
-        var value = document.getElementById('transferStage').value;
-        if (value != "None") {
-            var div = document.getElementsByClassName('textField');
-            for (var i = 0; i < div.length; i++) {
-                div[i].style.display = "block";
-            }
-        } else {
-            var div = document.getElementsByClassName('textField');
-            for (var i = 0; i < div.length; i++) {
-                div[i].style.display = "none";
-            }
-        }
-    }
-</script>
 @section('custom-script')
     <script src="{{asset('js/select2.js')}}"></script>
     <script src="{{asset('js/ktavatar.js')}}"></script>
-
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var value = document.getElementById('transferStage').value;
+            if (value != "None") {
+                var div = document.getElementsByClassName('textField');
+                for (var i = 0; i < div.length; i++) {
+                    div[i].style.display = "block";
+                }
+            } else {
+                var div = document.getElementsByClassName('textField');
+                for (var i = 0; i < div.length; i++) {
+                    div[i].style.display = "none";
+                }
+            }
+        });
+        function changeDiv(value) {
+            if (value === "Call Scheduled" || value === "Appointment Scheduled" || value === "Presentation Scheduled" || value === "Contract Sent" || value === "Qualified To Buy" || value === "Closed Won" || value === "Closed Lost") {
+                var div = document.getElementsByClassName('textField');
+                for (var i = 0; i < div.length; i++) {
+                    div[i].style.display = "block";
+                }
+            } else {
+                var div = document.getElementsByClassName('textField');
+                for (var i = 0; i < div.length; i++) {
+                    div[i].style.display = "none";
+                }
+            }
+        }
+    </script>
 @endsection
