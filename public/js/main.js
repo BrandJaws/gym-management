@@ -11960,7 +11960,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".page-vue-good-table {\n  overflow: hidden;\n}\n.table input[type=text][data-v-d89f00e8], .table select[data-v-d89f00e8] {\n  float: right;\n  width: 20% !important;\n}\n.magnifying-glass[data-v-d89f00e8] {\n  border: 1px solid #fff !important;\n}", ""]);
+exports.push([module.i, ".page-vue-good-table {\n  overflow: hidden;\n}\n.table input[type=text][data-v-d89f00e8], .table select[data-v-d89f00e8] {\n  float: right;\n  width: 20% !important;\n}\n.magnifying-glass[data-v-d89f00e8] {\n  border: 1px solid #fff !important;\n}\n.table-bordered {\n  border: 1px solid #ddd !important;\n}\n.table-bordered td, .table-bordered th {\n  border: 1px solid #ddd !important;\n}", ""]);
 
 // exports
 
@@ -60837,7 +60837,7 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\wamp64\www\web-portal\resources\js\main.js */"./resources/js/main.js");
+module.exports = __webpack_require__(/*! C:\wamp64\www\gym\resources\js\main.js */"./resources/js/main.js");
 
 
 /***/ })

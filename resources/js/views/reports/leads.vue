@@ -166,5 +166,12 @@
     .magnifying-glass[data-v-d89f00e8] {
         border: 1px solid #fff !important;
     }
+
+    .table-bordered {
+        border: 1px solid #ddd  !important;
+    }
+    .table-bordered td, .table-bordered th {
+        border: 1px solid #ddd !important;
+    }
 </style>
 
