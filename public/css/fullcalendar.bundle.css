@@ -982,7 +982,7 @@ Lots taken from Flatly (MIT): https://bootswatch.com/4/flatly/bootstrap.css
 .fc-list-table tr:first-child td {
   border-top-width: 0; }
 
-/* day headings with the member */
+/* day headings with the list */
 .fc-list-heading {
   border-bottom-width: 1px; }
 
@@ -1001,7 +1001,7 @@ Lots taken from Flatly (MIT): https://bootswatch.com/4/flatly/bootstrap.css
 .fc-rtl .fc-list-heading-alt {
   float: left; }
 
-/* event member items */
+/* event list items */
 .fc-list-item.fc-has-url {
   cursor: pointer;
   /* whole row will be clickable */ }
