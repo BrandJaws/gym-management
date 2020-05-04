@@ -3,6 +3,55 @@
     <div class="kt-content  kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor" id="kt_content">
         <!-- begin:: Content -->
         <div class="kt-container  kt-container--fluid  kt-grid__item kt-grid__item--fluid">
+            <div class="kt-portlet">
+                <div class="kt-portlet__body  kt-portlet__body--fit">
+                    <div class="row row-no-padding row-col-separator-lg">
+                        <div class="col-md-12 col-lg-12 col-xl-12">
+                            <!--begin::Total Profit-->
+                            <div class="kt-widget24">
+                                <div class="kt-widget24__details">
+                                    <div class="kt-widget24__info">
+                                        <h4 class="kt-widget24__title">
+                                            Total {{ $breadcrumbs }}
+                                        </h4>
+                                        <span class="kt-widget24__desc">
+                                            Count
+                                        </span>
+                                    </div>
+                                    <span class="kt-widget24__stats kt-font-brand">
+                                        {{ $totalStage }}
+                                    </span>
+                                </div>
+                                <div class="progress progress--sm">
+                                    @if($total > 0)
+                                        <div class="progress-bar kt-bg-brand" role="progressbar"
+                                             style="width: {{ number_format($totalStage/$total * 100 , 0, '.', ',')  }}%;"
+                                             aria-valuenow="50" aria-valuemin="0"
+                                             aria-valuemax="100"></div>
+                                    @else
+                                        <div class="progress-bar kt-bg-brand" role="progressbar"
+                                             style="width:0%;"
+                                             aria-valuenow="50" aria-valuemin="0"
+                                             aria-valuemax="100"></div>
+                                    @endif
+                                </div>
+                                <div class="kt-widget24__action">
+                                    <span class="kt-widget24__change">
+                                    </span>
+                                    <span class="kt-widget24__number">
+                                        @if($total > 0)
+                                            {{ number_format($totalStage/$total * 100 , 2, '.', ',')  }}%
+                                        @else
+                                            <b>0</b>
+                                        @endif
+                                    </span>
+                                </div>
+                            </div>
+                            <!--end::Total Profit-->
+                        </div>
+                    </div>
+                </div>
+            </div>
             @include('_layouts.flash-message')
             <div class="row">
                 <div class="col-sm-12">
@@ -24,54 +73,6 @@
                             @endif
                         </div>
                         <div class="kt-portlet">
-                            <div class="kt-portlet__body  kt-portlet__body--fit">
-                                <div class="row row-no-padding row-col-separator-lg">
-                                    <div class="col-md-12 col-lg-12 col-xl-12">
-                                        <!--begin::Total Profit-->
-                                        <div class="kt-widget24">
-                                            <div class="kt-widget24__details">
-                                                <div class="kt-widget24__info">
-                                                    <h4 class="kt-widget24__title">
-                                                        Total {{ $breadcrumbs }}
-                                                    </h4>
-                                                    <span class="kt-widget24__desc">
-															Count
-                                                    </span>
-                                                </div>
-                                                <span class="kt-widget24__stats kt-font-brand">
-														{{ $totalStage }}
-													</span>
-                                            </div>
-                                            <div class="progress progress--sm">
-                                                @if($total > 0)
-                                                    <div class="progress-bar kt-bg-brand" role="progressbar"
-                                                         style="width: {{ number_format($totalStage/$total * 100 , 0, '.', ',')  }}%;"
-                                                         aria-valuenow="50" aria-valuemin="0"
-                                                         aria-valuemax="100"></div>
-                                                @else
-                                                    <div class="progress-bar kt-bg-brand" role="progressbar"
-                                                         style="width:0%;"
-                                                         aria-valuenow="50" aria-valuemin="0"
-                                                         aria-valuemax="100"></div>
-                                                @endif
-                                            </div>
-                                            <div class="kt-widget24__action">
-													<span class="kt-widget24__change">
-													</span>
-                                                <span class="kt-widget24__number">
-                                                        @if($total > 0)
-                                                        {{ number_format($totalStage/$total * 100 , 2, '.', ',')  }}
-                                                        %
-                                                    @else
-                                                        <b>0</b>
-                                                    @endif
-													</span>
-                                            </div>
-                                        </div>
-                                        <!--end::Total Profit-->
-                                    </div>
-                                </div>
-                            </div>
                             <div class="kt-portlet__body">
                             <!--begin::Section-->
                             <div class="kt-section">
@@ -109,7 +110,7 @@
                                             </div>
                                         </div>
                                         <br>
-                                        <div class="">
+                                        <div class="table-responsive">
                                             <table class="table table-striped table-bordered">
                                                 <thead>
                                                 <tr>
