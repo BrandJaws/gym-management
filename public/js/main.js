@@ -7012,8 +7012,438 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "header"
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/notification/notification.vue?vue&type=script&lang=js&":
+/*!*******************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/views/notification/notification.vue?vue&type=script&lang=js& ***!
+  \*******************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _components_Header__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../components/Header */ "./resources/js/components/Header.vue");
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: 'notification',
+  components: {
+    "top-bar": _components_Header__WEBPACK_IMPORTED_MODULE_0__["default"]
+  },
+  data: function data() {
+    return {
+      loading: true,
+      form: {
+        fromDate: '',
+        toDate: '',
+        status: '',
+        total: '',
+        value: 'Lead'
+      }
+    };
+  },
+  headers: {
+    "Content-Type": "multipart/form-data"
+  },
+  created: function created() {},
+  computed: {
+    leadList: function leadList() {}
+  },
+  methods: {
+    fetchLeads: function fetchLeads() {},
+    handleFilter: function handleFilter() {}
+  }
 });
 
 /***/ }),
@@ -43476,7 +43906,16 @@ var render = function() {
                 _vm._v(" "),
                 _c("span", {
                   staticClass: "kt-subheader__breadcrumbs-separator"
-                })
+                }),
+                _vm._v(" "),
+                _c(
+                  "router-link",
+                  {
+                    staticClass: "kt-subheader__breadcrumbs-link",
+                    attrs: { to: { name: "notification" } }
+                  },
+                  [_vm._v(" notification")]
+                )
               ],
               1
             )
@@ -43539,6 +43978,1475 @@ var staticRenderFns = [
     return _c("div", { staticClass: "member" }, [
       _c("h1", [_vm._v("This is an member page")])
     ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/notification/notification.vue?vue&type=template&id=686b3820&":
+/*!***********************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/views/notification/notification.vue?vue&type=template&id=686b3820& ***!
+  \***********************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _vm._m(0)
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass:
+          "dropdown-menu dropdown-menu-fit dropdown-menu-right dropdown-menu-anim dropdown-menu-top-unround dropdown-menu-lg",
+        staticStyle: {
+          position: "absolute",
+          transform: "translate3d(-246px, 64px, 0px)",
+          top: "0px",
+          left: "0px",
+          "will-change": "transform",
+          padding: "0!important"
+        },
+        attrs: { "x-placement": "bottom-end" }
+      },
+      [
+        _c("form", [
+          _c(
+            "div",
+            {
+              staticClass:
+                "kt-head kt-head--skin-dark kt-head--fit-x kt-head--fit-b",
+              staticStyle: {
+                "background-image": "url('../../assets/img/bg-1.jpg')"
+              }
+            },
+            [
+              _c("h3", { staticClass: "kt-head__title" }, [
+                _vm._v(
+                  "\n                User Notifications\n                 \n                "
+                ),
+                _c(
+                  "span",
+                  {
+                    staticClass: "btn btn-success btn-sm btn-bold btn-font-md"
+                  },
+                  [_vm._v("23 new")]
+                )
+              ]),
+              _vm._v(" "),
+              _c(
+                "ul",
+                {
+                  staticClass:
+                    "nav nav-tabs nav-tabs-line nav-tabs-bold nav-tabs-line-3x nav-tabs-line-success kt-notification-item-padding-x",
+                  attrs: { role: "tablist" }
+                },
+                [
+                  _c("li", { staticClass: "nav-item" }, [
+                    _c(
+                      "a",
+                      {
+                        staticClass: "nav-link active show",
+                        attrs: {
+                          "data-toggle": "tab",
+                          href: "#topbar_notifications_notifications",
+                          role: "tab",
+                          "aria-selected": "true"
+                        }
+                      },
+                      [_vm._v("Alerts")]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("li", { staticClass: "nav-item" }, [
+                    _c(
+                      "a",
+                      {
+                        staticClass: "nav-link",
+                        attrs: {
+                          "data-toggle": "tab",
+                          href: "#topbar_notifications_events",
+                          role: "tab",
+                          "aria-selected": "false"
+                        }
+                      },
+                      [_vm._v("Events")]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("li", { staticClass: "nav-item" }, [
+                    _c(
+                      "a",
+                      {
+                        staticClass: "nav-link",
+                        attrs: {
+                          "data-toggle": "tab",
+                          href: "#topbar_notifications_logs",
+                          role: "tab",
+                          "aria-selected": "false"
+                        }
+                      },
+                      [_vm._v("Logs")]
+                    )
+                  ])
+                ]
+              )
+            ]
+          ),
+          _vm._v(" "),
+          _c("div", { staticClass: "tab-content" }, [
+            _c(
+              "div",
+              {
+                staticClass: "tab-pane active show",
+                attrs: {
+                  id: "topbar_notifications_notifications",
+                  role: "tabpanel"
+                }
+              },
+              [
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "kt-notification kt-margin-t-10 kt-margin-b-10 kt-scroll ps ps--active-y",
+                    staticStyle: { height: "300px", overflow: "hidden" },
+                    attrs: {
+                      "data-scroll": "true",
+                      "data-height": "300",
+                      "data-mobile-height": "200"
+                    }
+                  },
+                  [
+                    _c(
+                      "a",
+                      {
+                        staticClass: "kt-notification__item",
+                        attrs: { href: "#" }
+                      },
+                      [
+                        _c(
+                          "div",
+                          { staticClass: "kt-notification__item-icon" },
+                          [
+                            _c("i", {
+                              staticClass:
+                                "flaticon2-line-chart kt-font-success"
+                            })
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          { staticClass: "kt-notification__item-details" },
+                          [
+                            _c(
+                              "div",
+                              { staticClass: "kt-notification__item-title" },
+                              [
+                                _vm._v(
+                                  "\n                                New order has been received\n                            "
+                                )
+                              ]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "div",
+                              { staticClass: "kt-notification__item-time" },
+                              [
+                                _vm._v(
+                                  "\n                                2 hrs ago\n                            "
+                                )
+                              ]
+                            )
+                          ]
+                        )
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "a",
+                      {
+                        staticClass: "kt-notification__item",
+                        attrs: { href: "#" }
+                      },
+                      [
+                        _c(
+                          "div",
+                          { staticClass: "kt-notification__item-icon" },
+                          [
+                            _c("i", {
+                              staticClass: "flaticon2-box-1 kt-font-brand"
+                            })
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          { staticClass: "kt-notification__item-details" },
+                          [
+                            _c(
+                              "div",
+                              { staticClass: "kt-notification__item-title" },
+                              [
+                                _vm._v(
+                                  "\n                                New customer is registered\n                            "
+                                )
+                              ]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "div",
+                              { staticClass: "kt-notification__item-time" },
+                              [
+                                _vm._v(
+                                  "\n                                3 hrs ago\n                            "
+                                )
+                              ]
+                            )
+                          ]
+                        )
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "a",
+                      {
+                        staticClass: "kt-notification__item",
+                        attrs: { href: "#" }
+                      },
+                      [
+                        _c(
+                          "div",
+                          { staticClass: "kt-notification__item-icon" },
+                          [
+                            _c("i", {
+                              staticClass: "flaticon2-chart2 kt-font-danger"
+                            })
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          { staticClass: "kt-notification__item-details" },
+                          [
+                            _c(
+                              "div",
+                              { staticClass: "kt-notification__item-title" },
+                              [
+                                _vm._v(
+                                  "\n                                Application has been approved\n                            "
+                                )
+                              ]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "div",
+                              { staticClass: "kt-notification__item-time" },
+                              [
+                                _vm._v(
+                                  "\n                                3 hrs ago\n                            "
+                                )
+                              ]
+                            )
+                          ]
+                        )
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "a",
+                      {
+                        staticClass: "kt-notification__item",
+                        attrs: { href: "#" }
+                      },
+                      [
+                        _c(
+                          "div",
+                          { staticClass: "kt-notification__item-icon" },
+                          [
+                            _c("i", {
+                              staticClass:
+                                "flaticon2-image-file kt-font-warning"
+                            })
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          { staticClass: "kt-notification__item-details" },
+                          [
+                            _c(
+                              "div",
+                              { staticClass: "kt-notification__item-title" },
+                              [
+                                _vm._v(
+                                  "\n                                New file has been uploaded\n                            "
+                                )
+                              ]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "div",
+                              { staticClass: "kt-notification__item-time" },
+                              [
+                                _vm._v(
+                                  "\n                                5 hrs ago\n                            "
+                                )
+                              ]
+                            )
+                          ]
+                        )
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "a",
+                      {
+                        staticClass: "kt-notification__item",
+                        attrs: { href: "#" }
+                      },
+                      [
+                        _c(
+                          "div",
+                          { staticClass: "kt-notification__item-icon" },
+                          [
+                            _c("i", {
+                              staticClass: "flaticon2-drop kt-font-info"
+                            })
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          { staticClass: "kt-notification__item-details" },
+                          [
+                            _c(
+                              "div",
+                              { staticClass: "kt-notification__item-title" },
+                              [
+                                _vm._v(
+                                  "\n                                New user feedback received\n                            "
+                                )
+                              ]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "div",
+                              { staticClass: "kt-notification__item-time" },
+                              [
+                                _vm._v(
+                                  "\n                                8 hrs ago\n                            "
+                                )
+                              ]
+                            )
+                          ]
+                        )
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "a",
+                      {
+                        staticClass: "kt-notification__item",
+                        attrs: { href: "#" }
+                      },
+                      [
+                        _c(
+                          "div",
+                          { staticClass: "kt-notification__item-icon" },
+                          [
+                            _c("i", {
+                              staticClass:
+                                "flaticon2-pie-chart-2 kt-font-success"
+                            })
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          { staticClass: "kt-notification__item-details" },
+                          [
+                            _c(
+                              "div",
+                              { staticClass: "kt-notification__item-title" },
+                              [
+                                _vm._v(
+                                  "\n                                System reboot has been successfully completed\n                            "
+                                )
+                              ]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "div",
+                              { staticClass: "kt-notification__item-time" },
+                              [
+                                _vm._v(
+                                  "\n                                12 hrs ago\n                            "
+                                )
+                              ]
+                            )
+                          ]
+                        )
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "a",
+                      {
+                        staticClass: "kt-notification__item",
+                        attrs: { href: "#" }
+                      },
+                      [
+                        _c(
+                          "div",
+                          { staticClass: "kt-notification__item-icon" },
+                          [
+                            _c("i", {
+                              staticClass: "flaticon2-favourite kt-font-danger"
+                            })
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          { staticClass: "kt-notification__item-details" },
+                          [
+                            _c(
+                              "div",
+                              { staticClass: "kt-notification__item-title" },
+                              [
+                                _vm._v(
+                                  "\n                                New order has been placed\n                            "
+                                )
+                              ]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "div",
+                              { staticClass: "kt-notification__item-time" },
+                              [
+                                _vm._v(
+                                  "\n                                15 hrs ago\n                            "
+                                )
+                              ]
+                            )
+                          ]
+                        )
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "a",
+                      {
+                        staticClass:
+                          "kt-notification__item kt-notification__item--read",
+                        attrs: { href: "#" }
+                      },
+                      [
+                        _c(
+                          "div",
+                          { staticClass: "kt-notification__item-icon" },
+                          [
+                            _c("i", {
+                              staticClass: "flaticon2-safe kt-font-primary"
+                            })
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          { staticClass: "kt-notification__item-details" },
+                          [
+                            _c(
+                              "div",
+                              { staticClass: "kt-notification__item-title" },
+                              [
+                                _vm._v(
+                                  "\n                                Company meeting canceled\n                            "
+                                )
+                              ]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "div",
+                              { staticClass: "kt-notification__item-time" },
+                              [
+                                _vm._v(
+                                  "\n                                19 hrs ago\n                            "
+                                )
+                              ]
+                            )
+                          ]
+                        )
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "a",
+                      {
+                        staticClass: "kt-notification__item",
+                        attrs: { href: "#" }
+                      },
+                      [
+                        _c(
+                          "div",
+                          { staticClass: "kt-notification__item-icon" },
+                          [
+                            _c("i", {
+                              staticClass: "flaticon2-psd kt-font-success"
+                            })
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          { staticClass: "kt-notification__item-details" },
+                          [
+                            _c(
+                              "div",
+                              { staticClass: "kt-notification__item-title" },
+                              [
+                                _vm._v(
+                                  "\n                                New report has been received\n                            "
+                                )
+                              ]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "div",
+                              { staticClass: "kt-notification__item-time" },
+                              [
+                                _vm._v(
+                                  "\n                                23 hrs ago\n                            "
+                                )
+                              ]
+                            )
+                          ]
+                        )
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "a",
+                      {
+                        staticClass: "kt-notification__item",
+                        attrs: { href: "#" }
+                      },
+                      [
+                        _c(
+                          "div",
+                          { staticClass: "kt-notification__item-icon" },
+                          [
+                            _c("i", {
+                              staticClass: "flaticon-download-1 kt-font-danger"
+                            })
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          { staticClass: "kt-notification__item-details" },
+                          [
+                            _c(
+                              "div",
+                              { staticClass: "kt-notification__item-title" },
+                              [
+                                _vm._v(
+                                  "\n                                Finance report has been generated\n                            "
+                                )
+                              ]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "div",
+                              { staticClass: "kt-notification__item-time" },
+                              [
+                                _vm._v(
+                                  "\n                                25 hrs ago\n                            "
+                                )
+                              ]
+                            )
+                          ]
+                        )
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "a",
+                      {
+                        staticClass: "kt-notification__item",
+                        attrs: { href: "#" }
+                      },
+                      [
+                        _c(
+                          "div",
+                          { staticClass: "kt-notification__item-icon" },
+                          [
+                            _c("i", {
+                              staticClass: "flaticon-security kt-font-warning"
+                            })
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          { staticClass: "kt-notification__item-details" },
+                          [
+                            _c(
+                              "div",
+                              { staticClass: "kt-notification__item-title" },
+                              [
+                                _vm._v(
+                                  "\n                                New customer comment recieved\n                            "
+                                )
+                              ]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "div",
+                              { staticClass: "kt-notification__item-time" },
+                              [
+                                _vm._v(
+                                  "\n                                2 days ago\n                            "
+                                )
+                              ]
+                            )
+                          ]
+                        )
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "a",
+                      {
+                        staticClass: "kt-notification__item",
+                        attrs: { href: "#" }
+                      },
+                      [
+                        _c(
+                          "div",
+                          { staticClass: "kt-notification__item-icon" },
+                          [
+                            _c("i", {
+                              staticClass: "flaticon2-pie-chart kt-font-success"
+                            })
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          { staticClass: "kt-notification__item-details" },
+                          [
+                            _c(
+                              "div",
+                              { staticClass: "kt-notification__item-title" },
+                              [
+                                _vm._v(
+                                  "\n                                New customer is registered\n                            "
+                                )
+                              ]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "div",
+                              { staticClass: "kt-notification__item-time" },
+                              [
+                                _vm._v(
+                                  "\n                                3 days ago\n                            "
+                                )
+                              ]
+                            )
+                          ]
+                        )
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      {
+                        staticClass: "ps__rail-x",
+                        staticStyle: { left: "0px", bottom: "0px" }
+                      },
+                      [
+                        _c("div", {
+                          staticClass: "ps__thumb-x",
+                          staticStyle: { left: "0px", width: "0px" },
+                          attrs: { tabindex: "0" }
+                        })
+                      ]
+                    ),
+                    _c(
+                      "div",
+                      {
+                        staticClass: "ps__rail-y",
+                        staticStyle: {
+                          top: "0px",
+                          right: "0px",
+                          height: "300px"
+                        }
+                      },
+                      [
+                        _c("div", {
+                          staticClass: "ps__thumb-y",
+                          staticStyle: { top: "0px", height: "108px" },
+                          attrs: { tabindex: "0" }
+                        })
+                      ]
+                    )
+                  ]
+                )
+              ]
+            ),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass: "tab-pane",
+                attrs: { id: "topbar_notifications_events", role: "tabpanel" }
+              },
+              [
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "kt-notification kt-margin-t-10 kt-margin-b-10 kt-scroll ps",
+                    staticStyle: { height: "300px", overflow: "hidden" },
+                    attrs: {
+                      "data-scroll": "true",
+                      "data-height": "300",
+                      "data-mobile-height": "200"
+                    }
+                  },
+                  [
+                    _c(
+                      "a",
+                      {
+                        staticClass: "kt-notification__item",
+                        attrs: { href: "#" }
+                      },
+                      [
+                        _c(
+                          "div",
+                          { staticClass: "kt-notification__item-icon" },
+                          [
+                            _c("i", {
+                              staticClass: "flaticon2-psd kt-font-success"
+                            })
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          { staticClass: "kt-notification__item-details" },
+                          [
+                            _c(
+                              "div",
+                              { staticClass: "kt-notification__item-title" },
+                              [
+                                _vm._v(
+                                  "\n                                New report has been received\n                            "
+                                )
+                              ]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "div",
+                              { staticClass: "kt-notification__item-time" },
+                              [
+                                _vm._v(
+                                  "\n                                23 hrs ago\n                            "
+                                )
+                              ]
+                            )
+                          ]
+                        )
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "a",
+                      {
+                        staticClass: "kt-notification__item",
+                        attrs: { href: "#" }
+                      },
+                      [
+                        _c(
+                          "div",
+                          { staticClass: "kt-notification__item-icon" },
+                          [
+                            _c("i", {
+                              staticClass: "flaticon-download-1 kt-font-danger"
+                            })
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          { staticClass: "kt-notification__item-details" },
+                          [
+                            _c(
+                              "div",
+                              { staticClass: "kt-notification__item-title" },
+                              [
+                                _vm._v(
+                                  "\n                                Finance report has been generated\n                            "
+                                )
+                              ]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "div",
+                              { staticClass: "kt-notification__item-time" },
+                              [
+                                _vm._v(
+                                  "\n                                25 hrs ago\n                            "
+                                )
+                              ]
+                            )
+                          ]
+                        )
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "a",
+                      {
+                        staticClass: "kt-notification__item",
+                        attrs: { href: "#" }
+                      },
+                      [
+                        _c(
+                          "div",
+                          { staticClass: "kt-notification__item-icon" },
+                          [
+                            _c("i", {
+                              staticClass:
+                                "flaticon2-line-chart kt-font-success"
+                            })
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          { staticClass: "kt-notification__item-details" },
+                          [
+                            _c(
+                              "div",
+                              { staticClass: "kt-notification__item-title" },
+                              [
+                                _vm._v(
+                                  "\n                                New order has been received\n                            "
+                                )
+                              ]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "div",
+                              { staticClass: "kt-notification__item-time" },
+                              [
+                                _vm._v(
+                                  "\n                                2 hrs ago\n                            "
+                                )
+                              ]
+                            )
+                          ]
+                        )
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "a",
+                      {
+                        staticClass: "kt-notification__item",
+                        attrs: { href: "#" }
+                      },
+                      [
+                        _c(
+                          "div",
+                          { staticClass: "kt-notification__item-icon" },
+                          [
+                            _c("i", {
+                              staticClass: "flaticon2-box-1 kt-font-brand"
+                            })
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          { staticClass: "kt-notification__item-details" },
+                          [
+                            _c(
+                              "div",
+                              { staticClass: "kt-notification__item-title" },
+                              [
+                                _vm._v(
+                                  "\n                                New customer is registered\n                            "
+                                )
+                              ]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "div",
+                              { staticClass: "kt-notification__item-time" },
+                              [
+                                _vm._v(
+                                  "\n                                3 hrs ago\n                            "
+                                )
+                              ]
+                            )
+                          ]
+                        )
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "a",
+                      {
+                        staticClass: "kt-notification__item",
+                        attrs: { href: "#" }
+                      },
+                      [
+                        _c(
+                          "div",
+                          { staticClass: "kt-notification__item-icon" },
+                          [
+                            _c("i", {
+                              staticClass: "flaticon2-chart2 kt-font-danger"
+                            })
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          { staticClass: "kt-notification__item-details" },
+                          [
+                            _c(
+                              "div",
+                              { staticClass: "kt-notification__item-title" },
+                              [
+                                _vm._v(
+                                  "\n                                Application has been approved\n                            "
+                                )
+                              ]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "div",
+                              { staticClass: "kt-notification__item-time" },
+                              [
+                                _vm._v(
+                                  "\n                                3 hrs ago\n                            "
+                                )
+                              ]
+                            )
+                          ]
+                        )
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "a",
+                      {
+                        staticClass: "kt-notification__item",
+                        attrs: { href: "#" }
+                      },
+                      [
+                        _c(
+                          "div",
+                          { staticClass: "kt-notification__item-icon" },
+                          [
+                            _c("i", {
+                              staticClass:
+                                "flaticon2-image-file kt-font-warning"
+                            })
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          { staticClass: "kt-notification__item-details" },
+                          [
+                            _c(
+                              "div",
+                              { staticClass: "kt-notification__item-title" },
+                              [
+                                _vm._v(
+                                  "\n                                New file has been uploaded\n                            "
+                                )
+                              ]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "div",
+                              { staticClass: "kt-notification__item-time" },
+                              [
+                                _vm._v(
+                                  "\n                                5 hrs ago\n                            "
+                                )
+                              ]
+                            )
+                          ]
+                        )
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "a",
+                      {
+                        staticClass: "kt-notification__item",
+                        attrs: { href: "#" }
+                      },
+                      [
+                        _c(
+                          "div",
+                          { staticClass: "kt-notification__item-icon" },
+                          [
+                            _c("i", {
+                              staticClass: "flaticon2-drop kt-font-info"
+                            })
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          { staticClass: "kt-notification__item-details" },
+                          [
+                            _c(
+                              "div",
+                              { staticClass: "kt-notification__item-title" },
+                              [
+                                _vm._v(
+                                  "\n                                New user feedback received\n                            "
+                                )
+                              ]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "div",
+                              { staticClass: "kt-notification__item-time" },
+                              [
+                                _vm._v(
+                                  "\n                                8 hrs ago\n                            "
+                                )
+                              ]
+                            )
+                          ]
+                        )
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "a",
+                      {
+                        staticClass: "kt-notification__item",
+                        attrs: { href: "#" }
+                      },
+                      [
+                        _c(
+                          "div",
+                          { staticClass: "kt-notification__item-icon" },
+                          [
+                            _c("i", {
+                              staticClass:
+                                "flaticon2-pie-chart-2 kt-font-success"
+                            })
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          { staticClass: "kt-notification__item-details" },
+                          [
+                            _c(
+                              "div",
+                              { staticClass: "kt-notification__item-title" },
+                              [
+                                _vm._v(
+                                  "\n                                System reboot has been successfully completed\n                            "
+                                )
+                              ]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "div",
+                              { staticClass: "kt-notification__item-time" },
+                              [
+                                _vm._v(
+                                  "\n                                12 hrs ago\n                            "
+                                )
+                              ]
+                            )
+                          ]
+                        )
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "a",
+                      {
+                        staticClass: "kt-notification__item",
+                        attrs: { href: "#" }
+                      },
+                      [
+                        _c(
+                          "div",
+                          { staticClass: "kt-notification__item-icon" },
+                          [
+                            _c("i", {
+                              staticClass: "flaticon2-favourite kt-font-brand"
+                            })
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          { staticClass: "kt-notification__item-details" },
+                          [
+                            _c(
+                              "div",
+                              { staticClass: "kt-notification__item-title" },
+                              [
+                                _vm._v(
+                                  "\n                                New order has been placed\n                            "
+                                )
+                              ]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "div",
+                              { staticClass: "kt-notification__item-time" },
+                              [
+                                _vm._v(
+                                  "\n                                15 hrs ago\n                            "
+                                )
+                              ]
+                            )
+                          ]
+                        )
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "a",
+                      {
+                        staticClass:
+                          "kt-notification__item kt-notification__item--read",
+                        attrs: { href: "#" }
+                      },
+                      [
+                        _c(
+                          "div",
+                          { staticClass: "kt-notification__item-icon" },
+                          [
+                            _c("i", {
+                              staticClass: "flaticon2-safe kt-font-primary"
+                            })
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          { staticClass: "kt-notification__item-details" },
+                          [
+                            _c(
+                              "div",
+                              { staticClass: "kt-notification__item-title" },
+                              [
+                                _vm._v(
+                                  "\n                                Company meeting canceled\n                            "
+                                )
+                              ]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "div",
+                              { staticClass: "kt-notification__item-time" },
+                              [
+                                _vm._v(
+                                  "\n                                19 hrs ago\n                            "
+                                )
+                              ]
+                            )
+                          ]
+                        )
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "a",
+                      {
+                        staticClass: "kt-notification__item",
+                        attrs: { href: "#" }
+                      },
+                      [
+                        _c(
+                          "div",
+                          { staticClass: "kt-notification__item-icon" },
+                          [
+                            _c("i", {
+                              staticClass: "flaticon2-psd kt-font-success"
+                            })
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          { staticClass: "kt-notification__item-details" },
+                          [
+                            _c(
+                              "div",
+                              { staticClass: "kt-notification__item-title" },
+                              [
+                                _vm._v(
+                                  "\n                                New report has been received\n                            "
+                                )
+                              ]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "div",
+                              { staticClass: "kt-notification__item-time" },
+                              [
+                                _vm._v(
+                                  "\n                                23 hrs ago\n                            "
+                                )
+                              ]
+                            )
+                          ]
+                        )
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "a",
+                      {
+                        staticClass: "kt-notification__item",
+                        attrs: { href: "#" }
+                      },
+                      [
+                        _c(
+                          "div",
+                          { staticClass: "kt-notification__item-icon" },
+                          [
+                            _c("i", {
+                              staticClass: "flaticon-download-1 kt-font-danger"
+                            })
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          { staticClass: "kt-notification__item-details" },
+                          [
+                            _c(
+                              "div",
+                              { staticClass: "kt-notification__item-title" },
+                              [
+                                _vm._v(
+                                  "\n                                Finance report has been generated\n                            "
+                                )
+                              ]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "div",
+                              { staticClass: "kt-notification__item-time" },
+                              [
+                                _vm._v(
+                                  "\n                                25 hrs ago\n                            "
+                                )
+                              ]
+                            )
+                          ]
+                        )
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "a",
+                      {
+                        staticClass: "kt-notification__item",
+                        attrs: { href: "#" }
+                      },
+                      [
+                        _c(
+                          "div",
+                          { staticClass: "kt-notification__item-icon" },
+                          [
+                            _c("i", {
+                              staticClass: "flaticon-security kt-font-warning"
+                            })
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          { staticClass: "kt-notification__item-details" },
+                          [
+                            _c(
+                              "div",
+                              { staticClass: "kt-notification__item-title" },
+                              [
+                                _vm._v(
+                                  "\n                                New customer comment recieved\n                            "
+                                )
+                              ]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "div",
+                              { staticClass: "kt-notification__item-time" },
+                              [
+                                _vm._v(
+                                  "\n                                2 days ago\n                            "
+                                )
+                              ]
+                            )
+                          ]
+                        )
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "a",
+                      {
+                        staticClass: "kt-notification__item",
+                        attrs: { href: "#" }
+                      },
+                      [
+                        _c(
+                          "div",
+                          { staticClass: "kt-notification__item-icon" },
+                          [
+                            _c("i", {
+                              staticClass: "flaticon2-pie-chart kt-font-success"
+                            })
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          { staticClass: "kt-notification__item-details" },
+                          [
+                            _c(
+                              "div",
+                              { staticClass: "kt-notification__item-title" },
+                              [
+                                _vm._v(
+                                  "\n                                New customer is registered\n                            "
+                                )
+                              ]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "div",
+                              { staticClass: "kt-notification__item-time" },
+                              [
+                                _vm._v(
+                                  "\n                                3 days ago\n                            "
+                                )
+                              ]
+                            )
+                          ]
+                        )
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      {
+                        staticClass: "ps__rail-x",
+                        staticStyle: { left: "0px", bottom: "0px" }
+                      },
+                      [
+                        _c("div", {
+                          staticClass: "ps__thumb-x",
+                          staticStyle: { left: "0px", width: "0px" },
+                          attrs: { tabindex: "0" }
+                        })
+                      ]
+                    ),
+                    _c(
+                      "div",
+                      {
+                        staticClass: "ps__rail-y",
+                        staticStyle: { top: "0px", right: "0px" }
+                      },
+                      [
+                        _c("div", {
+                          staticClass: "ps__thumb-y",
+                          staticStyle: { top: "0px", height: "0px" },
+                          attrs: { tabindex: "0" }
+                        })
+                      ]
+                    )
+                  ]
+                )
+              ]
+            ),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass: "tab-pane",
+                attrs: { id: "topbar_notifications_logs", role: "tabpanel" }
+              },
+              [
+                _c(
+                  "div",
+                  {
+                    staticClass: "kt-grid kt-grid--ver",
+                    staticStyle: { "min-height": "200px" }
+                  },
+                  [
+                    _c(
+                      "div",
+                      {
+                        staticClass:
+                          "kt-grid kt-grid--hor kt-grid__item kt-grid__item--fluid kt-grid__item--middle"
+                      },
+                      [
+                        _c(
+                          "div",
+                          {
+                            staticClass:
+                              "kt-grid__item kt-grid__item--middle kt-align-center"
+                          },
+                          [
+                            _vm._v(
+                              "\n                            All caught up!\n                            "
+                            ),
+                            _c("br"),
+                            _vm._v(
+                              "No new notifications.\n                        "
+                            )
+                          ]
+                        )
+                      ]
+                    )
+                  ]
+                )
+              ]
+            )
+          ])
+        ])
+      ]
+    )
   }
 ]
 render._withStripped = true
@@ -60348,7 +62256,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm.js");
 /* harmony import */ var _members__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./members */ "./resources/js/router/members.js");
 /* harmony import */ var _reports__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./reports */ "./resources/js/router/reports.js");
-/* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../store */ "./resources/js/store.js");
+/* harmony import */ var _notification__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./notification */ "./resources/js/router/notification.js");
+/* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../store */ "./resources/js/store.js");
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
 
 function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -60366,11 +62275,12 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 
 
 
+
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]);
 var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
   mode: 'history',
   base: process.env.USER_IMG_PATH,
-  routes: [].concat(_toConsumableArray(_members__WEBPACK_IMPORTED_MODULE_2__["default"].routes), _toConsumableArray(_reports__WEBPACK_IMPORTED_MODULE_3__["default"].routes))
+  routes: [].concat(_toConsumableArray(_members__WEBPACK_IMPORTED_MODULE_2__["default"].routes), _toConsumableArray(_reports__WEBPACK_IMPORTED_MODULE_3__["default"].routes), _toConsumableArray(_notification__WEBPACK_IMPORTED_MODULE_4__["default"].routes))
 });
 /* harmony default export */ __webpack_exports__["default"] = (router);
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../../node_modules/process/browser.js */ "./node_modules/process/browser.js")))
@@ -60393,6 +62303,27 @@ __webpack_require__.r(__webpack_exports__);
     path: '/gym/member/archive/leads',
     name: 'member',
     component: _views_member_member_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
+  }]
+});
+
+/***/ }),
+
+/***/ "./resources/js/router/notification.js":
+/*!*********************************************!*\
+  !*** ./resources/js/router/notification.js ***!
+  \*********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _views_notification_notification_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../views/notification/notification.vue */ "./resources/js/views/notification/notification.vue");
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  routes: [{
+    path: '/gym/dashboard',
+    name: 'notification',
+    component: _views_notification_notification_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
   }]
 });
 
@@ -60478,6 +62409,25 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/services/notificationService.js":
+/*!******************************************************!*\
+  !*** ./resources/js/services/notificationService.js ***!
+  \******************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _services_Api__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../services/Api */ "./resources/js/services/Api.js");
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  fetchNotification: function fetchNotification(params) {
+    return Object(_services_Api__WEBPACK_IMPORTED_MODULE_0__["default"])().post('/gym/member/reports', params);
+  }
+});
+
+/***/ }),
+
 /***/ "./resources/js/services/reportsService.js":
 /*!*************************************************!*\
   !*** ./resources/js/services/reportsService.js ***!
@@ -60511,6 +62461,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
 /* harmony import */ var _stores_member__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./stores/member */ "./resources/js/stores/member.js");
 /* harmony import */ var _stores_reports__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./stores/reports */ "./resources/js/stores/reports.js");
+/* harmony import */ var _stores_notification__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./stores/notification */ "./resources/js/stores/notification.js");
+
 
 
 
@@ -60520,7 +62472,8 @@ var debug = "development" !== "production";
 /* harmony default export */ __webpack_exports__["default"] = (new vuex__WEBPACK_IMPORTED_MODULE_1__["default"].Store({
   modules: {
     member: _stores_member__WEBPACK_IMPORTED_MODULE_2__["default"],
-    reports: _stores_reports__WEBPACK_IMPORTED_MODULE_3__["default"]
+    reports: _stores_reports__WEBPACK_IMPORTED_MODULE_3__["default"],
+    notification: _stores_notification__WEBPACK_IMPORTED_MODULE_4__["default"]
   },
   state: {
     loading: false
@@ -60553,6 +62506,52 @@ __webpack_require__.r(__webpack_exports__);
   mutations: {},
   actions: {},
   getters: {}
+});
+
+/***/ }),
+
+/***/ "./resources/js/stores/notification.js":
+/*!*********************************************!*\
+  !*** ./resources/js/stores/notification.js ***!
+  \*********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _services_notificationService__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../services/notificationService */ "./resources/js/services/notificationService.js");
+/* harmony import */ var any_promise__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! any-promise */ "./node_modules/any-promise/index.js");
+/* harmony import */ var any_promise__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(any_promise__WEBPACK_IMPORTED_MODULE_1__);
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  strict: true,
+  state: {
+    leadList: []
+  },
+  mutations: {
+    setNotificationList: function setNotificationList(state, notificationList) {
+      state.notificationList = notificationList.response;
+    }
+  },
+  actions: {
+    fetchNotification: function fetchNotification(_ref, params) {
+      var commit = _ref.commit;
+      return new Promise(function (resolve, reject) {
+        _services_notificationService__WEBPACK_IMPORTED_MODULE_0__["default"].fetchNotification(params).then(function (response) {
+          commit('setNotificationList', response.data);
+          resolve();
+        })["catch"](function (error) {
+          reject(error);
+        });
+      });
+    }
+  },
+  getters: {
+    notificationList: function notificationList(state) {
+      return state.notificationList;
+    }
+  }
 });
 
 /***/ }),
@@ -60651,6 +62650,75 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_member_vue_vue_type_template_id_17972dc0___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_member_vue_vue_type_template_id_17972dc0___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/views/notification/notification.vue":
+/*!**********************************************************!*\
+  !*** ./resources/js/views/notification/notification.vue ***!
+  \**********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _notification_vue_vue_type_template_id_686b3820___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./notification.vue?vue&type=template&id=686b3820& */ "./resources/js/views/notification/notification.vue?vue&type=template&id=686b3820&");
+/* harmony import */ var _notification_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./notification.vue?vue&type=script&lang=js& */ "./resources/js/views/notification/notification.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _notification_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _notification_vue_vue_type_template_id_686b3820___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _notification_vue_vue_type_template_id_686b3820___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/views/notification/notification.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/views/notification/notification.vue?vue&type=script&lang=js&":
+/*!***********************************************************************************!*\
+  !*** ./resources/js/views/notification/notification.vue?vue&type=script&lang=js& ***!
+  \***********************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_notification_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./notification.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/notification/notification.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_notification_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/views/notification/notification.vue?vue&type=template&id=686b3820&":
+/*!*****************************************************************************************!*\
+  !*** ./resources/js/views/notification/notification.vue?vue&type=template&id=686b3820& ***!
+  \*****************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_notification_vue_vue_type_template_id_686b3820___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./notification.vue?vue&type=template&id=686b3820& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/notification/notification.vue?vue&type=template&id=686b3820&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_notification_vue_vue_type_template_id_686b3820___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_notification_vue_vue_type_template_id_686b3820___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

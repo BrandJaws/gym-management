@@ -2,6 +2,7 @@ import Vue from "vue";
 import Vuex from "vuex";
 import Member from "./stores/member";
 import Reports from "./stores/reports";
+import Notification from "./stores/notification";
 
 Vue.use(Vuex);
 
@@ -9,7 +10,8 @@ const debug = process.env.NODE_ENV !== "production";
 export default new Vuex.Store({
     modules: {
         member: Member,
-        reports: Reports
+        reports: Reports,
+        notification: Notification
     },
     state: {
         loading: false

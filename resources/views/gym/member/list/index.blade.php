@@ -15,12 +15,12 @@
                                             Total Active Members
                                         </h4>
                                         <span class="kt-widget24__desc">
-															Count
-                                                    </span>
+                                            Count
+                                        </span>
                                     </div>
                                     <span class="kt-widget24__stats kt-font-brand">
-														{{ $active }}
-													</span>
+                                        {{ $active }}
+                                    </span>
                                 </div>
                                 <div class="progress progress--sm">
                                     @if($total > 0)

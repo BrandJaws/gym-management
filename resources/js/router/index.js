@@ -3,6 +3,7 @@ import Router from 'vue-router';
 
 import members from './members';
 import reports from './reports';
+import notification from './notification';
 
 import store from '../store';
 
@@ -14,11 +15,10 @@ const router = new Router({
     base: process.env.USER_IMG_PATH,
 	routes: [
         ...members.routes,
-        ...reports.routes
+        ...reports.routes,
+        ...notification.routes
 	]
-})
-
-
+});
 
 
 export default router;

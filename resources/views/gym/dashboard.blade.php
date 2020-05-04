@@ -1337,8 +1337,8 @@
         };
     </script>
 
-    <script src="{{asset('js/plugins.bundle.js')}}"></script>
-    <script src="{{asset('js/script.bundle.js')}}"></script>
+{{--    <script src="{{asset('js/plugins.bundle.js')}}"></script>--}}
+{{--    <script src="{{asset('js/script.bundle.js')}}"></script>--}}
     <script src="{{asset('js/basic.js')}}"></script>
     <script src="{{asset('js/fullcalendar.bundle.js')}}"></script>
 @endsection

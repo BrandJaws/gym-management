@@ -15,6 +15,7 @@
                       <router-link :to="{ name: 'memberReport' }" class="kt-subheader__breadcrumbs-link"> Member Report</router-link>
                       <span class="kt-subheader__breadcrumbs-separator"></span>
                       <!-- <span class="kt-subheader__breadcrumbs-link kt-subheader__breadcrumbs-link--active">Active link</span> -->
+                      <router-link :to="{ name: 'notification' }" class="kt-subheader__breadcrumbs-link"> notification</router-link>
                   </div>
               </div>
               <div class="kt-subheader__toolbar">
