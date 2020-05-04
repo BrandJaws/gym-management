@@ -30,7 +30,8 @@
                                 </div>
                                 <div class="progress progress--sm">
                                     @if($total > 0)
-                                        <div class="progress-bar kt-bg-brand" role="progressbar"
+                                        <div class="progress-bar progress-bar-striped progress-bar-animated"
+                                             role="progressbar"
                                              style="width: {{ number_format($totalLead/$total * 100 , 0, '.', ',')  }}%;"
                                              aria-valuenow="50" aria-valuemin="0"
                                              aria-valuemax="100"></div>
@@ -71,10 +72,12 @@
                                 </div>
                                 <div class="progress progress--sm">
                                     @if($total > 0)
-                                        <div class="progress-bar kt-bg-warning" role="progressbar"
-                                             style="width: {{ number_format($hotRating/$total * 100 , 0, '.', ',')  }}%"
-                                             aria-valuenow="50" aria-valuemin="0"
-                                             aria-valuemax="100"></div>
+                                        <div
+                                            class="progress-bar kt-bg-warning progress-bar-striped progress-bar-animated"
+                                            role="progressbar"
+                                            style="width: {{ number_format($hotRating/$total * 100 , 0, '.', ',')  }}%"
+                                            aria-valuenow="50" aria-valuemin="0"
+                                            aria-valuemax="100"></div>
                                     @else
                                         <div class="progress-bar kt-bg-brand" role="progressbar"
                                              style="width:0%;"
@@ -113,10 +116,12 @@
                                 </div>
                                 <div class="progress progress--sm">
                                     @if($total > 0)
-                                        <div class="progress-bar kt-bg-success" role="progressbar"
-                                             style="width: {{ number_format($totalMember/$total * 100 , 0, '.', ',')  }}%;"
-                                             aria-valuenow="50" aria-valuemin="0"
-                                             aria-valuemax="100"></div>
+                                        <div
+                                            class="progress-bar kt-bg-success progress-bar-striped progress-bar-animated"
+                                            role="progressbar"
+                                            style="width: {{ number_format($totalMember/$total * 100 , 0, '.', ',')  }}%;"
+                                            aria-valuenow="50" aria-valuemin="0"
+                                            aria-valuemax="100"></div>
                                     @else
                                         <div class="progress-bar kt-bg-brand" role="progressbar"
                                              style="width:0%;"
@@ -372,8 +377,7 @@
                                                 </div>
                                                 <!--Begin::Timeline 3 -->
                                                 <div class="kt-timeline-v2">
-                                                    <div
-                                                        class="kt-timeline-v2__items  kt-padding-top-25 kt-padding-bottom-30">
+                                                    <div class="kt-timeline-v2__items  kt-padding-top-25 kt-padding-bottom-30">
                                                         @foreach($dailySchaduale as $key => $activity)
                                                             <div class="kt-timeline-v2__item">
                                                                 <span class="kt-timeline-v2__item-time">
@@ -394,6 +398,7 @@
                                                         @endforeach
                                                     </div>
                                                 </div>
+
                                             </div>
                                         </div>
                                         <div class="col-lg-6">

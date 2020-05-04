@@ -24,7 +24,7 @@
                                 </div>
                                 <div class="progress progress--sm">
                                     @if($total > 0)
-                                        <div class="progress-bar kt-bg-brand" role="progressbar"
+                                        <div class="progress-bar kt-bg-brand progress-bar-striped progress-bar-animated" role="progressbar"
                                              style="width: {{ number_format($active/$total * 100 , 0, '.', ',')  }}%;"
                                              aria-valuenow="50" aria-valuemin="0"
                                              aria-valuemax="100"></div>
@@ -68,7 +68,7 @@
                                 </div>
                                 <div class="progress progress--sm">
                                     @if($total > 0)
-                                        <div class="progress-bar kt-bg-warning" role="progressbar"
+                                        <div class="progress-bar kt-bg-warning progress-bar-striped progress-bar-animated" role="progressbar"
                                              style="width: {{ number_format($parent/$total * 100 , 0, '.', ',')  }}%"
                                              aria-valuenow="50" aria-valuemin="0"
                                              aria-valuemax="100"></div>
@@ -112,7 +112,7 @@
                                 </div>
                                 <div class="progress progress--sm">
                                     @if($total > 0)
-                                        <div class="progress-bar kt-bg-success" role="progressbar"
+                                        <div class="progress-bar kt-bg-success progress-bar-striped progress-bar-animated" role="progressbar"
                                              style="width: {{ number_format($affiliate/$total * 100 , 0, '.', ',')  }}%;"
                                              aria-valuenow="50" aria-valuemin="0"
                                              aria-valuemax="100"></div>
@@ -164,7 +164,7 @@
                                 </div>
                                 <div class="progress progress--sm">
                                     @if($total > 0)
-                                        <div class="progress-bar kt-bg-warning" role="progressbar"
+                                        <div class="progress-bar kt-bg-warning progress-bar-striped progress-bar-animated" role="progressbar"
                                              style="width: {{ number_format($inActive/$total * 100 , 0, '.', ',')  }}%"
                                              aria-valuenow="50" aria-valuemin="0"
                                              aria-valuemax="100"></div>
@@ -208,7 +208,7 @@
                                 </div>
                                 <div class="progress progress--sm">
                                     @if($total > 0)
-                                        <div class="progress-bar kt-bg-success" role="progressbar"
+                                        <div class="progress-bar kt-bg-success progress-bar-striped progress-bar-animated" role="progressbar"
                                              style="width: {{ number_format($expired/$total * 100 , 0, '.', ',')  }}%;"
                                              aria-valuenow="50" aria-valuemin="0"
                                              aria-valuemax="100"></div>
@@ -253,7 +253,7 @@
                                 </div>
                                 <div class="progress progress--sm">
                                     @if($total > 0)
-                                        <div class="progress-bar kt-bg-brand" role="progressbar"
+                                        <div class="progress-bar kt-bg-brand progress-bar-striped progress-bar-animated" role="progressbar"
                                              style="width: {{ number_format($notJoined/$total * 100 , 0, '.', ',')  }}%;"
                                              aria-valuenow="50" aria-valuemin="0"
                                              aria-valuemax="100"></div>

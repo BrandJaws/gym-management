@@ -24,7 +24,8 @@
                                 </div>
                                 <div class="progress progress--sm">
                                     @if($total > 0)
-                                        <div class="progress-bar kt-bg-brand" role="progressbar"
+                                        <div class="progress-bar kt-bg-brand progress-bar-striped progress-bar-animated"
+                                             role="progressbar"
                                              style="width: {{ number_format($totalStage/$total * 100 , 0, '.', ',')  }}%;"
                                              aria-valuenow="50" aria-valuemin="0"
                                              aria-valuemax="100"></div>
@@ -74,18 +75,18 @@
                         </div>
                         <div class="kt-portlet">
                             <div class="kt-portlet__body">
-                            <!--begin::Section-->
-                            <div class="kt-section">
-                                <div class="kt-section__content">
-                                    <div class="">
-                                        <div class="row">
-                                            <div class="col-md-9">
-                                            </div>
-                                            <div class="col-md-3">
-                                                <div class="kt-input-icon kt-input-icon--right">
-                                                    <input type="text" class="form-control"
-                                                           placeholder="Search" name="serach" id="serach">
-                                                    <span class="kt-input-icon__icon kt-input-icon__icon--right">
+                                <!--begin::Section-->
+                                <div class="kt-section">
+                                    <div class="kt-section__content">
+                                        <div class="">
+                                            <div class="row">
+                                                <div class="col-md-9">
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div class="kt-input-icon kt-input-icon--right">
+                                                        <input type="text" class="form-control"
+                                                               placeholder="Search" name="serach" id="serach">
+                                                        <span class="kt-input-icon__icon kt-input-icon__icon--right">
                                                         <span>
                                                             <svg xmlns="http://www.w3.org/2000/svg"
                                                                  xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -106,156 +107,158 @@
                                                             </svg>
                                                         </span>
                                                     </span>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <br>
-                                        <div class="table-responsive">
-                                            <table class="table table-striped table-bordered">
-                                                <thead>
-                                                <tr>
-                                                    <th>No.</th>
-                                                    <th class="sorting" data-sorting_type="asc"
-                                                        data-column_name="EmployeeName" style="cursor: pointer">Employee
-                                                        <span id="post_title_icon"></span></th>
-                                                    <th class="sorting" data-sorting_type="asc"
-                                                        data-column_name="Member" style="cursor: pointer">Member
-                                                        <span id="post_title_icon"></span></th>
-                                                    <th class="sorting" data-sorting_type="asc"
-                                                        data-column_name="stage" style="cursor: pointer">Stage <span
-                                                            id="id_icon"></span></th>
-                                                    <th class="sorting" data-sorting_type="asc"
-                                                        data-column_name="scheduleDate" style="cursor: pointer">Date
-                                                        <span
-                                                            id="post_title_icon"></span></th>
-                                                    <th class="sorting" data-sorting_type="asc"
-                                                        data-column_name="transferStage" style="cursor: pointer">
-                                                        Transfer Status
-                                                        <span id="post_title_icon"></span></th>
-                                                    <th class="sorting" data-sorting_type="asc"
-                                                        data-column_name="transfer_id" style="cursor: pointer">Transfer
-                                                        Employee <span
-                                                            id="post_title_icon"></span></th>
-                                                    <th class="sorting" data-sorting_type="asc"
-                                                        data-column_name="reScheduleDate" style="cursor: pointer">
-                                                        Re-Schedule
-                                                        Date <span
-                                                            id="post_title_icon"></span></th>
-                                                    <th class="sorting" data-sorting_type="asc"
-                                                        data-column_name=" " style="cursor: pointer">Actions <span
-                                                            id="post_title_icon"></span></th>
-                                                </tr>
-                                                </thead>
-                                                <tbody>
-                                                @include('gym.member.guest.pagination_data')
-                                                </tbody>
-                                            </table>
-                                            <input type="hidden" name="hidden_page" id="hidden_page" value="1"/>
-                                            <input type="hidden" name="hidden_column_name" id="hidden_column_name"
-                                                   value="id"/>
-                                            <input type="hidden" name="hidden_sort_type" id="hidden_sort_type"
-                                                   value="asc"/>
+                                            <br>
+                                            <div class="table-responsive">
+                                                <table class="table table-striped table-bordered">
+                                                    <thead>
+                                                    <tr>
+                                                        <th>No.</th>
+                                                        <th class="sorting" data-sorting_type="asc"
+                                                            data-column_name="EmployeeName" style="cursor: pointer">
+                                                            Employee
+                                                            <span id="post_title_icon"></span></th>
+                                                        <th class="sorting" data-sorting_type="asc"
+                                                            data-column_name="Member" style="cursor: pointer">Member
+                                                            <span id="post_title_icon"></span></th>
+                                                        <th class="sorting" data-sorting_type="asc"
+                                                            data-column_name="stage" style="cursor: pointer">Stage <span
+                                                                id="id_icon"></span></th>
+                                                        <th class="sorting" data-sorting_type="asc"
+                                                            data-column_name="scheduleDate" style="cursor: pointer">Date
+                                                            <span
+                                                                id="post_title_icon"></span></th>
+                                                        <th class="sorting" data-sorting_type="asc"
+                                                            data-column_name="transferStage" style="cursor: pointer">
+                                                            Transfer Status
+                                                            <span id="post_title_icon"></span></th>
+                                                        <th class="sorting" data-sorting_type="asc"
+                                                            data-column_name="transfer_id" style="cursor: pointer">
+                                                            Transfer
+                                                            Employee <span
+                                                                id="post_title_icon"></span></th>
+                                                        <th class="sorting" data-sorting_type="asc"
+                                                            data-column_name="reScheduleDate" style="cursor: pointer">
+                                                            Re-Schedule
+                                                            Date <span
+                                                                id="post_title_icon"></span></th>
+                                                        <th class="sorting" data-sorting_type="asc"
+                                                            data-column_name=" " style="cursor: pointer">Actions <span
+                                                                id="post_title_icon"></span></th>
+                                                    </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                    @include('gym.member.guest.pagination_data')
+                                                    </tbody>
+                                                </table>
+                                                <input type="hidden" name="hidden_page" id="hidden_page" value="1"/>
+                                                <input type="hidden" name="hidden_column_name" id="hidden_column_name"
+                                                       value="id"/>
+                                                <input type="hidden" name="hidden_sort_type" id="hidden_sort_type"
+                                                       value="asc"/>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
+                                <!--end::Section-->
                             </div>
-                            <!--end::Section-->
-                        </div>
 
-                        <!--end::Form-->
+                            <!--end::Form-->
+                        </div>
+                        <!--end::Portlet-->
                     </div>
-                    <!--end::Portlet-->
                 </div>
             </div>
+            <!-- end:: Content -->
         </div>
-        <!-- end:: Content -->
-    </div>
-    <script>
-        $(document).ready(function () {
-            function clear_icon() {
-                $('#id_icon').html('');
-                $('#post_title_icon').html('');
-            }
-
-            @if($breadcrumbs == "Preview Calls")
-            function fetch_data(page, sort_type, sort_by, query) {
-                $.ajax({
-                    url: "/gym/member/guest/previewCalls?page=" + page + "&sortby=" + sort_by + "&sorttype=" + sort_type + "&query=" + query,
-                    success: function (data) {
-                        $('tbody').html('');
-                        $('tbody').html(data);
-                    }
-                })
-            }
-
-            @elseif($breadcrumbs == "Transfer Calls")
-            function fetch_data(page, sort_type, sort_by, query) {
-                $.ajax({
-                    url: "/gym/member/guest/transferCalls?page=" + page + "&sortby=" + sort_by + "&sorttype=" + sort_type + "&query=" + query,
-                    success: function (data) {
-                        $('tbody').html('');
-                        $('tbody').html(data);
-                    }
-                })
-            }
-
-            @elseif($breadcrumbs == "Preivew Appointments")
-            function fetch_data(page, sort_type, sort_by, query) {
-                $.ajax({
-                    url: "/gym/member/guest/preivewAppointments?page=" + page + "&sortby=" + sort_by + "&sorttype=" + sort_type + "&query=" + query,
-                    success: function (data) {
-                        $('tbody').html('');
-                        $('tbody').html(data);
-                    }
-                })
-            }
-
-            @endif
-
-            $(document).on('keyup', '#serach', function () {
-                var query = $('#serach').val();
-                var column_name = $('#hidden_column_name').val();
-                var sort_type = $('#hidden_sort_type').val();
-                var page = $('#hidden_page').val();
-                fetch_data(page, sort_type, column_name, query);
-            });
-            $(document).on('click', '.sorting', function () {
-                var column_name = $(this).data('column_name');
-                var order_type = $(this).data('sorting_type');
-                var reverse_order = '';
-                if (order_type == 'asc') {
-                    $(this).data('sorting_type', 'desc');
-                    reverse_order = 'desc';
-                    clear_icon();
-                    $('#' + column_name + '_icon').html('<span class="glyphicon glyphicon-triangle-bottom"></span>');
+        <script>
+            $(document).ready(function () {
+                function clear_icon() {
+                    $('#id_icon').html('');
+                    $('#post_title_icon').html('');
                 }
-                if (order_type == 'desc') {
-                    $(this).data('sorting_type', 'asc');
-                    reverse_order = 'asc';
-                    clear_icon
-                    $('#' + column_name + '_icon').html('<span class="glyphicon glyphicon-triangle-top"></span>');
+
+                @if($breadcrumbs == "Preview Calls")
+                function fetch_data(page, sort_type, sort_by, query) {
+                    $.ajax({
+                        url: "/gym/member/guest/previewCalls?page=" + page + "&sortby=" + sort_by + "&sorttype=" + sort_type + "&query=" + query,
+                        success: function (data) {
+                            $('tbody').html('');
+                            $('tbody').html(data);
+                        }
+                    })
                 }
-                $('#hidden_column_name').val(column_name);
-                $('#hidden_sort_type').val(reverse_order);
-                var page = $('#hidden_page').val();
-                var query = $('#serach').val();
-                fetch_data(page, reverse_order, column_name, query);
+
+                @elseif($breadcrumbs == "Transfer Calls")
+                function fetch_data(page, sort_type, sort_by, query) {
+                    $.ajax({
+                        url: "/gym/member/guest/transferCalls?page=" + page + "&sortby=" + sort_by + "&sorttype=" + sort_type + "&query=" + query,
+                        success: function (data) {
+                            $('tbody').html('');
+                            $('tbody').html(data);
+                        }
+                    })
+                }
+
+                @elseif($breadcrumbs == "Preivew Appointments")
+                function fetch_data(page, sort_type, sort_by, query) {
+                    $.ajax({
+                        url: "/gym/member/guest/preivewAppointments?page=" + page + "&sortby=" + sort_by + "&sorttype=" + sort_type + "&query=" + query,
+                        success: function (data) {
+                            $('tbody').html('');
+                            $('tbody').html(data);
+                        }
+                    })
+                }
+
+                @endif
+
+                $(document).on('keyup', '#serach', function () {
+                    var query = $('#serach').val();
+                    var column_name = $('#hidden_column_name').val();
+                    var sort_type = $('#hidden_sort_type').val();
+                    var page = $('#hidden_page').val();
+                    fetch_data(page, sort_type, column_name, query);
+                });
+                $(document).on('click', '.sorting', function () {
+                    var column_name = $(this).data('column_name');
+                    var order_type = $(this).data('sorting_type');
+                    var reverse_order = '';
+                    if (order_type == 'asc') {
+                        $(this).data('sorting_type', 'desc');
+                        reverse_order = 'desc';
+                        clear_icon();
+                        $('#' + column_name + '_icon').html('<span class="glyphicon glyphicon-triangle-bottom"></span>');
+                    }
+                    if (order_type == 'desc') {
+                        $(this).data('sorting_type', 'asc');
+                        reverse_order = 'asc';
+                        clear_icon
+                        $('#' + column_name + '_icon').html('<span class="glyphicon glyphicon-triangle-top"></span>');
+                    }
+                    $('#hidden_column_name').val(column_name);
+                    $('#hidden_sort_type').val(reverse_order);
+                    var page = $('#hidden_page').val();
+                    var query = $('#serach').val();
+                    fetch_data(page, reverse_order, column_name, query);
+                });
+                $(document).on('click', '.pagination a', function (event) {
+                    event.preventDefault();
+                    var page = $(this).attr('href').split('page=')[1];
+                    $('#hidden_page').val(page);
+                    var column_name = $('#hidden_column_name').val();
+                    var sort_type = $('#hidden_sort_type').val();
+
+                    var query = $('#serach').val();
+
+                    $('li').removeClass('active');
+                    $(this).parent().addClass('active');
+                    fetch_data(page, sort_type, column_name, query);
+                });
             });
-            $(document).on('click', '.pagination a', function (event) {
-                event.preventDefault();
-                var page = $(this).attr('href').split('page=')[1];
-                $('#hidden_page').val(page);
-                var column_name = $('#hidden_column_name').val();
-                var sort_type = $('#hidden_sort_type').val();
 
-                var query = $('#serach').val();
-
-                $('li').removeClass('active');
-                $(this).parent().addClass('active');
-                fetch_data(page, sort_type, column_name, query);
-            });
-        });
-
-    </script>
+        </script>
 
 @endsection
