@@ -306,8 +306,9 @@
                                                 <th>Customer</th>
                                                 <th>Stage</th>
                                                 <th>Date</th>
-                                                <th>Transfer Stage</th>
-                                                <th>Transfered</th>
+                                                <th>Status</th>
+                                                <th>Re-Schedule</th>
+                                                <th>Employee</th>
                                                 <th>Date</th>
                                                 <th>Status</th>
                                             </tr>
@@ -323,17 +324,18 @@
                                                             --- @endif</td>
                                                     <td>{{ $row->stage }}</td>
                                                     <td>{{ $row->scheduleDate }}</td>
+                                                    <td>{{ $row->status }}</td>
                                                     <td>{{ $row->transferStage }}</td>
                                                     <td>@if($row->transferEmployee != NULL) {{ $row->transferEmployee->name }} @else
                                                             --- @endif</td>
                                                     <td>@if($row->reScheduleDate != NULL) {{ $row->reScheduleDate }} @else
                                                             --- @endif</td>
-                                                    <td>{{ $row->status }}</td>
+                                                    <td>{{ $row->reStatus }}</td>
                                                     <?php  $i++; ?>
                                                 </tr>
                                             @endforeach
                                             <tr>
-                                                <td colspan="9" align="center">
+                                                <td colspan="10" align="center">
                                                     {{ $assignTasksEmployee->links() }}
                                                 </td>
                                             </tr>
