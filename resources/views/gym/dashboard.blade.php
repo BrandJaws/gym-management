@@ -2086,6 +2086,9 @@
     </div>
     <!-- end:: Content -->
 @endsection
+@section('custom-script')
+    <script src="{{asset('js/dashboard.js')}}"></script>
+@endsection
 
 
 
