@@ -145,7 +145,8 @@
             <div class="row">
                 <div class="col-xl-6 col-lg-6">
                     <!--begin:: Widgets/Profit Share-->
-                    <div class="kt-portlet kt-iconbox kt-iconbox--success kt-iconbox--animate-slow memberDashboardBigBox">
+                    <div
+                        class="kt-portlet kt-iconbox kt-iconbox--success kt-iconbox--animate-slow memberDashboardBigBox">
                         <div class="kt-portlet__body">
                             <div class="kt-iconbox__body">
                                 <div class="kt-iconbox__icon">
@@ -222,7 +223,8 @@
                     <!--end:: Widgets/Profit Share-->
                 </div>
                 <div class="col-xl-6 col-lg-6">
-                    <div class="kt-portlet kt-iconbox kt-iconbox--warning kt-iconbox--animate-fast memberDashboardBigBox">
+                    <div
+                        class="kt-portlet kt-iconbox kt-iconbox--warning kt-iconbox--animate-fast memberDashboardBigBox">
                         <div class="kt-portlet__body">
                             <div class="kt-iconbox__body">
                                 <div class="kt-iconbox__icon">
@@ -293,7 +295,8 @@
                             All Tasks
                         </h6>
                     </div>
-                    <div class="kt-portlet kt-iconbox kt-iconbox--brand kt-iconbox--animate-slower memberDashboardSmallBox">
+                    <div
+                        class="kt-portlet kt-iconbox kt-iconbox--brand kt-iconbox--animate-slower memberDashboardSmallBox">
                         <div class="kt-portlet__body">
                             <div class="kt-iconbox__body">
                                 <div class="kt-iconbox__desc" style="width: 100%;">
@@ -354,7 +357,8 @@
                             Today Activities
                         </h6>
                     </div>
-                    <div class="kt-portlet kt-iconbox kt-iconbox--danger kt-iconbox--animate-faster memberDashboardSmallBox">
+                    <div
+                        class="kt-portlet kt-iconbox kt-iconbox--danger kt-iconbox--animate-faster memberDashboardSmallBox">
                         <div class="kt-portlet__body">
                             <div class="kt-iconbox__body">
                                 <div class="kt-iconbox__desc">
@@ -370,15 +374,20 @@
                                                 <div class="kt-timeline-v2">
                                                     <div
                                                         class="kt-timeline-v2__items  kt-padding-top-25 kt-padding-bottom-30">
-                                                        @foreach($dailySchaduale as $activity)
+                                                        @foreach($dailySchaduale as $key => $activity)
                                                             <div class="kt-timeline-v2__item">
                                                                 <span class="kt-timeline-v2__item-time">
                                                                         {{ \Carbon\Carbon::parse($activity->scheduleDate)->format('H:i')}}
                                                                 </span>
                                                                 <div class="kt-timeline-v2__item-cricle">
-                                                                    <i class="fa fa-genderless kt-font-danger"></i>
+                                                                    @if($key %2 == 0)
+                                                                        <i class="fa fa-genderless kt-font-success"></i>
+                                                                    @else
+                                                                        <i class="fa fa-genderless kt-font-primary"></i>
+                                                                    @endif
                                                                 </div>
-                                                                <div class="kt-timeline-v2__item-text  kt-padding-top-5">
+                                                                <div
+                                                                    class="kt-timeline-v2__item-text  kt-padding-top-5">
                                                                     <a href="{{url('/gym/member/guests', $activity->id)}}">  {{ $activity->stage }}</a>
                                                                 </div>
                                                             </div>
@@ -399,12 +408,16 @@
                                                 <div class="kt-timeline-v2">
                                                     <div
                                                         class="kt-timeline-v2__items  kt-padding-top-25 kt-padding-bottom-30">
-                                                        @foreach($dailyReSchaduale as $activity)
+                                                        @foreach($dailyReSchaduale as $key => $activity)
                                                             <div class="kt-timeline-v2__item">
                                                                 <span
                                                                     class="kt-timeline-v2__item-time">{{ \Carbon\Carbon::parse($activity->reScheduleDate)->format('H:i')}}</span>
                                                                 <div class="kt-timeline-v2__item-cricle">
-                                                                    <i class="fa fa-genderless kt-font-danger"></i>
+                                                                    @if($key %2 == 0)
+                                                                        <i class="fa fa-genderless kt-font-success"></i>
+                                                                    @else
+                                                                        <i class="fa fa-genderless kt-font-primary"></i>
+                                                                    @endif
                                                                 </div>
                                                                 <div
                                                                     class="kt-timeline-v2__item-text  kt-padding-top-5">
