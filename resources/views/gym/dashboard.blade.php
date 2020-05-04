@@ -4,204 +4,140 @@
     <div class="kt-container  kt-container--fluid  kt-grid__item kt-grid__item--fluid">
         <!--Begin::Dashboard 1-->
         <!--Begin::Row-->
-        <div class="row">
-            <div class="col-xl-3 col-lg-3">
-                <div class="kt-portlet kt-portlet--height-fluid">
-                    <div class="kt-portlet__head kt-portlet__head--noborder">
-                        <div class="kt-portlet__head-label">
-                            <h3 class="kt-portlet__head-title">
-                            </h3>
-                        </div>
-                        <div class="kt-portlet__head-toolbar">
-                            <a href="#" class="btn btn-clean btn-icon" data-toggle="dropdown">
-                                <i class="flaticon-more-1"></i>
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-right">
-                                <ul class="kt-nav">
-                                    <li class="kt-nav__item">
-                                        <a href="#" class="kt-nav__link">
-                                            <i class="kt-nav__link-icon flaticon2-line-chart"></i>
-                                            <span class="kt-nav__link-text">Reports</span>
-                                        </a>
-                                    </li>
-                                </ul>
+        <div class="kt-portlet">
+            <div class="kt-portlet__body  kt-portlet__body--fit">
+                <div class="row row-no-padding row-col-separator-lg">
+                    <div class="col-md-12 col-lg-6 col-xl-3">
+
+                        <!--begin::Total Profit-->
+                        <div class="kt-widget24">
+                            <div class="kt-widget24__details">
+                                <div class="kt-widget24__info">
+                                    <h4 class="kt-widget24__title">
+                                        Total Memberships
+                                    </h4>
+                                    <span class="kt-widget24__desc">
+                                        All Customs Value
+                                    </span>
+                                </div>
+                                <span class="kt-widget24__stats kt-font-brand">
+                                    {{$memberships}}
+                                </span>
+                            </div>
+                            <div class="progress progress--sm">
+                                <div class="progress-bar kt-bg-brand progress-bar-striped progress-bar-animated"
+                                     role="progressbar" style="width: 100%;" aria-valuenow="100" aria-valuemin="0"
+                                     aria-valuemax="100"></div>
+                            </div>
+                            <div class="kt-widget24__action">
+                                <span class="kt-widget24__change">
+                                    Change
+                                </span>
+                                <span class="kt-widget24__number">
+                                    -
+                                </span>
                             </div>
                         </div>
+                        <!--end::Total Profit-->
                     </div>
-                    <div class="kt-portlet__body kt-portlet__body--fit-y">
-                        <!--begin::Widget -->
-                        <div class="kt-widget kt-widget--user-profile-4">
-                            <div class="kt-widget__head">
-                                <div class="kt-widget__media">
-                                    <img class="kt-widget__img kt-hidden-" src="{{asset('assets/media/gym/gym-marketing.jpeg')}}" alt="image" style="height: 100%;">
+                    <div class="col-md-12 col-lg-6 col-xl-3">
+                        <!--begin::New Feedbacks-->
+                        <div class="kt-widget24">
+                            <div class="kt-widget24__details">
+                                <div class="kt-widget24__info">
+                                    <h4 class="kt-widget24__title">
+                                        Total Employees
+                                    </h4>
+                                    <span class="kt-widget24__desc">
+                                        Customer Review
+                                    </span>
                                 </div>
-                                <div class="kt-widget__content">
-                                    <div class="kt-widget__section">
-                                        <a href="#" class="kt-widget__username">
-                                            Total Memberships
-                                        </a>
-                                        <div class="kt-widget__button">
-                                            <h2>{{$memberships}}</h2>
-                                        </div>
-                                        <div class="kt-widget__button">
-                                            <span class="btn btn-label-warning btn-sm">Active</span>
-                                        </div>
-                                    </div>
+                                <span class="kt-widget24__stats kt-font-warning">
+                                    {{$employees}}
+                                </span>
+                            </div>
+                            <div class="progress progress--sm">
+                                <div class="progress-bar kt-bg-warning progress-bar-striped progress-bar-animated"
+                                     role="progressbar" style="width: 100%;" aria-valuenow="100" aria-valuemin="0"
+                                     aria-valuemax="100"></div>
+                            </div>
+                            <div class="kt-widget24__action">
+                                <span class="kt-widget24__change">
+                                    Change
+                                </span>
+                                <span class="kt-widget24__number">
+                                   -
+                                </span>
+                            </div>
+                        </div>
+                        <!--end::New Feedbacks-->
+                    </div>
+                    <div class="col-md-12 col-lg-6 col-xl-3">
+
+                        <!--begin::New Orders-->
+                        <div class="kt-widget24">
+                            <div class="kt-widget24__details">
+                                <div class="kt-widget24__info">
+                                    <h4 class="kt-widget24__title">
+                                        Total Members
+                                    </h4>
+                                    <span class="kt-widget24__desc">
+                                        Customer Review
+                                    </span>
                                 </div>
+                                <span class="kt-widget24__stats kt-font-danger">
+                                    {{$members}}
+                                </span>
+                            </div>
+                            <div class="progress progress--sm">
+                                <div class="progress-bar kt-bg-danger progress-bar-striped progress-bar-animated"
+                                     role="progressbar" style="width: 100%;" aria-valuenow="100" aria-valuemin="0"
+                                     aria-valuemax="100"></div>
+                            </div>
+                            <div class="kt-widget24__action">
+                                <span class="kt-widget24__change">
+                                    Change
+                                </span>
+                                <span class="kt-widget24__number">
+                                    -
+                                </span>
                             </div>
                         </div>
 
-                        <!--end::Widget -->
+                        <!--end::New Orders-->
                     </div>
-                </div>
-            </div>
-            <div class="col-xl-3 col-lg-3">
-                <div class="kt-portlet kt-portlet--height-fluid">
-                    <div class="kt-portlet__head kt-portlet__head--noborder">
-                        <div class="kt-portlet__head-label">
-                            <h3 class="kt-portlet__head-title">
-                            </h3>
-                        </div>
-                        <div class="kt-portlet__head-toolbar">
-                            <a href="#" class="btn btn-clean btn-icon" data-toggle="dropdown">
-                                <i class="flaticon-more-1"></i>
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-right">
-                                <ul class="kt-nav">
-                                    <li class="kt-nav__item">
-                                        <a href="#" class="kt-nav__link">
-                                            <i class="kt-nav__link-icon flaticon2-line-chart"></i>
-                                            <span class="kt-nav__link-text">Reports</span>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="kt-portlet__body kt-portlet__body--fit-y">
-                        <!--begin::Widget -->
-                        <div class="kt-widget kt-widget--user-profile-4">
-                            <div class="kt-widget__head">
-                                <div class="kt-widget__media">
-                                    <img class="kt-widget__img kt-hidden-" src="{{asset('assets/media/gym/Gym-employees.jpg')}}" alt="image" style="height: 100%;">
-                                </div>
-                                <div class="kt-widget__content">
-                                    <div class="kt-widget__section">
-                                        <a href="#" class="kt-widget__username">
-                                            Total Employees
-                                        </a>
-                                        <div class="kt-widget__button">
-                                            <h2>{{$employees}}</h2>
-                                        </div>
-                                        <div class="kt-widget__button">
-                                            <span class="btn btn-label-warning btn-sm">Active</span>
-                                        </div>
-                                        <br>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                    <div class="col-md-12 col-lg-6 col-xl-3">
 
-                        <!--end::Widget -->
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-3 col-lg-3">
-                <div class="kt-portlet kt-portlet--height-fluid">
-                    <div class="kt-portlet__head kt-portlet__head--noborder">
-                        <div class="kt-portlet__head-label">
-                            <h3 class="kt-portlet__head-title">
-                            </h3>
-                        </div>
-                        <div class="kt-portlet__head-toolbar">
-                            <a href="#" class="btn btn-clean btn-icon" data-toggle="dropdown">
-                                <i class="flaticon-more-1"></i>
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-right">
-                                <ul class="kt-nav">
-                                    <li class="kt-nav__item">
-                                        <a href="#" class="kt-nav__link">
-                                            <i class="kt-nav__link-icon flaticon2-line-chart"></i>
-                                            <span class="kt-nav__link-text">Reports</span>
-                                        </a>
-                                    </li>
-                                </ul>
+                        <!--begin::New Users-->
+                        <div class="kt-widget24">
+                            <div class="kt-widget24__details">
+                                <div class="kt-widget24__info">
+                                    <h4 class="kt-widget24__title">
+                                        Total Trainers
+                                    </h4>
+                                    <span class="kt-widget24__desc">
+                                        Customer Review
+                                    </span>
+                                </div>
+                                <span class="kt-widget24__stats kt-font-success">
+                                    {{$trainers}}
+                                </span>
+                            </div>
+                            <div class="progress progress--sm">
+                                <div class="progress-bar kt-bg-success progress-bar-striped progress-bar-animated"
+                                     role="progressbar" style="width: 100%;" aria-valuenow="100" aria-valuemin="0"
+                                     aria-valuemax="100"></div>
+                            </div>
+                            <div class="kt-widget24__action">
+                                <span class="kt-widget24__change">
+                                    Change
+                                </span>
+                                <span class="kt-widget24__number">
+                                   -
+                                </span>
                             </div>
                         </div>
-                    </div>
-                    <div class="kt-portlet__body kt-portlet__body--fit-y">
-                        <!--begin::Widget -->
-                        <div class="kt-widget kt-widget--user-profile-4">
-                            <div class="kt-widget__head">
-                                <div class="kt-widget__media">
-                                    <img class="kt-widget__img kt-hidden-" src="{{asset('assets/media/gym/gym-members.jpg')}}" alt="image" style="height: 100%;">
-                                </div>
-                                <div class="kt-widget__content">
-                                    <div class="kt-widget__section">
-                                        <a href="#" class="kt-widget__username">
-                                            Total Members
-                                        </a>
-                                        <div class="kt-widget__button">
-                                            <h2>{{$members}}</h2>
-                                        </div>
-                                        <div class="kt-widget__button">
-                                            <span class="btn btn-label-warning btn-sm">Active</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!--end::Widget -->
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-3 col-lg-3">
-                <div class="kt-portlet kt-portlet--height-fluid">
-                    <div class="kt-portlet__head kt-portlet__head--noborder">
-                        <div class="kt-portlet__head-label">
-                            <h3 class="kt-portlet__head-title">
-                            </h3>
-                        </div>
-                        <div class="kt-portlet__head-toolbar">
-                            <a href="#" class="btn btn-clean btn-icon" data-toggle="dropdown">
-                                <i class="flaticon-more-1"></i>
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-right">
-                                <ul class="kt-nav">
-                                    <li class="kt-nav__item">
-                                        <a href="#" class="kt-nav__link">
-                                            <i class="kt-nav__link-icon flaticon2-line-chart"></i>
-                                            <span class="kt-nav__link-text">Reports</span>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="kt-portlet__body kt-portlet__body--fit-y">
-                        <!--begin::Widget -->
-                        <div class="kt-widget kt-widget--user-profile-4">
-                            <div class="kt-widget__head">
-                                <div class="kt-widget__media">
-                                    <img class="kt-widget__img kt-hidden-" src="{{asset('assets/media/gym/gym-trainers.jpg')}}" alt="image" style="height: 100%;">
-                                </div>
-                                <div class="kt-widget__content">
-                                    <div class="kt-widget__section">
-                                        <a href="#" class="kt-widget__username">
-                                            Total Trainers
-                                        </a>
-                                        <div class="kt-widget__button">
-                                            <h2>{{$trainers}}</h2>
-                                        </div>
-                                        <div class="kt-widget__button">
-                                            <span class="btn btn-label-warning btn-sm">Active</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!--end::Widget -->
+                        <!--end::New Users-->
                     </div>
                 </div>
             </div>
