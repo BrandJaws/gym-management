@@ -310,7 +310,7 @@
                                                 <th>Re-Schedule</th>
                                                 <th>Employee</th>
                                                 <th>Date</th>
-                                                <th>Status</th>
+                                                <th>Re-Status</th>
                                             </tr>
                                             </thead>
                                             <tbody>
@@ -378,9 +378,8 @@
                                                                 <div class="kt-timeline-v2__item-cricle">
                                                                     <i class="fa fa-genderless kt-font-danger"></i>
                                                                 </div>
-                                                                <div
-                                                                    class="kt-timeline-v2__item-text  kt-padding-top-5">
-                                                                    {{ $activity->stage }}
+                                                                <div class="kt-timeline-v2__item-text  kt-padding-top-5">
+                                                                    <a href="{{url('/gym/member/guests', $activity->id)}}">  {{ $activity->stage }}</a>
                                                                 </div>
                                                             </div>
                                                         @endforeach
@@ -409,7 +408,7 @@
                                                                 </div>
                                                                 <div
                                                                     class="kt-timeline-v2__item-text  kt-padding-top-5">
-                                                                    {{ $activity->transferStage }}
+                                                                    <a href="{{url('/gym/member/guests', $activity->id)}}">  {{  $activity->transferStage }}</a>
                                                                 </div>
                                                             </div>
                                                         @endforeach
