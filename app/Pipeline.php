@@ -91,6 +91,7 @@ class Pipeline extends Model
                 'pipeline.id',
                 'pipeline.stage',
                 'pipeline.employee_id',
+                'pipeline.customer_id',
                 'pipeline.scheduleDate',
                 'pipeline.transferStage',
                 'pipeline.status',
@@ -104,14 +105,17 @@ class Pipeline extends Model
             $query->orWhere('pipeline.employee_id', Auth::guard('employee')->user()->id)->where('pipeline.stage', 'Call Scheduled')
                 ->orWhere('pipeline.transfer_id', Auth::guard('employee')->user()->id)->where('pipeline.transferStage', 'Call Scheduled');
             if ($searchTerm) {
-                $query->where('pipeline.customer_id', 'like', '%' . $searchTerm . '%')
+                $query->orWhere('employees.name', 'like', '%' . $searchTerm . '%')
+                    ->orWhere('members.name', 'like', '%' . $searchTerm . '%')
                     ->orWhere('pipeline.stage', 'like', '%' . $searchTerm . '%')
                     ->orWhere('pipeline.employee_id', 'like', '%' . $searchTerm . '%')
-                    ->orWhere('employees.name', 'like', '%' . $searchTerm . '%')
                     ->orWhere('pipeline.scheduleDate', 'like', '%' . $searchTerm . '%')
+                    ->orWhere('pipeline.status', 'like', '%' . $searchTerm . '%')
                     ->orWhere('pipeline.transferStage', 'like', '%' . $searchTerm . '%')
                     ->orWhere('pipeline.transfer_id', 'like', '%' . $searchTerm . '%')
-                    ->orWhere('pipeline.reScheduleDate', 'like', '%' . $searchTerm . '%');
+                    ->orWhere('pipeline.reScheduleDate', 'like', '%' . $searchTerm . '%')
+                    ->orWhere('pipeline.reStatus', 'like', '%' . $searchTerm . '%')
+                    ->orWhere('pipeline.employee_id', 'like', '%' . $searchTerm . '%');
             }
         })->leftJoin('employees', function ($join) {
             $join->on('employees.id', 'pipeline.employee_id');
@@ -141,12 +145,17 @@ class Pipeline extends Model
             $query->orWhere('pipeline.employee_id', Auth::guard('employee')->user()->id)->where('pipeline.stage', 'Appointment Scheduled')
                 ->orWhere('pipeline.transfer_id', Auth::guard('employee')->user()->id)->where('pipeline.transferStage', 'Appointment Scheduled');
             if ($searchTerm) {
-                $query->where('pipeline.customer_id', 'like', '%' . $searchTerm . '%')
+                $query->orWhere('employees.name', 'like', '%' . $searchTerm . '%')
+                    ->orWhere('members.name', 'like', '%' . $searchTerm . '%')
                     ->orWhere('pipeline.stage', 'like', '%' . $searchTerm . '%')
+                    ->orWhere('pipeline.employee_id', 'like', '%' . $searchTerm . '%')
                     ->orWhere('pipeline.scheduleDate', 'like', '%' . $searchTerm . '%')
+                    ->orWhere('pipeline.status', 'like', '%' . $searchTerm . '%')
                     ->orWhere('pipeline.transferStage', 'like', '%' . $searchTerm . '%')
                     ->orWhere('pipeline.transfer_id', 'like', '%' . $searchTerm . '%')
-                    ->orWhere('pipeline.reScheduleDate', 'like', '%' . $searchTerm . '%');
+                    ->orWhere('pipeline.reScheduleDate', 'like', '%' . $searchTerm . '%')
+                    ->orWhere('pipeline.reStatus', 'like', '%' . $searchTerm . '%')
+                    ->orWhere('pipeline.employee_id', 'like', '%' . $searchTerm . '%');
             }
         })->leftJoin('employees', function ($join) {
             $join->on('employees.id', 'pipeline.employee_id');
@@ -176,12 +185,17 @@ class Pipeline extends Model
             $query->orWhere('pipeline.employee_id', Auth::guard('employee')->user()->id)->where('pipeline.stage', 'Presentation Scheduled')
                 ->orWhere('pipeline.transfer_id', Auth::guard('employee')->user()->id)->where('pipeline.transferStage', 'Presentation Scheduled');
             if ($searchTerm) {
-                $query->where('pipeline.customer_id', 'like', '%' . $searchTerm . '%')
+                $query->orWhere('employees.name', 'like', '%' . $searchTerm . '%')
+                    ->orWhere('members.name', 'like', '%' . $searchTerm . '%')
                     ->orWhere('pipeline.stage', 'like', '%' . $searchTerm . '%')
+                    ->orWhere('pipeline.employee_id', 'like', '%' . $searchTerm . '%')
                     ->orWhere('pipeline.scheduleDate', 'like', '%' . $searchTerm . '%')
+                    ->orWhere('pipeline.status', 'like', '%' . $searchTerm . '%')
                     ->orWhere('pipeline.transferStage', 'like', '%' . $searchTerm . '%')
                     ->orWhere('pipeline.transfer_id', 'like', '%' . $searchTerm . '%')
-                    ->orWhere('pipeline.reScheduleDate', 'like', '%' . $searchTerm . '%');
+                    ->orWhere('pipeline.reScheduleDate', 'like', '%' . $searchTerm . '%')
+                    ->orWhere('pipeline.reStatus', 'like', '%' . $searchTerm . '%')
+                    ->orWhere('pipeline.employee_id', 'like', '%' . $searchTerm . '%');
             }
         })->leftJoin('employees', function ($join) {
             $join->on('employees.id', 'pipeline.employee_id');
@@ -211,12 +225,17 @@ class Pipeline extends Model
             $query->orWhere('pipeline.employee_id', Auth::guard('employee')->user()->id)->where('pipeline.stage', 'Contract Sent')
                 ->orWhere('pipeline.transfer_id', Auth::guard('employee')->user()->id)->where('pipeline.transferStage', 'Contract Sent');
             if ($searchTerm) {
-                $query->where('pipeline.customer_id', 'like', '%' . $searchTerm . '%')
+                $query->orWhere('employees.name', 'like', '%' . $searchTerm . '%')
+                    ->orWhere('members.name', 'like', '%' . $searchTerm . '%')
                     ->orWhere('pipeline.stage', 'like', '%' . $searchTerm . '%')
+                    ->orWhere('pipeline.employee_id', 'like', '%' . $searchTerm . '%')
                     ->orWhere('pipeline.scheduleDate', 'like', '%' . $searchTerm . '%')
+                    ->orWhere('pipeline.status', 'like', '%' . $searchTerm . '%')
                     ->orWhere('pipeline.transferStage', 'like', '%' . $searchTerm . '%')
                     ->orWhere('pipeline.transfer_id', 'like', '%' . $searchTerm . '%')
-                    ->orWhere('pipeline.reScheduleDate', 'like', '%' . $searchTerm . '%');
+                    ->orWhere('pipeline.reScheduleDate', 'like', '%' . $searchTerm . '%')
+                    ->orWhere('pipeline.reStatus', 'like', '%' . $searchTerm . '%')
+                    ->orWhere('pipeline.employee_id', 'like', '%' . $searchTerm . '%');
             }
         })->leftJoin('employees', function ($join) {
             $join->on('employees.id', 'pipeline.employee_id');
@@ -246,12 +265,17 @@ class Pipeline extends Model
             $query->orWhere('pipeline.employee_id', Auth::guard('employee')->user()->id)->where('pipeline.stage', 'Qualified To Buy')
                 ->orWhere('pipeline.transfer_id', Auth::guard('employee')->user()->id)->where('pipeline.transferStage', 'Qualified To Buy');
             if ($searchTerm) {
-                $query->where('pipeline.customer_id', 'like', '%' . $searchTerm . '%')
+                $query->orWhere('employees.name', 'like', '%' . $searchTerm . '%')
+                    ->orWhere('members.name', 'like', '%' . $searchTerm . '%')
                     ->orWhere('pipeline.stage', 'like', '%' . $searchTerm . '%')
+                    ->orWhere('pipeline.employee_id', 'like', '%' . $searchTerm . '%')
                     ->orWhere('pipeline.scheduleDate', 'like', '%' . $searchTerm . '%')
+                    ->orWhere('pipeline.status', 'like', '%' . $searchTerm . '%')
                     ->orWhere('pipeline.transferStage', 'like', '%' . $searchTerm . '%')
                     ->orWhere('pipeline.transfer_id', 'like', '%' . $searchTerm . '%')
-                    ->orWhere('pipeline.reScheduleDate', 'like', '%' . $searchTerm . '%');
+                    ->orWhere('pipeline.reScheduleDate', 'like', '%' . $searchTerm . '%')
+                    ->orWhere('pipeline.reStatus', 'like', '%' . $searchTerm . '%')
+                    ->orWhere('pipeline.employee_id', 'like', '%' . $searchTerm . '%');
             }
         })->leftJoin('employees', function ($join) {
             $join->on('employees.id', 'pipeline.employee_id');
@@ -281,12 +305,17 @@ class Pipeline extends Model
             $query->orWhere('pipeline.employee_id', Auth::guard('employee')->user()->id)->where('pipeline.stage', 'Closed Won')
                 ->orWhere('pipeline.transfer_id', Auth::guard('employee')->user()->id)->where('pipeline.transferStage', 'Closed Won');
             if ($searchTerm) {
-                $query->where('pipeline.customer_id', 'like', '%' . $searchTerm . '%')
+                $query->orWhere('employees.name', 'like', '%' . $searchTerm . '%')
+                    ->orWhere('members.name', 'like', '%' . $searchTerm . '%')
                     ->orWhere('pipeline.stage', 'like', '%' . $searchTerm . '%')
+                    ->orWhere('pipeline.employee_id', 'like', '%' . $searchTerm . '%')
                     ->orWhere('pipeline.scheduleDate', 'like', '%' . $searchTerm . '%')
+                    ->orWhere('pipeline.status', 'like', '%' . $searchTerm . '%')
                     ->orWhere('pipeline.transferStage', 'like', '%' . $searchTerm . '%')
                     ->orWhere('pipeline.transfer_id', 'like', '%' . $searchTerm . '%')
-                    ->orWhere('pipeline.reScheduleDate', 'like', '%' . $searchTerm . '%');
+                    ->orWhere('pipeline.reScheduleDate', 'like', '%' . $searchTerm . '%')
+                    ->orWhere('pipeline.reStatus', 'like', '%' . $searchTerm . '%')
+                    ->orWhere('pipeline.employee_id', 'like', '%' . $searchTerm . '%');
             }
         })->leftJoin('employees', function ($join) {
             $join->on('employees.id', 'pipeline.employee_id');

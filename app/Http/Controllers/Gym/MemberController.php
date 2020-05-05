@@ -86,13 +86,13 @@ class MemberController extends Controller
     public function index(Request $request)
     {
         try {
-            $member = Member::where('type', 'Member')->where('gym_id', Auth::guard('employee')->user()->gym_id)->orderBy('id', 'asc')->paginate(10);
-            $parent = Member::where('type', 'Member')->where('memberType', 'Parent')->where('gym_id', Auth::guard('employee')->user()->gym_id)->count();
-            $affiliate = Member::where('type', 'Member')->where('memberType', 'Affiliate Member')->where('gym_id', Auth::guard('employee')->user()->gym_id)->count();
-            $notJoined = Member::where('type', 'Member')->where('status', 'Not Joined')->where('gym_id', Auth::guard('employee')->user()->gym_id)->count();
-            $active = Member::where('type', 'Member')->where('status', 'Active')->where('gym_id', Auth::guard('employee')->user()->gym_id)->count();
-            $inActive = Member::where('type', 'Member')->where('status', 'In-Active')->where('gym_id', Auth::guard('employee')->user()->gym_id)->count();
-            $expired = Member::where('type', 'Member')->where('status', 'Expired')->where('gym_id', Auth::guard('employee')->user()->gym_id)->count();
+            $member = Member::where('type', 'Member')->where('leadOwner_id', Auth::guard('employee')->user()->id)->orderBy('id', 'asc')->paginate(10);
+            $parent = Member::where('type', 'Member')->where('memberType', 'Parent')->where('leadOwner_id', Auth::guard('employee')->user()->id)->count();
+            $affiliate = Member::where('type', 'Member')->where('memberType', 'Affiliate Member')->where('leadOwner_id', Auth::guard('employee')->user()->id)->count();
+            $notJoined = Member::where('type', 'Member')->where('status', 'Not Joined')->where('leadOwner_id', Auth::guard('employee')->user()->id)->count();
+            $active = Member::where('type', 'Member')->where('status', 'Active')->where('leadOwner_id', Auth::guard('employee')->user()->id)->count();
+            $inActive = Member::where('type', 'Member')->where('status', 'In-Active')->where('leadOwner_id', Auth::guard('employee')->user()->id)->count();
+            $expired = Member::where('type', 'Member')->where('status', 'Expired')->where('leadOwner_id', Auth::guard('employee')->user()->id)->count();
             $total = Member::where('type', 'Member')->where('gym_id', Auth::guard('employee')->user()->gym_id)->count();
             if ($request->ajax()) {
                 $sort_by = $request->get('sortby');
