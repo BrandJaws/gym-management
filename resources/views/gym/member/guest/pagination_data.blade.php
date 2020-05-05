@@ -6,9 +6,11 @@
         <td>{{ $row->Member }}</td>
         <td>{{ $row->stage }}</td>
         <td>{{ $row->scheduleDate }}</td>
+        <td>{{ $row->status }}</td>
         <td>{{ $row->transferStage }}</td>
         <td>@if($row->transferEmployee != NULL) {{ $row->transferEmployee->name }} @else --- @endif</td>
         <td>@if($row->reScheduleDate != NULL) {{ $row->reScheduleDate }} @else --- @endif</td>
+        <td>@if($row->reStatus != NULL) {{ $row->reStatus }} @else --- @endif</td>
         <td>
             <a href="{{url('/gym/member/edit', $row->id)}}" class="dropdown-toggle" id="dropdownMenuButton"
                data-toggle="dropdown">
@@ -26,7 +28,7 @@
     </tr>
 @endforeach
 <tr>
-    <td colspan="9" align="center">
+    <td colspan="11" align="center">
         {{ $member->links() }}
     </td>
 </tr>

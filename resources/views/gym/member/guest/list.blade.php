@@ -131,8 +131,12 @@
                                                             <span
                                                                 id="post_title_icon"></span></th>
                                                         <th class="sorting" data-sorting_type="asc"
+                                                            data-column_name="status" style="cursor: pointer">Status
+                                                            <span
+                                                                id="post_title_icon"></span></th>
+                                                        <th class="sorting" data-sorting_type="asc"
                                                             data-column_name="transferStage" style="cursor: pointer">
-                                                            Transfer Status
+                                                            Re-Schedule Stage
                                                             <span id="post_title_icon"></span></th>
                                                         <th class="sorting" data-sorting_type="asc"
                                                             data-column_name="transfer_id" style="cursor: pointer">
@@ -143,6 +147,10 @@
                                                             data-column_name="reScheduleDate" style="cursor: pointer">
                                                             Re-Schedule
                                                             Date <span
+                                                                id="post_title_icon"></span></th>
+                                                        <th class="sorting" data-sorting_type="asc"
+                                                            data-column_name="reStatus" style="cursor: pointer">
+                                                            Re-Status <span
                                                                 id="post_title_icon"></span></th>
                                                         <th class="sorting" data-sorting_type="asc"
                                                             data-column_name=" " style="cursor: pointer">Actions <span
