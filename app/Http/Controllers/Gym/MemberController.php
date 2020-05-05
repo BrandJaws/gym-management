@@ -102,7 +102,7 @@ class MemberController extends Controller
                 $member = Member::getMemberList($query, $sort_by, $sort_type);
                 return view('gym.member.list.pagination_data', compact('member'))->render();
             }
-            return view('gym.member.list.index', compact('member','parent','affiliate','notJoined','active','inActive','expired','total'));
+            return view('gym.member.list.index', compact('member', 'parent', 'affiliate', 'notJoined', 'active', 'inActive', 'expired', 'total'));
         } catch (\Exception $e) {
             return back()->with('error', 'Oops, something was not right in member list page');
         }
@@ -527,10 +527,10 @@ class MemberController extends Controller
         switch ($value) {
             case 'leads':
                 $breadcrumbs = "Leads";
-                $member = Member::where('type', 'Lead')->where('gym_id', Auth::guard('employee')->user()->gym_id)->orderBy('id', 'asc')->paginate(10);
-                $hotRating = Member::where('rating', 'Hot')->where('gym_id', Auth::guard('employee')->user()->gym_id)->count();
-                $totalLead = Member::where('type', 'Lead')->where('gym_id', Auth::guard('employee')->user()->gym_id)->count();
-                $totalMember = Member::where('type', 'Member')->where('gym_id', Auth::guard('employee')->user()->gym_id)->count();
+                $member = Member::where('type', 'Lead')->where('leadOwner_id', Auth::guard('employee')->user()->id)->orderBy('id', 'asc')->paginate(10);
+                $hotRating = Member::where('rating', 'Hot')->where('leadOwner_id', Auth::guard('employee')->user()->id)->count();
+                $totalLead = Member::where('type', 'Lead')->where('leadOwner_id', Auth::guard('employee')->user()->id)->count();
+                $totalMember = Member::where('type', 'Member')->where('leadOwner_id', Auth::guard('employee')->user()->id)->count();
                 $total = Member::where('gym_id', Auth::guard('employee')->user()->gym_id)->count();
                 if ($request->ajax()) {
                     $sort_by = $request->get('sortby');
@@ -543,19 +543,19 @@ class MemberController extends Controller
                 break;
             case 'failedCalls':
                 $breadcrumbs = "Failed Calls";
-                $member = Pipeline::where('status', 'Failed Calls')->where('gym_id', Auth::guard('employee')->user()->gym_id)->orderBy('id', 'asc')->paginate(10);
+                $searchTerm = $request->get('query');
+                $searchTerm = str_replace(" ", "%", $searchTerm);
+                $member = Pipeline::getFailedCallList($searchTerm, 'id', 'asc');
                 if ($request->ajax()) {
                     $sort_by = $request->get('sortby');
                     $sort_type = $request->get('sorttype');
-                    $searchTerm = $request->get('query');
-                    $searchTerm = str_replace(" ", "%", $searchTerm);
                     $member = Pipeline::getFailedCallList($searchTerm, $sort_by, $sort_type);
                     return view('gym.member.archive.pagination_data', compact('breadcrumbs', 'member'))->render();
                 }
                 break;
             case 'notJoinedMembers':
                 $breadcrumbs = "Not Joined Members";
-                $member = Member::where('status', 'Not Joined')->where('gym_id', Auth::guard('employee')->user()->gym_id)->orderBy('id', 'asc')->paginate(10);
+                $member = Member::where('status', 'Not Joined')->where('leadOwner_id', Auth::guard('employee')->user()->id)->orderBy('id', 'asc')->paginate(10);
                 if ($request->ajax()) {
                     $sort_by = $request->get('sortby');
                     $sort_type = $request->get('sorttype');
@@ -567,7 +567,7 @@ class MemberController extends Controller
                 break;
             case 'expiredMembers':
                 $breadcrumbs = "Expired Members";
-                $member = Member::where('status', 'Expired')->where('gym_id', Auth::guard('employee')->user()->gym_id)->orderBy('id', 'asc')->paginate(10);
+                $member = Member::where('status', 'Expired')->where('leadOwner_id', Auth::guard('employee')->user()->id)->orderBy('id', 'asc')->paginate(10);
                 if ($request->ajax()) {
                     $sort_by = $request->get('sortby');
                     $sort_type = $request->get('sorttype');
@@ -579,7 +579,7 @@ class MemberController extends Controller
                 break;
             case 'inActiveMembers':
                 $breadcrumbs = "In Active Members";
-                $member = Member::where('status', 'In-Active')->where('gym_id', Auth::guard('employee')->user()->gym_id)->orderBy('id', 'asc')->paginate(10);
+                $member = Member::where('status', 'In-Active')->where('leadOwner_id', Auth::guard('employee')->user()->id)->orderBy('id', 'asc')->paginate(10);
                 if ($request->ajax()) {
                     $sort_by = $request->get('sortby');
                     $sort_type = $request->get('sorttype');
@@ -595,7 +595,7 @@ class MemberController extends Controller
                 break;
             case 'oldMembers':
                 $breadcrumbs = "Old Members";
-                $member = Member::where('status', 'Active')->where('gym_id', Auth::guard('employee')->user()->gym_id)->orderBy('id', 'asc')->paginate(10);
+                $member = Member::where('status', 'Active')->where('leadOwner_id', Auth::guard('employee')->user()->id)->orderBy('id', 'asc')->paginate(10);
                 if ($request->ajax()) {
                     $sort_by = $request->get('sortby');
                     $sort_type = $request->get('sorttype');

@@ -53,7 +53,7 @@ class Member extends Model
                 'members.*',
             ]
         )->where(function ($query) use ($searchTerm, $sort_by, $sort_type) {
-            $query->where('members.type', 'Member')->where('members.gym_id', Auth::guard('employee')->user()->gym_id);
+            $query->where('members.type', 'Member')->where('members.leadOwner_id', Auth::guard('employee')->user()->id);
             if ($searchTerm) {
                 $query->where('members.name', 'like', '%' . $searchTerm . '%')
                     ->orWhere('members.phone', 'like', '%' . $searchTerm . '%')
@@ -73,7 +73,7 @@ class Member extends Model
                 'members.*',
             ]
         )->where(function ($query) use ($searchTerm, $sort_by, $sort_type) {
-            $query->where('members.type', 'Lead')->where('members.gym_id', Auth::guard('employee')->user()->gym_id);
+            $query->where('members.type', 'Lead')->where('members.leadOwner_id', Auth::guard('employee')->user()->id);
             if ($searchTerm) {
                 $query->where('members.name', 'like', '%' . $searchTerm . '%')
                     ->orWhere('members.salutation', 'like', '%' . $searchTerm . '%')
@@ -91,7 +91,7 @@ class Member extends Model
                 'members.*',
             ]
         )->where(function ($query) use ($searchTerm, $sort_by, $sort_type) {
-            $query->where('members.status', 'Not Joined')->where('members.gym_id', Auth::guard('employee')->user()->gym_id);
+            $query->where('members.status', 'Not Joined')->where('members.leadOwner_id', Auth::guard('employee')->user()->id);
             if ($searchTerm) {
                 $query->where('members.name', 'like', '%' . $searchTerm . '%')
                     ->orWhere('members.email', 'like', '%' . $searchTerm . '%')
@@ -113,7 +113,7 @@ class Member extends Model
                 'members.*',
             ]
         )->where(function ($query) use ($searchTerm, $sort_by, $sort_type) {
-            $query->where('members.status', 'Expired')->where('members.gym_id', Auth::guard('employee')->user()->gym_id);
+            $query->where('members.status', 'Expired')->where('members.leadOwner_id', Auth::guard('employee')->user()->id);
             if ($searchTerm) {
                 $query->where('members.name', 'like', '%' . $searchTerm . '%')
                     ->orWhere('members.email', 'like', '%' . $searchTerm . '%')
@@ -135,7 +135,7 @@ class Member extends Model
                 'members.*',
             ]
         )->where(function ($query) use ($searchTerm, $sort_by, $sort_type) {
-            $query->where('members.status', 'In-Active')->where('members.gym_id', Auth::guard('employee')->user()->gym_id);
+            $query->where('members.status', 'In-Active')->where('members.leadOwner_id', Auth::guard('employee')->user()->id);
             if ($searchTerm) {
                 $query->where('members.name', 'like', '%' . $searchTerm . '%')
                     ->orWhere('members.email', 'like', '%' . $searchTerm . '%')

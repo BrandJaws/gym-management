@@ -25,10 +25,12 @@
                                     </div>
                                     <div class="progress progress--sm">
                                         @if($total > 0)
-                                            <div class="progress-bar kt-bg-brand progress-bar-striped progress-bar-animated" role="progressbar"
-                                                 style="width: {{ number_format($totalLead/$total * 100 , 0, '.', ',')  }}%;"
-                                                 aria-valuenow="50" aria-valuemin="0"
-                                                 aria-valuemax="100"></div>
+                                            <div
+                                                class="progress-bar kt-bg-brand progress-bar-striped progress-bar-animated"
+                                                role="progressbar"
+                                                style="width: {{ number_format($totalLead/$total * 100 , 0, '.', ',')  }}%;"
+                                                aria-valuenow="50" aria-valuemin="0"
+                                                aria-valuemax="100"></div>
                                         @else
                                             <div class="progress-bar kt-bg-brand" role="progressbar"
                                                  style="width:0%;"
@@ -69,10 +71,12 @@
                                     </div>
                                     <div class="progress progress--sm">
                                         @if($total > 0)
-                                            <div class="progress-bar kt-bg-warning progress-bar-striped progress-bar-animated" role="progressbar"
-                                                 style="width: {{ number_format($hotRating/$total * 100 , 0, '.', ',')  }}%"
-                                                 aria-valuenow="50" aria-valuemin="0"
-                                                 aria-valuemax="100"></div>
+                                            <div
+                                                class="progress-bar kt-bg-warning progress-bar-striped progress-bar-animated"
+                                                role="progressbar"
+                                                style="width: {{ number_format($hotRating/$total * 100 , 0, '.', ',')  }}%"
+                                                aria-valuenow="50" aria-valuemin="0"
+                                                aria-valuemax="100"></div>
                                         @else
                                             <div class="progress-bar kt-bg-brand" role="progressbar"
                                                  style="width:0%;"
@@ -113,10 +117,12 @@
                                     </div>
                                     <div class="progress progress--sm">
                                         @if($total > 0)
-                                            <div class="progress-bar kt-bg-success progress-bar-striped progress-bar-animated" role="progressbar"
-                                                 style="width: {{ number_format($totalMember/$total * 100 , 0, '.', ',')  }}%;"
-                                                 aria-valuenow="50" aria-valuemin="0"
-                                                 aria-valuemax="100"></div>
+                                            <div
+                                                class="progress-bar kt-bg-success progress-bar-striped progress-bar-animated"
+                                                role="progressbar"
+                                                style="width: {{ number_format($totalMember/$total * 100 , 0, '.', ',')  }}%;"
+                                                aria-valuenow="50" aria-valuemin="0"
+                                                aria-valuemax="100"></div>
                                         @else
                                             <div class="progress-bar kt-bg-brand" role="progressbar"
                                                  style="width:0%;"
@@ -229,33 +235,44 @@
                                                         <tr>
                                                             <th>No.</th>
                                                             <th class="sorting" data-sorting_type="asc"
-                                                                data-column_name="name" style="cursor: pointer">Employee
-                                                                <span
-                                                                    id="id_icon"></span></th>
+                                                                data-column_name="EmployeeName" style="cursor: pointer">
+                                                                Employee
+                                                                <span id="id_icon"></span></th>
                                                             <th class="sorting" data-sorting_type="asc"
-                                                                data-column_name="duration" style="cursor: pointer">
+                                                                data-column_name="Member" style="cursor: pointer">
                                                                 Customer
-                                                                <span
-                                                                    id="post_title_icon"></span></th>
+                                                                <span id="post_title_icon"></span></th>
                                                             <th class="sorting" data-sorting_type="asc"
-                                                                data-column_name="duration" style="cursor: pointer">
+                                                                data-column_name="stage" style="cursor: pointer">
+                                                                Stage
+                                                                <span id="post_title_icon"></span></th>
+                                                            <th class="sorting" data-sorting_type="asc"
+                                                                data-column_name="scheduleDate" style="cursor: pointer">
                                                                 Schedule Date
-                                                                <span
-                                                                    id="post_title_icon"></span></th>
+                                                                <span id="post_title_icon"></span></th>
                                                             <th class="sorting" data-sorting_type="asc"
-                                                                data-column_name="amount" style="cursor: pointer">
-                                                                Transfer Status
-                                                                <span
-                                                                    id="post_title_icon"></span></th>
+                                                                data-column_name="status" style="cursor: pointer">
+                                                                Status
+                                                                <span id="post_title_icon"></span></th>
                                                             <th class="sorting" data-sorting_type="asc"
-                                                                data-column_name="monthlyFee" style="cursor: pointer">
+                                                                data-column_name="transferStage"
+                                                                style="cursor: pointer">
+                                                                Re-Schedule Stage
+                                                                <span id="post_title_icon"></span></th>
+                                                            <th class="sorting" data-sorting_type="asc"
+                                                                data-column_name="transferEmployee"
+                                                                style="cursor: pointer">
                                                                 Transfer Employee<span
                                                                     id="post_title_icon"></span></th>
                                                             <th class="sorting" data-sorting_type="asc"
-                                                                data-column_name="duration" style="cursor: pointer">Re
-                                                                Schedule Date
-                                                                <span
-                                                                    id="post_title_icon"></span></th>
+                                                                data-column_name="reScheduleDate"
+                                                                style="cursor: pointer">
+                                                                Re-Schedule Date
+                                                                <span id="post_title_icon"></span></th>
+                                                            <th class="sorting" data-sorting_type="asc"
+                                                                data-column_name="reStatus" style="cursor: pointer">
+                                                                Re-Status
+                                                                <span id="post_title_icon"></span></th>
                                                             <th class="sorting" data-sorting_type="asc"
                                                                 data-column_name=" " style="cursor: pointer">Actions
                                                                 <span

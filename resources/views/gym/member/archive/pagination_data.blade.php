@@ -3,12 +3,15 @@
     @foreach($member as $row)
         <tr>
             <th>{{$i}}</th>
-            <td>{{ $row->employee->name}}</td>
-            <td>{{ $row->member->name }}</td>
+            <td>{{ $row->EmployeeName}}</td>
+            <td>{{ $row->Member }}</td>
+            <td>{{ $row->stage }}</td>
             <td>{{ $row->scheduleDate }}</td>
-            <td>{{ $row->transferStatus }}</td>
+            <td>{{ $row->status }}</td>
+            <td>{{ $row->transferStage }}</td>
             <td>@if($row->transferEmployee != NULL) {{ $row->transferEmployee->name }} @else --- @endif</td>
             <td>@if($row->reScheduleDate != NULL) {{ $row->reScheduleDate }} @else --- @endif</td>
+            <td>{{ $row->reStatus }}</td>
             <td>
                 <a href="{{url('/gym/member/edit', $row->id)}}" class="dropdown-toggle" id="dropdownMenuButton"
                    data-toggle="dropdown">
@@ -32,15 +35,16 @@
                             class="fa fa-user-times"></i>Closed Lost</a>
                     <a class="dropdown-item" href="{{url('/gym/member/archive/transferStage', $row->id)}}"><i
                             class="fa fa-user-times"></i>Transfer Stage</a>
-                </div> |
-                <a  href="{{url('/gym/member/edit', $row->id)}}"><i class="fa fa-edit"></i></a> |
-                <a  href="{{url('/gym/member/disabled', $row->id)}}"><i class="fa flaticon2-delete"></i> </a>
+                </div>
+                |
+                <a href="{{url('/gym/member/edit', $row->id)}}"><i class="fa fa-edit"></i></a> |
+                <a href="{{url('/gym/member/disabled', $row->id)}}"><i class="fa flaticon2-delete"></i> </a>
             </td>
         </tr>
         <?php  $i++; ?>
     @endforeach
     <tr>
-        <td colspan="9" align="center">
+        <td colspan="11" align="center">
             {{ $member->links() }}
         </td>
     </tr>
@@ -77,9 +81,10 @@
                             class="fa fa-user-times"></i>Closed Lost</a>
                     <a class="dropdown-item" href="{{url('/gym/member/archive/transferStage', $row->id)}}"><i
                             class="fa fa-user-times"></i>Transfer Stage</a>
-                </div> |
-                <a  href="{{url('/gym/member/edit', $row->id)}}"><i class="fa fa-edit"></i></a> |
-                <a  href="{{url('/gym/member/disabled', $row->id)}}"><i class="fa flaticon2-delete"></i> </a>
+                </div>
+                |
+                <a href="{{url('/gym/member/edit', $row->id)}}"><i class="fa fa-edit"></i></a> |
+                <a href="{{url('/gym/member/disabled', $row->id)}}"><i class="fa flaticon2-delete"></i> </a>
             </td>
         </tr>
         <?php  $i++; ?>

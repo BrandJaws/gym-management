@@ -50,10 +50,21 @@ class Pipeline extends Model
     public static function getFailedCallList($searchTerm, $sort_by, $sort_type)
     {
         return self::select([
-                'pipeline.*',
+                'pipeline.gym_id',
+                'pipeline.id',
+                'pipeline.stage',
+                'pipeline.scheduleDate',
+                'pipeline.transferStage',
+                'pipeline.status',
+                'pipeline.reStatus',
+                'pipeline.transfer_id',
+                'pipeline.reScheduleDate',
+                'employees.name as EmployeeName',
+                'members.name as Member',
             ]
         )->where(function ($query) use ($searchTerm, $sort_by, $sort_type) {
-            $query->where('pipeline.status', 'Failed Calls')->where('pipeline.gym_id', Auth::guard('employee')->user()->gym_id);
+            $query->orWhere('pipeline.employee_id', Auth::guard('employee')->user()->id)->where('pipeline.status', 'Failed Calls')
+                ->orWhere('pipeline.transfer_id', Auth::guard('employee')->user()->id)->where('pipeline.reStatus', 'Failed Calls');
             if ($searchTerm) {
                 $query->where('pipeline.employee_id', 'like', '%' . $searchTerm . '%')
                     ->orWhere('pipeline.customer_id', 'like', '%' . $searchTerm . '%')
@@ -66,6 +77,10 @@ class Pipeline extends Model
                     ->orWhere('pipeline.stage', 'like', '%' . $searchTerm . '%')
                     ->orWhere('pipeline.reScheduleDate', 'like', '%' . $searchTerm . '%');
             }
+        })->leftJoin('employees', function ($join) {
+            $join->on('employees.id', 'pipeline.employee_id');
+        })->leftJoin('members', function ($join) {
+            $join->on('members.id', 'pipeline.customer_id');
         })->orderBy($sort_by, $sort_type)->paginate(10);
     }
 

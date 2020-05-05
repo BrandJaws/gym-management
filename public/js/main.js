@@ -7012,7 +7012,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "header"
 });
@@ -43906,16 +43905,7 @@ var render = function() {
                 _vm._v(" "),
                 _c("span", {
                   staticClass: "kt-subheader__breadcrumbs-separator"
-                }),
-                _vm._v(" "),
-                _c(
-                  "router-link",
-                  {
-                    staticClass: "kt-subheader__breadcrumbs-link",
-                    attrs: { to: { name: "notification" } }
-                  },
-                  [_vm._v(" notification")]
-                )
+                })
               ],
               1
             )
