@@ -74,7 +74,7 @@ class MemberController extends Controller
             $hotRating = Member::where('rating', 'Hot')->where('leadOwner_id', Auth::guard('employee')->user()->id)->count();
             $totalLead = Member::where('type', 'Lead')->where('leadOwner_id', Auth::guard('employee')->user()->id)->count();
             $totalMember = Member::where('type', 'Member')->where('leadOwner_id', Auth::guard('employee')->user()->id)->count();
-            $total = Member::where('leadOwner_id', Auth::guard('employee')->user()->id)->count();
+            $total = Member::where('gym_id', Auth::guard('employee')->user()->gym_id)->count();
             return view('gym.member.dashboard', compact('memberships', 'totalCalls', 'appointmentScheduled', 'activeMembers', 'dailySchaduale', 'dailyReSchaduale', 'qualifiedToBuy',
                 'transferCalls', 'failedCalls', 'leads', 'inActiveMembers', 'expiredMembers', 'notJoinedMembers', 'presentationScheduled', 'contractSent', 'hotRating', 'totalLead', 'totalMember', 'total',
                 'assignTasksEmployee'));
