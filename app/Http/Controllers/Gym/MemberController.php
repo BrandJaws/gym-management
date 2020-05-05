@@ -836,7 +836,6 @@ class MemberController extends Controller
 
     public function guest(Request $request, $value)
     {
-
         switch ($value) {
             case 'previewCalls':
                 $breadcrumbs = "Preview Calls";

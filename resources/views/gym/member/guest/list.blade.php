@@ -191,10 +191,10 @@
                     })
                 }
 
-                @elseif($breadcrumbs == "Transfer Calls")
+                @elseif($breadcrumbs == "Preview Appointments")
                 function fetch_data(page, sort_type, sort_by, query) {
                     $.ajax({
-                        url: "/gym/member/guest/transferCalls?page=" + page + "&sortby=" + sort_by + "&sorttype=" + sort_type + "&query=" + query,
+                        url: "/gym/member/guest/previewAppointments?page=" + page + "&sortby=" + sort_by + "&sorttype=" + sort_type + "&query=" + query,
                         success: function (data) {
                             $('tbody').html('');
                             $('tbody').html(data);
@@ -202,10 +202,43 @@
                     })
                 }
 
-                @elseif($breadcrumbs == "Preivew Appointments")
+                @elseif($breadcrumbs == "Preview Presentations")
                 function fetch_data(page, sort_type, sort_by, query) {
                     $.ajax({
-                        url: "/gym/member/guest/preivewAppointments?page=" + page + "&sortby=" + sort_by + "&sorttype=" + sort_type + "&query=" + query,
+                        url: "/gym/member/guest/previewPresentations?page=" + page + "&sortby=" + sort_by + "&sorttype=" + sort_type + "&query=" + query,
+                        success: function (data) {
+                            $('tbody').html('');
+                            $('tbody').html(data);
+                        }
+                    })
+                }
+
+                @elseif($breadcrumbs == "Contract Sent")
+                function fetch_data(page, sort_type, sort_by, query) {
+                    $.ajax({
+                        url: "/gym/member/guest/contractSent?page=" + page + "&sortby=" + sort_by + "&sorttype=" + sort_type + "&query=" + query,
+                        success: function (data) {
+                            $('tbody').html('');
+                            $('tbody').html(data);
+                        }
+                    })
+                }
+
+                @elseif($breadcrumbs == "Qualified To Buy")
+                function fetch_data(page, sort_type, sort_by, query) {
+                    $.ajax({
+                        url: "/gym/member/guest/previewQualified?page=" + page + "&sortby=" + sort_by + "&sorttype=" + sort_type + "&query=" + query,
+                        success: function (data) {
+                            $('tbody').html('');
+                            $('tbody').html(data);
+                        }
+                    })
+                }
+
+                @elseif($breadcrumbs == "Closed Won")
+                function fetch_data(page, sort_type, sort_by, query) {
+                    $.ajax({
+                        url: "/gym/member/guest/closedWon?page=" + page + "&sortby=" + sort_by + "&sorttype=" + sort_type + "&query=" + query,
                         success: function (data) {
                             $('tbody').html('');
                             $('tbody').html(data);

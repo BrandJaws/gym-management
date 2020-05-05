@@ -106,6 +106,8 @@ class Pipeline extends Model
             if ($searchTerm) {
                 $query->where('pipeline.customer_id', 'like', '%' . $searchTerm . '%')
                     ->orWhere('pipeline.stage', 'like', '%' . $searchTerm . '%')
+                    ->orWhere('pipeline.employee_id', 'like', '%' . $searchTerm . '%')
+                    ->orWhere('employees.name', 'like', '%' . $searchTerm . '%')
                     ->orWhere('pipeline.scheduleDate', 'like', '%' . $searchTerm . '%')
                     ->orWhere('pipeline.transferStage', 'like', '%' . $searchTerm . '%')
                     ->orWhere('pipeline.transfer_id', 'like', '%' . $searchTerm . '%')
@@ -116,7 +118,6 @@ class Pipeline extends Model
         })->leftJoin('members', function ($join) {
             $join->on('members.id', 'pipeline.customer_id');
         })->orderBy($sort_by, $sort_type)->paginate(10);
-
     }
 
     public static function getAppointmentsList($searchTerm, $sort_by, $sort_type)
