@@ -80,7 +80,8 @@ class Member extends Model
                     ->orWhere('members.source', 'like', '%' . $searchTerm . '%')
                     ->orWhere('members.rating', 'like', '%' . $searchTerm . '%')
                     ->orWhere('members.phone', 'like', '%' . $searchTerm . '%')
-                    ->orWhere('members.type', 'like', '%' . $searchTerm . '%');
+                    ->orWhere('members.type', 'like', '%' . $searchTerm . '%')
+                ->orWhere('members.status', 'like', '%' . $searchTerm . '%');
             }
         })->orderBy($sort_by, $sort_type)->paginate(10);
     }

@@ -58,6 +58,7 @@
             <td>{{ $row->source }}</td>
             <td>{{ $row->rating }}</td>
             <td>{{ $row->type }}</td>
+            <td>@if($row->status != NULL) {{ $row->status }} @else --- @endif</td>
             <td>
                 <a href="{{url('/gym/member/edit', $row->id)}}" class="dropdown-toggle" id="dropdownMenuButton"
                    data-toggle="dropdown">

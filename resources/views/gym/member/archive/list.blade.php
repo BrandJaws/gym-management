@@ -285,24 +285,26 @@
                                                             <th>No.</th>
                                                             <th class="sorting" data-sorting_type="asc"
                                                                 data-column_name="name" style="cursor: pointer">Name
-                                                                <span
-                                                                    id="id_icon"></span></th>
+                                                                <span id="id_icon"></span></th>
                                                             <th class="sorting" data-sorting_type="asc"
-                                                                data-column_name="duration" style="cursor: pointer">
+                                                                data-column_name="phone" style="cursor: pointer">
                                                                 Phone
+                                                                <span id="post_title_icon"></span></th>
+                                                            <th class="sorting" data-sorting_type="asc"
+                                                                data-column_name="source" style="cursor: pointer">Source
                                                                 <span
                                                                     id="post_title_icon"></span></th>
                                                             <th class="sorting" data-sorting_type="asc"
-                                                                data-column_name="amount" style="cursor: pointer">Source
-                                                                <span
-                                                                    id="post_title_icon"></span></th>
-                                                            <th class="sorting" data-sorting_type="asc"
-                                                                data-column_name="monthlyFee" style="cursor: pointer">
+                                                                data-column_name="rating" style="cursor: pointer">
                                                                 Rating
                                                                 <span
                                                                     id="post_title_icon"></span></th>
                                                             <th class="sorting" data-sorting_type="asc"
-                                                                data-column_name="detail" style="cursor: pointer">Type
+                                                                data-column_name="type" style="cursor: pointer">Type
+                                                                <span
+                                                                    id="post_title_icon"></span></th>
+                                                            <th class="sorting" data-sorting_type="asc"
+                                                                data-column_name="status" style="cursor: pointer">Status
                                                                 <span
                                                                     id="post_title_icon"></span></th>
                                                             <th class="sorting" data-sorting_type="asc"
