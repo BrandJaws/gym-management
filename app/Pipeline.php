@@ -90,16 +90,21 @@ class Pipeline extends Model
                 'pipeline.gym_id',
                 'pipeline.id',
                 'pipeline.stage',
+                'pipeline.employee_id',
                 'pipeline.scheduleDate',
                 'pipeline.transferStage',
                 'pipeline.status',
                 'pipeline.transfer_id',
+                'pipeline.reStatus',
                 'pipeline.reScheduleDate',
                 'employees.name as EmployeeName',
                 'members.name as Member',
+                'employees.id',
+                'members.id',
             ]
         )->where(function ($query) use ($searchTerm, $sort_by, $sort_type) {
-            $query->orWhere('pipeline.stage', 'Call Scheduled')->orWhere('pipeline.transferStage', 'Call Scheduled')->where('pipeline.gym_id', Auth::guard('employee')->user()->gym_id);
+            $query->orWhere('pipeline.employee_id', Auth::guard('employee')->user()->id)->where('pipeline.stage', 'Call Scheduled')
+                ->orWhere('pipeline.transfer_id', Auth::guard('employee')->user()->id)->where('pipeline.transferStage', 'Call Scheduled');
             if ($searchTerm) {
                 $query->where('pipeline.customer_id', 'like', '%' . $searchTerm . '%')
                     ->orWhere('pipeline.stage', 'like', '%' . $searchTerm . '%')
@@ -112,7 +117,7 @@ class Pipeline extends Model
             $join->on('employees.id', 'pipeline.employee_id');
         })->leftJoin('members', function ($join) {
             $join->on('members.id', 'pipeline.customer_id');
-        })->paginate(10);
+        })->orderBy($sort_by, $sort_type)->paginate(10);
 
     }
 
@@ -122,16 +127,20 @@ class Pipeline extends Model
                 'pipeline.gym_id',
                 'pipeline.id',
                 'pipeline.stage',
+                'pipeline.employee_id',
+                'pipeline.customer_id',
                 'pipeline.scheduleDate',
                 'pipeline.transferStage',
                 'pipeline.status',
                 'pipeline.transfer_id',
+                'pipeline.reStatus',
                 'pipeline.reScheduleDate',
                 'employees.name as EmployeeName',
                 'members.name as Member',
             ]
         )->where(function ($query) use ($searchTerm, $sort_by, $sort_type) {
-            $query->orWhere('pipeline.stage', 'Appointment Scheduled')->orWhere('pipeline.transferStage', 'Appointment Scheduled')->where('pipeline.gym_id', Auth::guard('employee')->user()->gym_id);
+            $query->orWhere('pipeline.employee_id', Auth::guard('employee')->user()->id)->where('pipeline.stage', 'Appointment Scheduled')
+                ->orWhere('pipeline.transfer_id', Auth::guard('employee')->user()->id)->where('pipeline.transferStage', 'Appointment Scheduled');
             if ($searchTerm) {
                 $query->where('pipeline.customer_id', 'like', '%' . $searchTerm . '%')
                     ->orWhere('pipeline.stage', 'like', '%' . $searchTerm . '%')
@@ -144,7 +153,7 @@ class Pipeline extends Model
             $join->on('employees.id', 'pipeline.employee_id');
         })->leftJoin('members', function ($join) {
             $join->on('members.id', 'pipeline.customer_id');
-        })->paginate(10);
+        })->orderBy($sort_by, $sort_type)->paginate(10);
     }
 
     public static function getPresentationsList($searchTerm, $sort_by, $sort_type)
@@ -153,16 +162,20 @@ class Pipeline extends Model
                 'pipeline.gym_id',
                 'pipeline.id',
                 'pipeline.stage',
+                'pipeline.employee_id',
+                'pipeline.customer_id',
                 'pipeline.scheduleDate',
                 'pipeline.transferStage',
                 'pipeline.status',
                 'pipeline.transfer_id',
+                'pipeline.reStatus',
                 'pipeline.reScheduleDate',
                 'employees.name as EmployeeName',
                 'members.name as Member',
             ]
         )->where(function ($query) use ($searchTerm, $sort_by, $sort_type) {
-            $query->orWhere('pipeline.stage', 'Presentation Scheduled')->orWhere('pipeline.transferStage', 'Presentation Scheduled')->where('pipeline.gym_id', Auth::guard('employee')->user()->gym_id);
+            $query->orWhere('pipeline.employee_id', Auth::guard('employee')->user()->id)->where('pipeline.stage', 'Presentation Scheduled')
+                ->orWhere('pipeline.transfer_id', Auth::guard('employee')->user()->id)->where('pipeline.transferStage', 'Presentation Scheduled');
             if ($searchTerm) {
                 $query->where('pipeline.customer_id', 'like', '%' . $searchTerm . '%')
                     ->orWhere('pipeline.stage', 'like', '%' . $searchTerm . '%')
@@ -175,7 +188,7 @@ class Pipeline extends Model
             $join->on('employees.id', 'pipeline.employee_id');
         })->leftJoin('members', function ($join) {
             $join->on('members.id', 'pipeline.customer_id');
-        })->paginate(10);
+        })->orderBy($sort_by, $sort_type)->paginate(10);
     }
 
     public static function getContractList($searchTerm, $sort_by, $sort_type)
@@ -184,16 +197,20 @@ class Pipeline extends Model
                 'pipeline.gym_id',
                 'pipeline.id',
                 'pipeline.stage',
+                'pipeline.employee_id',
+                'pipeline.customer_id',
                 'pipeline.scheduleDate',
                 'pipeline.transferStage',
                 'pipeline.status',
                 'pipeline.transfer_id',
+                'pipeline.reStatus',
                 'pipeline.reScheduleDate',
                 'employees.name as EmployeeName',
                 'members.name as Member',
             ]
         )->where(function ($query) use ($searchTerm, $sort_by, $sort_type) {
-            $query->orWhere('pipeline.stage', 'Contract Sent')->orWhere('pipeline.transferStage', 'Contract Sent')->where('pipeline.gym_id', Auth::guard('employee')->user()->gym_id);
+            $query->orWhere('pipeline.employee_id', Auth::guard('employee')->user()->id)->where('pipeline.stage', 'Contract Sent')
+                ->orWhere('pipeline.transfer_id', Auth::guard('employee')->user()->id)->where('pipeline.transferStage', 'Contract Sent');
             if ($searchTerm) {
                 $query->where('pipeline.customer_id', 'like', '%' . $searchTerm . '%')
                     ->orWhere('pipeline.stage', 'like', '%' . $searchTerm . '%')
@@ -206,7 +223,7 @@ class Pipeline extends Model
             $join->on('employees.id', 'pipeline.employee_id');
         })->leftJoin('members', function ($join) {
             $join->on('members.id', 'pipeline.customer_id');
-        })->paginate(10);
+        })->orderBy($sort_by, $sort_type)->paginate(10);
     }
 
     public static function getQualifiedList($searchTerm, $sort_by, $sort_type)
@@ -215,16 +232,20 @@ class Pipeline extends Model
                 'pipeline.gym_id',
                 'pipeline.id',
                 'pipeline.stage',
+                'pipeline.employee_id',
+                'pipeline.customer_id',
                 'pipeline.scheduleDate',
                 'pipeline.transferStage',
                 'pipeline.status',
                 'pipeline.transfer_id',
+                'pipeline.reStatus',
                 'pipeline.reScheduleDate',
                 'employees.name as EmployeeName',
                 'members.name as Member',
             ]
         )->where(function ($query) use ($searchTerm, $sort_by, $sort_type) {
-            $query->orWhere('pipeline.stage', 'Qualified To Buy')->orWhere('pipeline.transferStage', 'Qualified To Buy')->where('pipeline.gym_id', Auth::guard('employee')->user()->gym_id);
+            $query->orWhere('pipeline.employee_id', Auth::guard('employee')->user()->id)->where('pipeline.stage', 'Qualified To Buy')
+                ->orWhere('pipeline.transfer_id', Auth::guard('employee')->user()->id)->where('pipeline.transferStage', 'Qualified To Buy');
             if ($searchTerm) {
                 $query->where('pipeline.customer_id', 'like', '%' . $searchTerm . '%')
                     ->orWhere('pipeline.stage', 'like', '%' . $searchTerm . '%')
@@ -237,7 +258,7 @@ class Pipeline extends Model
             $join->on('employees.id', 'pipeline.employee_id');
         })->leftJoin('members', function ($join) {
             $join->on('members.id', 'pipeline.customer_id');
-        })->paginate(10);
+        })->orderBy($sort_by, $sort_type)->paginate(10);
     }
 
     public static function getWonList($searchTerm, $sort_by, $sort_type)
@@ -246,16 +267,20 @@ class Pipeline extends Model
                 'pipeline.gym_id',
                 'pipeline.id',
                 'pipeline.stage',
+                'pipeline.employee_id',
+                'pipeline.customer_id',
                 'pipeline.scheduleDate',
                 'pipeline.transferStage',
                 'pipeline.status',
                 'pipeline.transfer_id',
+                'pipeline.reStatus',
                 'pipeline.reScheduleDate',
                 'employees.name as EmployeeName',
                 'members.name as Member',
             ]
         )->where(function ($query) use ($searchTerm, $sort_by, $sort_type) {
-            $query->orWhere('pipeline.stage', 'Closed Won')->orWhere('pipeline.transferStage', 'Closed Won')->where('pipeline.gym_id', Auth::guard('employee')->user()->gym_id);
+            $query->orWhere('pipeline.employee_id', Auth::guard('employee')->user()->id)->where('pipeline.stage', 'Closed Won')
+                ->orWhere('pipeline.transfer_id', Auth::guard('employee')->user()->id)->where('pipeline.transferStage', 'Closed Won');
             if ($searchTerm) {
                 $query->where('pipeline.customer_id', 'like', '%' . $searchTerm . '%')
                     ->orWhere('pipeline.stage', 'like', '%' . $searchTerm . '%')
@@ -268,7 +293,7 @@ class Pipeline extends Model
             $join->on('employees.id', 'pipeline.employee_id');
         })->leftJoin('members', function ($join) {
             $join->on('members.id', 'pipeline.customer_id');
-        })->paginate(10);
+        })->orderBy($sort_by, $sort_type)->paginate(10);
     }
 
 

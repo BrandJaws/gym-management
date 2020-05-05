@@ -836,109 +836,119 @@ class MemberController extends Controller
 
     public function guest(Request $request, $value)
     {
-        try {
-            switch ($value) {
-                case 'previewCalls':
-                    $breadcrumbs = "Preview Calls";
-                    $searchTerm = $request->get('query');
-                    $searchTerm = str_replace(" ", "%", $searchTerm);
-                    $member = Pipeline::getCallsList($searchTerm, 'id', 'asc');
-                    $stage = Pipeline::where('stage', 'Call Scheduled')->where('gym_id', Auth::guard('employee')->user()->gym_id)->count();
-                    $reStage = Pipeline::where('transferStage', 'Call Scheduled')->where('gym_id', Auth::guard('employee')->user()->gym_id)->count();
-                    $totalStage = $stage + $reStage;
-                    $total = Pipeline::where('gym_id', Auth::guard('employee')->user()->gym_id)->count();
-                    if ($request->ajax()) {
-                        $sort_by = $request->get('sortby');
-                        $sort_type = $request->get('sorttype');
-                        $member = Pipeline::getCallsList($searchTerm, $sort_by, $sort_type);
-                        return view('gym.member.guest.pagination_data', compact('breadcrumbs', 'member'))->render();
-                    }
-                    break;
-                case 'previewAppointments':
-                    $breadcrumbs = "Preview Appointments";
-                    $searchTerm = $request->get('query');
-                    $searchTerm = str_replace(" ", "%", $searchTerm);
-                    $member = Pipeline::getAppointmentsList($searchTerm, 'id', 'asc');
-                    $stage = Pipeline::where('stage', 'Appointment Scheduled')->where('gym_id', Auth::guard('employee')->user()->gym_id)->count();
-                    $reStage = Pipeline::where('transferStage', 'Appointment Scheduled')->where('gym_id', Auth::guard('employee')->user()->gym_id)->count();
-                    $totalStage = $stage + $reStage;
-                    $total = Pipeline::where('gym_id', Auth::guard('employee')->user()->gym_id)->count();
-                    if ($request->ajax()) {
-                        $sort_by = $request->get('sortby');
-                        $sort_type = $request->get('sorttype');
-                        $member = Pipeline::getAppointmentsList($searchTerm, $sort_by, $sort_type);
-                        return view('gym.member.guest.pagination_data', compact('breadcrumbs', 'member'))->render();
-                    }
-                    break;
-                case 'previewPresentations':
-                    $breadcrumbs = "Preview Presentations";
-                    $searchTerm = $request->get('query');
-                    $searchTerm = str_replace(" ", "%", $searchTerm);
-                    $member = Pipeline::getPresentationsList($searchTerm, 'id', 'asc');
-                    $stage = Pipeline::where('stage', 'Presentation Scheduled')->where('gym_id', Auth::guard('employee')->user()->gym_id)->count();
-                    $reStage = Pipeline::where('transferStage', 'Presentation Scheduled')->where('gym_id', Auth::guard('employee')->user()->gym_id)->count();
-                    $totalStage = $stage + $reStage;
-                    $total = Pipeline::where('gym_id', Auth::guard('employee')->user()->gym_id)->count();
-                    if ($request->ajax()) {
-                        $sort_by = $request->get('sortby');
-                        $sort_type = $request->get('sorttype');
-                        $member = Pipeline::getPresentationsList($searchTerm, $sort_by, $sort_type);
-                        return view('gym.member.guest.pagination_data', compact('breadcrumbs', 'member'))->render();
-                    }
-                    break;
-                case 'contractSent':
-                    $breadcrumbs = "Contract Sent";
-                    $searchTerm = $request->get('query');
-                    $searchTerm = str_replace(" ", "%", $searchTerm);
-                    $member = Pipeline::getContractList($searchTerm, 'id', 'asc');
-                    $stage = Pipeline::where('stage', 'Contract Sent')->where('gym_id', Auth::guard('employee')->user()->gym_id)->count();
-                    $reStage = Pipeline::where('transferStage', 'Contract Sent')->where('gym_id', Auth::guard('employee')->user()->gym_id)->count();
-                    $totalStage = $stage + $reStage;
-                    $total = Pipeline::where('gym_id', Auth::guard('employee')->user()->gym_id)->count();
-                    if ($request->ajax()) {
-                        $sort_by = $request->get('sortby');
-                        $sort_type = $request->get('sorttype');
-                        $member = Pipeline::getContractList($searchTerm, $sort_by, $sort_type);
-                        return view('gym.member.guest.pagination_data', compact('breadcrumbs', 'member'))->render();
-                    }
-                    break;
-                case 'previewQualified':
-                    $breadcrumbs = "Qualified To Buy";
-                    $searchTerm = $request->get('query');
-                    $searchTerm = str_replace(" ", "%", $searchTerm);
-                    $member = Pipeline::getQualifiedList($searchTerm, 'id', 'asc');
-                    $stage = Pipeline::where('stage', 'Qualified To Buy')->where('gym_id', Auth::guard('employee')->user()->gym_id)->count();
-                    $reStage = Pipeline::where('transferStage', 'Qualified To Buy')->where('gym_id', Auth::guard('employee')->user()->gym_id)->count();
-                    $totalStage = $stage + $reStage;
-                    $total = Pipeline::where('gym_id', Auth::guard('employee')->user()->gym_id)->count();
-                    if ($request->ajax()) {
-                        $sort_by = $request->get('sortby');
-                        $sort_type = $request->get('sorttype');
-                        $member = Pipeline::getQualifiedList($searchTerm, $sort_by, $sort_type);
-                        return view('gym.member.guest.pagination_data', compact('breadcrumbs', 'member'))->render();
-                    }
-                    break;
-                case 'closedWon':
-                    $breadcrumbs = "Closed Won";
-                    $searchTerm = $request->get('query');
-                    $searchTerm = str_replace(" ", "%", $searchTerm);
-                    $member = Pipeline::getWonList($searchTerm, 'id', 'asc');
-                    $stage = Pipeline::where('stage', 'Closed Won')->where('gym_id', Auth::guard('employee')->user()->gym_id)->count();
-                    $reStage = Pipeline::where('transferStage', 'Closed Won')->where('gym_id', Auth::guard('employee')->user()->gym_id)->count();
-                    $totalStage = $stage + $reStage;
-                    $total = Pipeline::where('gym_id', Auth::guard('employee')->user()->gym_id)->count();
-                    if ($request->ajax()) {
-                        $sort_by = $request->get('sortby');
-                        $sort_type = $request->get('sorttype');
-                        $member = Pipeline::getWonList($searchTerm, $sort_by, $sort_type);
-                        return view('gym.member.guest.pagination_data', compact('breadcrumbs', 'member'))->render();
-                    }
-                    break;
-            }
-            return view('gym.member.guest.list', compact('breadcrumbs', 'member', 'totalStage', 'total'))->render();
-        } catch (\Exception $e) {
-            return back()->with('error', 'Oops, something was not right in guest function');
+
+        switch ($value) {
+            case 'previewCalls':
+                $breadcrumbs = "Preview Calls";
+                $searchTerm = $request->get('query');
+                $searchTerm = str_replace(" ", "%", $searchTerm);
+                $member = Pipeline::getCallsList($searchTerm, 'id', 'asc');
+                $stage = Pipeline::where('stage', 'Call Scheduled')->where('employee_id', Auth::guard('employee')->user()->id)->count();
+                $reStage = Pipeline::where('transferStage', 'Call Scheduled')->where('transfer_id', Auth::guard('employee')->user()->id)->count();
+                $totalStage = $stage + $reStage;
+                $stageSubTotal = Pipeline::where('stage', 'Call Scheduled')->where('gym_id', Auth::guard('employee')->user()->gym_id)->count();
+                $transferStageSubTotal = Pipeline::where('transferStage', 'Call Scheduled')->where('gym_id', Auth::guard('employee')->user()->gym_id)->count();
+                $total = $stageSubTotal + $transferStageSubTotal;
+                if ($request->ajax()) {
+                    $sort_by = $request->get('sortby');
+                    $sort_type = $request->get('sorttype');
+                    $member = Pipeline::getCallsList($searchTerm, $sort_by, $sort_type);
+                    return view('gym.member.guest.pagination_data', compact('breadcrumbs', 'member'))->render();
+                }
+                break;
+            case 'previewAppointments':
+                $breadcrumbs = "Preview Appointments";
+                $searchTerm = $request->get('query');
+                $searchTerm = str_replace(" ", "%", $searchTerm);
+                $member = Pipeline::getAppointmentsList($searchTerm, 'id', 'asc');
+                $stage = Pipeline::where('stage', 'Appointment Scheduled')->where('employee_id', Auth::guard('employee')->user()->id)->count();
+                $reStage = Pipeline::where('transferStage', 'Appointment Scheduled')->where('transfer_id', Auth::guard('employee')->user()->id)->count();
+                $totalStage = $stage + $reStage;
+                $stageSubTotal = Pipeline::where('stage', 'Appointment Scheduled')->where('gym_id', Auth::guard('employee')->user()->gym_id)->count();
+                $transferStageSubTotal = Pipeline::where('transferStage', 'Appointment Scheduled')->where('gym_id', Auth::guard('employee')->user()->gym_id)->count();
+                $total = $stageSubTotal + $transferStageSubTotal;
+                if ($request->ajax()) {
+                    $sort_by = $request->get('sortby');
+                    $sort_type = $request->get('sorttype');
+                    $member = Pipeline::getAppointmentsList($searchTerm, $sort_by, $sort_type);
+                    return view('gym.member.guest.pagination_data', compact('breadcrumbs', 'member'))->render();
+                }
+                break;
+            case 'previewPresentations':
+                $breadcrumbs = "Preview Presentations";
+                $searchTerm = $request->get('query');
+                $searchTerm = str_replace(" ", "%", $searchTerm);
+                $member = Pipeline::getPresentationsList($searchTerm, 'id', 'asc');
+                $stage = Pipeline::where('stage', 'Presentation Scheduled')->where('employee_id', Auth::guard('employee')->user()->id)->count();
+                $reStage = Pipeline::where('transferStage', 'Presentation Scheduled')->where('transfer_id', Auth::guard('employee')->user()->id)->count();
+                $totalStage = $stage + $reStage;
+                $stageSubTotal = Pipeline::where('stage', 'Presentation Scheduled')->where('gym_id', Auth::guard('employee')->user()->gym_id)->count();
+                $transferStageSubTotal = Pipeline::where('transferStage', 'Presentation Scheduled')->where('gym_id', Auth::guard('employee')->user()->gym_id)->count();
+                $total = $stageSubTotal + $transferStageSubTotal;
+                if ($request->ajax()) {
+                    $sort_by = $request->get('sortby');
+                    $sort_type = $request->get('sorttype');
+                    $member = Pipeline::getPresentationsList($searchTerm, $sort_by, $sort_type);
+                    return view('gym.member.guest.pagination_data', compact('breadcrumbs', 'member'))->render();
+                }
+                break;
+            case 'contractSent':
+                $breadcrumbs = "Contract Sent";
+                $searchTerm = $request->get('query');
+                $searchTerm = str_replace(" ", "%", $searchTerm);
+                $member = Pipeline::getContractList($searchTerm, 'id', 'asc');
+                $stage = Pipeline::where('stage', 'Contract Sent')->where('employee_id', Auth::guard('employee')->user()->id)->count();
+                $reStage = Pipeline::where('transferStage', 'Contract Sent')->where('transfer_id', Auth::guard('employee')->user()->id)->count();
+                $totalStage = $stage + $reStage;
+                $stageSubTotal = Pipeline::where('stage', 'Contract Sent')->where('gym_id', Auth::guard('employee')->user()->gym_id)->count();
+                $transferStageSubTotal = Pipeline::where('transferStage', 'Contract Sent')->where('gym_id', Auth::guard('employee')->user()->gym_id)->count();
+                $total = $stageSubTotal + $transferStageSubTotal;
+                if ($request->ajax()) {
+                    $sort_by = $request->get('sortby');
+                    $sort_type = $request->get('sorttype');
+                    $member = Pipeline::getContractList($searchTerm, $sort_by, $sort_type);
+                    return view('gym.member.guest.pagination_data', compact('breadcrumbs', 'member'))->render();
+                }
+                break;
+            case 'previewQualified':
+                $breadcrumbs = "Qualified To Buy";
+                $searchTerm = $request->get('query');
+                $searchTerm = str_replace(" ", "%", $searchTerm);
+                $member = Pipeline::getQualifiedList($searchTerm, 'id', 'asc');
+                $stage = Pipeline::where('stage', 'Qualified To Buy')->where('employee_id', Auth::guard('employee')->user()->id)->count();
+                $reStage = Pipeline::where('transferStage', 'Qualified To Buy')->where('transfer_id', Auth::guard('employee')->user()->id)->count();
+                $totalStage = $stage + $reStage;
+                $stageSubTotal = Pipeline::where('stage', 'Qualified To Buy')->where('gym_id', Auth::guard('employee')->user()->gym_id)->count();
+                $transferStageSubTotal = Pipeline::where('transferStage', 'Qualified To Buy')->where('gym_id', Auth::guard('employee')->user()->gym_id)->count();
+                $total = $stageSubTotal + $transferStageSubTotal;
+                if ($request->ajax()) {
+                    $sort_by = $request->get('sortby');
+                    $sort_type = $request->get('sorttype');
+                    $member = Pipeline::getQualifiedList($searchTerm, $sort_by, $sort_type);
+                    return view('gym.member.guest.pagination_data', compact('breadcrumbs', 'member'))->render();
+                }
+                break;
+            case 'closedWon':
+                $breadcrumbs = "Closed Won";
+                $searchTerm = $request->get('query');
+                $searchTerm = str_replace(" ", "%", $searchTerm);
+                $member = Pipeline::getWonList($searchTerm, 'id', 'asc');
+                $stage = Pipeline::where('stage', 'Closed Won')->where('employee_id', Auth::guard('employee')->user()->id)->count();
+                $reStage = Pipeline::where('transferStage', 'Closed Won')->where('transfer_id', Auth::guard('employee')->user()->id)->count();
+                $totalStage = $stage + $reStage;
+                $stageSubTotal = Pipeline::where('stage', 'Closed Won')->where('gym_id', Auth::guard('employee')->user()->gym_id)->count();
+                $transferStageSubTotal = Pipeline::where('transferStage', 'Closed Won')->where('gym_id', Auth::guard('employee')->user()->gym_id)->count();
+                $total = $stageSubTotal + $transferStageSubTotal;
+                if ($request->ajax()) {
+                    $sort_by = $request->get('sortby');
+                    $sort_type = $request->get('sorttype');
+                    $member = Pipeline::getWonList($searchTerm, $sort_by, $sort_type);
+                    return view('gym.member.guest.pagination_data', compact('breadcrumbs', 'member'))->render();
+                }
+                break;
         }
+        return view('gym.member.guest.list', compact('breadcrumbs', 'member', 'totalStage', 'total'))->render();
+
     }
 
     public function report(Request $request)
