@@ -99,8 +99,6 @@ class Pipeline extends Model
                 'pipeline.reScheduleDate',
                 'employees.name as EmployeeName',
                 'members.name as Member',
-                'employees.id',
-                'members.id',
             ]
         )->where(function ($query) use ($searchTerm, $sort_by, $sort_type) {
             $query->orWhere('pipeline.employee_id', Auth::guard('employee')->user()->id)->where('pipeline.stage', 'Call Scheduled')
