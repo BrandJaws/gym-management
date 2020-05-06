@@ -24,7 +24,7 @@
                             <!--begin::Section-->
                             <div class="kt-section">
                                 <div class="kt-section__content">
-                                    <div class="table-responsive">
+                                    <div class="     ">
                                         <div class="row">
                                             <div class="col-md-3">
                                                 <div class="form-group row add">
@@ -41,7 +41,7 @@
                                                         </button>
                                                     </div>
                                                 </div>
-                                                <div class="table-responsive text-center">
+                                                <div class="      text-center">
                                                     <table class="table table-borderless" id="table">
                                                         <thead>
                                                         <tr>
@@ -92,7 +92,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="table-responsive">
+                                                <div class="     ">
                                                     <table class="table table-striped table-bordered">
                                                         <thead>
                                                         <tr>
