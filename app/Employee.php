@@ -53,6 +53,18 @@ class Employee extends Authenticatable
         return $this->hasMany(EmployeePermission::class, 'employee_id', 'id');
     }
 
+    public function activityLogs(){
+        return $this->hasMany(ActivityLogs::class, 'employee_id')->orderBy('id', 'desc');
+    }
+
+    public function reSchaduale(){
+        return $this->hasMany(Pipeline::class, 'transfer_id')->orderBy('id', 'desc');
+    }
+
+    public function schadualeStage(){
+        return $this->hasMany(Pipeline::class, 'employee_id')->orderBy('id', 'desc');
+    }
+
     public static function getEmployeeList($searchTerm, $sort_by, $sort_type)
     {
         return self::select([
