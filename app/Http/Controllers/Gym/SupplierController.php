@@ -35,6 +35,7 @@ class SupplierController extends Controller
                 $supplier = Supplier::getSupplierList($searchTerm, $sort_by, $sort_type);
                 return view('gym.supplier.pagination_data', compact('supplier'))->render();
             }
+            ActivityLogsController::insertLog("Supplier List Page");
             return view('gym.supplier.list', compact('supplier'));
         } catch (\Exception $e) {
             return back()->with('error', 'Oops, something was not right');
@@ -48,6 +49,7 @@ class SupplierController extends Controller
      */
     public function create()
     {
+        ActivityLogsController::insertLog("Supplier Create Page");
         return view('gym.supplier.create');
     }
 
@@ -88,6 +90,7 @@ class SupplierController extends Controller
                 $images[] = $userImage;
                 $supplier->userImage()->saveMany($images, $supplier);
             }
+            ActivityLogsController::insertLog("Create New Supplier");
             return back()->with('success', 'Supplier Created Successfully!');
         } catch (\Exception $e) {
             return response()->json([
@@ -122,6 +125,7 @@ class SupplierController extends Controller
             $treasuryCashOut = Treasury::where('supplier_id', $id)->where('gym_id', Auth::guard('employee')->user()->gym_id)->where('cashFlow', 'Out')->sum('value');
             $treasuryCashExtra = Treasury::where('supplier_id', $id)->where('gym_id', Auth::guard('employee')->user()->gym_id)->where('cashFlow', 'Extra')->sum('value');
             $treasuryCashDiscount = Treasury::where('supplier_id', $id)->where('gym_id', Auth::guard('employee')->user()->gym_id)->where('cashFlow', 'Discount')->sum('value');
+            ActivityLogsController::insertLog("Supplier Edit Page");
             return view('gym.supplier.edit', compact('supplier', 'treasuryDetail', 'treasuryCashIn', 'treasuryCashOut', 'treasuryCashExtra', 'treasuryCashDiscount'));
         } catch (\Exception $e) {
             return back()->with('error', 'Oops, something was not right');
@@ -166,6 +170,7 @@ class SupplierController extends Controller
                 $images[] = $userImage;
                 $supplier->userImage()->saveMany($images, $supplier);
             }
+            ActivityLogsController::insertLog("Update Supplier");
             return back()->with('success', 'Supplier Updated Successfully!');
         } catch (\Exception $e) {
             return response()->json([
@@ -185,6 +190,7 @@ class SupplierController extends Controller
         try {
             Supplier::destroy($id);
             $this->deleteSupplierImg($id);
+            ActivityLogsController::insertLog("Delete Supplier");
             return back()->with('success', 'Supplier Deleted Successfully!');
         } catch (\Exception $e) {
             return back()->with('error', 'Oops, something was not right');

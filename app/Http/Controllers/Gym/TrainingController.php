@@ -32,6 +32,7 @@ class TrainingController extends Controller
                 $training = Training::getTrainingList($searchTerm, $sort_by, $sort_type);
                 return view('gym.training.pagination_data', compact('training'))->render();
             }
+            ActivityLogsController::insertLog("Training List Page");
             return view('gym.training.list', compact('training'));
         } catch (\Exception $e) {
             return back()->with('error', 'Oops, something was not right');
@@ -42,6 +43,7 @@ class TrainingController extends Controller
     {
         try {
             $trainer = Trainer::where('gym_id', '=', Auth::guard('employee')->user()->gym_id)->orderBy('id', 'asc')->get();
+            ActivityLogsController::insertLog("Training Create Page");
             return view('gym.training.create', compact('trainer'))->render();
         } catch (\Exception $e) {
             return back()->with('error', 'Oops, something was not right');
@@ -95,6 +97,7 @@ class TrainingController extends Controller
                 $training->promotionContent = $request->promotionContent;
                 $training->save();
             }
+            ActivityLogsController::insertLog("Add New Training");
             return back()->with('success', 'Training Created Successfully!');
         } catch (\Exception $e) {
             return response()->json([
@@ -111,6 +114,7 @@ class TrainingController extends Controller
             $groupCount = $trainingGroup->count();
             $trainer = Trainer::where('gym_id', '=', Auth::guard('employee')->user()->gym_id)->orderBy('id', 'asc')->get();
             $member = Member::where('gym_id', '=', Auth::guard('employee')->user()->gym_id)->where('type', '=', 'Member')->orderBy('id', 'asc')->get();
+            ActivityLogsController::insertLog("Training Edit Page");
             return view('gym.training.edit', compact('training', 'trainer', 'trainingGroup', 'member', 'groupCount'));
         } catch (\Exception $e) {
             return back()->with('error', 'Oops, something was not right in treasury update page');
@@ -166,6 +170,7 @@ class TrainingController extends Controller
                 $this->deleteTrainingImg($id);
             }
             $training->save();
+            ActivityLogsController::insertLog("Update Training");
             return back()->with('success', 'Training Updated Successfully!');
         } catch (\Exception $e) {
             return response()->json([
@@ -179,6 +184,7 @@ class TrainingController extends Controller
         try {
             Training::destroy($id);
             $this->deleteTrainingImg($id);
+            ActivityLogsController::insertLog(" Delete Training");
             return back()->with('success', 'Trainer Deleted Successfully!');
         } catch (\Exception $e) {
             return back()->with('error', 'Oops, something was not right in training delete function');
@@ -200,6 +206,7 @@ class TrainingController extends Controller
                     'gym_id' => Auth::guard('employee')->user()->gym_id,
                     'training_id' => $request->training_id,
                 ]);
+                ActivityLogsController::insertLog("Add/Update Training Group ");
                 return response()->json(['code' => 200, 'message' => 'Post Created successfully', 'data' => $post], 200);
             }
                 return response()->json(['code' => 400, 'message' => 'error'], 400);
@@ -209,6 +216,7 @@ class TrainingController extends Controller
     {
         try {
             $post = TrainingGroup::find($id);
+            ActivityLogsController::insertLog("Training Edit Page");
             return response()->json($post);
         } catch (\Exception $e) {
             return back()->with('error', 'Oops, something was not right in treasury update page');
@@ -219,6 +227,7 @@ class TrainingController extends Controller
     {
         try {
             TrainingGroup::find($id)->delete();
+            ActivityLogsController::insertLog("Delete Training Group ");
             return response()->json(['success' => 'Post Deleted successfully']);
         } catch (\Exception $e) {
             return back()->with('error', 'Oops, something was not right in treasury update page');

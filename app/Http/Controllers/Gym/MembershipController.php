@@ -31,6 +31,7 @@ class MembershipController extends Controller
                 $membership = Membership::getMembershipList($searchTerm, $sort_by, $sort_type);
                 return view('gym.membership.pagination_data', compact('membership'))->render();
             }
+            ActivityLogsController::insertLog("Membership List Page");
             return view('gym.membership.list', compact('membership'));
         } catch (\Exception $e) {
             return back()->with('error', 'Oops, something was not right');
@@ -46,6 +47,7 @@ class MembershipController extends Controller
     {
         try {
             $gym = Gym::where('parent_id', '=', Auth::guard('employee')->user()->parentGym->id)->get();
+            ActivityLogsController::insertLog("Membership Create Page");
             return view('gym.membership.create', compact('gym'));
         } catch (\Exception $e) {
             return back()->with('error', 'Oops, something was not right');
@@ -89,6 +91,7 @@ class MembershipController extends Controller
             }
             $membership->gym_id = implode(',', $request->gym_id);
             $membership->save();
+            ActivityLogsController::insertLog("Create New Membership");
             return back()->with('success', 'Membership Created Successfully!');
         } catch (\Exception $e) {
             return response()->json([
@@ -124,6 +127,7 @@ class MembershipController extends Controller
             foreach ($gymId as $fields) {
                 array_push($gymSelectedList, $fields);
             }
+            ActivityLogsController::insertLog("Membership Edit Page");
             return view('gym.membership.edit', compact('membership', 'gym', 'gymSelectedList'));
         } catch (\Exception $e) {
             return back()->with('error', 'Oops, something was not right');
@@ -169,6 +173,7 @@ class MembershipController extends Controller
             }
             $membership->gym_id = implode(',', $request->gym_id);
             $membership->save();
+            ActivityLogsController::insertLog("Update Membership");
             return back()->with('success', 'Membership Updated Successfully!');
         } catch (\Exception $e) {
             return response()->json([
@@ -187,6 +192,7 @@ class MembershipController extends Controller
     {
         try {
             Membership::destroy($id);
+            ActivityLogsController::insertLog("Delete Membership");
             return back()->with('success', 'Membership Deleted Successfully!');
         } catch (\Exception $e) {
             return back()->with('error', 'Oops, something was not right');

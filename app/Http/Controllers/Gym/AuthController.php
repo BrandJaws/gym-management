@@ -39,6 +39,7 @@ class AuthController extends Controller
         if ($employee->gym->status == "Active") {
             if (Auth::guard('employee')->attempt($request->only('email', 'password'), $request->filled('remember'))) {
                 //Authentication passed...
+                ActivityLogsController::insertLog("Login . . . !");
                 return redirect()
                     ->intended(route('gym.home'))
                     ->with('status', 'You are Logged in as Gym Super-Admin!');
@@ -52,6 +53,7 @@ class AuthController extends Controller
 
     public function logout()
     {
+        ActivityLogsController::insertLog("Logout . . . !");
         Auth::guard('employee')->logout();
         return redirect()
             ->route('gym.login')
@@ -98,6 +100,7 @@ class AuthController extends Controller
 
     public function profile()
     {
+        ActivityLogsController::insertLog("User Profile Page");
         return view('gym.auth.profile');
     }
 
@@ -144,6 +147,7 @@ class AuthController extends Controller
                 $gymId->gymImage()->saveMany($images, $gym);
             }
             $gym->save();
+            ActivityLogsController::insertLog("Update Profile");
             return back()->with('success', 'Profile Updated Successfully!');
         } catch (\Exception $e) {
             return response()->json([

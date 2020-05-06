@@ -35,6 +35,7 @@ class TrainerController extends Controller
                 $trainer = Trainer::getTrainerList($searchTerm, $sort_by, $sort_type);
                 return view('gym.trainer.pagination_data', compact('trainer'))->render();
             }
+            ActivityLogsController::insertLog("Trainer List Page");
             return view('gym.trainer.list', compact('trainer'));
         } catch (\Exception $e) {
             return back()->with('error', 'Oops, something was not right');
@@ -49,6 +50,7 @@ class TrainerController extends Controller
     public function create()
     {
         try {
+            ActivityLogsController::insertLog("Trainer Create Page");
             return view('gym.trainer.create');
         } catch (\Exception $e) {
             return back()->with('error', 'Oops, something was not right');
@@ -106,6 +108,7 @@ class TrainerController extends Controller
                 $images[] = $userImage;
                 $trainer->userImage()->saveMany($images, $trainer);
             }
+            ActivityLogsController::insertLog("Add New Trainer");
             return back()->with('success', 'Trainer Created Successfully!');
         } catch (\Exception $e) {
             return response()->json([
@@ -140,6 +143,7 @@ class TrainerController extends Controller
             $treasuryCashOut = Treasury::where('trainer_id', $id)->where('gym_id', Auth::guard('employee')->user()->gym_id)->where('cashFlow', 'Out')->sum('value');
             $treasuryCashExtra = Treasury::where('trainer_id', $id)->where('gym_id', Auth::guard('employee')->user()->gym_id)->where('cashFlow', 'Extra')->sum('value');
             $treasuryCashDiscount = Treasury::where('trainer_id', $id)->where('gym_id', Auth::guard('employee')->user()->gym_id)->where('cashFlow', 'Discount')->sum('value');
+            ActivityLogsController::insertLog("Trainer Edit Page");
             return view('gym.trainer.edit', compact('trainer', 'treasuryDetail', 'treasuryCashIn', 'treasuryCashOut', 'treasuryCashExtra', 'treasuryCashDiscount'));
         } catch (\Exception $e) {
             return back()->with('error', 'Oops, something was not right in trainer update page');
@@ -204,6 +208,7 @@ class TrainerController extends Controller
                 $images[] = $userImage;
                 $trainer->userImage()->saveMany($images, $trainer);
             }
+            ActivityLogsController::insertLog("Update Trainer");
             return back()->with('success', 'Trainer Updated Successfully!');
         } catch (\Exception $e) {
             return response()->json([
@@ -223,6 +228,7 @@ class TrainerController extends Controller
         try {
             Trainer::destroy($id);
             $this->deleteTrainerImg($id);
+            ActivityLogsController::insertLog("Delete Trainer");
             return back()->with('success', 'Trainer Deleted Successfully!');
         } catch (\Exception $e) {
             return back()->with('error', 'Oops, something was not right in trainer delete function');

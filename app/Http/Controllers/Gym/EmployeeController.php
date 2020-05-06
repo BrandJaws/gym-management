@@ -41,6 +41,7 @@ class EmployeeController extends Controller
                 $employee = Employee::getEmployeeList($searchTerm, $sort_by, $sort_type);
                 return view('gym.employee.pagination_data', compact('employee'))->render();
             }
+            ActivityLogsController::insertLog("Employee List Page");
             return view('gym.employee.list', compact('employee'));
         } catch (\Exception $e) {
             return back()->with('error', 'Oops, something was not right in employee page');
@@ -57,6 +58,7 @@ class EmployeeController extends Controller
         try {
             $gym = Gym::where('parent_id', '=', Auth::guard('employee')->user()->parentGym->id)->get();
             $gymModule = GymPermission::where('gym_id', '=', Auth::guard('employee')->user()->parentGym->id)->get();
+            ActivityLogsController::insertLog("Employee Create Page");
             return view('gym.employee.create', compact('gym', 'gymModule'));
         } catch (\Exception $e) {
             return back()->with('error', 'Oops, something was not right in employee add page');
@@ -129,6 +131,7 @@ class EmployeeController extends Controller
                     );
                 }
             }
+            ActivityLogsController::insertLog("Create New Employee");
             return back()->with('success', 'Employee Created Successfully!');
         } catch (\Exception $e) {
             return response()->json([
@@ -166,6 +169,7 @@ class EmployeeController extends Controller
             foreach ($gymPermission as $permissions) {
                 array_push($moduleList, $permissions->gym_module_id);
             }
+            ActivityLogsController::insertLog("Employee Edit Page");
             return view('gym.employee.edit', compact('employee', 'gym', 'treasuryDetail', 'gymModule','moduleList'));
         } catch (\Exception $e) {
             return back()->with('error', 'Oops, something was not right in employee update page');
@@ -246,6 +250,7 @@ class EmployeeController extends Controller
                     );
                 }
             }
+            ActivityLogsController::insertLog("Update Employee");
             return back()->with('success', 'Employee Updated Successfully!');
         } catch (\Exception $e) {
             return response()->json([
@@ -265,6 +270,7 @@ class EmployeeController extends Controller
         try {
             Employee::destroy($id);
             $this->deleteEmployeeImg($id);
+            ActivityLogsController::insertLog("Delete Employee");
             return back()->with('success', 'Employee Deleted Successfully!');
         } catch (\Exception $e) {
             return back()->with('error', 'Oops, something was not right in employee delete function');

@@ -37,6 +37,7 @@ class TreasuryController extends Controller
                 $treasury = Treasury::getTreasuryList($query, $sort_by, $sort_type);
                 return view('gym.treasury.pagination_data', compact('treasury'))->render();
             }
+            ActivityLogsController::insertLog("Treasury List Page ");
             return view('gym.treasury.list', compact('treasury'));
         } catch (\Exception $e) {
             return back()->with('error', 'Oops, something was not right in treasury list');
@@ -52,9 +53,10 @@ class TreasuryController extends Controller
     {
         $gym_id = Auth::guard('employee')->user()->gym_id;
         $employee = Employee::where('gym_id', $gym_id)->get();
-        $member = Member::where('gym_id', $gym_id)->where('type','Member')->get();
+        $member = Member::where('gym_id', $gym_id)->where('type', 'Member')->get();
         $trainer = Trainer::where('gym_id', $gym_id)->get();
         $supplier = Supplier::where('gym_id', $gym_id)->get();
+        ActivityLogsController::insertLog("Treasury Create Page ");
         return view('gym.treasury.create', compact('employee', 'member', 'trainer', 'supplier'));
     }
 
@@ -92,7 +94,7 @@ class TreasuryController extends Controller
             switch ($value) {
                 case 'Employee':
                     $treasury->employeeId = $request->employeeId;
-                    $treasury->member_id =  '0';
+                    $treasury->member_id = '0';
                     $treasury->supplier_id = '0';
                     $treasury->trainer_id = '0';
                     $treasury->purpose = $request->employeePurpose;
@@ -127,6 +129,7 @@ class TreasuryController extends Controller
                     break;
             }
             $treasury->save();
+            ActivityLogsController::insertLog("Create New Treasury");
             return back()->with('success', 'Treasury Created Successfully!');
         } catch (\Exception $e) {
             return response()->json([
@@ -161,6 +164,7 @@ class TreasuryController extends Controller
             $member = Member::where('gym_id', $gym_id)->get();
             $trainer = Trainer::where('gym_id', $gym_id)->get();
             $supplier = Supplier::where('gym_id', $gym_id)->get();
+            ActivityLogsController::insertLog("Treasury Edit Page ");
             return view('gym.treasury.edit', compact('treasury', 'employee', 'member', 'trainer', 'supplier'));
         } catch (\Exception $e) {
             return back()->with('error', 'Oops, something was not right in member edit page');
@@ -203,7 +207,7 @@ class TreasuryController extends Controller
             switch ($value) {
                 case 'Employee':
                     $treasury->employeeId = $request->employeeId;
-                    $treasury->member_id =  '0';
+                    $treasury->member_id = '0';
                     $treasury->supplier_id = '0';
                     $treasury->trainer_id = '0';
                     $treasury->purpose = $request->employeePurpose;
@@ -238,6 +242,7 @@ class TreasuryController extends Controller
                     break;
             }
             $treasury->save();
+            ActivityLogsController::insertLog("Update Treasury");
             return back()->with('success', 'Treasury Updated Successfully!');
         } catch (\Exception $e) {
             return response()->json([
@@ -256,6 +261,7 @@ class TreasuryController extends Controller
     {
         try {
             Treasury::destroy($id);
+            ActivityLogsController::insertLog("Delete Treasury");
             return back()->with('success', 'Treasury Deleted Successfully!');
         } catch (\Exception $e) {
             return back()->with('error', 'Oops, something was not right in treasury delete function');

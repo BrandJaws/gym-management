@@ -32,6 +32,7 @@ class ServiceController extends Controller
                 $gymServices = GymServices::getServiceList($searchTerm, $sort_by, $sort_type);
                 return view('gym.service.pagination_data', compact('gymServices'))->render();
             }
+            ActivityLogsController::insertLog("Gym Services List Page");
             return view('gym.service.list', compact('gymServices'));
         } catch (\Exception $e) {
             return back()->with('error', 'Oops, something was not right');
@@ -48,6 +49,7 @@ class ServiceController extends Controller
         try {
             $gym_id = Auth::guard('employee')->user()->gym_id;
             $gym = Gym::where('parent_id', $gym_id)->get();
+            ActivityLogsController::insertLog("Gym Services Create Page");
             return view('gym.service.create', compact('gym'));
         } catch (\Exception $e) {
             return back()->with('error', 'Oops, something was not right');
@@ -81,6 +83,7 @@ class ServiceController extends Controller
             $service->code = $code;
             $service->gym_id = implode(',', $request->gym_id);
             $service->save();
+            ActivityLogsController::insertLog("Create new Gym Service");
             return back()->with('success', 'Service Created Successfully!');
         } catch (\Exception $e) {
             return response()->json([
@@ -117,6 +120,7 @@ class ServiceController extends Controller
             foreach ($gymId as $fields) {
                 array_push($gymSelectedList, $fields);
             }
+            ActivityLogsController::insertLog("Gym Service Edit Page");
             return view('gym.service.edit', compact('gymServices', 'gym', 'gymSelectedList'));
         } catch (\Exception $e) {
             return back()->with('error', 'Oops, something was not right');
@@ -150,6 +154,7 @@ class ServiceController extends Controller
             ]));
             $service->gym_id = implode(',', $request->gym_id);
             $service->save();
+            ActivityLogsController::insertLog("Update Gym Service");
             return back()->with('success', 'Service Updated Successfully!');
         } catch (\Exception $e) {
             return response()->json([
@@ -168,6 +173,7 @@ class ServiceController extends Controller
     {
         try {
             GymServices::destroy($id);
+            ActivityLogsController::insertLog("Delete Gym Service");
             return back()->with('success', 'Gym Service Deleted Successfully!');
         } catch (\Exception $e) {
             return back()->with('error', 'Oops, something was not right');
