@@ -75,6 +75,7 @@ class MemberController extends Controller
             $totalLead = Member::where('type', 'Lead')->where('leadOwner_id', Auth::guard('employee')->user()->id)->count();
             $totalMember = Member::where('type', 'Member')->where('leadOwner_id', Auth::guard('employee')->user()->id)->count();
             $total = Member::where('gym_id', Auth::guard('employee')->user()->gym_id)->count();
+            ActivityLogsController::insertLog("Member Dashboard");
             return view('gym.member.dashboard', compact('memberships', 'totalCalls', 'appointmentScheduled', 'activeMembers', 'dailySchaduale', 'dailyReSchaduale', 'qualifiedToBuy',
                 'transferCalls', 'failedCalls', 'leads', 'inActiveMembers', 'expiredMembers', 'notJoinedMembers', 'presentationScheduled', 'contractSent', 'hotRating', 'totalLead', 'totalMember', 'total',
                 'assignTasksEmployee'));
@@ -102,6 +103,7 @@ class MemberController extends Controller
                 $member = Member::getMemberList($query, $sort_by, $sort_type);
                 return view('gym.member.list.pagination_data', compact('member'))->render();
             }
+            ActivityLogsController::insertLog("Member List Page");
             return view('gym.member.list.index', compact('member', 'parent', 'affiliate', 'notJoined', 'active', 'inActive', 'expired', 'total'));
         } catch (\Exception $e) {
             return back()->with('error', 'Oops, something was not right in member list page');
@@ -119,6 +121,7 @@ class MemberController extends Controller
             $gym_id = Auth::guard('employee')->user()->gym_id;
             $membership = Membership::where('gym_id', $gym_id)->get();
             $member = Member::where('gym_id', $gym_id)->where('type', 'Member')->where('memberType', 'Parent')->where('membership_id', '!=', '')->get();
+            ActivityLogsController::insertLog("Member/Lead Create Page");
             return view('gym.member.list.create', compact('membership', 'member'));
         } catch (\Exception $e) {
             return back()->with('error', 'Oops, something was not right in member add page');
@@ -177,6 +180,7 @@ class MemberController extends Controller
                         $images[] = $userImage;
                         $member->userImage()->saveMany($images, $member);
                     }
+                    ActivityLogsController::insertLog("Create New Lead");
                     return back()->with('success', 'Lead Created Successfully!');
                     break;
                 case 'Member':
@@ -215,6 +219,7 @@ class MemberController extends Controller
                                 $images[] = $userImage;
                                 $member->userImage()->saveMany($images, $member);
                             }
+                            ActivityLogsController::insertLog("Create New Member");
                             return back()->with('success', 'Member Created Successfully!');
                             break;
                         case 'Affiliate Member':
@@ -255,6 +260,7 @@ class MemberController extends Controller
                                         $images[] = $userImage;
                                         $member->userImage()->saveMany($images, $member);
                                     }
+                                    ActivityLogsController::insertLog("Create New Member");
                                     return back()->with('success', 'Member Created Successfully!');
                                 } else {
                                     return back()->with('error', 'Sorry! Please register yourself in new membership');
@@ -307,7 +313,8 @@ class MemberController extends Controller
             $treasuryCashExtra = Treasury::where('member_id', $id)->where('gym_id', $gym_id)->where('cashFlow', 'Extra')->sum('value');
             $treasuryCashDiscount = Treasury::where('member_id', $id)->where('gym_id', $gym_id)->where('cashFlow', 'Discount')->sum('value');
             $member = Member::where('gym_id', $gym_id)->where('type', 'Member')->where('memberType', 'Parent')->get();
-            $training = TrainingGroup::where('member_id', $id)->where('gym_id', Auth::guard('employee')->user()->gym_id)->paginate(10);;
+            $training = TrainingGroup::where('member_id', $id)->where('gym_id', Auth::guard('employee')->user()->gym_id)->paginate(10);
+            ActivityLogsController::insertLog("Member/Lead Edit Page");
             return view('gym.member.list.edit', compact('lead', 'membership', 'callHistory', 'treasuryDetail', 'member', 'treasuryCashIn', 'treasuryCashOut', 'treasuryCashExtra', 'treasuryCashDiscount', 'training'));
         } catch (\Exception $e) {
             return back()->with('error', 'Oops, something was not right in member edit page');
@@ -353,6 +360,7 @@ class MemberController extends Controller
                         $images[] = $userImage;
                         $member->userImage()->saveMany($images, $member);
                     }
+                    ActivityLogsController::insertLog("Update Lead");
                     return back()->with('success', 'Lead Updated Successfully!');
                     break;
                 case 'Member':
@@ -400,6 +408,7 @@ class MemberController extends Controller
                                 $images[] = $userImage;
                                 $member->userImage()->saveMany($images, $member);
                             }
+                            ActivityLogsController::insertLog("Update Member");
                             return back()->with('success', 'Member Updated Successfully!');
                             break;
                         case 'Affiliate Member':
@@ -450,6 +459,7 @@ class MemberController extends Controller
                                         $images[] = $userImage;
                                         $member->userImage()->saveMany($images, $member);
                                     }
+                                    ActivityLogsController::insertLog("Update Member");
                                     return back()->with('success', 'Member Updated Successfully!');
                                 } else {
                                     return back()->with('error', 'Sorry! Please register yourself in new membership');
@@ -483,6 +493,7 @@ class MemberController extends Controller
         try {
             Member::destroy($id);
             Pipeline::where('customer_id', $id)->delete();
+            ActivityLogsController::insertLog("Disable Member");
             return back()->with('success', 'Member Disabled Successfully!');
         } catch (\Exception $e) {
             return back()->with('error', 'Oops, something was not right in member disabled function');
@@ -493,6 +504,7 @@ class MemberController extends Controller
     {
         try {
             $member = Member::onlyTrashed()->paginate(10);
+            ActivityLogsController::insertLog("Disable Member List Page");
             return view('gym.member.list.disabledList', compact('member'))->render();
         } catch (\Exception $e) {
             return back()->with('error', 'Oops, something was not right in member disabled page');
@@ -505,6 +517,7 @@ class MemberController extends Controller
             Member::where('id', $id)->forcedelete();
             Pipeline::where('customer_id', $id)->forcedelete();
             $this->deleteMemberImg($id);
+            ActivityLogsController::insertLog("Permanently Delete Member");
             return back()->with('success', 'Permanently Deleted Successfully!');
         } catch (\Exception $e) {
             return back()->with('error', 'Oops, something was not right in member distroy function');
@@ -516,6 +529,7 @@ class MemberController extends Controller
         try {
             Member::where('id', $id)->restore();
             Pipeline::where('customer_id', $id)->restore();
+            ActivityLogsController::insertLog("Restore Member");
             return back()->with('success', 'Data Restore Successfully!');
         } catch (\Exception $e) {
             return back()->with('error', 'Oops, something was not right in member restore function');
@@ -540,6 +554,7 @@ class MemberController extends Controller
                     $member = Member::getLeadList($searchTerm, $sort_by, $sort_type);
                     return view('gym.member.archive.pagination_data', compact('breadcrumbs', 'member', 'totalLead'))->render();
                 }
+                ActivityLogsController::insertLog("Leads List Page");
                 break;
             case 'failedCalls':
                 $breadcrumbs = "Failed Calls";
@@ -552,6 +567,7 @@ class MemberController extends Controller
                     $member = Pipeline::getFailedCallList($searchTerm, $sort_by, $sort_type);
                     return view('gym.member.archive.pagination_data', compact('breadcrumbs', 'member'))->render();
                 }
+                ActivityLogsController::insertLog("Failed Calls Page");
                 break;
             case 'notJoinedMembers':
                 $breadcrumbs = "Not Joined Members";
@@ -564,6 +580,7 @@ class MemberController extends Controller
                     $member = Member::getNotJoinedMemberList($searchTerm, $sort_by, $sort_type);
                     return view('gym.member.archive.pagination_data', compact('breadcrumbs', 'member'))->render();
                 }
+                ActivityLogsController::insertLog("Not Joined Members List Page");
                 break;
             case 'expiredMembers':
                 $breadcrumbs = "Expired Members";
@@ -576,6 +593,7 @@ class MemberController extends Controller
                     $member = Member::getExpiredMemberList($searchTerm, $sort_by, $sort_type);
                     return view('gym.member.archive.pagination_data', compact('breadcrumbs', 'member'))->render();
                 }
+                ActivityLogsController::insertLog("Expired Members List Page");
                 break;
             case 'inActiveMembers':
                 $breadcrumbs = "In Active Members";
@@ -588,6 +606,7 @@ class MemberController extends Controller
                     $member = Member::getInActiveMemberList($searchTerm, $sort_by, $sort_type);
                     return view('gym.member.archive.pagination_data', compact('breadcrumbs', 'member'))->render();
                 }
+                ActivityLogsController::insertLog("In Active Members List Page");
                 break;
             case 'membershipTransfer':
                 $breadcrumbs = "Membership Transfer";
@@ -604,6 +623,7 @@ class MemberController extends Controller
                     $member = Member::getMemberList($searchTerm, $sort_by, $sort_type);
                     return view('gym.member.archive.pagination_data', compact('breadcrumbs', 'member'))->render();
                 }
+                ActivityLogsController::insertLog("Old Members List Page");
                 break;
         }
         return view('gym.member.archive.list', compact('breadcrumbs', 'member', 'totalLead', 'total', 'hotRating', 'totalMember'))->render();
@@ -620,6 +640,7 @@ class MemberController extends Controller
         $qualifiedBuy = Pipeline::where('employee_id', $employee_id)->where('stage', 'Qualified To Buy')->where('dragStatus', '0')->orderBy('order')->get();
         $closedWon = Pipeline::where('employee_id', $employee_id)->where('stage', 'Closed Won')->where('dragStatus', '0')->orderBy('order')->get();
         $closedLost = Pipeline::where('employee_id', $employee_id)->where('stage', 'Closed Lost')->where('dragStatus', '0')->orderBy('order')->get();
+        ActivityLogsController::insertLog("Drag Leads List Page");
         return view('gym.member.archive.dragLeads', compact('presentationScheduled', 'appointmentScheduled', 'contractSent', 'qualifiedBuy', 'closedWon', 'closedLost', 'callScheduled'));
     }
 
@@ -660,6 +681,7 @@ class MemberController extends Controller
             $key = $key + 1;
             Pipeline::where('id', $value)->update(['stage' => 'Closed Lost', 'status' => 'Success', 'order' => $key]);
         }
+        ActivityLogsController::insertLog("Update Drag Leads ");
         return response()->json(['status' => 'success']);
     }
 
@@ -695,6 +717,7 @@ class MemberController extends Controller
             $member = Member::find($id);
             $membership = Membership::where('gym_id', Auth::guard('employee')->user()->gym_id)->get();
             $employee = Employee::where('gym_id', Auth::guard('employee')->user()->gym_id)->get();
+            ActivityLogsController::insertLog("Stage Create Page");
             return view('gym.member.archive.pipeline', compact('breadcrumbs', 'membership', 'member', 'employee'))->render();
         } catch (\Exception $e) {
             return back()->with('error', 'Oops, something was not right in member pipelineCreate function');
@@ -730,6 +753,7 @@ class MemberController extends Controller
                 $member->intersetedPackages = implode(',', $request->intersetedPackages);
             }
             $member->save();
+            ActivityLogsController::insertLog("Create New Stage");
             return back()->with('success', 'Schedule Date Created Successfully!');
         } catch (\Exception $e) {
             return response()->json([
@@ -749,6 +773,7 @@ class MemberController extends Controller
             }
             $membership = Membership::all();
             $employee = Employee::all();
+            ActivityLogsController::insertLog("Stage Edit Page");
             return view('gym.member.guest.edit', compact('membership', 'pipeline', 'employee', 'packageList'))->render();
         } catch (\Exception $e) {
             return back()->with('error', 'Oops, something was not right in member pipelineEdit function');
@@ -786,6 +811,7 @@ class MemberController extends Controller
                 $pipeline->intersetedPackages = implode(',', $request->intersetedPackages);
             }
             $pipeline->save();
+            ActivityLogsController::insertLog("Update Stage");
             return back()->with('success', 'Pipeline Updated Successfully!');
         } catch (\Exception $e) {
             return response()->json([
@@ -798,6 +824,7 @@ class MemberController extends Controller
     {
         try {
             Pipeline::destroy($id);
+            ActivityLogsController::insertLog("Disabled Stage");
             return back()->with('success', 'Pipeline Disabled Successfully!');
         } catch (\Exception $e) {
             return back()->with('error', 'Oops, something was not right in pipelineDisable function');
@@ -808,6 +835,7 @@ class MemberController extends Controller
     {
         try {
             $pipeline = Pipeline::onlyTrashed()->paginate(10);
+            ActivityLogsController::insertLog("Disable Stage List Page");
             return view('gym.member.guest.disabledPipeline', compact('pipeline'))->render();
         } catch (\Exception $e) {
             return back()->with('error', 'Oops, something was not right in pipelineDisabled function');
@@ -818,6 +846,7 @@ class MemberController extends Controller
     {
         try {
             Pipeline::where('id', $id)->forcedelete();
+            ActivityLogsController::insertLog("Permanently Delete Stage");
             return back()->with('success', 'Permanently Deleted Successfully!');
         } catch (\Exception $e) {
             return back()->with('error', 'Oops, something was not right in distroyPipeline function');
@@ -828,6 +857,7 @@ class MemberController extends Controller
     {
         try {
             Pipeline::where('id', $id)->restore();
+            ActivityLogsController::insertLog("Restore  Stage");
             return back()->with('success', 'Data Restore Successfully!');
         } catch (\Exception $e) {
             return back()->with('error', 'Oops, something was not right in restorePipeline function');
@@ -854,6 +884,7 @@ class MemberController extends Controller
                     $member = Pipeline::getCallsList($searchTerm, $sort_by, $sort_type);
                     return view('gym.member.guest.pagination_data', compact('breadcrumbs', 'member'))->render();
                 }
+                ActivityLogsController::insertLog("Preview Calls List Page");
                 break;
             case 'previewAppointments':
                 $breadcrumbs = "Preview Appointments";
@@ -872,6 +903,7 @@ class MemberController extends Controller
                     $member = Pipeline::getAppointmentsList($searchTerm, $sort_by, $sort_type);
                     return view('gym.member.guest.pagination_data', compact('breadcrumbs', 'member'))->render();
                 }
+                ActivityLogsController::insertLog("Preview Appointments List Page");
                 break;
             case 'previewPresentations':
                 $breadcrumbs = "Preview Presentations";
@@ -890,6 +922,7 @@ class MemberController extends Controller
                     $member = Pipeline::getPresentationsList($searchTerm, $sort_by, $sort_type);
                     return view('gym.member.guest.pagination_data', compact('breadcrumbs', 'member'))->render();
                 }
+                ActivityLogsController::insertLog("Preview Presentations List Page");
                 break;
             case 'contractSent':
                 $breadcrumbs = "Contract Sent";
@@ -908,6 +941,7 @@ class MemberController extends Controller
                     $member = Pipeline::getContractList($searchTerm, $sort_by, $sort_type);
                     return view('gym.member.guest.pagination_data', compact('breadcrumbs', 'member'))->render();
                 }
+                ActivityLogsController::insertLog("Contract Sent List Page");
                 break;
             case 'previewQualified':
                 $breadcrumbs = "Qualified To Buy";
@@ -926,6 +960,7 @@ class MemberController extends Controller
                     $member = Pipeline::getQualifiedList($searchTerm, $sort_by, $sort_type);
                     return view('gym.member.guest.pagination_data', compact('breadcrumbs', 'member'))->render();
                 }
+                ActivityLogsController::insertLog("Qualified To Buy List Page");
                 break;
             case 'closedWon':
                 $breadcrumbs = "Closed Won";
@@ -944,6 +979,7 @@ class MemberController extends Controller
                     $member = Pipeline::getWonList($searchTerm, $sort_by, $sort_type);
                     return view('gym.member.guest.pagination_data', compact('breadcrumbs', 'member'))->render();
                 }
+                ActivityLogsController::insertLog("Closed Won List Page");
                 break;
         }
         return view('gym.member.guest.list', compact('breadcrumbs', 'member', 'totalStage', 'total'))->render();
@@ -952,6 +988,7 @@ class MemberController extends Controller
 
     public function report(Request $request)
     {
+        ActivityLogsController::insertLog("Member Report List Page");
         return view('gym.member.report.list');
     }
 
@@ -966,6 +1003,7 @@ class MemberController extends Controller
         } else {
             $leadList = Member::getMemberReport($empId, $fromDate, $toDate);
         }
+        ActivityLogsController::insertLog("Generate Member/Lead Reports");
         return response()->json([
             'response' => $leadList
         ], 200);
