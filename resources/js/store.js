@@ -11,7 +11,7 @@ export default new Vuex.Store({
     modules: {
         member: Member,
         reports: Reports,
-        notification: Training
+        training: Training
     },
     state: {
         loading: false

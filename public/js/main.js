@@ -60405,19 +60405,9 @@ __webpack_require__.r(__webpack_exports__);
   !*** ./resources/js/router/notification.js ***!
   \*********************************************/
 /*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, exports) {
 
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _views_notification_notification_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../views/notification/notification.vue */ "./resources/js/views/notification/notification.vue");
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-  routes: [{
-    path: '/gym/dashboard',
-    name: 'notification',
-    component: _views_notification_notification_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
-  }]
-});
+throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index.js):\nError: ENOENT: no such file or directory, open 'C:\\wamp64\\www\\gym\\resources\\js\\router\\notification.js'");
 
 /***/ }),
 
@@ -60520,6 +60510,25 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/services/trainingService.js":
+/*!**************************************************!*\
+  !*** ./resources/js/services/trainingService.js ***!
+  \**************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _services_Api__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../services/Api */ "./resources/js/services/Api.js");
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  fetchTraining: function fetchTraining(params) {
+    return Object(_services_Api__WEBPACK_IMPORTED_MODULE_0__["default"])().post('/gym/training/edit/{id}', params);
+  }
+});
+
+/***/ }),
+
 /***/ "./resources/js/store.js":
 /*!*******************************!*\
   !*** ./resources/js/store.js ***!
@@ -60534,7 +60543,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
 /* harmony import */ var _stores_member__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./stores/member */ "./resources/js/stores/member.js");
 /* harmony import */ var _stores_reports__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./stores/reports */ "./resources/js/stores/reports.js");
-!(function webpackMissingModule() { var e = new Error("Cannot find module './stores/training'"); e.code = 'MODULE_NOT_FOUND'; throw e; }());
+/* harmony import */ var _stores_training__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./stores/training */ "./resources/js/stores/training.js");
 
 
 
@@ -60546,7 +60555,7 @@ var debug = "development" !== "production";
   modules: {
     member: _stores_member__WEBPACK_IMPORTED_MODULE_2__["default"],
     reports: _stores_reports__WEBPACK_IMPORTED_MODULE_3__["default"],
-    notification: !(function webpackMissingModule() { var e = new Error("Cannot find module './stores/training'"); e.code = 'MODULE_NOT_FOUND'; throw e; }())
+    training: _stores_training__WEBPACK_IMPORTED_MODULE_5__["default"]
   },
   state: {
     loading: false
@@ -60629,6 +60638,52 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/stores/training.js":
+/*!*****************************************!*\
+  !*** ./resources/js/stores/training.js ***!
+  \*****************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _services_trainingService__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../services/trainingService */ "./resources/js/services/trainingService.js");
+/* harmony import */ var any_promise__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! any-promise */ "./node_modules/any-promise/index.js");
+/* harmony import */ var any_promise__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(any_promise__WEBPACK_IMPORTED_MODULE_1__);
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  strict: true,
+  state: {
+    trainingList: []
+  },
+  mutations: {
+    setTrainingList: function setTrainingList(state, trainingList) {
+      state.trainingList = trainingList.response;
+    }
+  },
+  actions: {
+    fetchTraining: function fetchTraining(_ref, params) {
+      var commit = _ref.commit;
+      return new Promise(function (resolve, reject) {
+        _services_trainingService__WEBPACK_IMPORTED_MODULE_2__["default"].fetchTraining(params).then(function (response) {
+          commit('setTrainingList', response.data);
+          resolve();
+        })["catch"](function (error) {
+          reject(error);
+        });
+      });
+    }
+  },
+  getters: {
+    trainingList: function trainingList(state) {
+      return state.trainingList;
+    }
+  }
+});
+
+/***/ }),
+
 /***/ "./resources/js/views/member/member.vue":
 /*!**********************************************!*\
   !*** ./resources/js/views/member/member.vue ***!
@@ -60679,17 +60734,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_member_vue_vue_type_template_id_17972dc0___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
-
-/***/ }),
-
-/***/ "./resources/js/views/notification/notification.vue":
-/*!**********************************************************!*\
-  !*** ./resources/js/views/notification/notification.vue ***!
-  \**********************************************************/
-/*! exports provided: default */
-/***/ (function(module, exports) {
-
-throw new Error("Module build failed (from ./node_modules/vue-loader/lib/index.js):\nError: ENOENT: no such file or directory, open 'C:\\wamp64\\www\\gym\\resources\\js\\views\\notification\\notification.vue'");
 
 /***/ }),
 
