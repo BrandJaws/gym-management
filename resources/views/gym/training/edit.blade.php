@@ -227,113 +227,84 @@
                 </div>
             </div>
 
-
-
-
-
-
-            
-            <div class="row">
-                <div class="col-lg-12">
-                    <!--begin::Portlet-->
-                    <div class="kt-portlet">
-                        <div class="kt-portlet__head" style="align-items: center">
-                            <div class="kt-portlet__head-label">
-                                <h3 class="kt-portlet__head-title">{{ $training->seats }}
-                                    Persons Taking This Training
-                                    @if($errors->has('member_id'))
-                                        <div class="error">{{ $errors->first('member_id') }}</div>
-                                    @endif
-                                    @if($errors->has('training_id'))
-                                        <div class="error">{{ $errors->first('training_id') }}</div>
-                                    @endif
-                                    <span id="member_idError" class="alert-message"></span>
-                                </h3>
-                            </div>
-                            <div class="dropdown dropdown-inline">
-                                @if($groupCount == $training->seats )
-                                    <blink>Booking Full</blink>
-                                @else
-                                    <a href="javascript:void(0)" id="create-new-member"
-                                       onclick="addPost()" type="button" class="btn btn-brand btn-icon-sm">
-                                        <i class="flaticon2-plus"></i> Add Member
-                                    </a>
-                                @endif
-                            </div>
-                        </div>
-                        <div class="row" style="clear: both;margin-top: 18px;">
-                            <div class="col-12">
-                                <table id="laravel_crud" class="table table-striped table-bordered">
-                                    <thead>
-                                    <tr>
-                                        <th>ID</th>
-                                        <th>Member</th>
-                                        <th>Actions</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    @foreach($trainingGroup as $value)
-                                        <tr id="row_{{$value->id}}">
-                                            <th>{{ $value->id  }}</th>
-                                            <td>{{ $value->members->name }}</td>
-                                            <td><a href="javascript:void(0)" data-id="{{ $value->id }}"
-                                                   onclick="editPost(event.target)" >  <i class="fa fa-edit"></i></a> |
-                                                <a href="javascript:void(0)" data-id="{{ $value->id }}"
-                                                   onclick="deletePost(event.target)"> <i class="fa fa-trash"></i></a>
-                                            </td>
-                                        </tr>
-                                    @endforeach
-                                    <td colspan="4" align="center">
-                                        {!! $trainingGroup->links() !!}
-                                    </td>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
+            <div class="kt-portlet__body">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 text-right">
+                        <a href="javascript:void(0)" class="btn btn-success mb-3" id="create-new-post" onclick="addPost()">Add Post</a>
                     </div>
-                    <!--end::Portlet-->
+                </div>
+                <div class="row" style="clear: both;margin-top: 18px;">
+                    <div class="col-12">
+                        <table id="laravel_crud" class="table table-striped table-bordered">
+                            <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Member</th>
+                                <th>Actions</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            @foreach($trainingGroup as $post)
+                                <tr id="row_{{$post->id}}">
+                                    <td>{{ $post->id  }}</td>
+                                    <td>{{ $post->Member }}</td>
+                                    <td><a href="javascript:void(0)" data-id="{{ $post->id }}" onclick="editPost(event.target)" class="btn btn-info">Edit</a> |
+                                        <a href="javascript:void(0)" data-id="{{ $post->id }}" class="btn btn-danger" onclick="deletePost(event.target)">Delete</a></td>
+                                </tr>
+                            @endforeach
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
-        </div>
+            </div>
 
-        <div class="modal fade" id="post-modal" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h4 class="modal-member_id"></h4>
-                    </div>
-                    <div class="modal-body">
-                        <form name="userForm" class="form-horizontal">
-                            <input type="hidden" name="post_id" id="post_id">
-                            <div class="form-group">
-                                <label for="name" class="col-sm-2">Member</label>
-                                @include('_layouts.flash-message')
-                                <div class="col-sm-12">
-                                    <input type="hidden" class="form-control" id="training_id" name="training_id"
-                                           value="{{ $training->id }}"/>
-                                    <select class="form-control kt-select2" id="member_id" name="member_id" autofocus
-                                            required>
-                                        @foreach ($member as $value)
-                                            <option value="{{$value->id}}">{{$value->name}}</option>
-                                        @endforeach
-                                    </select>
-                                    @if($errors->has('member_id'))
-                                        <div class="error">{{ $errors->first('member_id') }}</div>
-                                    @endif
-                                    <span id="member_idError" class="alert-message"></span>
+            <div class="modal fade" id="post-modal" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title"></h4>
+                        </div>
+                        <div class="modal-body">
+                            <form name="userForm" class="form-horizontal">
+                                <input type="hidden" name="post_id" id="post_id">
+                                <div class="form-group">
+                                    <label for="name" class="col-sm-2">Members</label>
+                                    <div class="col-sm-12">
+                                        <select class="form-control kt-select2" id="member_id" name="member_id" autofocus
+                                                required>
+                                            @foreach ($member as $value)
+                                                <option value="{{$value->id}}">{{$value->name}}</option>
+                                            @endforeach
+                                        </select>
+                                        <span id="titleError" class="alert-message"></span>
+                                        @if($errors->has('member_id'))
+                                            <div class="error">{{ $errors->first('member_id') }}</div>
+                                        @endif
+                                    </div>
                                 </div>
-                            </div>
-                        </form>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-primary" onclick="createPost()">Save</button>
+
+                                <div class="form-group">
+                                    <div class="col-sm-12">
+                                        <input type="hidden" class="form-control" id="training_id" name="training_id" value="{{ $training->id }}">
+                                        <span id="descriptionError" class="alert-message"></span>
+                                        @if($errors->has('training_id'))
+                                            <div class="error">{{ $errors->first('training_id') }}</div>
+                                        @endif
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary" onclick="createPost()">Save</button>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
         <!-- end:: Content -->
     </div>
-
 @endsection
 <style>
     .alert-message {
@@ -432,24 +403,25 @@
         }
     </script>
 
+
     <script>
-        // $('#laravel_crud').DataTable();
+        $('#laravel_crud').DataTable();
 
         function addPost() {
             $('#post-modal').modal('show');
         }
 
         function editPost(event) {
-            var id = $(event).data("id");
+            var id  = $(event).data("id");
             let _url = `/gym/training/editTrainingGroup/${id}`;
-            $('#member_idError').text('');
-            $('#training_idError').text('');
+            $('#titleError').text('');
+            $('#descriptionError').text('');
 
             $.ajax({
                 url: _url,
                 type: "GET",
-                success: function (response) {
-                    if (response) {
+                success: function(response) {
+                    if(response) {
                         $("#post_id").val(response.id);
                         $("#member_id").val(response.member_id);
                         $("#training_id").val(response.training_id);
@@ -464,8 +436,8 @@
             var training_id = $('#training_id').val();
             var id = $('#post_id').val();
 
-            let _url = `/gym/training/createTrainingGroup`;
-            let _token = $('meta[name="csrf-token"]').attr('content');
+            let _url     = `/gym/training/createTrainingGroup`;
+            let _token   = $('meta[name="csrf-token"]').attr('content');
 
             $.ajax({
                 url: _url,
@@ -476,17 +448,13 @@
                     training_id: training_id,
                     _token: _token
                 },
-                success: function (response) {
-                    if (response.code == 200) {
-                        if (id != "") {
-                            $("#row_" + id + " td:nth-child(2)").html(response.data.member_id);
+                success: function(response) {
+                    if(response.code == 200) {
+                        if(id != ""){
+                            $("#row_"+id+" td:nth-child(2)").html(response.data.Member);
+                            $("#row_"+id+" td:nth-child(3)").html(response.data.training_id);
                         } else {
-                            $('table tbody').prepend('<tr id="row_' + response.data.id + '">' +
-                                '<td>' + response.data.id + '</td>' +
-                                '<td>' + response.data.member_id + '</td>' +
-                                '<td><a href="javascript:void(0)" data-id="' + response.data.id + '" onclick="editPost(event.target)" class="btn btn-info">Edit</a></td>' +
-                                '<td><a href="javascript:void(0)" data-id="' + response.data.id + '" class="btn btn-danger" onclick="deletePost(event.target)">Delete</a>' + '</td>' +
-                                '</tr>');
+                            $('table tbody').prepend('<tr id="row_'+response.data.id+'"><td>'+response.data.id+'</td><td>'+response.data.Member+'</td><td>'+response.data.training_id+'</td><td><a href="javascript:void(0)" data-id="'+response.data.id+'" onclick="editPost(event.target)" class="btn btn-info">Edit</a></td><td><a href="javascript:void(0)" data-id="'+response.data.id+'" class="btn btn-danger" onclick="deletePost(event.target)">Delete</a></td></tr>');
                         }
                         $('#member_id').val('');
                         $('#training_id').val('');
@@ -494,17 +462,17 @@
                         $('#post-modal').modal('hide');
                     }
                 },
-                error: function (response) {
-                    $('#member_idError').text(response.responseJSON.errors.member_id);
-                    $('#training_idError').text(response.responseJSON.errors.training_id);
+                error: function(response) {
+                    $('#titleError').text(response.responseJSON.errors.member_id);
+                    $('#descriptionError').text(response.responseJSON.errors.training_id);
                 }
             });
         }
 
         function deletePost(event) {
-            var id = $(event).data("id");
+            var id  = $(event).data("id");
             let _url = `/gym/training/destroyTrainingGroup/${id}`;
-            let _token = $('meta[name="csrf-token"]').attr('content');
+            let _token   = $('meta[name="csrf-token"]').attr('content');
 
             $.ajax({
                 url: _url,
@@ -512,12 +480,11 @@
                 data: {
                     _token: _token
                 },
-                success: function (response) {
-                    $("#row_" + id).remove();
+                success: function(response) {
+                    $("#row_"+id).remove();
                 }
             });
         }
 
     </script>
-
 @endsection

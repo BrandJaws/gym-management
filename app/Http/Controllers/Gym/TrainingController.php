@@ -109,8 +109,9 @@ class TrainingController extends Controller
     public function edit($id)
     {
         try {
+            $gym_id = Auth::guard('employee')->user()->gym_id;
             $training = Training::find($id);
-            $trainingGroup = TrainingGroup::where('gym_id', '=', Auth::guard('employee')->user()->gym_id)->where('training_id', '=', $id)->orderBy('id', 'desc')->paginate(5);
+            $trainingGroup = TrainingGroup::getTrainingGroupList($gym_id, $id);
             $groupCount = $trainingGroup->count();
             $trainer = Trainer::where('gym_id', '=', Auth::guard('employee')->user()->gym_id)->orderBy('id', 'asc')->get();
             $member = Member::where('gym_id', '=', Auth::guard('employee')->user()->gym_id)->where('type', '=', 'Member')->orderBy('id', 'asc')->get();
@@ -194,28 +195,27 @@ class TrainingController extends Controller
 
     public function createTrainingGroup(Request $request)
     {
-
         $request->validate([
-            'member_id'       => 'required',
+            'member_id' => 'required',
             'training_id' => 'required',
         ]);
-            $group = TrainingGroup::where('member_id', '=', $request->member_id)->first();
-            if ($group === null) {
-                $post = TrainingGroup::updateOrCreate(['id' => $request->id], [
-                    'member_id' => $request->member_id,
-                    'gym_id' => Auth::guard('employee')->user()->gym_id,
-                    'training_id' => $request->training_id,
-                ]);
-                ActivityLogsController::insertLog("Add/Update Training Group ");
-                return response()->json(['code' => 200, 'message' => 'Post Created successfully', 'data' => $post], 200);
-            }
-                return response()->json(['code' => 400, 'message' => 'error'], 400);
+        $group = TrainingGroup::where('member_id', '=', $request->member_id)->first();
+        if ($group === null) {
+            $post = TrainingGroup::updateOrCreate(['id' => $request->id], [
+                'member_id' => $request->member_id,
+                'gym_id' => Auth::guard('employee')->user()->gym_id,
+                'training_id' => $request->training_id,
+            ]);
+            ActivityLogsController::insertLog("Add/Update Training Group ");
+            return response()->json(['code' => 200, 'message' => 'Post Created successfully', 'data' => $post], 200);
+        }
+        return response()->json(['code' => 400, 'message' => 'error'], 400);
     }
 
     public function editTrainingGroup($id)
     {
         try {
-            $post = TrainingGroup::find($id);
+            $post = TrainingGroup::getTrainingGroupEditList($id);
             ActivityLogsController::insertLog("Training Edit Page");
             return response()->json($post);
         } catch (\Exception $e) {
