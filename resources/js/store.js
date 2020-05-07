@@ -2,7 +2,7 @@ import Vue from "vue";
 import Vuex from "vuex";
 import Member from "./stores/member";
 import Reports from "./stores/reports";
-import Notification from "./stores/notification";
+import Training from "./stores/training";
 
 Vue.use(Vuex);
 
@@ -11,7 +11,7 @@ export default new Vuex.Store({
     modules: {
         member: Member,
         reports: Reports,
-        notification: Notification
+        notification: Training
     },
     state: {
         loading: false
