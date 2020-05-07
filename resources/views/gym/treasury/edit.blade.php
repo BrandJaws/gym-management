@@ -26,31 +26,31 @@
                                     <div class="col-lg-4">
                                         <label>Type:</label>
                                         <div class="kt-radio-inline">
-                                            <label class="kt-radio kt-radio--solid">
+                                            <label class="kt-radio kt-radio--success">
                                                 <input type="radio" name="type" id="employee" value="Employee" required
                                                        @if($treasury->type == "Employee") checked @endif
                                                        onclick="changeDiv()"> Employee
                                                 <span></span>
                                             </label>
-                                            <label class="kt-radio kt-radio--solid">
+                                            <label class="kt-radio kt-radio--success">
                                                 <input type="radio" name="type" id="member" value="Member" required
                                                        @if($treasury->type == "Member") checked @endif
                                                        onclick="changeDiv()"> Member
                                                 <span></span>
                                             </label>
-                                            <label class="kt-radio kt-radio--solid">
+                                            <label class="kt-radio kt-radio--success">
                                                 <input type="radio" name="type" id="supplier" value="Supplier" required
                                                        @if($treasury->type == "Supplier") checked @endif
                                                        onclick="changeDiv()"> Supplier
                                                 <span></span>
                                             </label>
-                                            <label class="kt-radio kt-radio--solid">
+                                            <label class="kt-radio kt-radio--success">
                                                 <input type="radio" name="type" id="trainer" value="Trainer" required
                                                        @if($treasury->type == "Trainer") checked @endif
                                                        onclick="changeDiv()"> Trainer
                                                 <span></span>
                                             </label>
-                                            <label class="kt-radio kt-radio--solid">
+                                            <label class="kt-radio kt-radio--success">
                                                 <input type="radio" name="type" id="other" value="Other" required
                                                        @if($treasury->type == "Other") checked @endif
                                                        onclick="changeDiv()"> Other
@@ -61,24 +61,24 @@
                                     <div class="col-lg-4">
                                         <label>Flow:</label>
                                         <div class="kt-radio-inline">
-                                            <label class="kt-radio kt-radio--solid">
+                                            <label class="kt-radio kt-radio--success">
                                                 <input type="radio" name="cashFlow" value="In" required
-                                                       @if($treasury->cashFlow == "In") checked @endif> In
+                                                       @if($treasury->cashFlow == "In") checked @endif><i class="la la-arrow-circle-o-up"></i>  In
                                                 <span></span>
                                             </label>
-                                            <label class="kt-radio kt-radio--solid">
+                                            <label class="kt-radio kt-radio--success">
                                                 <input type="radio" name="cashFlow" value="Out" required
-                                                       @if($treasury->cashFlow == "Out") checked @endif> Out
+                                                       @if($treasury->cashFlow == "Out") checked @endif><i class="la la-arrow-circle-o-down"></i> Out
                                                 <span></span>
                                             </label>
-                                            <label class="kt-radio kt-radio--solid">
+                                            <label class="kt-radio kt-radio--success">
                                                 <input type="radio" name="cashFlow" value="Extra" required
-                                                       @if($treasury->cashFlow == "Extra") checked @endif> Extra
+                                                       @if($treasury->cashFlow == "Extra") checked @endif><i class="la la-plus-circle"></i>  Extra
                                                 <span></span>
                                             </label>
-                                            <label class="kt-radio kt-radio--solid">
+                                            <label class="kt-radio kt-radio--success">
                                                 <input type="radio" name="cashFlow" value="Discount" required
-                                                       @if($treasury->cashFlow == "Discount") checked @endif> Discount
+                                                       @if($treasury->cashFlow == "Discount") checked @endif><i class="la la-minus-circle"></i> Discount
                                                 <span></span>
                                             </label>
                                         </div>

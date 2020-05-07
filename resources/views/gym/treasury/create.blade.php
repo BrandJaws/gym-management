@@ -25,27 +25,27 @@
                                     <div class="col-lg-4">
                                         <label>Type:</label>
                                         <div class="kt-radio-inline">
-                                            <label class="kt-radio kt-radio--solid">
+                                            <label class="kt-radio kt-radio--success">
                                                 <input type="radio" name="type" id="employee" value="Employee" required
                                                        onclick="changeDiv()"> Employee
                                                 <span></span>
                                             </label>
-                                            <label class="kt-radio kt-radio--solid">
+                                            <label class="kt-radio kt-radio--success">
                                                 <input type="radio" name="type" id="member" value="Member" required
                                                        onclick="changeDiv()"> Member
                                                 <span></span>
                                             </label>
-                                            <label class="kt-radio kt-radio--solid">
+                                            <label class="kt-radio kt-radio--success">
                                                 <input type="radio" name="type" id="supplier" value="Supplier" required
                                                        onclick="changeDiv()"> Supplier
                                                 <span></span>
                                             </label>
-                                            <label class="kt-radio kt-radio--solid">
+                                            <label class="kt-radio kt-radio--success">
                                                 <input type="radio" name="type" id="trainer" value="Trainer" required
                                                        onclick="changeDiv()"> Trainer
                                                 <span></span>
                                             </label>
-                                            <label class="kt-radio kt-radio--solid">
+                                            <label class="kt-radio kt-radio--success">
                                                 <input type="radio" name="type" id="other" value="Other" required
                                                        onclick="changeDiv()"> Other
                                                 <span></span>
@@ -55,20 +55,20 @@
                                     <div class="col-lg-4">
                                         <label>Flow:</label>
                                         <div class="kt-radio-inline">
-                                            <label class="kt-radio kt-radio--solid">
-                                                <input type="radio" name="cashFlow" value="In" required> In
+                                            <label class="kt-radio kt-radio--success">
+                                                <input type="radio" name="cashFlow" value="In" required><i class="la la-arrow-circle-o-up"></i> In
                                                 <span></span>
                                             </label>
-                                            <label class="kt-radio kt-radio--solid">
-                                                <input type="radio" name="cashFlow" value="Out" required> Out
+                                            <label class="kt-radio kt-radio--success">
+                                                <input type="radio" name="cashFlow" value="Out" required><i class="la la-arrow-circle-o-down"></i> Out
                                                 <span></span>
                                             </label>
-                                            <label class="kt-radio kt-radio--solid">
-                                                <input type="radio" name="cashFlow" value="Extra" required> Extra
+                                            <label class="kt-radio kt-radio--success">
+                                                <input type="radio" name="cashFlow" value="Extra" required><i class="la la-plus-circle"></i> Extra
                                                 <span></span>
                                             </label>
-                                            <label class="kt-radio kt-radio--solid">
-                                                <input type="radio" name="cashFlow" value="Discount" required> Discount
+                                            <label class="kt-radio kt-radio--success">
+                                                <input type="radio" name="cashFlow" value="Discount" required><i class="la la-minus-circle"></i> Discount
                                                 <span></span>
                                             </label>
                                         </div>

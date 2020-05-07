@@ -37,8 +37,12 @@ class TreasuryController extends Controller
                 $treasury = Treasury::getTreasuryList($query, $sort_by, $sort_type);
                 return view('gym.treasury.pagination_data', compact('treasury'))->render();
             }
+            $treasuryCashIn = Treasury::where('gym_id', $gym_id)->where('cashFlow', 'In')->sum('value');
+            $treasuryCashOut = Treasury::where('gym_id', $gym_id)->where('cashFlow', 'Out')->sum('value');
+            $treasuryCashExtra = Treasury::where('gym_id', $gym_id)->where('cashFlow', 'Extra')->sum('value');
+            $treasuryCashDiscount = Treasury::where('gym_id', $gym_id)->where('cashFlow', 'Discount')->sum('value');
             ActivityLogsController::insertLog("Treasury List Page ");
-            return view('gym.treasury.list', compact('treasury'));
+            return view('gym.treasury.list', compact('treasury','treasuryCashIn','treasuryCashOut','treasuryCashExtra','treasuryCashDiscount'));
         } catch (\Exception $e) {
             return back()->with('error', 'Oops, something was not right in treasury list');
         }
