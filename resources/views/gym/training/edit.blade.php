@@ -261,20 +261,18 @@
                                     <tr>
                                         <th>ID</th>
                                         <th>Member</th>
-                                        <th>Edit</th>
-                                        <th>Delete</th>
+                                        <th>Actions</th>
                                     </tr>
                                     </thead>
                                     <tbody>
                                     @foreach($trainingGroup as $value)
                                         <tr id="row_{{$value->id}}">
-                                            <td>{{ $value->id  }}</td>
+                                            <th>{{ $value->id  }}</th>
                                             <td>{{ $value->members->name }}</td>
                                             <td><a href="javascript:void(0)" data-id="{{ $value->id }}"
-                                                   onclick="editPost(event.target)" class="btn btn-info">Edit</a></td>
-                                            <td>
+                                                   onclick="editPost(event.target)" >  <i class="fa fa-edit"></i></a> |
                                                 <a href="javascript:void(0)" data-id="{{ $value->id }}"
-                                                   class="btn btn-danger" onclick="deletePost(event.target)">Delete</a>
+                                                   onclick="deletePost(event.target)"> <i class="fa fa-trash"></i></a>
                                             </td>
                                         </tr>
                                     @endforeach
