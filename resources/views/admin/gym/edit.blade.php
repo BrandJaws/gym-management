@@ -38,12 +38,14 @@
                                         <label>Trial In:</label>
                                         <div class="kt-radio-inline">
                                             <label class="kt-radio kt-radio--solid">
-                                                <input type="radio" name="inTrial" value="1" onchange="getTrialInValue(this.value)"
+                                                <input type="radio" name="inTrial" value="1"
+                                                       onchange="getTrialInValue(this.value)"
                                                        {{ ($gym->inTrial=="1")? "checked" : "" }} required> Yes
                                                 <span></span>
                                             </label>
                                             <label class="kt-radio kt-radio--solid">
-                                                <input type="radio" name="inTrial" value="0" onchange="getTrialInValue(this.value)"
+                                                <input type="radio" name="inTrial" value="0"
+                                                       onchange="getTrialInValue(this.value)"
                                                        {{ ($gym->inTrial=="0")? "checked" : "" }} required> No
                                                 <span></span>
                                             </label>
@@ -115,8 +117,11 @@
                                     <div class="col-md-6">
                                         <label>Status:</label>
                                         <select class="form-control" name="status">
-                                            <option value="Active" @if('Active' == $gym->status) selected @endif >Active</option>
-                                            <option value="Block" @if('Block' == $gym->status) selected @endif>Block</option>
+                                            <option value="Active" @if('Active' == $gym->status) selected @endif >
+                                                Active
+                                            </option>
+                                            <option value="Block" @if('Block' == $gym->status) selected @endif>Block
+                                            </option>
                                         </select>
                                         @if($errors->has('status'))
                                             <div class="error">{{ $errors->first('status') }}</div>
@@ -437,14 +442,15 @@
 @section('custom-script')
     <script>
         $(document).ready(function () {
-            @if ( $gym->inTrial == "1") {
+                @if ( $gym->inTrial == "1") {
                 $(".trialEndsAt").css('display', 'block');
             }
-            @else {
+                @else {
                 $(".trialEndsAt").css('display', 'none');
             }
             @endif
         });
+
         function getTrialInValue(value) {
             if (value === "1") {
                 $(".trialEndsAt").css('display', 'block');
@@ -452,6 +458,7 @@
                 $(".trialEndsAt").css('display', 'none');
             }
         }
+
         $(document).ready(function () {
             function clear_icon() {
                 $('#id_icon').html('');

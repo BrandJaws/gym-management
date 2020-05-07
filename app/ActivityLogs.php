@@ -12,4 +12,9 @@ class ActivityLogs extends Model
         'employee_id',
         'activity'
     ];
+
+    public function employee()
+    {
+        return $this->belongsTo(Employee::class, 'employee_id');
+    }
 }

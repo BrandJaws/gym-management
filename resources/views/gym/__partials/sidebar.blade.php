@@ -6,7 +6,8 @@
                 <a href="{{url('/gym/dashboard')}}">
                     @if(Auth::guard('employee')->user()->gym->gymImage != "")
                         <img alt="Logo"
-                             src="{{ URL::to('/') }}/{{ Auth::guard('employee')->user()->gym->gymImage->path }}" height="50px"/>
+                             src="{{ URL::to('/') }}/{{ Auth::guard('employee')->user()->gym->gymImage->path }}"
+                             height="50px"/>
                     @endif
                     @if(Auth::guard('employee')->user()->gym->gymImage == "")
                         <img alt="Logo" src="{{asset('assets/media/logos/brandjaws.png')}}" height="50px"/>
