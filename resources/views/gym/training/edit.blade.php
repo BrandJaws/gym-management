@@ -226,40 +226,76 @@
                     <!--end::Portlet-->
                 </div>
             </div>
+            <div class="kt-portlet">
+                <div class="kt-portlet__body">
+                    <div>
+                        <div class="row" style="clear: both;margin-top: 18px;">
+                            <div class="col-12">
+                                <div class="kt-portlet__body">
+                                    <!--begin::Section-->
+                                    <div class="kt-section">
+                                        <div class="kt-section">
+                                            <div class="kt-section__content">
+                                                <div class="">
+                                                    <div class="row">
+                                                        <div class="col-md-9">
+                                                            <div class="kt-portlet__head-label">
+                                                                <h5 class="kt-portlet__head-title">
+                                                                    {{ $training->seats  }}-{{ $groupCount  }} &nbsp;&nbsp;&nbsp; Persons Taking this Training
+                                                                </h5>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-3">
+                                                            <div class="form-group">
+                                                                <div class="kt-input-icon kt-input-icon--right">
+                                                                    <a href="javascript:void(0)"
+                                                                       class="btn btn-success mb-3" id="create-new-post"
+                                                                       onclick="addPost()">Add Post</a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="">
+                                                        <table class="table table-striped table-bordered">
+                                                            <thead>
+                                                            <tr>
+                                                                <th>ID</th>
+                                                                <th>Member</th>
+                                                                <th>Actions</th>
+                                                            </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                            @foreach($trainingGroup as $post)
+                                                                <tr id="row_{{$post->id}}">
+                                                                    <td>{{ $post->id  }}</td>
+                                                                    <td>{{ $post->Member }}</td>
+                                                                    <td><a href="javascript:void(0)"
+                                                                           data-id="{{ $post->id }}"
+                                                                           onclick="editPost(event.target)"
+                                                                           class="btn btn-info">Edit</a> |
+                                                                        <a href="javascript:void(0)"
+                                                                           data-id="{{ $post->id }}"
+                                                                           class="btn btn-danger"
+                                                                           onclick="deletePost(event.target)">Delete</a>
+                                                                    </td>
+                                                                </tr>
+                                                            @endforeach
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--end::Section-->
+                                </div>
 
-            <div class="kt-portlet__body">
-            <div class="container">
-                <div class="row">
-                    <div class="col-12 text-right">
-                        <a href="javascript:void(0)" class="btn btn-success mb-3" id="create-new-post" onclick="addPost()">Add Post</a>
-                    </div>
-                </div>
-                <div class="row" style="clear: both;margin-top: 18px;">
-                    <div class="col-12">
-                        <table id="laravel_crud" class="table table-striped table-bordered">
-                            <thead>
-                            <tr>
-                                <th>ID</th>
-                                <th>Member</th>
-                                <th>Actions</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            @foreach($trainingGroup as $post)
-                                <tr id="row_{{$post->id}}">
-                                    <td>{{ $post->id  }}</td>
-                                    <td>{{ $post->Member }}</td>
-                                    <td><a href="javascript:void(0)" data-id="{{ $post->id }}" onclick="editPost(event.target)" class="btn btn-info">Edit</a> |
-                                        <a href="javascript:void(0)" data-id="{{ $post->id }}" class="btn btn-danger" onclick="deletePost(event.target)">Delete</a></td>
-                                </tr>
-                            @endforeach
-                            </tbody>
-                        </table>
+
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-            </div>
-
             <div class="modal fade" id="post-modal" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
@@ -272,7 +308,8 @@
                                 <div class="form-group">
                                     <label for="name" class="col-sm-2">Members</label>
                                     <div class="col-sm-12">
-                                        <select class="form-control kt-select2" id="member_id" name="member_id" autofocus
+                                        <select class="form-control kt-select2" id="member_id" name="member_id"
+                                                autofocus
                                                 required>
                                             @foreach ($member as $value)
                                                 <option value="{{$value->id}}">{{$value->name}}</option>
@@ -287,7 +324,8 @@
 
                                 <div class="form-group">
                                     <div class="col-sm-12">
-                                        <input type="hidden" class="form-control" id="training_id" name="training_id" value="{{ $training->id }}">
+                                        <input type="hidden" class="form-control" id="training_id" name="training_id"
+                                               value="{{ $training->id }}">
                                         <span id="descriptionError" class="alert-message"></span>
                                         @if($errors->has('training_id'))
                                             <div class="error">{{ $errors->first('training_id') }}</div>
@@ -412,7 +450,7 @@
         }
 
         function editPost(event) {
-            var id  = $(event).data("id");
+            var id = $(event).data("id");
             let _url = `/gym/training/editTrainingGroup/${id}`;
             $('#titleError').text('');
             $('#descriptionError').text('');
@@ -420,8 +458,8 @@
             $.ajax({
                 url: _url,
                 type: "GET",
-                success: function(response) {
-                    if(response) {
+                success: function (response) {
+                    if (response) {
                         $("#post_id").val(response.id);
                         $("#member_id").val(response.member_id);
                         $("#training_id").val(response.training_id);
@@ -436,8 +474,8 @@
             var training_id = $('#training_id').val();
             var id = $('#post_id').val();
 
-            let _url     = `/gym/training/createTrainingGroup`;
-            let _token   = $('meta[name="csrf-token"]').attr('content');
+            let _url = `/gym/training/createTrainingGroup`;
+            let _token = $('meta[name="csrf-token"]').attr('content');
 
             $.ajax({
                 url: _url,
@@ -448,13 +486,13 @@
                     training_id: training_id,
                     _token: _token
                 },
-                success: function(response) {
-                    if(response.code == 200) {
-                        if(id != ""){
-                            $("#row_"+id+" td:nth-child(2)").html(response.data.Member);
-                            $("#row_"+id+" td:nth-child(3)").html(response.data.training_id);
+                success: function (response) {
+                    if (response.code == 200) {
+                        if (id != "") {
+                            $("#row_" + id + " td:nth-child(2)").html(response.data.Member);
+                            $("#row_" + id + " td:nth-child(3)").html(response.data.training_id);
                         } else {
-                            $('table tbody').prepend('<tr id="row_'+response.data.id+'"><td>'+response.data.id+'</td><td>'+response.data.Member+'</td><td>'+response.data.training_id+'</td><td><a href="javascript:void(0)" data-id="'+response.data.id+'" onclick="editPost(event.target)" class="btn btn-info">Edit</a></td><td><a href="javascript:void(0)" data-id="'+response.data.id+'" class="btn btn-danger" onclick="deletePost(event.target)">Delete</a></td></tr>');
+                            $('table tbody').prepend('<tr id="row_' + response.data.id + '"><td>' + response.data.id + '</td><td>' + response.data.Member + '</td><td>' + response.data.training_id + '</td><td><a href="javascript:void(0)" data-id="' + response.data.id + '" onclick="editPost(event.target)" class="btn btn-info">Edit</a></td><td><a href="javascript:void(0)" data-id="' + response.data.id + '" class="btn btn-danger" onclick="deletePost(event.target)">Delete</a></td></tr>');
                         }
                         $('#member_id').val('');
                         $('#training_id').val('');
@@ -462,7 +500,7 @@
                         $('#post-modal').modal('hide');
                     }
                 },
-                error: function(response) {
+                error: function (response) {
                     $('#titleError').text(response.responseJSON.errors.member_id);
                     $('#descriptionError').text(response.responseJSON.errors.training_id);
                 }
@@ -470,9 +508,9 @@
         }
 
         function deletePost(event) {
-            var id  = $(event).data("id");
+            var id = $(event).data("id");
             let _url = `/gym/training/destroyTrainingGroup/${id}`;
-            let _token   = $('meta[name="csrf-token"]').attr('content');
+            let _token = $('meta[name="csrf-token"]').attr('content');
 
             $.ajax({
                 url: _url,
@@ -480,8 +518,8 @@
                 data: {
                     _token: _token
                 },
-                success: function(response) {
-                    $("#row_"+id).remove();
+                success: function (response) {
+                    $("#row_" + id).remove();
                 }
             });
         }
