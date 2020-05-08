@@ -308,7 +308,7 @@
                                 <div class="form-group">
                                     <label for="name" class="col-sm-2">Members</label>
                                     <div class="col-sm-12">
-                                        <select class="form-control kt-select2" id="member_id" name="member_id"
+                                        <select class="form-control kt-select2" id="member" name="member"
                                                 autofocus
                                                 required>
                                             @foreach ($member as $value)
@@ -316,8 +316,8 @@
                                             @endforeach
                                         </select>
                                         <span id="titleError" class="alert-message"></span>
-                                        @if($errors->has('member_id'))
-                                            <div class="error">{{ $errors->first('member_id') }}</div>
+                                        @if($errors->has('member'))
+                                            <div class="error">{{ $errors->first('member') }}</div>
                                         @endif
                                     </div>
                                 </div>
@@ -461,7 +461,7 @@
                 success: function (response) {
                     if (response) {
                         $("#post_id").val(response.id);
-                        $("#member_id").val(response.member_id);
+                        $("#member").val(response.member);
                         $("#training_id").val(response.training_id);
                         $('#post-modal').modal('show');
                     }
@@ -470,7 +470,7 @@
         }
 
         function createPost() {
-            var member_id = $('#member_id').val();
+            var member = $('#member').val();
             var training_id = $('#training_id').val();
             var id = $('#post_id').val();
 
@@ -482,7 +482,7 @@
                 type: "POST",
                 data: {
                     id: id,
-                    member_id: member_id,
+                    member: member,
                     training_id: training_id,
                     _token: _token
                 },
@@ -494,14 +494,14 @@
                         } else {
                             $('table tbody').prepend('<tr id="row_' + response.data.id + '"><td>' + response.data.id + '</td><td>' + response.data.Member + '</td><td><a href="javascript:void(0)" data-id="' + response.data.id + '" onclick="editPost(event.target)" class="btn btn-info"><i class="fa fa-edit"></i></a>|<a href="javascript:void(0)" data-id="' + response.data.id + '" class="btn btn-danger" onclick="deletePost(event.target)">Delete</a></td></tr>');
                         }
-                        $('#member_id').val('');
+                        $('#member').val('');
                         $('#training_id').val('');
 
                         $('#post-modal').modal('hide');
                     }
                 },
                 error: function (response) {
-                    $('#titleError').text(response.responseJSON.errors.member_id);
+                    $('#titleError').text(response.responseJSON.errors.member);
                     $('#descriptionError').text(response.responseJSON.errors.training_id);
                 }
             });

@@ -12,13 +12,13 @@ class TrainingGroupController extends Controller
     public function createTrainingGroup(Request $request)
     {
         $request->validate([
-            'member_id' => 'required',
+            'member' => 'required',
             'training_id' => 'required',
         ]);
-        $group = TrainingGroup::where('member_id', '=', $request->member_id)->first();
+        $group = TrainingGroup::where('member_id', '=', $request->member)->first();
         if ($group === null) {
             $post = TrainingGroup::updateOrCreate(['id' => $request->id], [
-                'member_id' => $request->member_id,
+                'member_id' => $request->member,
                 'gym_id' => Auth::guard('employee')->user()->gym_id,
                 'training_id' => $request->training_id,
             ]);
