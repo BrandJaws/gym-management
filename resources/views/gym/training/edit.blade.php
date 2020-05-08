@@ -492,7 +492,7 @@
                             $("#row_" + id + " td:nth-child(2)").html(response.data.Member);
                             $("#row_" + id + " td:nth-child(3)").html(response.data.training_id);
                         } else {
-                            $('table tbody').prepend('<tr id="row_' + response.data.id + '"><td>' + response.data.id + '</td><td>' + response.data.Member + '</td><td>' + response.data.training_id + '</td><td><a href="javascript:void(0)" data-id="' + response.data.id + '" onclick="editPost(event.target)" class="btn btn-info">Edit</a></td><td><a href="javascript:void(0)" data-id="' + response.data.id + '" class="btn btn-danger" onclick="deletePost(event.target)">Delete</a></td></tr>');
+                            $('table tbody').prepend('<tr id="row_' + response.data.id + '"><td>' + response.data.id + '</td><td>' + response.data.Member + '</td><td><a href="javascript:void(0)" data-id="' + response.data.id + '" onclick="editPost(event.target)" class="btn btn-info"><i class="fa fa-edit"></i></a>|<a href="javascript:void(0)" data-id="' + response.data.id + '" class="btn btn-danger" onclick="deletePost(event.target)">Delete</a></td></tr>');
                         }
                         $('#member_id').val('');
                         $('#training_id').val('');

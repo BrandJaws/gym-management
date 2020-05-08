@@ -160,10 +160,10 @@ Route::group(['prefix' => 'gym', 'namespace' => 'Gym'], function () {
             Route::get('/destroy/{id}', ['as' => 'destroy', 'uses' => 'TrainingController@destroy']);
 
             /*------------------------------------ Training Group Routes --------------------------------*/
-            Route::post('/createTrainingGroup', ['as' => 'createTrainingGroup', 'uses' => 'TrainingController@createTrainingGroup']);
-            Route::get('/editTrainingGroup/{id}', ['as' => 'editTrainingGroup', 'uses' => 'TrainingController@editTrainingGroup']);
-            Route::post('/editTrainingGroup', ['as' => 'editTrainingGroup', 'uses' => 'TrainingController@updateTrainingGroup']);
-            Route::delete('/destroyTrainingGroup/{id}', ['as' => 'destroyTrainingGroup', 'uses' => 'TrainingController@destroyTrainingGroup']);
+            Route::post('/createTrainingGroup', ['as' => 'createTrainingGroup', 'uses' => 'TrainingGroupController@createTrainingGroup']);
+            Route::get('/editTrainingGroup/{id}', ['as' => 'editTrainingGroup', 'uses' => 'TrainingGroupController@editTrainingGroup']);
+            Route::post('/editTrainingGroup', ['as' => 'editTrainingGroup', 'uses' => 'TrainingGroupController@updateTrainingGroup']);
+            Route::delete('/destroyTrainingGroup/{id}', ['as' => 'destroyTrainingGroup', 'uses' => 'TrainingGroupController@destroyTrainingGroup']);
 
         });
 
