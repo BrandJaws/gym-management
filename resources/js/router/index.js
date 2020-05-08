@@ -3,6 +3,7 @@ import Router from 'vue-router';
 
 import members from './members';
 import reports from './reports';
+import restaurants from './restaurants';
 
 import store from '../store';
 
@@ -15,6 +16,7 @@ const router = new Router({
 	routes: [
         ...members.routes,
         ...reports.routes,
+        ...restaurants.routes
 	]
 });
 
