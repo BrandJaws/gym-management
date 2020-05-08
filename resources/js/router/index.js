@@ -3,7 +3,6 @@ import Router from 'vue-router';
 
 import members from './members';
 import reports from './reports';
-import notification from './notification';
 
 import store from '../store';
 
@@ -16,7 +15,6 @@ const router = new Router({
 	routes: [
         ...members.routes,
         ...reports.routes,
-        ...notification.routes
 	]
 });
 

@@ -223,5 +223,10 @@ Route::group(['prefix' => 'gym', 'namespace' => 'Gym'], function () {
             Route::post('/destroyCategory', ['as' => 'destroyCategory', 'uses' => 'ShopController@destroyCategory']);
             Route::post('/editItem', ['as' => 'editItem', 'uses' => 'ShopController@editItem']);
         });
+
+        Route::group(['as' => 'restaurant.', 'prefix' => 'restaurant'], function () {
+            Route::get('/', ['as' => 'list', 'uses' => 'RestaurantController@index']);
+
+        });
     });
 });

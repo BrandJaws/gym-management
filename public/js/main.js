@@ -60348,8 +60348,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm.js");
 /* harmony import */ var _members__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./members */ "./resources/js/router/members.js");
 /* harmony import */ var _reports__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./reports */ "./resources/js/router/reports.js");
-/* harmony import */ var _notification__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./notification */ "./resources/js/router/notification.js");
-/* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../store */ "./resources/js/store.js");
+/* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../store */ "./resources/js/store.js");
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
 
 function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -60367,12 +60366,11 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 
 
 
-
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]);
 var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
   mode: 'history',
   base: process.env.USER_IMG_PATH,
-  routes: [].concat(_toConsumableArray(_members__WEBPACK_IMPORTED_MODULE_2__["default"].routes), _toConsumableArray(_reports__WEBPACK_IMPORTED_MODULE_3__["default"].routes), _toConsumableArray(_notification__WEBPACK_IMPORTED_MODULE_4__["default"].routes))
+  routes: [].concat(_toConsumableArray(_members__WEBPACK_IMPORTED_MODULE_2__["default"].routes), _toConsumableArray(_reports__WEBPACK_IMPORTED_MODULE_3__["default"].routes))
 });
 /* harmony default export */ __webpack_exports__["default"] = (router);
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../../node_modules/process/browser.js */ "./node_modules/process/browser.js")))
@@ -60397,17 +60395,6 @@ __webpack_require__.r(__webpack_exports__);
     component: _views_member_member_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
   }]
 });
-
-/***/ }),
-
-/***/ "./resources/js/router/notification.js":
-/*!*********************************************!*\
-  !*** ./resources/js/router/notification.js ***!
-  \*********************************************/
-/*! exports provided: default */
-/***/ (function(module, exports) {
-
-throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index.js):\nError: ENOENT: no such file or directory, open 'C:\\wamp64\\www\\gym\\resources\\js\\router\\notification.js'");
 
 /***/ }),
 
@@ -60510,25 +60497,6 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/services/trainingService.js":
-/*!**************************************************!*\
-  !*** ./resources/js/services/trainingService.js ***!
-  \**************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _services_Api__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../services/Api */ "./resources/js/services/Api.js");
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-  fetchTraining: function fetchTraining(params) {
-    return Object(_services_Api__WEBPACK_IMPORTED_MODULE_0__["default"])().post('/gym/training/edit/{id}', params);
-  }
-});
-
-/***/ }),
-
 /***/ "./resources/js/store.js":
 /*!*******************************!*\
   !*** ./resources/js/store.js ***!
@@ -60543,8 +60511,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
 /* harmony import */ var _stores_member__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./stores/member */ "./resources/js/stores/member.js");
 /* harmony import */ var _stores_reports__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./stores/reports */ "./resources/js/stores/reports.js");
-/* harmony import */ var _stores_training__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./stores/training */ "./resources/js/stores/training.js");
-
 
 
 
@@ -60554,8 +60520,7 @@ var debug = "development" !== "production";
 /* harmony default export */ __webpack_exports__["default"] = (new vuex__WEBPACK_IMPORTED_MODULE_1__["default"].Store({
   modules: {
     member: _stores_member__WEBPACK_IMPORTED_MODULE_2__["default"],
-    reports: _stores_reports__WEBPACK_IMPORTED_MODULE_3__["default"],
-    training: _stores_training__WEBPACK_IMPORTED_MODULE_5__["default"]
+    reports: _stores_reports__WEBPACK_IMPORTED_MODULE_3__["default"]
   },
   state: {
     loading: false
@@ -60632,52 +60597,6 @@ __webpack_require__.r(__webpack_exports__);
   getters: {
     leadList: function leadList(state) {
       return state.leadList;
-    }
-  }
-});
-
-/***/ }),
-
-/***/ "./resources/js/stores/training.js":
-/*!*****************************************!*\
-  !*** ./resources/js/stores/training.js ***!
-  \*****************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _services_trainingService__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../services/trainingService */ "./resources/js/services/trainingService.js");
-/* harmony import */ var any_promise__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! any-promise */ "./node_modules/any-promise/index.js");
-/* harmony import */ var any_promise__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(any_promise__WEBPACK_IMPORTED_MODULE_1__);
-
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-  strict: true,
-  state: {
-    trainingList: []
-  },
-  mutations: {
-    setTrainingList: function setTrainingList(state, trainingList) {
-      state.trainingList = trainingList.response;
-    }
-  },
-  actions: {
-    fetchTraining: function fetchTraining(_ref, params) {
-      var commit = _ref.commit;
-      return new Promise(function (resolve, reject) {
-        _services_trainingService__WEBPACK_IMPORTED_MODULE_2__["default"].fetchTraining(params).then(function (response) {
-          commit('setTrainingList', response.data);
-          resolve();
-        })["catch"](function (error) {
-          reject(error);
-        });
-      });
-    }
-  },
-  getters: {
-    trainingList: function trainingList(state) {
-      return state.trainingList;
     }
   }
 });

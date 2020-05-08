@@ -56,11 +56,11 @@
                                                                 <td>{{$item->id}}</td>
                                                                 <td>{{$item->name}}</td>
                                                                 <td>
-                                                                    <button class="edit-modal btn btn-info"
+                                                                    <button class="edit-modal btn btn-sm btn-success"
                                                                             data-id="{{$item->id}}"
                                                                             data-name="{{$item->name}}"><i
                                                                             class="fa fa-edit"></i></button>
-                                                                    <button class="delete-modal btn btn-danger"
+                                                                    <button class="delete-modal btn btn-sm btn-danger"
                                                                             data-id="{{$item->id}}"
                                                                             data-name="{{$item->name}}">
                                                                         <i class="fa fa-trash"></i>
