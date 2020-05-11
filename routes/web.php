@@ -226,6 +226,7 @@ Route::group(['prefix' => 'gym', 'namespace' => 'Gym'], function () {
 
         Route::group(['as' => 'restaurant.', 'prefix' => 'restaurant'], function () {
             Route::get('/', ['as' => 'list', 'uses' => 'RestaurantController@index']);
+            Route::post('/', ['as' => 'list', 'uses' => 'RestaurantController@orderProcessList']);
             Route::get('/list', ['as' => 'restaurantList', 'uses' => 'RestaurantController@restaurantList']);
         });
     });

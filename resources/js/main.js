@@ -21,6 +21,8 @@ import "@fortawesome/fontawesome-free/css/all.css";
 import "@fortawesome/fontawesome-free/js/all.js";
 import loading from 'vue-loading';
 import VueGoodTablePlugin from 'vue-good-table';
+import { Loading } from 'element-ui';
+Vue.use(Loading.directive);
 
 Vue.use(loading);
 Vue.use(VueGoodTablePlugin);
