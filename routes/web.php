@@ -227,7 +227,10 @@ Route::group(['prefix' => 'gym', 'namespace' => 'Gym'], function () {
         Route::group(['as' => 'restaurant.', 'prefix' => 'restaurant'], function () {
             Route::get('/', ['as' => 'list', 'uses' => 'RestaurantController@index']);
             Route::post('/', ['as' => 'list', 'uses' => 'RestaurantController@orderProcessList']);
+            Route::post('/updateOrder', ['as' => 'updateRestaurantOrder', 'uses' => 'RestaurantController@updateRestaurantOrder']);
             Route::get('/list', ['as' => 'restaurantList', 'uses' => 'RestaurantController@restaurantList']);
+
+            Route::get('/{id}', ['as' => 'orderDetail', 'uses' => 'RestaurantController@orderDetail']);
         });
     });
 });

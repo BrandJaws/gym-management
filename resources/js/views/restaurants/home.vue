@@ -1,10 +1,7 @@
 <template>
     <div class="container-fluid ">
         <top-header></top-header>
-        <div style="margin-top:5%">
-            <!--            {{ form.total}}-->
-        </div>
-        <div class="row">
+        <div class="row mt-5">
             <div class="col-md-12">
                 <div class="page-vue-good-table reportTable">
                     <div class="table table-border">
@@ -33,16 +30,24 @@
                                 @on-page-change="onPageChange"
                                 @on-per-page-change="onPerPageChange"
                                 @on-search="search">
-
-                                <template slot="table-row" slot-scope="props" >
-                                    <a class="btn btn-sm primary"  @on-row-click="onRowClick">save</a>
+                                <template slot="table-row" slot-scope="props">
+                                    <a class="btn btn-sm primary" @on-row-click="onRowClick">save</a>
                                 </template>
                                 <template slot="table-row" slot-scope="props">
-                                    <span v-if="props.column.field == 'actions'">
-                                      <a class="btn btn-sm primary"  @on-row-click="onRowClick">save</a>
-                                    </span>
-                                                                <span v-else>
-                                      {{props.formattedRow[props.column.field]}}
+                                    <span v-if="props.column.field == 'action'" class="grid-action-icons">
+                                        <a @click="inProcess(props.row)" v-if="props.row.in_process == 'NO' "
+                                           class="btn btn-label-danger btn-pill"> In Process</a>
+                                        <a v-else class="btn btn-label-danger btn-pill disabled"> In Progress</a>
+
+                                        <a @click="isReady(props.row)" v-if="props.row.is_ready == 'NO' "
+                                           class="btn btn-label-info btn-pill">Is Ready</a>
+                                        <a v-else class="btn btn-label-info btn-pill disabled">Is Ready</a>
+
+                                        <a @click="isServed(props.row)" v-if="props.row.is_served == 'NO' "
+                                           class="btn btn-label-success btn-pill">Is Served</a>
+                                        <a v-else class="btn btn-label-success btn-pill disabled">Is Served</a>
+                                        <button type="button" class="btn btn-primary" data-toggle="modal"
+                                                data-target="#myModal" @click="edit(props.row)">Edit</button>
                                     </span>
                                 </template>
                             </vue-good-table>
@@ -51,7 +56,47 @@
                 </div>
             </div>
         </div>
+        <template id="bs-modal">
+            <!-- MODAL -->
+            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title" id="myModalLabel">  </h4>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <p><b>Customer Name</b></p>
+                                    <h4>{{ orderDetail.Member }}</h4>
+                                    <p><b>Order Status</b>
+                                        <a @click="inProcessPopup(orderDetail.id)"
+                                           v-if="orderDetail.in_process == 'NO' "
+                                           class="btn btn-label-danger btn-pill"> In Process</a>
+                                        <a v-else class="btn btn-label-danger btn-pill disabled"> In Progress</a>
+
+                                        <a @click="isReadyPopup(orderDetail.id)" v-if="orderDetail.is_ready == 'NO' "
+                                           class="btn btn-label-info btn-pill">Is Ready</a>
+                                        <a v-else class="btn btn-label-info btn-pill disabled">Is Ready</a>
+
+                                        <a @click="isServedPopup(orderDetail.id)" v-if="orderDetail.is_served == 'NO' "
+                                           class="btn btn-label-success btn-pill">Is Served</a>
+                                        <a v-else class="btn btn-label-success btn-pill disabled">Is Served</a>
+                                    </p>
+                                    {{ orderDetail.Member }}
+                                    {{ orderDetail.Member }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </template>
     </div>
+
+
 </template>
 
 <script>
@@ -64,19 +109,20 @@
         },
         data() {
             return {
+
                 loading: true,
                 error: '',
                 columns: [
                     {
-                        label: 'member_id',
-                        field: 'member_id',
+                        label: 'Member',
+                        field: 'Member',
                         tdClass: 'text-center',
                         thClass: 'text-center',
                         sortable: false,
                         filterable: true,
                     },
                     {
-                        label: 'gross_total',
+                        label: 'Gross Total',
                         field: 'gross_total',
                         tdClass: 'text-center',
                         thClass: 'text-center',
@@ -84,7 +130,7 @@
                         filterable: true,
                     },
                     {
-                        label: 'created_at',
+                        label: 'Date',
                         field: 'created_at',
                         tdClass: 'text-center',
                         thClass: 'text-center',
@@ -92,15 +138,21 @@
                         filterable: true,
                     },
                     {
-                        label: 'Actions',
-                        field: 'actions',
+                        label: "Actions",
+                        tdClass: 'text-center',
+                        thClass: 'text-center',
                         sortable: false,
+                        field: "action"
                     }
                 ],
                 serverParams: {
                     page: 1,
                     perPage: 5,
                     searchTerm: ''
+                },
+                form: {
+                    id: '',
+                    status: '',
                 },
                 timeout: null
             }
@@ -115,10 +167,56 @@
             totalRecords() {
                 return this.$store.getters.totalOrderProcess;
             },
+            orderDetail() {
+                return this.$store.getters.orderDetail;
+            },
         },
         methods: {
-            addCustomer() {
-                this.$router.push({name: "addCustomer"});
+            inProcess(params) {
+                this.form.id = params.id;
+                this.form.status = "In Process";
+                this.$store.dispatch('updateRestaurantOrder', {
+                    data: this.form
+                });
+                this.handleFilter();
+            },
+            inProcessPopup(params) {
+                this.form.id = params;
+                this.form.status = "In Process";
+                this.$store.dispatch('updateRestaurantOrder', {
+                    data: this.form
+                });
+            },
+            isReady(params) {
+                this.form.id = params.id;
+                this.form.status = "Is Ready";
+                this.$store.dispatch('updateRestaurantOrder', {
+                    data: this.form
+                });
+                this.handleFilter();
+            },
+            isReadyPopup(params) {
+                this.form.id = params;
+                this.form.status = "Is Ready";
+                this.$store.dispatch('updateRestaurantOrder', {
+                    data: this.form
+                });
+            },
+            isServed(params) {
+                this.form.id = params.id;
+                this.form.status = "Is Served";
+                this.$store.dispatch('updateRestaurantOrder', {
+                    data: this.form
+                });
+                this.handleFilter();
+            },
+            isServedPopup(params) {
+                this.form.id = params;
+                this.form.status = "Is Served";
+                this.$store.dispatch('updateRestaurantOrder', {
+                    data: this.form
+                });
+                this.handleFilter();
             },
             updateParams(newProps) {
                 this.error = '';
@@ -163,38 +261,12 @@
                 this.loading = false;
             },
             edit(object) {
-                this.$router.push({name: 'editCustomer', params: {id: object.id}});
+                this.$store.dispatch('updateOrderDetail', object.id).then(() => {
+                    this.orderDetail;
+                });
             },
             handleFilter() {
                 this.fetchOrderProcess();
-            },
-            deleteCustomer(object) {
-                this.error = '';
-                name = object.name;
-                this.$confirm('This will permanently delete customer ' + name + '. Continue?', 'Warning', {
-                    confirmButtonText: 'OK',
-                    cancelButtonText: 'Cancel',
-                    type: 'warning',
-                }).then(() => {
-                    this.$store.dispatch('deleteCustomer', {id: object.id}).then(response => {
-                        this.$message({
-                            title: 'Success',
-                            type: 'success',
-                            message: 'Delete completed'
-                        });
-                        this.handleFilter();
-                    }).catch(error => {
-                        console.log(error);
-                    });
-                }).catch(() => {
-                    this.$notify({
-                        title: 'Warning',
-                        message: 'Delete canceled',
-                        type: 'warning',
-                        position: 'bottom-right'
-                    });
-                    this.handleFilter();
-                });
             },
 
             search(params) {
@@ -217,29 +289,37 @@
 </script>
 
 <style lang="scss">
-    .page-vue-good-table {
-        overflow: hidden;
-    }
 
     .page-vue-good-table {
         overflow: hidden;
     }
 
-    .table input[type="text"][data-v-d89f00e8], .table select[data-v-d89f00e8] {
-        float: right;
-        width: 20% !important;
+    .vgt-global-search {
+        padding: 5px 0;
+        display: -webkit-box;
+        display: flex;
+        flex-wrap: nowrap;
+        -webkit-box-align: stretch;
+        align-items: stretch;
+        border: 1px solid #FFF !important;
+        border-bottom: 0;
+        background: -webkit-gradient(linear, left top, left bottom, from(#f4f5f8), to(#f1f3f6));
+        background: linear-gradient(#e8e9ec00, #f1f3f608) !important;
     }
 
-    .magnifying-glass[data-v-d89f00e8] {
-        border: 1px solid #fff !important;
+    .vgt-global-search__input .input__icon {
+        position: absolute;
+        right: 0 !important;
+        max-width: 32px;
     }
 
-    .table-bordered {
-        border: 1px solid #ddd !important;
+    .vgt-input, .vgt-select {
+        width: 25% !important;
+        float: right !important;
     }
 
-    .table-bordered td, .table-bordered th {
-        border: 1px solid #ddd !important;
+    .modal-active {
+        display: block;
     }
 </style>
 

@@ -31,9 +31,8 @@
                             :globalSearch="true"
                             :paginate="true"
                             :responsive="true"
-                            :lineNumbers="true"
                             class="styled"
-                            styleClass="table-bordered table-striped">
+                            styleClass="vgt-table">
                         </vue-good-table>
                     </div>
                 </div>

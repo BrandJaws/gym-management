@@ -25,15 +25,16 @@
                 <div class="page-vue-good-table reportTable">
                     <div class="table table-border">
                         <vue-good-table
-                            mode="remote"
                             :columns="columns"
                             :rows="leadList"
                             :globalSearch="true"
                             :paginate="true"
                             :responsive="true"
-                            :lineNumbers="true"
+                            v-loading="loading"
+                            title="Lead Report"
                             class="styled"
-                            styleClass="table-bordered table-striped">
+                            styleClass="vgt-table"
+                            mode="remote">
                         </vue-good-table>
                     </div>
                 </div>
@@ -157,6 +158,9 @@
     .page-vue-good-table {
         overflow: hidden;
     }
+    .page-vue-good-table {
+        overflow: hidden;
+    }
 
     .table input[type="text"][data-v-d89f00e8], .table select[data-v-d89f00e8] {
         float: right;
@@ -167,11 +171,5 @@
         border: 1px solid #fff !important;
     }
 
-    .table-bordered {
-        border: 1px solid #ddd  !important;
-    }
-    .table-bordered td, .table-bordered th {
-        border: 1px solid #ddd !important;
-    }
 </style>
 

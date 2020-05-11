@@ -20,12 +20,13 @@ import "bootstrap/dist/js/bootstrap.min.js";
 import "@fortawesome/fontawesome-free/css/all.css";
 import "@fortawesome/fontawesome-free/js/all.js";
 import loading from 'vue-loading';
-import VueGoodTablePlugin from 'vue-good-table';
+import VueGoodTable from 'vue-good-table';
+import 'vue-good-table/dist/vue-good-table.min.css';
 import { Loading } from 'element-ui';
 Vue.use(Loading.directive);
 
 Vue.use(loading);
-Vue.use(VueGoodTablePlugin);
+Vue.use(VueGoodTable);
 Vue.config.productionTip = false;
 
 new Vue({
