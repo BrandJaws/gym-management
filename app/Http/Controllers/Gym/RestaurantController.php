@@ -69,11 +69,14 @@ class RestaurantController extends Controller
                     break;
                 case 'Is Ready':
                     $order = RestaurantOrder::where('id', $id)->first();
+                    $order->in_process = "YES";
                     $order->is_ready = "YES";
                     $order->save();
                     break;
                 case 'Is Served':
                     $order = RestaurantOrder::where('id', $id)->first();
+                    $order->in_process = "YES";
+                    $order->is_ready = "YES";
                     $order->is_served = "YES";
                     $order->save();
                     break;

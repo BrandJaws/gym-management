@@ -37,17 +37,21 @@
                                     <span v-if="props.column.field == 'action'" class="grid-action-icons">
                                         <a @click="inProcess(props.row)" v-if="props.row.in_process == 'NO' "
                                            class="btn btn-label-danger btn-pill"> In Process</a>
-                                        <a v-else class="btn btn-label-danger btn-pill disabled"> In Progress</a>
+                                        <a v-else class="btn btn-label-danger btn-pill disabled"> In Progress <i
+                                            class="fa fa-check"></i> </a>
 
                                         <a @click="isReady(props.row)" v-if="props.row.is_ready == 'NO' "
                                            class="btn btn-label-info btn-pill">Is Ready</a>
-                                        <a v-else class="btn btn-label-info btn-pill disabled">Is Ready</a>
+                                        <a v-else class="btn btn-label-info btn-pill disabled">Is Ready <i
+                                            class="fa fa-check"></i> </a>
 
                                         <a @click="isServed(props.row)" v-if="props.row.is_served == 'NO' "
                                            class="btn btn-label-success btn-pill">Is Served</a>
-                                        <a v-else class="btn btn-label-success btn-pill disabled">Is Served</a>
-                                        <button type="button" class="btn btn-primary" data-toggle="modal"
-                                                data-target="#myModal" @click="edit(props.row)">Edit</button>
+                                        <a v-else class="btn btn-label-success btn-pill disabled">Is Served <i
+                                            class="fa fa-check"></i> </a>
+                                        <button type="button" class="btn btn-default" data-toggle="modal"
+                                                data-target="#myModal" @click="edit(props.row.id)"><i
+                                            class="fa fa-print"></i></button>
                                     </span>
                                 </template>
                             </vue-good-table>
@@ -102,8 +106,7 @@
                                                        v-if="orderDetailList.in_process == 'NO' "
                                                        class="btn btn-label-danger btn-pill"> In Process</a>
                                                     <a v-else class="btn btn-label-danger btn-pill disabled"> In
-                                                        Progress</a>
-
+                                                        Progress </a>
                                                     <a @click="isReadyPopup(orderDetailList.id)"
                                                        v-if="orderDetailList.is_ready == 'NO' "
                                                        class="btn btn-label-info btn-pill">Is Ready</a>
@@ -132,7 +135,9 @@
                                                                     <td>{{ detail.quantity }}</td>
                                                                     <td>{{ detail.name }}</td>
                                                                     <td>{{ detail.price }}</td>
-                                                                    <td class="kt-font-danger kt-font-lg">{{ detail.sale_total }}</td>
+                                                                    <td class="kt-font-danger kt-font-lg">{{
+                                                                        detail.sale_total }}
+                                                                    </td>
                                                                 </tr>
                                                                 </tbody>
                                                             </table>
@@ -151,7 +156,7 @@
                                                                 </tr>
                                                                 </thead>
                                                                 <tbody>
-                                                                <tr >
+                                                                <tr>
                                                                     <td>{{ orderDetailList.gross_total}}</td>
                                                                     <td>{{ orderDetailList.vat}}</td>
                                                                     <td class="kt-font-danger kt-font-xl kt-font-boldest">
@@ -166,9 +171,6 @@
                                                 <div class="kt-invoice__actions">
                                                     <div class="kt-invoice__container">
                                                         <button type="button" class="btn btn-label-brand btn-bold"
-                                                                onclick="window.print();">Download Invoice
-                                                        </button>
-                                                        <button type="button" class="btn btn-brand btn-bold"
                                                                 onclick="window.print();">Print Invoice
                                                         </button>
                                                     </div>
@@ -248,9 +250,9 @@
                     in_process: '',
                     is_ready: '',
                     is_served: '',
-                    gross_total:'',
-                    vat:'',
-                    net_total:''
+                    gross_total: '',
+                    vat: '',
+                    net_total: ''
                 },
                 timeout: null
             }
@@ -284,6 +286,7 @@
                 this.$store.dispatch('updateRestaurantOrder', {
                     data: this.form
                 });
+                this.edit(params);
             },
             isReady(params) {
                 this.form.id = params.id;
@@ -299,6 +302,7 @@
                 this.$store.dispatch('updateRestaurantOrder', {
                     data: this.form
                 });
+                this.edit(params);
             },
             isServed(params) {
                 this.form.id = params.id;
@@ -314,7 +318,7 @@
                 this.$store.dispatch('updateRestaurantOrder', {
                     data: this.form
                 });
-                this.handleFilter();
+                this.edit(params);
             },
             updateParams(newProps) {
                 this.error = '';
@@ -359,7 +363,7 @@
                 this.loading = false;
             },
             edit(object) {
-                this.$store.dispatch('updateOrderDetail', object.id).then(() => {
+                this.$store.dispatch('updateOrderDetail', object).then(() => {
                     this.orderDetail;
                     var list = this.orderDetail;
                     this.orderDetailList.id = list[0].id;
