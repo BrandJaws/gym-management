@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Http\Models\RestaurantOrderDetail;
 use Illuminate\Database\Eloquent\Model;
 
 class RestaurantOrder extends Model
@@ -68,12 +69,20 @@ class RestaurantOrder extends Model
                 'restaurant_orders.net_total',
                 'restaurant_orders.created_at',
                 'members.name as Member',
+                'restaurant_order_details.quantity',
+                'restaurant_order_details.sale_total',
+                'restaurant_products.name',
+                'restaurant_products.price'
             ]
         )->where(function ($query) use ($id) {
             $query->where('restaurant_orders.id', '=', $id);
         })->leftJoin('members', function ($join) {
             $join->on('members.id', 'restaurant_orders.member_id');
-        })->first();
+        })->leftJoin('restaurant_order_details', function ($join) {
+            $join->on('restaurant_order_details.restaurant_order_id', 'restaurant_orders.id')
+                ->join('restaurant_products', function ($join) {
+                    $join->on('restaurant_products.id', 'restaurant_order_details.restaurant_product_id');
+                });
+        })->get();
     }
-
 }

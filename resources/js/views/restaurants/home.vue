@@ -55,48 +55,135 @@
                     </div>
                 </div>
             </div>
-        </div>
-        <template id="bs-modal">
-            <!-- MODAL -->
-            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                                aria-hidden="true">&times;</span></button>
-                            <h4 class="modal-title" id="myModalLabel">  </h4>
-                        </div>
-                        <div class="modal-body">
-                            <div class="row">
-                                <div class="col-sm-12">
-                                    <p><b>Customer Name</b></p>
-                                    <h4>{{ orderDetail.Member }}</h4>
-                                    <p><b>Order Status</b>
-                                        <a @click="inProcessPopup(orderDetail.id)"
-                                           v-if="orderDetail.in_process == 'NO' "
-                                           class="btn btn-label-danger btn-pill"> In Process</a>
-                                        <a v-else class="btn btn-label-danger btn-pill disabled"> In Progress</a>
 
-                                        <a @click="isReadyPopup(orderDetail.id)" v-if="orderDetail.is_ready == 'NO' "
-                                           class="btn btn-label-info btn-pill">Is Ready</a>
-                                        <a v-else class="btn btn-label-info btn-pill disabled">Is Ready</a>
+            <template id="bs-modal">
+                <!-- MODAL -->
+                <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title" id="myModalLabel"> Order Detail </h4>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                    aria-hidden="true">&times;</span></button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="kt-container  kt-container--fluid  kt-grid__item kt-grid__item--fluid">
+                                    <div class="kt-portlet">
+                                        <div class="kt-portlet__body kt-portlet__body--fit">
+                                            <div class="kt-invoice-2">
+                                                <div class="kt-invoice__head">
+                                                    <div class="kt-invoice__container">
+                                                        <div class="kt-invoice__brand">
+                                                            <h1 class="kt-invoice__title">INVOICE</h1>
+                                                            <div href="#" class="kt-invoice__logo">
+                                                                <span class="kt-invoice__desc">
+															<span>Order # {{  orderDetailList.id }}</span>
+														</span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="kt-invoice__items">
+                                                            <div class="kt-invoice__item">
+                                                                <span class="kt-invoice__subtitle">DATE</span>
+                                                                <span class="kt-invoice__text"> {{ orderDetailList.date }}</span>
+                                                            </div>
+                                                            <div class="kt-invoice__item">
+                                                                <span class="kt-invoice__subtitle">INVOICE NO.</span>
+                                                                <span class="kt-invoice__text">INV-{{ orderDetailList.id }}</span>
+                                                            </div>
+                                                            <div class="kt-invoice__item">
+                                                                <span class="kt-invoice__subtitle">CUSTOMER NAME</span>
+                                                                <span class="kt-invoice__text">{{ orderDetailList.Member }}</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <p><b>Order Status</b>
+                                                    <a @click="inProcessPopup(orderDetailList.id)"
+                                                       v-if="orderDetailList.in_process == 'NO' "
+                                                       class="btn btn-label-danger btn-pill"> In Process</a>
+                                                    <a v-else class="btn btn-label-danger btn-pill disabled"> In
+                                                        Progress</a>
 
-                                        <a @click="isServedPopup(orderDetail.id)" v-if="orderDetail.is_served == 'NO' "
-                                           class="btn btn-label-success btn-pill">Is Served</a>
-                                        <a v-else class="btn btn-label-success btn-pill disabled">Is Served</a>
-                                    </p>
-                                    {{ orderDetail.Member }}
-                                    {{ orderDetail.Member }}
+                                                    <a @click="isReadyPopup(orderDetailList.id)"
+                                                       v-if="orderDetailList.is_ready == 'NO' "
+                                                       class="btn btn-label-info btn-pill">Is Ready</a>
+                                                    <a v-else class="btn btn-label-info btn-pill disabled">Is Ready</a>
+
+                                                    <a @click="isServedPopup(orderDetailList.id)"
+                                                       v-if="orderDetailList.is_served == 'NO' "
+                                                       class="btn btn-label-success btn-pill">Is Served</a>
+                                                    <a v-else class="btn btn-label-success btn-pill disabled">Is
+                                                        Served</a>
+                                                </p>
+                                                <div class="kt-invoice__body">
+                                                    <div class="kt-invoice__container">
+                                                        <div class="table-responsive">
+                                                            <table class="table">
+                                                                <thead>
+                                                                <tr>
+                                                                    <th>QTY</th>
+                                                                    <th>DESCRIPTION</th>
+                                                                    <th>UNIT PRICE</th>
+                                                                    <th>TOTAL</th>
+                                                                </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                <tr v-for="(detail, index) in orderDetail">
+                                                                    <td>{{ detail.quantity }}</td>
+                                                                    <td>{{ detail.name }}</td>
+                                                                    <td>{{ detail.price }}</td>
+                                                                    <td class="kt-font-danger kt-font-lg">{{ detail.sale_total }}</td>
+                                                                </tr>
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="kt-invoice__footer">
+                                                    <div class="kt-invoice__container">
+                                                        <div class="table-responsive">
+                                                            <table class="table">
+                                                                <thead>
+                                                                <tr>
+                                                                    <th>SUB-TOTAL</th>
+                                                                    <th>VAT INCLUDED IN TOTAL</th>
+                                                                    <th>TOTAL AMOUNT</th>
+                                                                </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                <tr >
+                                                                    <td>{{ orderDetailList.gross_total}}</td>
+                                                                    <td>{{ orderDetailList.vat}}</td>
+                                                                    <td class="kt-font-danger kt-font-xl kt-font-boldest">
+                                                                        {{ orderDetailList.net_total}}
+                                                                    </td>
+                                                                </tr>
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="kt-invoice__actions">
+                                                    <div class="kt-invoice__container">
+                                                        <button type="button" class="btn btn-label-brand btn-bold"
+                                                                onclick="window.print();">Download Invoice
+                                                        </button>
+                                                        <button type="button" class="btn btn-brand btn-bold"
+                                                                onclick="window.print();">Print Invoice
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </template>
+            </template>
+        </div>
     </div>
-
-
 </template>
 
 <script>
@@ -153,6 +240,17 @@
                 form: {
                     id: '',
                     status: '',
+                },
+                orderDetailList: {
+                    id: '',
+                    Member: '',
+                    date: '',
+                    in_process: '',
+                    is_ready: '',
+                    is_served: '',
+                    gross_total:'',
+                    vat:'',
+                    net_total:''
                 },
                 timeout: null
             }
@@ -263,6 +361,16 @@
             edit(object) {
                 this.$store.dispatch('updateOrderDetail', object.id).then(() => {
                     this.orderDetail;
+                    var list = this.orderDetail;
+                    this.orderDetailList.id = list[0].id;
+                    this.orderDetailList.Member = list[0].Member;
+                    this.orderDetailList.date = list[0].created_at;
+                    this.orderDetailList.in_process = list[0].in_process;
+                    this.orderDetailList.is_ready = list[0].is_ready;
+                    this.orderDetailList.is_served = list[0].is_served;
+                    this.orderDetailList.gross_total = list[0].gross_total;
+                    this.orderDetailList.vat = list[0].vat;
+                    this.orderDetailList.net_total = list[0].net_total;
                 });
             },
             handleFilter() {
@@ -320,6 +428,16 @@
 
     .modal-active {
         display: block;
+    }
+
+    .modal-dialog {
+        max-width: 1242px !important;
+        margin: 1.75rem auto;
+    }
+
+    .modal-dialog {
+        max-height: 1242px !important;
+        margin: 1.75rem auto;
     }
 </style>
 
