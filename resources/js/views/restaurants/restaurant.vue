@@ -6,8 +6,8 @@
         </div>
         <div class="row">
             <div class="col-md-3">
-                <button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal"><i
-                    class="fa fa-plus"></i></button>
+                <a :href="'../../gym/restaurant/category/add/'" class="btn btn-label-primary btn-pill">
+                    <i class="fa fa-plus"></i></a>
                 <vue-good-table
                     @on-cell-click="onCellClick"
                     v-loading="loading"
@@ -22,8 +22,8 @@
                     paginate="false">
                     <template slot="table-row" slot-scope="props">
                         <span v-if="props.column.field == 'action'" class="grid-action-icons">
-                            <a @click="editCategory(props.row)" data-toggle="modal" data-target="#myModal"
-                               class="btn btn-label-danger btn-pill"> Edit</a>
+                             <a :href="'../../gym/restaurant/category/edit/'+props.row.id" class="btn btn-label-primary btn-pill">
+                                 <i class="fa fa-edit"></i></a>
                             <a @click="deleteCategory(props.row)" class="btn btn-label-success btn-pill">Delete</a>
                         </span>
                     </template>
@@ -51,45 +51,6 @@
                 </vue-good-table>
             </div>
         </div>
-        <template id="bs-modal">
-            <!-- MODAL -->
-            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h4 class="modal-title" id="myModalLabel"> Category </h4>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                                aria-hidden="true">&times;</span></button>
-                        </div>
-                        <div class="modal-body">
-                            <div class="form-group row mb-15">
-                                <div class="col-lg-6">
-                                    <label>Category Name:</label>
-                                    <input type="text" name="name" v-model="form.name" class="form-control" required
-                                           maxlength="50" placeholder="Enter Category Name">
-                                </div>
-                                <div class="col-lg-6">
-                                    <label>Image:</label>
-                                    <el-upload :action="uploadActionUrl">
-                                        <el-button size="small" type="primary">Click Upload</el-button>
-                                    </el-upload>
-                                </div>
-                            </div>
-                            <div class="kt-portlet__foot">
-                                <div class="kt-form__actions">
-                                    <div class="row">
-                                        <div class="col-12">
-                                            <input type="submit" value="Update" class="btn btn-primary">
-                                            <a  data-dismiss="modal" aria-label="Close" class="btn btn-secondary">Cancel</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </template>
     </div>
 </template>
 

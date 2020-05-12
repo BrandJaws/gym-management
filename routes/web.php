@@ -231,6 +231,9 @@ Route::group(['prefix' => 'gym', 'namespace' => 'Gym'], function () {
             Route::get('/list', ['as' => 'restaurantList', 'uses' => 'RestaurantController@restaurantList']);
             Route::post('/list', ['as' => 'restaurantList', 'uses' => 'RestaurantController@mainCategoryList']);
             Route::get('/{id}', ['as' => 'orderDetail', 'uses' => 'RestaurantController@orderDetail']);
+
+            Route::get('category/edit/{id}', ['as' => 'categoryEdit', 'uses' => 'RestaurantController@categoryEdit']);
+            Route::get('category/add', ['as' => 'categoryCreate', 'uses' => 'RestaurantController@categoryCreate']);
         });
     });
 });

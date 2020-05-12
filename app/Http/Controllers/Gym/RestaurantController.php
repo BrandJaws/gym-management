@@ -108,9 +108,35 @@ class RestaurantController extends Controller
         try {
             $gym_id = Auth::guard('employee')->user()->gym_id;
             $order = RestaurantMainCategory::getCategoryList($gym_id);
+            ActivityLogsController::insertLog("Restaurant Category Page");
             return response()->json([
                 'response' => $order
             ], 200);
+        } catch (\Exception $e) {
+            return response()->json([
+                'response' => $e
+            ], 400);
+        }
+    }
+
+    public function categoryEdit(Request $request)
+    {
+        try {
+            $category = RestaurantMainCategory::where('id', '=', $request->id)->first();
+            ActivityLogsController::insertLog("Category Edit Page");
+            return view('gym.restaurant.edit', compact('category'));
+        } catch (\Exception $e) {
+            return response()->json([
+                'response' => $e
+            ], 400);
+        }
+    }
+
+    public function categoryCreate(Request $request)
+    {
+        try {
+            ActivityLogsController::insertLog("Category Add Page");
+            return view('gym.restaurant.add');
         } catch (\Exception $e) {
             return response()->json([
                 'response' => $e
