@@ -32,7 +32,7 @@
                             :paginate="true"
                             :responsive="true"
                             class="styled"
-                            styleClass="vgt-table">
+                            styleClass="table table-striped table-bordered">
                         </vue-good-table>
                     </div>
                 </div>

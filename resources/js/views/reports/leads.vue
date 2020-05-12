@@ -33,7 +33,7 @@
                             v-loading="loading"
                             title="Lead Report"
                             class="styled"
-                            styleClass="vgt-table"
+                            styleClass="table table-striped table-bordered"
                             mode="remote">
                         </vue-good-table>
                     </div>

@@ -12,8 +12,8 @@
                                 globalSearch="true"
                                 :responsive="true"
                                 :lineNumbers="true"
-                                class="styled"
-                                styleClass="vgt-table"
+                                class="styled "
+                                styleClass="table table-striped table-bordered"
                                 mode="remote"
                                 :columns="columns"
                                 :rows="orderProcessList"
@@ -438,7 +438,6 @@
         max-width: 1242px !important;
         margin: 1.75rem auto;
     }
-
     .modal-dialog {
         max-height: 1242px !important;
         margin: 1.75rem auto;

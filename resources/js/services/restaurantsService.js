@@ -8,7 +8,6 @@ export default {
         return Restaurants().post('/gym/restaurant/updateOrder', params.data);
     },
     updateOrderDetail(params) {
-        console.log(params);
         return Restaurants().get('/gym/restaurant/' + params);
     },
 };
