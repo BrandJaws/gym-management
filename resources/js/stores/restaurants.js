@@ -8,7 +8,9 @@ export default {
         totalOrderProcess: 0,
         perPage: 0,
         restaurantOrder: [],
-        orderDetail:[]
+        orderDetail:[],
+        mainCategory:[],
+        totalMainCategory: 0,
     },
     mutations: {
         setOrderProcessList(state, orderProcessList) {
@@ -21,6 +23,11 @@ export default {
         },
         setOrderDetail(state, orderDetail) {
             state.orderDetail = orderDetail.response;
+        },
+        setMainCategory(state, mainCategory) {
+            state.mainCategory = mainCategory.response;
+            state.totalMainCategory = mainCategory.response.total;
+            state.perPage = mainCategory.response.per_page;
         },
     },
     actions: {
@@ -53,7 +60,17 @@ export default {
                     reject(error);
                 });
             });
-        }
+        },
+        fetchMainCategory({commit}, params) {
+            return new Promise((resolve, reject) => {
+                RestaurantsService.fetchMainCategory(params).then((response) => {
+                    commit('setMainCategory', response.data);
+                    resolve();
+                }).catch((error) => {
+                    reject(error);
+                });
+            });
+        },
 
     },
     getters: {
@@ -68,6 +85,9 @@ export default {
         },
         orderDetail(state) {
             return state.orderDetail;
+        },
+        mainCategory(state) {
+            return state.mainCategory;
         },
     }
 };

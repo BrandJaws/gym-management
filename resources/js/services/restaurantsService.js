@@ -10,4 +10,7 @@ export default {
     updateOrderDetail(params) {
         return Restaurants().get('/gym/restaurant/' + params);
     },
+    fetchMainCategory(params) {
+        return Restaurants().post('/gym/restaurant/list', params);
+    },
 };

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Gym;
 
 use App\Http\Controllers\Controller;
+use App\RestaurantMainCategory;
 use App\RestaurantOrder;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -102,4 +103,18 @@ class RestaurantController extends Controller
         }
     }
 
+    public function mainCategoryList(Request $request)
+    {
+        try {
+            $gym_id = Auth::guard('employee')->user()->gym_id;
+            $order = RestaurantMainCategory::getCategoryList($gym_id);
+            return response()->json([
+                'response' => $order
+            ], 200);
+        } catch (\Exception $e) {
+            return response()->json([
+                'response' => $e
+            ], 400);
+        }
+    }
 }
