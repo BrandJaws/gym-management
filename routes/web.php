@@ -130,8 +130,8 @@ Route::group(['prefix' => 'gym', 'namespace' => 'Gym'], function () {
             /*------------------------------------ Drap Drop Lead Routes --------------------------------*/
             /*-----------------------------------------------------------------------------------*/
 
-            Route::get('/drag/leads', array('as'=> 'drag.leads', 'uses' => 'MemberController@dragLead'));
-            Route::post('/drag/leads', array('as'=> 'update.leads', 'uses' => 'MemberController@updateDragLead'));
+            Route::get('/drag/leads', array('as' => 'drag.leads', 'uses' => 'MemberController@dragLead'));
+            Route::post('/drag/leads', array('as' => 'update.leads', 'uses' => 'MemberController@updateDragLead'));
         });
 
         /*-----------------------------------------------------------------------------------*/
@@ -232,7 +232,7 @@ Route::group(['prefix' => 'gym', 'namespace' => 'Gym'], function () {
             Route::post('/list', ['as' => 'restaurantList', 'uses' => 'RestaurantController@mainCategoryList']);
             Route::get('/{id}', ['as' => 'orderDetail', 'uses' => 'RestaurantController@orderDetail']);
 
-           // Restaurant Category
+            // Restaurant Category
             Route::get('category/add', ['as' => 'categoryCreate', 'uses' => 'RestaurantController@categoryCreate']);
             Route::post('category/add', ['as' => 'categoryStore', 'uses' => 'RestaurantController@categoryStore']);
             Route::get('category/edit/{id}', ['as' => 'categoryEdit', 'uses' => 'RestaurantController@categoryEdit']);
@@ -249,6 +249,11 @@ Route::group(['prefix' => 'gym', 'namespace' => 'Gym'], function () {
 
             // Restaurant Product
             Route::get('products/{id}/', ['as' => 'subCategoryList', 'uses' => 'RestaurantController@productsList']);
+            Route::get('product/add/{id}', ['as' => 'productCreate', 'uses' => 'RestaurantController@productCreate']);
+            Route::post('product/add', ['as' => 'productStore', 'uses' => 'RestaurantController@productStore']);
+            Route::get('product/edit/{id}', ['as' => 'productEdit', 'uses' => 'RestaurantController@productEdit']);
+            Route::post('product/edit', ['as' => 'productUpdate', 'uses' => 'RestaurantController@productUpdate']);
+            Route::get('/{id}/deleteProduct', ['as' => 'deleteProduct', 'uses' => 'RestaurantController@deleteProduct']);
         });
     });
 });

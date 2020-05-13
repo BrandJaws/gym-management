@@ -32,7 +32,8 @@
                 </vue-good-table>
             </div>
             <div class="col-md-3">
-                <a :href="'../../gym/restaurant/subCategory/add/'+ subCategoryForm.categoryId" class="btn btn-label-primary ">
+                <a :href="'../../gym/restaurant/subCategory/add/'+ subCategoryForm.categoryId"
+                   class="btn btn-label-primary ">
                     <i class="fa fa-plus"></i> Add Sub-Category</a>
                 <table class="table table-striped ">
                     <thead>
@@ -56,8 +57,8 @@
                 </table>
             </div>
             <div class="col-md-6">
-                <a :href="'../../gym/restaurant/product/add/'" class="btn btn-label-primary ">
-                    <i class="fa fa-plus"></i> Add Product</a>
+                <a :href="'../../gym/restaurant/product/add/'+ productForm.subCategoryId" class="btn btn-label-primary ">
+                    <i class="fa fa-plus"></i> Add Product </a>
                 <vue-good-table
                     :columns="productsColumns"
                     :rows="productsList"
@@ -83,6 +84,7 @@
 
 <script>
     import RestaurantHeader from "../../components/RestaurantHeader";
+
     export default {
         name: 'VGTable',
         components: {
@@ -145,7 +147,11 @@
                 subCategoryForm: {
                     name: '',
                     categoryImage: '',
-                    categoryId:''
+                    categoryId: ''
+                },
+                productForm: {
+                    name: '',
+                    subCategoryId: ''
                 },
                 serverParams: {
                     page: 1,
@@ -180,23 +186,38 @@
             fetchProducts(params) {
                 try {
                     this.$store.dispatch('fetchProducts', {id: params}).then(() => {
+                        this.productForm.subCategoryId = params;
                     });
                 } catch (e) {
                     this.error = e
                 }
             },
+            deleteProduct(params) {
+                this.$store.dispatch('deleteProduct', {id: params.id}).then(response => {
+                    this.fetchProducts(params.id);
+                }).catch(error => {
+                    console.log(error);
+                });
+            },
             fetchSubCategory(params) {
                 try {
-                    this.$store.dispatch('fetchSubCategory', {id: params.row.id}).then(() => {
-                        this.subCategoryForm.categoryId = params.row.id;
-                    });
+                    if (params.row.id != "") {
+                        this.$store.dispatch('fetchSubCategory', {id: params.row.id}).then(() => {
+                            this.subCategoryForm.categoryId = params.row.id;
+                        });
+                    } else {
+                        this.$store.dispatch('fetchSubCategory', {id: params}).then(() => {
+                            this.subCategoryForm.categoryId = params.row.id;
+                        });
+                    }
+
                 } catch (e) {
                     this.error = e
                 }
             },
             deleteSubCategory(params) {
                 this.$store.dispatch('deleteSubCategory', {id: params}).then(response => {
-                    this.handleFilter();
+                    this.fetchSubCategory(params);
                 }).catch(error => {
                     console.log(error);
                 });

@@ -12,12 +12,13 @@
                         <div class="kt-portlet__head">
                             <div class="kt-portlet__head-label">
                                 <h3 class="kt-portlet__head-title">
-                                    Update Category
+                                    Update SubCategory
                                 </h3>
                             </div>
                         </div>
                         <!--begin::Form-->
-                        <form action="{{route('restaurant.categoryUpdate')}}" method="POST" enctype="multipart/form-data"
+                        <form action="{{route('restaurant.subCategoryUpdate')}}" method="POST"
+                              enctype="multipart/form-data"
                               class="kt-form kt-form--label-right">
                             @csrf
                             <input type="hidden" name="id" value="{{ $subCategory->id }}"/>
@@ -26,7 +27,23 @@
                                     <div class="col-lg-8 ">
                                         <div class="form-group row mb-15">
                                             <div class="col-lg-8">
-                                                <label>Name:</label>
+                                                <label>Category :</label>
+                                                <select name="restaurant_main_category_id" class="form-control">
+                                                    @foreach($category as $row)
+                                                        <option value="{{ $row->id }}"
+                                                                @if( $subCategory->restaurant_main_category_id == $row->id) selected @endif>{{ $row->name }}
+                                                        </option>
+                                                    @endforeach
+                                                </select>
+                                                @if($errors->has('restaurant_main_category_id'))
+                                                    <div
+                                                        class="error">{{ $errors->first('restaurant_main_category_id') }}</div>
+                                                @endif
+                                            </div>
+                                        </div>
+                                        <div class="form-group row mb-15">
+                                            <div class="col-lg-8">
+                                                <label>SubCategory :</label>
                                                 <input type="text" maxlength="25" name="name" class="form-control"
                                                        value="{{ $subCategory->name }}"
                                                        required placeholder="Enter Name"/>
@@ -44,7 +61,7 @@
                                                         File</label>
                                                     <div class="col-lg-12">
                                                         <div class="kt-avatar" id="kt_user_avatar_2">
-                                                            @if($subCategory->categoryImage != "")
+                                                            @if($subCategory->subCategoryImage != "")
                                                                 <div class="kt-avatar__holder"
                                                                      style="background-image: url('{{ URL::to('/') }}/{{ $subCategory->subCategoryImage->path }}')">
                                                                 </div>

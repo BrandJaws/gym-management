@@ -15,6 +15,7 @@ export default {
         subCategory: [],
         productsList: [],
         subCategoryList:[],
+        productList:[],
     },
     mutations: {
         setOrderProcessList(state, orderProcessList) {
@@ -44,6 +45,9 @@ export default {
         },
         deleteSubCategoryList(state, subCategoryList) {
             state.subCategoryList = subCategoryList.response;
+        },
+        deleteProductList(state, productList) {
+            state.productList = productList.response;
         },
     },
     actions: {
@@ -127,6 +131,16 @@ export default {
                 });
             });
         },
+        deleteProduct({commit}, params) {
+            return new Promise((resolve, reject) => {
+                RestaurantsService.deleteProduct(params).then((response) => {
+                    commit('deleteProductList', response.data);
+                    resolve();
+                }).catch((error) => {
+                    reject(error);
+                });
+            });
+        },
     },
     getters: {
         orderProcessList(state) {
@@ -155,6 +169,9 @@ export default {
         },
         subCategoryList(state) {
             return state.subCategoryList;
+        },
+        productList(state) {
+            return state.productList;
         },
     }
 };

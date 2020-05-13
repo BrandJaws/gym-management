@@ -313,12 +313,13 @@ class RestaurantController extends Controller
         }
     }
 
-    public function subCategoryEdit (Request $request)
+    public function subCategoryEdit(Request $request)
     {
         try {
+            $category = RestaurantMainCategory::all();
             $subCategory = RestaurantSubCategory::where('id', '=', $request->id)->first();
             ActivityLogsController::insertLog("Category Edit Page");
-            return view('gym.restaurant.subCategory.edit', compact('subCategory'));
+            return view('gym.restaurant.subCategory.edit', compact('subCategory', 'category'));
         } catch (\Exception $e) {
             return response()->json([
                 'response' => $e
@@ -326,5 +327,165 @@ class RestaurantController extends Controller
         }
     }
 
+    public function subCategoryUpdate(Request $request)
+    {
+        $id = $request->id;
+        try {
+            $validator = Validator::make($request->all(), [
+                'name' => 'required',
+                'restaurant_main_category_id' => 'required',
+            ]);
+            if ($validator->fails()) {
+                return Redirect::back()->withErrors($validator);
+            }
+            $subCategory = RestaurantSubCategory::where('id', $id)->first();
+            $subCategory->fill($request->only([
+                'name',
+                'restaurant_main_category_id',
+            ]));
+            $subCategory->save();
+            if ($request->hasFile('image')) {
+                $images = [];
+                $image = $request->file('image');
+                $userImage = new Image();
+                $this->uploadSubCategory($image, $userImage, 'path', null, $id);
+                $images[] = $userImage;
+                $subCategory->subCategoryImage()->saveMany($images, $subCategory);
+            }
+            ActivityLogsController::insertLog("Update SubCategory");
+            return back()->with('success', 'Category Updated Successfully!');
+        } catch (\Exception $e) {
+            return response()->json([
+                'response' => $e
+            ], 400);
+        }
+    }
 
+    public function productCreate(Request $request)
+    {
+        try {
+            $subCategory = RestaurantSubCategory::where('id', '=', $request->id)->first();
+            ActivityLogsController::insertLog("SubCategory Add Page");
+            return view('gym.restaurant.product.add', compact('subCategory'));
+        } catch (\Exception $e) {
+            return response()->json([
+                'response' => $e
+            ], 400);
+        }
+    }
+
+    public function productStore(Request $request)
+    {
+        try {
+            $validator = Validator::make($request->all(), [
+                'restaurant_sub_category_id' => 'required',
+                'name' => 'required',
+                'description' => 'required',
+                'price' => 'required',
+                'in_stock' => 'required',
+                'visible' => 'required',
+                'ingredients' => 'required',
+            ]);
+            if ($validator->fails()) {
+                return Redirect::back()->withErrors($validator);
+            }
+            $product = new RestaurantProduct();
+            $product->fill($request->only([
+                'restaurant_sub_category_id',
+                'name',
+                'gym_id',
+                'description',
+                'price',
+                'in_stock',
+                'visible',
+                'ingredients'
+            ]));
+            $product->save();
+            if ($request->hasFile('image')) {
+                $images = [];
+                $image = $request->file('image');
+                $userImage = new Image();
+                $this->uploadProduct($image, $userImage, 'path', null, $product->id);
+                $images[] = $userImage;
+                $product->productImage()->saveMany($images, $product);
+            }
+            ActivityLogsController::insertLog("Create New Product");
+            return back()->with('success', 'Product Created Successfully!');
+        } catch (\Exception $e) {
+            return response()->json([
+                'response' => $e
+            ], 400);
+        }
+    }
+
+    public function productEdit(Request $request)
+    {
+        try {
+            $subCategory = RestaurantSubCategory::all();
+            $product = RestaurantProduct::where('id', '=', $request->id)->first();
+            ActivityLogsController::insertLog("Category Edit Page");
+            return view('gym.restaurant.product.edit', compact('subCategory', 'product'));
+        } catch (\Exception $e) {
+            return response()->json([
+                'response' => $e
+            ], 400);
+        }
+    }
+
+    public function productUpdate(Request $request)
+    {
+        $id = $request->id;
+        try {
+            $validator = Validator::make($request->all(), [
+                'restaurant_sub_category_id' => 'required',
+                'name' => 'required',
+                'description' => 'required',
+                'price' => 'required',
+                'in_stock' => 'required',
+                'visible' => 'required',
+                'ingredients' => 'required',
+            ]);
+            if ($validator->fails()) {
+                return Redirect::back()->withErrors($validator);
+            }
+            $product = RestaurantProduct::where('id', $id)->first();
+            $product->fill($request->only([
+                'restaurant_sub_category_id',
+                'name',
+                'gym_id',
+                'description',
+                'price',
+                'in_stock',
+                'visible',
+                'ingredients'
+            ]));
+            $product->save();
+            if ($request->hasFile('image')) {
+                $images = [];
+                $image = $request->file('image');
+                $userImage = new Image();
+                $this->uploadProduct($image, $userImage, 'path', null, $id);
+                $images[] = $userImage;
+                $product->productImage()->saveMany($images, $product);
+            }
+            ActivityLogsController::insertLog("Update Product");
+            return back()->with('success', 'Product Updated Successfully!');
+        } catch (\Exception $e) {
+            return response()->json([
+                'response' => $e
+            ], 400);
+        }
+    }
+
+    public function deleteProduct($id)
+    {
+        try {
+            RestaurantProduct::destroy($id);
+            $this->deleteProductImage($id);
+            ActivityLogsController::insertLog("Delete Product");
+            return back()->with('success', 'Product Deleted Successfully!');
+        } catch (\Exception $e) {
+            return back()->with('error', 'Oops, something was not right');
+        }
+    }
 }

@@ -25,4 +25,8 @@ export default {
     deleteSubCategory(params) {
         return Restaurants().get('/gym/restaurant/' + params.id + '/deleteSubCategory');
     },
+    deleteProduct(params) {
+        console.log(params);
+        return Restaurants().get('/gym/restaurant/' + params.id + '/deleteProduct');
+    },
 };

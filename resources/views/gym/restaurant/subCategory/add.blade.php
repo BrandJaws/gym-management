@@ -12,7 +12,7 @@
                         <div class="kt-portlet__head">
                             <div class="kt-portlet__head-label">
                                 <h3 class="kt-portlet__head-title">
-                                    Add Category
+                                    Add SubCategory
                                 </h3>
                             </div>
                         </div>
@@ -80,7 +80,7 @@
                                 <div class="kt-form__actions">
                                     <div class="row">
                                         <div class="col-12">
-                                            <input type="submit" value="Update" class="btn btn-primary">
+                                            <input type="submit" value="Create" class="btn btn-primary">
                                             <a href="{{route('restaurant.restaurantList')}}" class="btn btn-secondary">Cancel</a>
                                         </div>
                                     </div>

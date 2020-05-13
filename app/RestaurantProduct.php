@@ -22,6 +22,10 @@ class RestaurantProduct extends Model
     protected $casts = [
         'ingredients' => 'array',
     ];
+    public function productImage()
+    {
+        return $this->morphOne(Image::class, 'image');
+    }
 
     public static function getProductsList($id)
     {

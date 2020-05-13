@@ -33,4 +33,5 @@ class RestaurantSubCategory extends Model
             $join->on('restaurant_main_categories.id', 'restaurant_sub_categories.restaurant_main_category_id');
         })->get();
     }
+
 }

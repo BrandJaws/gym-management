@@ -19,7 +19,6 @@ class CreateRestaurantProductsTable extends Migration
             $table->integer('restaurant_sub_category_id')->unsigned();
             $table->string('name');
             $table->text('description');
-            $table->string('image');
             $table->decimal('price');
             $table->enum('in_stock', array('YES', 'NO'))->default('YES');
             $table->enum('visible', array('YES', 'NO'))->default('YES');
