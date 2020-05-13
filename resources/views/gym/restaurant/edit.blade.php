@@ -17,7 +17,7 @@
                             </div>
                         </div>
                         <!--begin::Form-->
-                        <form action="{{route('shop.edit')}}" method="POST" enctype="multipart/form-data"
+                        <form action="{{route('restaurant.categoryUpdate')}}" method="POST" enctype="multipart/form-data"
                               class="kt-form kt-form--label-right">
                             @csrf
                             <input type="hidden" name="id" value="{{ $category->id }}"/>
@@ -27,7 +27,8 @@
                                         <div class="form-group row mb-15">
                                             <div class="col-lg-8">
                                                 <label>Name:</label>
-                                                <input type="text" maxlength="25" name="name" class="form-control" value="{{ $category->name }}"
+                                                <input type="text" maxlength="25" name="name" class="form-control"
+                                                       value="{{ $category->name }}"
                                                        required placeholder="Enter Name"/>
                                                 @if($errors->has('name'))
                                                     <div class="error">{{ $errors->first('name') }}</div>
@@ -43,12 +44,12 @@
                                                         File</label>
                                                     <div class="col-lg-12">
                                                         <div class="kt-avatar" id="kt_user_avatar_2">
-                                                            @if($category->name != "")
+                                                            @if($category->categoryImage != "")
                                                                 <div class="kt-avatar__holder"
-                                                                     style="background-image: url('{{ URL::to('/') }}/{{ $category->name }}')">
+                                                                     style="background-image: url('{{ URL::to('/') }}/{{ $category->categoryImage->path }}')">
                                                                 </div>
                                                             @endif
-                                                            @if($category->name == "")
+                                                            @if($category->categoryImage == "")
                                                                 <div class="kt-avatar__holder"
                                                                      style="background-image: url({{asset('assets/media/users/trainingImg.png')}})">
                                                                 </div>
@@ -78,7 +79,7 @@
                                     <div class="row">
                                         <div class="col-12">
                                             <input type="submit" value="Update" class="btn btn-primary">
-                                            <a href="{{route('trainer.list')}}" class="btn btn-secondary">Cancel</a>
+                                            <a href="{{route('restaurant.restaurantList')}}" class="btn btn-secondary">Cancel</a>
                                         </div>
                                     </div>
                                 </div>

@@ -234,6 +234,7 @@ Route::group(['prefix' => 'gym', 'namespace' => 'Gym'], function () {
 
             Route::get('category/edit/{id}', ['as' => 'categoryEdit', 'uses' => 'RestaurantController@categoryEdit']);
             Route::get('category/add', ['as' => 'categoryCreate', 'uses' => 'RestaurantController@categoryCreate']);
+            Route::post('category/edit', ['as' => 'categoryUpdate', 'uses' => 'RestaurantController@categoryUpdate']);
         });
     });
 });

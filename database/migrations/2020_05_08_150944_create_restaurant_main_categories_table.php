@@ -17,7 +17,6 @@ class CreateRestaurantMainCategoriesTable extends Migration
             $table->bigIncrements('id');
             $table->integer('gym_id')->unsigned();
             $table->string('name');
-            $table->string('icon');
             $table->timestamps();
         });
     }

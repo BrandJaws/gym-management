@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Gym;
 
 use App\Http\Controllers\Controller;
+use App\Http\Traits\FileUpload;
+use App\Image;
 use App\RestaurantMainCategory;
 use App\RestaurantOrder;
 use Illuminate\Http\Request;
@@ -12,6 +14,7 @@ use Illuminate\Support\Facades\Validator;
 
 class RestaurantController extends Controller
 {
+    use FileUpload;
     public function index(Request $request)
     {
         try {
@@ -143,4 +146,69 @@ class RestaurantController extends Controller
             ], 400);
         }
     }
+
+    public function categoryStore(Request $request)
+    {
+        try {
+            $validator = Validator::make($request->all(), [
+                'name' => 'required',
+            ]);
+            if ($validator->fails()) {
+                return Redirect::back()->withErrors($validator);
+            }
+            $category = new RestaurantMainCategory();
+            $category->fill($request->only([
+                'name',
+                'gym_id'
+            ]));
+            $category->save();
+            if ($request->hasFile('image')) {
+                $images = [];
+                $image = $request->file('image');
+                $userImage = new Image();
+                $this->uploadCategory($image, $userImage, 'path', null, $category->id);
+                $images[] = $userImage;
+                $category->categoryImage()->saveMany($images, $category);
+            }
+            ActivityLogsController::insertLog("Create New Category");
+            return back()->with('success', 'Category Created Successfully!');
+        } catch (\Exception $e) {
+            return response()->json([
+                'response' => $e
+            ], 400);
+        }
+    }
+
+    public function categoryUpdate (Request $request)
+    {
+        $id = $request->id;
+        try {
+            $validator = Validator::make($request->all(), [
+                'name' => 'required',
+            ]);
+            if ($validator->fails()) {
+                return Redirect::back()->withErrors($validator);
+            }
+            $category = RestaurantMainCategory::where('id', $id)->first();
+            $category->fill($request->only([
+                'name',
+            ]));
+            $category->save();
+            if ($request->hasFile('image')) {
+                $images = [];
+                $image = $request->file('image');
+                $userImage = new Image();
+                $this->uploadCategory($image, $userImage, 'path', null, $id);
+                $images[] = $userImage;
+                $category->categoryImage()->saveMany($images, $category);
+            }
+            ActivityLogsController::insertLog("Update Category");
+            return back()->with('success', 'Category Updated Successfully!');
+        } catch (\Exception $e) {
+            return response()->json([
+                'response' => $e
+            ], 400);
+        }
+    }
+
 }

@@ -6,8 +6,8 @@
         </div>
         <div class="row">
             <div class="col-md-3">
-                <a :href="'../../gym/restaurant/category/add/'" class="btn btn-label-primary btn-pill">
-                    <i class="fa fa-plus"></i></a>
+                <a :href="'../../gym/restaurant/category/add/'" class="btn btn-label-primary ">
+                    <i class="fa fa-plus"></i> Add Category</a>
                 <vue-good-table
                     @on-cell-click="onCellClick"
                     v-loading="loading"

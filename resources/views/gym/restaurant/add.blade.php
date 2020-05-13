@@ -17,9 +17,10 @@
                             </div>
                         </div>
                         <!--begin::Form-->
-                        <form action="{{route('shop.edit')}}" method="POST" enctype="multipart/form-data"
+                        <form action="{{route('restaurant.categoryStore')}}" method="POST" enctype="multipart/form-data"
                               class="kt-form kt-form--label-right">
                             @csrf
+                            <input type="hidden" class="form-control" name="gym_id" value="{{  Auth::guard('employee')->user()->gym->id }}"/>
                             <div class="kt-portlet__body">
                                 <div class="row">
                                     <div class="col-lg-8 ">
@@ -70,7 +71,7 @@
                                     <div class="row">
                                         <div class="col-12">
                                             <input type="submit" value="Update" class="btn btn-primary">
-                                            <a href="{{route('trainer.list')}}" class="btn btn-secondary">Cancel</a>
+                                            <a href="{{route('restaurant.restaurantList')}}" class="btn btn-secondary">Cancel</a>
                                         </div>
                                     </div>
                                 </div>

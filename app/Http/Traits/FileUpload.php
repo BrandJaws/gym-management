@@ -350,4 +350,47 @@ trait FileUpload
         }
     }
 
+    public function uploadCategory(UploadedFile $uploadedFile, $modelObject, $propertyToUpdate, $filename = null, $objectId = null, $disk = "public")
+    {
+        $imageDelete = Image::where('image_type', 'App\RestaurantMainCategory')->where('image_id', $objectId)->get();
+        if (count($imageDelete) > -1) {
+            foreach ($imageDelete as $image) {
+                $image_path = $image->path;
+                if (file_exists($image_path)) {
+                    Storage::disk($disk)->delete($image_path);
+                }
+                Image::destroy($image->id);
+            }
+            $name = !is_null($filename) ? $filename : substr($uploadedFile->getClientOriginalName(), 0, strrpos($uploadedFile->getClientOriginalName(), "."));
+            $psudoContainer = ($objectId) ? '/' . $objectId : '';
+            $folder = 'uploads/gym/category' . strtolower(substr(get_class($modelObject), strrpos(get_class($modelObject), '\\') + 1)) . $psudoContainer;
+            $file = $uploadedFile->storeAs($folder, sprintf('%s_%s', str_replace(' ', '_', $name), str_replace(' ', '_', microtime())) . '.' . $uploadedFile->getClientOriginalExtension(), [
+                'disk' => $disk
+            ]);
+            $this->updateModelProperty($file, $modelObject, $propertyToUpdate, $disk);
+            return $file;
+        } else {
+            $name = !is_null($filename) ? $filename : substr($uploadedFile->getClientOriginalName(), 0, strrpos($uploadedFile->getClientOriginalName(), "."));
+            $psudoContainer = ($objectId) ? '/' . $objectId : '';
+            $folder = 'uploads/gym/supplier' . strtolower(substr(get_class($modelObject), strrpos(get_class($modelObject), '\\') + 1)) . $psudoContainer;
+            $file = $uploadedFile->storeAs($folder, sprintf('%s_%s', str_replace(' ', '_', $name), str_replace(' ', '_', microtime())) . '.' . $uploadedFile->getClientOriginalExtension(), [
+                'disk' => $disk
+            ]);
+            $this->updateModelProperty($file, $modelObject, $propertyToUpdate, $disk);
+            return $file;
+        }
+    }
+
+    public function deleteCategoryImg($id, $disk = "public")
+    {
+        $imageDelete = Image::where('image_type', 'App\RestaurantMainCategory')->where('image_id', $id)->get();
+        foreach ($imageDelete as $image) {
+            $image_path = $image->path;
+            if (file_exists($image_path)) {
+                Storage::disk($disk)->delete($image_path);
+            }
+            Image::destroy($image->id);
+        }
+    }
+
 }

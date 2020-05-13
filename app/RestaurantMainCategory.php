@@ -10,11 +10,15 @@ class RestaurantMainCategory extends Model
     protected $fillable = [
         'gym_id',
         'name',
-        'icon'
     ];
 
     public function sub_categories(){
         return $this->hasMany(RestaurantSubCategory::class,'restaurant_main_category_id');
+    }
+
+    public function categoryImage()
+    {
+        return $this->morphOne(Image::class, 'image');
     }
 
     public static function getCategoryList($gym_id)
@@ -23,7 +27,6 @@ class RestaurantMainCategory extends Model
                 'restaurant_main_categories.id',
                 'restaurant_main_categories.gym_id',
                 'restaurant_main_categories.name',
-                'restaurant_main_categories.icon',
             ]
         )->where(function ($query) use ($gym_id) {
             $query->where('restaurant_main_categories.gym_id', '=', $gym_id);
