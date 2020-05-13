@@ -232,9 +232,12 @@ Route::group(['prefix' => 'gym', 'namespace' => 'Gym'], function () {
             Route::post('/list', ['as' => 'restaurantList', 'uses' => 'RestaurantController@mainCategoryList']);
             Route::get('/{id}', ['as' => 'orderDetail', 'uses' => 'RestaurantController@orderDetail']);
 
-            Route::get('category/edit/{id}', ['as' => 'categoryEdit', 'uses' => 'RestaurantController@categoryEdit']);
+           // Restaurant Category
             Route::get('category/add', ['as' => 'categoryCreate', 'uses' => 'RestaurantController@categoryCreate']);
+            Route::post('category/add', ['as' => 'categoryStore', 'uses' => 'RestaurantController@categoryStore']);
+            Route::get('category/edit/{id}', ['as' => 'categoryEdit', 'uses' => 'RestaurantController@categoryEdit']);
             Route::post('category/edit', ['as' => 'categoryUpdate', 'uses' => 'RestaurantController@categoryUpdate']);
+            Route::get('/{id}/deleteCategory', ['as' => 'deleteCategory', 'uses' => 'RestaurantController@deleteCategory']);
         });
     });
 });

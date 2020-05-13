@@ -210,5 +210,16 @@ class RestaurantController extends Controller
             ], 400);
         }
     }
+    public function deleteCategory($id)
+    {
+        try {
+            RestaurantMainCategory::destroy($id);
+            $this->deleteCategoryImg($id);
+            ActivityLogsController::insertLog("Delete Category");
+            return back()->with('success', 'Category Deleted Successfully!');
+        } catch (\Exception $e) {
+            return back()->with('error', 'Oops, something was not right');
+        }
+    }
 
 }

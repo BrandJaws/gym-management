@@ -22,9 +22,11 @@
                     paginate="false">
                     <template slot="table-row" slot-scope="props">
                         <span v-if="props.column.field == 'action'" class="grid-action-icons">
-                             <a :href="'../../gym/restaurant/category/edit/'+props.row.id" class="btn btn-label-primary btn-pill">
+                             <a :href="'../../gym/restaurant/category/edit/'+props.row.id"
+                                class="btn btn-label-primary btn-pill">
                                  <i class="fa fa-edit"></i></a>
-                            <a @click="deleteCategory(props.row)" class="btn btn-label-success btn-pill">Delete</a>
+                            <a @click="deleteCategory(props.row)" class="btn btn-label-success btn-pill"><i
+                                class="fa fa-trash"></i></a>
                         </span>
                     </template>
                 </vue-good-table>
@@ -82,7 +84,7 @@
                 ],
                 form: {
                     name: '',
-                    categoryImage:''
+                    categoryImage: ''
                 },
                 serverParams: {
                     page: 1,
@@ -107,13 +109,14 @@
         },
         methods: {
             onCellClick(params) {
-                console.log(params.row);
-            },
-            editCategory(params) {
-                console.log(params.id, "test***");
+                console.log(params.row,"asasdsa");
             },
             deleteCategory(params) {
-                console.log(params.id, "test***");
+                this.$store.dispatch('deleteCategory', {id: params.id}).then(response => {
+                    this.handleFilter();
+                }).catch(error => {
+                    console.log(error);
+                });
             },
             updateParams(newProps) {
                 this.error = '';

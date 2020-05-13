@@ -11,6 +11,7 @@ export default {
         orderDetail:[],
         mainCategory:[],
         totalMainCategory: 0,
+        mainCategoryList:[]
     },
     mutations: {
         setOrderProcessList(state, orderProcessList) {
@@ -28,6 +29,9 @@ export default {
             state.mainCategory = mainCategory.response;
             state.totalMainCategory = mainCategory.response.total;
             state.perPage = mainCategory.response.per_page;
+        },
+        deleteCategoryList(state, mainCategoryList) {
+            state.mainCategoryList = mainCategoryList.response;
         },
     },
     actions: {
@@ -71,7 +75,16 @@ export default {
                 });
             });
         },
-
+        deleteCategory({commit}, params) {
+            return new Promise((resolve, reject) => {
+                RestaurantsService.deleteCategory(params).then((response) => {
+                    commit('deleteCategoryList', response.data);
+                    resolve();
+                }).catch((error) => {
+                    reject(error);
+                });
+            });
+        },
     },
     getters: {
         orderProcessList(state) {
@@ -88,6 +101,9 @@ export default {
         },
         mainCategory(state) {
             return state.mainCategory;
+        },
+        mainCategoryList(state) {
+            return state.mainCategoryList;
         },
     }
 };

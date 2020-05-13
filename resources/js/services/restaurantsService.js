@@ -13,4 +13,7 @@ export default {
     fetchMainCategory(params) {
         return Restaurants().post('/gym/restaurant/list', params);
     },
+    deleteCategory(params) {
+        return Restaurants().get('/gym/restaurant/' + params.id + '/deleteCategory');
+    },
 };
