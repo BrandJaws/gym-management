@@ -9,12 +9,12 @@
                 <a :href="'../../gym/restaurant/category/add/'" class="btn btn-label-primary ">
                     <i class="fa fa-plus"></i> Add Category</a>
                 <vue-good-table
-                    @on-cell-click="onCellClick"
+                    @on-cell-click="fetchSubCategory"
                     v-loading="loading"
-                    title="Order Process List Table"
+                    title="Category List"
                     :responsive="true"
                     class="styled "
-                    styleClass="table table-striped table-bordered"
+                    styleClass="table table-striped table-hover"
                     mode="remote"
                     :columns="columns"
                     :rows="mainCategory"
@@ -31,23 +31,48 @@
                     </template>
                 </vue-good-table>
             </div>
-            <div class="col-md-9">
+            <div class="col-md-3">
+                <a :href="'../../gym/restaurant/subCategory/add/'+ subCategoryForm.categoryId" class="btn btn-label-primary ">
+                    <i class="fa fa-plus"></i> Add Sub-Category</a>
+                <table class="table table-striped ">
+                    <thead>
+                    <tr>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr v-for="item in subCategory">
+                        <td v-on:click="fetchProducts(item.id)">{{ item.name }}</td>
+                        <td>
+                            <a :href="'../../gym/restaurant/subCategory/edit/'+item.id"
+                               class="btn btn-label-primary btn-pill">
+                                <i class="fa fa-edit"></i></a>
+                            <a @click="deleteSubCategory(item.id)" class="btn btn-label-success btn-pill"><i
+                                class="fa fa-trash"></i></a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-md-6">
+                <a :href="'../../gym/restaurant/product/add/'" class="btn btn-label-primary ">
+                    <i class="fa fa-plus"></i> Add Product</a>
                 <vue-good-table
-                    @on-cell-click="onCellClick"
+                    :columns="productsColumns"
+                    :rows="productsList"
                     v-loading="loading"
-                    title="Order Process List Table"
-                    :responsive="true"
-                    class="styled "
+                    title="Lead Report"
+                    class="styled"
                     styleClass="table table-striped table-bordered"
-                    mode="remote"
-                    :columns="columns"
-                    :rows="mainCategory"
-                    :totalRows="totalRecords"
-                    paginate="false">
+                >
                     <template slot="table-row" slot-scope="props">
                         <span v-if="props.column.field == 'action'" class="grid-action-icons">
-                            <a @click="edit(props.row)" class="btn btn-label-danger btn-pill"> Edit</a>
-                            <a @click="delete(props.row)" class="btn btn-label-success btn-pill">Delete</a>
+                             <a :href="'../../gym/restaurant/product/edit/'+props.row.id"
+                                class="btn btn-label-primary btn-pill">
+                                 <i class="fa fa-edit"></i></a>
+                            <a @click="deleteProduct(props.row)" class="btn btn-label-success btn-pill"><i
+                                class="fa fa-trash"></i></a>
                         </span>
                     </template>
                 </vue-good-table>
@@ -58,7 +83,6 @@
 
 <script>
     import RestaurantHeader from "../../components/RestaurantHeader";
-
     export default {
         name: 'VGTable',
         components: {
@@ -70,13 +94,45 @@
                 error: '',
                 columns: [
                     {
-                        label: 'Category Name',
+                        label: '',
                         field: 'name',
                         tdClass: 'text-center',
                         thClass: 'text-center',
                     },
                     {
-                        label: "Actions",
+                        label: "",
+                        tdClass: 'text-center',
+                        thClass: 'text-center',
+                        field: "action"
+                    }
+                ],
+                productsColumns: [
+                    {
+                        label: 'Name',
+                        field: 'name',
+                        tdClass: 'text-center',
+                        thClass: 'text-center',
+                    },
+                    {
+                        label: 'Price',
+                        field: 'price',
+                        tdClass: 'text-center',
+                        thClass: 'text-center',
+                    },
+                    {
+                        label: 'In Stock',
+                        field: 'in_stock',
+                        tdClass: 'text-center',
+                        thClass: 'text-center',
+                    },
+                    {
+                        label: 'Visible',
+                        field: 'visible',
+                        tdClass: 'text-center',
+                        thClass: 'text-center',
+                    },
+                    {
+                        label: "Action",
                         tdClass: 'text-center',
                         thClass: 'text-center',
                         field: "action"
@@ -85,6 +141,11 @@
                 form: {
                     name: '',
                     categoryImage: ''
+                },
+                subCategoryForm: {
+                    name: '',
+                    categoryImage: '',
+                    categoryId:''
                 },
                 serverParams: {
                     page: 1,
@@ -98,6 +159,8 @@
         },
         created() {
             this.fetchMainCategory();
+            this.fetchSubCategory();
+            this.fetchProducts();
         },
         computed: {
             mainCategory() {
@@ -106,10 +169,37 @@
             totalRecords() {
                 return this.$store.getters.totalMainCategory;
             },
+            subCategory() {
+                return this.$store.getters.subCategory;
+            },
+            productsList() {
+                return this.$store.getters.productsList;
+            },
         },
         methods: {
-            onCellClick(params) {
-                console.log(params.row,"asasdsa");
+            fetchProducts(params) {
+                try {
+                    this.$store.dispatch('fetchProducts', {id: params}).then(() => {
+                    });
+                } catch (e) {
+                    this.error = e
+                }
+            },
+            fetchSubCategory(params) {
+                try {
+                    this.$store.dispatch('fetchSubCategory', {id: params.row.id}).then(() => {
+                        this.subCategoryForm.categoryId = params.row.id;
+                    });
+                } catch (e) {
+                    this.error = e
+                }
+            },
+            deleteSubCategory(params) {
+                this.$store.dispatch('deleteSubCategory', {id: params}).then(response => {
+                    this.handleFilter();
+                }).catch(error => {
+                    console.log(error);
+                });
             },
             deleteCategory(params) {
                 this.$store.dispatch('deleteCategory', {id: params.id}).then(response => {

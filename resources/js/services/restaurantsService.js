@@ -16,4 +16,13 @@ export default {
     deleteCategory(params) {
         return Restaurants().get('/gym/restaurant/' + params.id + '/deleteCategory');
     },
+    fetchSubCategory(params) {
+        return Restaurants().get('/gym/restaurant/list/' + params.id);
+    },
+    fetchProducts(params) {
+        return Restaurants().get('/gym/restaurant/products/' + params.id);
+    },
+    deleteSubCategory(params) {
+        return Restaurants().get('/gym/restaurant/' + params.id + '/deleteSubCategory');
+    },
 };

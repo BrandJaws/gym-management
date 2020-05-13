@@ -1,5 +1,5 @@
 import RestaurantsService from '../services/restaurantsService';
-import { reject, resolve } from 'any-promise';
+import {reject, resolve} from 'any-promise';
 
 export default {
     strict: true,
@@ -8,10 +8,13 @@ export default {
         totalOrderProcess: 0,
         perPage: 0,
         restaurantOrder: [],
-        orderDetail:[],
-        mainCategory:[],
+        orderDetail: [],
+        mainCategory: [],
         totalMainCategory: 0,
-        mainCategoryList:[]
+        mainCategoryList: [],
+        subCategory: [],
+        productsList: [],
+        subCategoryList:[],
     },
     mutations: {
         setOrderProcessList(state, orderProcessList) {
@@ -32,6 +35,15 @@ export default {
         },
         deleteCategoryList(state, mainCategoryList) {
             state.mainCategoryList = mainCategoryList.response;
+        },
+        setSubCategory(state, subCategory) {
+            state.subCategory = subCategory.response;
+        },
+        setProductList(state, productsList) {
+            state.productsList = productsList.response;
+        },
+        deleteSubCategoryList(state, subCategoryList) {
+            state.subCategoryList = subCategoryList.response;
         },
     },
     actions: {
@@ -85,6 +97,36 @@ export default {
                 });
             });
         },
+        fetchSubCategory({commit}, params) {
+            return new Promise((resolve, reject) => {
+                RestaurantsService.fetchSubCategory(params).then((response) => {
+                    commit('setSubCategory', response.data);
+                    resolve();
+                }).catch((error) => {
+                    reject(error);
+                });
+            });
+        },
+        fetchProducts({commit}, params) {
+            return new Promise((resolve, reject) => {
+                RestaurantsService.fetchProducts(params).then((response) => {
+                    commit('setProductList', response.data);
+                    resolve();
+                }).catch((error) => {
+                    reject(error);
+                });
+            });
+        },
+        deleteSubCategory({commit}, params) {
+            return new Promise((resolve, reject) => {
+                RestaurantsService.deleteSubCategory(params).then((response) => {
+                    commit('deleteSubCategoryList', response.data);
+                    resolve();
+                }).catch((error) => {
+                    reject(error);
+                });
+            });
+        },
     },
     getters: {
         orderProcessList(state) {
@@ -104,6 +146,15 @@ export default {
         },
         mainCategoryList(state) {
             return state.mainCategoryList;
+        },
+        subCategory(state) {
+            return state.subCategory;
+        },
+        productsList(state) {
+            return state.productsList;
+        },
+        subCategoryList(state) {
+            return state.subCategoryList;
         },
     }
 };

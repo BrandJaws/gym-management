@@ -17,6 +17,7 @@ class CreateRestaurantSubCategoriesTable extends Migration
             $table->bigIncrements('id');
             $table->integer('gym_id')->unsigned();
             $table->integer('restaurant_main_category_id')->unsigned();
+            $table->string('name');
             $table->timestamps();
         });
     }

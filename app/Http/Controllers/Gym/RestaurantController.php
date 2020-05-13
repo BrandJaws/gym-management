@@ -7,6 +7,8 @@ use App\Http\Traits\FileUpload;
 use App\Image;
 use App\RestaurantMainCategory;
 use App\RestaurantOrder;
+use App\RestaurantProduct;
+use App\RestaurantSubCategory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
@@ -15,6 +17,7 @@ use Illuminate\Support\Facades\Validator;
 class RestaurantController extends Controller
 {
     use FileUpload;
+
     public function index(Request $request)
     {
         try {
@@ -179,7 +182,7 @@ class RestaurantController extends Controller
         }
     }
 
-    public function categoryUpdate (Request $request)
+    public function categoryUpdate(Request $request)
     {
         $id = $request->id;
         try {
@@ -210,6 +213,7 @@ class RestaurantController extends Controller
             ], 400);
         }
     }
+
     public function deleteCategory($id)
     {
         try {
@@ -221,5 +225,106 @@ class RestaurantController extends Controller
             return back()->with('error', 'Oops, something was not right');
         }
     }
+
+    public function subCategoryList(Request $request)
+    {
+        $id = $request->id;
+        try {
+            $subCategory = RestaurantSubCategory::getSubCategoryList($id);
+            ActivityLogsController::insertLog("Restaurant SubCategory Page ");
+            return response()->json([
+                'response' => $subCategory
+            ], 200);
+        } catch (\Exception $e) {
+            return back()->with('error', 'Oops, something was not right');
+        }
+    }
+
+    public function productsList(Request $request)
+    {
+        $id = $request->id;
+        try {
+            $subCategory = RestaurantProduct::getProductsList($id);
+            ActivityLogsController::insertLog("Restaurant Products Page ");
+            return response()->json([
+                'response' => $subCategory
+            ], 200);
+        } catch (\Exception $e) {
+            return back()->with('error', 'Oops, something was not right');
+        }
+    }
+
+    public function deleteSubCategory($id)
+    {
+        try {
+            RestaurantSubCategory::destroy($id);
+            $this->deleteSubCategoryImg($id);
+            ActivityLogsController::insertLog("Delete Category");
+            return back()->with('success', 'Category Deleted Successfully!');
+        } catch (\Exception $e) {
+            return back()->with('error', 'Oops, something was not right');
+        }
+    }
+
+    public function subCategoryCreate(Request $request)
+    {
+        try {
+            $category = RestaurantMainCategory::where('id', '=', $request->id)->first();
+            ActivityLogsController::insertLog("SubCategory Add Page");
+            return view('gym.restaurant.subCategory.add', compact('category'));
+        } catch (\Exception $e) {
+            return response()->json([
+                'response' => $e
+            ], 400);
+        }
+    }
+
+    public function subCategoryStore(Request $request)
+    {
+        try {
+            $validator = Validator::make($request->all(), [
+                'restaurant_main_category_id' => 'required',
+                'name' => 'required',
+            ]);
+            if ($validator->fails()) {
+                return Redirect::back()->withErrors($validator);
+            }
+            $category = new RestaurantSubCategory();
+            $category->fill($request->only([
+                'restaurant_main_category_id',
+                'name',
+                'gym_id'
+            ]));
+            $category->save();
+            if ($request->hasFile('image')) {
+                $images = [];
+                $image = $request->file('image');
+                $userImage = new Image();
+                $this->uploadSubCategory($image, $userImage, 'path', null, $category->id);
+                $images[] = $userImage;
+                $category->subCategoryImage()->saveMany($images, $category);
+            }
+            ActivityLogsController::insertLog("Create New SubCategory");
+            return back()->with('success', 'SubCategory Created Successfully!');
+        } catch (\Exception $e) {
+            return response()->json([
+                'response' => $e
+            ], 400);
+        }
+    }
+
+    public function subCategoryEdit (Request $request)
+    {
+        try {
+            $subCategory = RestaurantSubCategory::where('id', '=', $request->id)->first();
+            ActivityLogsController::insertLog("Category Edit Page");
+            return view('gym.restaurant.subCategory.edit', compact('subCategory'));
+        } catch (\Exception $e) {
+            return response()->json([
+                'response' => $e
+            ], 400);
+        }
+    }
+
 
 }

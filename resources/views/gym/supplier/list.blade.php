@@ -40,7 +40,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="    ">
+                                        <div>
                                             <table class="table table-striped table-bordered">
                                                 <thead>
                                                 <tr>

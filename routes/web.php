@@ -238,6 +238,17 @@ Route::group(['prefix' => 'gym', 'namespace' => 'Gym'], function () {
             Route::get('category/edit/{id}', ['as' => 'categoryEdit', 'uses' => 'RestaurantController@categoryEdit']);
             Route::post('category/edit', ['as' => 'categoryUpdate', 'uses' => 'RestaurantController@categoryUpdate']);
             Route::get('/{id}/deleteCategory', ['as' => 'deleteCategory', 'uses' => 'RestaurantController@deleteCategory']);
+
+            // Restaurant SubCategory
+            Route::get('list/{id}/', ['as' => 'subCategoryList', 'uses' => 'RestaurantController@subCategoryList']);
+            Route::get('/{id}/deleteSubCategory', ['as' => 'deleteCategory', 'uses' => 'RestaurantController@deleteSubCategory']);
+            Route::get('subCategory/add/{id}', ['as' => 'subCategoryCreate', 'uses' => 'RestaurantController@subCategoryCreate']);
+            Route::post('subCategory/add', ['as' => 'subCategoryStore', 'uses' => 'RestaurantController@subCategoryStore']);
+            Route::get('subCategory/edit/{id}', ['as' => 'subCategoryEdit', 'uses' => 'RestaurantController@subCategoryEdit']);
+            Route::post('subCategory/edit', ['as' => 'subCategoryUpdate', 'uses' => 'RestaurantController@subCategoryUpdate']);
+
+            // Restaurant Product
+            Route::get('products/{id}/', ['as' => 'subCategoryList', 'uses' => 'RestaurantController@productsList']);
         });
     });
 });
