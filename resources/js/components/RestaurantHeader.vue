@@ -14,9 +14,8 @@
                       <span class="kt-subheader__breadcrumbs-separator"></span>
                       <router-link :to="{ name: 'restaurant' }" class="kt-subheader__breadcrumbs-link"> Restaurant</router-link>
                       <span class="kt-subheader__breadcrumbs-separator"></span>
-                      <router-link :to="{ name: 'restaurant' }" class="kt-subheader__breadcrumbs-link"> Order </router-link>
+                      <a href="../restaurant/order/archive" class="kt-subheader__breadcrumbs-link">Order Archive</a>
                       <span class="kt-subheader__breadcrumbs-separator"></span>
-                      <!-- <span class="kt-subheader__breadcrumbs-link kt-subheader__breadcrumbs-link--active">Active link</span> -->
                   </div>
               </div>
               <div class="kt-subheader__toolbar">

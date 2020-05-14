@@ -254,6 +254,11 @@ Route::group(['prefix' => 'gym', 'namespace' => 'Gym'], function () {
             Route::get('product/edit/{id}', ['as' => 'productEdit', 'uses' => 'RestaurantController@productEdit']);
             Route::post('product/edit', ['as' => 'productUpdate', 'uses' => 'RestaurantController@productUpdate']);
             Route::get('/{id}/deleteProduct', ['as' => 'deleteProduct', 'uses' => 'RestaurantController@deleteProduct']);
+
+
+            // Restaurant Order Archive
+            Route::get('order/archive', ['as' => 'orderArchive', 'uses' => 'RestaurantController@orderArchive']);
+
         });
     });
 });

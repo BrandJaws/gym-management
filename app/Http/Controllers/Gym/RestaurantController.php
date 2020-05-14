@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Gym;
 use App\Http\Controllers\Controller;
 use App\Http\Traits\FileUpload;
 use App\Image;
+use App\Member;
 use App\RestaurantMainCategory;
 use App\RestaurantOrder;
 use App\RestaurantProduct;
@@ -487,6 +488,19 @@ class RestaurantController extends Controller
             $this->deleteProductImage($id);
             ActivityLogsController::insertLog("Delete Product");
             return back()->with('success', 'Product Deleted Successfully!');
+        } catch (\Exception $e) {
+            return back()->with('error', 'Oops, something was not right');
+        }
+    }
+
+    //orderArchive
+
+    public function orderArchive()
+    {
+        try {
+            $member = Member::where('gym_id', Auth::guard('employee')->user()->gym_id)->where('type','Member')->orderBy('id', 'asc')->get();
+            ActivityLogsController::insertLog("Order Archive Page");
+            return view('gym.restaurant.orderArchive', compact('member'));
         } catch (\Exception $e) {
             return back()->with('error', 'Oops, something was not right');
         }
