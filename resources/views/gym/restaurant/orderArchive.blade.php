@@ -43,50 +43,62 @@
                             <!--begin::Section-->
                             <div class="kt-section">
                                 <div class="kt-section__content">
-                                    <div class="row">
-                                        <div class="col-md-3">
-                                            <label>Member:</label>
-                                            <select class="form-control" name="member_id">
-                                                @foreach($member as $row)
-                                                    <option value="{{ $row->id }}">{{ $row->name }}</option>
-                                                @endforeach
-                                            </select>
+                                    <form action="{{route('restaurant.getOrderReport')}}" method="POST"
+                                          enctype="multipart/form-data"
+                                          class="kt-form kt-form--label-right">
+                                        @csrf
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <label>Member:</label>
+                                                <select class="form-control" name="member_id" id="member_id">
+                                                    @foreach($member as $row)
+                                                        <option value="{{ $row->id }}">{{ $row->name }}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <label>Date:</label>
+                                                <input type="date" class="form-control" id="date" name="date"></input>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <label>From:</label>
+                                                <input type="time" class="form-control" name="from"></input>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <label>To:</label>
+                                                <input type="time" class="form-control" name="to"></input>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <button type="submit" name="filter" id="filter" class="btn btn-info">
+                                                    Filter
+                                                </button>
+                                                <button type="reset" name="reset" id="reset" class="btn btn-default">
+                                                    Reset
+                                                </button>
+                                            </div>
                                         </div>
-                                        <div class="col-md-3">
-                                            <label>Date:</label>
-                                            <input type="date" class="form-control" name="date"></input>
-                                        </div>
-                                        <div class="col-md-2">
-                                            <label>From:</label>
-                                            <input type="time" class="form-control" name="from"></input>
-                                        </div>
-                                        <div class="col-md-2">
-                                            <label>To:</label>
-                                            <input type="time" class="form-control" name="to"></input>
-                                        </div>
-                                        <div class="col-md-2">
-                                            <input type="submit" class="btn btn-success" value="Search"></input>
-                                        </div>
-                                    </div>
+                                    </form>
                                     <div class="mt-5">
                                         <table class="table table-striped table-bordered">
                                             <thead>
                                             <tr>
-                                                <th>No.</th>
-                                                <th>No.</th>
-                                                <th>No.</th>
-                                                <th>No.</th>
-                                                <th>No.</th>
-                                                <th>No.</th>
+                                                <th>Member</th>
+                                                <th>gross_total</th>
+                                                <th>vat</th>
+                                                <th>net_total</th>
+                                                <th>created_at</th>
                                             </tr>
                                             </thead>
                                             <tbody>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
+                                            @foreach($order as $row)
+                                            <tr>
+                                                <td>{{ $row->Member }}</td>
+                                                <td>{{ $row->gross_total }}</td>
+                                                <td>{{ $row->vat }}</td>
+                                                <td>{{ $row->net_total }}</td>
+                                                <td>{{ $row->created_at }}</td>
+                                            </tr>
+                                            @endforeach
                                             </tbody>
                                         </table>
                                     </div>

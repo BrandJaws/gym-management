@@ -21,7 +21,8 @@ class RestaurantOrder extends Model
         'created_at'
     ];
 
-    public function member(){
+    public function member()
+    {
         return $this->belongsTo(Member::class);
     }
 
@@ -83,6 +84,34 @@ class RestaurantOrder extends Model
                 ->join('restaurant_products', function ($join) {
                     $join->on('restaurant_products.id', 'restaurant_order_details.restaurant_product_id');
                 });
+        })->get();
+    }
+
+    public static function getOrderReport($gym_id, $member_id, $date, $from, $to)
+    {
+        return self::select([
+                'restaurant_orders.id',
+                'restaurant_orders.gym_id',
+                'restaurant_orders.member_id',
+                'restaurant_orders.in_process',
+                'restaurant_orders.is_ready',
+                'restaurant_orders.is_served',
+                'restaurant_orders.gross_total',
+                'restaurant_orders.vat',
+                'restaurant_orders.net_total',
+                'restaurant_orders.created_at',
+                'members.name as Member',
+            ]
+        )->where(function ($query) use ($gym_id, $member_id, $date, $from, $to) {
+            if ($date == "" && $from == "" && $to == "") {
+                $query->where('restaurant_orders.gym_id', '=', $gym_id)->where('restaurant_orders.member_id', '=', $member_id);
+            } elseif ($from == "" && $to == "") {
+                $query->where('restaurant_orders.gym_id', '=', $gym_id)->where('restaurant_orders.member_id', '=', $member_id)->where('restaurant_orders.created_at', '=', $date);
+            } else {
+                $query->where('restaurant_orders.gym_id', '=', $gym_id)->where('restaurant_orders.member_id', '=', $member_id)->where('restaurant_orders.created_at', '=', $date)->whereBetween('restaurant_orders.created_at', '=', $from)->where('restaurant_orders.created_at', '=', $to);
+            }
+        })->leftJoin('members', function ($join) {
+            $join->on('members.id', 'restaurant_orders.member_id');
         })->get();
     }
 }

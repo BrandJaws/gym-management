@@ -258,6 +258,7 @@ Route::group(['prefix' => 'gym', 'namespace' => 'Gym'], function () {
 
             // Restaurant Order Archive
             Route::get('order/archive', ['as' => 'orderArchive', 'uses' => 'RestaurantController@orderArchive']);
+            Route::post('order/archive/report', ['as' => 'getOrderReport', 'uses' => 'RestaurantController@getOrderReport']);
 
         });
     });

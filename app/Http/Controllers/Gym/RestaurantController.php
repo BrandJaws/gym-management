@@ -10,6 +10,7 @@ use App\RestaurantMainCategory;
 use App\RestaurantOrder;
 use App\RestaurantProduct;
 use App\RestaurantSubCategory;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
@@ -170,6 +171,7 @@ class RestaurantController extends Controller
             ], 400);
         }
     }
+
     public function categoryEdit(Request $request)
     {
         try {
@@ -182,6 +184,7 @@ class RestaurantController extends Controller
             ], 400);
         }
     }
+
     public function categoryUpdate(Request $request)
     {
         $id = $request->id;
@@ -219,7 +222,7 @@ class RestaurantController extends Controller
         try {
             RestaurantMainCategory::destroy($id);
             $this->deleteCategoryImg($id);
-            RestaurantSubCategory::where('restaurant_main_category_id',$id)->delete();
+            RestaurantSubCategory::where('restaurant_main_category_id', $id)->delete();
             ActivityLogsController::insertLog("Delete Category");
             return back()->with('success', 'Category Deleted Successfully!');
         } catch (\Exception $e) {
@@ -241,6 +244,7 @@ class RestaurantController extends Controller
             return back()->with('error', 'Oops, something was not right');
         }
     }
+
     public function subCategoryCreate(Request $request)
     {
         try {
@@ -341,7 +345,7 @@ class RestaurantController extends Controller
         try {
             RestaurantSubCategory::destroy($id);
             $this->deleteSubCategoryImg($id);
-            RestaurantProduct::where('restaurant_sub_category_id',$id)->delete();
+            RestaurantProduct::where('restaurant_sub_category_id', $id)->delete();
             ActivityLogsController::insertLog("Delete Category");
             return back()->with('success', 'Category Deleted Successfully!');
         } catch (\Exception $e) {
@@ -495,12 +499,25 @@ class RestaurantController extends Controller
 
     //orderArchive
 
-    public function orderArchive()
+    public function orderArchive(Request $request)
     {
         try {
-            $member = Member::where('gym_id', Auth::guard('employee')->user()->gym_id)->where('type','Member')->orderBy('id', 'asc')->get();
+            $member = Member::where('gym_id', Auth::guard('employee')->user()->gym_id)->where('type', 'Member')->orderBy('id', 'asc')->get();
             ActivityLogsController::insertLog("Order Archive Page");
             return view('gym.restaurant.orderArchive', compact('member'));
+        } catch (\Exception $e) {
+            return back()->with('error', 'Oops, something was not right');
+        }
+    }
+
+    public function getOrderReport(Request $request)
+    {
+        try {
+            $member = Member::where('gym_id', Auth::guard('employee')->user()->gym_id)->where('type', 'Member')->orderBy('id', 'asc')->get();
+            $gym_id = Auth::guard('employee')->user()->gym_id;
+            $order = RestaurantOrder::getOrderReport($gym_id,$request->member_id,$request->date,$request->from,$request->to);
+            ActivityLogsController::insertLog("Order Archive Page");
+            return view('gym.restaurant.orderArchive', compact('member','order'));
         } catch (\Exception $e) {
             return back()->with('error', 'Oops, something was not right');
         }

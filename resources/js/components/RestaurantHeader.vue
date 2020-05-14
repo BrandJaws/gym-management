@@ -14,7 +14,7 @@
                       <span class="kt-subheader__breadcrumbs-separator"></span>
                       <router-link :to="{ name: 'restaurant' }" class="kt-subheader__breadcrumbs-link"> Restaurant</router-link>
                       <span class="kt-subheader__breadcrumbs-separator"></span>
-                      <a href="../restaurant/order/archive" class="kt-subheader__breadcrumbs-link">Order Archive</a>
+                      <a href="../gym/restaurant/order/archive" class="kt-subheader__breadcrumbs-link">Order Archive</a>
                       <span class="kt-subheader__breadcrumbs-separator"></span>
                   </div>
               </div>
