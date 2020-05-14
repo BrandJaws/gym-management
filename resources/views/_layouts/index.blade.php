@@ -22,6 +22,12 @@
     <link href="{{asset('css/kanban.bundle.css')}}" rel="stylesheet" type="text/css" />
     <link href="{{asset('css/fullcalendar.bundle.css')}}" rel="stylesheet" type="text/css" />
     <link href="{{asset('css/invoice-2.css')}}" rel="stylesheet" type="text/css" />
+
+    <link href="{{asset('css/plugins.bundle.css')}}" rel="stylesheet" type="text/css" />
+
+    <!--end::Global Theme Styles -->
+
+
     <style>
         #draggable {
             width: 150px;

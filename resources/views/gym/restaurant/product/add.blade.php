@@ -84,8 +84,10 @@
                                         <div class="form-group row mb-15">
                                             <div class="col-lg-8">
                                                 <label>Ingredients :</label>
-                                                <input type="text" maxlength="25" name="ingredients" class="form-control"
-                                                       required placeholder="Enter Ingredients"/>
+                                                <input id="kt_tagify_1"  placeholder='add...' name="ingredients"  autofocus data-blacklist='.NET,PHP'>
+                                                <div class="kt-margin-t-10">
+                                                    <a href="javascript:;" id="kt_tagify_1_remove" class="btn btn-label-brand btn-bold">Remove tags</a>
+                                                </div>
                                                 @if($errors->has('ingredients'))
                                                     <div class="error">{{ $errors->first('ingredients') }}</div>
                                                 @endif

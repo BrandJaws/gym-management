@@ -109,6 +109,7 @@ class RestaurantController extends Controller
         }
     }
 
+    // Category CRUD
     public function mainCategoryList(Request $request)
     {
         try {
@@ -118,19 +119,6 @@ class RestaurantController extends Controller
             return response()->json([
                 'response' => $order
             ], 200);
-        } catch (\Exception $e) {
-            return response()->json([
-                'response' => $e
-            ], 400);
-        }
-    }
-
-    public function categoryEdit(Request $request)
-    {
-        try {
-            $category = RestaurantMainCategory::where('id', '=', $request->id)->first();
-            ActivityLogsController::insertLog("Category Edit Page");
-            return view('gym.restaurant.edit', compact('category'));
         } catch (\Exception $e) {
             return response()->json([
                 'response' => $e
@@ -181,7 +169,18 @@ class RestaurantController extends Controller
             ], 400);
         }
     }
-
+    public function categoryEdit(Request $request)
+    {
+        try {
+            $category = RestaurantMainCategory::where('id', '=', $request->id)->first();
+            ActivityLogsController::insertLog("Category Edit Page");
+            return view('gym.restaurant.edit', compact('category'));
+        } catch (\Exception $e) {
+            return response()->json([
+                'response' => $e
+            ], 400);
+        }
+    }
     public function categoryUpdate(Request $request)
     {
         $id = $request->id;
@@ -219,6 +218,7 @@ class RestaurantController extends Controller
         try {
             RestaurantMainCategory::destroy($id);
             $this->deleteCategoryImg($id);
+            RestaurantSubCategory::where('restaurant_main_category_id',$id)->delete();
             ActivityLogsController::insertLog("Delete Category");
             return back()->with('success', 'Category Deleted Successfully!');
         } catch (\Exception $e) {
@@ -226,6 +226,7 @@ class RestaurantController extends Controller
         }
     }
 
+    // SubCategory CRUD
     public function subCategoryList(Request $request)
     {
         $id = $request->id;
@@ -239,33 +240,6 @@ class RestaurantController extends Controller
             return back()->with('error', 'Oops, something was not right');
         }
     }
-
-    public function productsList(Request $request)
-    {
-        $id = $request->id;
-        try {
-            $subCategory = RestaurantProduct::getProductsList($id);
-            ActivityLogsController::insertLog("Restaurant Products Page ");
-            return response()->json([
-                'response' => $subCategory
-            ], 200);
-        } catch (\Exception $e) {
-            return back()->with('error', 'Oops, something was not right');
-        }
-    }
-
-    public function deleteSubCategory($id)
-    {
-        try {
-            RestaurantSubCategory::destroy($id);
-            $this->deleteSubCategoryImg($id);
-            ActivityLogsController::insertLog("Delete Category");
-            return back()->with('success', 'Category Deleted Successfully!');
-        } catch (\Exception $e) {
-            return back()->with('error', 'Oops, something was not right');
-        }
-    }
-
     public function subCategoryCreate(Request $request)
     {
         try {
@@ -358,6 +332,35 @@ class RestaurantController extends Controller
             return response()->json([
                 'response' => $e
             ], 400);
+        }
+    }
+
+    public function deleteSubCategory($id)
+    {
+        try {
+            RestaurantSubCategory::destroy($id);
+            $this->deleteSubCategoryImg($id);
+            RestaurantProduct::where('restaurant_sub_category_id',$id)->delete();
+            ActivityLogsController::insertLog("Delete Category");
+            return back()->with('success', 'Category Deleted Successfully!');
+        } catch (\Exception $e) {
+            return back()->with('error', 'Oops, something was not right');
+        }
+    }
+
+
+    // Product CRUD
+    public function productsList(Request $request)
+    {
+        $id = $request->id;
+        try {
+            $subCategory = RestaurantProduct::getProductsList($id);
+            ActivityLogsController::insertLog("Restaurant Products Page ");
+            return response()->json([
+                'response' => $subCategory
+            ], 200);
+        } catch (\Exception $e) {
+            return back()->with('error', 'Oops, something was not right');
         }
     }
 
