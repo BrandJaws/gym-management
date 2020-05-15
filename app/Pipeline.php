@@ -27,6 +27,23 @@ class Pipeline extends Model
         'reStatus'
     ];
 
+    protected $appends = ['start', 'end', 'title'];
+
+    public function getStartAttribute()
+    {
+        return \Carbon\Carbon::parse($this->scheduleDate)->format('Y-m-d H:i:s');
+    }
+
+    public function getEndAttribute()
+    {
+        return \Carbon\Carbon::parse($this->scheduleDate)->format('Y-m-d H:i:s');
+    }
+    public function getTitleAttribute()
+    {
+        $employee = $this->employee->name;
+        return [ $employee];
+    }
+
     public function gym()
     {
         return $this->belongsTo(Gym::class, 'gym_id');

@@ -36,6 +36,17 @@ class DashboardController extends Controller
             $allTask = Pipeline::where('gym_id', $gym_id)->orderBy('id', 'desc')->get();
             $todayTask = Pipeline::where('gym_id', $gym_id)->whereDate('scheduleDate', Carbon::today())->orderBy('id', 'desc')->get();
 
+
+            if (request()->ajax()) {
+
+                $start = (!empty($_GET["start"])) ? ($_GET["start"]) : ('');
+                $end = (!empty($_GET["end"])) ? ($_GET["end"]) : ('');
+
+                $data = Pipeline::whereDate('scheduleDate', '>=', $start)->whereDate('scheduleDate', '<=', $end)->get(['id', 'employee_id', 'scheduleDate']);
+                return response()->json($data);
+            }
+
+
             ActivityLogsController::insertLog("Gym Dashboard Page");
             return view('gym.dashboard', compact('memberships', 'employees', 'members', 'trainers', 'activityLogs', 'todayLogs','allTask','todayTask','supplier','leads','parentMembers','childMembers'));
         } catch (\Exception $e) {
