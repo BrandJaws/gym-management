@@ -42,7 +42,7 @@ class DashboardController extends Controller
                 $start = (!empty($_GET["start"])) ? ($_GET["start"]) : ('');
                 $end = (!empty($_GET["end"])) ? ($_GET["end"]) : ('');
 
-                $data = Pipeline::whereDate('scheduleDate', '>=', $start)->whereDate('scheduleDate', '<=', $end)->get(['id', 'employee_id', 'scheduleDate']);
+                $data = Pipeline::where('gym_id', $gym_id)->whereDate('scheduleDate', '>=', $start)->whereDate('scheduleDate', '<=', $end)->get(['id', 'employee_id', 'scheduleDate']);
                 return response()->json($data);
             }
 
