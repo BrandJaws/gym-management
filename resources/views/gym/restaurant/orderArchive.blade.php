@@ -57,18 +57,14 @@
                                                 </select>
                                             </div>
                                             <div class="col-md-3">
-                                                <label>Date:</label>
-                                                <input type="date" class="form-control" id="date" name="date"></input>
-                                            </div>
-                                            <div class="col-md-2">
                                                 <label>From:</label>
-                                                <input type="time" class="form-control" name="from"></input>
+                                                <input type="datetime-local" class="form-control" name="fromDate"></input>
                                             </div>
-                                            <div class="col-md-2">
+                                            <div class="col-md-3">
                                                 <label>To:</label>
-                                                <input type="time" class="form-control" name="to"></input>
+                                                <input type="datetime-local" class="form-control" name="toDate"></input>
                                             </div>
-                                            <div class="col-md-2">
+                                            <div class="col-md-3 mt-4">
                                                 <button type="submit" name="filter" id="filter" class="btn btn-info">
                                                     Filter
                                                 </button>

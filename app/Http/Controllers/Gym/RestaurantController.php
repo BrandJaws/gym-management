@@ -502,9 +502,11 @@ class RestaurantController extends Controller
     public function orderArchive(Request $request)
     {
         try {
+            $gym_id = Auth::guard('employee')->user()->gym_id;
             $member = Member::where('gym_id', Auth::guard('employee')->user()->gym_id)->where('type', 'Member')->orderBy('id', 'asc')->get();
             ActivityLogsController::insertLog("Order Archive Page");
-            return view('gym.restaurant.orderArchive', compact('member'));
+            $order = RestaurantOrder::getOrderReport($gym_id,$request->member_id,$request->fromDate,$request->toDate);
+            return view('gym.restaurant.orderArchive', compact('member','order'));
         } catch (\Exception $e) {
             return back()->with('error', 'Oops, something was not right');
         }
@@ -512,14 +514,12 @@ class RestaurantController extends Controller
 
     public function getOrderReport(Request $request)
     {
-        try {
+
             $member = Member::where('gym_id', Auth::guard('employee')->user()->gym_id)->where('type', 'Member')->orderBy('id', 'asc')->get();
             $gym_id = Auth::guard('employee')->user()->gym_id;
-            $order = RestaurantOrder::getOrderReport($gym_id,$request->member_id,$request->date,$request->from,$request->to);
+            $order = RestaurantOrder::getOrderReport($gym_id,$request->member_id,$request->fromDate,$request->toDate);
             ActivityLogsController::insertLog("Order Archive Page");
             return view('gym.restaurant.orderArchive', compact('member','order'));
-        } catch (\Exception $e) {
-            return back()->with('error', 'Oops, something was not right');
-        }
+
     }
 }

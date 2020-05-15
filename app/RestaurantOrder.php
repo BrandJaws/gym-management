@@ -87,7 +87,7 @@ class RestaurantOrder extends Model
         })->get();
     }
 
-    public static function getOrderReport($gym_id, $member_id, $date, $from, $to)
+    public static function getOrderReport($gym_id, $member_id, $fromDate, $toDate)
     {
         return self::select([
                 'restaurant_orders.id',
@@ -102,13 +102,11 @@ class RestaurantOrder extends Model
                 'restaurant_orders.created_at',
                 'members.name as Member',
             ]
-        )->where(function ($query) use ($gym_id, $member_id, $date, $from, $to) {
-            if ($date == "" && $from == "" && $to == "") {
+        )->where(function ($query) use ($gym_id, $member_id, $fromDate, $toDate) {
+            if ($fromDate == "" && $toDate == "" ) {
                 $query->where('restaurant_orders.gym_id', '=', $gym_id)->where('restaurant_orders.member_id', '=', $member_id);
-            } elseif ($from == "" && $to == "") {
-                $query->where('restaurant_orders.gym_id', '=', $gym_id)->where('restaurant_orders.member_id', '=', $member_id)->where('restaurant_orders.created_at', '=', $date);
-            } else {
-                $query->where('restaurant_orders.gym_id', '=', $gym_id)->where('restaurant_orders.member_id', '=', $member_id)->where('restaurant_orders.created_at', '=', $date)->whereBetween('restaurant_orders.created_at', '=', $from)->where('restaurant_orders.created_at', '=', $to);
+            } elseif ($fromDate == "" && $toDate == "") {
+                $query->where('restaurant_orders.gym_id', '=', $gym_id)->where('restaurant_orders.member_id', '=', $member_id)->whereBetween('reservation_from', [$fromDate, $toDate]);
             }
         })->leftJoin('members', function ($join) {
             $join->on('members.id', 'restaurant_orders.member_id');
