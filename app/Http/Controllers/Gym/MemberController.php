@@ -11,6 +11,7 @@ use App\Http\Controllers\Controller;
 use App\MemberMembership;
 use App\Membership;
 use App\Pipeline;
+use App\RestaurantOrder;
 use App\TrainingGroup;
 use App\Treasury;
 use Illuminate\Http\Request;
@@ -314,8 +315,9 @@ class MemberController extends Controller
             $treasuryCashDiscount = Treasury::where('member_id', $id)->where('gym_id', $gym_id)->where('cashFlow', 'Discount')->sum('value');
             $member = Member::where('gym_id', $gym_id)->where('type', 'Member')->where('memberType', 'Parent')->get();
             $training = TrainingGroup::where('member_id', $id)->where('gym_id', Auth::guard('employee')->user()->gym_id)->paginate(10);
+            $order = RestaurantOrder::where('member_id', $id)->paginate(10);
             ActivityLogsController::insertLog("Member/Lead Edit Page");
-            return view('gym.member.list.edit', compact('lead', 'membership', 'callHistory', 'treasuryDetail', 'member', 'treasuryCashIn', 'treasuryCashOut', 'treasuryCashExtra', 'treasuryCashDiscount', 'training'));
+            return view('gym.member.list.edit', compact('lead', 'membership', 'callHistory', 'treasuryDetail', 'member', 'treasuryCashIn', 'treasuryCashOut', 'treasuryCashExtra', 'treasuryCashDiscount', 'training','order'));
         } catch (\Exception $e) {
             return back()->with('error', 'Oops, something was not right in member edit page');
         }

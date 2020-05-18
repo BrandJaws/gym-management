@@ -647,6 +647,61 @@
                             <div class="kt-portlet__head">
                                 <div class="kt-portlet__head-label">
                                     <h6>
+                                        Order Detail
+                                    </h6>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-lg-12 ">
+                                    <div class="kt-portlet__body">
+                                        <table class="table table-striped- table-bordered table-hover table-checkable">
+                                            <thead>
+                                            <tr class="kt-callout kt-callout--brand">
+                                                <th>No.</th>
+                                                <th>Gross Total</th>
+                                                <th>Vat</th>
+                                                <th>Net Total</th>
+                                                <th>In Process</th>
+                                                <th>Is Ready</th>
+                                                <th>Is Served</th>
+                                                <th>Date</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <?php $i = 1; ?>
+                                            @foreach($order as $row)
+                                                <tr>
+                                                    <th>{{$i}}</th>
+                                                    <td>{{ $row->gross_total }}</td>
+                                                    <td>{{ $row->vat }}</td>
+                                                    <td>{{ $row->net_total }}</td>
+                                                    <td>{{ $row->in_process }}</td>
+                                                    <td>{{ $row->is_ready }}</td>
+                                                    <td>{{ $row->is_served }}</td>
+                                                    <td>{{ $row->created_at }}</td>
+                                                </tr>
+                                                <?php  $i++; ?>
+                                            @endforeach
+                                            <tr>
+                                                <td colspan="8" align="center">
+                                                    {{ $order->links() }}
+                                                </td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <!--end::Portlet-->
+                    </div>
+                    <div class="col-lg-12">
+                        <!--begin::Portlet-->
+                        <div class="kt-portlet">
+                            <div class="kt-portlet__head">
+                                <div class="kt-portlet__head-label">
+                                    <h6>
                                         Training History
                                     </h6>
                                 </div>
@@ -683,7 +738,7 @@
                                             @endforeach
                                             <tr>
                                                 <td colspan="8" align="center">
-                                                    {{ $treasuryDetail->links() }}
+                                                    {{ $training->links() }}
                                                 </td>
                                             </tr>
                                             </tbody>
