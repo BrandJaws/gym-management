@@ -27,4 +27,9 @@ class ShopCategory extends Model
             }
         })->paginate($pageSize);
     }
+
+    public function categoryImage()
+    {
+        return $this->morphOne(Image::class, 'image');
+    }
 }

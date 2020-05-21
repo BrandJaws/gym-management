@@ -213,19 +213,22 @@ Route::group(['prefix' => 'gym', 'namespace' => 'Gym'], function () {
 
         Route::group(['as' => 'shop.', 'prefix' => 'shop'], function () {
             Route::get('/', ['as' => 'list', 'uses' => 'ShopController@index']);
-            Route::post('/', ['as' => 'list', 'uses' => 'ShopController@shopCatgoryList']);
-            Route::get('/create', ['as' => 'create', 'uses' => 'ShopController@create']);
-            Route::post('/create', ['as' => 'create', 'uses' => 'ShopController@store']);
-            Route::get('/edit/{id}', ['as' => 'edit', 'uses' => 'ShopController@edit']);
-            Route::post('/edit', ['as' => 'edit', 'uses' => 'ShopController@update']);
-            Route::get('/destroy/{id}', ['as' => 'destroy', 'uses' => 'ShopController@destroy']);
+
 
             /*------------------------------------ Shop Category Routes --------------------------------*/
-            Route::post('/storeCategory', ['as' => 'storeCategory', 'uses' => 'ShopController@storeCategory']);
-            Route::post('/destroyCategory', ['as' => 'destroyCategory', 'uses' => 'ShopController@destroyCategory']);
-            Route::post('/editItem', ['as' => 'editItem', 'uses' => 'ShopController@editItem']);
+            Route::post('/', ['as' => 'list', 'uses' => 'ShopController@shopCatgoryList']);
+            Route::get('/category/add', ['as' => 'create', 'uses' => 'ShopController@create']);
+            Route::post('/category/add', ['as' => 'create', 'uses' => 'ShopController@store']);
+            Route::get('/category/edit/{id}', ['as' => 'edit', 'uses' => 'ShopController@edit']);
+            Route::post('/category/edit', ['as' => 'edit', 'uses' => 'ShopController@update']);
+            Route::get('/categoryDestroy/{id}', ['as' => 'destroyCategory', 'uses' => 'ShopController@destroyCategory']);
 
+            /*------------------------------------ Shop Products Routes --------------------------------*/
             Route::get('/productList/{id}', ['as' => 'productList', 'uses' => 'ShopController@productList']);
+            Route::get('/product/add/{id}', ['as' => 'productCreate', 'uses' => 'ShopController@productCreate']);
+            Route::post('/product/add', ['as' => 'productStore', 'uses' => 'ShopController@productStore']);
+            Route::get('/product/edit/{id}', ['as' => 'productEdit', 'uses' => 'ShopController@productEdit']);
+            Route::post('/product/edit', ['as' => 'productUpdate', 'uses' => 'ShopController@productUpdate']);
         });
 
         Route::group(['as' => 'restaurant.', 'prefix' => 'restaurant'], function () {

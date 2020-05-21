@@ -10,7 +10,7 @@
                                 <div class="kt-portlet__head">
                                     <div class="kt-portlet__head-label">
                                         <span class="kt-portlet__head-icon">
-                                            <a :href="'../../gym/restaurant/category/add/'"
+                                            <a :href="'../../gym/shop/category/add/'"
                                                class="btn btn-label-primary "><i class="fa fa-plus"></i> </a>
                                         </span>
                                         <h3 class="kt-portlet__head-title">
@@ -44,10 +44,10 @@
                                     @on-per-page-change="onPerPageChange">
                                     <template slot="table-row" slot-scope="props">
                                         <span v-if="props.column.field == 'action'" class="grid-action-icons">
-                                             <a :href="'../../gym/restaurant/category/edit/'+props.row.id"
+                                             <a :href="'../../gym/shop/category/edit/'+props.row.id"
                                                 class="btn btn-label-primary btn-pill">
                                                  <i class="fa fa-edit"></i></a>
-                                            <a @click="deleteCategory(props.row)"
+                                            <a @click="deleteShopCategory(props.row)"
                                                class="btn btn-label-success btn-pill"><i
                                                 class="fa fa-trash"></i></a>
                                         </span>
@@ -58,7 +58,7 @@
                                 <div class="kt-portlet__head ">
                                     <div class="kt-portlet__head-label">
                                         <span v-if="productForm.categoryId">
-                                        <a :href="'../../gym/restaurant/category/add/'"
+                                        <a :href="'../../gym/shop/product/add/'+ productForm.categoryId"
                                            class="btn btn-label-primary "><i class="fa fa-plus"></i> </a>
                                         </span>
                                         <span v-else>
@@ -88,7 +88,7 @@
                                         <td>{{ item.in_stock }}</td>
                                         <td>{{ item.visible }}</td>
                                         <td>
-                                            <a :href="'../../gym/restaurant/subCategory/edit/'+item.id"
+                                            <a :href="'../../gym/shop/product/edit/'+item.id"
                                                class="btn btn-label-primary btn-pill">
                                                 <i class="fa fa-edit"></i></a>
                                             <a @click="deleteSubCategory(item.id)"
@@ -203,6 +203,13 @@
                     this.error = e
                 }
                 this.loading = false;
+            },
+            deleteShopCategory(params) {
+                this.$store.dispatch('deleteShopCategory', {id: params.id}).then(response => {
+                    this.handleFilter();
+                }).catch(error => {
+                    console.log(error);
+                });
             },
             handleFilter() {
                 this.fetchShopCategory();

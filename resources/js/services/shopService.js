@@ -8,4 +8,7 @@ export default {
     fetchShopProduct(params) {
         return Shop().get('/gym/shop/productList/' + params.id);
     },
+    deleteShopCategory(params) {
+        return Shop().get('/gym/shop/categoryDestroy/' + params.id);
+    },
 };

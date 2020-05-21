@@ -17,7 +17,7 @@ class ShopProduct extends Model
         'in_stock',
         'visible'
     ];
-    public function userImage()
+    public function productImage()
     {
         return $this->morphOne(Image::class, 'image');
     }

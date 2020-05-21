@@ -19,16 +19,6 @@ class ShopController extends Controller
     public function index(Request $request)
     {
         try {
-//            $shopProduct = ShopProduct::where('gym_id', '=', Auth::guard('employee')->user()->gym_id)->orderBy('id', 'asc')->paginate(10);
-//            $shopCategory = ShopCategory::where('gym_id', '=', Auth::guard('employee')->user()->gym_id)->orderBy('id', 'asc')->get();
-//            if ($request->ajax()) {
-//                $sort_by = $request->get('sortby');
-//                $sort_type = $request->get('sorttype');
-//                $query = $request->get('query');
-//                $searchTerm = str_replace(" ", "%", $query);
-//                $shopProduct = ShopProduct::getProductList($searchTerm, $sort_by, $sort_type);
-//                return view('gym.shop.pagination_data', compact('shopProduct'))->render();
-//            }
             ActivityLogsController::insertLog("Shop List Page");
             return view('gym.shop.list', compact('shopProduct', 'shopCategory'));
         } catch (\Exception $e) {
@@ -65,14 +55,62 @@ class ShopController extends Controller
         }
     }
 
+
     public function create()
     {
-        $shopCategory = ShopCategory::where('gym_id', '=', Auth::guard('employee')->user()->gym_id)->orderBy('id', 'asc')->get();
-        ActivityLogsController::insertLog("Shop Create Page");
-        return view('gym.shop.create', compact('shopCategory'));
+        ActivityLogsController::insertLog("View Shop Category Page");
+        return view('gym.shop.category.create');
     }
 
     public function store(Request $request)
+    {
+        try {
+            $validator = Validator::make($request->all(), [
+                'gym_id' => 'required',
+                'name' => 'required',
+            ]);
+            if ($validator->fails()) {
+                return Redirect::back()->withErrors($validator);
+            }
+            $shopCategory = new ShopCategory();
+            $shopCategory->fill($request->only([
+                'gym_id',
+                'name',
+            ]));
+            $shopCategory->save();
+            if ($request->hasFile('image')) {
+                $images = [];
+                $image = $request->file('image');
+                $userImage = new Image();
+                $this->uploadShopCategoryImg($image, $userImage, 'path', null, $shopCategory->id);
+                $images[] = $userImage;
+                $shopCategory->categoryImage()->saveMany($images, $shopCategory);
+            }
+            ActivityLogsController::insertLog("Create New Shop Category ");
+            return back()->with('success', 'Category Created Successfully!');
+        } catch (\Exception $e) {
+            return response()->json([
+                'response' => $e
+            ], 400);
+        }
+    }
+
+    public function productCreate($id)
+    {
+        try {
+            $selectCategory = ShopCategory::where('id', '=', $id)->first();
+            $shopCategory = ShopCategory::where('gym_id', '=', Auth::guard('employee')->user()->gym_id)->orderBy('id', 'asc')->get();
+            ActivityLogsController::insertLog("Shop Product Create Page");
+            return view('gym.shop.product.create', compact('shopCategory', 'selectCategory'));
+        } catch (\Exception $e) {
+            return response()->json([
+                'response' => $e
+            ], 400);
+        }
+    }
+
+
+    public function productStore(Request $request)
     {
         try {
             $validator = Validator::make($request->all(), [
@@ -104,7 +142,7 @@ class ShopController extends Controller
                 $userImage = new Image();
                 $this->uploadProductImg($image, $userImage, 'path', null, $shopProduct->id);
                 $images[] = $userImage;
-                $shopProduct->userImage()->saveMany($images, $shopProduct);
+                $shopProduct->productImage()->saveMany($images, $shopProduct);
             }
             ActivityLogsController::insertLog("Create Shop");
             return back()->with('success', 'Product Created Successfully!');
@@ -132,13 +170,27 @@ class ShopController extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
+
     public function edit($id)
+    {
+        try {
+            $shopCategory = ShopCategory::where('id', $id)->first();
+            $shopProduct = ShopProduct::where('category_id', $id)->paginate(10);
+            ActivityLogsController::insertLog("Shop Category Edit Page");
+            return view('gym.shop.category.edit', compact('shopProduct', 'shopCategory'));
+        } catch (\Exception $e) {
+            return back()->with('error', 'Oops, something was not right');
+        }
+    }
+
+
+    public function productEdit($id)
     {
         try {
             $shopCategory = ShopCategory::where('gym_id', '=', Auth::guard('employee')->user()->gym_id)->orderBy('id', 'asc')->get();
             $shop = ShopProduct::find($id);
             ActivityLogsController::insertLog("Shop Edit Page");
-            return view('gym.shop.edit', compact('shop', 'shopCategory'));
+            return view('gym.shop.product.edit', compact('shop', 'shopCategory'));
         } catch (\Exception $e) {
             return back()->with('error', 'Oops, something was not right');
         }
@@ -152,6 +204,39 @@ class ShopController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request)
+    {
+        $category_id = $request->id;
+        try {
+            $validator = Validator::make($request->all(), [
+                'gym_id' => 'required',
+                'name' => 'required',
+            ]);
+            if ($validator->fails()) {
+                return Redirect::back()->withErrors($validator);
+            }
+            $shopCategory = ShopCategory::where('id', $category_id)->first();
+            $shopCategory->fill($request->only([
+                'name',
+            ]));
+            $shopCategory->save();
+            if ($request->hasFile('image')) {
+                $images = [];
+                $image = $request->file('image');
+                $userImage = new Image();
+                $this->uploadShopCategoryImg($image, $userImage, 'path', null, $category_id);
+                $images[] = $userImage;
+                $shopCategory->categoryImage()->saveMany($images, $shopCategory);
+            }
+            ActivityLogsController::insertLog("Shop Category Update Shop");
+            return back()->with('success', 'Shop Category Updated Successfully!');
+        } catch (\Exception $e) {
+            return response()->json([
+                'response' => $e
+            ], 400);
+        }
+    }
+
+    public function productUpdate(Request $request)
     {
         $product_id = $request->id;
         try {
@@ -184,34 +269,35 @@ class ShopController extends Controller
                 $userImage = new Image();
                 $this->uploadProductImg($image, $userImage, 'path', null, $product_id);
                 $images[] = $userImage;
-                $shopProduct->userImage()->saveMany($images, $shopProduct);
+                $shopProduct->productImage()->saveMany($images, $shopProduct);
             }
-            ActivityLogsController::insertLog("Update Shop");
-            return back()->with('success', 'Product Updated Successfully!');
+            ActivityLogsController::insertLog("Update Shop Product");
+            return back()->with('success', 'Shop Product Updated Successfully!');
         } catch (\Exception $e) {
             return response()->json([
                 'response' => $e
             ], 400);
         }
     }
-
     /**
      * Remove the specified resource from storage.
      *
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
-    {
-        try {
-            ShopProduct::destroy($id);
-            $this->deleteProductImg($id);
-            ActivityLogsController::insertLog("Delete Shop");
-            return back()->with('success', 'Product Deleted Successfully!');
-        } catch (\Exception $e) {
-            return back()->with('error', 'Oops, something was not right');
-        }
-    }
+//    public function destroy($id)
+//    {
+//        try {
+//            dd($id);
+//            ShopCategory::destroy($id);
+//            $this->deleteShopCategoryImg($id);
+//            ShopProduct::where('category_id', $id)->delete();
+//            ActivityLogsController::insertLog("Delete Shop");
+//            return back()->with('success', 'Shop Category Deleted Successfully!');
+//        } catch (\Exception $e) {
+//            return back()->with('error', 'Oops, something was not right');
+//        }
+//    }
 
     public function storeCategory(Request $request)
     {
@@ -257,13 +343,17 @@ class ShopController extends Controller
         }
     }
 
-    public function destroyCategory(Request $req)
+    public function destroyCategory($id)
     {
         try {
-            ShopCategory::find($req->id)->delete();
-            ShopProduct::where('category_id', $req->id)->delete();
-            ActivityLogsController::insertLog("Delete Shop & Category");
-            return response()->json();
+            ShopCategory::find($id)->delete();
+            $this->deleteShopCategoryImg($id);
+            ShopProduct::where('category_id', $id)->delete();
+            $this->deleteProductImg($id);
+            ActivityLogsController::insertLog("Delete Shop Category");
+            return response()->json([
+                'response' => 'success'
+            ], 200);
         } catch (\Exception $e) {
             return back()->with('error', 'Oops, something was not right');
         }
