@@ -19,18 +19,47 @@ class ShopController extends Controller
     public function index(Request $request)
     {
         try {
-            $shopProduct = ShopProduct::where('gym_id', '=', Auth::guard('employee')->user()->gym_id)->orderBy('id', 'asc')->paginate(10);
-            $shopCategory = ShopCategory::where('gym_id', '=', Auth::guard('employee')->user()->gym_id)->orderBy('id', 'asc')->get();
-            if ($request->ajax()) {
-                $sort_by = $request->get('sortby');
-                $sort_type = $request->get('sorttype');
-                $query = $request->get('query');
-                $searchTerm = str_replace(" ", "%", $query);
-                $shopProduct = ShopProduct::getProductList($searchTerm, $sort_by, $sort_type);
-                return view('gym.shop.pagination_data', compact('shopProduct'))->render();
-            }
+//            $shopProduct = ShopProduct::where('gym_id', '=', Auth::guard('employee')->user()->gym_id)->orderBy('id', 'asc')->paginate(10);
+//            $shopCategory = ShopCategory::where('gym_id', '=', Auth::guard('employee')->user()->gym_id)->orderBy('id', 'asc')->get();
+//            if ($request->ajax()) {
+//                $sort_by = $request->get('sortby');
+//                $sort_type = $request->get('sorttype');
+//                $query = $request->get('query');
+//                $searchTerm = str_replace(" ", "%", $query);
+//                $shopProduct = ShopProduct::getProductList($searchTerm, $sort_by, $sort_type);
+//                return view('gym.shop.pagination_data', compact('shopProduct'))->render();
+//            }
             ActivityLogsController::insertLog("Shop List Page");
             return view('gym.shop.list', compact('shopProduct', 'shopCategory'));
+        } catch (\Exception $e) {
+            return back()->with('error', 'Oops, something was not right');
+        }
+    }
+
+    public function shopCatgoryList(Request $request)
+    {
+        try {
+            $pageSize = ($request->has('perPage') && (int)$request->get('perPage') > 0) ? (int)$request->get('perPage') : 0;
+            $searchTerm = ($request->has('searchTerm') && $request->get('searchTerm')) ? $request->get('searchTerm') : null;
+            $shopCategory = ShopCategory::getCategoryList(Auth::guard('employee')->user()->gym_id, $pageSize, $searchTerm);
+            return response()->json([
+                'response' => $shopCategory
+            ], 200);
+        } catch (\Exception $e) {
+            return response()->json([
+                'response' => $e
+            ], 400);
+        }
+    }
+
+    public function productList($id)
+    {
+        try {
+            $shopProduct = ShopProduct::where('category_id', '=', $id)->get();
+            ActivityLogsController::insertLog("Select Shop Category");
+            return response()->json([
+                'response' => $shopProduct
+            ], 200);
         } catch (\Exception $e) {
             return back()->with('error', 'Oops, something was not right');
         }
@@ -231,10 +260,10 @@ class ShopController extends Controller
     public function destroyCategory(Request $req)
     {
         try {
-            ShopCategory::find( $req->id )->delete ();
-            ShopProduct::where('category_id',$req->id )->delete ();
+            ShopCategory::find($req->id)->delete();
+            ShopProduct::where('category_id', $req->id)->delete();
             ActivityLogsController::insertLog("Delete Shop & Category");
-            return response ()->json ();
+            return response()->json();
         } catch (\Exception $e) {
             return back()->with('error', 'Oops, something was not right');
         }

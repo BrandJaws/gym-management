@@ -83,9 +83,9 @@
                                     </tr>
                                     </tbody>
                                     <tbody v-else>
-                                        <tr >
-                                            <td colspa="3">No data for table</td>
-                                        </tr>
+                                    <tr>
+                                        <td colspa="3">No data for table</td>
+                                    </tr>
                                     </tbody>
                                 </table>
                             </div>

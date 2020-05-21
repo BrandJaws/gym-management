@@ -213,15 +213,19 @@ Route::group(['prefix' => 'gym', 'namespace' => 'Gym'], function () {
 
         Route::group(['as' => 'shop.', 'prefix' => 'shop'], function () {
             Route::get('/', ['as' => 'list', 'uses' => 'ShopController@index']);
+            Route::post('/', ['as' => 'list', 'uses' => 'ShopController@shopCatgoryList']);
             Route::get('/create', ['as' => 'create', 'uses' => 'ShopController@create']);
             Route::post('/create', ['as' => 'create', 'uses' => 'ShopController@store']);
             Route::get('/edit/{id}', ['as' => 'edit', 'uses' => 'ShopController@edit']);
             Route::post('/edit', ['as' => 'edit', 'uses' => 'ShopController@update']);
             Route::get('/destroy/{id}', ['as' => 'destroy', 'uses' => 'ShopController@destroy']);
+
             /*------------------------------------ Shop Category Routes --------------------------------*/
             Route::post('/storeCategory', ['as' => 'storeCategory', 'uses' => 'ShopController@storeCategory']);
             Route::post('/destroyCategory', ['as' => 'destroyCategory', 'uses' => 'ShopController@destroyCategory']);
             Route::post('/editItem', ['as' => 'editItem', 'uses' => 'ShopController@editItem']);
+
+            Route::get('/productList/{id}', ['as' => 'productList', 'uses' => 'ShopController@productList']);
         });
 
         Route::group(['as' => 'restaurant.', 'prefix' => 'restaurant'], function () {

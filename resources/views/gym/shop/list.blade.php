@@ -1,3 +1,4 @@
+{{--
 @extends('_layouts.index')
 @section('content')
     <div class="kt-content  kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor" id="kt_content">
@@ -260,4 +261,12 @@
 @section('custom-script')
             <script src="{{ asset('js/sweetalert2.js') }}"></script>
             <script src="{{ asset('js/ajax.js') }}"></script>
+@endsection
+--}}
+@extends('_layouts.index')
+@section('content')
+    <div id="app">
+        <shop></shop>
+    </div>
+    <script src="{{ mix('js/main.js') }}"></script>
 @endsection
