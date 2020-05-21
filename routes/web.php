@@ -229,6 +229,7 @@ Route::group(['prefix' => 'gym', 'namespace' => 'Gym'], function () {
             Route::post('/product/add', ['as' => 'productStore', 'uses' => 'ShopController@productStore']);
             Route::get('/product/edit/{id}', ['as' => 'productEdit', 'uses' => 'ShopController@productEdit']);
             Route::post('/product/edit', ['as' => 'productUpdate', 'uses' => 'ShopController@productUpdate']);
+            Route::get('/product/productDestroy/{id}', ['as' => 'destroyProduct', 'uses' => 'ShopController@destroyProduct']);
         });
 
         Route::group(['as' => 'restaurant.', 'prefix' => 'restaurant'], function () {

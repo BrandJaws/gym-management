@@ -1,6 +1,5 @@
 import ShopService from '../services/shopService';
 import {reject, resolve} from 'any-promise';
-import RestaurantsService from "../services/restaurantsService";
 
 export default {
     strict: true,
@@ -10,6 +9,7 @@ export default {
         perPage: 0,
         shopProductList: [],
         categoryList:[],
+        productShopList:[]
     },
     mutations: {
         setShopCatgoryList(state, shopCatgoryList) {
@@ -22,6 +22,9 @@ export default {
         },
         deleteShopCategoryList(state, categoryList) {
             state.categoryList = categoryList.response;
+        },
+        deleteShopProductList(state, productList) {
+            state.productList = productList.response;
         },
     },
     actions: {
@@ -55,6 +58,16 @@ export default {
                 });
             });
         },
+        deleteShopProduct({commit}, params) {
+            return new Promise((resolve, reject) => {
+                ShopService.deleteShopProduct(params).then((response) => {
+                    commit('deleteShopProductList', response.data);
+                    resolve();
+                }).catch((error) => {
+                    reject(error);
+                });
+            });
+        },
     },
     getters: {
         shopCatgoryList(state) {
@@ -68,6 +81,9 @@ export default {
         },
         categoryList(state) {
             return state.categoryList;
+        },
+        productShopList(state) {
+            return state.productShopList;
         },
     }
 };

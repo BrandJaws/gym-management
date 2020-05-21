@@ -91,7 +91,7 @@
                                             <a :href="'../../gym/shop/product/edit/'+item.id"
                                                class="btn btn-label-primary btn-pill">
                                                 <i class="fa fa-edit"></i></a>
-                                            <a @click="deleteSubCategory(item.id)"
+                                            <a @click="deleteShopProduct(item.id)"
                                                class="btn btn-label-success btn-pill"><i
                                                 class="fa fa-trash"></i></a>
                                         </td>
@@ -207,6 +207,13 @@
             deleteShopCategory(params) {
                 this.$store.dispatch('deleteShopCategory', {id: params.id}).then(response => {
                     this.handleFilter();
+                }).catch(error => {
+                    console.log(error);
+                });
+            },
+            deleteShopProduct(params) {
+                this.$store.dispatch('deleteShopProduct', {id: params}).then(response => {
+                    // this.handleFilter();
                 }).catch(error => {
                     console.log(error);
                 });

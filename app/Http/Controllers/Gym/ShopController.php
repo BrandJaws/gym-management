@@ -285,19 +285,22 @@ class ShopController extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-//    public function destroy($id)
-//    {
-//        try {
-//            dd($id);
-//            ShopCategory::destroy($id);
-//            $this->deleteShopCategoryImg($id);
-//            ShopProduct::where('category_id', $id)->delete();
-//            ActivityLogsController::insertLog("Delete Shop");
-//            return back()->with('success', 'Shop Category Deleted Successfully!');
-//        } catch (\Exception $e) {
-//            return back()->with('error', 'Oops, something was not right');
-//        }
-//    }
+    public function destroyProduct($id)
+    {
+        try {
+            dd($id);
+            ShopProduct::destroy($id);
+            $this->deleteProductImg($id);
+            ShopProduct::where('category_id', $id)->delete();
+            $this->deleteShopCategoryImg($id);
+            ActivityLogsController::insertLog("Delete Shop Product");
+            return response()->json([
+                'response' => 'success'
+            ], 200);
+        } catch (\Exception $e) {
+            return back()->with('error', 'Oops, something was not right');
+        }
+    }
 
     public function storeCategory(Request $request)
     {
@@ -322,31 +325,12 @@ class ShopController extends Controller
         }
     }
 
-    public function editItem(Request $req)
-    {
-        try {
-            $validator = Validator::make($req->all(), [
-                'name' => 'required',
-            ]);
-            if ($validator->fails()) {
-                return Redirect::back()->withErrors($validator);
-            }
-            $shopCategory = ShopCategory::find($req->id);
-            $shopCategory->name = $req->name;
-            $shopCategory->save();
-            ActivityLogsController::insertLog("Edit Shop Category");
-            return response()->json($shopCategory);
-        } catch (\Exception $e) {
-            return response()->json([
-                'response' => $e
-            ], 400);
-        }
-    }
+
 
     public function destroyCategory($id)
     {
         try {
-            ShopCategory::find($id)->delete();
+            ShopCategory::destroy($id);
             $this->deleteShopCategoryImg($id);
             ShopProduct::where('category_id', $id)->delete();
             $this->deleteProductImg($id);
