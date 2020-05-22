@@ -44,11 +44,12 @@
 @endsection
 @section('custom-script')
 
-{{--    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />--}}
-{{--    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>--}}
+    {{--    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />--}}
+    {{--    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>--}}
 
-    <link rel="stylesheet" href="{{asset('css/fullcalendar.css')}}" />
-    <script src="{{asset('js/moment.min.js')}}" integrity="sha256-4iQZ6BVL4qNKlQ27TExEhBN1HFPvAvAMbFavKKosSWQ=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{{asset('css/fullcalendar.css')}}"/>
+    <script src="{{asset('js/moment.min.js')}}" integrity="sha256-4iQZ6BVL4qNKlQ27TExEhBN1HFPvAvAMbFavKKosSWQ="
+            crossorigin="anonymous"></script>
     <script src="{{asset('js/fullcalendar.js')}}"></script>
 
     <script>
@@ -86,6 +87,7 @@
         $(document).ready(function () {
 
             var SITEURL = "{{url('/')}}";
+            var guestUrl = "{{url('gym/member/guests/')}}";
             $.ajaxSetup({
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -139,7 +141,7 @@
                     var start = $.fullCalendar.formatDate(event.start, "Y-MM-DD HH:mm:ss");
                     var end = $.fullCalendar.formatDate(event.end, "Y-MM-DD HH:mm:ss");
                     $.ajax({
-                        // url: SITEURL + '/list/update',
+                        url: SITEURL + guestUrl + event.id,
                         data: 'title=' + event.title + '&amp;start=' + start + '&amp;end=' + end + '&amp;id=' + event.id,
                         type: "POST",
                         success: function (response) {
@@ -148,31 +150,22 @@
                     });
                 },
                 eventClick: function (event) {
-                    // var deleteMsg = confirm("Do you really want to delete?");
-                    // if (deleteMsg) {
-                        $.ajax({
-                            type: "GET",
-                            url: '/gym/member/guests/' +event.id,
-                            data:   event.id,
-                            // success: function (response) {
-                            //     displayMessage("Updated Successfully");
-                            // }
-                            // success: function (response) {
-                            //     if(parseInt(response) > 0) {
-                            //         $('#calendar').fullCalendar('removeEvents', event.id);
-                            //         displayMessage("Deleted Successfully");
-                            //     }
-                            // }
-                        });
-                    // }
+                    window.location.href = guestUrl + '/' + event.id;
+                    $.ajax({
+                        type: "GET",
+                        url: guestUrl + '/' + event.id,
+                        data: event.id,
+                    });
                 }
 
             });
         });
 
         function displayMessage(message) {
-            $(".response").html("<div class='success'>"+message+"</div>");
-            setInterval(function() { $(".success").fadeOut(); }, 1000);
+            $(".response").html("<div class='success'>" + message + "</div>");
+            setInterval(function () {
+                $(".success").fadeOut();
+            }, 1000);
         }
     </script>
 @endsection
