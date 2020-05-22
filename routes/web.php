@@ -66,6 +66,7 @@ Route::group(['prefix' => 'gym', 'namespace' => 'Gym'], function () {
     Route::group(['middleware' => ['auth.employee']], function () {
 
         Route::get('/dashboard', ['as' => 'gym.home', 'uses' => 'DashboardController@dashboard']);
+        Route::get('/calendar', ['as' => 'gym.calendar', 'uses' => 'DashboardController@calendar']);
         Route::get('/profile', ['as' => 'gym.profile', 'uses' => 'AuthController@profile']);
         Route::post('/profile', ['as' => 'gym.profile', 'uses' => 'AuthController@updateProfile']);
 
