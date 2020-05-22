@@ -40,9 +40,17 @@ class AuthController extends Controller
             if (Auth::guard('employee')->attempt($request->only('email', 'password'), $request->filled('remember'))) {
                 //Authentication passed...
                 ActivityLogsController::insertLog("Login . . . !");
-                return redirect()
-                    ->intended(route('gym.home'))
-                    ->with('status', 'You are Logged in as Gym Super-Admin!');
+                foreach (Auth::guard('employee')->user()->gym->gymPermissions as $gymPermission) {
+                    if ($gymPermission->gym_module_id == "1") {
+                        return redirect()
+                            ->intended(route('gym.home'))
+                            ->with('status', 'You are Logged in as Gym Super-Admin!');
+                    } else {
+                        return redirect()
+                            ->intended(route('gym.profile'))
+                            ->with('status', 'You are Logged in as Gym Super-Admin!');
+                    }
+                }
             }
             //Authentication failed...
             return $this->loginFailed();

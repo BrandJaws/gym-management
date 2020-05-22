@@ -14,6 +14,7 @@ class GymModulesSeeder extends Seeder
     {
         GymModule::truncate();
         $modules = array(
+            array('name' => 'Dashboard', 'route' => 'gym.home', 'activeRoute' => 'gym/dashboard', 'icon' => 'flaticon-home'),
             array('name' => 'Membership', 'route' => 'membership.list', 'activeRoute' => 'gym/membership', 'icon' => 'flaticon-network'),
             array('name' => 'Employee', 'route' => 'employee.list', 'activeRoute' => 'gym/employee', 'icon' => 'flaticon-avatar'),
             array('name' => 'Members', 'route' => 'member.dashboard', 'activeRoute' => 'gym/member', 'icon' => 'flaticon-avatar'),
