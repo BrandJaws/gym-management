@@ -9,7 +9,7 @@ export default {
         perPage: 0,
         shopProductList: [],
         categoryList:[],
-        productShopList:[]
+        productShopList:[],
     },
     mutations: {
         setShopCatgoryList(state, shopCatgoryList) {

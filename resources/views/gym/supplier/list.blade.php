@@ -24,7 +24,7 @@
                             <!--begin::Section-->
                             <div class="kt-section">
                                 <div class="kt-section__content">
-                                    <div class="    ">
+                                    <div class="">
                                         <div class="row">
                                             <div class="col-md-9">
 

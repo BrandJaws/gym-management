@@ -1,48 +1,59 @@
 <template>
-    <div class="container-fluid ">
+    <div class="kt-content  kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor" id="kt_content">
+        <!-- begin:: Content -->
         <div class="kt-container  kt-container--fluid  kt-grid__item kt-grid__item--fluid">
-            <!--begin::Portlet-->
-            <div class="kt-portlet">
-                <div class="kt-portlet__body">
-                    <div class="kt-pricing-1 kt-pricing-1--fixed">
-                        <div class="kt-pricing-1__items row">
-                            <div class="kt-pricing-1__item col-lg-3">
-                                <div class="kt-portlet__head">
-                                    <div class="kt-portlet__head-label">
+            <div class="row">
+                <div class="col-sm-12">
+                    <!--begin::Portlet-->
+                    <div class="kt-portlet">
+                        <div class="kt-portlet__head" style="align-items: center">
+                            <div class="kt-portlet__head-label">
+                                <h3 class="kt-portlet__head-title">
+                                    Shop
+                                </h3>
+                            </div>
+                            <div class="dropdown dropdown-inline"></div>
+                        </div>
+                        <div class="kt-portlet__body">
+                            <div class="kt-pricing-1 kt-pricing-1--fixed">
+                                <div class="kt-pricing-1__items row">
+                                    <div class="kt-pricing-1__item col-lg-3">
+                                        <div class="kt-portlet__head">
+                                            <div class="kt-portlet__head-label">
                                         <span class="kt-portlet__head-icon">
                                             <a :href="'../../gym/shop/category/add/'"
                                                class="btn btn-label-primary "><i class="fa fa-plus"></i> </a>
                                         </span>
-                                        <h3 class="kt-portlet__head-title">
-                                            Shop Category
-                                        </h3>
-                                    </div>
-                                </div>
-                                <vue-good-table
-                                    v-loading="loading"
-                                    @on-cell-click="fetchShopProduct"
-                                    title="Shop Category"
-                                    globalSearch="true"
-                                    :responsive="true"
-                                    :lineNumbers="false"
-                                    class="styled"
-                                    styleClass="table table-striped table-bordered"
-                                    mode="remote"
-                                    :columns="columns"
-                                    :rows="shopCatgoryList"
-                                    :totalRows="totalRecords"
-                                    paginate="true"
-                                    :pagination-options="{
+                                                <h3 class="kt-portlet__head-title">
+                                                    Shop Category
+                                                </h3>
+                                            </div>
+                                        </div>
+                                        <vue-good-table
+                                            v-loading="loading"
+                                            @on-cell-click="fetchShopProduct"
+                                            title="Shop Category"
+                                            globalSearch="true"
+                                            :responsive="true"
+                                            :lineNumbers="false"
+                                            class="styled"
+                                            styleClass="table table-striped table-bordered"
+                                            mode="remote"
+                                            :columns="columns"
+                                            :rows="shopCatgoryList"
+                                            :totalRows="totalRecords"
+                                            paginate="true"
+                                            :pagination-options="{
                                         enabled: true,
                                         perPageDropdown: [5, 10, 15],
                                         perPage:serverParams.perPage
                                     }"
-                                    :search-options="{
+                                            :search-options="{
                                         enabled: false,
                                     }"
-                                    @on-page-change="onPageChange"
-                                    @on-per-page-change="onPerPageChange">
-                                    <template slot="table-row" slot-scope="props">
+                                            @on-page-change="onPageChange"
+                                            @on-per-page-change="onPerPageChange">
+                                            <template slot="table-row" slot-scope="props">
                                         <span v-if="props.column.field == 'action'" class="grid-action-icons">
                                              <a :href="'../../gym/shop/category/edit/'+props.row.id"
                                                 class="btn btn-label-primary btn-pill">
@@ -51,64 +62,67 @@
                                                class="btn btn-label-success btn-pill"><i
                                                 class="fa fa-trash"></i></a>
                                         </span>
-                                    </template>
-                                </vue-good-table>
-                            </div>
-                            <div class="kt-pricing-1__item  col-lg-9">
-                                <div class="kt-portlet__head ">
-                                    <div class="kt-portlet__head-label">
+                                            </template>
+                                        </vue-good-table>
+                                    </div>
+                                    <div class="kt-pricing-1__item  col-lg-9">
+                                        <div class="kt-portlet__head ">
+                                            <div class="kt-portlet__head-label">
                                         <span v-if="productForm.categoryId">
                                         <a :href="'../../gym/shop/product/add/'+ productForm.categoryId"
                                            class="btn btn-label-primary "><i class="fa fa-plus"></i> </a>
                                         </span>
-                                        <span v-else>
+                                                <span v-else>
                                              <a href="#"
                                                 class="btn btn-label-primary disabled "><i class="fa fa-plus"></i>  </a>
                                         </span>
-                                        &nbsp;&nbsp;&nbsp;
-                                        <h3 class="kt-portlet__head-title">
-                                            Shop Product
-                                        </h3>
+                                                &nbsp;&nbsp;&nbsp;
+                                                <h3 class="kt-portlet__head-title">
+                                                    Shop Product
+                                                </h3>
+                                            </div>
+                                        </div>
+                                        <table class="table table-hover">
+                                            <thead>
+                                            <tr>
+                                                <th>Name</th>
+                                                <th>Price</th>
+                                                <th>In Stock</th>
+                                                <th>Visible</th>
+                                                <th>-</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody v-if="shopProductList.length">
+                                            <tr v-for="item in shopProductList">
+                                                <td>{{ item.name }}</td>
+                                                <td>{{ item.price }}</td>
+                                                <td>{{ item.in_stock }}</td>
+                                                <td>{{ item.visible }}</td>
+                                                <td>
+                                                    <a :href="'../../gym/shop/product/edit/'+item.id"
+                                                       class="btn btn-label-primary btn-pill">
+                                                        <i class="fa fa-edit"></i></a>
+                                                    <a @click="deleteShopProduct(item.id)"
+                                                       class="btn btn-label-success btn-pill"><i
+                                                        class="fa fa-trash"></i></a>
+                                                </td>
+                                            </tr>
+                                            </tbody>
+                                            <tbody v-else>
+                                            <tr>
+                                                <td colspa="3">No data for table</td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
                                     </div>
                                 </div>
-                                <table class="table table-hover">
-                                    <thead>
-                                    <tr>
-                                        <th>Name</th>
-                                        <th>Price</th>
-                                        <th>In Stock</th>
-                                        <th>Visible</th>
-                                        <th>-</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody v-if="shopProductList.length">
-                                    <tr v-for="item in shopProductList">
-                                        <td>{{ item.name }}</td>
-                                        <td>{{ item.price }}</td>
-                                        <td>{{ item.in_stock }}</td>
-                                        <td>{{ item.visible }}</td>
-                                        <td>
-                                            <a :href="'../../gym/shop/product/edit/'+item.id"
-                                               class="btn btn-label-primary btn-pill">
-                                                <i class="fa fa-edit"></i></a>
-                                            <a @click="deleteShopProduct(item.id)"
-                                               class="btn btn-label-success btn-pill"><i
-                                                class="fa fa-trash"></i></a>
-                                        </td>
-                                    </tr>
-                                    </tbody>
-                                    <tbody v-else>
-                                    <tr>
-                                        <td colspa="3">No data for table</td>
-                                    </tr>
-                                    </tbody>
-                                </table>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+        <!-- end:: Content -->
     </div>
 </template>
 
@@ -204,6 +218,7 @@
                 }
                 this.loading = false;
             },
+
             deleteShopCategory(params) {
                 this.$store.dispatch('deleteShopCategory', {id: params.id}).then(response => {
                     this.handleFilter();
@@ -211,9 +226,24 @@
                     console.log(error);
                 });
             },
+            fetchShopProduct(params) {
+                try {
+                    if (params.row.id != "") {
+                        this.$store.dispatch('fetchShopProduct', {id: params.row.id}).then(() => {
+                            this.productForm.categoryId = params.row.id;
+                        });
+                    } else {
+                        this.$store.dispatch('fetchShopProduct', {id: params}).then(() => {
+                            this.productForm.categoryId = params;
+                        });
+                    }
+                } catch (e) {
+                    this.error = e
+                }
+            },
             deleteShopProduct(params) {
                 this.$store.dispatch('deleteShopProduct', {id: params}).then(response => {
-                    // this.handleFilter();
+                     this.fetchShopProduct(params);
                 }).catch(error => {
                     console.log(error);
                 });
@@ -222,15 +252,6 @@
                 this.fetchShopCategory();
             },
 
-            fetchShopProduct(params) {
-                try {
-                    this.$store.dispatch('fetchShopProduct', {id: params.row.id}).then(() => {
-                        this.productForm.categoryId = params.row.id;
-                    });
-                } catch (e) {
-                    this.error = e
-                }
-            },
         }
     }
 </script>

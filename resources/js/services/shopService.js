@@ -12,6 +12,6 @@ export default {
         return Shop().get('/gym/shop/categoryDestroy/' + params.id);
     },
     deleteShopProduct(params) {
-        return Shop().get('/gym/shop/product/productDestroy/' + params);
+        return Shop().get('/gym/shop/product/productDestroy/' + params.id);
     },
 };

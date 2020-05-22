@@ -288,7 +288,6 @@ class ShopController extends Controller
     public function destroyProduct($id)
     {
         try {
-            dd($id);
             ShopProduct::destroy($id);
             $this->deleteProductImg($id);
             ShopProduct::where('category_id', $id)->delete();
