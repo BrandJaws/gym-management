@@ -51,6 +51,9 @@ class AuthController extends Controller
                             ->with('status', 'You are Logged in as Gym Super-Admin!');
                     }
                 }
+                return redirect()
+                    ->intended(route('gym.profile'))
+                    ->with('status', 'You are Logged in as Gym Admin!');
             }
             //Authentication failed...
             return $this->loginFailed();
