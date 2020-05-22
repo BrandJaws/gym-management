@@ -485,5 +485,8 @@
         max-height: 1242px !important;
         margin: 1.75rem auto;
     }
+    .kt-grid.kt-grid--hor:not(.kt-grid--desktop):not(.kt-grid--desktop-and-tablet):not(.kt-grid--tablet):not(.kt-grid--tablet-and-mobile):not(.kt-grid--mobile) {
+        background: #f2f3f8  !important;
+    }
 </style>
 
