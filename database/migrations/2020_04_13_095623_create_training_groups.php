@@ -16,7 +16,7 @@ class CreateTrainingGroups extends Migration
         Schema::create('training_groups', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->bigInteger('gym_id')->unsigned();
-            $table->text('member_id');
+            $table->text('member_id')->nullable();
             $table->integer('training_id',false,true);
             $table->timestamps();
         });

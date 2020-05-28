@@ -57,7 +57,6 @@ class TrainingGroupController extends Controller
     {
         try {
             $request->validate([
-                'members' => 'required',
                 'training_id' => 'required',
             ]);
             TrainingGroup::where('id', $request->id)->delete();
