@@ -241,12 +241,12 @@
                                                         <div class="col-md-9">
                                                             <div class="kt-portlet__head-label">
                                                                 <h5 class="kt-portlet__head-title">
-                                                                    {{ $training->seats  }}-{{ $groupCount  }} &nbsp;&nbsp;&nbsp;
+                                                                    {{ $training->seats  }}&nbsp;
                                                                     Persons Taking this Training
                                                                 </h5>
                                                             </div>
                                                         </div>
-                                                        <div class="col-md-3">
+                                                        <div class="col-md-3 mt-5">
                                                             <div class="form-group">
                                                                 <div class="kt-input-icon kt-input-icon--right">
                                                                     @if($trainingMember == "")
@@ -260,6 +260,7 @@
                                                             </div>
                                                         </div>
                                                     </div>
+                                                    <h4>Add Members</h4>
                                                     <form action="{{ route('training.editTrainingGroup') }}"
                                                           method="POST"
                                                           enctype="multipart/form-data">
