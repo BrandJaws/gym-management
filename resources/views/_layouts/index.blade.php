@@ -49,7 +49,7 @@
 <div id="kt_header_mobile" class="kt-header-mobile  kt-header-mobile--fixed ">
     <div class="kt-header-mobile__logo">
         <a href="{{url('admin/dashboard')}}">
-            <img alt="Logo" src="{{asset('assets/media/logos/logo-light.png')}}"/>
+            <img alt="Logo" src="{{asset('assets/media/logos/brandjaws.png')}}" height="50px" />
         </a>
     </div>
     <div class="kt-header-mobile__toolbar">

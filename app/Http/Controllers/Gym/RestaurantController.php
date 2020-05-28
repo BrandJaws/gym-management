@@ -33,7 +33,8 @@ class RestaurantController extends Controller
     public function restaurantList(Request $request)
     {
         try {
-            RestaurantOrder::all();
+            $gym_id = Auth::guard('employee')->user()->gym_id;
+            RestaurantOrder::where('gym_id', '=', $gym_id)->get();
             ActivityLogsController::insertLog(" ");
             return view('gym.restaurant.list');
         } catch (\Exception $e) {
@@ -505,8 +506,8 @@ class RestaurantController extends Controller
             $gym_id = Auth::guard('employee')->user()->gym_id;
             $member = Member::where('gym_id', Auth::guard('employee')->user()->gym_id)->where('type', 'Member')->orderBy('id', 'asc')->get();
             ActivityLogsController::insertLog("Order Archive Page");
-            $order = RestaurantOrder::getOrderReport($gym_id,$request->member_id,$request->fromDate,$request->toDate);
-            return view('gym.restaurant.orderArchive', compact('member','order'));
+            $order = RestaurantOrder::getOrderReport($gym_id, $request->member_id, $request->fromDate, $request->toDate);
+            return view('gym.restaurant.orderArchive', compact('member', 'order'));
         } catch (\Exception $e) {
             return back()->with('error', 'Oops, something was not right');
         }
@@ -515,11 +516,11 @@ class RestaurantController extends Controller
     public function getOrderReport(Request $request)
     {
 
-            $member = Member::where('gym_id', Auth::guard('employee')->user()->gym_id)->where('type', 'Member')->orderBy('id', 'asc')->get();
-            $gym_id = Auth::guard('employee')->user()->gym_id;
-            $order = RestaurantOrder::getOrderReport($gym_id,$request->member_id,$request->fromDate,$request->toDate);
-            ActivityLogsController::insertLog("Order Archive Page");
-            return view('gym.restaurant.orderArchive', compact('member','order'));
+        $member = Member::where('gym_id', Auth::guard('employee')->user()->gym_id)->where('type', 'Member')->orderBy('id', 'asc')->get();
+        $gym_id = Auth::guard('employee')->user()->gym_id;
+        $order = RestaurantOrder::getOrderReport($gym_id, $request->member_id, $request->fromDate, $request->toDate);
+        ActivityLogsController::insertLog("Order Archive Page");
+        return view('gym.restaurant.orderArchive', compact('member', 'order'));
 
     }
 }
