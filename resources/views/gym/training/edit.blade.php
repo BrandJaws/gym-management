@@ -275,7 +275,10 @@
                                                         @if($errors->has('training_id'))
                                                             <div class="error">{{ $errors->first('training_id') }}</div>
                                                         @endif
-                                                        <input type="hidden" value="{{$trainingMember->id}}" name="id">
+                                                        @if($trainingMember != "")
+                                                            <input type="hidden" value="{{$trainingMember->id}}"
+                                                                   name="id">
+                                                        @endif
                                                         <div class="row">
                                                             <div class="col-lg-12 form-group gymDropdown">
                                                                 @if(count($memberList) > 0)
