@@ -27,6 +27,7 @@ class GymModulesSeeder extends Seeder
             array('name' => 'Profile', 'route' => 'gym.profile', 'activeRoute' => 'admin/auth', 'icon' => 'flaticon-user'),
             array('name' => 'Shop', 'route' => 'shop.list', 'activeRoute' => 'gym/shop', 'icon' => 'flaticon2-shopping-cart-1'),
             array('name' => 'Restaurant', 'route' => 'restaurant.list', 'activeRoute' => 'gym/restaurant', 'icon' => 'fa fa-hotel'),
+            array('name' => 'Reports', 'route' => 'report.list', 'activeRoute' => 'gym/report', 'icon' => 'fa fa-file'),
         );
         GymModule::insert($modules);
     }

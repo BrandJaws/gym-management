@@ -270,5 +270,13 @@ Route::group(['prefix' => 'gym', 'namespace' => 'Gym'], function () {
             Route::post('order/archive/report', ['as' => 'getOrderReport', 'uses' => 'RestaurantController@getOrderReport']);
 
         });
+
+        /*-----------------------------------------------------------------------------------*/
+        /*------------------------------------ Reports Routes --------------------------------*/
+        /*-----------------------------------------------------------------------------------*/
+
+        Route::group(['as' => 'report.', 'prefix' => 'report'], function () {
+            Route::get('/', ['as' => 'list', 'uses' => 'ReportController@index']);
+        });
     });
 });
