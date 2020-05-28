@@ -11,21 +11,24 @@ class TrainingGroupController extends Controller
 {
     public function createTrainingGroup(Request $request)
     {
-        $request->validate([
-            'member' => 'required',
-            'training_id' => 'required',
-        ]);
-        $group = TrainingGroup::where('member_id', '=', $request->member)->first();
-        if ($group === null) {
-            $post = TrainingGroup::updateOrCreate(['id' => $request->id], [
-                'member_id' => $request->member,
-                'gym_id' => Auth::guard('employee')->user()->gym_id,
-                'training_id' => $request->training_id,
+        try {
+            $request->validate([
+                'members' => 'required',
+                'training_id' => 'required',
             ]);
-            ActivityLogsController::insertLog("Add/Update Training Group ");
-            return response()->json(['code' => 200, 'message' => 'Post Created successfully', 'data' => $post], 200);
+            $gym_id = Auth::guard('employee')->user()->gym_id;
+            $trainingGroup = new TrainingGroup();
+            $trainingGroup->gym_id = $gym_id;
+            $trainingGroup->training_id = $request->training_id;
+            if ($request->members != "") {
+                $trainingGroup->member_id = implode(',', $request->members);
+            }
+            $trainingGroup->save();
+            ActivityLogsController::insertLog("Add Training Group ");
+            return back()->with('success', 'Add Training Group Successfully!');
+        } catch (\Exception $e) {
+            return back()->with('error', 'Oops, something was not right in treasury update page');
         }
-        return response()->json(['code' => 400, 'message' => 'error'], 400);
     }
 
     public function editTrainingGroup($id)
@@ -45,6 +48,29 @@ class TrainingGroupController extends Controller
             TrainingGroup::find($id)->delete();
             ActivityLogsController::insertLog("Delete Training Group ");
             return response()->json(['success' => 'Post Deleted successfully']);
+        } catch (\Exception $e) {
+            return back()->with('error', 'Oops, something was not right in treasury update page');
+        }
+    }
+
+    public function updateTrainingGroup(Request $request)
+    {
+        try {
+            $request->validate([
+                'members' => 'required',
+                'training_id' => 'required',
+            ]);
+            TrainingGroup::where('id', $request->id)->delete();
+            $gym_id = Auth::guard('employee')->user()->gym_id;
+            $trainingGroup = new TrainingGroup();
+            $trainingGroup->gym_id = $gym_id;
+            $trainingGroup->training_id = $request->training_id;
+            if ($request->members != "") {
+                $trainingGroup->member_id = implode(',', $request->members);
+            }
+            $trainingGroup->save();
+            ActivityLogsController::insertLog("Update Training Group ");
+            return back()->with('success', 'Add Training Group Successfully!');
         } catch (\Exception $e) {
             return back()->with('error', 'Oops, something was not right in treasury update page');
         }

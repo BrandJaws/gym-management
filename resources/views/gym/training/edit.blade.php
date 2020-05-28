@@ -241,102 +241,107 @@
                                                         <div class="col-md-9">
                                                             <div class="kt-portlet__head-label">
                                                                 <h5 class="kt-portlet__head-title">
-                                                                    {{ $training->seats  }}-{{ $groupCount  }} &nbsp;&nbsp;&nbsp; Persons Taking this Training
+                                                                    {{ $training->seats  }}-{{ $groupCount  }} &nbsp;&nbsp;&nbsp;
+                                                                    Persons Taking this Training
                                                                 </h5>
                                                             </div>
                                                         </div>
                                                         <div class="col-md-3">
                                                             <div class="form-group">
                                                                 <div class="kt-input-icon kt-input-icon--right">
-                                                                    <a href="javascript:void(0)"
-                                                                       class="btn btn-success mb-3" id="create-new-post"
-                                                                       onclick="addPost()">Add Post</a>
+                                                                    @if($trainingMember == "")
+                                                                        <button type="button"
+                                                                                class="btn btn-bold btn-label-brand btn-sm"
+                                                                                data-toggle="modal"
+                                                                                data-target="#kt_modal_3">Add
+                                                                        </button>
+                                                                    @endif
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="">
-                                                        <table class="table table-striped table-bordered">
-                                                            <thead>
-                                                            <tr>
-                                                                <th>ID</th>
-                                                                <th>Member</th>
-                                                                <th>Actions</th>
-                                                            </tr>
-                                                            </thead>
-                                                            <tbody>
-                                                            @foreach($trainingGroup as $post)
-                                                                <tr id="row_{{$post->id}}">
-                                                                    <td>{{ $post->id  }}</td>
-                                                                    <td>{{ $post->Member }}</td>
-                                                                    <td><a href="javascript:void(0)"
-                                                                           data-id="{{ $post->id }}"
-                                                                           onclick="editPost(event.target)"
-                                                                           class="btn btn-info">Edit</a> |
-                                                                        <a href="javascript:void(0)"
-                                                                           data-id="{{ $post->id }}"
-                                                                           class="btn btn-danger"
-                                                                           onclick="deletePost(event.target)">Delete</a>
-                                                                    </td>
-                                                                </tr>
-                                                            @endforeach
-                                                            </tbody>
-                                                        </table>
-                                                    </div>
+                                                    <form action="{{ route('training.editTrainingGroup') }}"
+                                                          method="POST"
+                                                          enctype="multipart/form-data">
+                                                        @csrf
+                                                        <input type="hidden" value="{{ $training->id }}"
+                                                               name="training_id">
+                                                        @if($errors->has('training_id'))
+                                                            <div class="error">{{ $errors->first('training_id') }}</div>
+                                                        @endif
+                                                        <input type="hidden" value="{{ $training->id }}"
+                                                               name="training_id">
+                                                        @if($errors->has('training_id'))
+                                                            <div class="error">{{ $errors->first('training_id') }}</div>
+                                                        @endif
+                                                        <input type="hidden" value="{{$trainingMember->id}}" name="id">
+                                                        <div class="row">
+                                                            <div class="col-lg-12 form-group gymDropdown">
+                                                                @if(count($memberList) > 0)
+                                                                    <select class="form-control kt-select2"
+                                                                            id="kt_select2_3"
+                                                                            name="members[]"
+                                                                            multiple="multiple">
+                                                                        @foreach ($member as $list)
+                                                                            <option
+                                                                                value="{{$list->id}}" {{in_array("$list->id",$memberList)?"selected":""}} >{{$list->name}}</option>
+                                                                        @endforeach
+                                                                    </select>
+                                                                @endif
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <input type="submit" class="btn btn-primary"
+                                                                       value="Update">
+                                                            </div>
+                                                        </div>
+                                                    </form>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                     <!--end::Section-->
                                 </div>
-
-
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="modal fade" id="post-modal" aria-hidden="true">
-                <div class="modal-dialog">
+            <div class="modal fade" id="kt_modal_3" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                 aria-hidden="true">
+                <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h4 class="modal-title"></h4>
+                            <h5 class="modal-title" id="exampleModalLabel">Add </h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            </button>
                         </div>
-                        <div class="modal-body">
-                            <form name="userForm" class="form-horizontal">
-                                <input type="hidden" name="post_id" id="post_id">
-                                <div class="form-group">
-                                    <label for="name" class="col-sm-2">Members</label>
-                                    <div class="col-sm-12">
-                                        <select class="form-control kt-select2" id="member" name="member"
-                                                autofocus
-                                                required>
-                                            @foreach ($member as $value)
-                                                <option value="{{$value->id}}">{{$value->name}}</option>
-                                            @endforeach
-                                        </select>
-                                        <span id="titleError" class="alert-message"></span>
-                                        @if($errors->has('member'))
-                                            <div class="error">{{ $errors->first('member') }}</div>
-                                        @endif
-                                    </div>
-                                </div>
-
-                                <div class="form-group">
-                                    <div class="col-sm-12">
-                                        <input type="hidden" class="form-control" id="training_id" name="training_id"
-                                               value="{{ $training->id }}">
-                                        <span id="descriptionError" class="alert-message"></span>
-                                        @if($errors->has('training_id'))
-                                            <div class="error">{{ $errors->first('training_id') }}</div>
-                                        @endif
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-primary" onclick="createPost()">Save</button>
-                        </div>
+                        <form action="{{ route('training.createTrainingGroup') }}" method="POST"
+                              enctype="multipart/form-data">
+                            @csrf
+                            <input type="hidden" value="{{ $training->id }}" name="training_id">
+                            @if($errors->has('training_id'))
+                                <div class="error">{{ $errors->first('training_id') }}</div>
+                            @endif
+                            <div class="col-lg-12 form-group gymDropdown">
+                                <label>Members :</label>
+                                @if(count($member) > 0)
+                                    <select class="form-control kt-select2" id="kt_select2_3"
+                                            name="members[]"
+                                            multiple="multiple">
+                                        @foreach ($member as $list)
+                                            <option value="{{$list->id}}">{{$list->name}}</option>
+                                        @endforeach
+                                    </select>
+                                @endif
+                            </div>
+                            @if($errors->has('members'))
+                                <div class="error">{{ $errors->first('members') }}</div>
+                            @endif
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <input type="submit" class="btn btn-primary" value="Save">
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -439,90 +444,5 @@
                 }
             }
         }
-    </script>
-
-
-    <script>
-        $('#laravel_crud').DataTable();
-
-        function addPost() {
-            $('#post-modal').modal('show');
-        }
-
-        function editPost(event) {
-            var id = $(event).data("id");
-            let _url = `/gym/training/editTrainingGroup/${id}`;
-            $('#titleError').text('');
-            $('#descriptionError').text('');
-
-            $.ajax({
-                url: _url,
-                type: "GET",
-                success: function (response) {
-                    if (response) {
-                        $("#post_id").val(response.id);
-                        $("#member").val(response.member);
-                        $("#training_id").val(response.training_id);
-                        $('#post-modal').modal('show');
-                    }
-                }
-            });
-        }
-
-        function createPost() {
-            var member = $('#member').val();
-            var training_id = $('#training_id').val();
-            var id = $('#post_id').val();
-
-            let _url = `/gym/training/createTrainingGroup`;
-            let _token = $('meta[name="csrf-token"]').attr('content');
-
-            $.ajax({
-                url: _url,
-                type: "POST",
-                data: {
-                    id: id,
-                    member: member,
-                    training_id: training_id,
-                    _token: _token
-                },
-                success: function (response) {
-                    if (response.code == 200) {
-                        if (id != "") {
-                            $("#row_" + id + " td:nth-child(2)").html(response.data.Member);
-                            $("#row_" + id + " td:nth-child(3)").html(response.data.training_id);
-                        } else {
-                            $('table tbody').prepend('<tr id="row_' + response.data.id + '"><td>' + response.data.id + '</td><td>' + response.data.Member + '</td><td><a href="javascript:void(0)" data-id="' + response.data.id + '" onclick="editPost(event.target)" class="btn btn-info"><i class="fa fa-edit"></i></a>|<a href="javascript:void(0)" data-id="' + response.data.id + '" class="btn btn-danger" onclick="deletePost(event.target)">Delete</a></td></tr>');
-                        }
-                        $('#member').val('');
-                        $('#training_id').val('');
-
-                        $('#post-modal').modal('hide');
-                    }
-                },
-                error: function (response) {
-                    $('#titleError').text(response.responseJSON.errors.member);
-                    $('#descriptionError').text(response.responseJSON.errors.training_id);
-                }
-            });
-        }
-
-        function deletePost(event) {
-            var id = $(event).data("id");
-            let _url = `/gym/training/destroyTrainingGroup/${id}`;
-            let _token = $('meta[name="csrf-token"]').attr('content');
-
-            $.ajax({
-                url: _url,
-                type: 'DELETE',
-                data: {
-                    _token: _token
-                },
-                success: function (response) {
-                    $("#row_" + id).remove();
-                }
-            });
-        }
-
     </script>
 @endsection

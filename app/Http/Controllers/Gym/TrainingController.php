@@ -115,10 +115,20 @@ class TrainingController extends Controller
             $groupCount = $trainingGroup->count();
             $trainer = Trainer::where('gym_id', '=', Auth::guard('employee')->user()->gym_id)->orderBy('id', 'asc')->get();
             $member = Member::where('gym_id', '=', Auth::guard('employee')->user()->gym_id)->where('type', '=', 'Member')->orderBy('id', 'asc')->get();
+            $memberList = [];
+            $trainingMember = TrainingGroup::where('training_id', $id)->first();
+            if ($trainingMember) {
+                $memberId = explode(',', $trainingMember->member_id);
+                foreach ($memberId as $fields) {
+                    array_push($memberList, $fields);
+                }
+            }
             ActivityLogsController::insertLog("Training Edit Page");
-            return view('gym.training.edit', compact('training', 'trainer', 'trainingGroup', 'member', 'groupCount'));
+            return view('gym.training.edit', compact('training', 'trainer', 'trainingGroup', 'member', 'groupCount', 'memberList', 'trainingMember'));
         } catch (\Exception $e) {
-            return back()->with('error', 'Oops, something was not right in treasury update page');
+            return response()->json([
+                'response' => $e
+            ], 400);
         }
     }
 
@@ -191,8 +201,6 @@ class TrainingController extends Controller
             return back()->with('error', 'Oops, something was not right in training delete function');
         }
     }
-
-
 
 
 }
