@@ -225,4 +225,35 @@ class Member extends Model
             $join->on('employees.id', 'members.leadOwner_id');
         })->get();
     }
+
+    public static function getGymMemberList($gym_id, $fromDate, $toDate)
+    {
+        return self::select([
+                'members.id',
+                'members.name as Member',
+                'members.rating',
+                'members.phone',
+                'members.source',
+                'members.joiningDate',
+                'members.status',
+                'members.type',
+                'members.leadOwner_id',
+                'members.relationShip',
+                'members.created_at',
+                'members.membership_id',
+                'members.created_at',
+                'members.memberType',
+                'members.relationShip',
+                'employees.name as Employee',
+                'employees.id',
+                'memberships.name as Membership',
+            ]
+        )->where(function ($query) use ($gym_id, $fromDate, $toDate) {
+            $query->where('members.gym_id', $gym_id)->where('members.type', 'Member')->whereBetween('members.created_at', array($fromDate, $toDate));
+        })->leftJoin('employees', function ($join) {
+            $join->on('employees.id', 'members.leadOwner_id');
+        })->leftJoin('memberships', function ($join) {
+            $join->on('memberships.id', 'members.membership_id');
+        })->get();
+    }
 }

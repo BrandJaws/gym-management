@@ -5,6 +5,6 @@ export default {
         return Reports().post('/gym/member/reports', params);
     },
     fetchGymLeads(params) {
-        return Reports().post('/gym/report', params);
+        return Reports().post('/gym/report/leads', params);
     },
 };
