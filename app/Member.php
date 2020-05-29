@@ -194,7 +194,7 @@ class Member extends Model
                 'memberships.name as Membership',
             ]
         )->where(function ($query) use ($empId, $fromDate, $toDate) {
-            $query->orWhere('members.leadOwner_id', $empId)->whereBetween('members.created_at', array($fromDate, $toDate));
+            $query->where('members.leadOwner_id', $empId)->whereBetween('members.created_at', array($fromDate, $toDate));
         })->leftJoin('employees', function ($join) {
             $join->on('employees.id', 'members.leadOwner_id');
         })->leftJoin('memberships', function ($join) {
@@ -202,5 +202,27 @@ class Member extends Model
         })->get();
     }
 
-
+    public static function getGymLeadList($gym_id, $fromDate, $toDate)
+    {
+        return self::select([
+                'members.id',
+                'members.name as Member',
+                'members.rating',
+                'members.phone',
+                'members.source',
+                'members.joiningDate',
+                'members.status',
+                'members.type',
+                'members.leadOwner_id',
+                'members.relationShip',
+                'members.created_at',
+                'employees.name as Employee',
+                'employees.id',
+            ]
+        )->where(function ($query) use ($gym_id, $fromDate, $toDate) {
+            $query->where('members.gym_id', $gym_id)->where('members.type', 'Lead')->whereBetween('members.created_at', array($fromDate, $toDate));
+        })->leftJoin('employees', function ($join) {
+            $join->on('employees.id', 'members.leadOwner_id');
+        })->get();
+    }
 }

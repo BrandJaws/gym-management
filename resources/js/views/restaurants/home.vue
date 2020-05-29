@@ -36,13 +36,13 @@
                                                     :totalRows="totalRecords"
                                                     paginate="true"
                                                     :pagination-options="{
-					                enabled: true,
-					                perPageDropdown: [5, 10, 15],
-					                perPage:serverParams.perPage
-				                   }"
-                                                    :search-options="{
-					                enabled: true,
-				                }"
+                                                        enabled: true,
+                                                        perPageDropdown: [5, 10, 15],
+                                                        perPage:serverParams.perPage
+                                                       }"
+                                                                        :search-options="{
+                                                        enabled: true,
+                                                    }"
                                                     @on-page-change="onPageChange"
                                                     @on-per-page-change="onPerPageChange"
                                                     @on-search="search">
@@ -51,25 +51,25 @@
                                                            @on-row-click="onRowClick">save</a>
                                                     </template>
                                                     <template slot="table-row" slot-scope="props">
-                                    <span v-if="props.column.field == 'action'" class="grid-action-icons">
-                                        <a @click="inProcess(props.row)" v-if="props.row.in_process == 'NO' "
-                                           class="btn btn-label-danger btn-pill"> In Process</a>
-                                        <a v-else class="btn btn-label-danger btn-pill disabled"> In Progress <i
-                                            class="fa fa-check"></i> </a>
+                                                        <span v-if="props.column.field == 'action'" class="grid-action-icons">
+                                                            <a @click="inProcess(props.row)" v-if="props.row.in_process == 'NO' "
+                                                               class="btn btn-label-danger btn-pill"> In Process</a>
+                                                            <a v-else class="btn btn-label-danger btn-pill disabled"> In Progress <i
+                                                                class="fa fa-check"></i> </a>
 
-                                        <a @click="isReady(props.row)" v-if="props.row.is_ready == 'NO' "
-                                           class="btn btn-label-info btn-pill">Is Ready</a>
-                                        <a v-else class="btn btn-label-info btn-pill disabled">Is Ready <i
-                                            class="fa fa-check"></i> </a>
+                                                            <a @click="isReady(props.row)" v-if="props.row.is_ready == 'NO' "
+                                                               class="btn btn-label-info btn-pill">Is Ready</a>
+                                                            <a v-else class="btn btn-label-info btn-pill disabled">Is Ready <i
+                                                                class="fa fa-check"></i> </a>
 
-                                        <a @click="isServed(props.row)" v-if="props.row.is_served == 'NO' "
-                                           class="btn btn-label-success btn-pill">Is Served</a>
-                                        <a v-else class="btn btn-label-success btn-pill disabled">Is Served <i
-                                            class="fa fa-check"></i> </a>
-                                        <button type="button" class="btn btn-default" data-toggle="modal"
-                                                data-target="#myModal" @click="edit(props.row.id)"><i
-                                            class="fa fa-print"></i></button>
-                                    </span>
+                                                            <a @click="isServed(props.row)" v-if="props.row.is_served == 'NO' "
+                                                               class="btn btn-label-success btn-pill">Is Served</a>
+                                                            <a v-else class="btn btn-label-success btn-pill disabled">Is Served <i
+                                                                class="fa fa-check"></i> </a>
+                                                            <button type="button" class="btn btn-default" data-toggle="modal"
+                                                                    data-target="#myModal" @click="edit(props.row.id)"><i
+                                                                class="fa fa-print"></i></button>
+                                                        </span>
                                                     </template>
                                                 </vue-good-table>
                                             </div>
@@ -100,9 +100,9 @@
                                                                                 <h1 class="kt-invoice__title">
                                                                                     INVOICE</h1>
                                                                                 <div href="#" class="kt-invoice__logo">
-                                                                <span class="kt-invoice__desc">
-															<span>Order # {{  orderDetailList.id }}</span>
-														</span>
+                                                                                    <span class="kt-invoice__desc">
+                                                                                        <span>Order # {{  orderDetailList.id }}</span>
+                                                                                    </span>
                                                                                 </div>
                                                                             </div>
                                                                             <div class="kt-invoice__items">
@@ -485,8 +485,9 @@
         max-height: 1242px !important;
         margin: 1.75rem auto;
     }
+
     .kt-grid.kt-grid--hor:not(.kt-grid--desktop):not(.kt-grid--desktop-and-tablet):not(.kt-grid--tablet):not(.kt-grid--tablet-and-mobile):not(.kt-grid--mobile) {
-        background: #f2f3f8  !important;
+        background: #f2f3f8 !important;
     }
 </style>
 

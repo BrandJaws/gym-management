@@ -277,6 +277,7 @@ Route::group(['prefix' => 'gym', 'namespace' => 'Gym'], function () {
 
         Route::group(['as' => 'report.', 'prefix' => 'report'], function () {
             Route::get('/', ['as' => 'list', 'uses' => 'ReportController@index']);
+            Route::post('/', ['as' => 'list', 'uses' => 'ReportController@GymLeadReport']);
         });
     });
 });
