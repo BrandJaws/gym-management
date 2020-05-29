@@ -7,6 +7,7 @@ import store from "./store";
 // //attach Css files
 import "bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
+import VueExcelXlsx from "vue-excel-xlsx";
 /*
 import "./assets/css/jquery.ui.theme.min.css";
 import "./assets/css/jquery-ui.min.css";*/
@@ -24,7 +25,7 @@ import VueGoodTable from 'vue-good-table';
 import 'vue-good-table/dist/vue-good-table.min.css';
 import { Loading } from 'element-ui';
 Vue.use(Loading.directive);
-
+Vue.use(VueExcelXlsx);
 Vue.use(loading);
 Vue.use(VueGoodTable);
 Vue.config.productionTip = false;

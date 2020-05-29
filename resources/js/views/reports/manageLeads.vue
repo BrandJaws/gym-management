@@ -12,9 +12,17 @@
                     </h3>
                 </div>
                 <div class="dropdown dropdown-inline">
-                    <a href="http://127.0.0.1:8000/gym/employee/create" type="button" class="btn btn-brand btn-icon-sm">
-                        <i class="flaticon2-plus"></i> Add New
-                    </a>
+                    <div class="col-md-2">
+                        <vue-excel-xlsx
+                            class = "btn btn-primary"
+                            :data="gymLeadList"
+                            :columns="columns"
+                            :filename="'GymLeads'"
+                            :sheetname="'sheetname'"
+                        >
+                            Download
+                        </vue-excel-xlsx>
+                    </div>
                 </div>
             </div>
         <div class="row topbarSearchRow mt-5">
@@ -50,9 +58,9 @@
                             mode="remote">
                             <template slot="table-row" slot-scope="props">
                                 <span v-if="props.column.field == 'action'">
-                                    <a :href="'../../gym/member/edit/'+props.row.id"
-                                       class="btn btn-label-primary btn-pill">
-                                                             <i class="fa fa-edit"></i></a>
+                                    <a :href="'../../gym/member/edit/'+props.row.id" class="btn btn-label-primary btn-pill">
+                                        <i class="fa fa-edit"></i>
+                                    </a>
                                 </span>
                             </template>
                         </vue-good-table>
@@ -135,7 +143,7 @@
                         filterable: true,
                     },
                     {
-                        label: "Actions",
+                        label: "-",
                         tdClass: 'text-center',
                         thClass: 'text-center',
                         sortable: false,
