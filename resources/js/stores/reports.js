@@ -5,7 +5,8 @@ export default {
     strict: true,
     state: {
         leadList:[],
-        gymLeadList:[]
+        gymLeadList:[],
+        gymMembershipList:[]
     },
     mutations: {
         setLeadList(state, leadList) {
@@ -13,6 +14,9 @@ export default {
         },
         setGymLeadList(state, gymLeadList) {
             state.gymLeadList = gymLeadList.response;
+        },
+        setGymMembershipList(state, gymMembershipList) {
+            state.gymMembershipList = gymMembershipList.response;
         },
     },
     actions: {
@@ -36,6 +40,16 @@ export default {
                 });
             });
         },
+        fetchGymMembership({commit}, params) {
+            return new Promise((resolve, reject) => {
+                ReportsService.fetchGymMembership(params).then((response) => {
+                    commit('setGymMembershipList', response.data);
+                    resolve();
+                }).catch((error) => {
+                    reject(error);
+                });
+            });
+        },
 
     },
     getters: {
@@ -44,6 +58,9 @@ export default {
         },
         gymLeadList(state) {
             return state.gymLeadList;
+        },
+        gymMembershipList(state) {
+            return state.gymMembershipList;
         },
     }
 };

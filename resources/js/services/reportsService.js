@@ -7,4 +7,8 @@ export default {
     fetchGymLeads(params) {
         return Reports().post('/gym/report/leads', params);
     },
+    fetchGymMembership(params) {
+        return Reports().post('/gym/report/membership', params);
+    },
+
 };

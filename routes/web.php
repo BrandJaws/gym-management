@@ -276,9 +276,9 @@ Route::group(['prefix' => 'gym', 'namespace' => 'Gym'], function () {
         /*-----------------------------------------------------------------------------------*/
 
         Route::group(['as' => 'report.', 'prefix' => 'report'], function () {
-            Route::get('/leads', ['as' => 'list', 'uses' => 'ReportController@index']);
-            Route::get('/members', ['as' => 'members', 'uses' => 'ReportController@index']);
             Route::post('/leads', ['as' => 'list', 'uses' => 'ReportController@GymLeadReport']);
+            Route::get('/{any?}', 'ReportController@index')->where('any', '.*');
+            Route::post('/membership', ['as' => 'list', 'uses' => 'ReportController@gymMembershipList']);
         });
     });
 });

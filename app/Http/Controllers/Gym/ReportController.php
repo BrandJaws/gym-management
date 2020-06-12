@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Gym;
 use App\Employee;
 use App\Http\Controllers\Controller;
 use App\Member;
+use App\Membership;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -14,6 +15,24 @@ class ReportController extends Controller
     {
         try {
             return view('gym.reports.list');
+        } catch (\Exception $e) {
+            return back()->with('error', 'Oops, something was not right');
+        }
+    }
+
+    public function gymMembershipList(Request $request)
+    {
+        try {
+            $membership = Membership::all();
+            foreach ($membership as $fields) {
+                $membershipId = explode(',', $fields->gym_id);
+                dd($membershipId);
+                $membershipGym = Membership::all();
+            }
+
+            return response()->json([
+                'response' => $membership
+            ], 200);
         } catch (\Exception $e) {
             return back()->with('error', 'Oops, something was not right');
         }

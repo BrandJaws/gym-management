@@ -14,7 +14,7 @@
                       <span class="kt-subheader__breadcrumbs-separator"></span>
                       <router-link :to="{ name: 'manageMember' }" class="kt-subheader__breadcrumbs-link">  Members</router-link>
                       <span class="kt-subheader__breadcrumbs-separator"></span>
-                      <!-- <span class="kt-subheader__breadcrumbs-link kt-subheader__breadcrumbs-link--active">Active link</span> -->
+                      <router-link :to="{ name: 'manageMembership' }" class="kt-subheader__breadcrumbs-link">  Membership</router-link>
                   </div>
               </div>
               <div class="kt-subheader__toolbar">

@@ -2,6 +2,7 @@ import Lead from '../views/reports/leads.vue';
 import Member from '../views/reports/member.vue';
 import ManageLead from '../views/reports/manageLeads.vue';
 import ManageMember from '../views/reports/manageMembers.vue';
+import ManageMembership from '../views/reports/manageMembership.vue';
 
 export default{
     routes: [
@@ -22,6 +23,11 @@ export default{
             path: '/gym/report/members',
             name: 'manageMember',
             component: ManageMember,
+        },
+        {
+            path: '/gym/report/membership',
+            name: 'manageMembership',
+            component: ManageMembership,
         },
     ]
 };
