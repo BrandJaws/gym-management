@@ -16,6 +16,7 @@ export default {
             state.gymLeadList = gymLeadList.response;
         },
         setGymMembershipList(state, gymMembershipList) {
+            console.log(gymMembershipList);
             state.gymMembershipList = gymMembershipList.response;
         },
     },
@@ -60,6 +61,7 @@ export default {
             return state.gymLeadList;
         },
         gymMembershipList(state) {
+            console.log(state,"asds");
             return state.gymMembershipList;
         },
     }

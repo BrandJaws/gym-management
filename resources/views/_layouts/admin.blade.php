@@ -37,19 +37,19 @@
                 <div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--ver">
                     <div class="kt-grid__item kt-grid__item--middle">
                         <h3 class="kt-login__title">Welcome to Gym !</h3>
-                        <h4 class="kt-login__subtitle">Gym Admin</h4>
+{{--                        <h4 class="kt-login__subtitle">Gym Admin</h4>--}}
                     </div>
                 </div>
-                <div class="kt-grid__item">
-                    <div class="kt-login__info">
+                <div class="kt-grid__item" style="background:rgba(24,24,24,0.38); padding: 30px 50px; color: #ffffff">
+                    <div class="kt-login__info" >
                         <div class="kt-login__copyright">
-                            &copy 2020 Gym
+                            &copy 2020 | Developed by BrandJaws
                         </div>
-                        <div class="kt-login__menu">
-                            <a href="#" class="kt-link">Privacy</a>
-                            <a href="#" class="kt-link">Legal</a>
-                            <a href="#" class="kt-link">Contact</a>
-                        </div>
+{{--                        <div class="kt-login__menu">--}}
+{{--                            <a href="#" class="kt-link">Privacy</a>--}}
+{{--                            <a href="#" class="kt-link">Legal</a>--}}
+{{--                            <a href="#" class="kt-link">Contact</a>--}}
+{{--                        </div>--}}
                     </div>
                 </div>
             </div>

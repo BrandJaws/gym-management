@@ -8,7 +8,7 @@
             <div class="kt-portlet__head" style="align-items: center">
                 <div class="kt-portlet__head-label">
                     <h3 class="kt-portlet__head-title">
-                        List of Membership
+                        List of Memberships
                     </h3>
                 </div>
                 <div class="dropdown dropdown-inline">
@@ -38,7 +38,7 @@
             </div>
             <div class="col-md-2">
                 <label>-</label>
-                <button @click="fetchGymLeads" class="form-control btn btn-info">Search</button>
+                <button @click="fetchGymMembership" class="form-control btn btn-info">Search</button>
             </div>
         </div>
         <div class="row">
@@ -47,12 +47,12 @@
                     <div class="table table-border">
                         <vue-good-table
                             :columns="columns"
-                            :rows="gymLeadList"
+                            :rows="gymMembershipList"
                             :globalSearch="true"
                             :paginate="true"
                             :responsive="true"
                             v-loading="loading"
-                            title="Lead Report"
+                            title="Membership Report"
                             class="styled"
                             styleClass="table table-striped table-bordered"
                             mode="remote">
@@ -88,55 +88,52 @@
                     toDate: '',
                     status: '',
                     total: '',
-                    value: 'Lead'
                 },
 
                 columns: [
                     {
-                        label: 'Member',
-                        field: 'Member',
+                        label: 'Name',
+                        field: 'name',
                         tdClass: 'text-left',
                         thClass: 'text-left',
                         sortable: true,
                         filterable: true,
                     },
                     {
-                        label: 'Rating',
-                        field: 'rating',
+                        label: 'Registration Fee',
+                        field: 'registrationFee',
                         tdClass: 'text-left',
                         thClass: 'text-left',
                         sortable: true,
                         filterable: true,
                     },
                     {
-                        label: 'Source',
-                        field: 'source',
+                        label: 'Monthly Fee',
+                        field: 'monthlyFee',
                         tdClass: 'text-left',
                         thClass: 'text-left',
                         sortable: true,
                         filterable: true,
                     },
                     {
-                        label: 'Lead Owner',
-                        field: 'Employee',
+                        label: 'Affiliate Status',
+                        field: 'affiliateStatus',
                         tdClass: 'text-left',
                         thClass: 'text-left',
                         sortable: true,
                         filterable: true,
                     },
                     {
-                        label: 'Phone',
-                        field: 'phone',
+                        label: 'Monthly Fee',
+                        field: 'monthlyFee',
                         tdClass: 'text-left',
                         thClass: 'text-left',
                         sortable: true,
                         filterable: true,
                     },
                     {
-                        label: 'Date',
-                        field: 'created_at',
-                        dateInputFormat: 'yyyy-MM-dd', // expects 2018-03-16
-                        dateOutputFormat: 'dd MMM yyyy', // 12 outputs Mar 2018
+                        label: 'No Of Members',
+                        field: 'noOfMembers',
                         tdClass: 'text-left',
                         thClass: 'text-left',
                         sortable: true,
@@ -156,27 +153,15 @@
             "Content-Type": "multipart/form-data"
         },
         created() {
-            this.fetchGymLeads();
             this.fetchGymMembership();
         },
         computed: {
-            gymLeadList() {
-                var total = this.$store.getters.gymLeadList.length;
-                this.form.total = total;
-                return this.$store.getters.gymLeadList;
+            gymMembershipList() {
+                console.log(this.$store.getters.gymMembershipList,"its membership");
+                return this.$store.getters.gymMembershipList;
             },
         },
         methods: {
-            fetchGymLeads() {
-                this.error = '';
-                this.loading = true;
-                try {
-                    this.$store.dispatch("fetchGymLeads", this.form);
-                } catch (e) {
-                    this.error = e
-                }
-                this.loading = false;
-            },
             fetchGymMembership() {
                 this.error = '';
                 this.loading = true;

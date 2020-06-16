@@ -43,4 +43,14 @@ class Membership extends Model
     {
         return $this->belongsTo(Gym::class, 'gym_id');
     }
+
+    public static function getMembershipReport($gym_id, $fromDate, $toDate)
+    {
+        return self::select([
+                'memberships.*',
+            ]
+        )->where(function ($query) use ($gym_id, $fromDate, $toDate) {
+            $query->where('gym_id', $gym_id)->whereBetween('created_at', array($fromDate, $toDate));
+        })->get();
+    }
 }
