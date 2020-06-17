@@ -42,6 +42,12 @@ class Member extends Model
         return $this->belongsTo(Membership::class, 'membership_id');
     }
 
+    public function employee()
+    {
+        return $this->belongsTo(Employee::class, 'leadOwner_id','id');
+    }
+
+
     public function treasury()
     {
         return $this->belongsTo(Treasury::class, 'id', 'employee_id');

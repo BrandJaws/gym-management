@@ -30,6 +30,11 @@
                                     <div class="kt-portlet__body">
                                         <div class="form-group row">
                                             <div class="col-lg-6 form-group">
+                                                <label>Lead Owner :</label>
+                                                <input type="text" class="form-control" value="{{ $member->employee->name }}"
+                                                       disabled/>
+                                            </div>
+                                            <div class="col-lg-6 form-group">
                                                 <label>Lead Name :</label>
                                                 <input type="text" class="form-control" value="{{ $member->name }}"
                                                        disabled/>

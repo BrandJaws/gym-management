@@ -689,7 +689,7 @@ class MemberController extends Controller
 
     public function pipelineCreate($value, $id)
     {
-        try {
+
             switch ($value) {
                 case 'callScheduled':
                     $breadcrumbs = "Call Scheduled";
@@ -721,9 +721,7 @@ class MemberController extends Controller
             $employee = Employee::where('gym_id', Auth::guard('employee')->user()->gym_id)->get();
             ActivityLogsController::insertLog("Stage Create Page");
             return view('gym.member.archive.pipeline', compact('breadcrumbs', 'membership', 'member', 'employee'))->render();
-        } catch (\Exception $e) {
-            return back()->with('error', 'Oops, something was not right in member pipelineCreate function');
-        }
+
     }
 
     public function pipelineStore(Request $request)

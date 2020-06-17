@@ -126,7 +126,7 @@
                                 </thead>
                                 <tbody>
                                 <tr>
-                                    <td>
+                                    <td width="14.28%">
                                         <ul class="list-group  connectedSortable" id="Call-Scheduled">
                                             <li class="list-group-item inner"></li>
                                             @if(!empty($callScheduled) && $callScheduled->count())
@@ -162,7 +162,7 @@
                                             @endif
                                         </ul>
                                     </td>
-                                    <td>
+                                    <td width="14.28%">
                                         <ul class="list-group  connectedSortable" id="Appointment-Scheduled">
                                             <li class="list-group-item inner"></li>
                                             @if(!empty($appointmentScheduled) && $appointmentScheduled->count())
@@ -198,7 +198,7 @@
                                             @endif
                                         </ul>
                                     </td>
-                                    <td>
+                                    <td width="14.28%">
                                         <ul class="list-group shadow-lg connectedSortable"
                                             id="Presentation-Scheduled">
                                             <li class="list-group-item inner"></li>
@@ -235,7 +235,7 @@
                                             @endif
                                         </ul>
                                     </td>
-                                    <td>
+                                    <td width="14.28%">
                                         <ul class="list-group  connectedSortable" id="Contract-Sent">
                                             <li class="list-group-item inner"></li>
                                             @if(!empty($contractSent) && $contractSent->count())
@@ -271,7 +271,7 @@
                                             @endif
                                         </ul>
                                     </td>
-                                    <td>
+                                    <td width="14.28%">
                                         <ul class="list-group shadow-lg connectedSortable" id="Qualified-Buy">
                                             <li class="list-group-item inner"></li>
                                             @if(!empty($qualifiedBuy) && $qualifiedBuy->count())
@@ -307,7 +307,7 @@
                                             @endif
                                         </ul>
                                     </td>
-                                    <td>
+                                    <td width="14.28%">
                                         <ul class="list-group shadow-lg connectedSortable" id="Closed-Won">
                                             <li class="list-group-item inner"></li>
                                             @if(!empty($closedWon) && $closedWon->count())
@@ -343,7 +343,7 @@
                                             @endif
                                         </ul>
                                     </td>
-                                    <td>
+                                    <td width="15%">
                                         <ul class="list-group shadow-lg connectedSortable" id="Closed-Lost">
                                             <li class="list-group-item inner"></li>
                                             @if(!empty($closedLost) && $closedLost->count())
