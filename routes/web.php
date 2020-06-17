@@ -1,5 +1,9 @@
 <?php
 
+use App\Notifications\DatabaseNotification;
+use Illuminate\Support\Facades\Notification;
+use App\Employee;
+
 Route::get('/', ['as' => 'dashboard', 'uses' => 'HomeController@index']);
 
 /*-----------------------------------------------------------------------------------*/
@@ -63,7 +67,21 @@ Route::group(['prefix' => 'gym', 'namespace' => 'Gym'], function () {
     Route::post('/logout', ['as' => 'gym.logout', 'uses' => 'AuthController@logout']);
     Route::get('password/reset', ['as' => 'gym.reset', 'uses' => 'AuthController@reset']);
 
+
     Route::group(['middleware' => ['auth.employee']], function () {
+
+
+        Route::get('notify' , function (){
+            $employee = Employee::all();
+            $letter = collect(['title' => 'New policy update', 'body' => 'its notifications']);
+            Notification::send($employee, new DatabaseNotification($letter));
+            echo 'Notification send to all employee';
+        });
+
+        Route::get('markAsRead' , function (){
+            \Illuminate\Support\Facades\Auth::guard('employee')->user()->notifications->markAsRead();
+            return redirect()->back();
+        })->name('markAsRead');
 
         Route::get('/dashboard', ['as' => 'gym.home', 'uses' => 'DashboardController@dashboard']);
         Route::get('/calendar', ['as' => 'gym.calendar', 'uses' => 'DashboardController@calendar']);

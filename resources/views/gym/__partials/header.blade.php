@@ -47,13 +47,19 @@
                                    href="#topbar_notifications_notifications" role="tab"
                                    aria-selected="true">Schaduale</a>
                             </li>
+{{--                            <li class="nav-item">--}}
+{{--                                <a class="nav-link" data-toggle="tab" href="#topbar_notifications_events" role="tab"--}}
+{{--                                   aria-selected="false">Re-Schaduale</a>--}}
+{{--                            </li>--}}
+{{--                            <li class="nav-item">--}}
+{{--                                <a class="nav-link" data-toggle="tab" href="#topbar_notifications_logs" role="tab"--}}
+{{--                                   aria-selected="false">Logs</a>--}}
+{{--                            </li>--}}
                             <li class="nav-item">
-                                <a class="nav-link" data-toggle="tab" href="#topbar_notifications_events" role="tab"
-                                   aria-selected="false">Re-Schaduale</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" data-toggle="tab" href="#topbar_notifications_logs" role="tab"
-                                   aria-selected="false">Logs</a>
+                                <a href="{{ route('markAsRead') }}" class="btn btn-link">Mark All As Read</a>
+                                <span class="badge badge-danger">{{ Auth::guard('employee')->user()->unreadNotifications->count() }}</span>
+                                <a class="nav-link" data-toggle="tab" href="#topbar_notifications_All" role="tab"
+                                   aria-selected="false">Notification</a>
                             </li>
                         </ul>
                     </div>
@@ -118,6 +124,33 @@
                                         <div class="kt-notification__item-details">
                                             <div class="kt-notification__item-title">
                                                 {{ $row->activity }}
+                                            </div>
+                                            <div class="kt-notification__item-time">
+                                                {{ $row->created_at }}
+                                            </div>
+                                        </div>
+                                    </a>
+                                @endforeach
+                                <div class="ps__rail-x" style="left: 0px; bottom: 0px;">
+                                    <div class="ps__thumb-x" tabindex="0" style="left: 0px; width: 0px;"></div>
+                                </div>
+                                <div class="ps__rail-y" style="top: 0px; right: 0px; height: 300px;">
+                                    <div class="ps__thumb-y" tabindex="0" style="top: 0px; height: 108px;"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane" id="topbar_notifications_All" role="tabpanel">
+                            <div class="kt-notification kt-margin-t-10 kt-margin-b-10 kt-scroll ps ps--active-y"
+                                 data-scroll="true" data-height="300" data-mobile-height="200"
+                                 style="height: 300px; overflow: hidden;">
+                                @foreach(Auth::guard('employee')->user()->unreadNotifications as $row)
+                                    <a href="#" class="kt-notification__item">
+                                        <div class="kt-notification__item-icon">
+                                            <i class="flaticon2-safe kt-font-primary"></i>
+                                        </div>
+                                        <div class="kt-notification__item-details">
+                                            <div class="kt-notification__item-title">
+                                                {{ $row->data['letter']['title'] }}
                                             </div>
                                             <div class="kt-notification__item-time">
                                                 {{ $row->created_at }}
