@@ -34,7 +34,7 @@
                     <a class="dropdown-item" href="{{url('/gym/member/archive/closedLost', $row->id)}}"><i
                             class="fa fa-user-times"></i>Closed Lost</a>
                     <a class="dropdown-item" href="{{url('/gym/member/archive/transferStage', $row->id)}}"><i
-                            class="fa fa-user-times"></i>Transfer Stage</a>
+                            class="fa fa-user-times"></i>Re-Scheduled Stage</a>
                 </div>
                 |
                 <a href="{{url('/gym/member/edit', $row->id)}}"><i class="fa fa-edit"></i></a> |
@@ -80,8 +80,8 @@
                             class="fa fa-check"></i>Closed Won</a>
                     <a class="dropdown-item" href="{{url('/gym/member/archive/closedLost', $row->id)}}"><i
                             class="fa fa-user-times"></i>Closed Lost</a>
-                    <a class="dropdown-item" href="{{url('/gym/member/archive/transferStage', $row->id)}}"><i
-                            class="fa fa-user-times"></i>Transfer Stage</a>
+                    <a class="dropdown-item" href="{{url('/gym/member/archive/reScheduledStage', $row->id)}}"><i
+                            class="fa fa-user-times"></i>Re-Scheduled Stage</a>
                 </div>
                 |
                 <a href="{{url('/gym/member/edit', $row->id)}}"><i class="fa fa-edit"></i></a> |

@@ -26,9 +26,9 @@ class ReportController extends Controller
             $fromDate = $request->fromDate;
             $toDate = $request->toDate;
             $gym_id = Auth::guard('employee')->user()->gym_id;
-            $gymLeadList = Membership::getMembershipReport($gym_id, $fromDate, $toDate);
+            $gymMembershipList = Membership::getMembershipReport($gym_id, $fromDate, $toDate);
             return response()->json([
-                'response' => $gymLeadList
+                'response' => $gymMembershipList
             ], 200);
         } catch (\Exception $e) {
             return back()->with('error', 'Oops, something was not right');

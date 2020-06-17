@@ -76,10 +76,9 @@ class TrainerController extends Controller
                 'status' => 'required',
                 'qualification' => 'required',
                 'specialities' => 'required',
-                'note' => 'required',
                 'email' => 'required|email|unique:trainers',
-                'password' => 'nullable|between:6,12,password',
-                'password_confirmation' => 'nullable|same:password',
+                'password' => 'required|nullable|between:6,12,password',
+                'password_confirmation' => 'required|nullable|same:password',
             ]);
             if ($validator->fails()) {
                 return Redirect::back()->withErrors($validator);

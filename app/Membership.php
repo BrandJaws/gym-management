@@ -50,7 +50,7 @@ class Membership extends Model
                 'memberships.*',
             ]
         )->where(function ($query) use ($gym_id, $fromDate, $toDate) {
-            $query->where('gym_id', $gym_id)->whereBetween('created_at', array($fromDate, $toDate));
+            $query->where('memberships.gym_id', $gym_id)->whereBetween('memberships.created_at', array($fromDate, $toDate));
         })->get();
     }
 }

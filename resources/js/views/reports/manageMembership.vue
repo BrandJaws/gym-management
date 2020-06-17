@@ -15,7 +15,7 @@
                     <div class="col-md-2">
                         <vue-excel-xlsx
                             class = "btn btn-primary"
-                            :data="gymLeadList"
+                            :data="gymMembershipList"
                             :columns="columns"
                             :filename="'GymLeads'"
                             :sheetname="'sheetname'"
@@ -58,7 +58,7 @@
                             mode="remote">
                             <template slot="table-row" slot-scope="props">
                                 <span v-if="props.column.field == 'action'">
-                                    <a :href="'../../gym/member/edit/'+props.row.id" class="btn btn-label-primary btn-pill">
+                                    <a :href="'../../gym/membership/edit/'+props.row.id" class="btn btn-label-primary btn-pill">
                                         <i class="fa fa-edit"></i>
                                     </a>
                                 </span>

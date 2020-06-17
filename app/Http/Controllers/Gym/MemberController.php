@@ -703,8 +703,8 @@ class MemberController extends Controller
                 case 'contractSent':
                     $breadcrumbs = "Contract Sent";
                     break;
-                case 'transferStage':
-                    $breadcrumbs = "Transfer Stage";
+                case 'reScheduledStage':
+                    $breadcrumbs = "Re-Scheduled Stage";
                     break;
                 case 'qualifiedToBuy':
                     $breadcrumbs = "Qualified To Buy";

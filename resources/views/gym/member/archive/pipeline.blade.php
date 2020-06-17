@@ -114,7 +114,7 @@
                                                 @endif
                                             </div>
                                             <div class="col-lg-6 form-group">
-                                                <label>Transfer Stage :</label>
+                                                <label>Re-Schedule Stage :</label>
                                                 <select class="form-control" id="sel1" name="transferStage"
                                                         onchange="changeDiv(this.value)">
                                                     <option value="None">None</option>

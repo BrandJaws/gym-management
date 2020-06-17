@@ -196,7 +196,7 @@
                                                 </div>
                                                 <div class="kt-widget14__legend">
                                                     <span class="kt-widget14__bullet kt-bg-danger"></span>
-                                                    <span class="kt-widget14__stats">{{ $transferCalls }} Transfered Calls</span>
+                                                    <span class="kt-widget14__stats">{{ $transferCalls }} Re-Schaduale Calls</span>
                                                 </div>
                                                 <div class="kt-widget14__legend">
                                                     <span class="kt-widget14__bullet kt-bg-brand"></span>

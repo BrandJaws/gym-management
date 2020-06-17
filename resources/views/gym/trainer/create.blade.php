@@ -20,7 +20,8 @@
                         <form action="{{route('trainer.create')}}" method="POST" enctype="multipart/form-data"
                               class="kt-form kt-form--label-right">
                             @csrf
-                            <input type="hidden" name="gym_id" class="form-control" value="{{ Auth::guard('employee')->user()->gym_id }}"/>
+                            <input type="hidden" name="gym_id" class="form-control"
+                                   value="{{ Auth::guard('employee')->user()->gym_id }}"/>
                             @if($errors->has('gym_id'))
                                 <div class="error">{{ $errors->first('gym_id') }}</div>
                             @endif
@@ -30,13 +31,14 @@
                                         <div class="form-group row mb-15">
                                             <div class="col-lg-4 ">
                                                 <label class="">Gym:</label>
-                                                <input type="text" class="form-control" disabled
+                                                <input type="text" class="form-control " disabled
                                                        value="{{ Auth::guard('employee')->user()->gym->name }}"/>
                                             </div>
                                             <div class="col-lg-4">
                                                 <label>First Name:</label>
-                                                <input type="text" maxlength="25" name="firstName" class="form-control"
-                                                       required
+                                                <input type="text" maxlength="25" name="firstName"
+                                                       class="form-control @error('firstName') is-invalid @enderror"
+                                                       value="{{ old('firstName') }}" required
                                                        placeholder="Enter First Name"/>
                                                 @if($errors->has('firstName'))
                                                     <div class="error">{{ $errors->first('firstName') }}</div>
@@ -44,7 +46,9 @@
                                             </div>
                                             <div class="col-lg-4">
                                                 <label>Last Name:</label>
-                                                <input type="text" maxlength="25" name="lastName" class="form-control"
+                                                <input type="text" maxlength="25" name="lastName"
+                                                       class="form-control @error('lastName') is-invalid @enderror"
+                                                       value="{{ old('lastName') }}"
                                                        required placeholder="Enter Last Name"/>
                                                 @if($errors->has('lastName'))
                                                     <div class="error">{{ $errors->first('lastName') }}</div>
@@ -54,7 +58,9 @@
                                         <div class="form-group row mb-15">
                                             <div class="col-lg-6">
                                                 <label>Date Of Birth:</label>
-                                                <input type="date" name="dob" class="form-control" required/>
+                                                <input type="date" name="dob" value="{{ old('dob') }} "
+                                                       class="form-control @error('dob') is-invalid @enderror"
+                                                       required/>
                                                 @if($errors->has('dob'))
                                                     <div class="error">{{ $errors->first('dob') }}</div>
                                                 @endif
@@ -62,12 +68,15 @@
                                             <div class="col-lg-6">
                                                 <label>Gender:</label>
                                                 <div class="kt-radio-inline">
-                                                    <label class="kt-radio kt-radio--solid">
-                                                        <input type="radio" name="gender" value="Male" required> Male
+                                                    <label
+                                                        class="kt-radio kt-radio--solid @error('gender') is-invalid @enderror">
+                                                        <input type="radio" name="gender" value="Male" required
+                                                               @if(old('gender') == "Male") checked @endif> Male
                                                         <span></span>
                                                     </label>
                                                     <label class="kt-radio kt-radio--solid">
-                                                        <input type="radio" name="gender" value="Female" required>
+                                                        <input type="radio" name="gender" value="Female" required
+                                                               @if(old('gender') == "Female") checked @endif>
                                                         Female
                                                         <span></span>
                                                     </label>
@@ -80,7 +89,9 @@
                                         <div class="form-group row mb-15">
                                             <div class="col-lg-6">
                                                 <label>Phone #</label>
-                                                <input type="number" name="phone" class="form-control"
+                                                <input type="number" name="phone"
+                                                       class="form-control @error('phone') is-invalid @enderror"
+                                                       value="{{ old('phone') }}"
                                                        placeholder="Enter Phone Number "/>
                                                 @if($errors->has('phone'))
                                                     <div class="error">{{ $errors->first('phone') }}</div>
@@ -88,7 +99,9 @@
                                             </div>
                                             <div class="col-lg-6">
                                                 <label>Email:</label>
-                                                <input type="text" name="email" class="form-control" required
+                                                <input type="text" name="email"
+                                                       class="form-control @error('email') is-invalid @enderror"
+                                                       required value="{{ old('email') }}"
                                                        placeholder="Enter full email"/>
                                                 @if($errors->has('email'))
                                                     <div class="error">{{ $errors->first('email') }}</div>
@@ -98,16 +111,20 @@
                                         <div class="form-group row mb-15">
                                             <div class="col-lg-6">
                                                 <label>Password:</label>
-                                                <input type="password" name="password" class="form-control"
-                                                       placeholder="Enter password"/>
+                                                <input type="password" name="password"
+                                                       class="form-control @error('password') is-invalid @enderror"
+                                                       value="{{ old('password') }}"
+                                                       required placeholder="Enter password"/>
                                                 @if($errors->has('password'))
                                                     <div class="error">{{ $errors->first('password') }}</div>
                                                 @endif
                                             </div>
                                             <div class="col-lg-6">
                                                 <label>Re-Password:</label>
-                                                <input type="password" name="password_confirmation" class="form-control"
-                                                       placeholder="Enter Password Confirmation"/>
+                                                <input type="password" name="password_confirmation"
+                                                       class="form-control @error('password_confirmation') is-invalid @enderror"
+                                                       value="{{ old('password_confirmation') }}"
+                                                       required placeholder="Enter Password Confirmation"/>
                                                 @if($errors->has('password_confirmation'))
                                                     <div
                                                         class="error">{{ $errors->first('password_confirmation') }}</div>
@@ -117,7 +134,9 @@
                                         <div class="form-group row mb-15">
                                             <div class="col-lg-6">
                                                 <label>Qualification:</label>
-                                                <input type="text" name="qualification" class="form-control"
+                                                <input type="text" name="qualification"
+                                                       class="form-control @error('qualification') is-invalid @enderror"
+                                                       value="{{ old('qualification') }}"
                                                        placeholder="Enter Your Qualification"/>
                                                 @if($errors->has('qualification'))
                                                     <div class="error">{{ $errors->first('qualification') }}</div>
@@ -125,7 +144,9 @@
                                             </div>
                                             <div class="col-lg-6">
                                                 <label>Specialites:</label>
-                                                <input type="text" name="specialities" class="form-control"
+                                                <input type="text" name="specialities"
+                                                       class="form-control @error('specialities') is-invalid @enderror"
+                                                       value="{{ old('specialities') }}"
                                                        placeholder="Enter Your Specialites"/>
                                                 @if($errors->has('specialities'))
                                                     <div class="error">{{ $errors->first('specialities') }}</div>
@@ -136,9 +157,14 @@
                                         <div class="form-group row mb-15">
                                             <div class="col-lg-6">
                                                 <label>Status:</label>
-                                                <select name="status" class="form-control">
-                                                    <option value="Active">Active</option>
-                                                    <option value="Block">Block</option>
+                                                <select name="status"
+                                                        class="form-control @error('status') is-invalid @enderror">
+                                                    <option value="Active"
+                                                            @if(old('status') == "Active") selected @endif>Active
+                                                    </option>
+                                                    <option value="Block" @if(old('status') == "Block") selected @endif>
+                                                        Block
+                                                    </option>
                                                 </select>
                                                 @if($errors->has('status'))
                                                     <div class="error">{{ $errors->first('status') }}</div>
@@ -146,8 +172,9 @@
                                             </div>
                                             <div class="col-lg-6">
                                                 <label>Note:</label>
-                                                <textarea type="text" name="note" class="form-control"
-                                                          placeholder="Enter Note"></textarea>
+                                                <textarea type="text" name="note"
+                                                          class="form-control @error('note') is-invalid @enderror"
+                                                          placeholder="Enter Note">{{ old('note') }}</textarea>
                                                 @if($errors->has('note'))
                                                     <div class="error">{{ $errors->first('note') }}</div>
                                                 @endif
