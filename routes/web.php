@@ -71,12 +71,8 @@ Route::group(['prefix' => 'gym', 'namespace' => 'Gym'], function () {
     Route::group(['middleware' => ['auth.employee']], function () {
 
 
-        Route::get('notify' , function (){
-            $employee = Employee::all();
-            $letter = collect(['title' => 'New policy update', 'body' => 'its notifications']);
-            Notification::send($employee, new DatabaseNotification($letter));
-            echo 'Notification send to all employee';
-        });
+        Route::get('/notify', ['as' => 'gym.notify', 'uses' => 'NotificationController@notify']);
+
 
         Route::get('markAsRead' , function (){
             \Illuminate\Support\Facades\Auth::guard('employee')->user()->notifications->markAsRead();
