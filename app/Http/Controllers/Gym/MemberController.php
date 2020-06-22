@@ -10,14 +10,17 @@ use App\Member;
 use App\Http\Controllers\Controller;
 use App\MemberMembership;
 use App\Membership;
+use App\Notifications\DatabaseNotification;
 use App\Pipeline;
 use App\RestaurantOrder;
+use App\Trainer;
 use App\TrainingGroup;
 use App\Treasury;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Notification;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Validator;
 use phpDocumentor\Reflection\Types\Nullable;
@@ -181,7 +184,12 @@ class MemberController extends Controller
                         $images[] = $userImage;
                         $member->userImage()->saveMany($images, $member);
                     }
+                    // Trainer logs
                     ActivityLogsController::insertLog("Create New Lead");
+                    // Welcome Notification
+                    $emplyeeNotify = Employee::where('id',Auth::guard('employee')->user()->id)->get();
+                    $letters = collect(['title' => 'Congratulations! Lead created successfully ', 'body' => ' Lead created successfully']);
+                    Notification::send($emplyeeNotify, new DatabaseNotification($letters));
                     return back()->with('success', 'Lead Created Successfully!');
                     break;
                 case 'Member':
@@ -220,6 +228,14 @@ class MemberController extends Controller
                                 $images[] = $userImage;
                                 $member->userImage()->saveMany($images, $member);
                             }
+                            // Welcome Notification
+                            $trainer = Member::where('id',$member->id)->get();
+                            $letter = collect(['title' => 'Congratulations and welcome to the gym!', 'body' => 'Our heartiest welcome goes to you. Congratulations on being part of our growing and dynamic team here! We’re honoured to have you with us!']);
+                            Notification::send($trainer, new DatabaseNotification($letter));
+                            // Welcome Notification
+                            $emplyeeNotify = Employee::where('id',Auth::guard('employee')->user()->id)->get();
+                            $letters = collect(['title' => 'Congratulations! Member created successfully ', 'body' => ' Member created successfully']);
+                            Notification::send($emplyeeNotify, new DatabaseNotification($letters));
                             ActivityLogsController::insertLog("Create New Member");
                             return back()->with('success', 'Member Created Successfully!');
                             break;
@@ -261,6 +277,14 @@ class MemberController extends Controller
                                         $images[] = $userImage;
                                         $member->userImage()->saveMany($images, $member);
                                     }
+                                    // Welcome Notification
+                                    $trainer = Member::where('id',$member->id)->get();
+                                    $letter = collect(['title' => 'Congratulations and welcome to the gym!', 'body' => 'Our heartiest welcome goes to you. Congratulations on being part of our growing and dynamic team here! We’re honoured to have you with us!']);
+                                    Notification::send($trainer, new DatabaseNotification($letter));
+                                    // Welcome Notification
+                                    $emplyeeNotify = Employee::where('id',Auth::guard('employee')->user()->id)->get();
+                                    $letters = collect(['title' => 'Congratulations! Affiliate Member created successfully ', 'body' => ' Affiliate Member created successfully']);
+                                    Notification::send($emplyeeNotify, new DatabaseNotification($letters));
                                     ActivityLogsController::insertLog("Create New Member");
                                     return back()->with('success', 'Member Created Successfully!');
                                 } else {
@@ -362,6 +386,10 @@ class MemberController extends Controller
                         $images[] = $userImage;
                         $member->userImage()->saveMany($images, $member);
                     }
+                    // Welcome Notification
+                    $emplyeeNotify = Employee::where('id',Auth::guard('employee')->user()->id)->get();
+                    $letters = collect(['title' => 'Congratulations! Lead updated successfully ', 'body' => ' Lead updated successfully']);
+                    Notification::send($emplyeeNotify, new DatabaseNotification($letters));
                     ActivityLogsController::insertLog("Update Lead");
                     return back()->with('success', 'Lead Updated Successfully!');
                     break;
@@ -410,6 +438,14 @@ class MemberController extends Controller
                                 $images[] = $userImage;
                                 $member->userImage()->saveMany($images, $member);
                             }
+                            // Welcome Notification
+                            $trainer = Member::where('id',$member->id)->get();
+                            $letter = collect(['title' => 'Congratulations and welcome to the gym!', 'body' => 'Our heartiest welcome goes to you. Congratulations on being part of our growing and dynamic team here! We’re honoured to have you with us!']);
+                            Notification::send($trainer, new DatabaseNotification($letter));
+                            // Welcome Notification
+                            $emplyeeNotify = Employee::where('id',Auth::guard('employee')->user()->id)->get();
+                            $letters = collect(['title' => 'Congratulations! Member updated successfully ', 'body' => ' Member updated successfully']);
+                            Notification::send($emplyeeNotify, new DatabaseNotification($letters));
                             ActivityLogsController::insertLog("Update Member");
                             return back()->with('success', 'Member Updated Successfully!');
                             break;
@@ -461,6 +497,14 @@ class MemberController extends Controller
                                         $images[] = $userImage;
                                         $member->userImage()->saveMany($images, $member);
                                     }
+                                    // Welcome Notification
+                                    $trainer = Member::where('id',$member->id)->get();
+                                    $letter = collect(['title' => 'Congratulations and welcome to the gym!', 'body' => 'Our heartiest welcome goes to you. Congratulations on being part of our growing and dynamic team here! We’re honoured to have you with us!']);
+                                    Notification::send($trainer, new DatabaseNotification($letter));
+                                    // Welcome Notification
+                                    $emplyeeNotify = Employee::where('id',Auth::guard('employee')->user()->id)->get();
+                                    $letters = collect(['title' => 'Congratulations! Affiliate Member updated successfully ', 'body' => ' Member updated successfully']);
+                                    Notification::send($emplyeeNotify, new DatabaseNotification($letters));
                                     ActivityLogsController::insertLog("Update Member");
                                     return back()->with('success', 'Member Updated Successfully!');
                                 } else {
@@ -726,7 +770,7 @@ class MemberController extends Controller
 
     public function pipelineStore(Request $request)
     {
-        try {
+        try{
             $validator = Validator::make($request->all(), [
                 'employee_id' => 'required',
                 'stage' => 'required',
@@ -753,6 +797,15 @@ class MemberController extends Controller
                 $member->intersetedPackages = implode(',', $request->intersetedPackages);
             }
             $member->save();
+            // Welcome Notification
+            $notify = Employee::where('id',$request->employee_id)->get();
+            $letter = collect(['title' => 'Stage Alert', 'body' => ' Mr. '.Auth::guard('employee')->user()->name .'  transfer stage! for you' ]);
+            Notification::send($notify, new DatabaseNotification($letter));
+            // Welcome Notification
+            $notify = Employee::where('id',$request->transfer_id)->get();
+            $letter = collect(['title' => 'Stage Alert', 'body' => ' Mr. '.Auth::guard('employee')->user()->name .' re-schedule stage! for you' ]);
+            Notification::send($notify, new DatabaseNotification($letter));
+            // Activity logs
             ActivityLogsController::insertLog("Create New Stage");
             return back()->with('success', 'Schedule Date Created Successfully!');
         } catch (\Exception $e) {
@@ -810,6 +863,14 @@ class MemberController extends Controller
             if ($request->intersetedPackages != "") {
                 $pipeline->intersetedPackages = implode(',', $request->intersetedPackages);
             }
+            // Welcome Notification
+            $notify = Employee::where('id',$request->employee_id)->get();
+            $letter = collect(['title' => 'Stage Alert', 'body' => ' Mr. '.Auth::guard('employee')->user()->name .'  transfer stage! for you' ]);
+            Notification::send($notify, new DatabaseNotification($letter));
+            // Welcome Notification
+            $notify = Employee::where('id',$request->transfer_id)->get();
+            $letter = collect(['title' => 'Stage Alert', 'body' => ' Mr. '.Auth::guard('employee')->user()->name .' re-schedule stage! for you' ]);
+            Notification::send($notify, new DatabaseNotification($letter));
             $pipeline->save();
             ActivityLogsController::insertLog("Update Stage");
             return back()->with('success', 'Pipeline Updated Successfully!');
