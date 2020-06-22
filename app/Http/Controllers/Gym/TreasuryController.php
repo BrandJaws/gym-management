@@ -3,19 +3,18 @@
 namespace App\Http\Controllers\Gym;
 
 use App\Employee;
-use App\Image;
 use App\Member;
 use App\Supplier;
 use App\Trainer;
 use App\Treasury;
-use App\Gym;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Validator;
-use phpDocumentor\Reflection\Types\Nullable;
+use App\Notifications\DatabaseNotification;
+use Illuminate\Support\Facades\Notification;
 
 class TreasuryController extends Controller
 {
@@ -102,6 +101,11 @@ class TreasuryController extends Controller
                     $treasury->supplier_id = '0';
                     $treasury->trainer_id = '0';
                     $treasury->purpose = $request->employeePurpose;
+                    $treasury->save();
+                    // Welcome Notification
+                    $trainer = Employee::where('id',$request->employeeId)->get();
+                    $letter = collect(['title' => 'Treasury Alert', 'body' => 'Status = '.$request->employeePurpose.' & This is a treasury alert! ']);
+                    Notification::send($trainer, new DatabaseNotification($letter));
                     break;
                 case 'Member':
                     $treasury->member_id = $request->member_id;
@@ -109,6 +113,11 @@ class TreasuryController extends Controller
                     $treasury->supplier_id = '0';
                     $treasury->trainer_id = '0';
                     $treasury->purpose = $request->memberPurpose;
+                    $treasury->save();
+                    // Welcome Notification
+                    $trainer = Member::where('id',$request->member_id)->get();
+                    $letter = collect(['title' => 'Treasury Alert', 'body' => 'Status = '.$request->memberPurpose.' & This is a treasury alert! ']);
+                    Notification::send($trainer, new DatabaseNotification($letter));
                     break;
                 case 'Supplier':
                     $treasury->supplier_id = $request->supplier_id;
@@ -116,6 +125,11 @@ class TreasuryController extends Controller
                     $treasury->employeeId = '0';
                     $treasury->trainer_id = '0';
                     $treasury->purpose = $request->supplierPurpose;
+                    $treasury->save();
+                    // Welcome Notification
+                    $trainer = Supplier::where('id',$request->supplier_id)->get();
+                    $letter = collect(['title' => 'Treasury Alert', 'body' => 'Status = '.$request->supplierPurpose.' & This is a treasury alert! ']);
+                    Notification::send($trainer, new DatabaseNotification($letter));
                     break;
                 case 'Trainer':
                     $treasury->trainer_id = $request->trainer_id;
@@ -123,6 +137,11 @@ class TreasuryController extends Controller
                     $treasury->member_id = '0';
                     $treasury->employeeId = '0';
                     $treasury->purpose = $request->trainerPurpose;
+                    $treasury->save();
+                    // Welcome Notification
+                    $trainer = Trainer::where('id',$request->trainer_id)->get();
+                    $letter = collect(['title' => 'Treasury Alert', 'body' => 'Status = '.$request->trainerPurpose.' & This is a treasury alert! ']);
+                    Notification::send($trainer, new DatabaseNotification($letter));
                     break;
                 case 'Other':
                     $treasury->trainer_id = '0';
@@ -130,9 +149,10 @@ class TreasuryController extends Controller
                     $treasury->member_id = '0';
                     $treasury->employeeId = '0';
                     $treasury->purpose = $request->otherPurpose;
+                    $treasury->save();
                     break;
             }
-            $treasury->save();
+
             ActivityLogsController::insertLog("Create New Treasury");
             return back()->with('success', 'Treasury Created Successfully!');
         } catch (\Exception $e) {

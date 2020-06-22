@@ -195,7 +195,7 @@
                                     </div>
                                     <div class="col-lg-4">
                                         <label>Value:</label>
-                                        <input type="text" name="value" class="form-control" required value="{{ $treasury->value }}"
+                                        <input type="number" name="value" class="form-control" required value="{{ $treasury->value }}"
                                                value="{{ $treasury->value }}"
                                                placeholder="Enter your Value"/>
                                     </div>

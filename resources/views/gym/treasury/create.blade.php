@@ -192,7 +192,7 @@
                                     </div>
                                     <div class="col-lg-4">
                                         <label>Value:</label>
-                                        <input type="text" name="value" class="form-control" required
+                                        <input type="number" name="value" class="form-control" required
                                                placeholder="Enter your Value"/>
                                     </div>
                                 </div>
