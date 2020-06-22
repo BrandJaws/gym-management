@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers\Gym;
 
+use App\Employee;
 use App\Http\Traits\FileUpload;
 use App\Image;
+use App\Notifications\DatabaseNotification;
 use App\Trainer;
 use App\Gym;
 use App\Http\Controllers\Controller;
@@ -11,6 +13,7 @@ use App\Treasury;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Notification;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Validator;
 
@@ -107,12 +110,15 @@ class TrainerController extends Controller
                 $images[] = $userImage;
                 $trainer->userImage()->saveMany($images, $trainer);
             }
+            // Welcome Notification
+            $trainer = Trainer::where('id',$trainer->id)->get();
+            $letter = collect(['title' => 'Congratulations and welcome to the team!', 'body' => 'Our heartiest welcome goes to you. Congratulations on being part of our growing and dynamic team here! We’re honoured to have you with us!']);
+            Notification::send($trainer, new DatabaseNotification($letter));
+            // Trainer logs
             ActivityLogsController::insertLog("Add New Trainer");
             return back()->with('success', 'Trainer Created Successfully!');
         } catch (\Exception $e) {
-            return response()->json([
-                'response' => $e
-            ], 400);
+            return back()->with('error', 'Oops, something was not right in trainer update page');
         }
     }
 

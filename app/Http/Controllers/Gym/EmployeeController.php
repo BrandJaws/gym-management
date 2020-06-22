@@ -10,10 +10,13 @@ use App\GymPermission;
 use App\Http\Controllers\Controller;
 use App\Http\Traits\FileUpload;
 use App\Image;
+use App\Notifications\DatabaseNotification;
+use App\Trainer;
 use App\Treasury;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Notification;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
@@ -131,6 +134,11 @@ class EmployeeController extends Controller
                     );
                 }
             }
+            // Welcome Notification
+            $trainer = Employee::where('id',$employee->id)->get();
+            $letter = collect(['title' => 'Congratulations and welcome to the team!', 'body' => 'Our heartiest welcome goes to you. Congratulations on being part of our growing and dynamic team here! We’re honoured to have you with us!']);
+            Notification::send($trainer, new DatabaseNotification($letter));
+            // System Logs
             ActivityLogsController::insertLog("Create New Employee");
             return back()->with('success', 'Employee Created Successfully!');
         } catch (\Exception $e) {

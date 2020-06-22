@@ -3,10 +3,12 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Auth;
 
 class Supplier extends Model
 {
+    use Notifiable;
     protected $table = 'suppliers';
     protected $fillable = [
         'name',

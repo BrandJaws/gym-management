@@ -5,12 +5,15 @@ namespace App\Http\Controllers\Gym;
 use App\Http\Traits\FileUpload;
 use App\Image;
 use App\Membership;
+use App\Notifications\DatabaseNotification;
 use App\Supplier;
 use App\Gym;
 use App\Http\Controllers\Controller;
+use App\Trainer;
 use App\Treasury;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Notification;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Validator;
 
@@ -90,6 +93,11 @@ class SupplierController extends Controller
                 $images[] = $userImage;
                 $supplier->userImage()->saveMany($images, $supplier);
             }
+            // Welcome Notification
+            $notify = Supplier::where('id',$supplier->id)->get();
+            $letter = collect(['title' => 'Congratulations and welcome in gym!', 'body' => 'Our heartiest welcome goes to you. Congratulations on being part of our growing and dynamic team here! We’re honoured to have you with us!']);
+            Notification::send($notify, new DatabaseNotification($letter));
+            // Supplier logs
             ActivityLogsController::insertLog("Create New Supplier");
             return back()->with('success', 'Supplier Created Successfully!');
         } catch (\Exception $e) {

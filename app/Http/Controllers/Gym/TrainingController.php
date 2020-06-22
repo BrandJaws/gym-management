@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Traits\FileUpload;
 use App\Image;
 use App\Member;
+use App\Notifications\DatabaseNotification;
 use App\Trainer;
 use App\Training;
 use App\TrainingGroup;
@@ -13,6 +14,7 @@ use App\Treasury;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Notification;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Validator;
 
@@ -97,6 +99,11 @@ class TrainingController extends Controller
                 $training->promotionContent = $request->promotionContent;
                 $training->save();
             }
+            // Welcome Notification
+            $trainer = Trainer::where('id',$request->trainer_id)->get();
+            $letter = collect(['title' => 'Congratulations and welcome in training!', 'body' => 'Our heartiest welcome goes to you. Now you are appointed for this training ']);
+            Notification::send($trainer, new DatabaseNotification($letter));
+            // Training logs
             ActivityLogsController::insertLog("Add New Training");
             return back()->with('success', 'Training Created Successfully!');
         } catch (\Exception $e) {
@@ -121,8 +128,16 @@ class TrainingController extends Controller
                 $memberId = explode(',', $trainingMember->member_id);
                 foreach ($memberId as $fields) {
                     array_push($memberList, $fields);
+
                 }
             }
+            // Welcome Notification
+            foreach ($memberList as $memberID) {
+                $memberLists = Member::where('id',$memberID)->get();
+                $letter = collect(['title' => 'Congratulations and welcome in our training!', 'body' => 'On behalf of our trainer, supervisors and gym, we welcome you in our training.']);
+                Notification::send($memberLists, new DatabaseNotification($letter));
+            }
+            // Training logs
             ActivityLogsController::insertLog("Training Edit Page");
             return view('gym.training.edit', compact('training', 'trainer', 'trainingGroup', 'member', 'groupCount', 'memberList', 'trainingMember'));
         } catch (\Exception $e) {
