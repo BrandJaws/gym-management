@@ -29,7 +29,6 @@
 
     <!--end::Global Theme Styles -->
 
-
     <style>
         #draggable {
             width: 150px;
