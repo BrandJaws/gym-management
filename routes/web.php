@@ -294,5 +294,14 @@ Route::group(['prefix' => 'gym', 'namespace' => 'Gym'], function () {
             Route::get('/{any?}', 'ReportController@index')->where('any', '.*');
             Route::post('/membership', ['as' => 'list', 'uses' => 'ReportController@gymMembershipList']);
         });
+
+        /*-----------------------------------------------------------------------------------*/
+        /*------------------------------------ Notification List  --------------------------------*/
+        /*-----------------------------------------------------------------------------------*/
+        Route::group(['as' => 'notification.', 'prefix' => 'notification'], function () {
+            Route::get('/{id}', ['as' => 'list', 'uses' => 'NotificationController@index']);
+        });
+
+
     });
 });
