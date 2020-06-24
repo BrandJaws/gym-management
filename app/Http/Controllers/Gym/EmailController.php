@@ -22,16 +22,16 @@ class EmailController extends Controller
     public function index()
     {
         try {
-            $memberMail = EmailNotification::where('status','Member')->count();
-            $leadMail = EmailNotification::where('status','Lead')->count();
-            $employeeMail = EmailNotification::where('status','Employee')->count();
-            $trainerMail = EmailNotification::where('status','Trainer')->count();
-            $memberMailList = EmailNotification::where('status','Member')->paginate(5, ['*'], 'memberMailList');
-            $leadMailList = EmailNotification::where('status','Lead')->paginate(5, ['*'], 'leadMailList');
-            $employeeMailList = EmailNotification::where('status','Employee')->paginate(5, ['*'], 'employeeMailList');
-            $trainerMailList = EmailNotification::where('status','Trainer')->paginate(5, ['*'], 'trainerMailList');
+            $memberMail = EmailNotification::where('status', 'Member')->count();
+            $leadMail = EmailNotification::where('status', 'Lead')->count();
+            $employeeMail = EmailNotification::where('status', 'Employee')->count();
+            $trainerMail = EmailNotification::where('status', 'Trainer')->count();
+            $memberMailList = EmailNotification::where('status', 'Member')->paginate(5, ['*'], 'memberMailList');
+            $leadMailList = EmailNotification::where('status', 'Lead')->paginate(5, ['*'], 'leadMailList');
+            $employeeMailList = EmailNotification::where('status', 'Employee')->paginate(5, ['*'], 'employeeMailList');
+            $trainerMailList = EmailNotification::where('status', 'Trainer')->paginate(5, ['*'], 'trainerMailList');
             ActivityLogsController::insertLog("Email Dashbaord Page");
-            return view('gym.email.index',compact('memberMail','leadMail','employeeMail','trainerMail','memberMailList','leadMailList','employeeMailList','trainerMailList'));
+            return view('gym.email.index', compact('memberMail', 'leadMail', 'employeeMail', 'trainerMail', 'memberMailList', 'leadMailList', 'employeeMailList', 'trainerMailList'));
         } catch (\Exception $e) {
             return back()->with('error', 'Oops, something was not right in email page');
         }
@@ -109,24 +109,40 @@ class EmailController extends Controller
                 foreach ($request->employee_id as $employee) {
                     $employeeId = Employee::where('id', $employee)->first();
                     Mail::to($employeeId->email)->send(new \App\Mail\EmployeeMail($details));
+                    // Welcome Notification
+                    $trainer = Employee::where('id', $employee)->get();
+                    $letter = collect(['title' => 'Email Alert!', 'body' => 'Please check your email']);
+                    Notification::send($trainer, new DatabaseNotification($letter));
                 }
             } elseif ($request->member_id != "") {
                 $sendMail->member_id = implode(',', $request->member_id);
-                foreach ($request->member_id as $employee) {
-                    $memberId = Member::where('id', $employee)->first();
+                foreach ($request->member_id as $member) {
+                    $memberId = Member::where('id', $member)->first();
                     Mail::to($memberId->email)->send(new \App\Mail\MemberMail($details));
+                    // Welcome Notification
+                    $trainer = Member::where('id', $member)->get();
+                    $letter = collect(['title' => 'Email Alert!', 'body' => 'Please check your email']);
+                    Notification::send($trainer, new DatabaseNotification($letter));
                 }
             } elseif ($request->lead_id != "") {
                 $sendMail->lead_id = implode(',', $request->lead_id);
                 foreach ($request->lead_id as $lead) {
                     $leadId = Member::where('id', $lead)->first();
                     Mail::to($leadId->email)->send(new \App\Mail\LeadMail($details));
+                    // Welcome Notification
+                    $trainer = Member::where('id', $lead)->get();
+                    $letter = collect(['title' => 'Email Alert!', 'body' => 'Please check your email']);
+                    Notification::send($trainer, new DatabaseNotification($letter));
                 }
             } elseif ($request->trainer_id != "") {
                 $sendMail->trainer_id = implode(',', $request->trainer_id);
                 foreach ($request->trainer_id as $trainer) {
                     $trainerId = Trainer::where('id', $trainer)->first();
                     Mail::to($trainerId->email)->send(new \App\Mail\TrainerMail($details));
+                    // Welcome Notification
+                    $trainer = Trainer::where('id', $trainer)->get();
+                    $letter = collect(['title' => 'Email Alert!', 'body' => 'Please check your email']);
+                    Notification::send($trainer, new DatabaseNotification($letter));
                 }
             }
             $sendMail->save();
