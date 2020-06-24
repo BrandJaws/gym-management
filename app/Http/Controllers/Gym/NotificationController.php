@@ -24,7 +24,6 @@ class NotificationController extends Controller
     {
 //        try {
             $notification = NotificationModel::where('id', $id)->first();
-            dd($notification->data['letter']);
 
             ActivityLogsController::insertLog("Notification Page");
             return view('gym.member.notification.list', compact('notification'));

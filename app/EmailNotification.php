@@ -13,6 +13,7 @@ class EmailNotification extends Model
         'lead_id',
         'employee_id',
         'trainer_id',
+        'status',
         'subject',
         'message',
     ];

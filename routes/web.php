@@ -311,6 +311,7 @@ Route::group(['prefix' => 'gym', 'namespace' => 'Gym'], function () {
             Route::get('/member', ['as' => 'memberList', 'uses' => 'EmailController@memberList']);
             Route::get('/lead', ['as' => 'leadList', 'uses' => 'EmailController@leadList']);
             Route::get('/trainer', ['as' => 'trainerList', 'uses' => 'EmailController@trainerList']);
+            Route::post('/sendEmailMail', ['as' => 'sendMail', 'uses' => 'EmailController@sendEmailMail']);
         });
 
 

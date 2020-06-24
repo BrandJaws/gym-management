@@ -17,11 +17,13 @@
                             </div>
                         </div>
                         <!--begin::Form-->
-                        <form action="{{route('supplier.create')}}" method="POST" enctype="multipart/form-data"
+                        <form action="{{route('email.sendMail')}}" method="POST" enctype="multipart/form-data"
                               class="kt-form kt-form--label-right">
                             @csrf
                             <input type="hidden" class="form-control" name="gym_id"
                                    value="{{  Auth::guard('employee')->user()->gym->id }}"/>
+                            <input type="hidden" class="form-control" name="status"
+                                   value="Lead"/>
                             <div class="kt-portlet__body">
                                 <div class="row">
                                     <div class="col-lg-8">
@@ -39,7 +41,7 @@
                                             <div class="col-lg-12">
                                                 <label>Lead:</label>
                                                 <select class="form-control kt-select2" id="kt_select2_3"
-                                                        name="gym_id[]"
+                                                        name="lead_id[]"
                                                         required
                                                         multiple="multiple">
                                                     @foreach ($lead as $list)

@@ -16,10 +16,11 @@ class CreateEmailNotificationsTable extends Migration
         Schema::create('email_notifications', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->integer('gym_id')->unsigned();
-            $table->integer('member_id')->nullable();
-            $table->integer('lead_id')->nullable();
-            $table->integer('employee_id')->nullable();
-            $table->integer('trainer_id')->nullable();
+            $table->string('member_id')->nullable();
+            $table->string('lead_id')->nullable();
+            $table->string('employee_id')->nullable();
+            $table->string('trainer_id')->nullable();
+            $table->string('status');
             $table->string('subject');
             $table->text('message');
             $table->timestamps();
