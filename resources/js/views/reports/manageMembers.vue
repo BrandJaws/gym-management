@@ -110,7 +110,7 @@
                     },
                     {
                         label: 'Member Owner',
-                        field: 'Employee',
+                        field: 'employee',
                         tdClass: 'text-left',
                         thClass: 'text-left',
                         sortable: true,

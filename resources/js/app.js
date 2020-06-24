@@ -4,7 +4,7 @@ require('./bootstrap');
 
 let userId = document.head.querySelector('meta[name="user-id"]').content;
 
-Echo.private('App.Employee.'+ userId)
+Echo.private('App.employee.'+ userId)
     .notification((notification) => {
         console.log(notification.type);
     });

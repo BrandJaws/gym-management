@@ -11,10 +11,10 @@
 |
 */
 
-Broadcast::channel('App.Employee.{id}', function ($user, $id) {
+Broadcast::channel('App.employee.{id}', function ($user, $id) {
     return (int) $user->id === (int) $id;
 });
 //
 //Broadcast::channel('employee.channel.{id}', function ($model, $id) {
-//    return $model->id === $id && get_class($model) === 'App\Employee';
+//    return $model->id === $id && get_class($model) === 'App\employee';
 //});

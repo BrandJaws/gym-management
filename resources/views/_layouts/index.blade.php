@@ -78,6 +78,8 @@
             <!-- begin:: Header -->
         @if(Request::is('gym/member') || Request::is('gym/member/*'))
             @include('gym.__partials.member-header')
+        @elseif(Request::is('gym/email') || Request::is('gym/email/*'))
+            @include('gym.__partials.emailHeader')
         @elseif(Request::is('gym') || Request::is('gym/*'))
             @include('gym.__partials.header')
         @else

@@ -197,7 +197,7 @@ class Member extends Model
                 'members.relationShip',
                 'members.created_at',
                 'employees.id',
-                'employees.name as Employee',
+                'employees.name as employee',
                 'memberships.id',
                 'memberships.name as Membership',
             ]
@@ -224,7 +224,7 @@ class Member extends Model
                 'members.leadOwner_id',
                 'members.relationShip',
                 'members.created_at',
-                'employees.name as Employee',
+                'employees.name as employee',
                 'employees.id',
             ]
         )->where(function ($query) use ($gym_id, $fromDate, $toDate) {
@@ -252,7 +252,7 @@ class Member extends Model
                 'members.created_at',
                 'members.memberType',
                 'members.relationShip',
-                'employees.name as Employee',
+                'employees.name as employee',
                 'employees.id',
                 'memberships.name as Membership',
             ]

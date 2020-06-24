@@ -96,8 +96,8 @@
                         filterable: true,
                     },
                     {
-                        label: 'Transfer Employee',
-                        field: 'Employee',
+                        label: 'Transfer employee',
+                        field: 'employee',
                         tdClass: 'text-left',
                         thClass: 'text-left',
                         sortable: true,

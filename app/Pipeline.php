@@ -355,7 +355,7 @@ class Pipeline extends Model
                 'pipeline.reScheduleDate',
                 'members.id',
                 'members.name as Member',
-                'employees.name as Employee',
+                'employees.name as employee',
                 'employees.id',
             ]
         )->where(function ($query) use ($empId, $fromDate, $toDate) {

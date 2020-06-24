@@ -46,7 +46,7 @@ var KTDatatableModal = function() {
 					textAlign: 'center',
 				}, {
 					field: 'employee_id',
-					title: 'Employee ID',
+					title: 'employee ID',
 				}, {
 					field: 'name',
 					title: 'Name',

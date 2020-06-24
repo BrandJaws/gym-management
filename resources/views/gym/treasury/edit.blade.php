@@ -28,7 +28,7 @@
                                         <div class="kt-radio-inline">
                                             <label class="kt-radio kt-radio--success">
                                                 <input type="radio" name="type" id="employee" value="Employee" required
-                                                       @if($treasury->type == "Employee") checked @endif
+                                                       @if($treasury->type == "employee") checked @endif
                                                        onclick="changeDiv()"> Employee
                                                 <span></span>
                                             </label>

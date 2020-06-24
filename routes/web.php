@@ -302,6 +302,17 @@ Route::group(['prefix' => 'gym', 'namespace' => 'Gym'], function () {
             Route::get('/{id}', ['as' => 'list', 'uses' => 'NotificationController@index']);
         });
 
+        /*-----------------------------------------------------------------------------------*/
+        /*------------------------------------ Notification List  --------------------------------*/
+        /*-----------------------------------------------------------------------------------*/
+        Route::group(['as' => 'email.', 'prefix' => 'email'], function () {
+            Route::get('/', ['as' => 'list', 'uses' => 'EmailController@index']);
+            Route::get('/employee', ['as' => 'employeeList', 'uses' => 'EmailController@employeeList']);
+            Route::get('/member', ['as' => 'memberList', 'uses' => 'EmailController@memberList']);
+            Route::get('/lead', ['as' => 'leadList', 'uses' => 'EmailController@leadList']);
+            Route::get('/trainer', ['as' => 'trainerList', 'uses' => 'EmailController@trainerList']);
+        });
+
 
     });
 });

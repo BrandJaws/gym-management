@@ -95,7 +95,7 @@ class TreasuryController extends Controller
             $treasury->gym_id = Auth::guard('employee')->user()->gym_id;
             $value = $request->type;
             switch ($value) {
-                case 'Employee':
+                case 'employee':
                     $treasury->employeeId = $request->employeeId;
                     $treasury->member_id = '0';
                     $treasury->supplier_id = '0';
@@ -229,7 +229,7 @@ class TreasuryController extends Controller
             $treasury->gym_id = Auth::guard('employee')->user()->gym_id;
             $value = $request->type;
             switch ($value) {
-                case 'Employee':
+                case 'employee':
                     $treasury->employeeId = $request->employeeId;
                     $treasury->member_id = '0';
                     $treasury->supplier_id = '0';
