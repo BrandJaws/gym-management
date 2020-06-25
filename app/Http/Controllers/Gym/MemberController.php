@@ -1061,7 +1061,6 @@ class MemberController extends Controller
         $empId = Auth::guard('employee')->user()->id;
         if ($value == "Lead") {
             $leadList = Pipeline::getLeadList($empId, $fromDate, $toDate);
-
         } else {
             $leadList = Member::getMemberReport($empId, $fromDate, $toDate);
         }

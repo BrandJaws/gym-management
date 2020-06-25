@@ -360,7 +360,7 @@ class Pipeline extends Model
                 'employees.id',
             ]
         )->where(function ($query) use ($empId, $fromDate, $toDate) {
-            $query->where('members.type', 'Lead')->where('pipeline.employee_id', $empId)->whereBetween('pipeline.scheduleDate', array($fromDate, $toDate))->orWhere('pipeline.transfer_id', $empId)->whereBetween('pipeline.reScheduleDate', array($fromDate, $toDate));
+            $query->where('pipeline.employee_id', $empId)->whereBetween('pipeline.scheduleDate', array($fromDate, $toDate))->orWhere('pipeline.transfer_id', $empId)->whereBetween('pipeline.reScheduleDate', array($fromDate, $toDate));
         })->leftJoin('employees', function ($join) {
             $join->on('employees.id', 'pipeline.transfer_id');
         })->leftJoin('members', function ($join) {

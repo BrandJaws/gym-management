@@ -202,7 +202,7 @@ class Member extends Model
                 'memberships.name as Membership',
             ]
         )->where(function ($query) use ($empId, $fromDate, $toDate) {
-            $query->where('members.type', 'Lead')->where('members.leadOwner_id', $empId)->whereBetween('members.created_at', array($fromDate, $toDate));
+            $query->where('members.leadOwner_id', $empId)->whereBetween('members.created_at', array($fromDate, $toDate));
         })->leftJoin('employees', function ($join) {
             $join->on('employees.id', 'members.leadOwner_id');
         })->leftJoin('memberships', function ($join) {

@@ -10,7 +10,7 @@
                   <div class="kt-subheader__breadcrumbs">
                       <a href="#" class="kt-subheader__breadcrumbs-home"><i class="flaticon2-shelter"></i></a>
                       <span class="kt-subheader__breadcrumbs-separator"></span>
-                      <router-link :to="{ name: 'leadReport' }" class="kt-subheader__breadcrumbs-link"> Leads Report</router-link>
+                      <router-link :to="{ name: 'leadReport' }" class="kt-subheader__breadcrumbs-link"> Stage Report</router-link>
                       <span class="kt-subheader__breadcrumbs-separator"></span>
                       <router-link :to="{ name: 'memberReport' }" class="kt-subheader__breadcrumbs-link"> Member Report</router-link>
                       <span class="kt-subheader__breadcrumbs-separator"></span>
