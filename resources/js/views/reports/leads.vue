@@ -97,7 +97,7 @@
                     },
                     {
                         label: 'Transfer employee',
-                        field: 'employee',
+                        field: 'name',
                         tdClass: 'text-left',
                         thClass: 'text-left',
                         sortable: true,

@@ -80,8 +80,8 @@ class Pipeline extends Model
                 'members.name as Member',
             ]
         )->where(function ($query) use ($searchTerm, $sort_by, $sort_type) {
-            $query->orWhere('pipeline.employee_id', Auth::guard('employee')->user()->id)->where('pipeline.status', 'Failed Calls')
-                ->orWhere('pipeline.transfer_id', Auth::guard('employee')->user()->id)->where('pipeline.reStatus', 'Failed Calls');
+            $query->orWhere('pipeline.employee_id', Auth::guard('employee')->user()->id)->where('pipeline.status', 'Failed Call')
+                ->orWhere('pipeline.transfer_id', Auth::guard('employee')->user()->id)->where('pipeline.reStatus', 'Failed Call');
             if ($searchTerm) {
                 $query->where('pipeline.employee_id', 'like', '%' . $searchTerm . '%')
                     ->orWhere('pipeline.customer_id', 'like', '%' . $searchTerm . '%')
@@ -345,7 +345,7 @@ class Pipeline extends Model
     public static function getLeadList($empId, $fromDate, $toDate)
     {
         return self::select([
-                'pipeline.employee_id as Name',
+                'pipeline.employee_id',
                 'pipeline.customer_id',
                 'pipeline.transfer_id',
                 'pipeline.scheduleDate',
@@ -354,12 +354,13 @@ class Pipeline extends Model
                 'pipeline.transferStage',
                 'pipeline.reScheduleDate',
                 'members.id',
+                'members.type',
                 'members.name as Member',
-                'employees.name as employee',
+                'employees.name',
                 'employees.id',
             ]
         )->where(function ($query) use ($empId, $fromDate, $toDate) {
-            $query->where('pipeline.employee_id', $empId)->whereBetween('pipeline.scheduleDate', array($fromDate, $toDate))->orWhere('pipeline.transfer_id', $empId)->whereBetween('pipeline.reScheduleDate', array($fromDate, $toDate));
+            $query->where('members.type', 'Lead')->where('pipeline.employee_id', $empId)->whereBetween('pipeline.scheduleDate', array($fromDate, $toDate))->orWhere('pipeline.transfer_id', $empId)->whereBetween('pipeline.reScheduleDate', array($fromDate, $toDate));
         })->leftJoin('employees', function ($join) {
             $join->on('employees.id', 'pipeline.transfer_id');
         })->leftJoin('members', function ($join) {

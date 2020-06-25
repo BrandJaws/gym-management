@@ -64,7 +64,7 @@ class DashboardController extends Controller
             return response()->json($data);
         }
 
-        ActivityLogsController::insertLog("Gym Dashboard Page");
+        ActivityLogsController::insertLog("Gym Calendar Page");
         return view('gym.calendar', compact('memberships', 'employees', 'members', 'trainers', 'supplier','leads','parentMembers','childMembers'));
 
 

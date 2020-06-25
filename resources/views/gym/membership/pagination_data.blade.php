@@ -1,7 +1,7 @@
 @foreach($membership as $row)
     <tr>
         <td>{{ $row->name}}</td>
-        <td>{{ $row->registrationFee }} Days</td>
+        <td>{{ $row->registrationFee }}</td>
         <td>{{ $row->monthlyFee }}</td>
         <td>
             <a href="{{url('gym/membership/edit', $row->id)}}">
