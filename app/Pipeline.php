@@ -31,18 +31,34 @@ class Pipeline extends Model
 
     public function getStartAttribute()
     {
-        return \Carbon\Carbon::parse($this->scheduleDate)->format('Y-m-d H:i:s');
+        if ($this->scheduleDate != "") {
+            return \Carbon\Carbon::parse($this->scheduleDate)->format('Y-m-d H:i:s');
+        } else {
+            return \Carbon\Carbon::parse($this->reScheduleDate)->format('Y-m-d H:i:s');
+        }
+
     }
 
     public function getEndAttribute()
     {
-        return \Carbon\Carbon::parse($this->scheduleDate)->format('Y-m-d H:i:s');
+        if ($this->scheduleDate != "") {
+            return \Carbon\Carbon::parse($this->scheduleDate)->format('Y-m-d H:i:s');
+        } else {
+            return \Carbon\Carbon::parse($this->reScheduleDate)->format('Y-m-d H:i:s');
+        }
     }
+
     public function getTitleAttribute()
     {
-        $employee = $this->employee->name;
-        return [ $employee];
+        if ($this->employee_id != ""){
+            $employee = $this->employee->name;
+            return [$employee];
+        }else{
+            $employee = $this->transferEmployee->name;
+            return [$employee];
+        }
     }
+
 
     public function gym()
     {

@@ -70,5 +70,33 @@ class DashboardController extends Controller
 
     }
 
+    public function reSchaduleCalendar()
+    {
+        $gym_id = Auth::guard('employee')->user()->gym_id;
+        $memberships = Membership::where('gym_id', $gym_id)->count();
+        $employees = Employee::where('gym_id', $gym_id)->count();
+        $members = Member::where('type', 'Member')->where('gym_id', $gym_id)->count();
+        $trainers = Trainer::where('gym_id', $gym_id)->count();
+        $supplier = Supplier::where('gym_id', $gym_id)->count();
+        $leads = Member::where('gym_id', $gym_id)->where('type', 'Lead')->count();
+        $parentMembers = Member::where('type', 'Member')->where('gym_id', $gym_id)->where('memberType', 'Parent')->count();
+        $childMembers = Member::where('type', 'Member')->where('gym_id', $gym_id)->where('memberType', 'Children')->count();
+
+        if (request()->ajax()) {
+
+            $start = (!empty($_GET["start"])) ? ($_GET["start"]) : ('');
+            $end = (!empty($_GET["end"])) ? ($_GET["end"]) : ('');
+
+            $data = Pipeline::where('gym_id', $gym_id)->whereDate('reScheduleDate', '>=', $start)->whereDate('reScheduleDate', '<=', $end)->get(['id', 'transfer_id', 'reScheduleDate']);
+
+            return response()->json($data);
+        }
+
+        ActivityLogsController::insertLog("Gym Calendar Page");
+        return view('gym.reSchaduleCalendar', compact('memberships', 'employees', 'members', 'trainers', 'supplier','leads','parentMembers','childMembers'));
+
+
+    }
+
 
 }

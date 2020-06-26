@@ -72,8 +72,6 @@ Route::group(['prefix' => 'gym', 'namespace' => 'Gym'], function () {
 
 
         Route::get('/notify', ['as' => 'gym.notify', 'uses' => 'NotificationController@notify']);
-
-
         Route::get('markAsRead' , function (){
             \Illuminate\Support\Facades\Auth::guard('employee')->user()->notifications->markAsRead();
             return redirect()->back();
@@ -81,6 +79,8 @@ Route::group(['prefix' => 'gym', 'namespace' => 'Gym'], function () {
 
         Route::get('/dashboard', ['as' => 'gym.home', 'uses' => 'DashboardController@dashboard']);
         Route::get('/calendar', ['as' => 'gym.calendar', 'uses' => 'DashboardController@calendar']);
+        Route::get('/calendars', ['as' => 'gym.reSchaduleCalendar', 'uses' => 'DashboardController@reSchaduleCalendar']);
+
         Route::get('/profile', ['as' => 'gym.profile', 'uses' => 'AuthController@profile']);
         Route::post('/profile', ['as' => 'gym.profile', 'uses' => 'AuthController@updateProfile']);
 
