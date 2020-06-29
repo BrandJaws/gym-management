@@ -18,10 +18,11 @@
                                         <i class="flaticon-map-location"></i>
                                     </span>
                                     <h3 class="kt-portlet__head-title">
-                                        Calendar
+                                        Calendar <small>(Schedule Stages)</small>
                                     </h3>
                                 </div>
                                 <div class="kt-portlet__head-toolbar">
+                                    <a href="{{url('gym/calendars')}}" class="btn btn-info">ReSchedule Stages</a>
                                 </div>
                             </div>
                             <div class="kt-portlet__body">
